@@ -5,13 +5,13 @@
     "optimal": 494.32,
     "efficiency": 93.2,
     "left_on_bench": 33.7,
-    "bench_points": 158.5
+    "bench_points": 149.2
   },
   {
     "manager": "Zygon",
-    "points": 530.14,
-    "optimal": 581.34,
-    "efficiency": 91.2,
+    "points": 518.44,
+    "optimal": 569.64,
+    "efficiency": 91.0,
     "left_on_bench": 51.2,
     "bench_points": 170.14
   },
@@ -24,28 +24,28 @@
     "bench_points": 96.3
   },
   {
+    "manager": "Snipe58",
+    "points": 339.34,
+    "optimal": 392.34,
+    "efficiency": 86.5,
+    "left_on_bench": 53.0,
+    "bench_points": 124.4
+  },
+  {
     "manager": "Cassellrole",
-    "points": 443.2,
-    "optimal": 514.5,
-    "efficiency": 86.1,
+    "points": 411.1,
+    "optimal": 482.4,
+    "efficiency": 85.2,
     "left_on_bench": 71.3,
     "bench_points": 211.4
   },
   {
-    "manager": "Snipe58",
-    "points": 360.94,
-    "optimal": 428.44,
-    "efficiency": 84.2,
-    "left_on_bench": 67.5,
-    "bench_points": 138.9
-  },
-  {
     "manager": "Sarge71",
-    "points": 397.44,
-    "optimal": 485.7,
-    "efficiency": 81.8,
-    "left_on_bench": 88.26,
-    "bench_points": 168.08
+    "points": 373.48,
+    "optimal": 440.94,
+    "efficiency": 84.7,
+    "left_on_bench": 67.46,
+    "bench_points": 147.28
   },
   {
     "manager": "Hades9mm",
@@ -56,14 +56,6 @@
     "bench_points": 284.98
   },
   {
-    "manager": "CMac91",
-    "points": 389.56,
-    "optimal": 482.14,
-    "efficiency": 80.8,
-    "left_on_bench": 92.58,
-    "bench_points": 210.96
-  },
-  {
     "manager": "fumbduckdumbfuck",
     "points": 397.0,
     "optimal": 491.3,
@@ -72,10 +64,18 @@
     "bench_points": 200.58
   },
   {
+    "manager": "CMac91",
+    "points": 381.56,
+    "optimal": 474.14,
+    "efficiency": 80.5,
+    "left_on_bench": 92.58,
+    "bench_points": 210.96
+  },
+  {
     "manager": "YesChef23",
-    "points": 369.64,
-    "optimal": 460.14,
-    "efficiency": 80.3,
+    "points": 355.72,
+    "optimal": 446.22,
+    "efficiency": 79.7,
     "left_on_bench": 90.5,
     "bench_points": 169.2
   },
@@ -90,9 +90,9 @@
   {
     "manager": "Painty69",
     "points": 363.82,
-    "optimal": 473.8,
-    "efficiency": 76.8,
-    "left_on_bench": 109.98,
-    "bench_points": 244.6
+    "optimal": 460.9,
+    "efficiency": 78.9,
+    "left_on_bench": 97.08,
+    "bench_points": 231.7
   }
 ]

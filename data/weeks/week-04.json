@@ -29,11 +29,11 @@
       "roster_id": 2,
       "manager": "Snipe58",
       "points": 21.6,
-      "maxpf": 36.1,
-      "bench_points": 14.5,
-      "optimal": 36.1,
-      "left_on_bench": 14.5,
-      "efficiency": 59.8,
+      "maxpf": 40.9,
+      "bench_points": 19.3,
+      "optimal": 40.9,
+      "left_on_bench": 19.3,
+      "efficiency": 52.8,
       "mvp": {
         "name": "Quinshon Judkins",
         "pos": "RB",
@@ -52,32 +52,32 @@
       "roster_id": 3,
       "manager": "StealingGas",
       "points": 0,
-      "maxpf": 0.0,
-      "bench_points": 0.0,
-      "optimal": 0.0,
-      "left_on_bench": 0.0,
-      "efficiency": null,
+      "maxpf": 5.1,
+      "bench_points": 5.1,
+      "optimal": 5.1,
+      "left_on_bench": 5.1,
+      "efficiency": 0.0,
       "mvp": {
         "name": "Trevor Lawrence",
         "pos": "QB",
         "pts": 0.0
       },
       "best_bench": {
-        "name": "Dylan Sampson",
-        "pos": "RB",
-        "pts": 0.0
+        "name": "Antonio Williams",
+        "pos": "WR",
+        "pts": 5.1
       },
       "opponent": "Cassellrole",
-      "opponent_points": 32.1,
+      "opponent_points": 41.2,
       "result": "L"
     },
     {
       "roster_id": 4,
       "manager": "Zygon",
-      "points": 11.7,
-      "maxpf": 11.7,
+      "points": 20.62,
+      "maxpf": 20.62,
       "bench_points": 0.0,
-      "optimal": 11.7,
+      "optimal": 20.62,
       "left_on_bench": 0.0,
       "efficiency": 100.0,
       "mvp": {
@@ -98,32 +98,32 @@
       "roster_id": 5,
       "manager": "Hades9mm",
       "points": 0,
-      "maxpf": 0.0,
-      "bench_points": 0.0,
-      "optimal": 0.0,
-      "left_on_bench": 0.0,
-      "efficiency": null,
+      "maxpf": 8.5,
+      "bench_points": 8.5,
+      "optimal": 8.5,
+      "left_on_bench": 8.5,
+      "efficiency": 0.0,
       "mvp": {
         "name": "Cam Ward",
         "pos": "QB",
         "pts": 0.0
       },
       "best_bench": {
-        "name": "Jayden Daniels",
-        "pos": "QB",
-        "pts": 0.0
+        "name": "Stefon Diggs",
+        "pos": "WR",
+        "pts": 8.5
       },
       "opponent": "Zygon",
-      "opponent_points": 11.7,
+      "opponent_points": 20.62,
       "result": "L"
     },
     {
       "roster_id": 6,
       "manager": "Cassellrole",
-      "points": 32.1,
-      "maxpf": 32.1,
+      "points": 41.2,
+      "maxpf": 41.2,
       "bench_points": 0.0,
-      "optimal": 32.1,
+      "optimal": 41.2,
       "left_on_bench": 0.0,
       "efficiency": 100.0,
       "mvp": {
@@ -167,24 +167,24 @@
       "roster_id": 8,
       "manager": "C33DeezNutzz",
       "points": 0,
-      "maxpf": 0.0,
-      "bench_points": 0.0,
-      "optimal": 0.0,
-      "left_on_bench": 0.0,
-      "efficiency": null,
+      "maxpf": 4.6,
+      "bench_points": 4.6,
+      "optimal": 4.6,
+      "left_on_bench": 4.6,
+      "efficiency": 0.0,
       "mvp": {
         "name": "Josh Allen",
         "pos": "QB",
         "pts": 0.0
       },
       "best_bench": {
-        "name": "Jayden Reed",
+        "name": "Josh Downs",
         "pos": "WR",
-        "pts": 0.0
+        "pts": 4.6
       },
       "opponent": "fumbduckdumbfuck",
-      "opponent_points": 0,
-      "result": "T"
+      "opponent_points": 22.7,
+      "result": "L"
     },
     {
       "roster_id": 9,
@@ -213,20 +213,20 @@
       "roster_id": 10,
       "manager": "CMac91",
       "points": 8.0,
-      "maxpf": 8.0,
-      "bench_points": 0.0,
-      "optimal": 8.0,
-      "left_on_bench": 0.0,
-      "efficiency": 100.0,
+      "maxpf": 10.5,
+      "bench_points": 2.5,
+      "optimal": 10.5,
+      "left_on_bench": 2.5,
+      "efficiency": 76.2,
       "mvp": {
         "name": "Pittsburgh Steelers",
         "pos": "DEF",
         "pts": 8.0
       },
       "best_bench": {
-        "name": "Jaylen Wright",
-        "pos": "RB",
-        "pts": 0.0
+        "name": "Chig Okonkwo",
+        "pos": "TE",
+        "pts": 2.5
       },
       "opponent": "Darkspaces",
       "opponent_points": 0,
@@ -236,20 +236,20 @@
       "roster_id": 11,
       "manager": "YesChef23",
       "points": 13.92,
-      "maxpf": 13.92,
-      "bench_points": 0.0,
-      "optimal": 13.92,
-      "left_on_bench": 0.0,
-      "efficiency": 100.0,
+      "maxpf": 20.92,
+      "bench_points": 7.0,
+      "optimal": 20.92,
+      "left_on_bench": 7.0,
+      "efficiency": 66.5,
       "mvp": {
         "name": "Deshaun Watson",
         "pos": "QB",
         "pts": 13.92
       },
       "best_bench": {
-        "name": "Caleb Williams",
-        "pos": "QB",
-        "pts": 0.0
+        "name": "Jacory Croskey-Merritt",
+        "pos": "RB",
+        "pts": 7.0
       },
       "opponent": "Snipe58",
       "opponent_points": 21.6,
@@ -258,25 +258,25 @@
     {
       "roster_id": 12,
       "manager": "fumbduckdumbfuck",
-      "points": 0,
-      "maxpf": 0.0,
+      "points": 22.7,
+      "maxpf": 22.7,
       "bench_points": 0.0,
-      "optimal": 0.0,
+      "optimal": 22.7,
       "left_on_bench": 0.0,
-      "efficiency": null,
+      "efficiency": 100.0,
       "mvp": {
-        "name": "Dak Prescott",
-        "pos": "QB",
-        "pts": 0.0
+        "name": "Jonathan Taylor",
+        "pos": "RB",
+        "pts": 22.7
       },
       "best_bench": {
-        "name": "Michael Wilson",
-        "pos": "WR",
+        "name": "Elijah Arroyo",
+        "pos": "TE",
         "pts": 0.0
       },
       "opponent": "C33DeezNutzz",
       "opponent_points": 0,
-      "result": "T"
+      "result": "W"
     }
   ]
 }

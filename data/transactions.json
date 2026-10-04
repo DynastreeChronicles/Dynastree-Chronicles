@@ -777,6 +777,21 @@
   {
     "week": 4,
     "type": "free_agent",
+    "created": 1791120925974,
+    "manager": "fumbduckdumbfuck",
+    "added": {
+      "name": "Kyler Murray",
+      "pos": "QB",
+      "team": "MIN"
+    },
+    "dropped": [
+      "Kayshon Boutte"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 4,
+    "type": "free_agent",
     "created": 1790870140526,
     "manager": "StealingGas",
     "added": {

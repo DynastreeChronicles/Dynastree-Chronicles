@@ -1,62 +1,62 @@
 {
-  "Zygon": {
-    "team_name": null,
-    "avatar_id": null,
-    "avatar": null
-  },
-  "Hades9mm": {
-    "team_name": null,
-    "avatar_id": null,
-    "avatar": null
-  },
-  "Cassellrole": {
-    "team_name": null,
-    "avatar_id": null,
-    "avatar": null
-  },
-  "C33DeezNutzz": {
-    "team_name": null,
-    "avatar_id": null,
-    "avatar": null
-  },
-  "CMac91": {
-    "team_name": null,
-    "avatar_id": null,
-    "avatar": null
-  },
-  "YesChef23": {
-    "team_name": null,
-    "avatar_id": null,
-    "avatar": null
+  "Darkspaces": {
+    "team_name": "First Down Syndrome",
+    "avatar_id": "0ae1a36c457f712ae25c4f4c9e13b7c8",
+    "avatar": "assets/avatars/darkspaces.webp"
   },
   "Snipe58": {
     "team_name": null,
-    "avatar_id": null,
-    "avatar": null
+    "avatar_id": "2049bc5b723d3971d97aa3d8cc0a098c",
+    "avatar": "assets/avatars/snipe58.webp"
   },
-  "Darkspaces": {
+  "StealingGas": {
+    "team_name": "Future Therapy Bills",
+    "avatar_id": "380fa0bbe13f97df9a02413def7fc847",
+    "avatar": "assets/avatars/stealinggas.webp"
+  },
+  "Zygon": {
+    "team_name": "IR Predictor",
+    "avatar_id": "1c7d86814cf5d029154ad0e4e444b985",
+    "avatar": "assets/avatars/zygon.webp"
+  },
+  "Hades9mm": {
+    "team_name": "The sleeper puss",
+    "avatar_id": "https://sleepercdn.com/uploads/f15ff9708aa97bfdb8bfffeec8073752.jpg",
+    "avatar": "assets/avatars/hades9mm.webp"
+  },
+  "Cassellrole": {
     "team_name": null,
-    "avatar_id": null,
-    "avatar": null
+    "avatar_id": "2cd9cb1bd9702040ac4f67b5c0794ad4",
+    "avatar": "assets/avatars/cassellrole.webp"
   },
   "Sarge71": {
     "team_name": null,
-    "avatar_id": null,
-    "avatar": null
+    "avatar_id": "15d7cf259bc30eab8f6120f45f652fb6",
+    "avatar": "assets/avatars/sarge71.webp"
   },
-  "fumbduckdumbfuck": {
-    "team_name": null,
-    "avatar_id": null,
-    "avatar": null
-  },
-  "StealingGas": {
-    "team_name": null,
-    "avatar_id": null,
-    "avatar": null
+  "C33DeezNutzz": {
+    "team_name": "BBQnBBWs",
+    "avatar_id": "15d7cf259bc30eab8f6120f45f652fb6",
+    "avatar": "assets/avatars/c33deeznutzz.webp"
   },
   "Painty69": {
     "team_name": null,
-    "avatar_id": null,
-    "avatar": null
+    "avatar_id": "f308d1db5dfa8ec0883c0069e69bfe7c",
+    "avatar": "assets/avatars/painty69.webp"
+  },
+  "CMac91": {
+    "team_name": null,
+    "avatar_id": "9996c0f656023d2bbf725065613b0f10",
+    "avatar": "assets/avatars/cmac91.webp"
+  },
+  "YesChef23": {
+    "team_name": null,
+    "avatar_id": "ef28112d49bf9ef42b40cfb329be680d",
+    "avatar": "assets/avatars/yeschef23.webp"
+  },
+  "fumbduckdumbfuck": {
+    "team_name": null,
+    "avatar_id": "7308291b2025f511b1cae36286c44578",
+    "avatar": "assets/avatars/fumbduckdumbfuck.webp"
   }
 }
