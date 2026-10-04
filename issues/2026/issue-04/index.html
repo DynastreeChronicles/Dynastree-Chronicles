@@ -78,8 +78,14 @@
 <p class="desk">A first is still the correct price. Free is charity. A 3rd is a joke. The box score made the negotiation louder.</p>
 </div>
 
-<h2 class="sec">The full issue</h2>
-<p class="art">The complete 10-page PDF has the transaction wire, every matchup card, Match of the Week, the trade machine, power rankings, and the poll.</p>
+<h2 class="sec">Match cards: Week 3</h2>
+<div class="cards" id="cards"></div>
+
+<h2 class="sec">Transaction wire</h2>
+<div class="wire" id="wire"></div>
+
+<h2 class="sec">The PDF edition</h2>
+<p class="art">The print version keeps the trade machine, power rankings, and the poll until they move to the web.</p>
 <a class="btn" href="../../../pdf/2026/Dynastree_Chronicles_Vol1_Issue4.pdf">Download the PDF</a><a class="btn o" href="../../../">Back to the archive</a>
 </main>
 
@@ -87,5 +93,17 @@
 <p>Time heals all wounds, but screenshots last forever.</p>
 <p>Questions, corrections, or demands for a higher ranking: settle it on the field, or the trade screen.</p>
 </div></footer>
+<script>
+const e=s=>String(s??'').replace(/[&<>"]/g,c=>'&#'+c.charCodeAt(0)+';');
+fetch('../../../data/weeks/week-03.json').then(r=>r.json()).then(d=>{
+const seen=new Set(),out=[];
+d.teams.forEach(t=>{const k=[t.manager,t.opponent].sort().join('|');if(seen.has(k))return;seen.add(k);
+const o=d.teams.find(x=>x.manager===t.opponent)||{};const [w,l]=t.points>=t.opponent_points?[t,o]:[o,t];
+const li=x=>`<li><b>${e(x.manager)}</b> MVP ${e(x.mvp?.name)} ${x.mvp?.pts}</li>`;
+out.push(`<div class="mcard"><div class="t"><div class="w">${e(w.manager)}<b>${w.points}</b><i>${w.efficiency}% efficient</i></div><i>def.</i><div class="l">${e(l.manager)}<b>${l.points}</b><i>${l.efficiency}% efficient</i></div></div><ul>${li(w)}${li(l)}<li>Bench left: ${w.left_on_bench} / ${l.left_on_bench}</li></ul></div>`)});
+document.getElementById('cards').innerHTML=out.join('')}).catch(()=>{});
+fetch('../../../data/transactions.json').then(r=>r.json()).then(d=>{
+document.getElementById('wire').innerHTML=d.filter(x=>x.week===3&&x.added).map(x=>`<div><span><b>${e(x.manager)}</b></span><span class="a">+ ${e(x.added.name)} <small>${e(x.added.pos)}, ${e(x.added.team)}</small>${(x.dropped||[]).map(n=>` <span class="d">- ${e(n)}</span>`).join('')}</span><small>${x.bid?'$'+x.bid:x.type.replace('_',' ')}</small></div>`).join('')||'<div><span>No moves logged.</span></div>'}).catch(()=>{});
+</script>
 </body>
 </html>
