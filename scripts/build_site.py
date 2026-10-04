@@ -48,6 +48,33 @@ def prev_picks(fin):
 def mv(m):
     return f'<span class="up">&#9650; {m}</span>' if m > 0 else f'<span class="dn">&#9660; {-m}</span>' if m < 0 else '<span class="flat">&mdash;</span>'
 
+
+def legend(kind):
+    """Collapsed 'how to read this' glossary shared by the home and issue standings."""
+    up, dn = '<span class="up">&#9650;</span>', '<span class="dn">&#9660;</span>'
+    rows = {
+        "rank": [("Table", [("W-L", "<b>Record</b> through the latest finished week."),
+                            ("MOV", f"<b>Movement</b> in the standings since last week. {up} 2 = climbed two spots, {dn} 2 = dropped two, &mdash; = no change."),
+                            ("PF", "<b>Points for.</b> Total points your team has scored this season."),
+                            ("FAAB", "<b>Waiver budget</b> left, out of $500.")])],
+        "draft": [("Table", [("Pick", "<b>2027 rookie draft slot.</b> 1.01 is the first overall pick."),
+                             ("FUT CAP", "<b>Future capital.</b> Points for owned picks: Early 1st 100, Mid-Late 1st 75, 2nd-year 1st 60, 3rd-year 1st 50, any 2nd 30, any 3rd 10."),
+                             ("MAXPF", "<b>Total roster points</b> (starters and bench). The lowest total gets pick 1.01."),
+                             ("MOV", f"<b>Pick movement</b> since last week. {up} = pick moved earlier (closer to 1.01), {dn} = moved later."),
+                             ("FAAB", "<b>Waiver budget</b> left, out of $500.")])],
+    }
+    if kind == "issue":
+        rows = {"issue": [("Standings", [("W-L", "<b>Record</b> through Week 3."),
+                                         ("MOV", f"<b>Movement</b> in the standings since last week. {up} 2 = climbed two spots, {dn} 2 = dropped two, &mdash; = no change."),
+                                         ("PF / PA", "<b>Points for / against.</b> Scored by you / scored on you."),
+                                         ("FAAB", "<b>Waiver budget</b> left, out of $500."),
+                                         ("PRI", "<b>Waiver priority.</b> Lower number claims first."),
+                                         ("MAXPF", "<b>Total roster points</b> (starters and bench). Lowest gets 1.01."),
+                                         ("DRFT", "<b>2027 draft slot</b> from MAXPF.")])]}
+    items = [it for v in rows.values() for _, g in v for it in g]
+    out = "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in items)
+    return f'<details class="legend"><summary>How to read this table</summary><dl>{out}</dl></details>'
+
 def standings():
     rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
     fin = rows and max(r["wins"] + r["losses"] + r["ties"] for r in rows)
@@ -64,10 +91,10 @@ def standings():
     h = lambda cols: "<tr>" + "".join(f'<th{" class=\"n\"" if i else ""}>{c}</th>' if c != "Team" else "<th>Team</th>" for i, c in enumerate(cols)) + "</tr>"
     return (f'<div class="sortbar" role="group" aria-label="Standings view"><button class="chip on" data-view="rank">Standings order</button><button class="chip" data-view="draft">Draft order</button></div>'
             f'<div class="sc" id="v-rank"><table id="standtable"><thead>{h(["#", "Team", "W-L", "MOV", "PF", "FAAB"])}</thead><tbody>{rk}</tbody></table>'
-            f'<p class="key">Through Week {fin} finals. MOV = change in standings spots since the previous week. FAAB is the current balance.</p></div>'
+            f'<p class="key">Through Week {fin} finals. MOV = change in standings spots since the previous week. FAAB is the current balance.</p>{legend("rank")}</div>'
             f'<div class="sc" id="v-draft" hidden><table id="drafttable"><thead>{h(["Pick", "Team", "FUT CAP", "MAXPF", "MOV", "FAAB"])}</thead><tbody>{dr}</tbody></table>'
             f'<p class="key">2027 rookie draft order: lowest MAXPF picks 1.01. MOV = spots gained or lost in the pick since the previous week. '
-            f'FUT CAP is future capital as scored in the Issue 4 power rankings: Early 1st 100, Mid-Late 1st 75, 2nd-year 1st 60, 3rd-year 1st 50, any 2nd 30, any 3rd 10.</p></div>')
+            f'FUT CAP is future capital as scored in the Issue 4 power rankings: Early 1st 100, Mid-Late 1st 75, 2nd-year 1st 60, 3rd-year 1st 50, any 2nd 30, any 3rd 10.</p>{legend("draft")}</div>')
 
 def issue(n="04", y=2026):
     d = open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8").read()
@@ -136,9 +163,10 @@ def home_blocks(m):
     top, out = max(x["year"] for x in m), []
     for y in sorted({x["year"] for x in m}, reverse=True):
         its = [x for x in m if x["year"] == y]
-        rows = "".join(f'<div class="r"><span class="no">{x["no"]}</span><div><h3>Issue {x["no"]}</h3><p>{esc(x["weeks"])}</p></div><span class="go">' + (f'<a href="{link(x)}">Read</a>' if x.get("web") else "") + f'<a href="{x["pdf"]}">PDF</a></span></div>' for x in its)
+        rows = "".join(f'<div class="r"><span class="no">{x["no"]}</span><div><h3>Issue {x["no"]}' + ('' if x.get("web") else '<span class="pdfonly">PDF only</span>') + f'</h3><p>{esc(x["weeks"])}</p></div><span class="go">' + (f'<a href="{link(x)}">Read</a>' if x.get("web") else "") + f'<a href="{x["pdf"]}">PDF</a></span></div>' for x in its)
         out.append(f'<details class="yr"{" open" if y == top else ""}><summary>{y} <small>{len(its)} issues</small></summary>{rows}</details>')
-    inject("index.html", "ARCHIVE", "\n".join(out))
+    note = '<p class="key">Web editions start with Issue 4. Earlier issues are PDF only.</p>' if any(not x.get("web") for x in m) else ""
+    inject("index.html", "ARCHIVE", "\n".join(out) + note)
 
 if __name__ == "__main__":
     inject("index.html", "LEADERBOARD", leaderboard())

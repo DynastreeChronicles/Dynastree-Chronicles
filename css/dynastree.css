@@ -228,3 +228,28 @@ nav.sticky .wrap{gap:clamp(.6rem,3.2vw,1rem);font-size:1rem;justify-content:spac
 #v-rank,#v-draft{-webkit-mask-image:none;mask-image:none}
 #v-rank .av,#v-draft .av{display:none}}
 @media(max-width:380px){#v-rank td,#v-rank th,#v-draft td,#v-draft th{font-size:.76rem;padding:.45rem .18rem}#v-rank td:nth-child(2),#v-draft td:nth-child(2){max-width:5rem}}
+
+/* ---- standings legend: collapsed by default, readable when opened ---- */
+.legend{margin:.8rem 0 0;border:1px solid var(--line);border-radius:3px;background:var(--panel)}
+.legend>summary{cursor:pointer;list-style:none;padding:.55rem .9rem;color:var(--mute);font:600 .95rem Inter,system-ui,sans-serif;display:flex;align-items:center;gap:.6rem}
+.legend>summary::-webkit-details-marker{display:none}
+.legend>summary::before{content:"?";flex:none;width:1.3rem;height:1.3rem;border-radius:50%;border:1.5px solid var(--sky);color:var(--sky);font:700 .8rem/1.15rem Inter,sans-serif;text-align:center}
+.legend>summary::after{content:"Show";margin-left:auto;color:var(--sky);font-weight:500;font-size:.85rem}
+.legend[open]>summary::after{content:"Hide"}
+.legend>summary:hover{color:var(--cream)}
+.legend dl{margin:0;padding:.2rem .9rem .9rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:.7rem 1.6rem}
+.legend dl>div{display:grid;grid-template-columns:4.6rem 1fr;gap:.6rem;align-items:baseline}
+.legend dt{font:700 .95rem Oswald,sans-serif;letter-spacing:.04em;color:var(--green);white-space:nowrap}
+.legend dd{margin:0;font-size:.9rem;line-height:1.4;color:var(--mute)}
+.legend dd b{color:var(--cream);font-weight:600}
+.legend h4{grid-column:1/-1;margin:.6rem 0 0;font:700 .85rem Oswald,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--sky);border-bottom:1px solid var(--line);padding-bottom:.2rem}
+.legend h4:first-child{margin-top:0}
+/* ---- wide tables on phones: pinned team column + optional extra stats ---- */
+.sc td:nth-child(2),.sc th:nth-child(2){position:sticky;left:0;z-index:1;background:var(--bg)}
+.sc th:nth-child(2){background:var(--blue)}
+.sc tbody tr:nth-child(even) td:nth-child(2){background:#0b1738}
+.sc td:nth-child(2){box-shadow:1px 0 0 var(--line)}
+.colbtn{display:none;margin:0 0 .6rem;padding:.4rem .9rem;background:none;color:var(--sky);border:1.5px solid var(--blue);border-radius:2px;font:600 .95rem Inter,system-ui,sans-serif;cursor:pointer}
+@media (max-width:640px){.colbtn{display:inline-block}.xs:not(.all) .x{display:none}.xs .sc td:nth-child(2) b{font-size:.95rem}.xs th,.xs td{padding:.45rem .35rem;font-size:1.02rem}}
+/* ---- archive: PDF-only issues ---- */
+.pdfonly{display:inline-block;margin-left:.5rem;padding:0 .45rem;border:1px solid var(--line);border-radius:2px;color:var(--mute);font:500 .75rem Inter,sans-serif;vertical-align:middle}
