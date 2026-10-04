@@ -253,3 +253,21 @@ nav.sticky .wrap{gap:clamp(.6rem,3.2vw,1rem);font-size:1rem;justify-content:spac
 @media (max-width:640px){.colbtn{display:inline-block}.xs:not(.all) .x{display:none}.xs .sc td:nth-child(2) b{font-size:.95rem}.xs th,.xs td{padding:.45rem .35rem;font-size:1.02rem}}
 /* ---- archive: PDF-only issues ---- */
 .pdfonly{display:inline-block;margin-left:.5rem;padding:0 .45rem;border:1px solid var(--line);border-radius:2px;color:var(--mute);font:500 .75rem Inter,sans-serif;vertical-align:middle}
+
+/* ---- trophies ---- */
+.podium>div,.dz .lo{display:flex;align-items:center;gap:.9rem}
+.podium .p1,.podium .p2{padding-top:1rem}
+.tro{flex:none;width:auto;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))}
+.tro.t1{height:150px}.tro.t2,.tro.t3{height:120px}.tro.tt{height:92px}
+.ti{min-width:0}
+.rkt{height:26px;width:auto;vertical-align:middle;margin-right:.35rem}
+@media(max-width:700px){.tro.t1,.tro.t2,.tro.t3{height:104px}.tro.tt{height:80px}}
+/* ---- transactions: highlighted claims ---- */
+.hlw{--c:var(--sky);border-top:1px solid var(--line);border-left:3px solid var(--c);background:rgba(143,180,255,.06)}
+.hlw.mvp{--c:#e6b94a;background:rgba(230,185,74,.11)}.hlw.fav{--c:#34d399;background:rgba(16,185,129,.1)}
+.hlw .txr{border-top:0;padding-bottom:.35rem}.hlw .txr+.txr{padding-top:0}
+.txn{display:flex;gap:.7rem;align-items:flex-start;padding:.1rem .9rem .75rem}
+.txn img{flex:none;width:34px;height:34px}
+.txn .lab{display:block;font:700 .85rem Oswald,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+.txn p{margin:.1rem 0 0;font-size:.9rem;line-height:1.4;color:var(--mute);font-style:italic}
+.key .btn{margin:.6rem 0 0;font-size:1rem}

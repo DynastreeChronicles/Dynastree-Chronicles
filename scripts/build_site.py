@@ -82,7 +82,8 @@ def standings():
     p = os.path.join(ROOT, "data/fut_cap.json")
     fc = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
     team = lambda r: f'<td>{av(r["manager"], 24)}<b>{esc(r["manager"])}</b></td>'
-    rk = "".join(f'<tr><td class="n">{r["rank"]}</td>{team(r)}<td class="n">{esc(r["record"])}</td><td class="n mv">{mv(r.get("move", 0))}</td><td class="n">{r["pf"]:.2f}</td><td class="n">${r["faab_remaining"]}</td></tr>' for r in rows)
+    troph = lambda r: (f'<img class="rkt" src="assets/trophy-{["gold", "silver", "bronze"][r["rank"] - 1]}-sm.webp" alt="" width="24" height="44">' if r["rank"] <= 3 else '<img class="rkt" src="assets/trophy-trash-sm.webp" alt="" width="26" height="44">' if r["rank"] == len(rows) else "")
+    rk = "".join(f'<tr><td class="n">{troph(r)}{r["rank"]}</td>{team(r)}<td class="n">{esc(r["record"])}</td><td class="n mv">{mv(r.get("move", 0))}</td><td class="n">{r["pf"]:.2f}</td><td class="n">${r["faab_remaining"]}</td></tr>' for r in rows)
     dr = ""
     for r in sorted(rows, key=lambda r: r["draft_pick"]):
         f = fc.get(r["manager"])
@@ -98,47 +99,95 @@ def standings():
 
 def issue(n="04", y=2026):
     d = open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8").read()
-    json.loads(d)
-    d = json.dumps(json.loads(d), ensure_ascii=False).replace("</", "<\\/")
+    d = json.loads(d)
+    wk = next((x.get("wire_week") for x in manifest() if x["no"] == int(n)), None)
+    if wk:
+        d["wire"]["waivers"] = enrich(d["wire"]["waivers"], wk)
+    d = json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
     inject(f"issues/{y}/issue-{n}/index.html", "ISSUE-DATA", f'<script id="issue-data" type="application/json">{d}</script>')
     inject(f"issues/{y}/issue-{n}/index.html", "MANAGERS", '<script id="managers-data" type="application/json">' + json.dumps(managers(), ensure_ascii=False).replace("</", "<\\/") + "</script>")
 
 def leaderboard():
     rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
-    card = lambda r, c, tag: f'<div class="{c}"><small>{tag}</small><b class="rk">#{r["rank"]}</b><h3>{av(r["manager"], 32)}{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div>'
-    top = "".join(card(r, f"p{i}", t) for i, (r, t) in enumerate(zip(rows[:3], ("Gold", "Silver", "Bronze")), 1))
-    low = "".join(card(r, "lo", "Bottom") for r in rows[-2:])
+    img = lambda k, c: f'<img class="tro {c}" src="assets/trophy-{k}.webp" alt="" width="132" height="240" loading="lazy">'
+    card = lambda r, c, tag, k: f'<div class="{c}">{img(k, "t" + c[-1] if c[0] == "p" else "tt")}<div class="ti"><small>{tag}</small><b class="rk">#{r["rank"]}</b><h3>{av(r["manager"], 32)}{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>'
+    top = "".join(card(r, f"p{i}", t, k) for i, (r, t, k) in enumerate(zip(rows[:3], ("Gold", "Silver", "Bronze"), ("gold", "silver", "bronze")), 1))
+    low = "".join(card(r, "lo", "Bottom", "trash") for r in rows[-2:])
     return (f'<div class="lbx"><div class="podium">{top}</div><div class="dz"><h3 class="dzh">The Danger Zone</h3><div class="dzg">{low}</div></div></div>'
             '<p class="key"><a href="#standings">Full standings below</a></p>')
 
 def ordinal(n):
     return {1: "1st", 2: "2nd", 3: "3rd"}.get(n, f"{n}th")
 
-def transactions():
-    tx = json.load(open(os.path.join(ROOT, "data/transactions.json")))
+_TX = None
+
+def txfeed():
+    global _TX
+    if _TX is None:
+        _TX = json.load(open(os.path.join(ROOT, "data/transactions.json"), encoding="utf-8"))
+    return _TX
+
+def _k(name, pos=""):
+    """Match key so 'Bengals D/ST' and 'Cincinnati Bengals' (DEF) line up."""
+    if name.endswith("D/ST"):
+        return "DEF:" + name.replace("D/ST", "").split()[-1].lower()
+    return ("DEF:" + name.split()[-1].lower()) if pos == "DEF" else name.lower()
+
+def enrich(waivers, week):
+    """Fill position and FAAB bid from the Sleeper feed where the hand-written issue data lacks them."""
+    feed = {(t["manager"], _k(t["added"]["name"], t["added"].get("pos", ""))): t for t in txfeed() if t["week"] == week and t["type"] != "trade"}
     out = []
-    for w in sorted({t["week"] for t in tx}, reverse=True)[:2]:
-        ws = [t for t in tx if t["week"] == w]
-        out.append(f'<h3 class="wk">Week {w}</h3>')
-        for t in (x for x in ws if x["type"] == "trade"):
-            def gets(s):
-                items = [p["name"] for p in s["receives_players"]] + [f'{p["season"]} {ordinal(int(p["round"]))}' for p in s["receives_picks"]] + ([f'${s["receives_faab"]} FAAB'] if s.get("receives_faab") else [])
-                return f'{esc(s["manager"])} gets {esc(", ".join(items) or "nothing")}'
-            out.append('<div class="tx trade"><span class="tg trade">&#129309; TRADE</span><div class="tb"><b>' + " &harr; ".join(esc(s["manager"]) for s in t["sides"]) + "</b><small>" + " &middot; ".join(gets(s) for s in t["sides"]) + "</small></div></div>")
-        groups = {}
-        for t in sorted((x for x in ws if x["type"] != "trade"), key=lambda x: x.get("created") or 0):
-            groups.setdefault(t["manager"], []).append(t)
-        cards = []
-        for m, ts in groups.items():
-            rws = ""
-            for t in ts:
-                bid = f'<small>${t["bid"]}</small>' if t.get("bid") else "<span></span>"
-                rws += f'<div class="txr"><span class="tg add">+ ADD</span><span class="pn">{esc(t["added"]["name"])}<em>{esc(t["added"].get("pos", ""))}</em></span>{bid}</div>'
-                for d in t.get("dropped") or []:
-                    rws += f'<div class="txr"><span class="tg drop">&minus; DROP</span><span class="pn">{esc(d)}</span><span></span></div>'
-            cards.append(f'<div class="txg"><div class="txh">{av(m, 28)}<b>{esc(m)}</b><small>{len(ts)} move{"s" if len(ts) > 1 else ""}</small></div>{rws}</div>')
-        out.append('<div class="txgrid">' + "".join(cards) + "</div>")
-    return '<div class="txl">' + "".join(out) + '</div><p class="key"><a href="issues/2026/issue-04/#wire">Full wire and grades in the latest issue</a></p>'
+    for x in waivers:
+        x = list(x) + [""] * (6 - len(x))
+        t = feed.get((x[0], _k(x[1])))
+        x.append(t["added"].get("pos", "") if t else "")
+        if t and not x[2]:
+            x[2] = t.get("bid") or 0
+        out.append(x)
+    return out
+
+LABEL = {"mvp": "Waiver Wire MVP", "fav": "Desk Favorite", "note": "Desk note"}
+
+def move_html(x, root=""):
+    """One waiver claim (add + optional drop), highlighted when the desk flagged it."""
+    pos = f'<em>{esc(x[6])}</em>' if len(x) > 6 and x[6] else ""
+    bid = f'<small>${x[2]}</small>' if x[2] else "<span></span>"
+    rows = f'<div class="txr"><span class="tg add">+ ADD</span><span class="pn">{esc(x[1])}{pos}</span>{bid}</div>'
+    if x[3]:
+        rows += f'<div class="txr"><span class="tg drop">&minus; DROP</span><span class="pn">{esc(x[3])}</span><span></span></div>'
+    if x[4] not in LABEL:
+        return rows
+    badge = f'<img src="{root}assets/badge-{"mvp" if x[4] == "mvp" else "desk"}.webp" alt="" width="34" height="34">' if x[4] != "note" else ""
+    note = f'<p>{esc(x[5])}</p>' if x[5] else ""
+    return f'<div class="hlw {x[4]}">{rows}<div class="txn">{badge}<div><b class="lab">{LABEL[x[4]]}</b>{note}</div></div></div>'
+
+def transactions(m):
+    i = next((x for x in m if x.get("web")), None)
+    if not i:
+        return ""
+    fin = i.get("wire_week") or 1
+    d = json.load(open(os.path.join(ROOT, f"data/issues/issue-{i['no']:02d}.json"), encoding="utf-8"))
+    ws = enrich(d["wire"]["waivers"], fin)
+    notable = lambda x: x[4] in ("mvp", "fav") or x[2] >= 50
+    out = [f'<h3 class="wk">Week {fin} highlights</h3>']
+    for t in (x for x in txfeed() if x["week"] == fin and x["type"] == "trade"):
+        def gets(s):
+            items = [p["name"] for p in s["receives_players"]] + [f'{p["season"]} {ordinal(int(p["round"]))}' for p in s["receives_picks"]] + ([f'${s["receives_faab"]} FAAB'] if s.get("receives_faab") else [])
+            return f'{esc(s["manager"])} gets {esc(", ".join(items) or "nothing")}'
+        out.append('<div class="tx trade"><span class="tg trade">&#129309; TRADE</span><div class="tb"><b>' + " &harr; ".join(esc(s["manager"]) for s in t["sides"]) + "</b><small>" + " &middot; ".join(gets(s) for s in t["sides"]) + "</small></div></div>")
+    order = []
+    for x in ws:
+        if x[0] not in order:
+            order.append(x[0])
+    rank = lambda mg: min((0 if x[4] == "mvp" else 1 if x[4] == "fav" else 2 for x in ws if x[0] == mg and notable(x)), default=9)
+    cards = []
+    for mg in sorted((o for o in order if rank(o) < 9), key=rank):
+        allm = [x for x in ws if x[0] == mg]
+        keep = [x for x in allm if notable(x)]
+        cards.append(f'<div class="txg"><div class="txh">{av(mg, 28)}<b>{esc(mg)}</b><small>{len(keep)} of {len(allm)} moves</small></div>' + "".join(move_html(x) for x in keep) + "</div>")
+    out.append('<div class="txgrid">' + "".join(cards) + "</div>")
+    link = f'issues/{i["year"]}/issue-{i["no"]:02d}/#wire'
+    return '<div class="txl">' + "".join(out) + f'</div><p class="key">Showing the desk\'s picks and big FAAB spends. <a class="btn o" href="{link}">See all {len(ws)} waiver moves and trade grades in Issue {i["no"]}</a></p>'
 
 def rules():
     from collections import Counter
@@ -170,10 +219,10 @@ def home_blocks(m):
 
 if __name__ == "__main__":
     inject("index.html", "LEADERBOARD", leaderboard())
-    inject("index.html", "TX", transactions())
+    m = manifest()
+    inject("index.html", "TX", transactions(m))
     inject("index.html", "RULES", rules())
     inject("index.html", "STANDINGS", standings())
-    m = manifest()
     home_blocks(m)
     [issue(f'{x["no"]:02d}', x["year"]) for x in m if x.get("web")]
     print("site built")
