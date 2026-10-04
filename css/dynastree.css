@@ -187,3 +187,7 @@ h3.wk{margin:1.2rem 0 .5rem;font:italic 800 1.4rem "Barlow Condensed",sans-serif
 .hz{gap:1rem}.hz>div{position:relative;padding-right:5.8rem}.hz-b{position:absolute;right:.8rem;top:.8rem;height:76px;width:auto}
 .gr{height:3rem;width:auto;vertical-align:middle}td.g .gr{height:2.2rem}.grades b{display:inline-flex;align-items:center}
 @media(max-width:700px){.final{grid-template-columns:1fr 1fr}.final .gap{grid-column:1/-1;order:3}.hz{grid-template-columns:1fr}}
+
+/* ===== v5 fixes ===== */
+.mast h1{line-height:1.05;margin:0 0 .25rem}
+ul.assets{padding:0!important;margin:.5rem 0!important;list-style:none}ul.assets li{margin:0}
