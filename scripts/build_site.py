@@ -14,6 +14,26 @@ def inject(path, tag, html):
     assert pat.search(s), f"markers {tag} missing in {path}"
     open(p, "w", encoding="utf-8").write(pat.sub(lambda m: f"<!--{tag}-->\n{html}\n<!--/{tag}-->", s))
 
+_MG = None
+
+def managers():
+    global _MG
+    if _MG is None:
+        p = os.path.join(ROOT, "data/managers.json")
+        _MG = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+    return _MG
+
+def initials(name):
+    p = re.findall(r"[A-Z][a-z]+|[A-Z]+(?![a-z])|[a-z]+", name)
+    return (p[0][0] + p[1][0] if len(p) > 1 else name[:2]).upper()
+
+def av(name, size=28, root=""):
+    """Avatar circle: the manager's image if we have one, otherwise coloured initials."""
+    m = managers().get(name, {})
+    h = sum(map(ord, name)) % 360
+    inner = f'<img src="{root}{m["avatar"]}" alt="" loading="lazy" width="{size}" height="{size}">' if m.get("avatar") else esc(initials(name))
+    return f'<span class="av" style="--s:{size}px;--h:{h}">{inner}</span>'
+
 def standings():
     rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
     league = json.load(open(os.path.join(ROOT, "data/league.json")))
@@ -24,7 +44,7 @@ def standings():
         m = r.get("move", 0)
         mv = f'<span class="up">&#9650; {m}</span>' if m > 0 else f'<span class="dn">&#9660; {-m}</span>' if m < 0 else '<span class="flat">&mdash;</span>'
         body.append(
-            f'<tr data-rank="{r["rank"]}" data-draft="{r["draft_pick"]}"><td class="n">{r["rank"]}</td><td><b>{esc(r["manager"])}</b></td>'
+            f'<tr data-rank="{r["rank"]}" data-draft="{r["draft_pick"]}"><td class="n">{r["rank"]}</td><td>{av(r["manager"], 24)}<b>{esc(r["manager"])}</b></td>'
             f'<td class="n">{esc(r["record"])}</td><td class="n mv">{mv}</td><td class="n">{r["pf"]:.2f}</td>'
             f'<td class="n">{r["maxpf"]:.2f}</td><td class="n">${r["faab_remaining"]}</td>'
             f'<td class="n pick">1.{r["draft_pick"]:02d}</td></tr>')
@@ -42,11 +62,12 @@ def issue(n="04", y=2026):
     json.loads(d)
     d = json.dumps(json.loads(d), ensure_ascii=False).replace("</", "<\\/")
     inject(f"issues/{y}/issue-{n}/index.html", "ISSUE-DATA", f'<script id="issue-data" type="application/json">{d}</script>')
+    inject(f"issues/{y}/issue-{n}/index.html", "MANAGERS", '<script id="managers-data" type="application/json">' + json.dumps(managers(), ensure_ascii=False).replace("</", "<\\/") + "</script>")
 
 def leaderboard():
     rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
     pk = [("Top", r) for r in rows[:3]] + [("Bottom", r) for r in rows[-2:]]
-    cards = "".join(f'<div class="{"hi" if k == "Top" else "lo"}"><small>{k}</small><b class="rk">#{r["rank"]}</b><h3>{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div>' for k, r in pk)
+    cards = "".join(f'<div class="{"hi" if k == "Top" else "lo"}"><small>{k}</small><b class="rk">#{r["rank"]}</b><h3>{av(r["manager"], 32)}{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div>' for k, r in pk)
     return f'<div class="lb">{cards}</div><p class="key"><a href="#standings">Full standings below</a></p>'
 
 def ordinal(n):
@@ -65,9 +86,9 @@ def transactions():
             out.append('<div class="tx trade"><span class="tg trade">&#129309; TRADE</span><div class="tb"><b>' + " &harr; ".join(esc(s["manager"]) for s in t["sides"]) + "</b><small>" + " &middot; ".join(gets(s) for s in t["sides"]) + "</small></div></div>")
         for t in sorted((x for x in ws if x["type"] != "trade"), key=lambda x: -(x.get("created") or 0)):
             bid = f' &middot; ${t["bid"]}' if t.get("bid") else ""
-            out.append(f'<div class="tx"><span class="tg add">+ ADD</span><span><b>{esc(t["manager"])}</b> &bull; {esc(t["added"]["name"])}</span><small>Wk {w}{bid}</small></div>')
+            out.append(f'<div class="tx"><span class="tg add">+ ADD</span><span>{av(t["manager"], 22)}<b>{esc(t["manager"])}</b> &bull; {esc(t["added"]["name"])}</span><small>Wk {w}{bid}</small></div>')
             for d in t.get("dropped") or []:
-                out.append(f'<div class="tx"><span class="tg drop">&minus; DROP</span><span><b>{esc(t["manager"])}</b> &bull; {esc(d)}</span><small>Wk {w}</small></div>')
+                out.append(f'<div class="tx"><span class="tg drop">&minus; DROP</span><span>{av(t["manager"], 22)}<b>{esc(t["manager"])}</b> &bull; {esc(d)}</span><small>Wk {w}</small></div>')
     return '<div class="txl">' + "".join(out) + '</div><p class="key"><a href="issues/2026/issue-04/#wire">Full wire and grades in the latest issue</a></p>'
 
 def rules():

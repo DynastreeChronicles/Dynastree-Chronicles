@@ -12,6 +12,8 @@ Usage:
     LEAGUE_ID=123456789 python scripts/sleeper_pull.py     # skip the lookup
 """
 import argparse
+import io
+import re
 import json
 import os
 import sys
@@ -20,6 +22,11 @@ import urllib.error
 import urllib.request
 from collections import defaultdict
 from datetime import datetime, timezone
+
+try:
+    from PIL import Image          # pip install pillow (avatars are skipped without it)
+except ImportError:
+    Image = None
 
 API = "https://api.sleeper.app/v1"
 USERNAME = "StealingGas"
@@ -254,6 +261,60 @@ def dump(name, obj):
         json.dump(obj, f, indent=2)
 
 
+ROOT = os.path.normpath(os.path.join(HERE, ".."))
+AV_DIR = os.path.join(ROOT, "assets", "avatars")
+AV_SIZE = 96
+
+
+def slug(name):
+    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-") or "manager"
+
+
+def fetch_avatar(key, size=AV_SIZE):
+    """Download one avatar (Sleeper id or full URL), centre-crop square, shrink, return WebP bytes."""
+    url = key if key.startswith("http") else f"https://sleepercdn.com/avatars/{key}"
+    req = urllib.request.Request(url, headers={"User-Agent": "dynastree-site"})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        im = Image.open(io.BytesIO(r.read())).convert("RGBA")
+    side = min(im.size)
+    left, top = (im.width - side) // 2, (im.height - side) // 2
+    im = im.crop((left, top, left + side, top + side)).resize((size, size), Image.LANCZOS)
+    buf = io.BytesIO()
+    im.save(buf, "WEBP", quality=82, method=6)
+    return buf.getvalue()
+
+
+def sync_avatars(rmeta):
+    """Write data/managers.json and assets/avatars/<manager>.webp. An image is only
+    re-downloaded when the avatar id changes; managers with no avatar get initials on the site."""
+    path = os.path.join(OUT, "managers.json")
+    old = json.load(open(path)) if os.path.exists(path) else {}
+    out = {}
+    for m in rmeta.values():
+        name, key = m["manager"], m.get("team_avatar") or m.get("avatar")
+        prev = old.get(name, {})
+        rel = f"assets/avatars/{slug(name)}.webp"
+        have = os.path.exists(os.path.join(ROOT, rel))
+        entry = {"team_name": m.get("team_name"), "avatar_id": key, "avatar": None}
+        if key and prev.get("avatar_id") == key and have:
+            entry["avatar"] = rel                                  # unchanged: skip the download
+        elif key and Image is not None:
+            try:
+                os.makedirs(AV_DIR, exist_ok=True)
+                with open(os.path.join(ROOT, rel), "wb") as f:
+                    f.write(fetch_avatar(key))
+                entry["avatar"] = rel
+            except Exception as ex:
+                print(f"  avatar for {name} failed ({ex}); will retry next run")
+                entry["avatar_id"] = prev.get("avatar_id")        # forces a retry
+                entry["avatar"] = rel if have else None
+        elif key:
+            print("  Pillow not installed, so avatars were skipped (pip install pillow)")
+        out[name] = entry
+    dump("managers.json", out)
+    print(f"Avatars: {sum(1 for e in out.values() if e['avatar'])}/{len(out)} managers have an image")
+
+
 def main():
     global PLAYERS
     ap = argparse.ArgumentParser()
@@ -277,10 +338,14 @@ def main():
         rmeta[r["roster_id"]] = {
             "manager": u.get("display_name", f"roster {r['roster_id']}"),
             "team_name": (u.get("metadata") or {}).get("team_name"),
+            "avatar": u.get("avatar"),                                   # Sleeper avatar id
+            "team_avatar": (u.get("metadata") or {}).get("avatar"),      # custom team avatar URL, if set
             "reserve": set(r.get("reserve") or []),
             "taxi": set(r.get("taxi") or []),
             "roster": r,
         }
+
+    sync_avatars(rmeta)
 
     slots = [s for s in league["roster_positions"] if s != "BN"]
     cur_week = state.get("week", 1)
