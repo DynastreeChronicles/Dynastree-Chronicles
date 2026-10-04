@@ -1,0 +1,80 @@
+:root{--navy:#1a2744;--sky:#90caf9;--ice:#e3f2fd;--green:#2e7d32;--red:#c62828;--amber:#f9a825;--ink:#14181f;--mute:#5f6b7a;--line:#e0e0e0;--paper:#fff;--wash:#f4f6f9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 Fraunces,Georgia,serif}
+a{color:var(--navy)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.tick,.btn,table,.bug,nav,.arch .no,.arch .go,.mcard,.wire,.chip{font-family:"Barlow Condensed","Arial Narrow",sans-serif}
+.wrap{max-width:68rem;margin:0 auto;padding:0 1.25rem}
+.tick{display:flex;background:var(--navy);color:#fff;font-weight:600;font-size:1.05rem;line-height:2.4;white-space:nowrap}
+.tick b{background:var(--red);padding:0 1rem;position:relative;z-index:1}
+.tw{overflow:hidden;flex:1}
+.track{display:flex;width:max-content;animation:run 70s linear infinite}
+.track span{padding-right:3rem}
+@keyframes run{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.track{animation:none}}
+.mast{background:var(--navy);color:#fff;padding:2rem 0 1.1rem;border-bottom:4px solid var(--sky)}
+.mast h1{font:800 clamp(2.2rem,7vw,4rem)/1 Fraunces,serif;margin:0;letter-spacing:-.015em}
+.mast h1 a{text-decoration:none;color:#fff}
+.mast p{margin:.5rem 0 0;color:var(--sky);font-style:italic}
+nav{display:flex;gap:1.5rem;padding:.7rem 0;font-size:1.15rem;font-weight:600;border-bottom:1px solid var(--line)}
+nav a{text-decoration:none;color:var(--mute)}
+nav a:hover{color:var(--navy);text-decoration:underline}
+.hero{display:grid;gap:2.5rem;padding:3rem 0 1rem;grid-template-columns:1.5fr 1fr;align-items:center}
+.hero h2{font:800 clamp(2.3rem,5.6vw,4.2rem)/1.04 Fraunces,serif;margin:0 0 1rem;letter-spacing:-.015em;color:var(--navy)}
+.dek{font-size:1.2rem;color:var(--mute);max-width:34rem;margin:0 0 1.5rem}
+.btn{display:inline-block;padding:.65rem 1.3rem;margin:0 .6rem .6rem 0;font-size:1.2rem;font-weight:700;background:var(--navy);color:#fff;text-decoration:none;border-radius:2px}
+.btn.o{background:none;color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--navy)}
+.btn:hover{filter:brightness(1.25)}
+.bug{background:var(--navy);color:#fff;border-left:6px solid var(--sky)}
+.bug small{display:block;padding:.3rem 1rem;background:var(--sky);color:var(--navy);font-weight:700;font-size:1.05rem}
+.bug .row{display:flex;justify-content:space-between;align-items:baseline;padding:.6rem 1rem;font-size:1.6rem;font-weight:600}
+.bug .row+.row{border-top:1px solid #34436a}
+.bug .row b{font-size:3rem;line-height:1;font-weight:700;font-variant-numeric:tabular-nums}
+.bug .w b{color:#7bd88f}
+.bug .l b{color:#ff8a80}
+.bug p{margin:0;padding:.6rem 1rem;font:italic 1rem/1.4 Fraunces,serif;color:var(--sky);border-top:1px solid #34436a}
+h2.sec{font:700 1.9rem/1.2 Fraunces,serif;color:var(--navy);border-top:3px solid var(--navy);padding-top:.9rem;margin:3.2rem 0 1.2rem}
+.hz{display:grid;gap:1.5rem;grid-template-columns:1fr 1fr}
+.hz>div{padding:1rem 1.2rem;border:2px solid var(--green);background:#e8f5e9;border-radius:4px}
+.hz>div+div{border-color:var(--red);background:#ffebee}
+.hz h3{margin:0 0 .3rem;font:700 1.5rem/1.2 Fraunces,serif}
+.hz>div:first-child h3{color:var(--green)}.hz>div+div h3{color:var(--red)}
+.hz p{margin:.4rem 0}
+.sc{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:1.15rem;font-weight:500}
+th{text-align:left;background:var(--navy);color:#fff;font-weight:600;padding:.45rem .6rem}
+td{padding:.45rem .6rem;border-bottom:1px solid var(--line)}
+tbody tr:nth-child(even){background:var(--wash)}
+.n{text-align:right;font-variant-numeric:tabular-nums}
+th.n{text-align:right}
+.arch .r{display:grid;grid-template-columns:4rem 1fr auto;gap:1rem;align-items:baseline;padding:1rem 0;border-top:1px solid var(--line)}
+.arch .no{font-size:3.2rem;font-weight:700;line-height:1;color:var(--sky)}
+.arch .go a{margin-left:1rem;font-weight:700;font-size:1.15rem}
+.arch .go{white-space:nowrap}
+.arch h3{margin:0;font:700 1.3rem/1.2 Fraunces,serif;color:var(--navy)}
+.arch p{margin:.1rem 0 0;color:var(--mute);font-size:.95rem}
+.art{max-width:42rem}
+.desk{border-left:4px solid var(--amber);padding:.1rem 0 .1rem 1rem;font-style:italic;color:var(--mute)}
+.mc{display:grid;gap:1.5rem;grid-template-columns:repeat(3,1fr)}
+.mc h4{margin:0 0 .3rem;font:700 1.1rem "Barlow Condensed",sans-serif;color:var(--navy);text-transform:uppercase;letter-spacing:.04em}
+.mc p{margin:.3rem 0;font-size:.95rem;line-height:1.5}
+.score{display:flex;gap:1.5rem;font:700 2.2rem/1 "Barlow Condensed",sans-serif;margin:.5rem 0 1.2rem}
+.score span:first-child{color:var(--green)}.score span:last-child{color:var(--red)}
+.cards{display:grid;gap:1.2rem;grid-template-columns:repeat(2,1fr)}
+.mcard{border:1px solid var(--line);border-top:4px solid var(--navy);border-radius:3px;background:#fff}
+.mcard .t{display:grid;grid-template-columns:1fr auto 1fr;gap:.6rem;align-items:center;padding:.7rem 1rem}
+.mcard .t div{font-size:1.25rem;font-weight:600}
+.mcard .t div:last-child{text-align:right}
+.mcard .t b{display:block;font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums}
+.mcard .t .w b{color:var(--green)}.mcard .t .l b{color:var(--red)}
+.mcard .t i{font-style:normal;color:var(--mute);font-size:1rem}
+.mcard ul{list-style:none;margin:0;padding:.6rem 1rem;background:var(--ice);font-size:1.05rem;display:flex;gap:.4rem 1.2rem;flex-wrap:wrap}
+.mcard.motw{border-top-color:var(--amber)}
+.wire{border:1px solid var(--line);border-radius:3px}
+.wire div{display:grid;grid-template-columns:8rem 1fr auto;gap:.8rem;padding:.45rem .9rem;border-bottom:1px solid var(--line);font-size:1.1rem}
+.wire div:nth-child(even){background:var(--wash)}
+.wire .a{color:var(--green);font-weight:700}.wire .d{color:var(--red)}
+.wire small{color:var(--mute)}
+footer{margin-top:4rem;padding:2rem 0 3rem;background:var(--navy);color:var(--sky);font-style:italic}
+footer p{margin:.3rem 0}
+@media (max-width:760px){.hero,.hz,.mc,.cards{grid-template-columns:1fr}.arch .r{grid-template-columns:3rem 1fr}.arch .go{grid-column:2}.arch .go a{margin:0 1rem 0 0}.wire div{grid-template-columns:1fr auto}.wire div span:first-child{grid-column:1/-1}}

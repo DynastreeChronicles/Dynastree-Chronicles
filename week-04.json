@@ -1,0 +1,282 @@
+{
+  "week": 4,
+  "final": false,
+  "teams": [
+    {
+      "roster_id": 1,
+      "manager": "Darkspaces",
+      "points": 0,
+      "maxpf": 0.0,
+      "bench_points": 0.0,
+      "optimal": 0.0,
+      "left_on_bench": 0.0,
+      "efficiency": null,
+      "mvp": {
+        "name": "Drake Maye",
+        "pos": "QB",
+        "pts": 0.0
+      },
+      "best_bench": {
+        "name": "Ricky Pearsall",
+        "pos": "WR",
+        "pts": 0.0
+      },
+      "opponent": "CMac91",
+      "opponent_points": 8.0,
+      "result": "L"
+    },
+    {
+      "roster_id": 2,
+      "manager": "Snipe58",
+      "points": 21.6,
+      "maxpf": 36.1,
+      "bench_points": 14.5,
+      "optimal": 36.1,
+      "left_on_bench": 14.5,
+      "efficiency": 59.8,
+      "mvp": {
+        "name": "Quinshon Judkins",
+        "pos": "RB",
+        "pts": 21.6
+      },
+      "best_bench": {
+        "name": "KC Concepcion",
+        "pos": "WR",
+        "pts": 11.4
+      },
+      "opponent": "YesChef23",
+      "opponent_points": 13.92,
+      "result": "W"
+    },
+    {
+      "roster_id": 3,
+      "manager": "StealingGas",
+      "points": 0,
+      "maxpf": 0.0,
+      "bench_points": 0.0,
+      "optimal": 0.0,
+      "left_on_bench": 0.0,
+      "efficiency": null,
+      "mvp": {
+        "name": "Trevor Lawrence",
+        "pos": "QB",
+        "pts": 0.0
+      },
+      "best_bench": {
+        "name": "Dylan Sampson",
+        "pos": "RB",
+        "pts": 0.0
+      },
+      "opponent": "Cassellrole",
+      "opponent_points": 32.1,
+      "result": "L"
+    },
+    {
+      "roster_id": 4,
+      "manager": "Zygon",
+      "points": 11.7,
+      "maxpf": 11.7,
+      "bench_points": 0.0,
+      "optimal": 11.7,
+      "left_on_bench": 0.0,
+      "efficiency": 100.0,
+      "mvp": {
+        "name": "Harold Fannin",
+        "pos": "TE",
+        "pts": 11.7
+      },
+      "best_bench": {
+        "name": "Chris Rodriguez",
+        "pos": "RB",
+        "pts": 0.0
+      },
+      "opponent": "Hades9mm",
+      "opponent_points": 0,
+      "result": "W"
+    },
+    {
+      "roster_id": 5,
+      "manager": "Hades9mm",
+      "points": 0,
+      "maxpf": 0.0,
+      "bench_points": 0.0,
+      "optimal": 0.0,
+      "left_on_bench": 0.0,
+      "efficiency": null,
+      "mvp": {
+        "name": "Cam Ward",
+        "pos": "QB",
+        "pts": 0.0
+      },
+      "best_bench": {
+        "name": "Jayden Daniels",
+        "pos": "QB",
+        "pts": 0.0
+      },
+      "opponent": "Zygon",
+      "opponent_points": 11.7,
+      "result": "L"
+    },
+    {
+      "roster_id": 6,
+      "manager": "Cassellrole",
+      "points": 32.1,
+      "maxpf": 32.1,
+      "bench_points": 0.0,
+      "optimal": 32.1,
+      "left_on_bench": 0.0,
+      "efficiency": 100.0,
+      "mvp": {
+        "name": "DK Metcalf",
+        "pos": "WR",
+        "pts": 16.5
+      },
+      "best_bench": {
+        "name": "Jalen McMillan",
+        "pos": "WR",
+        "pts": 0.0
+      },
+      "opponent": "StealingGas",
+      "opponent_points": 0,
+      "result": "W"
+    },
+    {
+      "roster_id": 7,
+      "manager": "Sarge71",
+      "points": 23.96,
+      "maxpf": 44.76,
+      "bench_points": 20.8,
+      "optimal": 44.76,
+      "left_on_bench": 20.8,
+      "efficiency": 53.5,
+      "mvp": {
+        "name": "Aaron Rodgers",
+        "pos": "QB",
+        "pts": 23.96
+      },
+      "best_bench": {
+        "name": "Pat Freiermuth",
+        "pos": "TE",
+        "pts": 10.7
+      },
+      "opponent": "Painty69",
+      "opponent_points": 0,
+      "result": "W"
+    },
+    {
+      "roster_id": 8,
+      "manager": "C33DeezNutzz",
+      "points": 0,
+      "maxpf": 0.0,
+      "bench_points": 0.0,
+      "optimal": 0.0,
+      "left_on_bench": 0.0,
+      "efficiency": null,
+      "mvp": {
+        "name": "Josh Allen",
+        "pos": "QB",
+        "pts": 0.0
+      },
+      "best_bench": {
+        "name": "Jayden Reed",
+        "pos": "WR",
+        "pts": 0.0
+      },
+      "opponent": "fumbduckdumbfuck",
+      "opponent_points": 0,
+      "result": "T"
+    },
+    {
+      "roster_id": 9,
+      "manager": "Painty69",
+      "points": 0,
+      "maxpf": 12.9,
+      "bench_points": 12.9,
+      "optimal": 12.9,
+      "left_on_bench": 12.9,
+      "efficiency": 0.0,
+      "mvp": {
+        "name": "Joe Burrow",
+        "pos": "QB",
+        "pts": 0.0
+      },
+      "best_bench": {
+        "name": "Denzel Boston",
+        "pos": "WR",
+        "pts": 12.9
+      },
+      "opponent": "Sarge71",
+      "opponent_points": 23.96,
+      "result": "L"
+    },
+    {
+      "roster_id": 10,
+      "manager": "CMac91",
+      "points": 8.0,
+      "maxpf": 8.0,
+      "bench_points": 0.0,
+      "optimal": 8.0,
+      "left_on_bench": 0.0,
+      "efficiency": 100.0,
+      "mvp": {
+        "name": "Pittsburgh Steelers",
+        "pos": "DEF",
+        "pts": 8.0
+      },
+      "best_bench": {
+        "name": "Jaylen Wright",
+        "pos": "RB",
+        "pts": 0.0
+      },
+      "opponent": "Darkspaces",
+      "opponent_points": 0,
+      "result": "W"
+    },
+    {
+      "roster_id": 11,
+      "manager": "YesChef23",
+      "points": 13.92,
+      "maxpf": 13.92,
+      "bench_points": 0.0,
+      "optimal": 13.92,
+      "left_on_bench": 0.0,
+      "efficiency": 100.0,
+      "mvp": {
+        "name": "Deshaun Watson",
+        "pos": "QB",
+        "pts": 13.92
+      },
+      "best_bench": {
+        "name": "Caleb Williams",
+        "pos": "QB",
+        "pts": 0.0
+      },
+      "opponent": "Snipe58",
+      "opponent_points": 21.6,
+      "result": "L"
+    },
+    {
+      "roster_id": 12,
+      "manager": "fumbduckdumbfuck",
+      "points": 0,
+      "maxpf": 0.0,
+      "bench_points": 0.0,
+      "optimal": 0.0,
+      "left_on_bench": 0.0,
+      "efficiency": null,
+      "mvp": {
+        "name": "Dak Prescott",
+        "pos": "QB",
+        "pts": 0.0
+      },
+      "best_bench": {
+        "name": "Michael Wilson",
+        "pos": "WR",
+        "pts": 0.0
+      },
+      "opponent": "C33DeezNutzz",
+      "opponent_points": 0,
+      "result": "T"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "league_id": "1389008727859806208",
+  "name": "DYNASTREE",
+  "season": "2026",
+  "roster_positions": [
+    "QB",
+    "RB",
+    "RB",
+    "WR",
+    "WR",
+    "TE",
+    "FLEX",
+    "FLEX",
+    "SUPER_FLEX",
+    "DEF",
+    "BN",
+    "BN",
+    "BN",
+    "BN",
+    "BN",
+    "BN",
+    "BN",
+    "BN",
+    "BN",
+    "BN"
+  ],
+  "weeks_with_scores": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "maxpf_includes_reserve": true,
+  "generated_at": "2026-10-04T05:02:55+00:00"
+}
