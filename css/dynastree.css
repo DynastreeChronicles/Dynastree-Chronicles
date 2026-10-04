@@ -191,3 +191,8 @@ h3.wk{margin:1.2rem 0 .5rem;font:italic 800 1.4rem "Barlow Condensed",sans-serif
 /* ===== v5 fixes ===== */
 .mast h1{line-height:1.05;margin:0 0 .25rem}
 ul.assets{padding:0!important;margin:.5rem 0!important;list-style:none}ul.assets li{margin:0}
+
+/* ===== v6: manager avatars ===== */
+.av{display:inline-flex;align-items:center;justify-content:center;flex:none;width:var(--s,28px);height:var(--s,28px);margin-right:.5rem;vertical-align:middle;border-radius:50%;overflow:hidden;border:1px solid var(--line);background:hsl(var(--h,210) 55% 26%);color:#fff;font:700 calc(var(--s,28px)*.42)/1 "Barlow Condensed","Arial Narrow",sans-serif;letter-spacing:.02em}
+.av img{width:100%;height:100%;object-fit:cover;display:block}
+.vs .av{display:flex;margin:0 0 .3rem}.vs .r .av{margin-left:auto}
