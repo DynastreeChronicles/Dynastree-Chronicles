@@ -1,3 +1,3 @@
 # Dynastree Chronicles
 
-The offical leage newsletter
+the official league newsletter
