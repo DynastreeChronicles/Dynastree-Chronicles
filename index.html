@@ -47,10 +47,11 @@
 </div>
 </section>
 
-<section id="standings" hidden>
+<section id="standings">
 <h2 class="sec">Standings</h2>
-<p class="key">Live from Sleeper, refreshed after each week. Each issue page keeps its own frozen snapshot.</p>
-<div class="sc"><table><thead><tr><th class="n">#</th><th>Team</th><th class="n">W-L</th><th class="n">PF</th></tr></thead><tbody id="rows"></tbody></table></div>
+<!--STANDINGS-->
+<div class="sortbar" role="group" aria-label="Sort standings"><button class="chip on" data-sort="rank">Standings order</button><button class="chip" data-sort="draft">Draft order</button></div><div class="sc"><table id="standtable"><thead><tr><th class="n">#</th><th>Team</th><th class="n">W-L</th><th class="n">Move</th><th class="n">PF</th><th class="n">MAXPF</th><th class="n">FAAB</th><th class="n">2027 pick</th></tr></thead><tbody><tr data-rank="1" data-draft="11"><td class="n">1</td><td><b>Zygon</b></td><td class="n">3-0</td><td class="n mv"><span class="flat">&mdash;</span></td><td class="n">518.44</td><td class="n">569.64</td><td class="n">$498</td><td class="n pick">1.11</td></tr><tr data-rank="2" data-draft="12"><td class="n">2</td><td><b>Hades9mm</b></td><td class="n">3-0</td><td class="n mv"><span class="flat">&mdash;</span></td><td class="n">495.42</td><td class="n">613.32</td><td class="n">$330</td><td class="n pick">1.12</td></tr><tr data-rank="3" data-draft="10"><td class="n">3</td><td><b>C33DeezNutzz</b></td><td class="n">2-1</td><td class="n mv"><span class="up">&#9650; 1</span></td><td class="n">460.62</td><td class="n">494.32</td><td class="n">$500</td><td class="n pick">1.10</td></tr><tr data-rank="4" data-draft="8"><td class="n">4</td><td><b>Cassellrole</b></td><td class="n">2-1</td><td class="n mv"><span class="up">&#9650; 3</span></td><td class="n">411.10</td><td class="n">482.40</td><td class="n">$500</td><td class="n pick">1.08</td></tr><tr data-rank="5" data-draft="5"><td class="n">5</td><td><b>YesChef23</b></td><td class="n">2-1</td><td class="n mv"><span class="up">&#9650; 4</span></td><td class="n">355.72</td><td class="n">446.22</td><td class="n">$498</td><td class="n pick">1.05</td></tr><tr data-rank="6" data-draft="3"><td class="n">6</td><td><b>Darkspaces</b></td><td class="n">2-1</td><td class="n mv"><span class="dn">&#9660; 3</span></td><td class="n">339.08</td><td class="n">394.16</td><td class="n">$104</td><td class="n pick">1.03</td></tr><tr data-rank="7" data-draft="9"><td class="n">7</td><td><b>fumbduckdumbfuck</b></td><td class="n">1-2</td><td class="n mv"><span class="dn">&#9660; 2</span></td><td class="n">397.00</td><td class="n">491.30</td><td class="n">$500</td><td class="n pick">1.09</td></tr><tr data-rank="8" data-draft="7"><td class="n">8</td><td><b>CMac91</b></td><td class="n">1-2</td><td class="n mv"><span class="dn">&#9660; 2</span></td><td class="n">381.56</td><td class="n">474.14</td><td class="n">$500</td><td class="n pick">1.07</td></tr><tr data-rank="9" data-draft="1"><td class="n">9</td><td><b>Snipe58</b></td><td class="n">1-2</td><td class="n mv"><span class="dn">&#9660; 1</span></td><td class="n">339.34</td><td class="n">392.34</td><td class="n">$400</td><td class="n pick">1.01</td></tr><tr data-rank="10" data-draft="2"><td class="n">10</td><td><b>StealingGas</b></td><td class="n">1-2</td><td class="n mv"><span class="up">&#9650; 2</span></td><td class="n">312.92</td><td class="n">393.60</td><td class="n">$98</td><td class="n pick">1.02</td></tr><tr data-rank="11" data-draft="4"><td class="n">11</td><td><b>Sarge71</b></td><td class="n">0-3</td><td class="n mv"><span class="dn">&#9660; 1</span></td><td class="n">373.48</td><td class="n">440.94</td><td class="n">$500</td><td class="n pick">1.04</td></tr><tr data-rank="12" data-draft="6"><td class="n">12</td><td><b>Painty69</b></td><td class="n">0-3</td><td class="n mv"><span class="dn">&#9660; 1</span></td><td class="n">363.82</td><td class="n">460.90</td><td class="n">$500</td><td class="n pick">1.06</td></tr></tbody></table></div><p class="key">Records, PF and MAXPF through Week 3 finals. Move = change in standings spots since the previous week. MAXPF = every point your whole roster scored (starters + bench). 2027 pick: lowest MAXPF gets 1.01, highest gets 1.12. FAAB is the current balance.</p>
+<!--/STANDINGS-->
 </section>
 
 <section class="arch" id="archive">
@@ -68,11 +69,11 @@
 </div></footer>
 
 <script>
-const t=document.querySelector('.track');t.innerHTML+=t.innerHTML;
-const e=s=>String(s).replace(/[&<>]/g,c=>'&#'+c.charCodeAt(0)+';');
-fetch('data/standings.json').then(r=>r.ok?r.json():Promise.reject()).then(d=>{
-document.getElementById('rows').innerHTML=d.map(r=>`<tr><td class="n">${e(r.rank)}<td>${e(r.manager)}<td class="n">${e(r.record)}<td class="n">${Number(r.pf).toFixed(2)}`).join('');
-document.getElementById('standings').hidden=false;}).catch(()=>{});
+const t=document.querySelector('.track');if(t)t.innerHTML+=t.innerHTML;
+document.querySelectorAll('.sortbar .chip').forEach(btn=>btn.onclick=()=>{
+const k=btn.dataset.sort,tb=document.querySelector('#standtable tbody');
+[...tb.rows].sort((x,y)=>x.dataset[k]-y.dataset[k]).forEach(r=>tb.appendChild(r));
+document.querySelectorAll('.sortbar .chip').forEach(c=>c.classList.toggle('on',c===btn));});
 </script>
 </body>
 </html>
