@@ -160,3 +160,9 @@ details.acc>*:not(summary){margin-left:1rem;margin-right:1rem}
 .tx{grid-template-columns:5rem 1fr}.tx small{grid-column:2}
 .sc{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
 .pg li,.tc p,.pg p,.desk,.key{font-size:1rem}}
+
+/* ===== v3: brand assets ===== */
+.wm{height:clamp(44px,8vw,72px);width:auto;display:block}.mast h1{line-height:0;margin:0}
+.ic{height:2.4rem;width:auto;vertical-align:middle;margin-right:.6rem}
+.bdg{height:46px;width:auto;vertical-align:middle;margin-left:.6rem}.bdg.lg{height:110px;margin:0}
+.star.badge{background:none!important;border:0;box-shadow:none;padding:0;text-align:center}
