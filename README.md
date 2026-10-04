@@ -16,6 +16,6 @@ MAXPF is **Max PF: the points of each week's best possible lineup, added up over
 ### Issues
 
 - `data/issues.json` lists the issues. `wire_week` is the week an issue covers.
-- `data/issues/issue-NN.json` is **prose only** (headlines, takes, grades, projections, power-rank order and verdicts).
+- `data/issues/issue-NN.json` is **prose only** (headlines, takes, grades, projections, bold predictions, the desk asides under each manager's waiver list in `wire.desk`, and `prev_motw`, the previous issue's Match of the Week that gets the top result card).
 - Everything else on an issue page (standings, FAAB, draft slots, final-score banner, scores, records, bench points, MVPs, match-of-the-week stats, trade assets, waiver claims, bankroll) is computed from `data/weeks/` and `data/transactions.json` at build time, as of the issue's week. The home page always shows the latest finished week.
 - Waiver flags and one-liners live in `wire.waivers` as `{mgr, player, flag, note}`. The claims themselves come from Sleeper.

@@ -131,8 +131,16 @@ def standings(rows=None, fin=None, root=""):
     pp = prev_picks(fin)
     fc = jload("data/fut_cap.json", {})
     team = lambda r: f'<td>{av(r["manager"], 24, root)}<b>{esc(r["manager"])}</b></td>'
-    troph = lambda r: (f'<img class="rkt" src="{root}assets/trophy-{["gold", "silver", "bronze"][r["rank"] - 1]}-sm.webp" alt="" width="24" height="44">' if r["rank"] <= 3 else f'<img class="rkt" src="{root}assets/trophy-trash-sm.webp" alt="" width="26" height="44">' if r["rank"] == len(rows) else "")
-    rk = "".join(f'<tr><td class="n">{troph(r)}{r["rank"]}</td>{team(r)}<td class="n">{esc(r["record"])}</td><td class="n mv">{mv(r.get("move", 0))}</td><td class="n">{r["pf"]:.2f}</td><td class="n">${r["faab_remaining"]}</td></tr>' for r in rows)
+    n = len(rows)
+    def rank_cell(r):
+        k = r["rank"]
+        if k <= 3:
+            name = ["gold", "silver", "bronze"][k - 1]
+            return f'<img class="rkt" src="{root}assets/trophy-{name}-sm.webp" alt="#{k}" width="24" height="44">'
+        if k >= n - 1:
+            return f'<img class="rkt" src="{root}assets/trophy-trash-sm.webp" alt="#{k}" width="26" height="44">'
+        return str(k)
+    rk = "".join(f'<tr><td class="n rkc">{rank_cell(r)}</td>{team(r)}<td class="n">{esc(r["record"])}</td><td class="n mv">{mv(r.get("move", 0))}</td><td class="n">{r["pf"]:.2f}</td><td class="n">${r["faab_remaining"]}</td></tr>' for r in rows)
     dr = ""
     for r in sorted(rows, key=lambda r: r["draft_pick"]):
         f = fc.get(r["manager"])
@@ -141,10 +149,9 @@ def standings(rows=None, fin=None, root=""):
     h = lambda cols: "<tr>" + "".join(f'<th{" class=\"n\"" if i else ""}>{c}</th>' if c != "Team" else "<th>Team</th>" for i, c in enumerate(cols)) + "</tr>"
     return (f'<div class="sortbar" role="group" aria-label="Standings view"><button class="chip on" data-view="rank">Standings order</button><button class="chip" data-view="draft">Draft order</button></div>'
             f'<div class="sc" id="v-rank"><table id="standtable"><thead>{h(["#", "Team", "W-L", "MOV", "PF", "FAAB"])}</thead><tbody>{rk}</tbody></table>'
-            f'<p class="key">Through Week {fin} finals. MOV = change in standings spots since the previous week. FAAB is the balance after Week {fin}.</p>{legend()}</div>'
+            f'{legend()}</div>'
             f'<div class="sc" id="v-draft" hidden><table id="drafttable"><thead>{h(["Pick", "Team", "FUT CAP", "MAXPF", "MOV", "FAAB"])}</thead><tbody>{dr}</tbody></table>'
-            f'<p class="key">2027 rookie draft order: lowest MAXPF picks 1.01, where MAXPF is the points of each week\'s best possible lineup added up (Sleeper\'s Max PF). MOV = spots gained or lost in the pick since the previous week. '
-            f'FUT CAP is future capital as scored in the Issue 4 power rankings: Early 1st 100, Mid-Late 1st 75, 2nd-year 1st 60, 3rd-year 1st 50, any 2nd 30, any 3rd 10.</p>{legend()}</div>')
+            f'{legend()}</div>')
 
 # ---------------------------------------------------------------- issue pages
 def ordinal(n):
@@ -238,6 +245,21 @@ def final_banner(week):
             f'<div class="gap"><b>&minus;{gap:.2f}</b><small>Blowout of the week</small></div>\n'
             f'<div class="side l"><small>Week {week} final</small><span>{esc(best["opponent"])}</span><b>{best["opponent_points"]:.2f}</b></div>\n</section>')
 
+def motw_banner(week, pm, rep):
+    """Result card for the Match of the Week picked in the previous issue, scores straight from the week file."""
+    wkd = {t["manager"]: t for t in load_week(week)["teams"]}
+    a, b = wkd[pm["a"]], wkd[pm["b"]]
+    if a["opponent"] != pm["b"]:
+        rep.append(f'prev_motw {pm["a"]} vs {pm["b"]}: Sleeper says {pm["a"]} played {a["opponent"]}')
+    win, lose = (a, b) if a["points"] >= b["points"] else (b, a)
+    gap = win["points"] - lose["points"]
+    return (f'<section class="final motw" aria-label="Match of the Week from Issue {pm["issue"]}: final score">\n'
+            f'<div class="mtop"><img src="../../../assets/badge-motw.webp" alt="Match of the Week" width="49" height="60"><div><b>Game of the week</b><small>Picked in Issue {pm["issue"]} &middot; Week {week} final</small></div></div>\n'
+            f'<div class="side w"><small>Winner</small><span>{esc(win["manager"])}</span><b>{win["points"]:.2f}</b></div>\n'
+            f'<div class="gap"><b>&minus;{gap:.2f}</b><small>Decided by</small></div>\n'
+            f'<div class="side l"><small>Loser</small><span>{esc(lose["manager"])}</span><b>{lose["points"]:.2f}</b></div>\n'
+            f'<p class="mnote">{esc(pm.get("note", ""))}</p>\n</section>')
+
 def issue(n="04", y=2026):
     man = next(x for x in manifest() if x["no"] == int(n))
     wk = man.get("wire_week") or man.get("standings_week")
@@ -258,7 +280,8 @@ def issue(n="04", y=2026):
 
     # standings (same block as the home page)
     inject(f"issues/{y}/issue-{n}/index.html", "STAND", standings(rows, wk, "../../../"))
-    inject(f"issues/{y}/issue-{n}/index.html", "FINAL", final_banner(wk))
+    pm = d.get("prev_motw")
+    inject(f"issues/{y}/issue-{n}/index.html", "FINAL", (motw_banner(wk, pm, rep) + "\n" if pm else "") + final_banner(wk))
 
     # bankroll: balances and weekly change from the feed, notes stay hand-written
     notes = d["bank"]["notes"]
@@ -268,6 +291,9 @@ def issue(n="04", y=2026):
     # wire
     d["wire"]["trades"] = wire_trades(d["wire"]["trades"], wk, rep)
     d["wire"]["waivers"] = wire_waivers(d["wire"]["waivers"], wk, rep)
+    for m in dict.fromkeys(x[0] for x in d["wire"]["waivers"]):
+        if not d["wire"].get("desk", {}).get(m):
+            rep.append(f"no desk aside for {m} in wire.desk (their transaction list will show none)")
 
     # post-game: scores, records, bench points and MVPs
     for m in d["post"]:
@@ -288,11 +314,6 @@ def issue(n="04", y=2026):
                    ["PF Rank", ordinal(rank_pf[mo["a"]]), ordinal(rank_pf[mo["b"]])],
                    ["Best Week", f"{best(mo['a']):.2f}", f"{best(mo['b']):.2f}"],
                    ["AVG PF", f"{avg(mo['a']):.1f}", f"{avg(mo['b']):.1f}"]]
-
-    # power rankings: record, future capital and draft slot from data; order, movement, age and verdict are the desk's
-    fc = jload("data/fut_cap.json", {})
-    d["power"]["rows"] = [[i + 1, r["mgr"], need(r["mgr"])["record"], r["mov"], r["age"], fc.get(r["mgr"], 0), f'1.{need(r["mgr"])["draft_pick"]:02d}', r["verdict"]]
-                          for i, r in enumerate(d["power"]["rows"])]
 
     d["meta"] = {"week": wk, "maxpf": MAXPF_LONG}
     path = f"issues/{y}/issue-{n}/index.html"
@@ -330,14 +351,15 @@ def transactions(m):
         if x[0] not in order:
             order.append(x[0])
     rank = lambda mg: min((0 if x[4] == "mvp" else 1 if x[4] == "fav" else 2 for x in ws if x[0] == mg and notable(x)), default=9)
+    desk = d["wire"].get("desk", {})
     cards = []
     for mg in sorted((o for o in order if rank(o) < 9), key=rank):
         allm = [x for x in ws if x[0] == mg]
         keep = [x for x in allm if notable(x)]
-        cards.append(f'<div class="txg"><div class="txh">{av(mg, 28)}<b>{esc(mg)}</b><small>{len(keep)} of {len(allm)} moves</small></div>' + "".join(move_html(x) for x in keep) + "</div>")
+        cards.append(f'<div class="txg"><div class="txh">{av(mg, 28)}<b>{esc(mg)}</b><small>{len(keep)} of {len(allm)} moves</small></div>' + "".join(move_html(x) for x in keep) + (f'<p class="desk mdesk">{esc(desk[mg])}</p>' if desk.get(mg) else "") + "</div>")
     out.append('<div class="txgrid">' + "".join(cards) + "</div>")
     link = f'issues/{i["year"]}/issue-{i["no"]:02d}/#wire'
-    return '<div class="txl">' + "".join(out) + f'</div><p class="key">Showing the desk\'s picks and big FAAB spends. <a class="btn o" href="{link}">See all {len(ws)} waiver moves and trade grades in Issue {i["no"]}</a></p>'
+    return '<div class="txl">' + "".join(out) + f'</div><p class="key"><a class="btn o" href="{link}">See all {len(ws)} waiver moves and trade grades in Issue {i["no"]}</a></p>'
 
 def rules():
     from collections import Counter
