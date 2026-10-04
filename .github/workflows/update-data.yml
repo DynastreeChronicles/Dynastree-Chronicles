@@ -22,9 +22,12 @@ jobs:
       - name: Pull Sleeper data
         run: python scripts/sleeper_pull.py
 
+      - name: Build site
+        run: python scripts/build_site.py
+
       - name: Commit changes
         run: |
           git config user.name "dynastree-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data
+          git add data index.html issues
           git diff --cached --quiet || (git commit -m "Update league data" && git push)
