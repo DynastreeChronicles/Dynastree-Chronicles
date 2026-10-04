@@ -328,7 +328,7 @@ def leaderboard():
     rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
     def pod(r, cls, k, label):
         return (f'<div class="pd {cls}"><img class="tro" src="assets/trophy-{k}.webp" alt="{label}" width="132" height="240" loading="lazy">'
-                f'{av(r["manager"], 52)}<div class="pi"><h3>{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div><i class="step"></i></div>')
+                f'<div class="pi">{av(r["manager"], 44)}<h3>{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>')
     top = "".join(pod(r, c, k, l) for r, c, k, l in zip(rows[:3], ("p1", "p2", "p3"), ("gold", "silver", "bronze"), ("1st place", "2nd place", "3rd place")))
     low = "".join(f'<div class="lo"><img class="tro tt" src="assets/trophy-trash.webp" alt="Last place" width="132" height="240" loading="lazy">{av(r["manager"], 40)}<div><h3>{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>' for r in rows[-2:])
     return (f'<div class="lbx"><div class="podium">{top}</div><div class="dz"><h3 class="dzh">The Danger Zone</h3><div class="dzg">{low}</div></div></div>'
