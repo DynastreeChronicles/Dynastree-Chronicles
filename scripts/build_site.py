@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
 """Bake data into the HTML so pages never depend on a fetch() succeeding.
-  - index.html: renders the standings table from data/standings.json
-  - issues/2026/issue-04/index.html: embeds data/issues/issue-04.json
+  - index.html: renders standings etc. from data/standings.json (always the latest finished week)
+  - issues/<year>/issue-NN/index.html: a frozen snapshot "as of" the issue's week. Every table and
+    number (standings, FAAB, draft slots, scores, records, bench, MVPs, trade assets, waiver claims)
+    is computed from data/weeks + data/transactions.json. data/issues/issue-NN.json holds PROSE ONLY.
 Run after sleeper_pull.py (the GitHub Action does this)."""
-import json, os, re
-ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+import json, os, re, sys
+from collections import defaultdict
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.normpath(os.path.join(HERE, ".."))
+sys.path.insert(0, HERE)
+import sleeper_pull as sp   # build_standings() is shared so the issue snapshot uses the exact homepage logic
 esc = lambda s: str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 def inject(path, tag, html):
@@ -34,6 +40,55 @@ def av(name, size=28, root=""):
     inner = f'<img src="{root}{m["avatar"]}" alt="" loading="lazy" width="{size}" height="{size}">' if m.get("avatar") else esc(initials(name))
     return f'<span class="av" style="--s:{size}px;--h:{h}">{inner}</span>'
 
+
+def jload(rel, default=None):
+    p = os.path.join(ROOT, rel)
+    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else default
+
+def load_week(n):
+    return jload(f"data/weeks/week-{n:02d}.json")
+
+def final_weeks(thru):
+    return [w for n in range(1, thru + 1) for w in [load_week(n)] if w and w["final"]]
+
+def faab_by_week(thru):
+    """Waiver balance after each week, rebuilt from the transaction feed (matches Sleeper's balance)."""
+    budget = (jload("data/league.json", {}) or {}).get("waiver_budget", 500)
+    names = [r["manager"] for r in jload("data/standings.json", [])]
+    bal, out = {m: budget for m in names}, {0: {m: budget for m in names}}
+    tx = sorted(txfeed(), key=lambda t: (t["week"], t.get("created") or 0))
+    for wk in range(1, thru + 1):
+        for t in (x for x in tx if x["week"] == wk):
+            if t["type"] == "trade":
+                for sd in t["sides"]:
+                    n = sd.get("receives_faab") or 0
+                    if n:
+                        bal[sd["manager"]] += n
+                        for o in t["sides"]:
+                            if o is not sd:
+                                bal[o["manager"]] -= n
+            else:
+                bal[t["manager"]] -= t.get("bid") or 0
+        out[wk] = dict(bal)
+    return out
+
+def asof(week):
+    """Standings rows as of the end of `week`, same logic the Action uses for data/standings.json."""
+    cur = jload("data/standings.json", [])
+    fb = faab_by_week(week)[week]
+    info = {r["roster_id"]: {"manager": r["manager"], "faab_remaining": fb[r["manager"]]} for r in cur}
+    return sp.build_standings(final_weeks(week), info)
+
+def pname(p):
+    """'Jaxon Smith-Njigba' -> 'J. Smith-Njigba'; team defenses keep the team name."""
+    parts = p["name"].split()
+    if p.get("pos") == "DEF" or len(parts) < 2:
+        return parts[-1] if parts else p["name"]
+    return f"{parts[0][0]}. {' '.join(parts[1:])}"
+
+def pts(x):
+    return f"{x:.1f}"
+
 def prev_picks(fin):
     """Draft slot as of the previous final week (lowest MAXPF = 1.01), from data/weeks."""
     tot = {}
@@ -49,40 +104,34 @@ def mv(m):
     return f'<span class="up">&#9650; {m}</span>' if m > 0 else f'<span class="dn">&#9660; {-m}</span>' if m < 0 else '<span class="flat">&mdash;</span>'
 
 
-def legend(kind):
+MAXPF_TEXT = "<b>Max PF.</b> The points of your best possible lineup each week, added up (the same number as Sleeper's Max PF). The lowest total gets pick 1.01."
+MAXPF_LONG = ("MAXPF (Max PF) is the points your best possible lineup would have scored each week, added up across the season. "
+              "It is the same figure Sleeper shows as Max PF, not starters plus bench. Lowest MAXPF gets the 1st overall pick; highest picks 12th. "
+              "The draft is linear, so the lowest MAXPF also picks first every round. Payouts still go to the playoff winner.")
+
+def legend():
     """Collapsed 'how to read this' glossary shared by the home and issue standings."""
     up, dn = '<span class="up">&#9650;</span>', '<span class="dn">&#9660;</span>'
-    rows = {
-        "rank": [("Table", [("W-L", "<b>Record</b> through the latest finished week."),
-                            ("MOV", f"<b>Movement</b> in the standings since last week. {up} 2 = climbed two spots, {dn} 2 = dropped two, &mdash; = no change."),
-                            ("PF", "<b>Points for.</b> Total points your team has scored this season."),
-                            ("FAAB", "<b>Waiver budget</b> left, out of $500.")])],
-        "draft": [("Table", [("Pick", "<b>2027 rookie draft slot.</b> 1.01 is the first overall pick."),
-                             ("FUT CAP", "<b>Future capital.</b> Points for owned picks: Early 1st 100, Mid-Late 1st 75, 2nd-year 1st 60, 3rd-year 1st 50, any 2nd 30, any 3rd 10."),
-                             ("MAXPF", "<b>Total roster points</b> (starters and bench). The lowest total gets pick 1.01."),
-                             ("MOV", f"<b>Pick movement</b> since last week. {up} = pick moved earlier (closer to 1.01), {dn} = moved later."),
-                             ("FAAB", "<b>Waiver budget</b> left, out of $500.")])],
-    }
-    if kind == "issue":
-        rows = {"issue": [("Standings", [("W-L", "<b>Record</b> through Week 3."),
-                                         ("MOV", f"<b>Movement</b> in the standings since last week. {up} 2 = climbed two spots, {dn} 2 = dropped two, &mdash; = no change."),
-                                         ("PF / PA", "<b>Points for / against.</b> Scored by you / scored on you."),
-                                         ("FAAB", "<b>Waiver budget</b> left, out of $500."),
-                                         ("PRI", "<b>Waiver priority.</b> Lower number claims first."),
-                                         ("MAXPF", "<b>Total roster points</b> (starters and bench). Lowest gets 1.01."),
-                                         ("DRFT", "<b>2027 draft slot</b> from MAXPF.")])]}
-    items = [it for v in rows.values() for _, g in v for it in g]
+    items = [("W-L", "<b>Record</b> through the latest finished week."),
+             ("MOV", f"<b>Movement</b> since last week. {up} 2 = climbed two spots, {dn} 2 = dropped two, &mdash; = no change. In Draft order it is the pick: {up} = earlier (closer to 1.01), {dn} = later."),
+             ("PF", "<b>Points for.</b> Total points your team has scored this season."),
+             ("Pick", "<b>2027 rookie draft slot.</b> 1.01 is the first overall pick."),
+             ("MAXPF", MAXPF_TEXT),
+             ("FUT CAP", "<b>Future capital.</b> Points for owned picks: Early 1st 100, Mid-Late 1st 75, 2nd-year 1st 60, 3rd-year 1st 50, any 2nd 30, any 3rd 10."),
+             ("FAAB", "<b>Waiver budget</b> left, out of $500.")]
     out = "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in items)
     return f'<details class="legend"><summary>How to read this table</summary><dl>{out}</dl></details>'
 
-def standings():
-    rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
-    fin = rows and max(r["wins"] + r["losses"] + r["ties"] for r in rows)
+def standings(rows=None, fin=None, root=""):
+    """The standings block (Standings order / Draft order). Used by the home page (live data)
+    and by each issue page (snapshot rows), so both always look and read the same."""
+    if rows is None:
+        rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
+    fin = fin or (rows and max(r["wins"] + r["losses"] + r["ties"] for r in rows))
     pp = prev_picks(fin)
-    p = os.path.join(ROOT, "data/fut_cap.json")
-    fc = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
-    team = lambda r: f'<td>{av(r["manager"], 24)}<b>{esc(r["manager"])}</b></td>'
-    troph = lambda r: (f'<img class="rkt" src="assets/trophy-{["gold", "silver", "bronze"][r["rank"] - 1]}-sm.webp" alt="" width="24" height="44">' if r["rank"] <= 3 else '<img class="rkt" src="assets/trophy-trash-sm.webp" alt="" width="26" height="44">' if r["rank"] == len(rows) else "")
+    fc = jload("data/fut_cap.json", {})
+    team = lambda r: f'<td>{av(r["manager"], 24, root)}<b>{esc(r["manager"])}</b></td>'
+    troph = lambda r: (f'<img class="rkt" src="{root}assets/trophy-{["gold", "silver", "bronze"][r["rank"] - 1]}-sm.webp" alt="" width="24" height="44">' if r["rank"] <= 3 else f'<img class="rkt" src="{root}assets/trophy-trash-sm.webp" alt="" width="26" height="44">' if r["rank"] == len(rows) else "")
     rk = "".join(f'<tr><td class="n">{troph(r)}{r["rank"]}</td>{team(r)}<td class="n">{esc(r["record"])}</td><td class="n mv">{mv(r.get("move", 0))}</td><td class="n">{r["pf"]:.2f}</td><td class="n">${r["faab_remaining"]}</td></tr>' for r in rows)
     dr = ""
     for r in sorted(rows, key=lambda r: r["draft_pick"]):
@@ -92,30 +141,12 @@ def standings():
     h = lambda cols: "<tr>" + "".join(f'<th{" class=\"n\"" if i else ""}>{c}</th>' if c != "Team" else "<th>Team</th>" for i, c in enumerate(cols)) + "</tr>"
     return (f'<div class="sortbar" role="group" aria-label="Standings view"><button class="chip on" data-view="rank">Standings order</button><button class="chip" data-view="draft">Draft order</button></div>'
             f'<div class="sc" id="v-rank"><table id="standtable"><thead>{h(["#", "Team", "W-L", "MOV", "PF", "FAAB"])}</thead><tbody>{rk}</tbody></table>'
-            f'<p class="key">Through Week {fin} finals. MOV = change in standings spots since the previous week. FAAB is the current balance.</p>{legend("rank")}</div>'
+            f'<p class="key">Through Week {fin} finals. MOV = change in standings spots since the previous week. FAAB is the balance after Week {fin}.</p>{legend()}</div>'
             f'<div class="sc" id="v-draft" hidden><table id="drafttable"><thead>{h(["Pick", "Team", "FUT CAP", "MAXPF", "MOV", "FAAB"])}</thead><tbody>{dr}</tbody></table>'
-            f'<p class="key">2027 rookie draft order: lowest MAXPF picks 1.01. MOV = spots gained or lost in the pick since the previous week. '
-            f'FUT CAP is future capital as scored in the Issue 4 power rankings: Early 1st 100, Mid-Late 1st 75, 2nd-year 1st 60, 3rd-year 1st 50, any 2nd 30, any 3rd 10.</p>{legend("draft")}</div>')
+            f'<p class="key">2027 rookie draft order: lowest MAXPF picks 1.01, where MAXPF is the points of each week\'s best possible lineup added up (Sleeper\'s Max PF). MOV = spots gained or lost in the pick since the previous week. '
+            f'FUT CAP is future capital as scored in the Issue 4 power rankings: Early 1st 100, Mid-Late 1st 75, 2nd-year 1st 60, 3rd-year 1st 50, any 2nd 30, any 3rd 10.</p>{legend()}</div>')
 
-def issue(n="04", y=2026):
-    d = open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8").read()
-    d = json.loads(d)
-    wk = next((x.get("wire_week") for x in manifest() if x["no"] == int(n)), None)
-    if wk:
-        d["wire"]["waivers"] = enrich(d["wire"]["waivers"], wk)
-    d = json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
-    inject(f"issues/{y}/issue-{n}/index.html", "ISSUE-DATA", f'<script id="issue-data" type="application/json">{d}</script>')
-    inject(f"issues/{y}/issue-{n}/index.html", "MANAGERS", '<script id="managers-data" type="application/json">' + json.dumps(managers(), ensure_ascii=False).replace("</", "<\\/") + "</script>")
-
-def leaderboard():
-    rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
-    img = lambda k, c: f'<img class="tro {c}" src="assets/trophy-{k}.webp" alt="" width="132" height="240" loading="lazy">'
-    card = lambda r, c, tag, k: f'<div class="{c}">{img(k, "t" + c[-1] if c[0] == "p" else "tt")}<div class="ti"><small>{tag}</small><b class="rk">#{r["rank"]}</b><h3>{av(r["manager"], 32)}{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>'
-    top = "".join(card(r, f"p{i}", t, k) for i, (r, t, k) in enumerate(zip(rows[:3], ("Gold", "Silver", "Bronze"), ("gold", "silver", "bronze")), 1))
-    low = "".join(card(r, "lo", "Bottom", "trash") for r in rows[-2:])
-    return (f'<div class="lbx"><div class="podium">{top}</div><div class="dz"><h3 class="dzh">The Danger Zone</h3><div class="dzg">{low}</div></div></div>'
-            '<p class="key"><a href="#standings">Full standings below</a></p>')
-
+# ---------------------------------------------------------------- issue pages
 def ordinal(n):
     return {1: "1st", 2: "2nd", 3: "3rd"}.get(n, f"{n}th")
 
@@ -133,17 +164,53 @@ def _k(name, pos=""):
         return "DEF:" + name.replace("D/ST", "").split()[-1].lower()
     return ("DEF:" + name.split()[-1].lower()) if pos == "DEF" else name.lower()
 
-def enrich(waivers, week):
-    """Fill position and FAAB bid from the Sleeper feed where the hand-written issue data lacks them."""
-    feed = {(t["manager"], _k(t["added"]["name"], t["added"].get("pos", ""))): t for t in txfeed() if t["week"] == week and t["type"] != "trade"}
-    out = []
-    for x in waivers:
-        x = list(x) + [""] * (6 - len(x))
-        t = feed.get((x[0], _k(x[1])))
-        x.append(t["added"].get("pos", "") if t else "")
-        if t and not x[2]:
-            x[2] = t.get("bid") or 0
-        out.append(x)
+POS_ORDER = {"QB": 0, "RB": 1, "WR": 2, "TE": 3}
+
+def asset_list(side, other):
+    """What `side` receives, as the strings the issue page turns into chips."""
+    out = [f'{p["name"]} ({p["pos"]}, {p["team"]})' for p in sorted(side["receives_players"], key=lambda p: (POS_ORDER.get(p["pos"], 9), p["name"]))]
+    for k in sorted(side["receives_picks"], key=lambda k: (k["season"], int(k["round"]))):
+        frm = "" if k["original_owner"] in (other["manager"], side["manager"]) else f' (from {k["original_owner"]})'
+        out.append(f'{k["season"]} {ordinal(int(k["round"]))}-round pick{frm}')
+    if side.get("receives_faab"):
+        out.append(f'${side["receives_faab"]} FAAB')
+    return out
+
+def wire_trades(hand, week, rep):
+    """Hand-written trade prose + assets taken from the Sleeper feed."""
+    feed = [t for t in txfeed() if t["type"] == "trade" and t["week"] <= week]
+    used, out = set(), []
+    for h in hand:
+        pair = {h["a"], h["b"]}
+        hit = next((t for t in sorted(feed, key=lambda t: -(t.get("created") or 0)) if {x["manager"] for x in t["sides"]} == pair and id(t) not in used), None)
+        if not hit:
+            rep.append(f'trade {h["a"]}/{h["b"]}: no matching trade in transactions.json, assets omitted')
+            out.append({**h, "ar": [], "br": []})
+            continue
+        used.add(id(hit))
+        sa = next(x for x in hit["sides"] if x["manager"] == h["a"]); sb = next(x for x in hit["sides"] if x["manager"] == h["b"])
+        if hit["week"] != week:
+            rep.append(f'trade {h["a"]}/{h["b"]}: Sleeper logs it in Week {hit["week"]}, the issue covers Week {week}')
+        out.append({**h, "ar": asset_list(sa, sb), "br": asset_list(sb, sa)})
+    for t in feed:
+        if t["week"] == week and id(t) not in used:
+            rep.append("trade in Week %d not covered by the issue: %s" % (week, " / ".join(x["manager"] for x in t["sides"])))
+    return out
+
+def wire_waivers(notes, week, rep=None):
+    """Every claim that week comes from the feed; the desk's flags and one-liners (notes) are keyed by manager + player."""
+    ann = {(n["mgr"], _k(n["player"])): n for n in notes}
+    used, out = set(), []
+    for t in sorted((x for x in txfeed() if x["week"] == week and x["type"] != "trade"), key=lambda x: x.get("created") or 0):
+        key = (t["manager"], _k(t["added"]["name"], t["added"].get("pos", "")))
+        n = ann.get(key)
+        if n:
+            used.add(key)
+        out.append([t["manager"], t["added"]["name"], t.get("bid") or 0, ", ".join(t.get("dropped") or []), n["flag"] if n else "", n.get("note", "") if n else "", t["added"].get("pos", "")])
+    if rep is not None:
+        for k, n in ann.items():
+            if k not in used:
+                rep.append(f'waiver note for {n["mgr"]} / {n["player"]} has no matching claim in Week {week}')
     return out
 
 LABEL = {"mvp": "Waiver Wire MVP", "fav": "Desk Favorite", "note": "Desk note"}
@@ -161,13 +228,96 @@ def move_html(x, root=""):
     note = f'<p>{esc(x[5])}</p>' if x[5] else ""
     return f'<div class="hlw {x[4]}">{rows}<div class="txn">{badge}<div><b class="lab">{LABEL[x[4]]}</b>{note}</div></div></div>'
 
+def final_banner(week):
+    """Biggest margin of the week, straight from the week file."""
+    w = load_week(week)
+    best = max((t for t in w["teams"] if t["result"] == "W"), key=lambda t: t["points"] - t["opponent_points"])
+    gap = best["points"] - best["opponent_points"]
+    return (f'<section class="final" aria-label="Week {week} final score">\n'
+            f'<div class="side w"><small>Week {week} final</small><span>{esc(best["manager"])}</span><b>{best["points"]:.2f}</b></div>\n'
+            f'<div class="gap"><b>&minus;{gap:.2f}</b><small>Blowout of the week</small></div>\n'
+            f'<div class="side l"><small>Week {week} final</small><span>{esc(best["opponent"])}</span><b>{best["opponent_points"]:.2f}</b></div>\n</section>')
+
+def issue(n="04", y=2026):
+    man = next(x for x in manifest() if x["no"] == int(n))
+    wk = man.get("wire_week") or man.get("standings_week")
+    assert wk, f"issues.json needs wire_week for issue {n}"
+    d = json.load(open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8"))
+    rep = []
+    rows = asof(wk)
+    by = {r["manager"]: r for r in rows}
+    wkd = {t["manager"]: t for t in load_week(wk)["teams"]}
+    fb = faab_by_week(wk)
+    rank_pf = {r["manager"]: i + 1 for i, r in enumerate(sorted(rows, key=lambda r: -r["pf"]))}
+    history = final_weeks(wk)
+
+    def need(m):
+        if m not in by:
+            raise SystemExit(f"issue-{n}.json names {m!r}, who is not in the league data")
+        return by[m]
+
+    # standings (same block as the home page)
+    inject(f"issues/{y}/issue-{n}/index.html", "STAND", standings(rows, wk, "../../../"))
+    inject(f"issues/{y}/issue-{n}/index.html", "FINAL", final_banner(wk))
+
+    # bankroll: balances and weekly change from the feed, notes stay hand-written
+    notes = d["bank"]["notes"]
+    d["bank"] = [[m, f"${fb[wk][m]}", (lambda dl: "0" if not dl else f"+${dl}" if dl > 0 else f"-${-dl}")(fb[wk][m] - fb[wk - 1][m]), notes.get(m, "")] for m in sorted(fb[wk], key=lambda m: (fb[wk][m], list(notes).index(m) if m in notes else 99))]
+    d["standings"] = {"bank": d.pop("bank")}
+
+    # wire
+    d["wire"]["trades"] = wire_trades(d["wire"]["trades"], wk, rep)
+    d["wire"]["waivers"] = wire_waivers(d["wire"]["waivers"], wk, rep)
+
+    # post-game: scores, records, bench points and MVPs
+    for m in d["post"]:
+        a, b = wkd[m["a"]], wkd[m["b"]]
+        if a["opponent"] != m["b"]:
+            rep.append(f'post-game card {m["a"]} vs {m["b"]}: Sleeper says {m["a"]} played {a["opponent"]}')
+        m.update(ar=need(m["a"])["record"], br=need(m["b"])["record"], sa=a["points"], sb=b["points"],
+                 ba=a["bench_points"], bb=b["bench_points"], la=a["left_on_bench"], lb=b["left_on_bench"],
+                 ma=f'{pname(a["mvp"])} {pts(a["mvp"]["pts"])}', mb=f'{pname(b["mvp"])} {pts(b["mvp"]["pts"])}')
+
+    # pre-game and match of the week: records from the snapshot
+    for m in d["pre"] + [d["motw"]]:
+        m["ar"], m["br"] = need(m["a"])["record"], need(m["b"])["record"]
+    mo = d["motw"]
+    best = lambda mg: max(t["points"] for w in history for t in w["teams"] if t["manager"] == mg)
+    avg = lambda mg: need(mg)["pf"] / (need(mg)["wins"] + need(mg)["losses"] + need(mg)["ties"])
+    mo["stats"] = [["Record", mo["ar"], mo["br"]],
+                   ["PF Rank", ordinal(rank_pf[mo["a"]]), ordinal(rank_pf[mo["b"]])],
+                   ["Best Week", f"{best(mo['a']):.2f}", f"{best(mo['b']):.2f}"],
+                   ["AVG PF", f"{avg(mo['a']):.1f}", f"{avg(mo['b']):.1f}"]]
+
+    # power rankings: record, future capital and draft slot from data; order, movement, age and verdict are the desk's
+    fc = jload("data/fut_cap.json", {})
+    d["power"]["rows"] = [[i + 1, r["mgr"], need(r["mgr"])["record"], r["mov"], r["age"], fc.get(r["mgr"], 0), f'1.{need(r["mgr"])["draft_pick"]:02d}', r["verdict"]]
+                          for i, r in enumerate(d["power"]["rows"])]
+
+    d["meta"] = {"week": wk, "maxpf": MAXPF_LONG}
+    path = f"issues/{y}/issue-{n}/index.html"
+    blob = json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
+    inject(path, "ISSUE-DATA", f'<script id="issue-data" type="application/json">{blob}</script>')
+    inject(path, "MANAGERS", '<script id="managers-data" type="application/json">' + json.dumps(managers(), ensure_ascii=False).replace("</", "<\\/") + "</script>")
+    for line in rep:
+        print(f"  note (issue {n}): {line}")
+
+def leaderboard():
+    rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
+    img = lambda k, c: f'<img class="tro {c}" src="assets/trophy-{k}.webp" alt="" width="132" height="240" loading="lazy">'
+    card = lambda r, c, tag, k: f'<div class="{c}">{img(k, "t" + c[-1] if c[0] == "p" else "tt")}<div class="ti"><small>{tag}</small><b class="rk">#{r["rank"]}</b><h3>{av(r["manager"], 32)}{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>'
+    top = "".join(card(r, f"p{i}", t, k) for i, (r, t, k) in enumerate(zip(rows[:3], ("Gold", "Silver", "Bronze"), ("gold", "silver", "bronze")), 1))
+    low = "".join(card(r, "lo", "Bottom", "trash") for r in rows[-2:])
+    return (f'<div class="lbx"><div class="podium">{top}</div><div class="dz"><h3 class="dzh">The Danger Zone</h3><div class="dzg">{low}</div></div></div>'
+            '<p class="key"><a href="#standings">Full standings below</a></p>')
+
 def transactions(m):
     i = next((x for x in m if x.get("web")), None)
     if not i:
         return ""
     fin = i.get("wire_week") or 1
     d = json.load(open(os.path.join(ROOT, f"data/issues/issue-{i['no']:02d}.json"), encoding="utf-8"))
-    ws = enrich(d["wire"]["waivers"], fin)
+    ws = wire_waivers(d["wire"]["waivers"], fin)
     notable = lambda x: x[4] in ("mvp", "fav") or x[2] >= 50
     out = [f'<h3 class="wk">Week {fin} highlights</h3>']
     for t in (x for x in txfeed() if x["week"] == fin and x["type"] == "trade"):
@@ -194,7 +344,7 @@ def rules():
     c = Counter(json.load(open(os.path.join(ROOT, "data/league.json")))["roster_positions"])
     nm = {"SUPER_FLEX": "SFLEX", "BN": "Bench"}
     lineup = ", ".join((f"{n}&times;" if n > 1 else "") + nm.get(p, p) for p, n in c.items())
-    cards = [("Roster", lineup), ("Rookie draft", "2027 order by MAXPF, linear. Lowest MAXPF picks 1.01."), ("Trades", "Vetoes are on."), ("Payouts", "The playoff winner collects.")]
+    cards = [("Roster", lineup), ("Rookie draft", "2027 order by MAXPF (the best possible lineup each week, added up; Sleeper's Max PF), linear. Lowest MAXPF picks 1.01."), ("Trades", "Vetoes are on."), ("Payouts", "The playoff winner collects.")]
     return '<div class="rl">' + "".join(f"<div><h3>{a}</h3><p>{b}</p></div>" for a, b in cards) + "</div>"
 
 def manifest():

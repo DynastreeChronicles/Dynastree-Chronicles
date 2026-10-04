@@ -36,11 +36,16 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.normpath(os.path.join(HERE, "..", "data"))
 CACHE = os.path.normpath(os.path.join(HERE, "..", ".cache"))
 
-# MAXPF = total points scored by everyone on the roster that week (starters + bench).
-# True  -> include IR/taxi players in the total
-# False -> only count players who were eligible to be started
-# Issue 4 (Week 3 finals) shows Zygon at 569.64; counting IR/taxi gave 692.88, so this is False.
+# MAXPF = Max PF = the points of each week's OPTIMAL lineup (the best legal lineup the
+# roster could have started), summed over final weeks. This is the same idea as Sleeper's
+# built-in "Max PF" and it is what orders the 2027 rookie draft (lowest MAXPF = 1.01).
+#
+# It is NOT starters + bench. That number is kept as `roster_points` for reference only.
+#
+# True  -> IR/taxi players may be used to build the optimal lineup
+# False -> only players who were eligible to be started (IR/taxi excluded)
 MAXPF_INCLUDE_RESERVE = False
+MAXPF_DEFINITION = "optimal lineup points per week, summed (Sleeper Max PF)"
 
 SLOT_ELIGIBLE = {
     "QB": {"QB"}, "RB": {"RB"}, "WR": {"WR"}, "TE": {"TE"}, "K": {"K"}, "DEF": {"DEF"},
@@ -148,11 +153,12 @@ def process_week(lid, week, rmeta, slots, final):
         bench = [p for p in players if p not in set(starters)]
 
         points = m.get("points") or 0
-        counted = players if MAXPF_INCLUDE_RESERVE else list(startable)
-        maxpf = sum(pp.get(p, 0) for p in counted)
+        pool = players if MAXPF_INCLUDE_RESERVE else list(startable)
+        roster_pts = sum(pp.get(p, 0) for p in pool)       # starters + bench, reference only
         bench_pts = sum(pp.get(p, 0) for p in bench if p in startable)
-        opt = optimal_lineup(slots, [(p, pp.get(p, 0)) for p in startable])
+        opt = optimal_lineup(slots, [(p, pp.get(p, 0)) for p in pool])
         opt = max(opt, points)  # never report optimal below actual
+        maxpf = opt             # MAXPF is the optimal lineup, not the roster total
 
         o = opp.get(rid)
         result = None
@@ -164,6 +170,7 @@ def process_week(lid, week, rmeta, slots, final):
             "manager": rmeta[rid]["manager"],
             "points": round(points, 2),
             "maxpf": round(maxpf, 2),
+            "roster_points": round(roster_pts, 2),
             "bench_points": round(bench_pts, 2),
             "optimal": round(opt, 2),
             "left_on_bench": round(opt - points, 2),
@@ -243,6 +250,7 @@ def build_standings(weeks, info):
             "wins": int(a["w"]), "losses": int(a["l"]), "ties": int(a["t"]),
             "pf": round(a["pf"], 2), "pa": round(a["pa"], 2), "maxpf": round(a["maxpf"], 2),
             "faab_remaining": info[rid]["faab_remaining"],
+            "sleeper_maxpf": info[rid].get("sleeper_maxpf"),
             "rank": rk[rid], "prev_rank": pk[rid], "move": pk[rid] - rk[rid],
         })
     rows.sort(key=lambda r: r["rank"])
@@ -252,6 +260,21 @@ def build_standings(weeks, info):
         r["draft_pick"] = pick
         r["maxpf_gap_to_1_01"] = round(r["maxpf"] - low, 2)
     return rows
+
+
+def check_against_sleeper(rows, final_weeks, state):
+    """Compare our MAXPF with Sleeper's own Max PF. Sleeper may already include a week we do not
+    treat as final yet, so a gap is a warning to look at, never a reason to stop the build."""
+    bad = [r for r in rows if r.get("sleeper_maxpf") is not None and abs(r["sleeper_maxpf"] - r["maxpf"]) > 0.05]
+    if not rows or all(r.get("sleeper_maxpf") is None for r in rows):
+        print("MAXPF check: Sleeper returned no potential-points figure, nothing to compare")
+        return
+    if not bad:
+        print("MAXPF check: matches Sleeper's Max PF for every manager")
+        return
+    print("MAXPF check: our number and Sleeper's differ (check the 1.01 order before publishing):")
+    for r in sorted(bad, key=lambda r: r["draft_pick"]):
+        print(f"  1.{r['draft_pick']:02d} {r['manager']:<18} ours {r['maxpf']:>8.2f}  sleeper {r['sleeper_maxpf']:>8.2f}  diff {r['sleeper_maxpf'] - r['maxpf']:+.2f}")
 
 
 def dump(name, obj):
@@ -344,6 +367,9 @@ def main():
             "taxi": set(r.get("taxi") or []),
             "roster": r,
         }
+        st = r.get("settings") or {}
+        if "ppts" in st:   # Sleeper's own season "potential points" (Max PF)
+            rmeta[r["roster_id"]]["sleeper_ppts"] = round(st["ppts"] + st.get("ppts_decimal", 0) / 100, 2)
 
     sync_avatars(rmeta)
 
@@ -375,10 +401,12 @@ def main():
 
     budget = (league.get("settings") or {}).get("waiver_budget", 0)
     info = {rid: {"manager": rmeta[rid]["manager"],
+                  "sleeper_maxpf": rmeta[rid].get("sleeper_ppts"),
                   "faab_remaining": budget - (rmeta[rid]["roster"].get("settings") or {}).get("waiver_budget_used", 0)}
             for rid in rmeta}
     rows = build_standings(final_weeks, info)
     dump("standings.json", rows)
+    check_against_sleeper(rows, final_weeks, state)
 
     eff = []
     for rid, a in agg.items():
@@ -400,6 +428,8 @@ def main():
         "roster_positions": league["roster_positions"],
         "weeks_with_scores": played,
         "maxpf_includes_reserve": MAXPF_INCLUDE_RESERVE,
+        "maxpf_definition": MAXPF_DEFINITION,
+        "waiver_budget": budget,
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     })
     print(f"Wrote JSON to {OUT}")

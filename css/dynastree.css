@@ -271,3 +271,78 @@ nav.sticky .wrap{gap:clamp(.6rem,3.2vw,1rem);font-size:1rem;justify-content:spac
 .txn .lab{display:block;font:700 .85rem Oswald,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
 .txn p{margin:.1rem 0 0;font-size:.9rem;line-height:1.4;color:var(--mute);font-style:italic}
 .key .btn{margin:.6rem 0 0;font-size:1rem}
+
+/* ===== v7: issue page (post-game header + lopsided meter, trade cards, drama thermometers) ===== */
+
+/* post-game: the desk aside is the card's headline and stays visible when the card is closed */
+.pg .tag{margin:0 0 .8rem;padding:0 0 .6rem;border-bottom:1px solid var(--line);font:italic 800 clamp(1.15rem,3vw,1.55rem)/1.15 Oswald,"Arial Narrow",sans-serif;letter-spacing:.02em;text-transform:uppercase;text-align:left;color:#fff}
+details.acc.post>summary{padding-top:.9rem}
+.stat td:first-child,.stat th:first-child{width:36%}
+
+/* how lopsided: split bar (share of all points), centre tick = a dead-even game, five-step tier */
+.lop{--tc:var(--green);margin:.9rem 0 .1rem}
+.lop.t0{--tc:#7dd3fc}.lop.t1{--tc:#a3e635}.lop.t2{--tc:#facc15}.lop.t3{--tc:#fb923c}.lop.t4{--tc:#ff4d4d}
+.lbar{position:relative;display:flex;gap:2px;height:14px;border-radius:7px;background:var(--deep);box-shadow:inset 0 0 0 1px var(--line)}
+.lbar i{display:block;height:100%;min-width:0}
+.lbar i:first-child{border-radius:7px 0 0 7px}.lbar i:nth-child(2){border-radius:0 7px 7px 0}
+.lbar i.w{background:linear-gradient(90deg,#2fbf2a,var(--green))}
+.lbar i.l{background:linear-gradient(90deg,#8f2a35,#c24352)}
+.lbar u{position:absolute;left:50%;top:-4px;bottom:-4px;width:2px;transform:translateX(-50%);background:#fff;opacity:.8;border-radius:1px}
+.lop.t4 .lbar{box-shadow:0 0 0 1px rgba(255,77,77,.55),0 0 16px rgba(255,77,77,.35)}
+.lmeta{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem .9rem;margin-top:.55rem;font:500 1rem Oswald,"Arial Narrow",sans-serif;color:var(--mute)}
+.lmeta b{font:italic 800 1.15rem Oswald,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--tc)}
+.lmeta strong{color:#fff;font-weight:700}
+.lmeta .share{margin-left:auto}
+.pips{display:inline-flex;align-items:flex-end;gap:2px;height:16px}
+.pips s{display:block;width:5px;border-radius:1px;background:var(--line);text-decoration:none}
+.pips s:nth-child(1){height:6px}.pips s:nth-child(2){height:8px}.pips s:nth-child(3){height:11px}.pips s:nth-child(4){height:14px}.pips s:nth-child(5){height:17px}
+.pips s.on{background:var(--tc)}
+
+/* trade cards */
+.tm.tw-list{grid-template-columns:minmax(0,1fr)}
+.tc.tw,.tc.hy{padding:0;overflow:hidden;border-top:1px solid var(--line);border-radius:14px}
+.twh{display:flex;align-items:center;gap:.9rem;padding:.7rem 1.1rem;background:linear-gradient(90deg,rgba(47,109,240,.38),rgba(69,224,58,.08));border-bottom:1px solid var(--line)}
+.twh h3{margin:0;font:italic 800 clamp(1.15rem,3vw,1.5rem)/1.15 Oswald,"Arial Narrow",sans-serif;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
+.twh h3 i{font-style:normal;color:var(--green);padding:0 .35rem}
+.twh .tg{flex:none;font-size:1rem}
+.tsides{position:relative;display:grid;grid-template-columns:1fr 1fr}
+.ts{position:relative;padding:1rem 1.1rem 1.2rem;border-top:3px solid var(--gc,var(--blue));min-width:0}
+.ts+.ts,.ts+.swap+.ts{border-left:1px solid var(--line)}
+.ts::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(110% 80% at 100% 0,color-mix(in srgb,var(--gc,transparent) 14%,transparent),transparent 65%)}
+.ts>*{position:relative}
+.tsh{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.tsw{display:flex;align-items:center;gap:.7rem;min-width:0}.tsw .av{margin:0}
+.tsw b{display:block;font:700 1.2rem/1.15 Inter,system-ui,sans-serif;color:#fff;overflow-wrap:anywhere}
+.tsw small{display:block;line-height:1.2}
+.gfig{flex:none;margin:0;text-align:center}
+.gr.xl{display:block;height:5.6rem;width:auto;margin:0 auto;filter:drop-shadow(0 6px 14px color-mix(in srgb,var(--gc,#000) 45%,transparent))}
+.gfig figcaption{margin-top:.2rem;font:600 .8rem Oswald,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.ts h5{margin:.8rem 0 .1rem;font:700 .95rem Oswald,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--sky)}
+.ts p{margin:.2rem 0;font-size:.95rem;line-height:1.45;color:var(--mute)}
+.tc.tw>.desk,.tc.hy>.desk{margin:.2rem 1.1rem 1.1rem}
+.swap{position:absolute;left:50%;top:1.1rem;z-index:2;transform:translateX(-50%);width:2rem;height:2rem;display:grid;place-items:center;border-radius:50%;background:var(--bg);border:1px solid var(--line);color:var(--green);font-size:1.1rem}
+@media(max-width:700px){
+.tsides{grid-template-columns:minmax(0,1fr)}.ts+.ts,.ts+.swap+.ts{border-left:0}
+.gr.xl{height:4.6rem}.swap{display:none}
+.lmeta .share{margin-left:0;flex-basis:100%}
+}
+
+/* drama of the week: thermometers */
+.dr{grid-template-columns:6.2rem 1fr;gap:1.3rem;align-items:start}
+.heatbox{display:flex;flex-direction:column;align-items:center;gap:.25rem;color:var(--c,var(--red))}
+.thermo{display:block;width:58px;height:auto;overflow:visible}
+.thermo .tube,.thermo .bulb{fill:#0a1020;stroke:#4a5b87;stroke-width:2}
+.thermo .merc,.thermo .core{fill:var(--c)}
+.thermo .merc{filter:drop-shadow(0 0 3px var(--c))}
+.thermo .tk{stroke:#5b6b94;stroke-width:1.5;stroke-linecap:round}
+.deg{font:italic 800 1.8rem/1 Oswald,"Arial Narrow",sans-serif;color:var(--c);font-variant-numeric:tabular-nums;white-space:nowrap}
+.deg b{font-weight:800}
+/* 100 and up runs hot: the whole gauge pulses */
+@keyframes fever-glow{0%,100%{filter:drop-shadow(0 0 2px var(--c))}50%{filter:drop-shadow(0 0 13px var(--c))}}
+@keyframes fever-bulb{0%,100%{transform:scale(1)}50%{transform:scale(1.16)}}
+@keyframes fever-deg{0%,100%{text-shadow:0 0 0 transparent}50%{text-shadow:0 0 14px var(--c)}}
+.fever .thermo{animation:fever-glow 1.1s ease-in-out infinite}
+.fever .core{transform-box:fill-box;transform-origin:center;animation:fever-bulb 1.1s ease-in-out infinite}
+.fever .deg{animation:fever-deg 1.1s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.fever .thermo,.fever .core,.fever .deg{animation:none}}
+@media(max-width:760px){.dr{grid-template-columns:4.6rem 1fr;gap:.9rem}.thermo{width:44px}.deg{font-size:1.35rem}}
