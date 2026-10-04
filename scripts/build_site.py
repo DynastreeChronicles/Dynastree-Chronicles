@@ -49,16 +49,25 @@ def leaderboard():
     cards = "".join(f'<div class="{"hi" if k == "Top" else "lo"}"><small>{k}</small><b class="rk">#{r["rank"]}</b><h3>{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div>' for k, r in pk)
     return f'<div class="lb">{cards}</div><p class="key"><a href="#standings">Full standings below</a></p>'
 
+def ordinal(n):
+    return {1: "1st", 2: "2nd", 3: "3rd"}.get(n, f"{n}th")
+
 def transactions():
-    tx = sorted(json.load(open(os.path.join(ROOT, "data/transactions.json"))), key=lambda t: -(t.get("created") or 0))[:8]
+    tx = json.load(open(os.path.join(ROOT, "data/transactions.json")))
     out = []
-    for t in tx:
-        if t["type"] == "trade":
-            tag, txt = "Trade", " &harr; ".join(esc(s["manager"]) for s in t["sides"])
-        else:
-            tag = "Waiver"
-            txt = f'<b>{esc(t["manager"])}</b> + {esc(t["added"]["name"])}' + (f' &minus; {esc(", ".join(t["dropped"]))}' if t["dropped"] else "") + (f' (${t["bid"]})' if t.get("bid") else "")
-        out.append(f'<div class="tx"><span class="tg {tag.lower()}">{tag}</span><span>{txt}</span><small>Wk {t["week"]}</small></div>')
+    for w in sorted({t["week"] for t in tx}, reverse=True)[:2]:
+        ws = [t for t in tx if t["week"] == w]
+        out.append(f'<h3 class="wk">Week {w}</h3>')
+        for t in (x for x in ws if x["type"] == "trade"):
+            def gets(s):
+                items = [p["name"] for p in s["receives_players"]] + [f'{p["season"]} {ordinal(int(p["round"]))}' for p in s["receives_picks"]] + ([f'${s["receives_faab"]} FAAB'] if s.get("receives_faab") else [])
+                return f'{esc(s["manager"])} gets {esc(", ".join(items) or "nothing")}'
+            out.append('<div class="tx trade"><span class="tg trade">&#129309; TRADE</span><div class="tb"><b>' + " &harr; ".join(esc(s["manager"]) for s in t["sides"]) + "</b><small>" + " &middot; ".join(gets(s) for s in t["sides"]) + "</small></div></div>")
+        for t in sorted((x for x in ws if x["type"] != "trade"), key=lambda x: -(x.get("created") or 0)):
+            bid = f' &middot; ${t["bid"]}' if t.get("bid") else ""
+            out.append(f'<div class="tx"><span class="tg add">+ ADD</span><span><b>{esc(t["manager"])}</b> &bull; {esc(t["added"]["name"])}</span><small>Wk {w}{bid}</small></div>')
+            for d in t.get("dropped") or []:
+                out.append(f'<div class="tx"><span class="tg drop">&minus; DROP</span><span><b>{esc(t["manager"])}</b> &bull; {esc(d)}</span><small>Wk {w}</small></div>')
     return '<div class="txl">' + "".join(out) + '</div><p class="key"><a href="issues/2026/issue-04/#wire">Full wire and grades in the latest issue</a></p>'
 
 def rules():
@@ -80,7 +89,7 @@ def home_blocks(m):
     inject("index.html", "TICKER", "".join(f"<span>{esc(x)}</span>" for x in i.get("ticker", [])))
     inject("index.html", "BANNER", f'<a class="banner" href="{link(i)}"><small>Latest &middot; Issue {i["no"]}</small><h2>{esc(i.get("banner", i.get("title", "")))}</h2><span class="btn">{"Read" if i.get("web") else "Download"} Issue {i["no"]}</span></a>')
     read = f'<a class="btn" href="{link(i)}">Read Issue {i["no"]}</a>' if i.get("web") else ""
-    inject("index.html", "HERO", f'<h2><span class="iss">Issue {i["no"]}:</span> {esc(i.get("title", ""))}</h2>\n<p class="dek">{esc(i.get("dek", ""))}</p>\n{read}<a class="btn{" o" if i.get("web") else ""}" href="{i["pdf"]}">Download PDF</a>')
+    inject("index.html", "HERO", f'<h2><span class="iss">Issue {i["no"]}:</span> {esc(i.get("title", ""))}</h2>\n<p class="dek">{esc(i.get("dek", ""))}</p>\n<a class="btn" href="{i["pdf"]}">Download PDF</a>')
     top, out = max(x["year"] for x in m), []
     for y in sorted({x["year"] for x in m}, reverse=True):
         its = [x for x in m if x["year"] == y]
