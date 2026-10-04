@@ -37,11 +37,11 @@ def standings():
             f'MAXPF = every point your whole roster scored (starters + bench). 2027 pick: lowest MAXPF gets 1.01, highest gets 1.12. '
             f'FAAB is the current balance.</p>')
 
-def issue(n="04"):
+def issue(n="04", y=2026):
     d = open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8").read()
     json.loads(d)
     d = json.dumps(json.loads(d), ensure_ascii=False).replace("</", "<\\/")
-    inject(f"issues/2026/issue-{n}/index.html", "ISSUE-DATA", f'<script id="issue-data" type="application/json">{d}</script>')
+    inject(f"issues/{y}/issue-{n}/index.html", "ISSUE-DATA", f'<script id="issue-data" type="application/json">{d}</script>')
 
 def leaderboard():
     rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
@@ -69,10 +69,31 @@ def rules():
     cards = [("Roster", lineup), ("Rookie draft", "2027 order by MAXPF, linear. Lowest MAXPF picks 1.01."), ("Trades", "Vetoes are on."), ("Payouts", "The playoff winner collects.")]
     return '<div class="rl">' + "".join(f"<div><h3>{a}</h3><p>{b}</p></div>" for a, b in cards) + "</div>"
 
+def manifest():
+    return sorted(json.load(open(os.path.join(ROOT, "data/issues.json"), encoding="utf-8")), key=lambda i: -i["no"])
+
+def link(i):
+    return f'issues/{i["year"]}/issue-{i["no"]:02d}/' if i.get("web") else i["pdf"]
+
+def home_blocks(m):
+    i = m[0]
+    inject("index.html", "TICKER", "".join(f"<span>{esc(x)}</span>" for x in i.get("ticker", [])))
+    inject("index.html", "BANNER", f'<a class="banner" href="{link(i)}"><small>Latest &middot; Issue {i["no"]}</small><h2>{esc(i.get("banner", i.get("title", "")))}</h2><span class="btn">{"Read" if i.get("web") else "Download"} Issue {i["no"]}</span></a>')
+    read = f'<a class="btn" href="{link(i)}">Read Issue {i["no"]}</a>' if i.get("web") else ""
+    inject("index.html", "HERO", f'<h2><span class="iss">Issue {i["no"]}:</span> {esc(i.get("title", ""))}</h2>\n<p class="dek">{esc(i.get("dek", ""))}</p>\n{read}<a class="btn{" o" if i.get("web") else ""}" href="{i["pdf"]}">Download PDF</a>')
+    top, out = max(x["year"] for x in m), []
+    for y in sorted({x["year"] for x in m}, reverse=True):
+        its = [x for x in m if x["year"] == y]
+        rows = "".join(f'<div class="r"><span class="no">{x["no"]}</span><div><h3>Issue {x["no"]}</h3><p>{esc(x["weeks"])}</p></div><span class="go">' + (f'<a href="{link(x)}">Read</a>' if x.get("web") else "") + f'<a href="{x["pdf"]}">PDF</a></span></div>' for x in its)
+        out.append(f'<details class="yr"{" open" if y == top else ""}><summary>{y} <small>{len(its)} issues</small></summary>{rows}</details>')
+    inject("index.html", "ARCHIVE", "\n".join(out))
+
 if __name__ == "__main__":
     inject("index.html", "LEADERBOARD", leaderboard())
     inject("index.html", "TX", transactions())
     inject("index.html", "RULES", rules())
     inject("index.html", "STANDINGS", standings())
-    issue("04")
+    m = manifest()
+    home_blocks(m)
+    [issue(f'{x["no"]:02d}', x["year"]) for x in m if x.get("web")]
     print("site built")
