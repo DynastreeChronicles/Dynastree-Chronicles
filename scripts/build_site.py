@@ -324,11 +324,13 @@ def issue(n="04", y=2026):
         print(f"  note (issue {n}): {line}")
 
 def leaderboard():
+    """Home-page leaderboard: a podium for the top three (the trophy is the rank, no '#1' text) and a danger zone for the bottom two."""
     rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
-    img = lambda k, c: f'<img class="tro {c}" src="assets/trophy-{k}.webp" alt="" width="132" height="240" loading="lazy">'
-    card = lambda r, c, tag, k: f'<div class="{c}">{img(k, "t" + c[-1] if c[0] == "p" else "tt")}<div class="ti"><small>{tag}</small><b class="rk">#{r["rank"]}</b><h3>{av(r["manager"], 32)}{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>'
-    top = "".join(card(r, f"p{i}", t, k) for i, (r, t, k) in enumerate(zip(rows[:3], ("Gold", "Silver", "Bronze"), ("gold", "silver", "bronze")), 1))
-    low = "".join(card(r, "lo", "Bottom", "trash") for r in rows[-2:])
+    def pod(r, cls, k, label):
+        return (f'<div class="pd {cls}"><img class="tro" src="assets/trophy-{k}.webp" alt="{label}" width="132" height="240" loading="lazy">'
+                f'{av(r["manager"], 52)}<div class="pi"><h3>{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div><i class="step"></i></div>')
+    top = "".join(pod(r, c, k, l) for r, c, k, l in zip(rows[:3], ("p1", "p2", "p3"), ("gold", "silver", "bronze"), ("1st place", "2nd place", "3rd place")))
+    low = "".join(f'<div class="lo"><img class="tro tt" src="assets/trophy-trash.webp" alt="Last place" width="132" height="240" loading="lazy">{av(r["manager"], 40)}<div><h3>{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>' for r in rows[-2:])
     return (f'<div class="lbx"><div class="podium">{top}</div><div class="dz"><h3 class="dzh">The Danger Zone</h3><div class="dzg">{low}</div></div></div>'
             '<p class="key"><a href="#standings">Full standings below</a></p>')
 
