@@ -43,7 +43,36 @@ def issue(n="04"):
     d = json.dumps(json.loads(d), ensure_ascii=False).replace("</", "<\\/")
     inject(f"issues/2026/issue-{n}/index.html", "ISSUE-DATA", f'<script id="issue-data" type="application/json">{d}</script>')
 
+def leaderboard():
+    rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
+    pk = [("Top", r) for r in rows[:3]] + [("Bottom", r) for r in rows[-2:]]
+    cards = "".join(f'<div class="{"hi" if k == "Top" else "lo"}"><small>{k}</small><b class="rk">#{r["rank"]}</b><h3>{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div>' for k, r in pk)
+    return f'<div class="lb">{cards}</div><p class="key"><a href="#standings">Full standings below</a></p>'
+
+def transactions():
+    tx = sorted(json.load(open(os.path.join(ROOT, "data/transactions.json"))), key=lambda t: -(t.get("created") or 0))[:8]
+    out = []
+    for t in tx:
+        if t["type"] == "trade":
+            tag, txt = "Trade", " &harr; ".join(esc(s["manager"]) for s in t["sides"])
+        else:
+            tag = "Waiver"
+            txt = f'<b>{esc(t["manager"])}</b> + {esc(t["added"]["name"])}' + (f' &minus; {esc(", ".join(t["dropped"]))}' if t["dropped"] else "") + (f' (${t["bid"]})' if t.get("bid") else "")
+        out.append(f'<div class="tx"><span class="tg {tag.lower()}">{tag}</span><span>{txt}</span><small>Wk {t["week"]}</small></div>')
+    return '<div class="txl">' + "".join(out) + '</div><p class="key"><a href="issues/2026/issue-04/#wire">Full wire and grades in the latest issue</a></p>'
+
+def rules():
+    from collections import Counter
+    c = Counter(json.load(open(os.path.join(ROOT, "data/league.json")))["roster_positions"])
+    nm = {"SUPER_FLEX": "SFLEX", "BN": "Bench"}
+    lineup = ", ".join((f"{n}&times;" if n > 1 else "") + nm.get(p, p) for p, n in c.items())
+    cards = [("Roster", lineup), ("Rookie draft", "2027 order by MAXPF, linear. Lowest MAXPF picks 1.01."), ("Trades", "Vetoes are on."), ("Payouts", "The playoff winner collects.")]
+    return '<div class="rl">' + "".join(f"<div><h3>{a}</h3><p>{b}</p></div>" for a, b in cards) + "</div>"
+
 if __name__ == "__main__":
+    inject("index.html", "LEADERBOARD", leaderboard())
+    inject("index.html", "TX", transactions())
+    inject("index.html", "RULES", rules())
     inject("index.html", "STANDINGS", standings())
     issue("04")
     print("site built")
