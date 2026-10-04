@@ -32,8 +32,8 @@ CACHE = os.path.normpath(os.path.join(HERE, "..", ".cache"))
 # MAXPF = total points scored by everyone on the roster that week (starters + bench).
 # True  -> include IR/taxi players in the total
 # False -> only count players who were eligible to be started
-# Calibrate against the MAXPF column in Issue 4 and flip this if the numbers are off.
-MAXPF_INCLUDE_RESERVE = True
+# Issue 4 (Week 3 finals) shows Zygon at 569.64; counting IR/taxi gave 692.88, so this is False.
+MAXPF_INCLUDE_RESERVE = False
 
 SLOT_ELIGIBLE = {
     "QB": {"QB"}, "RB": {"RB"}, "WR": {"WR"}, "TE": {"TE"}, "K": {"K"}, "DEF": {"DEF"},
@@ -209,6 +209,44 @@ def build_transactions(lid, weeks, rmeta):
     return out
 
 
+def build_standings(weeks, info):
+    """weeks: FINAL weeks only. info: {roster_id: {"manager", "faab_remaining"}}.
+    Rank = wins (ties count half), then points for. Movement compares with the previous final week."""
+    def agg(ws):
+        a = defaultdict(lambda: defaultdict(float))
+        for wk in ws:
+            for t in wk["teams"]:
+                x = a[t["roster_id"]]
+                x["pf"] += t["points"]; x["pa"] += t["opponent_points"] or 0; x["maxpf"] += t["maxpf"]
+                x["w"] += t["result"] == "W"; x["l"] += t["result"] == "L"; x["t"] += t["result"] == "T"
+        return a
+
+    def ranks(a):
+        order = sorted(a, key=lambda r: (-(a[r]["w"] + 0.5 * a[r]["t"]), -a[r]["pf"]))
+        return {r: i + 1 for i, r in enumerate(order)}
+
+    cur = agg(weeks)
+    rk = ranks(cur)
+    pk = ranks(agg(weeks[:-1])) if len(weeks) > 1 else rk
+    rows = []
+    for rid, a in cur.items():
+        rows.append({
+            "roster_id": rid, "manager": info[rid]["manager"],
+            "record": f"{int(a['w'])}-{int(a['l'])}" + (f"-{int(a['t'])}" if a["t"] else ""),
+            "wins": int(a["w"]), "losses": int(a["l"]), "ties": int(a["t"]),
+            "pf": round(a["pf"], 2), "pa": round(a["pa"], 2), "maxpf": round(a["maxpf"], 2),
+            "faab_remaining": info[rid]["faab_remaining"],
+            "rank": rk[rid], "prev_rank": pk[rid], "move": pk[rid] - rk[rid],
+        })
+    rows.sort(key=lambda r: r["rank"])
+    by_maxpf = sorted(rows, key=lambda r: r["maxpf"])
+    low = by_maxpf[0]["maxpf"] if by_maxpf else 0
+    for pick, r in enumerate(by_maxpf, 1):  # lowest MAXPF = 1.01
+        r["draft_pick"] = pick
+        r["maxpf_gap_to_1_01"] = round(r["maxpf"] - low, 2)
+    return rows
+
+
 def dump(name, obj):
     path = os.path.join(OUT, name)
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -259,43 +297,22 @@ def main():
     played = [x["week"] for x in weeks]
     print(f"Weeks with scores: {played}")
 
-    # Season rollups
+    # Season rollups: only FINAL weeks count (an in-progress week must not show up as a loss)
+    final_weeks = [w for w in weeks if w["final"]]
     agg = defaultdict(lambda: defaultdict(float))
-    for wk in weeks:
+    for wk in final_weeks:
         for t in wk["teams"]:
             a = agg[t["roster_id"]]
             a["pf"] += t["points"]
-            a["pa"] += t["opponent_points"] or 0
-            a["maxpf"] += t["maxpf"]
             a["optimal"] += t["optimal"]
             a["bench_points"] += t["bench_points"]
             a["left_on_bench"] += t["left_on_bench"]
-            a["w"] += t["result"] == "W"
-            a["l"] += t["result"] == "L"
-            a["t"] += t["result"] == "T"
 
     budget = (league.get("settings") or {}).get("waiver_budget", 0)
-    rows = []
-    for rid, a in agg.items():
-        rs = rmeta[rid]["roster"].get("settings") or {}
-        rows.append({
-            "roster_id": rid,
-            "manager": rmeta[rid]["manager"],
-            "record": f"{int(a['w'])}-{int(a['l'])}" + (f"-{int(a['t'])}" if a["t"] else ""),
-            "wins": int(a["w"]), "losses": int(a["l"]), "ties": int(a["t"]),
-            "pf": round(a["pf"], 2), "pa": round(a["pa"], 2),
-            "maxpf": round(a["maxpf"], 2),
-            "faab_remaining": budget - rs.get("waiver_budget_used", 0),
-            "sleeper_record": f"{rs.get('wins', 0)}-{rs.get('losses', 0)}",
-        })
-    rows.sort(key=lambda r: (-r["wins"], -r["pf"]))
-    for i, r in enumerate(rows, 1):
-        r["rank"] = i
-    by_maxpf = sorted(rows, key=lambda r: r["maxpf"])
-    low = by_maxpf[0]["maxpf"] if by_maxpf else 0
-    for pick, r in enumerate(by_maxpf, 1):
-        r["draft_pick"] = pick
-        r["maxpf_gap_to_1_01"] = round(r["maxpf"] - low, 2)
+    info = {rid: {"manager": rmeta[rid]["manager"],
+                  "faab_remaining": budget - (rmeta[rid]["roster"].get("settings") or {}).get("waiver_budget_used", 0)}
+            for rid in rmeta}
+    rows = build_standings(final_weeks, info)
     dump("standings.json", rows)
 
     eff = []
