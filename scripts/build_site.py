@@ -34,28 +34,40 @@ def av(name, size=28, root=""):
     inner = f'<img src="{root}{m["avatar"]}" alt="" loading="lazy" width="{size}" height="{size}">' if m.get("avatar") else esc(initials(name))
     return f'<span class="av" style="--s:{size}px;--h:{h}">{inner}</span>'
 
+def prev_picks(fin):
+    """Draft slot as of the previous final week (lowest MAXPF = 1.01), from data/weeks."""
+    tot = {}
+    for w in range(1, fin):
+        p = os.path.join(ROOT, f"data/weeks/week-{w:02d}.json")
+        if not os.path.exists(p):
+            return {}
+        for t in json.load(open(p, encoding="utf-8"))["teams"]:
+            tot[t["roster_id"]] = tot.get(t["roster_id"], 0) + t["maxpf"]
+    return {r: i + 1 for i, r in enumerate(sorted(tot, key=lambda r: tot[r]))}
+
+def mv(m):
+    return f'<span class="up">&#9650; {m}</span>' if m > 0 else f'<span class="dn">&#9660; {-m}</span>' if m < 0 else '<span class="flat">&mdash;</span>'
+
 def standings():
     rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
-    league = json.load(open(os.path.join(ROOT, "data/league.json")))
-    weeks = [w for w in league["weeks_with_scores"]]
     fin = rows and max(r["wins"] + r["losses"] + r["ties"] for r in rows)
-    body = []
-    for r in rows:
-        m = r.get("move", 0)
-        mv = f'<span class="up">&#9650; {m}</span>' if m > 0 else f'<span class="dn">&#9660; {-m}</span>' if m < 0 else '<span class="flat">&mdash;</span>'
-        body.append(
-            f'<tr data-rank="{r["rank"]}" data-draft="{r["draft_pick"]}"><td class="n">{r["rank"]}</td><td>{av(r["manager"], 24)}<b>{esc(r["manager"])}</b></td>'
-            f'<td class="n">{esc(r["record"])}</td><td class="n mv">{mv}</td><td class="n">{r["pf"]:.2f}</td>'
-            f'<td class="n">{r["maxpf"]:.2f}</td><td class="n">${r["faab_remaining"]}</td>'
-            f'<td class="n pick">1.{r["draft_pick"]:02d}</td></tr>')
-    head = ('<th class="n">#</th><th>Team</th><th class="n">W-L</th><th class="n">Move</th><th class="n">PF</th>'
-            '<th class="n">MAXPF</th><th class="n">FAAB</th><th class="n">2027 pick</th>')
-    return (f'<div class="sortbar" role="group" aria-label="Sort standings"><button class="chip on" data-sort="rank">Standings order</button>'
-            f'<button class="chip" data-sort="draft">Draft order</button></div>'
-            f'<div class="sc"><table id="standtable"><thead><tr>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>'
-            f'<p class="key">Records, PF and MAXPF through Week {fin} finals. Move = change in standings spots since the previous week. '
-            f'MAXPF = every point your whole roster scored (starters + bench). 2027 pick: lowest MAXPF gets 1.01, highest gets 1.12. '
-            f'FAAB is the current balance.</p>')
+    pp = prev_picks(fin)
+    p = os.path.join(ROOT, "data/fut_cap.json")
+    fc = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+    team = lambda r: f'<td>{av(r["manager"], 24)}<b>{esc(r["manager"])}</b></td>'
+    rk = "".join(f'<tr><td class="n">{r["rank"]}</td>{team(r)}<td class="n">{esc(r["record"])}</td><td class="n mv">{mv(r.get("move", 0))}</td><td class="n">{r["pf"]:.2f}</td><td class="n">${r["faab_remaining"]}</td></tr>' for r in rows)
+    dr = ""
+    for r in sorted(rows, key=lambda r: r["draft_pick"]):
+        f = fc.get(r["manager"])
+        dr += (f'<tr><td class="n pick">1.{r["draft_pick"]:02d}</td>{team(r)}<td class="n">{"&mdash;" if f is None else f}</td>'
+               f'<td class="n">{r["maxpf"]:.2f}</td><td class="n mv">{mv(pp.get(r["roster_id"], r["draft_pick"]) - r["draft_pick"])}</td><td class="n">${r["faab_remaining"]}</td></tr>')
+    h = lambda cols: "<tr>" + "".join(f'<th{" class=\"n\"" if i else ""}>{c}</th>' if c != "Team" else "<th>Team</th>" for i, c in enumerate(cols)) + "</tr>"
+    return (f'<div class="sortbar" role="group" aria-label="Standings view"><button class="chip on" data-view="rank">Standings order</button><button class="chip" data-view="draft">Draft order</button></div>'
+            f'<div class="sc" id="v-rank"><table id="standtable"><thead>{h(["#", "Team", "W-L", "MOV", "PF", "FAAB"])}</thead><tbody>{rk}</tbody></table>'
+            f'<p class="key">Through Week {fin} finals. MOV = change in standings spots since the previous week. FAAB is the current balance.</p></div>'
+            f'<div class="sc" id="v-draft" hidden><table id="drafttable"><thead>{h(["Pick", "Team", "FUT CAP", "MAXPF", "MOV", "FAAB"])}</thead><tbody>{dr}</tbody></table>'
+            f'<p class="key">2027 rookie draft order: lowest MAXPF picks 1.01. MOV = spots gained or lost in the pick since the previous week. '
+            f'FUT CAP is future capital as scored in the Issue 4 power rankings: Early 1st 100, Mid-Late 1st 75, 2nd-year 1st 60, 3rd-year 1st 50, any 2nd 30, any 3rd 10.</p></div>')
 
 def issue(n="04", y=2026):
     d = open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8").read()
@@ -66,9 +78,11 @@ def issue(n="04", y=2026):
 
 def leaderboard():
     rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
-    pk = [("Top", r) for r in rows[:3]] + [("Bottom", r) for r in rows[-2:]]
-    cards = "".join(f'<div class="{"hi" if k == "Top" else "lo"}"><small>{k}</small><b class="rk">#{r["rank"]}</b><h3>{av(r["manager"], 32)}{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div>' for k, r in pk)
-    return f'<div class="lb">{cards}</div><p class="key"><a href="#standings">Full standings below</a></p>'
+    card = lambda r, c, tag: f'<div class="{c}"><small>{tag}</small><b class="rk">#{r["rank"]}</b><h3>{av(r["manager"], 32)}{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div>'
+    top = "".join(card(r, f"p{i}", t) for i, (r, t) in enumerate(zip(rows[:3], ("Gold", "Silver", "Bronze")), 1))
+    low = "".join(card(r, "lo", "Bottom") for r in rows[-2:])
+    return (f'<div class="lbx"><div class="podium">{top}</div><div class="dz"><h3 class="dzh">The Danger Zone</h3><div class="dzg">{low}</div></div></div>'
+            '<p class="key"><a href="#standings">Full standings below</a></p>')
 
 def ordinal(n):
     return {1: "1st", 2: "2nd", 3: "3rd"}.get(n, f"{n}th")
@@ -84,11 +98,19 @@ def transactions():
                 items = [p["name"] for p in s["receives_players"]] + [f'{p["season"]} {ordinal(int(p["round"]))}' for p in s["receives_picks"]] + ([f'${s["receives_faab"]} FAAB'] if s.get("receives_faab") else [])
                 return f'{esc(s["manager"])} gets {esc(", ".join(items) or "nothing")}'
             out.append('<div class="tx trade"><span class="tg trade">&#129309; TRADE</span><div class="tb"><b>' + " &harr; ".join(esc(s["manager"]) for s in t["sides"]) + "</b><small>" + " &middot; ".join(gets(s) for s in t["sides"]) + "</small></div></div>")
-        for t in sorted((x for x in ws if x["type"] != "trade"), key=lambda x: -(x.get("created") or 0)):
-            bid = f' &middot; ${t["bid"]}' if t.get("bid") else ""
-            out.append(f'<div class="tx"><span class="tg add">+ ADD</span><span>{av(t["manager"], 22)}<b>{esc(t["manager"])}</b> &bull; {esc(t["added"]["name"])}</span><small>Wk {w}{bid}</small></div>')
-            for d in t.get("dropped") or []:
-                out.append(f'<div class="tx"><span class="tg drop">&minus; DROP</span><span>{av(t["manager"], 22)}<b>{esc(t["manager"])}</b> &bull; {esc(d)}</span><small>Wk {w}</small></div>')
+        groups = {}
+        for t in sorted((x for x in ws if x["type"] != "trade"), key=lambda x: x.get("created") or 0):
+            groups.setdefault(t["manager"], []).append(t)
+        cards = []
+        for m, ts in groups.items():
+            rws = ""
+            for t in ts:
+                bid = f'<small>${t["bid"]}</small>' if t.get("bid") else "<span></span>"
+                rws += f'<div class="txr"><span class="tg add">+ ADD</span><span class="pn">{esc(t["added"]["name"])}<em>{esc(t["added"].get("pos", ""))}</em></span>{bid}</div>'
+                for d in t.get("dropped") or []:
+                    rws += f'<div class="txr"><span class="tg drop">&minus; DROP</span><span class="pn">{esc(d)}</span><span></span></div>'
+            cards.append(f'<div class="txg"><div class="txh">{av(m, 28)}<b>{esc(m)}</b><small>{len(ts)} move{"s" if len(ts) > 1 else ""}</small></div>{rws}</div>')
+        out.append('<div class="txgrid">' + "".join(cards) + "</div>")
     return '<div class="txl">' + "".join(out) + '</div><p class="key"><a href="issues/2026/issue-04/#wire">Full wire and grades in the latest issue</a></p>'
 
 def rules():
