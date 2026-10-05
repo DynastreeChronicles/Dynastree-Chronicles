@@ -1,0 +1,200 @@
+{
+ "quote": {
+  "text": "",
+  "by": "",
+  "desk": ""
+ },
+ "drama": [
+  {
+   "h": "",
+   "heat": 0,
+   "p": "",
+   "desk": ""
+  }
+ ],
+ "hits": [
+  [
+   ""
+  ]
+ ],
+ "trades": {
+  "note": "",
+  "items": [
+   {
+    "t": "",
+    "a": "",
+    "as": [
+     ""
+    ],
+    "b": "",
+    "bs": [
+     ""
+    ],
+    "ay": "",
+    "by": "",
+    "desk": ""
+   }
+  ]
+ },
+ "pre": [
+  {
+   "a": "",
+   "ar": "",
+   "b": "",
+   "br": "",
+   "pa": 0,
+   "pb": 0,
+   "wa": 0,
+   "wb": 0,
+   "ma": "",
+   "mb": "",
+   "la": "",
+   "lb": "",
+   "edge": "",
+   "desk": ""
+  }
+ ],
+ "motw": {
+  "a": "",
+  "ar": "",
+  "b": "",
+  "br": "",
+  "pa": 0,
+  "pb": 0,
+  "wa": 0,
+  "wb": 0,
+  "ma": "",
+  "mb": "",
+  "la": "",
+  "lb": "",
+  "edge": "",
+  "desk": "",
+  "stats": [
+   [
+    ""
+   ]
+  ],
+  "stakes": "",
+  "sw": [
+   [
+    ""
+   ]
+  ],
+  "verdict": ""
+ },
+ "poll": {
+  "id": "",
+  "endpoint": "",
+  "q": "",
+  "opts": [
+   ""
+  ],
+  "desk": ""
+ },
+ "wire": {
+  "trades": [
+   {
+    "a": "",
+    "b": "",
+    "ar": [
+     ""
+    ],
+    "br": [
+     ""
+    ],
+    "ai": "",
+    "bi": "",
+    "ah": "",
+    "bh": "",
+    "ga": "",
+    "gb": "",
+    "desk": ""
+   }
+  ],
+  "waivers": [
+   {
+    "mgr": "",
+    "player": "",
+    "flag": "",
+    "note": ""
+   }
+  ],
+  "desk": {
+   "StealingGas": "",
+   "Darkspaces": "",
+   "Sarge71": "",
+   "Hades9mm": "",
+   "Zygon": "",
+   "YesChef23": ""
+  }
+ },
+ "post": [
+  {
+   "a": "",
+   "ar": "",
+   "b": "",
+   "br": "",
+   "sa": 0,
+   "sb": 0,
+   "tag": "",
+   "aged": [
+    ""
+   ],
+   "means": [
+    ""
+   ],
+   "key": [
+    ""
+   ],
+   "ba": "",
+   "bb": "",
+   "ma": "",
+   "mb": "",
+   "ga": "",
+   "gb": "",
+   "desk": ""
+  }
+ ],
+ "bottom": {
+  "paras": [
+   ""
+  ],
+  "maxpf": ""
+ },
+ "bold": [
+  [
+   ""
+  ]
+ ],
+ "prev_motw": {
+  "issue": 0,
+  "a": "",
+  "b": "",
+  "note": ""
+ },
+ "bank": {
+  "notes": {
+   "StealingGas": "",
+   "Darkspaces": "",
+   "Hades9mm": "",
+   "Snipe58": "",
+   "Zygon": "",
+   "YesChef23": "",
+   "C33DeezNutzz": "",
+   "fumbduckdumbfuck": "",
+   "CMac91": "",
+   "Cassellrole": "",
+   "Sarge71": "",
+   "Painty69": ""
+  }
+ },
+ "prev_poll": {
+  "issue": 0,
+  "q": "",
+  "opts": [
+   ""
+  ],
+  "result": "",
+  "note": ""
+ }
+}

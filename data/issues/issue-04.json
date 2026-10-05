@@ -14,7 +14,7 @@
   {
    "h": "MAXPF Draft Order + Vetoes On",
    "heat": 92,
-   "p": "Darkspaces enabled trade vetoes and announced next year's rookie draft will be ordered by total points scored across the entire roster (starters + bench) and run as a linear draft. Explicitly anti-tank. Payouts still go to the playoff winner. Then StealingGas posted a perfect 152.42 the same week.",
+   "p": "Darkspaces enabled trade vetoes and announced next year's rookie draft will be ordered by Sleeper's Max PF, the points of each week's best possible lineup added up, and run as a linear draft. Explicitly anti-tank. Payouts still go to the playoff winner. Then StealingGas posted a perfect 152.42 the same week.",
    "desk": "The correct structural fix. Tanking now requires selling scoring assets. The laboratory just got more expensive to operate, and it still scored more than half the league."
   },
   {
@@ -27,7 +27,7 @@
    "h": "Perfect Lineup Irony + Tank Optics",
    "heat": 80,
    "p": "StealingGas was named BEST MANAGER with a perfect 152.42 lineup, won by 83, and still has Future Therapy Bills on the scoreboard. Darkspaces said he was starting to tank harder than Brad. Then the tank scored 152.",
-   "desk": "Under MAXPF rules every point is a draft-slot tax. StealingGas just paid the highest single-week tax of the season while winning. Either brilliant chaos or the bit eating itself."
+   "desk": "Under MAXPF the tax is on the best lineup you could have started, and a perfect 152.42 is the full bill. StealingGas paid it in one week while winning. Either brilliant chaos or the bit eating itself."
   }
  ],
  "hits": [
@@ -113,7 +113,7 @@
     "bs": [
      "Future 2nd + dart"
     ],
-    "ay": "Still holds pieces that score. Under MAXPF every point hurts.",
+    "ay": "Still holds pieces that score. Under MAXPF a strong best lineup hurts.",
     "by": "Adds a scoring piece plus future capital.",
     "desk": "Selling scoring assets is the only coherent path."
    }
@@ -161,7 +161,7 @@
    "pb": 140,
    "wa": 45,
    "wb": 55,
-   "ma": "London is the WR1, start him. Resist the urge to sit scorers for MAXPF.",
+   "ma": "London is the WR1, start him. Sitting scorers does nothing for MAXPF; only moving them does.",
    "mb": "Chase stack stays hot. Dual-QB gives you a floor.",
    "la": "Every point hurts the 2027 pick.",
    "lb": "If Chase is quiet, depth must show.",
@@ -557,10 +557,10 @@
  "bottom": {
   "paras": [
    "Week 3 is locked, and the league spent it arguing about price. London cleared to the tank, Stafford cleared to Snipe, and Achane is still in the window with a first-round sticker on him. Zygon dared someone to make him regret the Emmett/Corum block. Nobody has taken the dare.",
-   "The real story is structural. The commish made the 2027 rookie draft linear and ordered by MAXPF, so every point your whole roster scores now pushes your pick down. StealingGas answered the rule change with a perfect 152.42 and the Best Manager trophy, which makes it the most expensive win of his season. Cassellrole hit 158.46, Zygon and Hades9mm are 3-0, and Sarge71 and Painty69 are still waiting on a second scorer to show up.",
+   "The real story is structural. The commish made the 2027 rookie draft linear and ordered by Sleeper's Max PF, so the stronger the best lineup your roster can field, the further your pick slides. StealingGas answered the rule change with a perfect 152.42 and the Best Manager trophy, which makes it the most expensive win of his season. Cassellrole hit 158.46, Zygon and Hades9mm are 3-0, and Sarge71 and Painty69 are still waiting on a second scorer to show up.",
    "Next up: Zygon vs Hades9mm for the undefeated crown, the Achane block, and a trade machine that stays open through Week 12. Cast your vote below, then go start somebody."
   ],
-  "maxpf": "MAXPF is the total points scored by your entire roster (starters + bench) across the season. Lowest MAXPF gets the 1st overall pick; highest picks 12th. The draft is linear, so the worst point-scorer also picks first every round. Payouts still go to the playoff winner."
+  "maxpf": "MAXPF is Sleeper's Max PF: the points of your best possible lineup each week, added up across the season. It is not starters plus bench. Lowest MAXPF gets the 1st overall pick; highest picks 12th. The draft is linear, so the lowest MAXPF also picks first every round. Payouts still go to the playoff winner."
  },
  "bold": [
   [
@@ -569,7 +569,7 @@
   ],
   [
    "StealingGas finishes bottom-2 in MAXPF",
-   "New draft rules punish scoring. The laboratory must sell or the 2027 pick slides."
+   "New draft rules punish a strong best lineup. The laboratory must sell scorers or the 2027 pick slides."
   ],
   [
    "Zygon stays top-2 through Week 6",
