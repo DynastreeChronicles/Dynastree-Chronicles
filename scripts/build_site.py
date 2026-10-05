@@ -32,6 +32,14 @@ def display_season():
     return ss.latest_with_standings() or ss.active() or "2026"
 
 use(display_season())
+
+def draft_year(season=None):
+    """The rookie draft a season's MAXPF order decides: the season after it (2026 -> 2027)."""
+    return int(season or SEASON) + 1
+
+def attr(x):
+    """Escape text for use inside a double-quoted HTML attribute."""
+    return esc(x).replace('"', "&quot;")
 esc = lambda s: str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 def inject(path, tag, html):
@@ -148,7 +156,7 @@ def legend():
     items = [("W-L", "<b>Record</b> through the latest finished week."),
              ("MOV", f"<b>Movement</b> since last week. {up} 2 = climbed two spots, {dn} 2 = dropped two, &mdash; = no change. In Draft order it is the pick: {up} = earlier (closer to 1.01), {dn} = later."),
              ("PF", "<b>Points for.</b> Total points your team has scored this season."),
-             ("Pick", "<b>2027 rookie draft slot.</b> 1.01 is the first overall pick."),
+             ("Pick", f"<b>{draft_year()} rookie draft slot.</b> 1.01 is the first overall pick."),
              ("MAXPF", MAXPF_TEXT),
              ("FUT CAP", "<b>Future capital.</b> Points for owned picks: Early 1st 100, Mid-Late 1st 75, 2nd-year 1st 60, 3rd-year 1st 50, any 2nd 30, any 3rd 10."),
              ("FAAB", "<b>Waiver budget</b> left, out of $500.")]
@@ -325,7 +333,7 @@ def render_page(man, d, y):
     pull = d.get("pull") or (re.split(r"(?<=[.!?])\s", desk[0])[0] if desk else man.get("banner", ""))
     vals = {"NO": str(man["no"]), "TITLE": esc(man.get("title", "")), "WEEKS": esc(man.get("weeks", f"Week {wk} post-game and Week {wk + 1} pre-game")),
             "MONTH": esc(man.get("month", "")), "BANNER": esc(man.get("banner", man.get("dek", ""))), "PULL": esc(pull),
-            "WK": str(wk), "PRE": str(wk + 1),
+            "WK": str(wk), "PRE": str(wk + 1), "VOL": f"Volume {vol(y)}, " if vol(y) else "",
             "DESK": "\n".join(f"<p>{bold_handles(x)}</p>" for x in desk),
             "HEROZERO": (hz_pre("hero", d["hero"]) + "\n" + hz_pre("zero", d["zero"])) if pre_s else (hz_block("hero", d.get("hero"), wk, root) + "\n" + hz_block("zero", d.get("zero"), wk, root)),
             "NAV_POST": "Draft Grades" if pre_s else "Post-Game",
@@ -610,7 +618,7 @@ def rules():
     c = Counter((jload(S("league.json"), {}) or {}).get("roster_positions", []))
     nm = {"SUPER_FLEX": "SFLEX", "BN": "Bench"}
     lineup = ", ".join((f"{n}&times;" if n > 1 else "") + nm.get(p, p) for p, n in c.items())
-    cards = [("Roster", lineup), ("Rookie draft", "2027 order by MAXPF (the best possible lineup each week, added up; Sleeper's Max PF), linear. Lowest MAXPF picks 1.01."), ("Trades", "Vetoes are on."), ("Payouts", "The playoff winner collects.")]
+    cards = [("Roster", lineup), ("Rookie draft", f"{draft_year()} order by MAXPF (the best possible lineup each week, added up; Sleeper's Max PF), linear. Lowest MAXPF picks 1.01."), ("Trades", "Vetoes are on."), ("Payouts", "The playoff winner collects.")]
     return '<div class="rl">' + "".join(f"<div><h3>{a}</h3><p>{b}</p></div>" for a, b in cards) + "</div>"
 
 def manifest():
@@ -621,6 +629,12 @@ def link(i):
 
 def home_blocks(m):
     i = m[0]
+    p = os.path.join(ROOT, "index.html"); h = open(p, encoding="utf-8").read()
+    pre = f"Volume {vol(i['year'])}, " if vol(i["year"]) else ""
+    og = '<meta property="og:description" content="' + attr(f"{pre}Issue {i['no']}: {i.get('title', '')}. Out now.") + '">'
+    h2, n = re.subn(r'<meta property="og:description" content="[^"]*">', lambda _: og, h, count=1)
+    assert n == 1, "og:description tag missing in index.html"
+    open(p, "w", encoding="utf-8").write(h2)
     inject("index.html", "TICKER", "".join(f"<span>{esc(x)}</span>" for x in i.get("ticker", [])))
     inject("index.html", "BANNER", f'<a class="banner" href="{link(i)}"><small>Latest &middot; Issue {i["no"]}</small><h2>{esc(i.get("banner", i.get("title", "")))}</h2><span class="btn">Read Issue {i["no"]}</span></a>')
     read = f'<a class="btn" href="{link(i)}">Read Issue {i["no"]}</a>'
