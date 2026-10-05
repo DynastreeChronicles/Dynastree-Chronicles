@@ -43,9 +43,21 @@ def av(name, size=28, root=""):
     return f'<span class="av" style="--s:{size}px;--h:{h}">{inner}</span>'
 
 
+def alias():
+    """Old handle -> current handle, from "former_names" in data/managers.json (history keeps working after a rename)."""
+    return {o: n for n, m in managers().items() for o in m.get("former_names", [])}
+
+def canon(x):
+    """Rename old handles everywhere in loaded data: dict keys and exact-match string values."""
+    a = alias()
+    if not a: return x
+    if isinstance(x, dict): return {a.get(k, k): canon(v) for k, v in x.items()}
+    if isinstance(x, list): return [canon(v) for v in x]
+    return a.get(x, x) if isinstance(x, str) else x
+
 def jload(rel, default=None):
     p = os.path.join(ROOT, rel)
-    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else default
+    return canon(json.load(open(p, encoding="utf-8"))) if os.path.exists(p) else default
 
 def load_week(n):
     return jload(f"data/weeks/week-{n:02d}.json")
@@ -98,7 +110,7 @@ def prev_picks(fin):
         p = os.path.join(ROOT, f"data/weeks/week-{w:02d}.json")
         if not os.path.exists(p):
             return {}
-        for t in json.load(open(p, encoding="utf-8"))["teams"]:
+        for t in canon(json.load(open(p, encoding="utf-8")))["teams"]:
             tot[t["roster_id"]] = tot.get(t["roster_id"], 0) + t["maxpf"]
     return {r: i + 1 for i, r in enumerate(sorted(tot, key=lambda r: tot[r]))}
 
@@ -128,11 +140,11 @@ def standings(rows=None, fin=None, root=""):
     """The standings block (Standings order / Draft order). Used by the home page (live data)
     and by each issue page (snapshot rows), so both always look and read the same."""
     if rows is None:
-        rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
+        rows = jload("data/standings.json")
     fin = fin or (rows and max(r["wins"] + r["losses"] + r["ties"] for r in rows))
     pp = prev_picks(fin)
     fc = jload("data/fut_cap.json", {})
-    team = lambda r: f'<td>{av(r["manager"], 24, root)}<b>{esc(r["manager"])}</b></td>'
+    team = lambda r: f'<td><a class="ml" href="{root}managers/{r["manager"].lower()}/">{av(r["manager"], 24, root)}<b>{esc(r["manager"])}</b></a></td>'
     n = len(rows)
     def rank_cell(r):
         k = r["rank"]
@@ -164,7 +176,7 @@ _TX = None
 def txfeed():
     global _TX
     if _TX is None:
-        _TX = json.load(open(os.path.join(ROOT, "data/transactions.json"), encoding="utf-8"))
+        _TX = canon(json.load(open(os.path.join(ROOT, "data/transactions.json"), encoding="utf-8")))
     return _TX
 
 def _k(name, pos=""):
@@ -428,10 +440,10 @@ def issue_pre(man, d, y, n):
 def issue(n="04", y=2026):
     man = next(x for x in manifest() if x["no"] == int(n))
     if man.get("preseason"):
-        return issue_pre(man, json.load(open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8")), y, n)
+        return issue_pre(man, canon(json.load(open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8"))), y, n)
     wk = man.get("wire_week") or man.get("standings_week")
     assert wk, f"issues.json needs wire_week for issue {n}"
-    d = json.load(open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8"))
+    d = canon(json.load(open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8")))
     render_page(man, d, y)
     rep = []
     win = man.get("tx_from")   # optional: only claims created AFTER these timestamps belong to this issue (retro issues)
@@ -514,12 +526,12 @@ def issue(n="04", y=2026):
 
 def leaderboard():
     """Home-page leaderboard: a podium for the top three (the trophy is the rank, no '#1' text) and a danger zone for the bottom two."""
-    rows = json.load(open(os.path.join(ROOT, "data/standings.json")))
+    rows = jload("data/standings.json")
     def pod(r, cls, k, label):
         return (f'<div class="pd {cls}"><img class="tro" src="assets/trophy-{k}.webp" alt="{label}" width="132" height="240" loading="lazy">'
-                f'<div class="pi">{av(r["manager"], 44)}<h3>{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>')
+                f'<div class="pi">{av(r["manager"], 44)}<h3><a class="ml" href="managers/{r["manager"].lower()}/">{esc(r["manager"])}</a></h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>')
     top = "".join(pod(r, c, k, l) for r, c, k, l in zip(rows[:3], ("p1", "p2", "p3"), ("gold", "silver", "bronze"), ("1st place", "2nd place", "3rd place")))
-    low = "".join(f'<div class="lo"><img class="tro tt" src="assets/trophy-trash.webp" alt="Last place" width="132" height="240" loading="lazy">{av(r["manager"], 40)}<div><h3>{esc(r["manager"])}</h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>' for r in rows[-2:])
+    low = "".join(f'<div class="lo"><img class="tro tt" src="assets/trophy-trash.webp" alt="Last place" width="132" height="240" loading="lazy">{av(r["manager"], 40)}<div><h3><a class="ml" href="managers/{r["manager"].lower()}/">{esc(r["manager"])}</a></h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>' for r in rows[-2:])
     return (f'<div class="lbx"><div class="podium">{top}</div><div class="dz"><h3 class="dzh">The Danger Zone</h3><div class="dzg">{low}</div></div></div>'
             '<p class="key"><a href="#standings">Full standings below</a></p>')
 
@@ -528,7 +540,7 @@ def transactions(m):
     if not i:
         return ""
     fin = i.get("wire_week") or 1
-    d = json.load(open(os.path.join(ROOT, f"data/issues/issue-{i['no']:02d}.json"), encoding="utf-8"))
+    d = canon(json.load(open(os.path.join(ROOT, f"data/issues/issue-{i['no']:02d}.json"), encoding="utf-8")))
     ws = wire_waivers(d["wire"]["waivers"], fin)
     notable = lambda x: x[4] in ("mvp", "fav") or x[2] >= 50
     out = [f'<h3 class="wk">Week {fin} highlights</h3>']

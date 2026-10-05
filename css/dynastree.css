@@ -375,3 +375,5 @@ details.acc.post>summary{padding-top:.9rem}
 .lbx .dz .lo p{margin:.1rem 0 0}
 @media(max-width:980px){.lbx .podium{grid-template-columns:1fr}.lbx .pd .tro{height:130px}.lbx .pd .pi{display:flex;flex-wrap:wrap;align-items:center;column-gap:.7rem}.lbx .pd .pi .av{margin:0}.lbx .pd .pi p{flex-basis:100%}}
 @media(max-width:700px){.lbx .dzg{grid-template-columns:1fr}.lbx .pd .tro{height:104px}}
+
+.ml{color:inherit;text-decoration:none}.ml:hover b,.ml:hover{color:var(--green)}
