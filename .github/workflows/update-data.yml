@@ -10,7 +10,8 @@ on:
     paths:
       - "data/issues/**"
       - "data/issues.json"
-      - "data/fut_cap.json"
+      - "data/seasons.json"
+      - "data/*/fut_cap.json"
       - "data/managers.json"
       - "data/bios/**"
       - "scripts/**"
@@ -49,5 +50,5 @@ jobs:
         run: |
           git config user.name "dynastree-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data index.html issues managers assets/avatars
+          git add -A data index.html issues managers assets/avatars
           git diff --cached --quiet || (git commit -m "Update league data" && git push)

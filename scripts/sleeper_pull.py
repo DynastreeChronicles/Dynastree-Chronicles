@@ -4,11 +4,15 @@ Pull Dynastree league data from Sleeper's public API and write JSON for the site
 
 - Stdlib only (no pip install needed, works in GitHub Actions as-is).
 - Finds the league by Sleeper username + league name, so no league ID needed.
-- Writes to ../data relative to this file (i.e. <repo>/data).
+- One folder per season: writes data/<season>/ (league, standings, efficiency, transactions, schedule, weeks/).
+  Shared files (data/managers.json, data/seasons.json) stay in data/. See scripts/seasons.py.
+- Pulls the ACTIVE season from data/seasons.json (the newest one that is not closed). A closed season is frozen and
+  never touched again. Anything that happens in Sleeper after a season's "closed_at" is pulled into the NEXT season
+  (week 0, "offseason"), so the volumes never overlap.
 
 Usage:
     python scripts/sleeper_pull.py
-    python scripts/sleeper_pull.py --season 2026
+    python scripts/sleeper_pull.py --season 2026 --force   # re-pull a closed season on purpose
     LEAGUE_ID=123456789 python scripts/sleeper_pull.py     # skip the lookup
 """
 import argparse
@@ -33,7 +37,10 @@ USERNAME = "StealingGas"
 LEAGUE_NAME = "Dynastree"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.normpath(os.path.join(HERE, "..", "data"))
+sys.path.insert(0, HERE)
+import seasons as ss
+DATA = os.path.normpath(os.path.join(HERE, "..", "data"))
+OUT = DATA                                   # main() points this at data/<season>/
 CACHE = os.path.normpath(os.path.join(HERE, "..", ".cache"))
 
 # MAXPF = Max PF = the points of each week's OPTIMAL lineup (the best legal lineup the
@@ -91,15 +98,21 @@ def pinfo(pid):
     return name, p.get("position", "UNK"), p.get("team")
 
 
-def find_league(season):
+def find_league(season, entry=None, required=True):
+    """Sleeper makes a NEW league id each season. Use the id in data/seasons.json when we have it, otherwise look the
+    league up by name for that season. required=False returns None when Sleeper has no such league yet."""
     if os.environ.get("LEAGUE_ID"):
         return get(f"/league/{os.environ['LEAGUE_ID']}")
+    if (entry or {}).get("league_id"):
+        return {"league_id": entry["league_id"]}
     user = get(f"/user/{USERNAME}")
-    leagues = get(f"/user/{user['user_id']}/leagues/nfl/{season}")
+    leagues = get(f"/user/{user['user_id']}/leagues/nfl/{season}") or []
     want = LEAGUE_NAME.lower()
     hits = [l for l in leagues if l["name"].strip().lower() == want]
     hits = hits or [l for l in leagues if want in l["name"].lower()]
     if not hits:
+        if not required:
+            return None
         names = ", ".join(l["name"] for l in leagues) or "(none)"
         sys.exit(f"No league matching {LEAGUE_NAME!r} for {season}. Found: {names}")
     return hits[0]
@@ -184,16 +197,26 @@ def process_week(lid, week, rmeta, slots, final):
     return {"week": week, "final": final, "teams": teams}
 
 
-def build_transactions(lid, weeks, rmeta):
+def build_transactions(lid, weeks, rmeta, after=None, force_week=None):
+    """after: only transactions created after this epoch-ms (the previous season's cap). force_week: file them all
+    under that week (0 = offseason, carried in from the previous volume)."""
     out = []
     mgr = lambda rid: rmeta[rid]["manager"] if rid in rmeta else f"roster {rid}"
     for w in weeks:
-        for tx in get(f"/league/{lid}/transactions/{w}") or []:
+        try:
+            feed = get(f"/league/{lid}/transactions/{w}") or []
+        except Exception as ex:   # an unused round must never break the pull
+            print(f"transactions: round {w} of {lid} skipped ({ex})")
+            continue
+        for tx in feed:
             if tx.get("status") != "complete":
+                continue
+            if after is not None and (tx.get("created") or 0) <= after:
                 continue
             adds = tx.get("adds") or {}
             drops = tx.get("drops") or {}
-            base = {"week": w, "type": tx["type"], "created": tx.get("created")}
+            base = {"week": w if force_week is None else force_week, "type": tx["type"], "created": tx.get("created"),
+                    "id": tx.get("transaction_id")}
             if tx["type"] == "trade":
                 picks = tx.get("draft_picks") or []
                 faab = tx.get("waiver_budget") or []
@@ -297,8 +320,8 @@ def build_schedule(lid, rmeta):
     return out
 
 
-def dump(name, obj):
-    path = os.path.join(OUT, name)
+def dump(name, obj, base=None):
+    path = os.path.join(base or OUT, name)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w") as f:
         json.dump(obj, f, indent=2)
@@ -330,7 +353,7 @@ def fetch_avatar(key, size=AV_SIZE):
 def sync_avatars(rmeta):
     """Write data/managers.json and assets/avatars/<manager>.webp. An image is only
     re-downloaded when the avatar id changes; managers with no avatar get initials on the site."""
-    path = os.path.join(OUT, "managers.json")
+    path = os.path.join(DATA, "managers.json")      # shared across seasons
     old = json.load(open(path)) if os.path.exists(path) else {}
     out = {}
     for m in rmeta.values():
@@ -354,25 +377,51 @@ def sync_avatars(rmeta):
         elif key:
             print("  Pillow not installed, so avatars were skipped (pip install pillow)")
         out[name] = entry
-    dump("managers.json", out)
+    dump("managers.json", out, DATA)
     print(f"Avatars: {sum(1 for e in out.values() if e['avatar'])}/{len(out)} managers have an image")
 
 
 def main():
-    global PLAYERS
+    global PLAYERS, OUT
     ap = argparse.ArgumentParser()
     ap.add_argument("--season")
+    ap.add_argument("--force", action="store_true", help="re-pull a season that is marked closed")
     args = ap.parse_args()
 
+    ss.migrate()                                   # one-time move of the old flat data/ into data/2026/ (no-op afterwards)
+    reg = ss.load()
+    season = args.season or ss.active(reg, persist=True)
+    if season and ss.is_closed(reg.get(season)) and not args.force:   # frozen: decided before any network call
+        print(f"Season {season} (Volume {reg[season].get('volume')}) is closed, so it is frozen and nothing was pulled.")
+        return
     state = get("/state/nfl")
-    season = args.season or state["season"]
-    league = find_league(season)
-    lid = league["league_id"]
-    league = get(f"/league/{lid}")  # full record (roster_positions, settings)
-    print(f"League: {league['name']} ({lid}), season {season}")
+    season = season or str(state["season"])
+    entry = reg.setdefault(season, {"volume": len(reg) + 1, "status": "active"})
+    OUT = ss.sdir(season)
 
-    users = {u["user_id"]: u for u in get(f"/league/{lid}/users")}
-    rosters = get(f"/league/{lid}/rosters")
+    # What this season inherits from the one before it: anything that happened in Sleeper AFTER that season's last issue.
+    carry = entry.get("carry_from")
+    prev = reg.get(carry) if carry else None
+    cap = ss.to_ms((prev or {}).get("closed_at"))
+    prev_lid = (prev or {}).get("league_id")
+    if carry and cap is None:
+        print(f"WARNING: season {carry} has no closed_at in data/seasons.json, so nothing can be carried into {season}.")
+
+    league = find_league(season, entry, required=not (carry and prev_lid))
+    if league:
+        lid = league["league_id"]
+        league = get(f"/league/{lid}")             # full record (roster_positions, settings)
+        entry["league_id"] = lid
+        src_lid, src = lid, league
+        print(f"League: {league['name']} ({lid}), season {season}, volume {entry.get('volume')}")
+    else:
+        lid, src_lid = None, prev_lid
+        src = get(f"/league/{src_lid}")
+        print(f"Season {season}: Sleeper has not created its league yet. Offseason mode: pulling {carry}'s league "
+              f"({src_lid}) for moves made after the cap.")
+
+    users = {u["user_id"]: u for u in get(f"/league/{src_lid}/users")}
+    rosters = get(f"/league/{src_lid}/rosters")
     PLAYERS = load_players()
 
     rmeta = {}
@@ -393,12 +442,12 @@ def main():
 
     sync_avatars(rmeta)
 
-    slots = [s for s in league["roster_positions"] if s != "BN"]
+    slots = [x for x in src["roster_positions"] if x != "BN"]
     cur_week = state.get("week", 1)
     in_season = state.get("season_type") == "regular"
 
     weeks = []
-    for w in range(1, 19):
+    for w in (range(1, 19) if league else []):
         final = (w < cur_week) or not in_season
         data = process_week(lid, w, rmeta, slots, final)
         if data is None:
@@ -419,7 +468,7 @@ def main():
             a["bench_points"] += t["bench_points"]
             a["left_on_bench"] += t["left_on_bench"]
 
-    budget = (league.get("settings") or {}).get("waiver_budget", 0)
+    budget = (src.get("settings") or {}).get("waiver_budget", 0)
     info = {rid: {"manager": rmeta[rid]["manager"],
                   "sleeper_maxpf": rmeta[rid].get("sleeper_ppts"),
                   "faab_remaining": budget - (rmeta[rid]["roster"].get("settings") or {}).get("waiver_budget_used", 0)}
@@ -441,18 +490,29 @@ def main():
     eff.sort(key=lambda r: -(r["efficiency"] or 0))
     dump("efficiency.json", eff)
 
-    dump("schedule.json", build_schedule(lid, rmeta))
-    dump("transactions.json", build_transactions(lid, range(1, (max(played) if played else cur_week) + 1), rmeta))
+    dump("schedule.json", build_schedule(lid, rmeta) if league else {})
+    tx = build_transactions(lid, range(1, (max(played) if played else cur_week) + 1), rmeta) if league else []
+    if carry and cap is not None and prev_lid:
+        # The fresh pool: everything the previous league logged after its last issue, filed as week 0 of this season.
+        carried = build_transactions(prev_lid, range(0, 19), rmeta, after=cap, force_week=0)
+        have = {t.get("id") for t in tx if t.get("id")}
+        carried = [t for t in carried if t.get("id") not in have]
+        print(f"Carried {len(carried)} offseason transaction(s) from {carry} (after {prev.get('closed_at')})")
+        tx = carried + tx
+    dump("transactions.json", tx)
 
     dump("league.json", {
-        "league_id": lid, "name": league["name"], "season": season,
-        "roster_positions": league["roster_positions"],
+        "league_id": lid, "name": src["name"], "season": season, "volume": entry.get("volume"),
+        "roster_positions": src["roster_positions"],
         "weeks_with_scores": played,
+        "phase": "offseason" if not league else ("regular" if in_season else "post"),
+        "carried_from": carry, "carry_after_ms": cap,
         "maxpf_includes_reserve": MAXPF_INCLUDE_RESERVE,
         "maxpf_definition": MAXPF_DEFINITION,
         "waiver_budget": budget,
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     })
+    ss.save(reg)
     print(f"Wrote JSON to {OUT}")
 
 

@@ -9,16 +9,31 @@ sys.path.insert(0, HERE)
 import build_site as bs
 
 def main():
-    league = bs.jload("data/league.json", {})
+    reg = bs.ss.load()
+    season = bs.ss.active(reg) or bs.display_season()
+    bs.use(season)                                    # brief is always about the ACTIVE season
+    league = bs.jload(bs.S("league.json"), {})
     weeks = [w for n in league.get("weeks_with_scores", []) for w in [bs.load_week(n)] if w]
     final = [w["week"] for w in weeks if w["final"]]
     live = [w["week"] for w in weeks if not w["final"]]
-    man = bs.manifest()                               # newest first
+    man = [i for i in bs.manifest() if str(i["year"]) == str(season)]   # this volume's issues, newest first
     latest = man[0] if man else None
     covered = {i.get("wire_week") for i in man if i.get("wire_week")}
     warn = []
     if not final:
-        raise SystemExit("make_brief: no final weeks in data/, nothing to brief")
+        brief = {"generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "season": season,
+                 "volume": bs.vol(season), "ready_for_new_issue": False, "phase": league.get("phase"),
+                 "warnings": [f"Season {season} has no final weeks yet (phase: {league.get('phase')}). Offseason moves carried in: "
+                              f"{sum(1 for t in bs.txfeed() if t['week'] == 0)}. The Volume {bs.vol(season)} opener is a look-forward issue, "
+                              "written from the chat log plus transactions_offseason."],
+                 "transactions_offseason": [t for t in bs.txfeed() if t["week"] == 0],
+                 "latest_published_issue": man[0] if man else None, "league": league,
+                 "managers": {k: v.get("team_name") for k, v in bs.managers().items()},
+                 "issue_template": bs.jload("data/issues/issue-template.json")}
+        out = os.path.join(bs.ROOT, "data", "brief.json")
+        json.dump(brief, open(out, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+        print(f"brief written (offseason, no final weeks yet): season {season}")
+        return
     wk = max(final)
     ready = wk not in covered
     no = (latest["no"] + 1) if latest else 1
@@ -48,16 +63,17 @@ def main():
                       "winner_left_on_bench": w["left_on_bench"], "loser_left_on_bench": l["left_on_bench"]})
     perfect = [t["manager"] for t in cur if t["optimal"] and abs(t["points"] - t["optimal"]) < 0.005]
     top, low = max(cur, key=lambda t: t["points"]), min(cur, key=lambda t: t["points"])
-    sched = (bs.jload("data/schedule.json", {}) or {}).get(str(wk + 1))
+    sched = (bs.jload(bs.S("schedule.json"), {}) or {}).get(str(wk + 1))
     rec = {r["manager"]: r["record"] for r in rows}
     if not sched:
-        warn.append(f"data/schedule.json has no Week {wk + 1} matchups yet; pre-game cards need them from the chat log.")
+        warn.append(f"schedule.json has no Week {wk + 1} matchups yet; pre-game cards need them from the chat log.")
     tx = [t for t in bs.txfeed() if t["week"] >= wk]
     prev_json = None
     if latest and latest.get("web"):
-        prev_json = bs.jload(f"data/issues/issue-{latest['no']:02d}.json")
+        prev_json = bs.canon(json.load(open(bs.ipath(season, latest["no"]), encoding="utf-8")))
     brief = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "season": season, "volume": bs.vol(season), "season_status": (reg.get(season) or {}).get("status"),
         "data_pulled_at": league.get("generated_at"),
         "ready_for_new_issue": ready,
         "warnings": warn,
@@ -72,9 +88,9 @@ def main():
         "bankroll": bank,
         "next_week_matchups": [{"a": a, "a_record": rec.get(a), "b": b, "b_record": rec.get(b)} for a, b in (sched or [])],
         "transactions_this_week_and_later": tx,
-        "fut_cap": bs.jload("data/fut_cap.json", {}),
+        "fut_cap": bs.jload(bs.S("fut_cap.json"), {}),
         "managers": {k: v.get("team_name") for k, v in bs.managers().items()},
-        "league": {k: league.get(k) for k in ("league_id", "name", "season", "roster_positions", "waiver_budget")},
+        "league": {k: league.get(k) for k in ("league_id", "name", "season", "volume", "roster_positions", "waiver_budget")},
         "previous_issue_json": prev_json,
         "issue_template": bs.jload("data/issues/issue-template.json"),
     }

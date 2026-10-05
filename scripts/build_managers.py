@@ -23,11 +23,9 @@ def shell(title, desc, body, r, sub):
 def desk_quotes(m, years):
     """Every desk aside that names this manager, newest issue first: (issue_no, year, section, anchor, text)."""
     out = []
-    for f in sorted(glob.glob(os.path.join(ROOT, "data/issues/issue-*.json")), reverse=True):
-        mt = re.search(r"issue-(\d+)\.json$", f)
-        if not mt: continue   # skips issue-template.json
-        n = int(mt.group(1)); d = bs.canon(json.load(open(f, encoding="utf-8")))
-        add = lambda sec, anc, t: t and out.append((n, years.get(n, 2026), sec, anc, t))
+    for y, n, f in bs.issue_files():   # every season's issues, newest first; (season, no) keeps volumes apart
+        d = bs.canon(json.load(open(f, encoding="utf-8")))
+        add = lambda sec, anc, t, n=n, y=y: t and out.append((n, y, sec, anc, t))
         for para in d.get("desk") or []:   # the lead column: pull just the sentences that name them
             for sent in re.split(r"(?<=[.!?])\s+", para):
                 if re.search(rf"\b{re.escape(m)}\b", sent): add("From the desk", "desk", sent)
@@ -85,10 +83,8 @@ def tx_block(m, thru):
 def mine(m, years, season):
     """Takes and drama that name this manager, bucketed by year: {year: {"takes": [...], "drama": [...]}}"""
     out = {}; nm = re.compile(rf"\b{re.escape(m)}\b")
-    for f in sorted(glob.glob(os.path.join(ROOT, "data/issues/issue-*.json")), reverse=True):
-        mt = re.search(r"issue-(\d+)\.json$", f)
-        if not mt: continue
-        n = int(mt.group(1)); d = bs.canon(json.load(open(f, encoding="utf-8"))); b = out.setdefault(years.get(n, season), {"takes": [], "drama": []})
+    for y, n, f in bs.issue_files():
+        d = bs.canon(json.load(open(f, encoding="utf-8"))); b = out.setdefault(y, {"takes": [], "drama": []})
         for x in d.get("drama", []):
             if nm.search(x.get("h", "") + x.get("p", "")): b["drama"].append((n, x.get("heat") or 0, x.get("h", ""), x.get("p", ""), x.get("desk", "")))
         q = d.get("quote") or {}
@@ -174,8 +170,9 @@ def hub(rows, quotes, moves):
     return shell("Managers", "Every manager in the Dynastree league.", body, "../", "The league files")
 
 if __name__ == "__main__":
-    rows = jload("data/standings.json", []); eff = {e["manager"]: e for e in jload("data/efficiency.json", [])}
-    season = (jload("data/league.json", {}) or {}).get("season", "2026"); thru = max((jload("data/league.json", {}) or {}).get("weeks_with_scores", [1])); names = sorted((r["manager"] for r in rows), key=str.lower)
+    season = bs.display_season(); bs.use(season)   # the manager pages show the newest season with finished weeks
+    rows = jload(bs.S("standings.json"), []); eff = {e["manager"]: e for e in jload(bs.S("efficiency.json"), [])}
+    thru = max((jload(bs.S("league.json"), {}) or {}).get("weeks_with_scores", [1])); names = sorted((r["manager"] for r in rows), key=str.lower)
     years = {i["no"]: i["year"] for i in bs.manifest()}; top = {}
     moves = {}
     for t in bs.txfeed():

@@ -6,13 +6,32 @@
     is computed from data/weeks + data/transactions.json. data/issues/issue-NN.json holds PROSE ONLY.
     The page shell is rendered from scripts/templates/issue.html, so a new issue needs only its JSON
     and its entry in data/issues.json: no hand-made HTML.
-Run after sleeper_pull.py (the GitHub Action does this)."""
-import json, os, re, sys
+Every season lives in its own folder (data/2026/, data/2027/, ...); see scripts/seasons.py. Each issue page is built from
+the data of ITS season, so a new season never overwrites an old issue. Run after sleeper_pull.py (the GitHub Action does this)."""
+import glob, json, os, re, sys
 from collections import defaultdict
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, ".."))
 sys.path.insert(0, HERE)
+import seasons as ss
 import sleeper_pull as sp   # build_standings() is shared so the issue snapshot uses the exact homepage logic
+
+SEASON = None
+_TX = None
+
+def use(season):
+    """Point every data loader at one season's folder (data/<season>/). Resets the transaction cache."""
+    global SEASON, _TX
+    SEASON, _TX = str(season), None
+
+def S(rel):
+    return ss.srel(SEASON, rel)
+
+def display_season():
+    """Season shown on the home page standings and leaderboard: the newest one that has finished weeks."""
+    return ss.latest_with_standings() or ss.active() or "2026"
+
+use(display_season())
 esc = lambda s: str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 def inject(path, tag, html):
@@ -60,18 +79,18 @@ def jload(rel, default=None):
     return canon(json.load(open(p, encoding="utf-8"))) if os.path.exists(p) else default
 
 def load_week(n):
-    return jload(f"data/weeks/week-{n:02d}.json")
+    return jload(S(f"weeks/week-{n:02d}.json"))
 
 def final_weeks(thru):
     return [w for n in range(1, thru + 1) for w in [load_week(n)] if w and w["final"]]
 
 def faab_by_week(thru):
     """Waiver balance after each week, rebuilt from the transaction feed (matches Sleeper's balance)."""
-    budget = (jload("data/league.json", {}) or {}).get("waiver_budget", 500)
-    names = [r["manager"] for r in jload("data/standings.json", [])]
+    budget = (jload(S("league.json"), {}) or {}).get("waiver_budget", 500)
+    names = [r["manager"] for r in jload(S("standings.json"), [])]
     bal, out = {m: budget for m in names}, {0: {m: budget for m in names}}
     tx = sorted(txfeed(), key=lambda t: (t["week"], t.get("created") or 0))
-    for wk in range(1, thru + 1):
+    for wk in range(0, thru + 1):   # week 0 = offseason moves carried in from the previous volume
         for t in (x for x in tx if x["week"] == wk):
             if t["type"] == "trade":
                 for sd in t["sides"]:
@@ -88,7 +107,7 @@ def faab_by_week(thru):
 
 def asof(week):
     """Standings rows as of the end of `week`, same logic the Action uses for data/standings.json."""
-    cur = jload("data/standings.json", [])
+    cur = jload(S("standings.json"), [])
     fb = faab_by_week(week)[week]
     info = {r["roster_id"]: {"manager": r["manager"], "faab_remaining": fb[r["manager"]]} for r in cur}
     return sp.build_standings(final_weeks(week), info)
@@ -107,7 +126,7 @@ def prev_picks(fin):
     """Draft slot as of the previous final week (lowest MAXPF = 1.01), from data/weeks."""
     tot = {}
     for w in range(1, fin):
-        p = os.path.join(ROOT, f"data/weeks/week-{w:02d}.json")
+        p = os.path.join(ROOT, S(f"weeks/week-{w:02d}.json"))
         if not os.path.exists(p):
             return {}
         for t in canon(json.load(open(p, encoding="utf-8")))["teams"]:
@@ -140,10 +159,10 @@ def standings(rows=None, fin=None, root=""):
     """The standings block (Standings order / Draft order). Used by the home page (live data)
     and by each issue page (snapshot rows), so both always look and read the same."""
     if rows is None:
-        rows = jload("data/standings.json")
+        rows = jload(S("standings.json"))
     fin = fin or (rows and max(r["wins"] + r["losses"] + r["ties"] for r in rows))
     pp = prev_picks(fin)
-    fc = jload("data/fut_cap.json", {})
+    fc = jload(S("fut_cap.json"), {})
     team = lambda r: f'<td><a class="ml" href="{root}managers/{r["manager"].lower()}/">{av(r["manager"], 24, root)}<b>{esc(r["manager"])}</b></a></td>'
     n = len(rows)
     def rank_cell(r):
@@ -171,12 +190,10 @@ def standings(rows=None, fin=None, root=""):
 def ordinal(n):
     return {1: "1st", 2: "2nd", 3: "3rd"}.get(n, f"{n}th")
 
-_TX = None
-
 def txfeed():
     global _TX
     if _TX is None:
-        _TX = canon(json.load(open(os.path.join(ROOT, "data/transactions.json"), encoding="utf-8")))
+        _TX = jload(S("transactions.json"), [])
     return _TX
 
 def _k(name, pos=""):
@@ -332,7 +349,7 @@ def render_page(man, d, y):
 def draft_info():
     """Per-manager draft facts from data/draft.json (one row per pick: r, s, m, name, pos, team, auto)."""
     out = {}
-    for p in jload("data/draft.json", []):
+    for p in jload(S("draft.json"), []):
         o = out.setdefault(p["m"], {"picks": [], "auto": 0, "pos": {"QB": 0, "RB": 0, "WR": 0, "TE": 0}, "slot": None})
         o["picks"].append(p)
         o["auto"] += 1 if p["auto"] else 0
@@ -380,8 +397,8 @@ def issue_pre(man, d, y, n):
     path = f"issues/{y}/issue-{n}/index.html"
     cut = man.get("tx_cutoff") or {}
     keep = lambda x: (x.get("created") or 0) <= cut.get(x["type"], 0)
-    budget = (jload("data/league.json", {}) or {}).get("waiver_budget", 500)
-    names = [r["manager"] for r in jload("data/standings.json", [])]
+    budget = (jload(S("league.json"), {}) or {}).get("waiver_budget", 500)
+    names = [r["manager"] for r in jload(S("standings.json"), [])]
     bal = {m: budget for m in names}
     for t in txfeed():
         if t["week"] == 1 and t["type"] == "waiver" and keep(t):
@@ -413,19 +430,19 @@ def issue_pre(man, d, y, n):
             if m[k] not in di:
                 raise SystemExit(f"issue-{n}.json names {m[k]!r}, who is not in the league data")
         m["ar"] = m["br"] = "0-0"
-    sched = (jload("data/schedule.json", {}) or {}).get("1")
+    sched = (jload(S("schedule.json"), {}) or {}).get("1")
     if sched:
         want = {frozenset(g) for g in sched}
         got = [frozenset((m["a"], m["b"])) for m in d["pre"] + [d["motw"]]]
         for m in d["pre"] + [d["motw"]]:
             if frozenset((m["a"], m["b"])) not in want:
-                rep.append(f'pre-game card {m["a"]} vs {m["b"]}: not a Week 1 matchup in data/schedule.json')
+                rep.append(f'pre-game card {m["a"]} vs {m["b"]}: not a Week 1 matchup in this season schedule.json')
         for g in want - set(got):
             rep.append(f'Week 1 game with no pre-game card: {" vs ".join(sorted(g))}')
         if len(set(got)) != len(got):
             rep.append("pre-game cards repeat a matchup (the Match of the Week must not also be in 'pre')")
     else:
-        rep.append("data/schedule.json has no Week 1 matchups, so pre-game cards were not checked")
+        rep.append("schedule.json has no Week 1 matchups, so pre-game cards were not checked")
     mo = d["motw"]
     f = lambda mg: (f'1.{di[mg]["slot"]:02d}', str(di[mg]["auto"]), str(di[mg]["pos"]["QB"]))
     mo["stats"] = [["Record", "0-0", "0-0"], ["Round 1 pick", f(mo["a"])[0], f(mo["b"])[0]],
@@ -437,13 +454,36 @@ def issue_pre(man, d, y, n):
     for line in rep:
         print(f"  note (issue {n}): {line}")
 
+def ipath(y, n):
+    """Issue prose file: data/issues/<season>/issue-NN.json (the old flat data/issues/issue-NN.json still works until migrated)."""
+    new = os.path.join(ROOT, f"data/issues/{y}/issue-{int(n):02d}.json")
+    old = os.path.join(ROOT, f"data/issues/issue-{int(n):02d}.json")
+    return new if os.path.exists(new) or not os.path.exists(old) else old
+
+def issue_files():
+    """Every issue prose file as (season, issue no, path), newest first. Also covers the old flat layout."""
+    man = {i["no"]: int(i.get("year", 2026)) for i in manifest() if "year" in i}
+    out = []
+    for f in glob.glob(os.path.join(ROOT, "data/issues/*/issue-*.json")):
+        m = re.search(r"issue-(\d+)\.json$", f)
+        if m: out.append((int(os.path.basename(os.path.dirname(f))), int(m.group(1)), f))
+    for f in glob.glob(os.path.join(ROOT, "data/issues/issue-*.json")):
+        m = re.search(r"issue-(\d+)\.json$", f)
+        if m and man.get(int(m.group(1))): out.append((man[int(m.group(1))], int(m.group(1)), f))
+    return sorted(out, reverse=True)
+
+def vol(season):
+    """Volume number for a season (Volume 1 = the first season)."""
+    return ss.volume(season)
+
 def issue(n="04", y=2026):
-    man = next(x for x in manifest() if x["no"] == int(n))
+    use(y)
+    man = next(x for x in manifest() if x["no"] == int(n) and int(x["year"]) == int(y))
     if man.get("preseason"):
-        return issue_pre(man, canon(json.load(open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8"))), y, n)
+        return issue_pre(man, canon(json.load(open(ipath(y, n), encoding="utf-8"))), y, n)
     wk = man.get("wire_week") or man.get("standings_week")
     assert wk, f"issues.json needs wire_week for issue {n}"
-    d = canon(json.load(open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8")))
+    d = canon(json.load(open(ipath(y, n), encoding="utf-8")))
     render_page(man, d, y)
     rep = []
     win = man.get("tx_from")   # optional: only claims created AFTER these timestamps belong to this issue (retro issues)
@@ -495,19 +535,19 @@ def issue(n="04", y=2026):
     # pre-game and match of the week: records from the snapshot
     for m in d["pre"] + [d["motw"]]:
         m["ar"], m["br"] = need(m["a"])["record"], need(m["b"])["record"]
-    sched = (jload("data/schedule.json", {}) or {}).get(str(wk + 1))
+    sched = (jload(S("schedule.json"), {}) or {}).get(str(wk + 1))
     if sched:
         want = {frozenset(g) for g in sched}
         got = [frozenset((m["a"], m["b"])) for m in d["pre"] + [d["motw"]]]
         for m in d["pre"] + [d["motw"]]:
             if frozenset((m["a"], m["b"])) not in want:
-                rep.append(f'pre-game card {m["a"]} vs {m["b"]}: not a Week {wk + 1} matchup in data/schedule.json')
+                rep.append(f'pre-game card {m["a"]} vs {m["b"]}: not a Week {wk + 1} matchup in this season schedule.json')
         for g in want - set(got):
             rep.append(f'Week {wk + 1} game with no pre-game card: {" vs ".join(sorted(g))}')
         if len(set(got)) != len(got):
             rep.append("pre-game cards repeat a matchup (the Match of the Week must not also be in 'pre')")
     else:
-        rep.append(f"data/schedule.json has no Week {wk + 1} matchups, so pre-game cards were not checked")
+        rep.append(f"schedule.json has no Week {wk + 1} matchups, so pre-game cards were not checked")
     mo = d["motw"]
     best = lambda mg: max(t["points"] for w in history for t in w["teams"] if t["manager"] == mg)
     avg = lambda mg: need(mg)["pf"] / (need(mg)["wins"] + need(mg)["losses"] + need(mg)["ties"])
@@ -526,7 +566,7 @@ def issue(n="04", y=2026):
 
 def leaderboard():
     """Home-page leaderboard: a podium for the top three (the trophy is the rank, no '#1' text) and a danger zone for the bottom two."""
-    rows = jload("data/standings.json")
+    rows = jload(S("standings.json"), [])
     def pod(r, cls, k, label):
         return (f'<div class="pd {cls}"><img class="tro" src="assets/trophy-{k}.webp" alt="{label}" width="132" height="240" loading="lazy">'
                 f'<div class="pi">{av(r["manager"], 44)}<h3><a class="ml" href="managers/{r["manager"].lower()}/">{esc(r["manager"])}</a></h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>')
@@ -540,7 +580,8 @@ def transactions(m):
     if not i:
         return ""
     fin = i.get("wire_week") or 1
-    d = canon(json.load(open(os.path.join(ROOT, f"data/issues/issue-{i['no']:02d}.json"), encoding="utf-8")))
+    use(i["year"])
+    d = canon(json.load(open(ipath(i["year"], i["no"]), encoding="utf-8")))
     ws = wire_waivers(d["wire"]["waivers"], fin)
     notable = lambda x: x[4] in ("mvp", "fav") or x[2] >= 50
     out = [f'<h3 class="wk">Week {fin} highlights</h3>']
@@ -566,14 +607,14 @@ def transactions(m):
 
 def rules():
     from collections import Counter
-    c = Counter(json.load(open(os.path.join(ROOT, "data/league.json")))["roster_positions"])
+    c = Counter((jload(S("league.json"), {}) or {}).get("roster_positions", []))
     nm = {"SUPER_FLEX": "SFLEX", "BN": "Bench"}
     lineup = ", ".join((f"{n}&times;" if n > 1 else "") + nm.get(p, p) for p, n in c.items())
     cards = [("Roster", lineup), ("Rookie draft", "2027 order by MAXPF (the best possible lineup each week, added up; Sleeper's Max PF), linear. Lowest MAXPF picks 1.01."), ("Trades", "Vetoes are on."), ("Payouts", "The playoff winner collects.")]
     return '<div class="rl">' + "".join(f"<div><h3>{a}</h3><p>{b}</p></div>" for a, b in cards) + "</div>"
 
 def manifest():
-    return sorted(json.load(open(os.path.join(ROOT, "data/issues.json"), encoding="utf-8")), key=lambda i: -i["no"])
+    return sorted(json.load(open(os.path.join(ROOT, "data/issues.json"), encoding="utf-8")), key=lambda i: (-int(i["year"]), -i["no"]))
 
 def link(i):
     return f'issues/{i["year"]}/issue-{i["no"]:02d}/'
@@ -588,15 +629,16 @@ def home_blocks(m):
     for y in sorted({x["year"] for x in m}, reverse=True):
         its = [x for x in m if x["year"] == y]
         rows = "".join(f'<div class="r"><span class="no">{x["no"]}</span><div><h3>Issue {x["no"]}</h3><p>{esc(x["weeks"])}</p></div><span class="go"><a href="{link(x)}">Read</a></span></div>' for x in its)
-        out.append(f'<details class="yr"{" open" if y == top else ""}><summary>{y} <small>{len(its)} issues</small></summary>{rows}</details>')
+        out.append(f'<details class="yr"{" open" if y == top else ""}><summary>{f"Volume {vol(y)} &middot; " if vol(y) else ""}{y} <small>{len(its)} issues</small></summary>{rows}</details>')
     inject("index.html", "ARCHIVE", "\n".join(out))
 
 if __name__ == "__main__":
-    inject("index.html", "LEADERBOARD", leaderboard())
     m = manifest()
-    inject("index.html", "TX", transactions(m))
-    inject("index.html", "RULES", rules())
+    use(display_season())                      # standings and leaderboard: newest season with finished weeks
+    inject("index.html", "LEADERBOARD", leaderboard())
     inject("index.html", "STANDINGS", standings())
+    inject("index.html", "RULES", rules())
+    inject("index.html", "TX", transactions(m))   # highlights come from the newest issue's own season
     home_blocks(m)
     [issue(f'{x["no"]:02d}', x["year"]) for x in m]
     print("site built")
