@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-05T01:00:37+00:00",
- "data_pulled_at": "2026-10-04T16:44:51+00:00",
+ "generated_at": "2026-10-05T01:07:45+00:00",
+ "data_pulled_at": "2026-10-05T01:07:45+00:00",
  "ready_for_new_issue": false,
  "warnings": [
   "Week 3 is already covered by Issue 4. Wait for Week 4 to go final (Tuesday after its Monday game) before drafting a new issue.",
@@ -169,14 +169,14 @@
    "ties": 0,
    "pf": 518.44,
    "pa": 323.26,
-   "maxpf": 688.58,
+   "maxpf": 569.64,
    "faab_remaining": 498,
    "sleeper_maxpf": null,
    "rank": 1,
    "prev_rank": 1,
    "move": 0,
    "draft_pick": 11,
-   "maxpf_gap_to_1_01": 253.2
+   "maxpf_gap_to_1_01": 179.08
   },
   {
    "roster_id": 5,
@@ -187,14 +187,14 @@
    "ties": 0,
    "pf": 495.42,
    "pa": 397.16,
-   "maxpf": 780.4,
+   "maxpf": 613.32,
    "faab_remaining": 330,
    "sleeper_maxpf": null,
    "rank": 2,
    "prev_rank": 2,
    "move": 0,
    "draft_pick": 12,
-   "maxpf_gap_to_1_01": 345.02
+   "maxpf_gap_to_1_01": 222.76
   },
   {
    "roster_id": 8,
@@ -205,14 +205,14 @@
    "ties": 0,
    "pf": 460.62,
    "pa": 433.54,
-   "maxpf": 609.82,
+   "maxpf": 494.32,
    "faab_remaining": 500,
    "sleeper_maxpf": null,
    "rank": 3,
    "prev_rank": 4,
    "move": 1,
-   "draft_pick": 9,
-   "maxpf_gap_to_1_01": 174.44
+   "draft_pick": 10,
+   "maxpf_gap_to_1_01": 103.76
   },
   {
    "roster_id": 6,
@@ -223,14 +223,14 @@
    "ties": 0,
    "pf": 411.1,
    "pa": 411.66,
-   "maxpf": 622.5,
+   "maxpf": 482.4,
    "faab_remaining": 500,
    "sleeper_maxpf": null,
    "rank": 4,
    "prev_rank": 7,
    "move": 3,
-   "draft_pick": 10,
-   "maxpf_gap_to_1_01": 187.12
+   "draft_pick": 8,
+   "maxpf_gap_to_1_01": 91.84
   },
   {
    "roster_id": 11,
@@ -241,14 +241,14 @@
    "ties": 0,
    "pf": 355.72,
    "pa": 429.94,
-   "maxpf": 524.92,
+   "maxpf": 446.22,
    "faab_remaining": 498,
    "sleeper_maxpf": null,
    "rank": 5,
    "prev_rank": 9,
    "move": 4,
    "draft_pick": 5,
-   "maxpf_gap_to_1_01": 89.54
+   "maxpf_gap_to_1_01": 55.66
   },
   {
    "roster_id": 1,
@@ -259,7 +259,7 @@
    "ties": 0,
    "pf": 339.08,
    "pa": 374.74,
-   "maxpf": 435.38,
+   "maxpf": 390.56,
    "faab_remaining": 104,
    "sleeper_maxpf": null,
    "rank": 6,
@@ -277,14 +277,14 @@
    "ties": 0,
    "pf": 397.0,
    "pa": 377.46,
-   "maxpf": 597.58,
+   "maxpf": 491.3,
    "faab_remaining": 500,
    "sleeper_maxpf": null,
    "rank": 7,
    "prev_rank": 5,
    "move": -2,
-   "draft_pick": 8,
-   "maxpf_gap_to_1_01": 162.2
+   "draft_pick": 9,
+   "maxpf_gap_to_1_01": 100.74
   },
   {
    "roster_id": 10,
@@ -295,14 +295,14 @@
    "ties": 0,
    "pf": 381.56,
    "pa": 391.08,
-   "maxpf": 592.52,
+   "maxpf": 474.14,
    "faab_remaining": 500,
    "sleeper_maxpf": null,
    "rank": 8,
    "prev_rank": 6,
    "move": -2,
-   "draft_pick": 6,
-   "maxpf_gap_to_1_01": 157.14
+   "draft_pick": 7,
+   "maxpf_gap_to_1_01": 83.58
   },
   {
    "roster_id": 2,
@@ -313,14 +313,14 @@
    "ties": 0,
    "pf": 339.34,
    "pa": 374.18,
-   "maxpf": 463.74,
+   "maxpf": 392.34,
    "faab_remaining": 400,
    "sleeper_maxpf": null,
    "rank": 9,
    "prev_rank": 8,
    "move": -1,
    "draft_pick": 2,
-   "maxpf_gap_to_1_01": 28.36
+   "maxpf_gap_to_1_01": 1.78
   },
   {
    "roster_id": 3,
@@ -331,14 +331,14 @@
    "ties": 0,
    "pf": 312.92,
    "pa": 320.28,
-   "maxpf": 491.26,
+   "maxpf": 393.6,
    "faab_remaining": 99,
    "sleeper_maxpf": null,
    "rank": 10,
    "prev_rank": 12,
    "move": 2,
    "draft_pick": 3,
-   "maxpf_gap_to_1_01": 55.88
+   "maxpf_gap_to_1_01": 3.04
   },
   {
    "roster_id": 7,
@@ -349,14 +349,14 @@
    "ties": 0,
    "pf": 373.48,
    "pa": 501.76,
-   "maxpf": 520.76,
+   "maxpf": 440.94,
    "faab_remaining": 500,
    "sleeper_maxpf": null,
    "rank": 11,
    "prev_rank": 10,
    "move": -1,
    "draft_pick": 4,
-   "maxpf_gap_to_1_01": 85.38
+   "maxpf_gap_to_1_01": 50.38
   },
   {
    "roster_id": 9,
@@ -367,14 +367,14 @@
    "ties": 0,
    "pf": 363.82,
    "pa": 413.44,
-   "maxpf": 595.52,
+   "maxpf": 460.9,
    "faab_remaining": 500,
    "sleeper_maxpf": null,
    "rank": 12,
    "prev_rank": 11,
    "move": -1,
-   "draft_pick": 7,
-   "maxpf_gap_to_1_01": 160.14
+   "draft_pick": 6,
+   "maxpf_gap_to_1_01": 70.34
   }
  ],
  "bankroll": {
