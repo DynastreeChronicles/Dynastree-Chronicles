@@ -1,0 +1,224 @@
+{
+ "glance": [
+  [
+   "12",
+   "Teams",
+   "Dynasty, 23-round startup"
+  ],
+  [
+   "6",
+   "Playoff teams",
+   "Starts Week 15"
+  ],
+  [
+   "$500",
+   "FAAB budget",
+   "Blind bidding"
+  ],
+  [
+   "Wk 13",
+   "Trade deadline",
+   "No trades after Week 13"
+  ],
+  [
+   "Wed",
+   "Waivers clear",
+   "2 AM CDT, 2-day waiver period"
+  ],
+  [
+   "1",
+   "IR slot",
+   "Injured reserve"
+  ],
+  [
+   "Yes",
+   "Pick trading",
+   "Draft picks are tradeable"
+  ],
+  [
+   "On",
+   "Trade vetoes",
+   "Commissioner rule"
+  ]
+ ],
+ "scoring": [
+  {
+   "name": "Passing",
+   "icon": "🎯",
+   "rows": [
+    [
+     "Passing yard",
+     "+0.04",
+     "25 yards = 1 point"
+    ],
+    [
+     "Passing TD",
+     "+4",
+     ""
+    ],
+    [
+     "2-pt conversion",
+     "+2",
+     ""
+    ],
+    [
+     "Interception thrown",
+     "-1",
+     ""
+    ]
+   ]
+  },
+  {
+   "name": "Rushing",
+   "icon": "🏃",
+   "rows": [
+    [
+     "Rushing yard",
+     "+0.1",
+     "10 yards = 1 point"
+    ],
+    [
+     "Rushing TD",
+     "+6",
+     ""
+    ],
+    [
+     "2-pt conversion",
+     "+2",
+     ""
+    ]
+   ]
+  },
+  {
+   "name": "Receiving",
+   "icon": "🧤",
+   "rows": [
+    [
+     "Reception",
+     "+1",
+     "Full PPR"
+    ],
+    [
+     "Receiving yard",
+     "+0.1",
+     "10 yards = 1 point"
+    ],
+    [
+     "Receiving TD",
+     "+6",
+     ""
+    ],
+    [
+     "2-pt conversion",
+     "+2",
+     ""
+    ]
+   ]
+  },
+  {
+   "name": "Misc",
+   "icon": "💥",
+   "rows": [
+    [
+     "Fumble lost",
+     "-2",
+     ""
+    ],
+    [
+     "Fumble recovery TD",
+     "+6",
+     ""
+    ]
+   ]
+  }
+ ],
+ "defense": {
+  "ladder": [
+   [
+    "0",
+    "+10"
+   ],
+   [
+    "1-6",
+    "+7"
+   ],
+   [
+    "7-13",
+    "+4"
+   ],
+   [
+    "14-20",
+    "+1"
+   ],
+   [
+    "21-27",
+    "0"
+   ],
+   [
+    "28-34",
+    "-1"
+   ],
+   [
+    "35+",
+    "-4"
+   ]
+  ],
+  "plays": [
+   [
+    "Defensive TD",
+    "+6"
+   ],
+   [
+    "Interception",
+    "+2"
+   ],
+   [
+    "Fumble recovery",
+    "+2"
+   ],
+   [
+    "Safety",
+    "+2"
+   ],
+   [
+    "Blocked kick",
+    "+2"
+   ],
+   [
+    "Sack",
+    "+1"
+   ],
+   [
+    "Forced fumble",
+    "+1"
+   ]
+  ],
+  "special": [
+   [
+    "Special teams TD (team)",
+    "+6"
+   ],
+   [
+    "ST forced fumble (team)",
+    "+1"
+   ],
+   [
+    "ST fumble recovery (team)",
+    "+1"
+   ],
+   [
+    "Special teams player TD",
+    "+6"
+   ],
+   [
+    "ST player forced fumble",
+    "+1"
+   ],
+   [
+    "ST player fumble recovery",
+    "+1"
+   ]
+  ]
+ },
+ "kicking_note": "Kicker scoring is on in Sleeper (FG 3 to 6 by distance, PAT +1, misses -1), but the lineup has no K slot, so it never counts."
+}

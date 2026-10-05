@@ -145,6 +145,9 @@ def mv(m):
     return f'<span class="up">&#9650; {m}</span>' if m > 0 else f'<span class="dn">&#9660; {-m}</span>' if m < 0 else '<span class="flat">&mdash;</span>'
 
 
+# Issues that carry the "How MAXPF works" explainer. Every other issue gets the desk closer card in its place. Bold predictions show in every issue.
+EXPLAIN = {(2026, 4)}
+
 MAXPF_TEXT = "<b>Max PF.</b> The points of your best possible lineup each week, added up (the same number as Sleeper's Max PF). The lowest total gets pick 1.01."
 MAXPF_LONG = ("MAXPF (Max PF) is the points your best possible lineup would have scored each week, added up across the season. "
               "It is the same figure Sleeper shows as Max PF, not starters plus bench. Lowest MAXPF gets the 1st overall pick; highest picks 12th. "
@@ -564,7 +567,7 @@ def issue(n="04", y=2026):
                    ["Best Week", f"{best(mo['a']):.2f}", f"{best(mo['b']):.2f}"],
                    ["AVG PF", f"{avg(mo['a']):.1f}", f"{avg(mo['b']):.1f}"]]
 
-    d["meta"] = {"week": wk, "maxpf": MAXPF_LONG}
+    d["meta"] = {"week": wk, "maxpf": MAXPF_LONG if (int(y), int(n)) in EXPLAIN else ""}
     path = f"issues/{y}/issue-{n}/index.html"
     blob = json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
     inject(path, "ISSUE-DATA", f'<script id="issue-data" type="application/json">{blob}</script>')
@@ -580,8 +583,7 @@ def leaderboard():
                 f'<div class="pi">{av(r["manager"], 44)}<h3><a class="ml" href="managers/{r["manager"].lower()}/">{esc(r["manager"])}</a></h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>')
     top = "".join(pod(r, c, k, l) for r, c, k, l in zip(rows[:3], ("p1", "p2", "p3"), ("gold", "silver", "bronze"), ("1st place", "2nd place", "3rd place")))
     low = "".join(f'<div class="lo"><img class="tro tt" src="assets/trophy-trash.webp" alt="Last place" width="132" height="240" loading="lazy">{av(r["manager"], 40)}<div><h3><a class="ml" href="managers/{r["manager"].lower()}/">{esc(r["manager"])}</a></h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>' for r in rows[-2:])
-    return (f'<div class="lbx"><div class="podium">{top}</div><div class="dz"><h3 class="dzh">The Danger Zone</h3><div class="dzg">{low}</div></div></div>'
-            '<p class="key"><a href="#standings">Full standings below</a></p>')
+    return f'<div class="lbx"><div class="podium">{top}</div><div class="dz"><h3 class="dzh">The Danger Zone</h3><div class="dzg">{low}</div></div></div>'
 
 def transactions(m):
     i = next((x for x in m if x.get("web")), None)
@@ -613,13 +615,45 @@ def transactions(m):
     link = f'issues/{i["year"]}/issue-{i["no"]:02d}/#wire'
     return '<div class="txl">' + "".join(out) + f'</div><p class="key"><a class="btn o" href="{link}">See all {len(ws)} waiver moves and trade grades in Issue {i["no"]}</a></p>'
 
+def settings():
+    return jload("data/settings.json", {}) or {}
+
+def _pt(v):
+    """Point pill: green for +, red for -, grey for 0."""
+    v = str(v); cls = "neg" if v[:1] in "-\u2212" else "zero" if v == "0" else "pos"
+    return f'<span class="pt {cls}">{esc(v.replace("-", "\u2212"))}</span>'
+
 def rules():
+    """Rules & settings: league-specific rules, the at-a-glance tiles and the lineup, all from data + data/settings.json."""
     from collections import Counter
+    st = settings()
     c = Counter((jload(S("league.json"), {}) or {}).get("roster_positions", []))
     nm = {"SUPER_FLEX": "SFLEX", "BN": "Bench"}
-    lineup = ", ".join((f"{n}&times;" if n > 1 else "") + nm.get(p, p) for p, n in c.items())
-    cards = [("Roster", lineup), ("Rookie draft", f"{draft_year()} order by MAXPF (the best possible lineup each week, added up; Sleeper's Max PF), linear. Lowest MAXPF picks 1.01."), ("Trades", "Vetoes are on."), ("Payouts", "The playoff winner collects.")]
-    return '<div class="rl">' + "".join(f"<div><h3>{a}</h3><p>{b}</p></div>" for a, b in cards) + "</div>"
+    cards = [("Rookie draft", f"{draft_year()} order by MAXPF (the best possible lineup each week, added up; Sleeper's Max PF), linear. Lowest MAXPF picks 1.01."), ("Trades", "Vetoes are on. The deadline is Week 13."), ("Payouts", "The playoff winner collects.")]
+    out = '<div class="rl">' + "".join(f"<div><h3>{a}</h3><p>{b}</p></div>" for a, b in cards) + "</div>"
+    if st.get("glance"):
+        out += '<div class="setg">' + "".join(f'<div class="set-tile"><b>{esc(a)}</b><span>{esc(b)}</span><small>{esc(d)}</small></div>' for a, b, d in st["glance"]) + "</div>"
+    if c:
+        lab = lambda p, n: f'<span class="slot {"bn" if p == "BN" else "sf" if p == "SUPER_FLEX" else ""}"><b>{n if n > 1 else ""}{"&times;" if n > 1 else ""}</b>{nm.get(p, p)}</span>'
+        out += '<div class="lineup"><h3 class="sub">Starting lineup</h3><div class="slots">' + "".join(lab(p, n) for p, n in c.items()) + "</div></div>"
+    return out
+
+def scoring():
+    """Scoring section: category cards, the points-allowed ladder and the defense / special-teams lists."""
+    st = settings()
+    if not st.get("scoring"):
+        return ""
+    row = lambda r: f'<li><span>{esc(r[0])}{f"<small>{esc(r[2])}</small>" if len(r) > 2 and r[2] else ""}</span>{_pt(r[1])}</li>'
+    cards = "".join(f'<div class="scc"><h3><i aria-hidden="true">{c["icon"]}</i>{esc(c["name"])}</h3><ul>{"".join(row(r) for r in c["rows"])}</ul></div>' for c in st["scoring"])
+    df = st.get("defense", {})
+    cls = lambda v: "n2" if v[:1] in "-\u2212" and "4" in v else "n1" if v[:1] in "-\u2212" else "z" if v == "0" else "p1" if v == "+1" else "p2" if v in ("+4", "+7") else "p3"
+    lad = "".join(f'<div class="rung {cls(v)}"><small>{esc(a)}</small><b>{esc(v.replace("-", "\u2212"))}</b></div>' for a, v in df.get("ladder", []))
+    d = ('<div class="scd"><div class="scd-h"><h3><i aria-hidden="true">&#128737;</i>Team defense</h3><p>Points allowed sets the floor. Every defense starts the week on the ladder.</p></div>'
+         f'<div class="ladder" role="img" aria-label="Points allowed ladder">{lad}</div>'
+         f'<div class="scd-g"><div><h4>Plays</h4><ul>{"".join(row(r) for r in df.get("plays", []))}</ul></div>'
+         f'<div><h4>Special teams</h4><ul>{"".join(row(r) for r in df.get("special", []))}</ul></div></div></div>') if df else ""
+    note = f'<p class="key scnote">{esc(st["kicking_note"])}</p>' if st.get("kicking_note") else ""
+    return f'<div class="scg">{cards}</div>{d}{note}'
 
 def manifest():
     return sorted(json.load(open(os.path.join(ROOT, "data/issues.json"), encoding="utf-8")), key=lambda i: (-int(i["year"]), -i["no"]))
@@ -650,6 +684,7 @@ if __name__ == "__main__":
     inject("index.html", "LEADERBOARD", leaderboard())
     inject("index.html", "STANDINGS", standings())
     inject("index.html", "RULES", rules())
+    inject("index.html", "SCORING", scoring())
     inject("index.html", "TX", transactions(m))   # highlights come from the newest issue's own season
     home_blocks(m)
     [issue(f'{x["no"]:02d}', x["year"]) for x in m]
