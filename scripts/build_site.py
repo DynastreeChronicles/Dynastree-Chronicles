@@ -206,11 +206,11 @@ def wire_trades(hand, week, rep):
             rep.append("trade in Week %d not covered by the issue: %s" % (week, " / ".join(x["manager"] for x in t["sides"])))
     return out
 
-def wire_waivers(notes, week, rep=None):
+def wire_waivers(notes, week, rep=None, keep=None):
     """Every claim that week comes from the feed; the desk's flags and one-liners (notes) are keyed by manager + player."""
     ann = {(n["mgr"], _k(n["player"])): n for n in notes}
     used, out = set(), []
-    for t in sorted((x for x in txfeed() if x["week"] == week and x["type"] != "trade"), key=lambda x: x.get("created") or 0):
+    for t in sorted((x for x in txfeed() if x["week"] == week and x["type"] != "trade" and (keep is None or keep(x))), key=lambda x: x.get("created") or 0):
         key = (t["manager"], _k(t["added"]["name"], t["added"].get("pos", "")))
         n = ann.get(key)
         if n:
@@ -285,7 +285,8 @@ def hz_block(kind, spec, week, root):
 
 def render_page(man, d, y):
     """Write issues/<y>/issue-NN/index.html from scripts/templates/issue.html (markers left empty for the injectors)."""
-    n, wk = f'{man["no"]:02d}', man.get("wire_week") or man.get("standings_week")
+    pre_s = bool(man.get("preseason"))   # issue 1 style: post-draft, no finished weeks yet
+    n, wk = f'{man["no"]:02d}', 0 if pre_s else (man.get("wire_week") or man.get("standings_week"))
     tpl = open(os.path.join(HERE, "templates", "issue.html"), encoding="utf-8").read()
     root = "../../../"
     desk = d.get("desk") or []
@@ -297,7 +298,14 @@ def render_page(man, d, y):
             "MONTH": esc(man.get("month", "")), "BANNER": esc(man.get("banner", man.get("dek", ""))), "PULL": esc(pull),
             "WK": str(wk), "PRE": str(wk + 1),
             "DESK": "\n".join(f"<p>{bold_handles(x)}</p>" for x in desk),
-            "HEROZERO": hz_block("hero", d.get("hero"), wk, root) + "\n" + hz_block("zero", d.get("zero"), wk, root),
+            "HEROZERO": (hz_pre("hero", d["hero"]) + "\n" + hz_pre("zero", d["zero"])) if pre_s else (hz_block("hero", d.get("hero"), wk, root) + "\n" + hz_block("zero", d.get("zero"), wk, root)),
+            "NAV_POST": "Draft Grades" if pre_s else "Post-Game",
+            "NAV_POLL": "" if pre_s else '<a href="#poll-sec">Poll</a>',
+            "T_HZ": "Draft hero and draft zero" if pre_s else "Hero and zero of the week",
+            "T_STAND": "The post-draft ledger" if pre_s else f"Current standings: Week {wk} finals",
+            "T_POST": "Draft grades and power rankings" if pre_s else f"Week {wk} post-game analysis",
+            "T_DRAMA": "Drama of the draft" if pre_s else "Drama of the week",
+            "POLL_SEC": "" if pre_s else '<h2 class="sec" id="poll-sec">Weekly poll</h2>\n<div id="poll"></div>',
             "PDF_NAV": f'<a href="{root}{pdf}">PDF</a>' if pdf else "",
             "PRINT": ((f'<h2 class="sec" id="print">Prefer print?</h2>\n<p class="art">A PDF copy of this issue is kept for archive and offline reading.</p>\n<a class="btn" href="{root}{pdf}">Download the PDF</a><a class="btn o" href="{root}">Back to the archive</a>\n')
                       if pdf else f'<p class="key"><a class="btn o" href="{root}">Back to the archive</a></p>\n')}
@@ -309,8 +317,119 @@ def render_page(man, d, y):
     os.makedirs(os.path.dirname(out), exist_ok=True)
     open(out, "w", encoding="utf-8").write(tpl)
 
+# ---------------------------------------------------------------- pre-season issue (Issue 1: post-draft, nothing played yet)
+def draft_info():
+    """Per-manager draft facts from data/draft.json (one row per pick: r, s, m, name, pos, team, auto)."""
+    out = {}
+    for p in jload("data/draft.json", []):
+        o = out.setdefault(p["m"], {"picks": [], "auto": 0, "pos": {"QB": 0, "RB": 0, "WR": 0, "TE": 0}, "slot": None})
+        o["picks"].append(p)
+        o["auto"] += 1 if p["auto"] else 0
+        if p["pos"] in o["pos"]:
+            o["pos"][p["pos"]] += 1
+        if p["r"] == 1:
+            o["slot"] = p["s"]
+    for o in out.values():
+        o["last_manual"] = max((p["r"] for p in o["picks"] if not p["auto"]), default=0)
+    return out
+
+def hz_pre(kind, spec):
+    """Draft hero / zero card: the autopick count comes from data/draft.json, the words from the issue JSON."""
+    a = draft_info()[spec["manager"]]["auto"]
+    head = f'{"Hero" if kind == "hero" else "Zero"}: {spec["manager"]}, {a} autopick' + ("" if a == 1 else "s")
+    desk = f'<p class="desk">{esc(spec["desk"])}</p>' if spec.get("desk") else ""
+    return f'<div><img class="hz-b" src="../../../assets/badge-{kind}.webp" alt="{kind.title()}"><h3>{esc(head)}</h3><p>{esc(spec["text"])}</p>{desk}</div>'
+
+def pre_banner(di):
+    """Banner in the final-score layout: the two heaviest autopick users."""
+    items = sorted(di.items(), key=lambda kv: kv[0], reverse=True)
+    (a, ra), (b, rb) = sorted(items, key=lambda kv: -kv[1]["auto"])[:2]
+    gap = ra["auto"] - rb["auto"]
+    mid = "TIE" if gap == 0 else f"&minus;{gap}"
+    return (f'<section class="final" aria-label="Draft day: autopick leaders">\n'
+            f'<div class="side w"><small>Autopicks</small><span>{esc(a)}</span><b>{ra["auto"]}</b></div>\n'
+            f'<div class="gap"><b>{mid}</b><small>Autopick Bowl</small></div>\n'
+            f'<div class="side l"><small>Autopicks</small><span>{esc(b)}</span><b>{rb["auto"]}</b></div>\n</section>')
+
+def ledger(d, bal):
+    """Stand-in for the standings table before Week 1: draft slot, positions drafted, CPU picks, desk rank, FAAB."""
+    di = draft_info()
+    rank = {x["m"]: x["rank"] for x in d["draft"]}
+    team = lambda m: f'<td>{av(m, 24, "../../../")}<b>{esc(m)}</b></td>'
+    body = "".join(f'<tr><td class="n pick">1.{o["slot"]:02d}</td>{team(m)}<td class="n">{o["pos"]["QB"]}-{o["pos"]["RB"]}-{o["pos"]["WR"]}-{o["pos"]["TE"]}</td><td class="n">{o["auto"]}</td><td class="n">{rank.get(m, "")}</td><td class="n">${bal[m]}</td></tr>'
+                   for m, o in sorted(di.items(), key=lambda kv: kv[1]["slot"]))
+    head = '<tr><th class="n">Slot</th><th>Team</th><th class="n">QB-RB-WR-TE</th><th class="n">CPU picks</th><th class="n">Desk rank</th><th class="n">FAAB</th></tr>'
+    key = ('<p class="key">Everyone is 0-0. Slot is the round-1 draft position (rounds 2 and 3 ran in reverse, then it snaked). '
+           'QB-RB-WR-TE counts the players drafted at each position. CPU picks are the autopicker\'s. FAAB is the $500 budget after the claims processed so far.</p>')
+    return f'<div class="sc"><table id="standtable"><thead>{head}</thead><tbody>{body}</tbody></table>{key}</div>'
+
+def issue_pre(man, d, y, n):
+    render_page(man, d, y)
+    rep = []
+    path = f"issues/{y}/issue-{n}/index.html"
+    cut = man.get("tx_cutoff") or {}
+    keep = lambda x: (x.get("created") or 0) <= cut.get(x["type"], 0)
+    budget = (jload("data/league.json", {}) or {}).get("waiver_budget", 500)
+    names = [r["manager"] for r in jload("data/standings.json", [])]
+    bal = {m: budget for m in names}
+    for t in txfeed():
+        if t["week"] == 1 and t["type"] == "waiver" and keep(t):
+            bal[t["manager"]] -= t.get("bid") or 0
+    di = draft_info()
+    if set(di) != set(names) or set(x["m"] for x in d["draft"]) != set(names):
+        raise SystemExit("data/draft.json and issue 'draft' cards must cover all 12 handles")
+    # draft cards: chips come from the draft file
+    for x in d["draft"]:
+        o = di[x["m"]]
+        qbs = [p["name"].split()[-1] for p in o["picks"] if p["pos"] == "QB"][:3]
+        x["chips"] = [f'{p["name"]} ({p["pos"]}, {p["team"]})' for p in o["picks"][:5]] + [f'QB room ({", ".join(qbs)})', f'Autopicks ({o["auto"]} of {len(o["picks"])})']
+    d["draft"].sort(key=lambda x: x["rank"])
+    inject(path, "STAND", ledger(d, bal))
+    inject(path, "FINAL", pre_banner(di))
+    # bankroll from the feed (claims processed so far)
+    notes = d["bank"]["notes"]
+    d["standings"] = {"bank": [[m, f"${bal[m]}", (lambda dl: "0" if not dl else f"-${-dl}")(bal[m] - budget), notes.get(m, "")]
+                              for m in sorted(bal, key=lambda m: (bal[m], list(notes).index(m) if m in notes else 99))]}
+    d.pop("bank")
+    d["wire"]["trades"] = []
+    d["wire"]["waivers"] = wire_waivers(d["wire"]["waivers"], 1, rep, keep)
+    for m in dict.fromkeys(x[0] for x in d["wire"]["waivers"]):
+        if not d["wire"].get("desk", {}).get(m):
+            rep.append(f"no desk aside for {m} in wire.desk (their transaction list will show none)")
+    # pre-game and match of the week: everyone is 0-0
+    for m in d["pre"] + [d["motw"]]:
+        for k in ("a", "b"):
+            if m[k] not in di:
+                raise SystemExit(f"issue-{n}.json names {m[k]!r}, who is not in the league data")
+        m["ar"] = m["br"] = "0-0"
+    sched = (jload("data/schedule.json", {}) or {}).get("1")
+    if sched:
+        want = {frozenset(g) for g in sched}
+        got = [frozenset((m["a"], m["b"])) for m in d["pre"] + [d["motw"]]]
+        for m in d["pre"] + [d["motw"]]:
+            if frozenset((m["a"], m["b"])) not in want:
+                rep.append(f'pre-game card {m["a"]} vs {m["b"]}: not a Week 1 matchup in data/schedule.json')
+        for g in want - set(got):
+            rep.append(f'Week 1 game with no pre-game card: {" vs ".join(sorted(g))}')
+        if len(set(got)) != len(got):
+            rep.append("pre-game cards repeat a matchup (the Match of the Week must not also be in 'pre')")
+    else:
+        rep.append("data/schedule.json has no Week 1 matchups, so pre-game cards were not checked")
+    mo = d["motw"]
+    f = lambda mg: (f'1.{di[mg]["slot"]:02d}', str(di[mg]["auto"]), str(di[mg]["pos"]["QB"]))
+    mo["stats"] = [["Record", "0-0", "0-0"], ["Round 1 pick", f(mo["a"])[0], f(mo["b"])[0]],
+                   ["Autopicks", f(mo["a"])[1], f(mo["b"])[1]], ["QBs drafted", f(mo["a"])[2], f(mo["b"])[2]]]
+    d["meta"] = {"week": 0, "maxpf": ""}
+    blob = json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
+    inject(path, "ISSUE-DATA", f'<script id="issue-data" type="application/json">{blob}</script>')
+    inject(path, "MANAGERS", '<script id="managers-data" type="application/json">' + json.dumps(managers(), ensure_ascii=False).replace("</", "<\\/") + "</script>")
+    for line in rep:
+        print(f"  note (issue {n}): {line}")
+
 def issue(n="04", y=2026):
     man = next(x for x in manifest() if x["no"] == int(n))
+    if man.get("preseason"):
+        return issue_pre(man, json.load(open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8")), y, n)
     wk = man.get("wire_week") or man.get("standings_week")
     assert wk, f"issues.json needs wire_week for issue {n}"
     d = json.load(open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8"))
@@ -451,7 +570,8 @@ def home_blocks(m):
         its = [x for x in m if x["year"] == y]
         rows = "".join(f'<div class="r"><span class="no">{x["no"]}</span><div><h3>Issue {x["no"]}' + ('' if x.get("web") else '<span class="pdfonly">PDF only</span>') + f'</h3><p>{esc(x["weeks"])}</p></div><span class="go">' + (f'<a href="{link(x)}">Read</a>' if x.get("web") else "") + (f'<a href="{x["pdf"]}">PDF</a>' if x.get("pdf") else "") + '</span></div>' for x in its)
         out.append(f'<details class="yr"{" open" if y == top else ""}><summary>{y} <small>{len(its)} issues</small></summary>{rows}</details>')
-    note = '<p class="key">Web editions start with Issue 4. Earlier issues are PDF only.</p>' if any(not x.get("web") for x in m) else ""
+    off = sorted(x["no"] for x in m if not x.get("web"))
+    note = (f'<p class="key">{"Issue" if len(off) == 1 else "Issues"} {" and ".join(map(str, off)) if len(off) < 3 else ", ".join(map(str, off[:-1])) + ", and " + str(off[-1])} {"is" if len(off) == 1 else "are"} PDF only.</p>') if off else ""
     inject("index.html", "ARCHIVE", "\n".join(out) + note)
 
 if __name__ == "__main__":

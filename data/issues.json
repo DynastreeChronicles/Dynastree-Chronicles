@@ -35,8 +35,22 @@
  {
   "no": 1,
   "year": 2026,
-  "weeks": "Season kickoff",
-  "web": false,
-  "pdf": "pdf/2026/Dynastree_Chronicles_Vol1_Issue1.pdf"
+  "title": "Positive, Kind, and Gone by Round 7",
+  "weeks": "Post-draft and Week 1 pre-game",
+  "web": true,
+  "preseason": true,
+  "month": "September 2026",
+  "dek": "Twelve managers, twenty-three rounds, 276 picks, and a robot made 84 of them. Painty69 promised to be positive and kind, then left after round 6. Darkspaces drafted thirteen receivers and shaved for confidence. Issue 1 covers the draft and previews Week 1.",
+  "banner": "Robot makes 84 picks. Painty69 leaves after round 6!",
+  "ticker": [
+   "The CPU makes 84 of 276 draft picks; Painty69 and Cassellrole tie at 18 each",
+   "Darkspaces pays $101 for Terrance Ferguson, a tight end YesChef23 cut",
+   "Darkspaces lists seven players; Hades9mm lists Kittle and Pacheco",
+   "Hades9mm is draft hero, Painty69 is draft zero, and Week 1 is set"
+  ],
+  "tx_cutoff": {
+   "waiver": 1788756344299,
+   "free_agent": 1788974000000
+  }
  }
 ]

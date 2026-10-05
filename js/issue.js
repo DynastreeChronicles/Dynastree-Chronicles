@@ -16,6 +16,8 @@ const GC={A:'#45e03a',B:'#4f8dff',C:'#e8d51f',D:'#ff9a1f',F:'#ff4d4d'};
 const GI=g=>{const k=String(g||'').trim();return /^[A-DF][+\-\u2212\u2013]?$/.test(k)?`<img class="gr xl" src="../../../assets/grade-${k[0].toLowerCase()}${k[1]?(k[1]=='+'?'plus':'minus'):''}.webp" alt="Grade ${e(k)}">`:''};
 const wside=(n,r,i,h,g)=>`<div class="ts" style="--gc:${GC[String(g||'')[0]]||'#8fb4ff'}"><div class="tsh"><div class="tsw">${AV(n,40)}<span><small>Receives</small><b>${e(n)}</b></span></div><figure class="gfig">${GI(g)}<figcaption>Desk grade ${e(g)}</figcaption></figure></div>${AL(r)}<h5>Immediate impact</h5><p>${e(i)}</p><h5>Dynasty horizon</h5><p>${e(h)}</p></div>`;
 const side=(t,k)=>`<div class="ts"><div class="tsh"><div class="tsw"><span><small>Sends</small><b>${e(t[k])}</b></span></div></div>${AL(t[k+'s'])}<p>${e(t[k+'y'])}</p></div>`;
+const dside=x=>`<div class="ts" style="--gc:${GC[String(x.grade||'')[0]]||'#8fb4ff'}"><div class="tsh"><div class="tsw">${AV(x.m,40)}<span><small>Desk rank #${x.rank}</small><b>${e(x.m)}</b></span></div><figure class="gfig">${GI(x.grade)}<figcaption>Draft grade ${e(x.grade)}</figcaption></figure></div><p><b>${e(x.tag)}</b></p>${AL(x.chips)}<h5>Why it works</h5><p>${e(x.why)}</p><h5>The risk</h5><p>${e(x.risk)}</p><p class="desk">${e(x.desk)}</p></div>`;
+const dcards=ds=>ds.reduce((o,x,i)=>{if(i%2==0)o.push([]);o[o.length-1].push(x);return o},[]).map(g=>`<article class="tc tw"><div class="twh"><span class="tg trade">&#127942; Ranks ${g[0].rank}${g[1]?' and '+g[1].rank:''}</span><h3>${g.map(x=>e(x.m)).join(' <i>&bull;</i> ')}</h3></div><div class="tsides">${g.map(dside).join('')}</div></article>`).join('');
 const inline=document.getElementById('issue-data');
 const load=inline?Promise.resolve(JSON.parse(inline.textContent)):fetch('../../../data/issues/'+location.pathname.split('/').filter(p=>/^issue-\d+$/.test(p)).pop()+'.json').then(r=>{if(!r.ok)throw new Error(r.status);return r.json()});
 const LAB={mvp:'Waiver Wire MVP',fav:'Desk Favorite',note:'Desk note'};
@@ -27,8 +29,10 @@ load.then(d=>{
 const s=d.standings;
 $('bank').innerHTML=`<div class="bank">${s.bank.map(b=>`<div><small>${e(b[0])}</small><b>${e(b[1])}</b><i class="${b[2].startsWith('-')?'dn':b[2].startsWith('+')?'up':''}">${e(b[2])}</i><p>${e(b[3])}</p></div>`).join('')}</div>`;
 const w=d.wire;
-$('wire-box').innerHTML=`<div class="star red">Breaking: trades cleared</div><div class="tm tw-list">${w.trades.map(t=>`<article class="tc tw"><div class="twh"><span class="tg trade">&#129309; Trade</span><h3>${e(t.a)} <i>&harr;</i> ${e(t.b)}</h3></div><div class="tsides">${wside(t.a,t.ar,t.ai,t.ah,t.ga)}${wside(t.b,t.br,t.bi,t.bh,t.gb)}</div><p class="desk">${e(t.desk)}</p></article>`).join('')}</div><h3 class="sub">Waiver transactions</h3><p class="key">Grouped by manager. Gold marks the Waiver Wire MVP, green the Desk Favorite.</p><div class="txgrid">${wcards(w.waivers,w.desk)}</div>`;
-$('postcards').innerHTML=d.post.map(post).join('');
+const trh=w.trades.length?`<div class="star red">Breaking: trades cleared</div><div class="tm tw-list">${w.trades.map(t=>`<article class="tc tw"><div class="twh"><span class="tg trade">&#129309; Trade</span><h3>${e(t.a)} <i>&harr;</i> ${e(t.b)}</h3></div><div class="tsides">${wside(t.a,t.ar,t.ai,t.ah,t.ga)}${wside(t.b,t.br,t.bi,t.bh,t.gb)}</div><p class="desk">${e(t.desk)}</p></article>`).join('')}</div>`:'';
+const blk=(w.block||[]).length?`<div class="star red">Open for business: the trade block</div><div class="txgrid">${w.block.map(b=>`<div class="txg"><div class="txh">${AV(b.mgr,28)}<b>${e(b.mgr)}</b><small>${b.players.length} listed</small></div><div style="padding:.6rem .9rem">${AL(b.players)}</div>${b.desk?`<p class="desk mdesk">${e(b.desk)}</p>`:''}</div>`).join('')}</div>`:'';
+$('wire-box').innerHTML=trh+blk+`<h3 class="sub">Waiver transactions</h3><p class="key">Grouped by manager. Gold marks the Waiver Wire MVP, green the Desk Favorite.</p><div class="txgrid">${wcards(w.waivers,w.desk)}</div>`;
+if(d.draft){$('postcards').className='tm tw-list';$('postcards').innerHTML=dcards(d.draft)}else $('postcards').innerHTML=d.post.map(post).join('');
 $('quote').innerHTML=`<blockquote>&ldquo;${e(d.quote.text)}&rdquo;</blockquote><p class="by">${e(d.quote.by)}</p><p class="desk">${e(d.quote.desk)}</p>`;
 const HUE=[[0,214],[40,198],[58,52],[72,36],[86,16],[100,0]];
 const hue=h=>{h=Math.max(0,Math.min(100,h));for(let i=1;i<HUE.length;i++){if(h<=HUE[i][0]){const a=HUE[i-1],b=HUE[i];return a[1]+(b[1]-a[1])*(h-a[0])/(b[0]-a[0])}}return 0};
@@ -38,12 +42,12 @@ $('trades-box').innerHTML=`<p class="art">${e(d.trades.note)}</p><div class="tm 
 $('pre').innerHTML=d.pre.map(m=>pre(m)).join('');
 const m=d.motw;
 $('motw').innerHTML=`<div class="star badge"><img class="bdg lg" src="../../../assets/badge-motw.webp" alt="Match of the Week"></div>${pre(m,'big')}<div class="sg"><div class="sc"><table><thead><tr><th>Metric</th><th class="n">${e(m.a)}</th><th class="n">${e(m.b)}</th></tr></thead><tbody>${m.stats.map(r=>`<tr><td>${e(r[0])}<td class="n">${e(r[1])}<td class="n">${e(r[2])}`).join('')}</tbody></table></div><div><h4>The stakes</h4><p>${e(m.stakes)}</p></div></div><div class="sw">${m.sw.map(x=>`<div><h4>${e(x[0])}</h4><h5>Strengths</h5><ul>${L(x[1])}</ul><h5>Weak links</h5><ul>${L(x[2])}</ul></div>`).join('')}</div><div class="verdict"><h4>Final verdict</h4><p>${e(m.verdict)}</p><b>${e(m.a)} ${m.pa.toFixed(1)}</b><b class="r">${e(m.b)} ${m.pb.toFixed(1)}</b></div>`;
-$('bottom').innerHTML=`<div class="art">${d.bottom.paras.map(t=>`<p>${e(t)}</p>`).join('')}<p class="desk"><b>How MAXPF works.</b> ${e(d.meta.maxpf)}</p></div><h3 class="sub">Bold predictions</h3><div class="bold">${d.bold.map(b=>`<div><h4>${e(b[0])}</h4><p>${e(b[1])}</p></div>`).join('')}</div>`;
-const p=d.poll,k='poll-'+p.id;let v=null;try{v=localStorage.getItem(k)}catch(_){}
+$('bottom').innerHTML=`<div class="art">${d.bottom.paras.map(t=>`<p>${e(t)}</p>`).join('')}${d.meta.maxpf?`<p class="desk"><b>How MAXPF works.</b> ${e(d.meta.maxpf)}</p>`:''}</div><h3 class="sub">Bold predictions</h3><div class="bold">${d.bold.map(b=>`<div><h4>${e(b[0])}</h4><p>${e(b[1])}</p></div>`).join('')}</div>`;
+if(d.poll){const p=d.poll,k='poll-'+p.id;let v=null;try{v=localStorage.getItem(k)}catch(_){}
 const done=c=>$('poll').innerHTML=`<h3>${e(p.q)}</h3><p class="thanks">Vote logged: <b>${e(p.opts[c])}</b>.${p.endpoint?'':' (Vote on the Sleeper App to participate.)'}</p>`;
 if(v!==null)done(+v);else{$('poll').innerHTML=`<h3>${e(p.q)}</h3><div class="opts">${p.opts.map((o,i)=>`<label><input type="radio" name="pv" value="${i}"> <span>${'ABCD'[i]}</span> ${e(o)}</label>`).join('')}</div><button class="btn" id="vote" disabled>Cast vote</button><p class="desk">${e(p.desk)}</p>`;
 document.querySelectorAll('[name=pv]').forEach(r=>r.onchange=()=>$('vote').disabled=false);
 $('vote').onclick=()=>{const c=+document.querySelector('[name=pv]:checked').value;
 if(p.endpoint)fetch(p.endpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({poll:p.id,choice:p.opts[c]})}).catch(()=>{});
-try{localStorage.setItem(k,c)}catch(_){}done(c)}}
+try{localStorage.setItem(k,c)}catch(_){}done(c)}}}
 }).catch(err=>{console.error(err);const b=document.createElement('p');b.className='loaderr';b.textContent='Issue content failed to load. If you opened this file from your computer, view it on the live site, or run scripts/build_site.py to embed the data.';document.querySelector('main').prepend(b)});
