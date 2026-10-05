@@ -5,6 +5,7 @@ Run after build_site.py:  python scripts/build_managers.py"""
 import glob, json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import build_site as bs
+import seasons as ss
 from build_site import esc, av, jload, ROOT
 
 slug = lambda m: m.lower()
@@ -95,11 +96,12 @@ def mine(m, years, season):
             if len(c) > 1 and nm.search(c[0] + " " + c[1]): b["takes"].append(("call", n, c[0], c[1]))
     return out
 
-def season_line(m, row, eff, games, rank_pf, spent, ntx, ntr):
+def season_line(m, row, eff, games, rank_pf, spent, ntx, ntr, closed=False):
     best = max(games, key=lambda g: g["points"]); low = min(games, key=lambda g: g["points"])
-    s = (f'{m} is {bs.ordinal(row["rank"])} at {row["record"]} with {row["pf"]:.1f} points, {bs.ordinal(rank_pf)} in the league in scoring. '
+    verb = "finished" if closed else "is"
+    s = (f'{m} {verb} {bs.ordinal(row["rank"])} at {row["record"]} with {row["pf"]:.1f} points, {bs.ordinal(rank_pf)} in the league in scoring. '
          f'The high was {best["points"]:.2f} in Week {best["week"]} and the low {low["points"]:.2f} in Week {low["week"]}. '
-         f'{ntx} transactions so far ({ntr} trade{"" if ntr == 1 else "s"}), ${spent} spent on the wire, ${row["faab_remaining"]} left, and the rookie pick sits at 1.{row["draft_pick"]:02d}.')
+         f'{ntx} transactions{"" if closed else " so far"} ({ntr} trade{"" if ntr == 1 else "s"}), ${spent} spent on the wire, ${row["faab_remaining"]} left, and the rookie pick {"landed at" if closed else "sits at"} 1.{row["draft_pick"]:02d}.')
     return s + (f' Lineup efficiency: {eff["efficiency"]}%.' if eff else "")
 
 def takes_html(items, r):
@@ -112,41 +114,83 @@ def takes_html(items, r):
 def drama_html(items):
     return "".join(f'<article class="dm"><span class="hd" style="--c:hsl({max(0, 214 - int(h * 2.14))} 94% 56%)"><b>{h}</b>&deg;F</span><div><h4>{esc(t)}</h4><p>{esc(p)}</p>' + (f'<p class="desk">{esc(d)}</p>' if d else "") + f'<small>Issue {n}</small></div></article>' for n, h, t, p, d in items)
 
-def manager_page(m, row, eff, games, names, years, thru, rows, season):
-    r = "../../"; i = names.index(m); prev, nxt = names[i - 1], names[(i + 1) % len(names)]
-    info = (bs.managers().get(m) or {}); team = info.get("team_name"); bio = jload(f"data/bios/{m}.json", {}) or {}
-    former = ('<p class="key">Formerly ' + esc(", ".join(info["former_names"])) + "</p>") if info.get("former_names") else ""
-    tx_html, ntx, spent = tx_block(m, thru); qs = desk_quotes(m, years); mined = mine(m, years, season)
-    ntr = sum(1 for t in bs.txfeed() if t["type"] == "trade" and any(x["manager"] == m for x in t["sides"]))
-    rank_pf = 1 + sum(1 for x in rows if x["pf"] > row["pf"])
+REG = ss.load()
+_SD = {}
+
+def sdata(m, y):
+    """Everything about manager m in season y, read from data/<y>/ only (None if they were not in that season)."""
+    k = (m, str(y))
+    if k in _SD: return _SD[k]
+    bs.use(y)
+    rows = jload(bs.S("standings.json"), []) or []
+    row = next((r for r in rows if r["manager"] == m), None)
+    out = None
+    if row:
+        thru = max((jload(bs.S("league.json"), {}) or {}).get("weeks_with_scores") or [1])
+        eff = next((e for e in (jload(bs.S("efficiency.json"), []) or []) if e["manager"] == m), None)
+        games = games_for(m, thru); tx_html, ntx, spent = tx_block(m, thru)
+        ntr = sum(1 for t in bs.txfeed() if t["type"] == "trade" and any(x["manager"] == m for x in t["sides"]))
+        out = dict(season=str(y), row=row, rows=rows, eff=eff, games=games, thru=thru, tx_html=tx_html, ntx=ntx, spent=spent, ntr=ntr,
+                   rank_pf=1 + sum(1 for x in rows if x["pf"] > row["pf"]), closed=ss.is_closed(REG.get(str(y))))
+    _SD[k] = out
+    return out
+
+def stat_tiles(d):
+    row, eff = d["row"], d["eff"]
     stats = [("Record", row["record"]), ("Rank", f'#{row["rank"]}'), ("Points for", f'{row["pf"]:.1f}'), ("Points against", f'{row["pa"]:.1f}'),
              ("MAXPF", f'{row["maxpf"]:.1f}'), ("Efficiency", f'{eff["efficiency"]}%' if eff else "n/a"), ("Draft slot", f'1.{row["draft_pick"]:02d}'),
-             ("FAAB left", f'${row["faab_remaining"]}'), ("Moves", str(ntx))]
-    tiles = "".join(f'<div><small>{a}</small><b>{b}</b></div>' for a, b in stats)
-    qh = "".join(f'<figure class="dq"><blockquote class="desk">{esc(t)}</blockquote><figcaption>Issue {n}, <a href="{r}issues/{y}/issue-{n:02d}/#{anc}">{esc(sec)}</a></figcaption></figure>' for n, y, sec, anc, t in qs) or '<p class="key">The desk has not said anything about this manager yet. That is its own kind of insult.</p>'
-    seasons = bio.get("seasons") or {}; ys = sorted({str(season), *map(str, seasons), *map(str, mined)}, reverse=True); blocks = []
+             ("FAAB left", f'${row["faab_remaining"]}'), ("Moves", str(d["ntx"]))]
+    return "".join(f'<div><small>{a}</small><b>{b}</b></div>' for a, b in stats)
+
+def seasons_of(m):
+    """Seasons (oldest to newest) in which this manager has a row in that season's own standings."""
+    return [s_ for s_ in sorted(REG) if sdata(m, s_)]
+
+def is_active(m, display_names):
+    e = bs.managers().get(m) or {}
+    return bool(e["active"]) if "active" in e else m in display_names
+
+def manager_page(m, names, years, display, active):
+    r = "../../"
+    info = (bs.managers().get(m) or {}); team = info.get("team_name"); bio = jload(f"data/bios/{m}.json", {}) or {}
+    former = ('<p class="key">Formerly ' + esc(", ".join(info["former_names"])) + "</p>") if info.get("former_names") else ""
+    mine_seasons = seasons_of(m); last = mine_seasons[-1] if mine_seasons else None; hd = sdata(m, last) if last else None
+    qs = desk_quotes(m, years); mined = mine(m, years, display)
+    ring = names.index(m) if m in names else None
+    status = "" if active or not last else f'<p class="key">Alumni. Last played in {esc(last)}.</p>'
+    seasons = bio.get("seasons") or {}; ys = sorted({*mine_seasons, *map(str, seasons), *(str(k) for k, v in mined.items() if v["takes"] or v["drama"])}, reverse=True); blocks = []
     for y in ys:
-        cur = y == str(season); bs_ = seasons.get(y, {}); mi = mined.get(int(y), {"takes": [], "drama": []}) if y.isdigit() else {"takes": [], "drama": []}
-        paras = ([season_line(m, row, eff, games, rank_pf, spent, ntx, ntr)] if cur and games else []) + bs_.get("story", [])
-        fin = bs_.get("final") or {}
+        sd = sdata(m, y); hero_season = bool(hd) and y == last
+        bs_ = seasons.get(y, {}); mi = mined.get(int(y), {"takes": [], "drama": []}) if y.isdigit() else {"takes": [], "drama": []}
+        paras = ([season_line(m, sd["row"], sd["eff"], sd["games"], sd["rank_pf"], sd["spent"], sd["ntx"], sd["ntr"], sd["closed"])] if sd and sd["games"] else []) + bs_.get("story", [])
         head = f'<h3 class="hl">{esc(bs_["headline"])}</h3>' if bs_.get("headline") else ""
         asof = f'<p class="key">Desk bio, written after {esc(bs_["asof"])}. The season line above updates itself.</p>' if bs_.get("asof") else ""
-        fin_h = asof + (f'<p class="key">Final: {esc(fin.get("record", ""))}, finished {esc(str(fin.get("rank", "")))}. {esc(fin.get("note", ""))}</p>' if fin else "")
-        story = head + "".join(f"<p>{bs.bold_handles(x)}</p>" for x in paras) + fin_h or '<p class="key">No story filed for this season yet.</p>'
+        story = head + "".join(f"<p>{bs.bold_handles(x)}</p>" for x in paras) + asof or '<p class="key">No story filed for this season yet.</p>'
         tk = takes_html(mi["takes"], r) + "".join(f'<figure class="tk"><blockquote>{esc(x)}</blockquote></figure>' for x in bs_.get("takes", []))
         dm = drama_html(mi["drama"]) + "".join(f'<article class="dm"><div><p>{esc(x)}</p></div></article>' for x in bs_.get("drama", []))
-        extra = (f'<h3 class="sub" id="log">Game log</h3>{log_table(games)}<h3 class="sub" id="tx">Transactions</h3><div class="txl">{tx_html}</div>'
-                 f'<h3 class="sub" id="desk">What the desk said</h3><div class="dqs">{qh}</div>') if cur else ""
-        sm = f'{y} <small>{esc(row["record"]) if cur else esc(fin.get("record", "archived"))}</small>'
-        blocks.append(f'<details class="ys"{" open" if cur else ""}><summary>{sm}</summary><div class="yb"><h3 class="sub">The season</h3><div class="story">{story}</div>'
+        extra = ""
+        if sd:
+            qh = "".join(f'<figure class="dq"><blockquote class="desk">{esc(t)}</blockquote><figcaption>Issue {n}, <a href="{r}issues/{yy}/issue-{n:02d}/#{anc}">{esc(sec)}</a></figcaption></figure>' for n, yy, sec, anc, t in qs if str(yy) == y) or '<p class="key">The desk has not said anything about this manager yet. That is its own kind of insult.</p>'
+            lead = "" if hero_season else f'<h3 class="sub">{"Final standing" if sd["closed"] else "Standing so far"}</h3><div class="mstats">{stat_tiles(sd)}</div>'
+            extra = (f'{lead}<h3 class="sub" id="log{"" if hero_season else "-" + y}">Game log</h3>{log_table(sd["games"])}<h3 class="sub" id="tx{"" if hero_season else "-" + y}">Transactions</h3><div class="txl">{sd["tx_html"]}</div>'
+                     f'<h3 class="sub" id="desk{"" if hero_season else "-" + y}">What the desk said</h3><div class="dqs">{qh}</div>')
+        sm = f'{y} <small>{esc(sd["row"]["record"]) if sd else "archived"}</small>'
+        blocks.append(f'<details class="ys"{" open" if y == ys[0] else ""}><summary>{sm}</summary><div class="yb"><h3 class="sub">The season</h3><div class="story">{story}</div>'
                       f'<h3 class="sub">The takes</h3>{tk or "<p class=key>No takes on file.</p>"}<h3 class="sub">The drama</h3>{dm or "<p class=key>No drama on file. Suspiciously quiet.</p>"}{extra}</div></details>')
-    best = max(games, key=lambda g: g["points"]) if games else None
+    if hd:
+        best = max(hd["games"], key=lambda g: g["points"]) if hd["games"] else None
+        cap = f'<p class="key">{esc(last)} season{" (final)" if hd["closed"] else ""}.</p>' if (not active or len(mine_seasons) > 1 or hd["closed"]) else ""
+        bw = f'\n<p class="key">Best week: {best["points"]:.2f} in Week {best["week"]}. Spent ${hd["spent"]} on the wire.</p>' if best else ""
+        hero_stats = f'{form_strip(hd["games"])}{cap}<div class="mstats">{stat_tiles(hd)}</div>{bw}'
+    else:
+        hero_stats = '<p class="key">No finished games on file for this manager yet.</p>'
+    nav = (f'<p class="mnav"><a class="btn o" href="{r}managers/{slug(names[ring - 1])}/">&larr; {esc(names[ring - 1])}</a><a class="btn o" href="{r}managers/{slug(names[(ring + 1) % len(names)])}/">{esc(names[(ring + 1) % len(names)])} &rarr;</a></p>'
+           if ring is not None else "")
     body = f'''<p class="crumb"><a href="../">All managers</a></p>
-<section class="mhero"><div class="mid">{av(m, 120, r)}<div><h2>{esc(m)}</h2><p class="tn">{esc(team) if team else "Team name pending. The desk has questions."}</p>{former}{f'<p class="tag">{esc(bio["tagline"])}</p>' if bio.get("tagline") else ""}</div></div>
-{form_strip(games)}<div class="mstats">{tiles}</div>
-{f'<p class="key">Best week: {best["points"]:.2f} in Week {best["week"]}. Spent ${spent} on the wire.</p>' if best else ""}</section>
+<section class="mhero"><div class="mid">{av(m, 120, r)}<div><h2>{esc(m)}</h2><p class="tn">{esc(team) if team else "Team name pending. The desk has questions."}</p>{former}{status}{f'<p class="tag">{esc(bio["tagline"])}</p>' if bio.get("tagline") else ""}</div></div>
+{hero_stats}</section>
 <h2 class="sec" id="archive">The season archive</h2><p class="key">One folder per season. New years appear here automatically.</p><div class="yrs">{"".join(blocks)}</div>
-<p class="mnav"><a class="btn o" href="{r}managers/{slug(prev)}/">&larr; {esc(prev)}</a><a class="btn o" href="{r}managers/{slug(nxt)}/">{esc(nxt)} &rarr;</a></p>'''
+{nav}'''
     return shell(m, f"{m}: biography, record, transactions and desk quotes.", body, r, f"Manager file: {m}")
 
 def blurb(t, n=120):
@@ -154,35 +198,54 @@ def blurb(t, n=120):
     if len(t) <= n: return t
     return t[:n].rsplit(" ", 1)[0].rstrip(",;: ") + "..."
 
-def hub(rows, quotes, moves):
+def hub(rows, quotes, moves, active, alumni):
+    """rows: the display season's standings. alumni: [(manager, last season)] for people with no row in it."""
     total = len(rows); teams = lambda m: (bs.managers().get(m) or {}).get("team_name")
-    def card(r):
+    def card(r, badge=None, year=None):
         m, k = r["manager"], r["rank"]
-        badge = (f'<img src="../assets/trophy-{["gold", "silver", "bronze"][k - 1]}-sm.webp" alt="#{k}" width="24" height="44">' if k <= 3
+        badge = badge or (f'<img src="../assets/trophy-{["gold", "silver", "bronze"][k - 1]}-sm.webp" alt="#{k}" width="24" height="44">' if k <= 3
                  else '<img src="../assets/trophy-trash-sm.webp" alt="#%d" width="26" height="44">' % k if k >= total - 1 else f'<b>#{k}</b>')
         tl = (jload(f'data/bios/{m}.json', {}) or {}).get('tagline'); q = f'<q>{esc(tl)}</q>' if tl else f'<q>{esc(blurb(quotes[m]))}</q>' if quotes.get(m) else '<q class="none">The desk has nothing on file yet.</q>'
         stat = lambda a, b: f'<span><small>{a}</small><b>{b}</b></span>'
-        return (f'<a class="mc2" href="{slug(m)}/"><div class="mtop">{av(m, 72, "../")}<div class="mn"><h3>{esc(m)}</h3><p class="mt">{esc(teams(m)) if teams(m) else "Team name pending"}</p></div><span class="rk">{badge}</span></div>'
-                f'<div class="mrow">{stat("Record", esc(r["record"]))}{stat("PF", f"{r[chr(112)+chr(102)]:.1f}")}{stat("FAAB", "$" + str(r["faab_remaining"]))}{stat("Moves", moves.get(m, 0))}</div>{q}<span class="open">Open file</span></a>')
-    groups = [("The podium", "Top three right now.", rows[:3]), ("The middle", "Everyone still arguing about the playoffs.", rows[3:-2]), ("The danger zone", "Bottom two. Draft position is the consolation.", rows[-2:])]
+        tn = esc(teams(m)) if teams(m) else "Team name pending"
+        if not active.get(m, True): tn += " &middot; Alumni" + (f" ({year})" if year else "")
+        return (f'<a class="mc2" href="{slug(m)}/"><div class="mtop">{av(m, 72, "../")}<div class="mn"><h3>{esc(m)}</h3><p class="mt">{tn}</p></div><span class="rk">{badge}</span></div>'
+                f'<div class="mrow">{stat("Record", esc(r["record"]))}{stat("PF", format(r["pf"], ".1f"))}{stat("FAAB", "$" + str(r["faab_remaining"]))}{stat("Moves", moves.get(m, 0))}</div>{q}<span class="open">Open file</span></a>')
+    groups = [("The podium", "Top three right now.", [card(r) for r in rows[:3]]), ("The middle", "Everyone still arguing about the playoffs.", [card(r) for r in rows[3:-2]]), ("The danger zone", "Bottom two. Draft position is the consolation.", [card(r) for r in rows[-2:]])]
+    if alumni:
+        groups.append(("Alumni", "No longer in the league. The files stay.", [card(r, f"<b>{y}</b>", y) for r, y in alumni]))
     body = '<p class="key">Click a manager for their record, game log, every transaction and everything the desk has said about them.</p>' + "".join(
-        f'<h2 class="sec">{t}</h2><p class="key">{d}</p><div class="mgrid">{"".join(card(r) for r in g)}</div>' for t, d, g in groups if g)
+        f'<h2 class="sec">{t}</h2><p class="key">{d}</p><div class="mgrid">{"".join(g)}</div>' for t, d, g in groups if g)
     return shell("Managers", "Every manager in the Dynastree league.", body, "../", "The league files")
 
 if __name__ == "__main__":
-    season = bs.display_season(); bs.use(season)   # the manager pages show the newest season with finished weeks
-    rows = jload(bs.S("standings.json"), []); eff = {e["manager"]: e for e in jload(bs.S("efficiency.json"), [])}
-    thru = max((jload(bs.S("league.json"), {}) or {}).get("weeks_with_scores", [1])); names = sorted((r["manager"] for r in rows), key=str.lower)
-    years = {i["no"]: i["year"] for i in bs.manifest()}; top = {}
-    moves = {}
-    for t in bs.txfeed():
-        for who in ([x["manager"] for x in t["sides"]] if t["type"] == "trade" else [t.get("manager")]):
-            moves[who] = moves.get(who, 0) + 1
+    display = bs.display_season(); bs.use(display)
+    rows = jload(bs.S("standings.json"), []) or []
+    years = {i["no"]: i["year"] for i in bs.manifest()}
+    everyone = sorted({*bs.managers(), *(r["manager"] for r in rows)}, key=str.lower)
+    # anyone who appears in ANY season's standings also gets a page, even if managers.json never knew them
+    for s_ in sorted(REG):
+        bs.use(s_)
+        everyone = sorted({*everyone, *(r["manager"] for r in (jload(bs.S("standings.json"), []) or []))}, key=str.lower)
+    bs.use(display)
+    dnames = {r["manager"] for r in rows}
+    active = {m: is_active(m, dnames) for m in everyone}
+    ring = [m for m in everyone if active[m]]
+    top, moves = {}, {}
     def write(p, html):
         p = os.path.join(ROOT, p); os.makedirs(os.path.dirname(p), exist_ok=True); open(p, "w", encoding="utf-8").write(html)
-    for r in rows:
-        m = r["manager"]; q = desk_quotes(m, years); top[m] = q[0][4] if q else ""
-        write(f"managers/{slug(m)}/index.html", manager_page(m, r, eff.get(m), games_for(m, thru), names, years, thru, rows, season))
+    for m in everyone:
+        q = desk_quotes(m, years); top[m] = q[0][4] if q else ""
+        write(f"managers/{slug(m)}/index.html", manager_page(m, ring, years, display, active[m]))
+        d = sdata(m, display)
+        if d: moves[m] = d["ntx"]
+    bs.use(display)
+    alumni = []
+    for m in everyone:
+        if m in dnames: continue
+        ms = seasons_of(m)
+        if ms: alumni.append((sdata(m, ms[-1])["row"], ms[-1]))
     for old, new in bs.alias().items():   # old links keep working after a rename
         write(f"managers/{slug(old)}/index.html", f'<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=../{slug(new)}/"><link rel="canonical" href="../{slug(new)}/"><a href="../{slug(new)}/">Moved to {esc(new)}</a>')
-    write("managers/index.html", hub(rows, top, moves)); print(f"built {len(rows)} manager pages")
+    bs.use(display)
+    write("managers/index.html", hub(rows, top, moves, active, alumni)); print(f"built {len(everyone)} manager pages ({len(ring)} active)")

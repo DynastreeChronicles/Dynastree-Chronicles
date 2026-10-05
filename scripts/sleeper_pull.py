@@ -45,7 +45,7 @@ CACHE = os.path.normpath(os.path.join(HERE, "..", ".cache"))
 
 # MAXPF = Max PF = the points of each week's OPTIMAL lineup (the best legal lineup the
 # roster could have started), summed over final weeks. This is the same idea as Sleeper's
-# built-in "Max PF" and it is what orders the 2027 rookie draft (lowest MAXPF = 1.01).
+# built-in "Max PF" and it is what orders the next season's rookie draft (lowest MAXPF = 1.01).
 #
 # It is NOT starters + bench. That number is kept as `roster_points` for reference only.
 #
@@ -360,17 +360,34 @@ def fetch_avatar(key, size=AV_SIZE):
 
 
 def sync_avatars(rmeta):
-    """Write data/managers.json and assets/avatars/<manager>.webp. An image is only
-    re-downloaded when the avatar id changes; managers with no avatar get initials on the site."""
+    """Write data/managers.json and assets/avatars/<manager>.webp.
+
+    managers.json is the league's permanent roll call, shared by every season:
+      * everyone currently in the league is "active": true;
+      * someone who is no longer in the league stays in the file as "active": false (their page and links live on);
+      * a Sleeper rename is detected by the stable Sleeper user id: the old handle is added to "former_names";
+      * hand-added fields (like former_names) are never wiped.
+    An image is only re-downloaded when the avatar id changes; managers with no avatar get initials on the site."""
     path = os.path.join(DATA, "managers.json")      # shared across seasons
     old = json.load(open(path)) if os.path.exists(path) else {}
-    out = {}
+    by_uid = {e["user_id"]: n for n, e in old.items() if e.get("user_id")}
+    now = {m["manager"] for m in rmeta.values()}
+    out, consumed = {}, set()
     for m in rmeta.values():
-        name, key = m["manager"], m.get("team_avatar") or m.get("avatar")
-        prev = old.get(name, {})
+        name, key, uid = m["manager"], m.get("team_avatar") or m.get("avatar"), m.get("user_id")
+        prev, former = old.get(name), []
+        if prev is None and uid and by_uid.get(uid) not in (None, name) and by_uid[uid] not in now:
+            former = [by_uid[uid]]                      # same person, new handle
+            prev = old[by_uid[uid]]; consumed.add(by_uid[uid])
+            print(f"  rename detected: {former[0]} is now {name} (Sleeper user {uid})")
+        prev = prev or {}
         rel = f"assets/avatars/{slug(name)}.webp"
         have = os.path.exists(os.path.join(ROOT, rel))
-        entry = {"team_name": m.get("team_name"), "avatar_id": key, "avatar": None}
+        entry = dict(prev)                              # keeps hand-added fields
+        entry.update({"team_name": m.get("team_name"), "avatar_id": key, "avatar": None, "active": True})
+        if uid: entry["user_id"] = uid
+        fn = sorted(set(prev.get("former_names") or []) | set(former))
+        if fn: entry["former_names"] = fn
         if key and prev.get("avatar_id") == key and have:
             entry["avatar"] = rel                                  # unchanged: skip the download
         elif key and Image is not None:
@@ -386,8 +403,16 @@ def sync_avatars(rmeta):
         elif key:
             print("  Pillow not installed, so avatars were skipped (pip install pillow)")
         out[name] = entry
+    left = []
+    for name, e in old.items():                          # nobody is ever deleted: leavers are kept, flagged inactive
+        if name in out or name in consumed or re.fullmatch(r"roster \d+", name):
+            continue
+        out[name] = {**e, "active": False}
+        if e.get("active", True): left.append(name)
+    if left:
+        print(f"  no longer in the league: {', '.join(left)} (their pages stay, marked as alumni)")
     dump("managers.json", out, DATA)
-    print(f"Avatars: {sum(1 for e in out.values() if e['avatar'])}/{len(out)} managers have an image")
+    print(f"Avatars: {sum(1 for e in out.values() if e['avatar'] and e.get('active'))}/{sum(1 for e in out.values() if e.get('active'))} active managers have an image")
 
 
 def main():
@@ -438,6 +463,7 @@ def main():
         u = users.get(r.get("owner_id"), {})
         rmeta[r["roster_id"]] = {
             "manager": u.get("display_name", f"roster {r['roster_id']}"),
+            "user_id": r.get("owner_id"),
             "team_name": (u.get("metadata") or {}).get("team_name"),
             "avatar": u.get("avatar"),                                   # Sleeper avatar id
             "team_avatar": (u.get("metadata") or {}).get("avatar"),      # custom team avatar URL, if set

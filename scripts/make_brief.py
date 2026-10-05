@@ -28,7 +28,8 @@ def main():
                               "written from the chat log plus transactions_offseason."],
                  "transactions_offseason": [t for t in bs.txfeed() if t["week"] == 0],
                  "latest_published_issue": man[0] if man else None, "league": league,
-                 "managers": {k: v.get("team_name") for k, v in bs.managers().items()},
+                 "managers": {k: v.get("team_name") for k, v in bs.managers().items() if v.get("active", True)},
+                 "alumni": [k for k, v in bs.managers().items() if not v.get("active", True)],
                  "issue_template": bs.jload("data/issues/issue-template.json")}
         out = os.path.join(bs.ROOT, "data", "brief.json")
         json.dump(brief, open(out, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
@@ -89,7 +90,8 @@ def main():
         "next_week_matchups": [{"a": a, "a_record": rec.get(a), "b": b, "b_record": rec.get(b)} for a, b in (sched or [])],
         "transactions_this_week_and_later": tx,
         "fut_cap": bs.jload(bs.S("fut_cap.json"), {}),
-        "managers": {k: v.get("team_name") for k, v in bs.managers().items()},
+        "managers": {k: v.get("team_name") for k, v in bs.managers().items() if v.get("active", True)},
+        "alumni": [k for k, v in bs.managers().items() if not v.get("active", True)],
         "league": {k: league.get(k) for k in ("league_id", "name", "season", "volume", "roster_positions", "waiver_budget")},
         "previous_issue_json": prev_json,
         "issue_template": bs.jload("data/issues/issue-template.json"),
