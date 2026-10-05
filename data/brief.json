@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-05T03:44:44+00:00",
- "data_pulled_at": "2026-10-05T03:44:44+00:00",
+ "generated_at": "2026-10-05T03:54:11+00:00",
+ "data_pulled_at": "2026-10-05T03:54:11+00:00",
  "ready_for_new_issue": false,
  "warnings": [
   "Week 3 is already covered by Issue 4. Wait for Week 4 to go final (Tuesday after its Monday game) before drafting a new issue.",
@@ -34,7 +34,6 @@
    "Commish flips the 2027 rookie draft to MAXPF linear and turns vetoes on",
    "Stafford heads to Snipe58 for two future 2nds and $100 FAAB"
   ],
-  "pdf": "pdf/2026/Dynastree_Chronicles_Vol1_Issue4.pdf",
   "wire_week": 3,
   "standings_week": 3,
   "month": "September 2026"
