@@ -377,7 +377,7 @@ def issue_pre(man, d, y, n):
             bal[t["manager"]] -= t.get("bid") or 0
     di = draft_info()
     if set(di) != set(names) or set(x["m"] for x in d["draft"]) != set(names):
-        raise SystemExit("data/draft.json and issue 'draft' cards must cover all 12 handles")
+        raise SystemExit(f"handles differ. standings: {sorted(names)} | draft.json: {sorted(di)} | issue-01 cards: {sorted(x['m'] for x in d['draft'])}")
     # draft cards: chips come from the draft file
     for x in d["draft"]:
         o = di[x["m"]]
