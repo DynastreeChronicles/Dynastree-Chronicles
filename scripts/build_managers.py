@@ -24,7 +24,9 @@ def desk_quotes(m, years):
     """Every desk aside that names this manager, newest issue first: (issue_no, year, section, anchor, text)."""
     out = []
     for f in sorted(glob.glob(os.path.join(ROOT, "data/issues/issue-*.json")), reverse=True):
-        n = int(re.search(r"issue-(\d+)", f).group(1)); d = bs.canon(json.load(open(f, encoding="utf-8")))
+        mt = re.search(r"issue-(\d+)\.json$", f)
+        if not mt: continue   # skips issue-template.json
+        n = int(mt.group(1)); d = bs.canon(json.load(open(f, encoding="utf-8")))
         add = lambda sec, anc, t: t and out.append((n, years.get(n, 2026), sec, anc, t))
         for para in d.get("desk") or []:   # the lead column: pull just the sentences that name them
             for sent in re.split(r"(?<=[.!?])\s+", para):
