@@ -21,9 +21,20 @@
  {
   "no": 3,
   "year": 2026,
+  "title": "See Ya'll in 2 Years",
   "weeks": "Week 2 post-game and Week 3 pre-game",
-  "web": false,
-  "pdf": "pdf/2026/Dynastree_Chronicles_Vol1_Issue3.pdf"
+  "web": true,
+  "month": "September 2026",
+  "dek": "Zygon posts 172.96 and takes Best Manager. StealingGas posts a second straight lowest score, announces the tank, and spends $100 on the wire anyway. Darkspaces and Snipe58 clear two trades, and a London deal sits pending in chat. Issue 3 covers Week 2 and previews Week 3.",
+  "banner": "StealingGas announces the tank. Two trades clear!",
+  "ticker": [
+   "Zygon drops 172.96 and beats YesChef23 by 115.9%",
+   "StealingGas posts a second straight lowest score and announces the tank",
+   "Deebo Samuel goes to Snipe58 for a 2027 2nd; Ferguson and Loveland swap",
+   "London-for-Johnston sits pending as Williams and Daniels go down"
+  ],
+  "wire_week": 2,
+  "standings_week": 2
  },
  {
   "no": 2,
