@@ -300,12 +300,12 @@ def render_page(man, d, y):
             "DESK": "\n".join(f"<p>{bold_handles(x)}</p>" for x in desk),
             "HEROZERO": (hz_pre("hero", d["hero"]) + "\n" + hz_pre("zero", d["zero"])) if pre_s else (hz_block("hero", d.get("hero"), wk, root) + "\n" + hz_block("zero", d.get("zero"), wk, root)),
             "NAV_POST": "Draft Grades" if pre_s else "Post-Game",
-            "NAV_POLL": "" if pre_s else '<a href="#poll-sec">Poll</a>',
+            "NAV_POLL": "" if (pre_s or not d.get("poll")) else '<a href="#poll-sec">Poll</a>',
             "T_HZ": "Draft hero and draft zero" if pre_s else "Hero and zero of the week",
             "T_STAND": "The post-draft ledger" if pre_s else f"Current standings: Week {wk} finals",
             "T_POST": "Draft grades and power rankings" if pre_s else f"Week {wk} post-game analysis",
             "T_DRAMA": "Drama of the draft" if pre_s else "Drama of the week",
-            "POLL_SEC": "" if pre_s else '<h2 class="sec" id="poll-sec">Weekly poll</h2>\n<div id="poll"></div>',
+            "POLL_SEC": "" if (pre_s or not d.get("poll")) else '<h2 class="sec" id="poll-sec">Weekly poll</h2>\n<div id="poll"></div>',
             "PDF_NAV": f'<a href="{root}{pdf}">PDF</a>' if pdf else "",
             "PRINT": ((f'<h2 class="sec" id="print">Prefer print?</h2>\n<p class="art">A PDF copy of this issue is kept for archive and offline reading.</p>\n<a class="btn" href="{root}{pdf}">Download the PDF</a><a class="btn o" href="{root}">Back to the archive</a>\n')
                       if pdf else f'<p class="key"><a class="btn o" href="{root}">Back to the archive</a></p>\n')}
@@ -435,6 +435,8 @@ def issue(n="04", y=2026):
     d = json.load(open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8"))
     render_page(man, d, y)
     rep = []
+    win = man.get("tx_from")   # optional: only claims created AFTER these timestamps belong to this issue (retro issues)
+    keep = (lambda x: (x.get("created") or 0) > win.get(x["type"], 0)) if win else None
     rows = asof(wk)
     by = {r["manager"]: r for r in rows}
     wkd = {t["manager"]: t for t in load_week(wk)["teams"]}
@@ -454,12 +456,18 @@ def issue(n="04", y=2026):
 
     # bankroll: balances and weekly change from the feed, notes stay hand-written
     notes = d["bank"]["notes"]
-    d["bank"] = [[m, f"${fb[wk][m]}", (lambda dl: "0" if not dl else f"+${dl}" if dl > 0 else f"-${-dl}")(fb[wk][m] - fb[wk - 1][m]), notes.get(m, "")] for m in sorted(fb[wk], key=lambda m: (fb[wk][m], list(notes).index(m) if m in notes else 99))]
+    spent = defaultdict(int)
+    if win:
+        for t in txfeed():
+            if t["week"] == wk and t["type"] != "trade" and keep(t):
+                spent[t["manager"]] += t.get("bid") or 0
+    chg = (lambda m: -spent[m]) if win else (lambda m: fb[wk][m] - fb[wk - 1][m])
+    d["bank"] = [[m, f"${fb[wk][m]}", (lambda dl: "0" if not dl else f"+${dl}" if dl > 0 else f"-${-dl}")(chg(m)), notes.get(m, "")] for m in sorted(fb[wk], key=lambda m: (fb[wk][m], list(notes).index(m) if m in notes else 99))]
     d["standings"] = {"bank": d.pop("bank")}
 
     # wire
     d["wire"]["trades"] = wire_trades(d["wire"]["trades"], wk, rep)
-    d["wire"]["waivers"] = wire_waivers(d["wire"]["waivers"], wk, rep)
+    d["wire"]["waivers"] = wire_waivers(d["wire"]["waivers"], wk, rep, keep)
     for m in dict.fromkeys(x[0] for x in d["wire"]["waivers"]):
         if not d["wire"].get("desk", {}).get(m):
             rep.append(f"no desk aside for {m} in wire.desk (their transaction list will show none)")

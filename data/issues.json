@@ -28,9 +28,24 @@
  {
   "no": 2,
   "year": 2026,
+  "title": "195 Twice, 83 Once, and Zero Trades",
   "weeks": "Week 1 post-game and Week 2 pre-game",
-  "web": false,
-  "pdf": "pdf/2026/Dynastree_Chronicles_Vol1_Issue2.pdf"
+  "web": true,
+  "month": "September 2026",
+  "dek": "C33DeezNutzz posts 195.82 and Zygon 195.70 while StealingGas posts 83.32 and takes the worst-manager award. Darkspaces spends $301 on Nicholas Singleton, Maye hits the block, and nothing has traded. Issue 2 covers Week 1 and previews Week 2.",
+  "banner": "C33 and Zygon clear 195. StealingGas drops 83. Zero trades!",
+  "ticker": [
+   "C33DeezNutzz posts 195.82 and Zygon 195.70 in the same week",
+   "StealingGas scores 83.32 and takes the worst-manager award",
+   "Darkspaces pays $301 for Nicholas Singleton and still beats Painty69",
+   "Four sellers, a loaded block, and zero completed trades"
+  ],
+  "wire_week": 1,
+  "standings_week": 1,
+  "tx_from": {
+   "waiver": 1788756344299,
+   "free_agent": 1788974000000
+  }
  },
  {
   "no": 1,
