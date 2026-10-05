@@ -377,3 +377,36 @@ details.acc.post>summary{padding-top:.9rem}
 @media(max-width:700px){.lbx .dzg{grid-template-columns:1fr}.lbx .pd .tro{height:104px}}
 
 .ml{color:inherit;text-decoration:none}.ml:hover b,.ml:hover{color:var(--green)}
+
+/* ===== v10: bigger badges and section icons, MOTW banner bar, single home banner ===== */
+
+/* section header icons (Transactions, Standings, ...) */
+.ic{height:4.4rem;margin-right:.9rem}
+h2.sec{display:flex;align-items:center;flex-wrap:wrap}
+h2.sec::before,h2.sec::after{flex-basis:100%}
+@media(max-width:700px){.ic{height:3.2rem;margin-right:.6rem}}
+
+/* Waiver Wire MVP and Desk Favorite badges on transaction cards */
+.txn{align-items:center;gap:1rem;padding:.2rem .9rem .9rem}
+.txn img{width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 6px 12px rgba(0,0,0,.5))}
+.txn .lab{font-size:1.05rem}
+.txn p{font-size:.95rem}
+@media(max-width:700px){.txn img{width:76px;height:76px}}
+
+/* Match of the Week: full-width bar behind the badge */
+.star.badge.motwbar{position:relative;display:flex;align-items:center;justify-content:center;gap:1.6rem;margin:0 0 1.2rem;padding:1.1rem 1.5rem;overflow:hidden;
+border-top:2px solid #e6b94a;border-bottom:2px solid #e6b94a;border-radius:6px;
+background:radial-gradient(60% 140% at 50% 50%,rgba(230,185,74,.28),transparent 70%),linear-gradient(90deg,#0e1b45,#10243a 50%,#0e1b45)!important}
+.motwbar::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
+background:repeating-linear-gradient(115deg,transparent 0 22px,rgba(255,255,255,.05) 22px 24px)}
+.motwbar>*{position:relative}
+.motwbar .bdg.lg{height:150px;margin:0;filter:drop-shadow(0 8px 18px rgba(0,0,0,.55))}
+.motwbar .ml-l,.motwbar .ml-r{flex:1;height:3px;border-radius:2px;background:linear-gradient(90deg,transparent,#e6b94a)}
+.motwbar .ml-r{background:linear-gradient(270deg,transparent,#e6b94a)}
+@media(max-width:700px){.motwbar{padding:.8rem 1rem;gap:.8rem}.motwbar .bdg.lg{height:104px}}
+
+/* home: crest sits centred under the latest banner (the duplicate headline block is gone) */
+.hero.crest{display:block;padding:2rem 0 .5rem;text-align:center}
+.hero.crest .logo{display:block;margin:0 auto;max-width:340px}
+.final .mtop img{height:84px}
+@media(max-width:700px){.final .mtop img{height:64px}}
