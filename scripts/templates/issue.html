@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Issue {{NO}}: {{TITLE}} | Dynastree Chronicles</title>
+<meta name="description" content="{{WEEKS}} from the Dynastree dynasty league.">
+<meta property="og:title" content="Dynastree Chronicles, Issue {{NO}}: {{TITLE}}">
+<meta property="og:description" content="{{BANNER}}">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../css/dynastree.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../../assets/favicon.png">
+<link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png">
+<meta property="og:image" content="../../../assets/og.png">
+</head>
+<body>
+<header class="mast"><div class="wrap">
+<img src="../../../assets/crest-mark.webp" alt="Dynastree Chronicles crest" width="79" height="96"><div><h1><a href="../../../">Dynastree <span>Chronicles</span></a></h1>
+<p>Volume 1, Issue {{NO}}: {{WEEKS}}, {{MONTH}}</p></div>
+</div></header>
+<nav class="sticky"><div class="wrap"><a href="#desk">Desk</a><a href="#standings">Standings</a><a href="#wire">Wire</a><a href="#post">Post-Game</a><a href="#drama">Drama</a><a href="#trades">Trade Machine</a><a href="#pregame">Pre-Game</a><a href="#bottom-line">Bottom Line</a><a href="#poll-sec">Poll</a>{{PDF_NAV}}</div></nav>
+
+<main class="wrap">
+<section class="hero">
+<div>
+<h2><span class="iss">Issue {{NO}}:</span> {{TITLE}}</h2>
+<blockquote class="pull">{{PULL}}</blockquote>
+</div>
+</section>
+<!--FINAL-->
+<!--/FINAL-->
+
+<div class="art">
+<h2 class="sec" id="desk">From the desk</h2>
+{{DESK}}
+</div>
+<h2 class="sec" id="hero-zero">Hero and zero of the week</h2>
+<div class="hz">
+{{HEROZERO}}
+</div>
+<h2 class="sec" id="standings">Current standings: Week {{WK}} finals</h2>
+<div id="stand">
+<!--STAND-->
+<!--/STAND-->
+</div>
+<h2 class="sec" id="bankroll">Bankroll watch</h2>
+<div id="bank"></div>
+<h2 class="sec" id="wire">Transaction wire</h2>
+<div id="wire-box"></div>
+<h2 class="sec" id="post">Week {{WK}} post-game analysis</h2>
+<div class="pgs" id="postcards"></div>
+<h2 class="sec" id="drama">Drama of the week</h2>
+<div id="quote"></div>
+<div id="drama-list"></div>
+<h2 class="sec" id="trades">The Hypothetical Trade Machine</h2>
+<div id="trades-box"></div>
+<h2 class="sec" id="pregame">Week {{PRE}} pre-game analysis</h2>
+<div class="pgs" id="pre"></div>
+<div id="motw" style="margin-top:1.5rem"></div>
+<h2 class="sec" id="bottom-line">The bottom line</h2>
+<div id="bottom"></div>
+<h2 class="sec" id="poll-sec">Weekly poll</h2>
+<div id="poll"></div>
+{{PRINT}}
+</main>
+
+<footer><div class="wrap"><img class="tree" src="../../../assets/tree.webp" alt="" width="40">
+<p>Time heals all wounds, but screenshots last forever.</p>
+<p>Questions, corrections, or demands for a higher ranking: settle it on the field, or the trade screen.</p>
+</div></footer>
+<!--MANAGERS-->
+<!--/MANAGERS-->
+<!--ISSUE-DATA-->
+<!--/ISSUE-DATA-->
+<script src="../../../js/issue.js"></script>
+<script src="../../../js/site.js"></script>
+</body>
+</html>

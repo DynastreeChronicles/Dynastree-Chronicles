@@ -277,6 +277,26 @@ def check_against_sleeper(rows, final_weeks, state):
         print(f"  1.{r['draft_pick']:02d} {r['manager']:<18} ours {r['maxpf']:>8.2f}  sleeper {r['sleeper_maxpf']:>8.2f}  diff {r['sleeper_maxpf'] - r['maxpf']:+.2f}")
 
 
+def build_schedule(lid, rmeta):
+    """Every regular-season matchup Sleeper has, including weeks nobody has scored in yet.
+    process_week() skips unplayed weeks, so without this the pre-game matchups would not be in data/."""
+    out = {}
+    for w in range(1, 19):
+        try:
+            ms = get(f"/league/{lid}/matchups/{w}")
+        except Exception as ex:   # a missing week must never break the pull
+            print(f"schedule: week {w} skipped ({ex})")
+            continue
+        pairs = defaultdict(list)
+        for m in ms or []:
+            if m.get("matchup_id") is not None:
+                pairs[m["matchup_id"]].append(m["roster_id"])
+        games = [[rmeta[a]["manager"], rmeta[b]["manager"]] for a, b in (sorted(ids) for ids in pairs.values() if len(ids) == 2)]
+        if games:
+            out[str(w)] = games
+    return out
+
+
 def dump(name, obj):
     path = os.path.join(OUT, name)
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -421,6 +441,7 @@ def main():
     eff.sort(key=lambda r: -(r["efficiency"] or 0))
     dump("efficiency.json", eff)
 
+    dump("schedule.json", build_schedule(lid, rmeta))
     dump("transactions.json", build_transactions(lid, range(1, (max(played) if played else cur_week) + 1), rmeta))
 
     dump("league.json", {

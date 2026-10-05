@@ -4,6 +4,8 @@
   - issues/<year>/issue-NN/index.html: a frozen snapshot "as of" the issue's week. Every table and
     number (standings, FAAB, draft slots, scores, records, bench, MVPs, trade assets, waiver claims)
     is computed from data/weeks + data/transactions.json. data/issues/issue-NN.json holds PROSE ONLY.
+    The page shell is rendered from scripts/templates/issue.html, so a new issue needs only its JSON
+    and its entry in data/issues.json: no hand-made HTML.
 Run after sleeper_pull.py (the GitHub Action does this)."""
 import json, os, re, sys
 from collections import defaultdict
@@ -260,11 +262,59 @@ def motw_banner(week, pm, rep):
             f'<div class="side l"><small>Loser</small><span>{esc(lose["manager"])}</span><b>{lose["points"]:.2f}</b></div>\n'
             f'<p class="mnote">{esc(pm.get("note", ""))}</p>\n</section>')
 
+def bold_handles(text):
+    """Escape a paragraph and bold every manager handle (house style: handles bold, NFL players never)."""
+    out = esc(text)
+    for h in sorted(managers(), key=len, reverse=True):
+        out = re.sub(rf"(?<![\w>]){re.escape(h)}(?![\w])", f"<strong>{h}</strong>", out)
+    return out
+
+def hz_block(kind, spec, week, root):
+    """Hero / Zero card. Score and perfect-lineup flag come from the week file; the words come from the issue JSON."""
+    teams = load_week(week)["teams"]
+    perfects = [t for t in teams if t.get("optimal") and abs(t["points"] - t["optimal"]) < 0.005]
+    pool = perfects if (kind == "hero" and perfects) else teams   # default hero: a perfect lineup first, else the top score
+    pick = (max if kind == "hero" else min)(pool, key=lambda t: t["points"])
+    mg = (spec or {}).get("manager") or pick["manager"]
+    t = next((x for x in teams if x["manager"] == mg), pick)
+    perfect = kind == "hero" and t.get("optimal") and abs(t["points"] - t["optimal"]) < 0.005
+    head = f'{"Hero" if kind == "hero" else "Zero"}: {mg}, ' + ("perfect lineup" if perfect else f'{t["points"]:.2f}')
+    text = esc((spec or {}).get("text") or f'{t["points"]:.2f} points in Week {week}.')
+    desk = f'<p class="desk">{esc(spec["desk"])}</p>' if (spec or {}).get("desk") else ""
+    return (f'<div><img class="hz-b" src="{root}assets/badge-{kind}.webp" alt="{kind.title()}"><h3>{esc(head)}</h3><p>{text}</p>{desk}</div>')
+
+def render_page(man, d, y):
+    """Write issues/<y>/issue-NN/index.html from scripts/templates/issue.html (markers left empty for the injectors)."""
+    n, wk = f'{man["no"]:02d}', man.get("wire_week") or man.get("standings_week")
+    tpl = open(os.path.join(HERE, "templates", "issue.html"), encoding="utf-8").read()
+    root = "../../../"
+    desk = d.get("desk") or []
+    if not desk:
+        print(f"  WARNING (issue {n}): issue JSON has no 'desk' paragraphs")
+    pull = d.get("pull") or (re.split(r"(?<=[.!?])\s", desk[0])[0] if desk else man.get("banner", ""))
+    pdf = man.get("pdf")
+    vals = {"NO": str(man["no"]), "TITLE": esc(man.get("title", "")), "WEEKS": esc(man.get("weeks", f"Week {wk} post-game and Week {wk + 1} pre-game")),
+            "MONTH": esc(man.get("month", "")), "BANNER": esc(man.get("banner", man.get("dek", ""))), "PULL": esc(pull),
+            "WK": str(wk), "PRE": str(wk + 1),
+            "DESK": "\n".join(f"<p>{bold_handles(x)}</p>" for x in desk),
+            "HEROZERO": hz_block("hero", d.get("hero"), wk, root) + "\n" + hz_block("zero", d.get("zero"), wk, root),
+            "PDF_NAV": f'<a href="{root}{pdf}">PDF</a>' if pdf else "",
+            "PRINT": ((f'<h2 class="sec" id="print">Prefer print?</h2>\n<p class="art">A PDF copy of this issue is kept for archive and offline reading.</p>\n<a class="btn" href="{root}{pdf}">Download the PDF</a><a class="btn o" href="{root}">Back to the archive</a>\n')
+                      if pdf else f'<p class="key"><a class="btn o" href="{root}">Back to the archive</a></p>\n')}
+    for k, v in vals.items():
+        tpl = tpl.replace("{{" + k + "}}", v)
+    left = re.findall(r"\{\{[A-Z_]+\}\}", tpl)
+    assert not left, f"unfilled template tokens: {left}"
+    out = os.path.join(ROOT, f"issues/{y}/issue-{n}/index.html")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    open(out, "w", encoding="utf-8").write(tpl)
+
 def issue(n="04", y=2026):
     man = next(x for x in manifest() if x["no"] == int(n))
     wk = man.get("wire_week") or man.get("standings_week")
     assert wk, f"issues.json needs wire_week for issue {n}"
     d = json.load(open(os.path.join(ROOT, f"data/issues/issue-{n}.json"), encoding="utf-8"))
+    render_page(man, d, y)
     rep = []
     rows = asof(wk)
     by = {r["manager"]: r for r in rows}
@@ -307,6 +357,19 @@ def issue(n="04", y=2026):
     # pre-game and match of the week: records from the snapshot
     for m in d["pre"] + [d["motw"]]:
         m["ar"], m["br"] = need(m["a"])["record"], need(m["b"])["record"]
+    sched = (jload("data/schedule.json", {}) or {}).get(str(wk + 1))
+    if sched:
+        want = {frozenset(g) for g in sched}
+        got = [frozenset((m["a"], m["b"])) for m in d["pre"] + [d["motw"]]]
+        for m in d["pre"] + [d["motw"]]:
+            if frozenset((m["a"], m["b"])) not in want:
+                rep.append(f'pre-game card {m["a"]} vs {m["b"]}: not a Week {wk + 1} matchup in data/schedule.json')
+        for g in want - set(got):
+            rep.append(f'Week {wk + 1} game with no pre-game card: {" vs ".join(sorted(g))}')
+        if len(set(got)) != len(got):
+            rep.append("pre-game cards repeat a matchup (the Match of the Week must not also be in 'pre')")
+    else:
+        rep.append(f"data/schedule.json has no Week {wk + 1} matchups, so pre-game cards were not checked")
     mo = d["motw"]
     best = lambda mg: max(t["points"] for w in history for t in w["teams"] if t["manager"] == mg)
     avg = lambda mg: need(mg)["pf"] / (need(mg)["wins"] + need(mg)["losses"] + need(mg)["ties"])
@@ -375,18 +438,18 @@ def manifest():
     return sorted(json.load(open(os.path.join(ROOT, "data/issues.json"), encoding="utf-8")), key=lambda i: -i["no"])
 
 def link(i):
-    return f'issues/{i["year"]}/issue-{i["no"]:02d}/' if i.get("web") else i["pdf"]
+    return f'issues/{i["year"]}/issue-{i["no"]:02d}/' if i.get("web") else i["pdf"]   # non-web issues must have a pdf
 
 def home_blocks(m):
     i = m[0]
     inject("index.html", "TICKER", "".join(f"<span>{esc(x)}</span>" for x in i.get("ticker", [])))
     inject("index.html", "BANNER", f'<a class="banner" href="{link(i)}"><small>Latest &middot; Issue {i["no"]}</small><h2>{esc(i.get("banner", i.get("title", "")))}</h2><span class="btn">{"Read" if i.get("web") else "Download"} Issue {i["no"]}</span></a>')
     read = f'<a class="btn" href="{link(i)}">Read Issue {i["no"]}</a>' if i.get("web") else ""
-    inject("index.html", "HERO", f'<h2><span class="iss">Issue {i["no"]}:</span> {esc(i.get("title", ""))}</h2>\n<p class="dek">{esc(i.get("dek", ""))}</p>\n<a class="btn" href="{i["pdf"]}">Download PDF</a>')
+    inject("index.html", "HERO", f'<h2><span class="iss">Issue {i["no"]}:</span> {esc(i.get("title", ""))}</h2>\n<p class="dek">{esc(i.get("dek", ""))}</p>\n{read}' + (f'<a class="btn o" href="{i["pdf"]}">Download PDF</a>' if i.get("pdf") else ""))
     top, out = max(x["year"] for x in m), []
     for y in sorted({x["year"] for x in m}, reverse=True):
         its = [x for x in m if x["year"] == y]
-        rows = "".join(f'<div class="r"><span class="no">{x["no"]}</span><div><h3>Issue {x["no"]}' + ('' if x.get("web") else '<span class="pdfonly">PDF only</span>') + f'</h3><p>{esc(x["weeks"])}</p></div><span class="go">' + (f'<a href="{link(x)}">Read</a>' if x.get("web") else "") + f'<a href="{x["pdf"]}">PDF</a></span></div>' for x in its)
+        rows = "".join(f'<div class="r"><span class="no">{x["no"]}</span><div><h3>Issue {x["no"]}' + ('' if x.get("web") else '<span class="pdfonly">PDF only</span>') + f'</h3><p>{esc(x["weeks"])}</p></div><span class="go">' + (f'<a href="{link(x)}">Read</a>' if x.get("web") else "") + (f'<a href="{x["pdf"]}">PDF</a>' if x.get("pdf") else "") + '</span></div>' for x in its)
         out.append(f'<details class="yr"{" open" if y == top else ""}><summary>{y} <small>{len(its)} issues</small></summary>{rows}</details>')
     note = '<p class="key">Web editions start with Issue 4. Earlier issues are PDF only.</p>' if any(not x.get("web") for x in m) else ""
     inject("index.html", "ARCHIVE", "\n".join(out) + note)
