@@ -12,6 +12,7 @@ on:
       - "data/issues.json"
       - "data/fut_cap.json"
       - "data/managers.json"
+      - "data/bios/**"
       - "scripts/**"
       - "css/**"
       - "js/**"
