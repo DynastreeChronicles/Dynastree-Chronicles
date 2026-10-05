@@ -67,6 +67,15 @@ SLOT_ELIGIBLE = {
 PLAYERS = {}
 
 
+class NothingToPull(Exception):
+    """Not an error: Sleeper has nothing for the active season yet (new league not created, or Sleeper unreachable)."""
+
+
+def notice(msg):
+    """Shows as a yellow warning on the GitHub Actions run summary, and the run still succeeds."""
+    print(f"::warning title=Sleeper pull skipped::{msg}")
+
+
 def get(path):
     url = f"{API}{path}"
     for attempt in range(4):
@@ -114,7 +123,7 @@ def find_league(season, entry=None, required=True):
         if not required:
             return None
         names = ", ".join(l["name"] for l in leagues) or "(none)"
-        sys.exit(f"No league matching {LEAGUE_NAME!r} for {season}. Found: {names}")
+        raise NothingToPull(f"No league matching {LEAGUE_NAME!r} for {season} yet. Found: {names}")
     return hits[0]
 
 
@@ -516,5 +525,17 @@ def main():
     print(f"Wrote JSON to {OUT}")
 
 
+def run():
+    """The Action must not go red because there is nothing to pull. Expected situations (no league yet for the new
+    season, Sleeper unreachable after retries) end with a warning and exit 0, leaving data/ untouched so the build
+    steps still run on what is already there. Real bugs (anything else) still fail the run."""
+    try:
+        main()
+    except NothingToPull as ex:
+        notice(str(ex))
+    except (urllib.error.URLError, TimeoutError) as ex:
+        notice(f"Sleeper did not answer ({ex}). Nothing was changed; the next run will try again.")
+
+
 if __name__ == "__main__":
-    main()
+    run()
