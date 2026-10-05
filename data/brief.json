@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-05T02:50:33+00:00",
- "data_pulled_at": "2026-10-05T02:50:33+00:00",
+ "generated_at": "2026-10-05T03:44:44+00:00",
+ "data_pulled_at": "2026-10-05T03:44:44+00:00",
  "ready_for_new_issue": false,
  "warnings": [
   "Week 3 is already covered by Issue 4. Wait for Week 4 to go final (Tuesday after its Monday game) before drafting a new issue.",
@@ -56,7 +56,7 @@
     "loser_left_on_bench": 8.8
    },
    {
-    "winner": "Cassellrole",
+    "winner": "Johnny4Skins",
     "winner_pts": 158.46,
     "loser": "Snipe58",
     "loser_pts": 120.88,
@@ -125,7 +125,7 @@
    "StealingGas"
   ],
   "top_score": {
-   "manager": "Cassellrole",
+   "manager": "Johnny4Skins",
    "points": 158.46
   },
   "low_score": {
@@ -216,7 +216,7 @@
   },
   {
    "roster_id": 6,
-   "manager": "Cassellrole",
+   "manager": "Johnny4Skins",
    "record": "2-1",
    "wins": 2,
    "losses": 1,
@@ -390,7 +390,7 @@
    "faab": 500,
    "change_this_week": 0
   },
-  "Cassellrole": {
+  "Johnny4Skins": {
    "faab": 500,
    "change_this_week": 0
   },
@@ -443,7 +443,7 @@
   {
    "a": "StealingGas",
    "a_record": "1-2",
-   "b": "Cassellrole",
+   "b": "Johnny4Skins",
    "b_record": "2-1"
   },
   {
@@ -846,7 +846,7 @@
   "Zygon": 85,
   "Hades9mm": 55,
   "C33DeezNutzz": 70,
-  "Cassellrole": 65,
+  "Johnny4Skins": 65,
   "YesChef23": 80,
   "Darkspaces": 140,
   "fumbduckdumbfuck": 90,
@@ -862,7 +862,7 @@
   "StealingGas": "Future Therapy Bills",
   "Zygon": "IR Predictor",
   "Hades9mm": "The sleeper puss",
-  "Cassellrole": null,
+  "Johnny4Skins": null,
   "Sarge71": null,
   "C33DeezNutzz": "BBQnBBWs",
   "Painty69": null,
@@ -901,7 +901,7 @@
  "previous_issue_json": {
   "desk": [
    "Week 3 is in the books and the board is louder than the scoreboard. StealingGas and Hades9mm cleared the London deal: Drake London, Taylen Green, and a 2027 1st to the tank; Quentin Johnston, Cam Ward, TreVeyon Henderson, and a 2027 3rd the other way. Darkspaces flipped Matthew Stafford to Snipe58 for a 2028 2nd, a 2029 2nd, and $100 FAAB, then immediately parked Achane and Swift on the block and negotiated a first in public chat. Zygon listed Emmett Johnson and Blake Corum with the classic \"make me regret it when Walker tears his ACL\" disclaimer.",
-   "Commish (Darkspaces) flipped the 2027 rookie draft to MAXPF linear and turned vetoes on, so tanking just got more expensive. Meanwhile StealingGas posted a perfect lineup for 152.42 and beat Darkspaces by 83 points while still calling it a tank. C33DeezNutzz, Cassellrole, and YesChef23 all moved to 2-1. Sarge71 and Painty69 sit 0-3. The desk has receipts."
+   "Commish (Darkspaces) flipped the 2027 rookie draft to MAXPF linear and turned vetoes on, so tanking just got more expensive. Meanwhile StealingGas posted a perfect lineup for 152.42 and beat Darkspaces by 83 points while still calling it a tank. C33DeezNutzz, Johnny4Skins, and YesChef23 all moved to 2-1. Sarge71 and Painty69 sit 0-3. The desk has receipts."
   ],
   "hero": {
    "manager": "StealingGas",
@@ -1069,7 +1069,7 @@
    {
     "a": "StealingGas",
     "ar": "1-2",
-    "b": "Cassellrole",
+    "b": "Johnny4Skins",
     "br": "2-1",
     "pa": 125,
     "pb": 140,
@@ -1079,7 +1079,7 @@
     "mb": "Chase stack stays hot. Dual-QB gives you a floor.",
     "la": "Every point hurts the 2027 pick.",
     "lb": "If Chase is quiet, depth must show.",
-    "edge": "Edge Cassellrole on floor and form; tank needs another perfect week.",
+    "edge": "Edge Johnny4Skins on floor and form; tank needs another perfect week.",
     "desk": "Tank vs highest scorer. MAXPF tax vs dual-QB identity. The desk is entertained."
    },
    {
@@ -1344,7 +1344,7 @@
     "desk": "BEST MANAGER trophy goes to the tank. Darkspaces is filing this under 'Jerry Jones hangover.'"
    },
    {
-    "a": "Cassellrole",
+    "a": "Johnny4Skins",
     "ar": "2-1",
     "b": "Snipe58",
     "br": "1-2",
@@ -1352,7 +1352,7 @@
     "sb": 120.88,
     "tag": "Highest score of the week, Chase leads",
     "aged": [
-     "Cassellrole drops 158.46, the week high.",
+     "Johnny4Skins drops 158.46, the week high.",
      "Chase 24.8; Kyren and Warren both hit.",
      "Snipe: Purdy 31.3, Stafford 22.9 on bench."
     ],
@@ -1362,7 +1362,7 @@
      "Purdy was the QB of the week anyway."
     ],
     "key": [
-     "Cassellrole started the right stack.",
+     "Johnny4Skins started the right stack.",
      "Snipe starting Purdy over Stafford = correct.",
      "Still a loss. Capital has to convert."
     ],
@@ -1471,7 +1471,7 @@
   "bottom": {
    "paras": [
     "Week 3 is locked, and the league spent it arguing about price. London cleared to the tank, Stafford cleared to Snipe, and Achane is still in the window with a first-round sticker on him. Zygon dared someone to make him regret the Emmett/Corum block. Nobody has taken the dare.",
-    "The real story is structural. The commish made the 2027 rookie draft linear and ordered by Sleeper's Max PF, so the stronger the best lineup your roster can field, the further your pick slides. StealingGas answered the rule change with a perfect 152.42 and the Best Manager trophy, which makes it the most expensive win of his season. Cassellrole hit 158.46, Zygon and Hades9mm are 3-0, and Sarge71 and Painty69 are still waiting on a second scorer to show up.",
+    "The real story is structural. The commish made the 2027 rookie draft linear and ordered by Sleeper's Max PF, so the stronger the best lineup your roster can field, the further your pick slides. StealingGas answered the rule change with a perfect 152.42 and the Best Manager trophy, which makes it the most expensive win of his season. Johnny4Skins hit 158.46, Zygon and Hades9mm are 3-0, and Sarge71 and Painty69 are still waiting on a second scorer to show up.",
     "Next up: Zygon vs Hades9mm for the undefeated crown, the Achane block, and a trade machine that stays open through Week 12. Cast your vote below, then go start somebody."
    ],
    "maxpf": "MAXPF is Sleeper's Max PF: the points of your best possible lineup each week, added up across the season. It is not starters plus bench. Lowest MAXPF gets the 1st overall pick; highest picks 12th. The draft is linear, so the lowest MAXPF also picks first every round. Payouts still go to the playoff winner."
@@ -1511,7 +1511,7 @@
     "C33DeezNutzz": "Untouched",
     "fumbduckdumbfuck": "Untouched",
     "CMac91": "Untouched",
-    "Cassellrole": "Untouched",
+    "Johnny4Skins": "Untouched",
     "Sarge71": "Untouched",
     "Painty69": "Untouched"
    }

@@ -23,19 +23,19 @@
         "pts": 0.0
       },
       "opponent": "CMac91",
-      "opponent_points": 141.34,
+      "opponent_points": 160.62,
       "result": "L"
     },
     {
       "roster_id": 2,
       "manager": "Snipe58",
-      "points": 97.92,
-      "maxpf": 123.3,
-      "roster_points": 136.1,
+      "points": 100.32,
+      "maxpf": 125.7,
+      "roster_points": 138.5,
       "bench_points": 38.18,
-      "optimal": 123.3,
+      "optimal": 125.7,
       "left_on_bench": 25.38,
-      "efficiency": 79.4,
+      "efficiency": 79.8,
       "mvp": {
         "name": "Quinshon Judkins",
         "pos": "RB",
@@ -70,8 +70,8 @@
         "pos": "RB",
         "pts": 11.3
       },
-      "opponent": "Cassellrole",
-      "opponent_points": 152.5,
+      "opponent": "Johnny4Skins",
+      "opponent_points": 157.9,
       "result": "L"
     },
     {
@@ -95,19 +95,19 @@
         "pts": 27.0
       },
       "opponent": "Hades9mm",
-      "opponent_points": 105.42,
+      "opponent_points": 121.76,
       "result": "W"
     },
     {
       "roster_id": 5,
       "manager": "Hades9mm",
-      "points": 105.42,
-      "maxpf": 134.52,
-      "roster_points": 160.72,
+      "points": 121.76,
+      "maxpf": 150.86,
+      "roster_points": 177.06,
       "bench_points": 55.3,
-      "optimal": 134.52,
+      "optimal": 150.86,
       "left_on_bench": 29.1,
-      "efficiency": 78.4,
+      "efficiency": 80.7,
       "mvp": {
         "name": "Javonte Williams",
         "pos": "RB",
@@ -124,14 +124,14 @@
     },
     {
       "roster_id": 6,
-      "manager": "Cassellrole",
-      "points": 152.5,
-      "maxpf": 162.0,
-      "roster_points": 198.4,
+      "manager": "Johnny4Skins",
+      "points": 157.9,
+      "maxpf": 167.4,
+      "roster_points": 203.8,
       "bench_points": 45.9,
-      "optimal": 162.0,
+      "optimal": 167.4,
       "left_on_bench": 9.5,
-      "efficiency": 94.1,
+      "efficiency": 94.3,
       "mvp": {
         "name": "Kyren Williams",
         "pos": "RB",
@@ -149,17 +149,17 @@
     {
       "roster_id": 7,
       "manager": "Sarge71",
-      "points": 100.96,
-      "maxpf": 158.78,
-      "roster_points": 183.48,
+      "points": 106.96,
+      "maxpf": 164.78,
+      "roster_points": 189.48,
       "bench_points": 82.52,
-      "optimal": 158.78,
+      "optimal": 164.78,
       "left_on_bench": 57.82,
-      "efficiency": 63.6,
+      "efficiency": 64.9,
       "mvp": {
         "name": "Tetairoa McMillan",
         "pos": "WR",
-        "pts": 39.2
+        "pts": 45.2
       },
       "best_bench": {
         "name": "Romeo Doubs",
@@ -167,7 +167,7 @@
         "pts": 23.8
       },
       "opponent": "Painty69",
-      "opponent_points": 129.12,
+      "opponent_points": 133.32,
       "result": "L"
     },
     {
@@ -197,13 +197,13 @@
     {
       "roster_id": 9,
       "manager": "Painty69",
-      "points": 129.12,
-      "maxpf": 174.52,
-      "roster_points": 230.9,
-      "bench_points": 101.78,
-      "optimal": 174.52,
-      "left_on_bench": 45.4,
-      "efficiency": 74.0,
+      "points": 133.32,
+      "maxpf": 179.32,
+      "roster_points": 241.9,
+      "bench_points": 108.58,
+      "optimal": 179.32,
+      "left_on_bench": 46.0,
+      "efficiency": 74.3,
       "mvp": {
         "name": "Joe Burrow",
         "pos": "QB",
@@ -215,19 +215,19 @@
         "pts": 24.9
       },
       "opponent": "Sarge71",
-      "opponent_points": 100.96,
+      "opponent_points": 106.96,
       "result": "W"
     },
     {
       "roster_id": 10,
       "manager": "CMac91",
-      "points": 141.34,
-      "maxpf": 155.06,
-      "roster_points": 184.32,
+      "points": 160.62,
+      "maxpf": 174.34,
+      "roster_points": 203.6,
       "bench_points": 42.98,
-      "optimal": 155.06,
+      "optimal": 174.34,
       "left_on_bench": 13.72,
-      "efficiency": 91.2,
+      "efficiency": 92.1,
       "mvp": {
         "name": "CeeDee Lamb",
         "pos": "WR",
@@ -246,12 +246,12 @@
       "roster_id": 11,
       "manager": "YesChef23",
       "points": 84.52,
-      "maxpf": 127.82,
-      "roster_points": 138.32,
-      "bench_points": 53.8,
-      "optimal": 127.82,
-      "left_on_bench": 43.3,
-      "efficiency": 66.1,
+      "maxpf": 129.72,
+      "roster_points": 140.22,
+      "bench_points": 55.7,
+      "optimal": 129.72,
+      "left_on_bench": 45.2,
+      "efficiency": 65.2,
       "mvp": {
         "name": "RJ Harvey",
         "pos": "RB",
@@ -263,7 +263,7 @@
         "pts": 28.1
       },
       "opponent": "Snipe58",
-      "opponent_points": 97.92,
+      "opponent_points": 100.32,
       "result": "L"
     },
     {
