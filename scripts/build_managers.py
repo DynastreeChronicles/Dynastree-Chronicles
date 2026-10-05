@@ -103,15 +103,34 @@ def manager_page(m, row, eff, games, names, years, thru):
 <p class="mnav"><a class="btn o" href="{r}managers/{slug(prev)}/">&larr; {esc(prev)}</a><a class="btn o" href="{r}managers/{slug(nxt)}/">{esc(nxt)} &rarr;</a></p>'''
     return shell(m, f"{m}'s record, transactions and desk quotes.", body, r, f"Manager file: {m}")
 
-def hub(rows, quotes):
-    cards = "".join(f'<a class="mc2" href="{slug(r["manager"])}/">{av(r["manager"], 64, "../")}<div><h3>{esc(r["manager"])}</h3><p>#{r["rank"]} &middot; {esc(r["record"])} &middot; {r["pf"]:.1f} PF</p>'
-                    f'{f"<q>{esc(quotes[r["manager"]][:110].rstrip())}...</q>" if quotes.get(r["manager"]) else ""}</div></a>' for r in rows)
-    return shell("Managers", "Every manager in the Dynastree league.", f'<h2 class="sec">The managers</h2><p class="key">Sorted by current standings. Every file has the record, the receipts and what the desk had to say.</p><div class="mgrid">{cards}</div>', "../", "The league files")
+def blurb(t, n=120):
+    t = t.strip()
+    if len(t) <= n: return t
+    return t[:n].rsplit(" ", 1)[0].rstrip(",;: ") + "..."
+
+def hub(rows, quotes, moves):
+    total = len(rows); teams = lambda m: (bs.managers().get(m) or {}).get("team_name")
+    def card(r):
+        m, k = r["manager"], r["rank"]
+        badge = (f'<img src="../assets/trophy-{["gold", "silver", "bronze"][k - 1]}-sm.webp" alt="#{k}" width="24" height="44">' if k <= 3
+                 else '<img src="../assets/trophy-trash-sm.webp" alt="#%d" width="26" height="44">' % k if k >= total - 1 else f'<b>#{k}</b>')
+        q = f'<q>{esc(blurb(quotes[m]))}</q>' if quotes.get(m) else '<q class="none">The desk has nothing on file yet.</q>'
+        stat = lambda a, b: f'<span><small>{a}</small><b>{b}</b></span>'
+        return (f'<a class="mc2" href="{slug(m)}/"><div class="mtop">{av(m, 72, "../")}<div class="mn"><h3>{esc(m)}</h3><p class="mt">{esc(teams(m)) if teams(m) else "Team name pending"}</p></div><span class="rk">{badge}</span></div>'
+                f'<div class="mrow">{stat("Record", esc(r["record"]))}{stat("PF", f"{r[chr(112)+chr(102)]:.1f}")}{stat("FAAB", "$" + str(r["faab_remaining"]))}{stat("Moves", moves.get(m, 0))}</div>{q}<span class="open">Open file</span></a>')
+    groups = [("The podium", "Top three right now.", rows[:3]), ("The middle", "Everyone still arguing about the playoffs.", rows[3:-2]), ("The danger zone", "Bottom two. Draft position is the consolation.", rows[-2:])]
+    body = '<p class="key">Click a manager for their record, game log, every transaction and everything the desk has said about them.</p>' + "".join(
+        f'<h2 class="sec">{t}</h2><p class="key">{d}</p><div class="mgrid">{"".join(card(r) for r in g)}</div>' for t, d, g in groups if g)
+    return shell("Managers", "Every manager in the Dynastree league.", body, "../", "The league files")
 
 if __name__ == "__main__":
     rows = jload("data/standings.json", []); eff = {e["manager"]: e for e in jload("data/efficiency.json", [])}
     thru = max((jload("data/league.json", {}) or {}).get("weeks_with_scores", [1])); names = sorted((r["manager"] for r in rows), key=str.lower)
     years = {i["no"]: i["year"] for i in bs.manifest()}; top = {}
+    moves = {}
+    for t in bs.txfeed():
+        for who in ([x["manager"] for x in t["sides"]] if t["type"] == "trade" else [t.get("manager")]):
+            moves[who] = moves.get(who, 0) + 1
     def write(p, html):
         p = os.path.join(ROOT, p); os.makedirs(os.path.dirname(p), exist_ok=True); open(p, "w", encoding="utf-8").write(html)
     for r in rows:
@@ -119,4 +138,4 @@ if __name__ == "__main__":
         write(f"managers/{slug(m)}/index.html", manager_page(m, r, eff.get(m), games_for(m, thru), names, years, thru))
     for old, new in bs.alias().items():   # old links keep working after a rename
         write(f"managers/{slug(old)}/index.html", f'<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=../{slug(new)}/"><link rel="canonical" href="../{slug(new)}/"><a href="../{slug(new)}/">Moved to {esc(new)}</a>')
-    write("managers/index.html", hub(rows, top)); print(f"built {len(rows)} manager pages")
+    write("managers/index.html", hub(rows, top, moves)); print(f"built {len(rows)} manager pages")
