@@ -2,6 +2,7 @@
   "league_id": "1389008727859806208",
   "name": "DYNASTREE",
   "season": "2026",
+  "volume": 1,
   "roster_positions": [
     "QB",
     "RB",
@@ -30,8 +31,11 @@
     3,
     4
   ],
+  "phase": "regular",
+  "carried_from": null,
+  "carry_after_ms": null,
   "maxpf_includes_reserve": false,
   "maxpf_definition": "optimal lineup points per week, summed (Sleeper Max PF)",
   "waiver_budget": 500,
-  "generated_at": "2026-10-05T04:59:14+00:00"
+  "generated_at": "2026-10-05T21:31:46+00:00"
 }

@@ -3,6 +3,7 @@
     "week": 1,
     "type": "waiver",
     "created": 1789526027392,
+    "id": "1405777684583231488",
     "manager": "Hades9mm",
     "added": {
       "name": "Mike Gesicki",
@@ -16,6 +17,7 @@
     "week": 1,
     "type": "waiver",
     "created": 1789522885083,
+    "id": "1405764504779796480",
     "manager": "StealingGas",
     "added": {
       "name": "Carson Wentz",
@@ -31,6 +33,7 @@
     "week": 1,
     "type": "waiver",
     "created": 1789481475614,
+    "id": "1405590820882538496",
     "manager": "StealingGas",
     "added": {
       "name": "Michael Mayer",
@@ -46,6 +49,7 @@
     "week": 1,
     "type": "waiver",
     "created": 1789441806715,
+    "id": "1405424437460738048",
     "manager": "Hades9mm",
     "added": {
       "name": "Kalif Raymond",
@@ -61,6 +65,7 @@
     "week": 1,
     "type": "free_agent",
     "created": 1788974904384,
+    "id": "1403466107146297344",
     "manager": "Hades9mm",
     "added": {
       "name": "DeMario Douglas",
@@ -74,6 +79,7 @@
     "week": 1,
     "type": "free_agent",
     "created": 1788921692504,
+    "id": "1403242920345088000",
     "manager": "StealingGas",
     "added": {
       "name": "Bryce Lance",
@@ -89,6 +95,7 @@
     "week": 1,
     "type": "free_agent",
     "created": 1788921403060,
+    "id": "1403241706324803584",
     "manager": "StealingGas",
     "added": {
       "name": "Roschon Johnson",
@@ -104,6 +111,7 @@
     "week": 1,
     "type": "waiver",
     "created": 1788920274534,
+    "id": "1403236972947906560",
     "manager": "Darkspaces",
     "added": {
       "name": "Nicholas Singleton",
@@ -117,6 +125,7 @@
     "week": 1,
     "type": "free_agent",
     "created": 1788920234419,
+    "id": "1403236804689207296",
     "manager": "Darkspaces",
     "added": {
       "name": "Kevin Coleman",
@@ -130,6 +139,7 @@
     "week": 1,
     "type": "free_agent",
     "created": 1788832740493,
+    "id": "1402869828569583616",
     "manager": "StealingGas",
     "added": {
       "name": "Devaughn Vele",
@@ -143,6 +153,7 @@
     "week": 1,
     "type": "waiver",
     "created": 1788756344299,
+    "id": "1402549399703334912",
     "manager": "Darkspaces",
     "added": {
       "name": "Terrance Ferguson",
@@ -156,6 +167,7 @@
     "week": 1,
     "type": "waiver",
     "created": 1788749834163,
+    "id": "1402522094218022912",
     "manager": "Zygon",
     "added": {
       "name": "Ollie Gordon",
@@ -169,6 +181,7 @@
     "week": 1,
     "type": "free_agent",
     "created": 1788749728800,
+    "id": "1402521652289372160",
     "manager": "YesChef23",
     "added": {
       "name": "Darren Waller",
@@ -184,6 +197,7 @@
     "week": 1,
     "type": "free_agent",
     "created": 1788749651295,
+    "id": "1402521327214075904",
     "manager": "Zygon",
     "added": {
       "name": "Barion Brown",
@@ -197,6 +211,7 @@
     "week": 1,
     "type": "free_agent",
     "created": 1788748150742,
+    "id": "1402515033434431488",
     "manager": "Darkspaces",
     "added": {
       "name": "Tennessee Titans",
@@ -210,6 +225,7 @@
     "week": 1,
     "type": "free_agent",
     "created": 1788747978783,
+    "id": "1402514312186073088",
     "manager": "StealingGas",
     "added": {
       "name": "George Holani",
@@ -223,6 +239,7 @@
     "week": 2,
     "type": "waiver",
     "created": 1790122651474,
+    "id": "1408280107352641536",
     "manager": "StealingGas",
     "added": {
       "name": "De'Zhaun Stribling",
@@ -238,6 +255,7 @@
     "week": 2,
     "type": "waiver",
     "created": 1790122527171,
+    "id": "1408279585992290304",
     "manager": "StealingGas",
     "added": {
       "name": "Michael Penix",
@@ -253,6 +271,7 @@
     "week": 2,
     "type": "trade",
     "created": 1790093053797,
+    "id": "1408155965701787648",
     "sides": [
       {
         "manager": "StealingGas",
@@ -311,6 +330,7 @@
     "week": 2,
     "type": "waiver",
     "created": 1790088737593,
+    "id": "1408137862225973248",
     "manager": "YesChef23",
     "added": {
       "name": "Deshaun Watson",
@@ -326,6 +346,7 @@
     "week": 2,
     "type": "trade",
     "created": 1790035118177,
+    "id": "1407912966094888960",
     "sides": [
       {
         "manager": "Darkspaces",
@@ -357,6 +378,7 @@
     "week": 2,
     "type": "trade",
     "created": 1790033577352,
+    "id": "1407906503406444544",
     "sides": [
       {
         "manager": "Darkspaces",
@@ -388,6 +410,7 @@
     "week": 2,
     "type": "free_agent",
     "created": 1789929765179,
+    "id": "1407471083598221312",
     "manager": "fumbduckdumbfuck",
     "added": {
       "name": "Drew Lock",
@@ -403,6 +426,7 @@
     "week": 2,
     "type": "free_agent",
     "created": 1789760402528,
+    "id": "1406760725153591296",
     "manager": "StealingGas",
     "added": {
       "name": "Keenan Allen",
@@ -418,6 +442,7 @@
     "week": 2,
     "type": "free_agent",
     "created": 1789760283953,
+    "id": "1406760227809873920",
     "manager": "StealingGas",
     "added": {
       "name": "Jaylin Noel",
@@ -433,6 +458,7 @@
     "week": 2,
     "type": "free_agent",
     "created": 1789759333431,
+    "id": "1406756241031606272",
     "manager": "Darkspaces",
     "added": {
       "name": "San Francisco 49ers",
@@ -448,6 +474,7 @@
     "week": 2,
     "type": "free_agent",
     "created": 1789690097196,
+    "id": "1406465843218370560",
     "manager": "Zygon",
     "added": {
       "name": "Tampa Bay Buccaneers",
@@ -463,6 +490,7 @@
     "week": 2,
     "type": "free_agent",
     "created": 1789601999444,
+    "id": "1406096334464823296",
     "manager": "StealingGas",
     "added": {
       "name": "Braelon Allen",
@@ -478,6 +506,7 @@
     "week": 2,
     "type": "waiver",
     "created": 1789568141151,
+    "id": "1405954322486824960",
     "manager": "Darkspaces",
     "added": {
       "name": "Ricky Pearsall",
@@ -493,6 +522,7 @@
     "week": 3,
     "type": "waiver",
     "created": 1790613032825,
+    "id": "1410336915814719488",
     "manager": "YesChef23",
     "added": {
       "name": "J.J. McCarthy",
@@ -508,6 +538,7 @@
     "week": 3,
     "type": "free_agent",
     "created": 1790511230291,
+    "id": "1409909925043273728",
     "manager": "Darkspaces",
     "added": {
       "name": "Tyreek Hill",
@@ -521,6 +552,7 @@
     "week": 3,
     "type": "free_agent",
     "created": 1790511203567,
+    "id": "1409909812954660864",
     "manager": "Darkspaces",
     "added": {
       "name": "Seattle Seahawks",
@@ -536,6 +568,7 @@
     "week": 3,
     "type": "free_agent",
     "created": 1790469980410,
+    "id": "1409736910502481920",
     "manager": "Hades9mm",
     "added": {
       "name": "Taylen Green",
@@ -551,6 +584,7 @@
     "week": 3,
     "type": "free_agent",
     "created": 1790447972975,
+    "id": "1409644604629741568",
     "manager": "Zygon",
     "added": {
       "name": "Rashod Bateman",
@@ -566,6 +600,7 @@
     "week": 3,
     "type": "free_agent",
     "created": 1790444388821,
+    "id": "1409629571598266368",
     "manager": "YesChef23",
     "added": {
       "name": "Eli Raridon",
@@ -581,6 +616,7 @@
     "week": 3,
     "type": "trade",
     "created": 1790343953492,
+    "id": "1409208315296174080",
     "sides": [
       {
         "manager": "Darkspaces",
@@ -617,6 +653,7 @@
     "week": 3,
     "type": "free_agent",
     "created": 1790297666129,
+    "id": "1409014172020142080",
     "manager": "Zygon",
     "added": {
       "name": "Detroit Lions",
@@ -632,6 +669,7 @@
     "week": 3,
     "type": "free_agent",
     "created": 1790291095792,
+    "id": "1408986614033563648",
     "manager": "Zygon",
     "added": {
       "name": "Emanuel Wilson",
@@ -647,6 +685,7 @@
     "week": 3,
     "type": "waiver",
     "created": 1790260453712,
+    "id": "1408858091834875904",
     "manager": "StealingGas",
     "added": {
       "name": "Jaxson Dart",
@@ -662,6 +701,7 @@
     "week": 3,
     "type": "free_agent",
     "created": 1790260054431,
+    "id": "1408856417124794368",
     "manager": "Sarge71",
     "added": {
       "name": "Aaron Rodgers",
@@ -677,6 +717,7 @@
     "week": 3,
     "type": "free_agent",
     "created": 1790259657603,
+    "id": "1408854752711757824",
     "manager": "StealingGas",
     "added": {
       "name": "Geno Smith",
@@ -692,6 +733,7 @@
     "week": 3,
     "type": "waiver",
     "created": 1790259606361,
+    "id": "1408854537782972416",
     "manager": "StealingGas",
     "added": {
       "name": "Rico Dowdle",
@@ -705,6 +747,7 @@
     "week": 3,
     "type": "free_agent",
     "created": 1790245239251,
+    "id": "1408794277760229376",
     "manager": "Hades9mm",
     "added": {
       "name": "Las Vegas Raiders",
@@ -720,6 +763,7 @@
     "week": 3,
     "type": "free_agent",
     "created": 1790245196145,
+    "id": "1408794096960626688",
     "manager": "Hades9mm",
     "added": {
       "name": "Cincinnati Bengals",
@@ -735,6 +779,7 @@
     "week": 3,
     "type": "free_agent",
     "created": 1790215197169,
+    "id": "1408668272131407872",
     "manager": "StealingGas",
     "added": {
       "name": "Travis Hunter",
@@ -750,6 +795,7 @@
     "week": 3,
     "type": "waiver",
     "created": 1790205999571,
+    "id": "1408629694609264640",
     "manager": "Darkspaces",
     "added": {
       "name": "Omar Cooper",
@@ -765,6 +811,7 @@
     "week": 3,
     "type": "free_agent",
     "created": 1790160995020,
+    "id": "1408440931845185536",
     "manager": "Darkspaces",
     "added": {
       "name": "Devaughn Vele",
@@ -778,6 +825,7 @@
     "week": 4,
     "type": "free_agent",
     "created": 1791120925974,
+    "id": "1412467174085279744",
     "manager": "fumbduckdumbfuck",
     "added": {
       "name": "Kyler Murray",
@@ -793,6 +841,7 @@
     "week": 4,
     "type": "free_agent",
     "created": 1790870140526,
+    "id": "1411415303677661184",
     "manager": "StealingGas",
     "added": {
       "name": "Kendre Miller",
@@ -808,6 +857,7 @@
     "week": 4,
     "type": "waiver",
     "created": 1790868084443,
+    "id": "1411406679840452608",
     "manager": "StealingGas",
     "added": {
       "name": "Eli Raridon",
@@ -823,6 +873,7 @@
     "week": 4,
     "type": "free_agent",
     "created": 1790867842485,
+    "id": "1411405664995098624",
     "manager": "StealingGas",
     "added": {
       "name": "Dylan Sampson",
@@ -838,6 +889,7 @@
     "week": 4,
     "type": "free_agent",
     "created": 1790800894365,
+    "id": "1411124864227569664",
     "manager": "Zygon",
     "added": {
       "name": "Chicago Bears",
@@ -853,6 +905,7 @@
     "week": 4,
     "type": "free_agent",
     "created": 1790782315574,
+    "id": "1411046939130130432",
     "manager": "Darkspaces",
     "added": {
       "name": "Caleb Douglas",

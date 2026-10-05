@@ -1,6 +1,9 @@
 {
- "generated_at": "2026-10-05T04:59:14+00:00",
- "data_pulled_at": "2026-10-05T04:59:14+00:00",
+ "generated_at": "2026-10-05T21:31:46+00:00",
+ "season": "2026",
+ "volume": 1,
+ "season_status": "active",
+ "data_pulled_at": "2026-10-05T21:31:46+00:00",
  "ready_for_new_issue": false,
  "warnings": [
   "Week 3 is already covered by Issue 4. Wait for Week 4 to go final (Tuesday after its Monday game) before drafting a new issue.",
@@ -469,6 +472,7 @@
    "week": 3,
    "type": "waiver",
    "created": 1790613032825,
+   "id": "1410336915814719488",
    "manager": "YesChef23",
    "added": {
     "name": "J.J. McCarthy",
@@ -484,6 +488,7 @@
    "week": 3,
    "type": "free_agent",
    "created": 1790511230291,
+   "id": "1409909925043273728",
    "manager": "Darkspaces",
    "added": {
     "name": "Tyreek Hill",
@@ -497,6 +502,7 @@
    "week": 3,
    "type": "free_agent",
    "created": 1790511203567,
+   "id": "1409909812954660864",
    "manager": "Darkspaces",
    "added": {
     "name": "Seattle Seahawks",
@@ -512,6 +518,7 @@
    "week": 3,
    "type": "free_agent",
    "created": 1790469980410,
+   "id": "1409736910502481920",
    "manager": "Hades9mm",
    "added": {
     "name": "Taylen Green",
@@ -527,6 +534,7 @@
    "week": 3,
    "type": "free_agent",
    "created": 1790447972975,
+   "id": "1409644604629741568",
    "manager": "Zygon",
    "added": {
     "name": "Rashod Bateman",
@@ -542,6 +550,7 @@
    "week": 3,
    "type": "free_agent",
    "created": 1790444388821,
+   "id": "1409629571598266368",
    "manager": "YesChef23",
    "added": {
     "name": "Eli Raridon",
@@ -557,6 +566,7 @@
    "week": 3,
    "type": "trade",
    "created": 1790343953492,
+   "id": "1409208315296174080",
    "sides": [
     {
      "manager": "Darkspaces",
@@ -593,6 +603,7 @@
    "week": 3,
    "type": "free_agent",
    "created": 1790297666129,
+   "id": "1409014172020142080",
    "manager": "Zygon",
    "added": {
     "name": "Detroit Lions",
@@ -608,6 +619,7 @@
    "week": 3,
    "type": "free_agent",
    "created": 1790291095792,
+   "id": "1408986614033563648",
    "manager": "Zygon",
    "added": {
     "name": "Emanuel Wilson",
@@ -623,6 +635,7 @@
    "week": 3,
    "type": "waiver",
    "created": 1790260453712,
+   "id": "1408858091834875904",
    "manager": "StealingGas",
    "added": {
     "name": "Jaxson Dart",
@@ -638,6 +651,7 @@
    "week": 3,
    "type": "free_agent",
    "created": 1790260054431,
+   "id": "1408856417124794368",
    "manager": "Sarge71",
    "added": {
     "name": "Aaron Rodgers",
@@ -653,6 +667,7 @@
    "week": 3,
    "type": "free_agent",
    "created": 1790259657603,
+   "id": "1408854752711757824",
    "manager": "StealingGas",
    "added": {
     "name": "Geno Smith",
@@ -668,6 +683,7 @@
    "week": 3,
    "type": "waiver",
    "created": 1790259606361,
+   "id": "1408854537782972416",
    "manager": "StealingGas",
    "added": {
     "name": "Rico Dowdle",
@@ -681,6 +697,7 @@
    "week": 3,
    "type": "free_agent",
    "created": 1790245239251,
+   "id": "1408794277760229376",
    "manager": "Hades9mm",
    "added": {
     "name": "Las Vegas Raiders",
@@ -696,6 +713,7 @@
    "week": 3,
    "type": "free_agent",
    "created": 1790245196145,
+   "id": "1408794096960626688",
    "manager": "Hades9mm",
    "added": {
     "name": "Cincinnati Bengals",
@@ -711,6 +729,7 @@
    "week": 3,
    "type": "free_agent",
    "created": 1790215197169,
+   "id": "1408668272131407872",
    "manager": "StealingGas",
    "added": {
     "name": "Travis Hunter",
@@ -726,6 +745,7 @@
    "week": 3,
    "type": "waiver",
    "created": 1790205999571,
+   "id": "1408629694609264640",
    "manager": "Darkspaces",
    "added": {
     "name": "Omar Cooper",
@@ -741,6 +761,7 @@
    "week": 3,
    "type": "free_agent",
    "created": 1790160995020,
+   "id": "1408440931845185536",
    "manager": "Darkspaces",
    "added": {
     "name": "Devaughn Vele",
@@ -754,6 +775,7 @@
    "week": 4,
    "type": "free_agent",
    "created": 1791120925974,
+   "id": "1412467174085279744",
    "manager": "fumbduckdumbfuck",
    "added": {
     "name": "Kyler Murray",
@@ -769,6 +791,7 @@
    "week": 4,
    "type": "free_agent",
    "created": 1790870140526,
+   "id": "1411415303677661184",
    "manager": "StealingGas",
    "added": {
     "name": "Kendre Miller",
@@ -784,6 +807,7 @@
    "week": 4,
    "type": "waiver",
    "created": 1790868084443,
+   "id": "1411406679840452608",
    "manager": "StealingGas",
    "added": {
     "name": "Eli Raridon",
@@ -799,6 +823,7 @@
    "week": 4,
    "type": "free_agent",
    "created": 1790867842485,
+   "id": "1411405664995098624",
    "manager": "StealingGas",
    "added": {
     "name": "Dylan Sampson",
@@ -814,6 +839,7 @@
    "week": 4,
    "type": "free_agent",
    "created": 1790800894365,
+   "id": "1411124864227569664",
    "manager": "Zygon",
    "added": {
     "name": "Chicago Bears",
@@ -829,6 +855,7 @@
    "week": 4,
    "type": "free_agent",
    "created": 1790782315574,
+   "id": "1411046939130130432",
    "manager": "Darkspaces",
    "added": {
     "name": "Caleb Douglas",
@@ -873,6 +900,7 @@
   "league_id": "1389008727859806208",
   "name": "DYNASTREE",
   "season": "2026",
+  "volume": 1,
   "roster_positions": [
    "QB",
    "RB",
