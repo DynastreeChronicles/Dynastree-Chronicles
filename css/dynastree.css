@@ -251,8 +251,6 @@ nav.sticky .wrap{gap:clamp(.6rem,3.2vw,1rem);font-size:1rem;justify-content:spac
 .sc td:nth-child(2){box-shadow:1px 0 0 var(--line)}
 .colbtn{display:none;margin:0 0 .6rem;padding:.4rem .9rem;background:none;color:var(--sky);border:1.5px solid var(--blue);border-radius:2px;font:600 .95rem Inter,system-ui,sans-serif;cursor:pointer}
 @media (max-width:640px){.colbtn{display:inline-block}.xs:not(.all) .x{display:none}.xs .sc td:nth-child(2) b{font-size:.95rem}.xs th,.xs td{padding:.45rem .35rem;font-size:1.02rem}}
-/* ---- archive: PDF-only issues ---- */
-.pdfonly{display:inline-block;margin-left:.5rem;padding:0 .45rem;border:1px solid var(--line);border-radius:2px;color:var(--mute);font:500 .75rem Inter,sans-serif;vertical-align:middle}
 
 /* ---- trophies ---- */
 .podium>div,.dz .lo{display:flex;align-items:center;gap:.9rem}

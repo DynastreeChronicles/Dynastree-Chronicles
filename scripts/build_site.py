@@ -191,7 +191,8 @@ def wire_trades(hand, week, rep):
     used, out = set(), []
     for h in hand:
         pair = {h["a"], h["b"]}
-        hit = next((t for t in sorted(feed, key=lambda t: -(t.get("created") or 0)) if {x["manager"] for x in t["sides"]} == pair and id(t) not in used), None)
+        has = lambda t: not h.get("match") or any(h["match"].lower() in q["name"].lower() for sd in t["sides"] for q in sd["receives_players"])   # optional "match": a player name, to tell two trades between the same pair apart
+        hit = next((t for t in sorted(feed, key=lambda t: -(t.get("created") or 0)) if {x["manager"] for x in t["sides"]} == pair and id(t) not in used and has(t)), None)
         if not hit:
             rep.append(f'trade {h["a"]}/{h["b"]}: no matching trade in transactions.json, assets omitted')
             out.append({**h, "ar": [], "br": []})
@@ -293,7 +294,6 @@ def render_page(man, d, y):
     if not desk:
         print(f"  WARNING (issue {n}): issue JSON has no 'desk' paragraphs")
     pull = d.get("pull") or (re.split(r"(?<=[.!?])\s", desk[0])[0] if desk else man.get("banner", ""))
-    pdf = man.get("pdf")
     vals = {"NO": str(man["no"]), "TITLE": esc(man.get("title", "")), "WEEKS": esc(man.get("weeks", f"Week {wk} post-game and Week {wk + 1} pre-game")),
             "MONTH": esc(man.get("month", "")), "BANNER": esc(man.get("banner", man.get("dek", ""))), "PULL": esc(pull),
             "WK": str(wk), "PRE": str(wk + 1),
@@ -306,9 +306,8 @@ def render_page(man, d, y):
             "T_POST": "Draft grades and power rankings" if pre_s else f"Week {wk} post-game analysis",
             "T_DRAMA": "Drama of the draft" if pre_s else "Drama of the week",
             "POLL_SEC": "" if (pre_s or not d.get("poll")) else '<h2 class="sec" id="poll-sec">Weekly poll</h2>\n<div id="poll"></div>',
-            "PDF_NAV": f'<a href="{root}{pdf}">PDF</a>' if pdf else "",
-            "PRINT": ((f'<h2 class="sec" id="print">Prefer print?</h2>\n<p class="art">A PDF copy of this issue is kept for archive and offline reading.</p>\n<a class="btn" href="{root}{pdf}">Download the PDF</a><a class="btn o" href="{root}">Back to the archive</a>\n')
-                      if pdf else f'<p class="key"><a class="btn o" href="{root}">Back to the archive</a></p>\n')}
+            "PDF_NAV": "",
+            "PRINT": f'<p class="key"><a class="btn o" href="{root}">Back to the archive</a></p>\n'}
     for k, v in vals.items():
         tpl = tpl.replace("{{" + k + "}}", v)
     left = re.findall(r"\{\{[A-Z_]+\}\}", tpl)
@@ -565,22 +564,20 @@ def manifest():
     return sorted(json.load(open(os.path.join(ROOT, "data/issues.json"), encoding="utf-8")), key=lambda i: -i["no"])
 
 def link(i):
-    return f'issues/{i["year"]}/issue-{i["no"]:02d}/' if i.get("web") else i["pdf"]   # non-web issues must have a pdf
+    return f'issues/{i["year"]}/issue-{i["no"]:02d}/'
 
 def home_blocks(m):
     i = m[0]
     inject("index.html", "TICKER", "".join(f"<span>{esc(x)}</span>" for x in i.get("ticker", [])))
-    inject("index.html", "BANNER", f'<a class="banner" href="{link(i)}"><small>Latest &middot; Issue {i["no"]}</small><h2>{esc(i.get("banner", i.get("title", "")))}</h2><span class="btn">{"Read" if i.get("web") else "Download"} Issue {i["no"]}</span></a>')
-    read = f'<a class="btn" href="{link(i)}">Read Issue {i["no"]}</a>' if i.get("web") else ""
-    inject("index.html", "HERO", f'<h2><span class="iss">Issue {i["no"]}:</span> {esc(i.get("title", ""))}</h2>\n<p class="dek">{esc(i.get("dek", ""))}</p>\n{read}' + (f'<a class="btn o" href="{i["pdf"]}">Download PDF</a>' if i.get("pdf") else ""))
+    inject("index.html", "BANNER", f'<a class="banner" href="{link(i)}"><small>Latest &middot; Issue {i["no"]}</small><h2>{esc(i.get("banner", i.get("title", "")))}</h2><span class="btn">Read Issue {i["no"]}</span></a>')
+    read = f'<a class="btn" href="{link(i)}">Read Issue {i["no"]}</a>'
+    inject("index.html", "HERO", f'<h2><span class="iss">Issue {i["no"]}:</span> {esc(i.get("title", ""))}</h2>\n<p class="dek">{esc(i.get("dek", ""))}</p>\n{read}')
     top, out = max(x["year"] for x in m), []
     for y in sorted({x["year"] for x in m}, reverse=True):
         its = [x for x in m if x["year"] == y]
-        rows = "".join(f'<div class="r"><span class="no">{x["no"]}</span><div><h3>Issue {x["no"]}' + ('' if x.get("web") else '<span class="pdfonly">PDF only</span>') + f'</h3><p>{esc(x["weeks"])}</p></div><span class="go">' + (f'<a href="{link(x)}">Read</a>' if x.get("web") else "") + (f'<a href="{x["pdf"]}">PDF</a>' if x.get("pdf") else "") + '</span></div>' for x in its)
+        rows = "".join(f'<div class="r"><span class="no">{x["no"]}</span><div><h3>Issue {x["no"]}</h3><p>{esc(x["weeks"])}</p></div><span class="go"><a href="{link(x)}">Read</a></span></div>' for x in its)
         out.append(f'<details class="yr"{" open" if y == top else ""}><summary>{y} <small>{len(its)} issues</small></summary>{rows}</details>')
-    off = sorted(x["no"] for x in m if not x.get("web"))
-    note = (f'<p class="key">{"Issue" if len(off) == 1 else "Issues"} {" and ".join(map(str, off)) if len(off) < 3 else ", ".join(map(str, off[:-1])) + ", and " + str(off[-1])} {"is" if len(off) == 1 else "are"} PDF only.</p>') if off else ""
-    inject("index.html", "ARCHIVE", "\n".join(out) + note)
+    inject("index.html", "ARCHIVE", "\n".join(out))
 
 if __name__ == "__main__":
     inject("index.html", "LEADERBOARD", leaderboard())
@@ -589,5 +586,5 @@ if __name__ == "__main__":
     inject("index.html", "RULES", rules())
     inject("index.html", "STANDINGS", standings())
     home_blocks(m)
-    [issue(f'{x["no"]:02d}', x["year"]) for x in m if x.get("web")]
+    [issue(f'{x["no"]:02d}', x["year"]) for x in m]
     print("site built")
