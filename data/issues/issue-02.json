@@ -31,8 +31,8 @@
    "C33DeezNutzz": "Untouched",
    "fumbduckdumbfuck": "Untouched",
    "CMac91": "Untouched",
-   "Cassellrole": "Untouched",
-   "Sarge71": "Three free adds, $0",
+   "Johnny4Skins": "Untouched",
+   "Sarge71": "No bids",
    "Painty69": "Untouched"
   }
  },
@@ -82,27 +82,15 @@
    {
     "mgr": "Hades9mm",
     "player": "Mike Gesicki",
-    "flag": "note",
+    "flag": "fav",
     "note": "$80 for a tight end, with Kittle on the block. The math works if you do not look at it."
-   },
-   {
-    "mgr": "Zygon",
-    "player": "Theo Johnson",
-    "flag": "fav",
-    "note": "A free tight end for a roster that already has the co-best score. The predictor keeps adding to the portfolio."
-   },
-   {
-    "mgr": "Sarge71",
-    "player": "Michael Penix",
-    "flag": "fav",
-    "note": "Penix for free, a lottery ticket at quarterback after a loss that should have been a win."
    }
   ],
   "desk": {
    "Darkspaces": "Singleton for $301 on top of the earlier $101, so $402 gone before the first Monday night. He put Maye and Deebo on the block in the same week and still won. The desk would call it a pivot if anything pivoted.",
    "Hades9mm": "Two bids, $170 combined, from the offense doing the winning. Buying and selling in the same week is a strategy or a mood.",
-   "Zygon": "Another free body for the portfolio. The IR Predictor spends nothing and keeps winning.",
-   "Sarge71": "Raridon, Noel and Penix, all free. A zero-dollar response to a 0-1 start with a very good score. The desk respects the thrift.",
+   "Zygon": "No bids, and the IR Predictor still posted the co-best score of the week.",
+   "Sarge71": "No bids after a 0-1 start with a very good score. The desk respects the thrift.",
    "StealingGas": "$2 spent and the roster is still churning. Four players on the block and 83.32 on the board."
   }
  },
@@ -224,22 +212,22 @@
   },
   {
    "a": "Zygon",
-   "b": "Cassellrole",
+   "b": "Johnny4Skins",
    "tag": "Coker, JSN and McBride keep the nickname profitable",
    "aged": [
     "A dead-heat projection became the biggest blowout of the week.",
     "Coker 33.8, JSN and McBride 24.5 did the damage.",
-    "Cassellrole's dual-QB volume was real. The skill players never kept pace."
+    "Johnny4Skins's dual-QB volume was real. The skill players never kept pace."
    ],
    "means": [
     "IR Predictor is 1-0 with a 195.70 and a Best Manager award at 98% of perfect.",
-    "Cassellrole is 0-1 with a functional roster that did not spike.",
+    "Johnny4Skins is 0-1 with a functional roster that did not spike.",
     "The nickname is still profitable."
    ],
    "key": [
     "Zygon started the correct WR/TE combination.",
     "The bit kept landing without costing the win.",
-    "Cassellrole produced volume without the finishing kick."
+    "Johnny4Skins produced volume without the finishing kick."
    ],
    "ga": "A",
    "gb": "B-",
@@ -399,7 +387,7 @@
    "desk": "A strong score and an L is the cruelest form of moral victory."
   },
   {
-   "a": "Cassellrole",
+   "a": "Johnny4Skins",
    "b": "Painty69",
    "pa": 133.0,
    "pb": 142.0,
@@ -407,9 +395,9 @@
    "wb": 54,
    "ma": "Lamar and Hurts are the identity. Start both and hope the skill players produce more than Week 1 volume.",
    "mb": "Gibbs is non-negotiable. CMC and the rest of the backfield need to hit closer to projection.",
-   "la": "Cassellrole's dual-QB approach is safer but lower-upside.",
+   "la": "Johnny4Skins's dual-QB approach is safer but lower-upside.",
    "lb": "Painty69's ceiling is the highest in this pairing if the backfield clicks.",
-   "edge": "Edge Painty69 on pure talent. Cassellrole can steal it if the dual-QB volume continues and Painty's pieces stay quiet again.",
+   "edge": "Edge Painty69 on pure talent. Johnny4Skins can steal it if the dual-QB volume continues and Painty's pieces stay quiet again.",
    "desk": "The war-crime backfield has one week of tape. The desk still believes in the crime."
   },
   {
@@ -492,7 +480,7 @@
    "Four sellers, a loaded block, and a desk that is tired of waiting. Somebody blinks. Deadline: Week 3 final."
   ],
   [
-   "Painty69 beats Cassellrole in Week 2",
+   "Painty69 beats Johnny4Skins in Week 2",
    "The highest ceiling in the pairing and one week of backfield tape. Deadline: Week 2 final."
   ]
  ]
