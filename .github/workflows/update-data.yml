@@ -15,6 +15,7 @@ on:
       - "data/managers.json"
       - "data/settings.json"
       - "data/history.json"
+      - "data/ledger.json"
       - "data/bios/**"
       - "scripts/**"
       - "css/**"
@@ -48,6 +49,13 @@ jobs:
       - name: Build Hall of Fame and League History page
         run: python scripts/build_history.py
 
+      - name: Pull NFL player stats for pick grading
+        continue-on-error: true
+        run: python scripts/pull_player_stats.py
+
+      - name: Build Draft and Trade Ledger page
+        run: python scripts/build_ledger.py
+
       - name: Write one-file brief for the next issue
         run: python scripts/make_brief.py
 
@@ -55,5 +63,5 @@ jobs:
         run: |
           git config user.name "dynastree-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A data index.html issues managers history assets/avatars
+          git add -A data index.html issues managers history ledger assets/avatars
           git diff --cached --quiet || (git commit -m "Update league data" && git push)

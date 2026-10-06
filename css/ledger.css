@@ -1,0 +1,33 @@
+/* Draft & Trade Ledger. Uses the tokens from dynastree.css. */
+:root{--hit:#2fbf71;--mid:#e6b94a;--bust:#e5484d;--pend:#8b97ad}
+.lg-tabs{display:flex;gap:.6rem;margin:1.4rem 0 1rem;flex-wrap:wrap}
+.lg-tabs button,.lg-filter button{cursor:pointer;font:700 .95rem Oswald,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:.55rem 1.1rem;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:transparent;color:inherit}
+.lg-tabs button[aria-selected=true],.lg-filter button[aria-pressed=true]{background:var(--gold,#e6b94a);color:#0b1630;border-color:transparent}
+.lg-panel[hidden]{display:none}
+.lg-legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:.85rem;margin:.4rem 0 1rem}
+.dot{display:inline-block;width:.8rem;height:.8rem;border-radius:50%;margin-right:.35rem;vertical-align:-1px}
+.v-hit .dot,.dot.v-hit{background:var(--hit)}.dot.v-mid{background:var(--mid)}.dot.v-bust{background:var(--bust)}.dot.v-pend{background:var(--pend)}
+.lg-wrap{overflow-x:auto}
+.lg-tbl{width:100%;border-collapse:collapse}
+.lg-tbl th,.lg-tbl td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid rgba(255,255,255,.08);white-space:nowrap}
+.lg-tbl tr.pk td:first-child{border-left:5px solid var(--pend)}
+.lg-tbl tr.pk.v-hit{background:rgba(47,191,113,.13)}.lg-tbl tr.pk.v-hit td:first-child{border-left-color:var(--hit)}
+.lg-tbl tr.pk.v-mid{background:rgba(230,185,74,.13)}.lg-tbl tr.pk.v-mid td:first-child{border-left-color:var(--mid)}
+.lg-tbl tr.pk.v-bust{background:rgba(229,72,77,.15)}.lg-tbl tr.pk.v-bust td:first-child{border-left-color:var(--bust)}
+.lg-tbl td small{display:block;white-space:normal;opacity:.75}
+.lg-tbl tr.rh td{font:700 .9rem Oswald,sans-serif;letter-spacing:.1em;text-transform:uppercase;opacity:.8;padding-top:1rem}
+.lg-filter{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}
+.lg-cards{display:grid;gap:1rem}
+.tx-card{border:1px solid rgba(255,255,255,.14);border-top:4px solid var(--gold,#e6b94a);border-radius:12px;padding:1rem 1.2rem}
+.tx-card.big{border-top-color:var(--bust)}
+.tx-card h3{margin:.1rem 0 .4rem;font:700 1.25rem Oswald,sans-serif}
+.tx-card .sides{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.tx-card .sides p{margin:.2rem 0 0;font-size:.92rem}
+.tx-card .meta,.tx-card .desk{font-size:.85rem;opacity:.8}
+.tx-card .tag{font:700 .75rem Oswald,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:.15rem .5rem;border-radius:4px;background:var(--gold,#e6b94a);color:#0b1630;margin-right:.5rem}
+.obit{border:1px solid #777;border-top:4px solid #111;background:linear-gradient(160deg,rgba(0,0,0,.45),rgba(255,255,255,.04));border-radius:12px;padding:1.2rem 1.4rem;text-align:center}
+.obit small{letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+.obit h3{font:italic 700 1.6rem Oswald,sans-serif;margin:.3rem 0}
+.obit p{max-width:44rem;margin:.4rem auto}
+.lg-empty{opacity:.75;font-style:italic}
+@media(max-width:640px){.tx-card .sides{grid-template-columns:1fr}}
