@@ -278,6 +278,10 @@ def move_html(x, root=""):
     note = f'<p>{esc(x[5])}</p>' if x[5] else ""
     return f'<div class="hlw {x[4]}">{rows}<div class="txn">{badge}<div><b class="lab">{LABEL[x[4]]}</b>{note}</div></div></div>'
 
+def art(name):
+    """True when assets/<name>.webp exists, so pages fall back cleanly for issues that have no artwork yet."""
+    return os.path.exists(os.path.join(ROOT, "assets", name + ".webp"))
+
 def final_banner(week):
     """Biggest margin of the week, straight from the week file."""
     w = load_week(week)
@@ -285,7 +289,7 @@ def final_banner(week):
     gap = best["points"] - best["opponent_points"]
     return (f'<section class="final" aria-label="Week {week} final score">\n'
             f'<div class="side w"><small>Week {week} final</small><span>{esc(best["manager"])}</span><b>{best["points"]:.2f}</b></div>\n'
-            f'<div class="gap"><b>&minus;{gap:.2f}</b><small>Blowout of the week</small></div>\n'
+            f'<div class="gap"><img class="bo" src="../../../assets/badge-blowout-of-the-week.webp" alt="" width="90" height="96"><b>&minus;{gap:.2f}</b><small>Blowout of the week</small></div>\n'
             f'<div class="side l"><small>Week {week} final</small><span>{esc(best["opponent"])}</span><b>{best["opponent_points"]:.2f}</b></div>\n</section>')
 
 def motw_banner(week, pm, rep):
@@ -347,6 +351,8 @@ def render_page(man, d, y):
             "T_DRAMA": "Drama of the draft" if pre_s else "Drama of the week",
             "POLL_SEC": "" if (pre_s or not d.get("poll")) else '<h2 class="sec" id="poll-sec">Weekly poll</h2>\n<div id="poll"></div>',
             "PDF_NAV": "",
+            "CARD": f'<img class="icard" src="{root}assets/issue-card-{n}.webp" alt="Issue {man["no"]}" width="204" height="273">' if art(f"issue-card-{n}") else "",
+            "BADGE_POST": "" if pre_s else f'<img class="sbadge" src="{root}assets/badge-post-game.webp" alt="Post-Game" loading="lazy">',
             "PRINT": f'<p class="key"><a class="btn o" href="{root}">Back to the archive</a></p>\n'}
     for k, v in vals.items():
         tpl = tpl.replace("{{" + k + "}}", v)
@@ -674,7 +680,8 @@ def home_blocks(m):
     top, out = max(x["year"] for x in m), []
     for y in sorted({x["year"] for x in m}, reverse=True):
         its = [x for x in m if x["year"] == y]
-        rows = "".join(f'<div class="r"><span class="no">{x["no"]}</span><div><h3>Issue {x["no"]}</h3><p>{esc(x["weeks"])}</p></div><span class="go"><a href="{link(x)}">Read</a></span></div>' for x in its)
+        tile = lambda x: (f'<span class="no t"><img src="assets/archive-issue-{x["no"]:02d}.webp" alt="Issue {x["no"]}" width="96" height="96" loading="lazy"></span>' if art(f'archive-issue-{x["no"]:02d}') else f'<span class="no">{x["no"]}</span>')
+        rows = "".join(f'<div class="r">{tile(x)}<div><h3>Issue {x["no"]}</h3><p>{esc(x["weeks"])}</p></div><span class="go"><a href="{link(x)}">Read</a></span></div>' for x in its)
         out.append(f'<details class="yr"{" open" if y == top else ""}><summary>{f"Volume {vol(y)} &middot; " if vol(y) else ""}{y} <small>{len(its)} issues</small></summary>{rows}</details>')
     inject("index.html", "ARCHIVE", "\n".join(out))
 

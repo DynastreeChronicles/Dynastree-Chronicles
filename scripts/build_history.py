@@ -17,7 +17,7 @@ NOTES = []
 AWARDS = [("best_manager", "&#127941;", "Best Manager", "Highest lineup efficiency: points scored as a share of the best possible lineup."),
           ("biggest_tank", "&#128201;", "Biggest Tank", "Lowest MAXPF. The best possible lineup was the weakest, so the 1.01 is theirs."),
           ("waiver_mvp", "&#128142;", "Waiver Wire MVP", "Most weekly Waiver Wire MVP nods from the desk."),
-          ("bold_hit", "&#127919;", "Bold Prediction Hit", "The desk's boldest call that came true.")]
+          ("bold_hit", '<img class="aw-b" src="{R}assets/badge-bold-prediction.webp" alt="" loading="lazy">'.replace("{R}", R), "Bold Prediction Hit", "The desk's boldest call that came true.")]
 
 def ml(m):
     return f'<a class="ml" href="{R}managers/{esc(m.lower())}/">{esc(m)}</a>'
@@ -279,7 +279,7 @@ def shell(body, sub):
 <header class="mast"><div class="wrap"><img src="{R}assets/crest-mark.webp" alt="Dynastree Chronicles crest" width="79" height="96"><div><h1><a href="{R}">Dynastree <span>Chronicles</span></a></h1><p>{esc(sub)}</p></div></div></header>
 <nav class="sticky"><div class="wrap"><a href="{R}#archive">Issues</a><a href="{R}#standings">Standings</a><button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button><a href="{R}#transactions">Transactions</a><a href="{R}#rules">Rules</a><a href="{R}#scoring">Scoring</a></div><div class="ddm" id="vault" hidden><a href="{R}managers/"><b>Managers</b><small>Meet the suspects</small></a><a href="{R}history/"><b>History</b><small>Hall of Fame &amp; records</small></a><a href="{R}ledger/"><b>Ledger</b><small>Drafts &amp; blockbusters</small></a><a href="{R}receipts/"><b>Receipts</b><small>Hot takes on file</small></a></div></nav>
 <main class="wrap">{body}</main>
-<footer><div class="wrap"><img class="tree" src="{R}assets/tree.webp" alt="" width="40"><p>Time heals all wounds, but screenshots last forever.</p></div></footer>
+<footer><div class="wrap"><img class="tree wm" src="{R}assets/logo-dynastree-chronicles.webp" alt="Dynastree Chronicles" width="180" height="69" loading="lazy"><p>Time heals all wounds, but screenshots last forever.</p></div></footer>
 <script src="{R}js/site.js"></script><script src="{R}js/nav.js"></script></body></html>'''
 
 def build():

@@ -483,3 +483,30 @@ nav.sticky .ddb i{font-style:normal;font-size:.8em}nav.sticky .ddb:hover,nav.sti
 /* leaderboard podium spacing */
 .lbx .pd{gap:1.6rem;padding:1rem 1.2rem 1rem 1rem}.lbx .pd .pi{padding-left:.3rem}
 @media(max-width:980px){.lbx .pd{gap:1rem}.lbx .pd .pi{display:grid;grid-template-columns:auto 1fr;column-gap:.8rem;align-items:center;padding-left:0}.lbx .pd .pi .av{grid-row:1/3;margin:0}.lbx .pd .pi h3{align-self:end}.lbx .pd .pi p{align-self:start;margin:.1rem 0 0}}
+
+/* ===== v4: artwork pack (assets/bg-*, divider-*, badge-*, issue-card-*, archive-issue-*, logo-*) ===== */
+/* backgrounds: dark overlays keep text readable even though the source art is small */
+.mast{background:linear-gradient(90deg,rgba(7,10,18,.78),rgba(7,10,18,.28)),url(../assets/bg-01.webp) center/cover no-repeat}
+.banner{background:linear-gradient(90deg,rgba(14,27,69,.9),rgba(11,42,42,.84)),url(../assets/bg-02.webp) center/cover no-repeat}
+.hero.crest{padding:2rem;margin-top:1.6rem;border:1px solid var(--line);border-radius:16px;background:linear-gradient(rgba(7,10,18,.5),rgba(7,10,18,.5)),url(../assets/bg-04.webp) center/cover no-repeat}
+.vault{padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:14px;background:linear-gradient(rgba(7,10,18,.45),rgba(7,10,18,.45)),url(../assets/bg-03.webp) center/cover no-repeat}
+.hero:has(.pull){padding:2rem;margin-top:1.5rem;border:1px solid var(--line);border-radius:16px;background:linear-gradient(rgba(7,10,18,.45),rgba(7,10,18,.45)),url(../assets/bg-06.webp) center/cover no-repeat}
+.hero:has(.icard){grid-template-columns:1fr auto;align-items:center}
+.icard{width:150px;height:auto;border-radius:10px;transform:rotate(2deg);filter:drop-shadow(0 14px 30px #000a)}
+footer{text-align:center;background:linear-gradient(rgba(7,10,18,.74),rgba(7,10,18,.88)),url(../assets/bg-05.webp) center/cover no-repeat}
+footer .tree.wm{height:64px;width:auto;opacity:1;margin:0 auto .9rem}
+/* section dividers (inserted by js/site.js) */
+.divider{display:block;width:min(520px,86%);max-height:120px;height:auto;object-fit:contain;margin:3rem auto -1.2rem}
+/* section badges on issue pages (replace the small heading icon) */
+h2.sec .sbadge{height:5.2rem;width:auto;margin-left:auto;padding-left:1rem;filter:drop-shadow(0 6px 14px #0009)}
+h2.sec:has(.sbadge) .ic{display:none}
+/* blowout badge inside the final-score banner */
+.final .gap .bo{height:72px;width:auto;margin-bottom:.3rem;filter:drop-shadow(0 4px 8px #0008)}
+/* archive list: tile art instead of the bare number */
+.arch .r:has(.no.t){grid-template-columns:6rem 1fr auto;align-items:center}
+.arch .no.t{line-height:0}.arch .no.t img{width:96px;height:96px;display:block;border-radius:10px;box-shadow:0 6px 18px #0008}
+/* receipts + history: bold prediction badge */
+.rc .rc-b{height:2.9rem;width:auto;margin-left:.2rem}
+.hf-aw .aw-b{height:1.8em;width:auto;vertical-align:middle;margin-right:.3rem}
+@media(max-width:700px){h2.sec .sbadge{height:3.6rem}.hero.crest,.hero:has(.pull){padding:1.2rem}.arch .r:has(.no.t){grid-template-columns:4.6rem 1fr auto}.arch .no.t img{width:72px;height:72px}.divider{margin:2.2rem auto -1rem}}
+@media(max-width:640px){.icard{display:none}.hero:has(.icard){grid-template-columns:1fr}}

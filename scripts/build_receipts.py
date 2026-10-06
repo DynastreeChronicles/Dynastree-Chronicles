@@ -47,10 +47,11 @@ def build():
         src = (f'<a href="{R}issues/{e["season"]}/issue-{e["issue"]:02d}/">Issue {e["issue"]}</a>' if e.get("issue") else esc(e.get("date", "") or "Chat log"))
         tags = "".join(f'<span class="tg">#{esc(x)}</span>' for x in e.get("tags", []))
         mans = " ".join(m.lower() for m in set(([e["who"]] if e["who"] in mg else []) + handles(e["text"] + " " + e["ctx"])))
+        bb = f'<img class="rc-b" src="{R}assets/badge-bold-prediction.webp" alt="" width="46" height="49" loading="lazy">' if e["kind"] == "bold" else ""
         body = f'<blockquote>{"&ldquo;" if e["kind"] != "bold" else ""}{esc(e["text"])}{"&rdquo;" if e["kind"] != "bold" else ""}</blockquote>'
         body += f'<p class="cx">{esc(e["ctx"])}</p>' if e["ctx"] else ""
         body += f'<p class="dk">{"Ruling: " if e["kind"] == "bold" else "The desk: "}{esc(e["desk"])}</p>' if e["desk"] else ""
-        return (f'<article class="rc" data-k="{e["kind"]}" data-m="{esc(mans)}"><div class="rh"><span class="no">No. {num:03d}</span>{badges}</div>'
+        return (f'<article class="rc" data-k="{e["kind"]}" data-m="{esc(mans)}"><div class="rh"><span class="no">No. {num:03d}</span>{badges}{bb}</div>'
                 f'{body}<div class="rf">{head}<span class="sr">{src}</span></div>{("<div class=tgs>" + tags + "</div>") if tags else ""}</article>')
 
     items.sort(key=lambda e: (e["season"], e.get("issue") or 0), reverse=True)
@@ -86,7 +87,7 @@ def shell(body):
 <header class="mast"><div class="wrap"><img src="{R}assets/crest-mark.webp" alt="Dynastree Chronicles crest" width="79" height="96"><div><h1><a href="{R}">Dynastree <span>Chronicles</span></a></h1><p>The Receipts Archive</p></div></div></header>
 <nav class="sticky"><div class="wrap"><a href="{R}#archive">Issues</a><a href="{R}#standings">Standings</a><button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button><a href="{R}#transactions">Transactions</a><a href="{R}#rules">Rules</a><a href="{R}#scoring">Scoring</a></div><div class="ddm" id="vault" hidden><a href="{R}managers/"><b>Managers</b><small>Meet the suspects</small></a><a href="{R}history/"><b>History</b><small>Hall of Fame &amp; records</small></a><a href="{R}ledger/"><b>Ledger</b><small>Drafts &amp; blockbusters</small></a><a href="{R}receipts/"><b>Receipts</b><small>Hot takes on file</small></a></div></nav>
 <main class="wrap">{body}</main>
-<footer><div class="wrap"><img class="tree" src="{R}assets/tree.webp" alt="" width="40"><p>Time heals all wounds, but screenshots last forever.</p></div></footer>
+<footer><div class="wrap"><img class="tree wm" src="{R}assets/logo-dynastree-chronicles.webp" alt="Dynastree Chronicles" width="180" height="69" loading="lazy"><p>Time heals all wounds, but screenshots last forever.</p></div></footer>
 <script src="{R}js/site.js"></script><script src="{R}js/nav.js"></script>{JS}</body></html>'''
 
 if __name__ == "__main__":

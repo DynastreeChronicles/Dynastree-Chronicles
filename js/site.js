@@ -6,3 +6,7 @@ document.querySelectorAll("h2.sec").forEach(h=>{if(h.id==="hero-zero")return;con
 bs.forEach(btn=>btn.onclick=()=>{const d=btn.dataset.view==='draft';
 const r=document.getElementById('v-rank'),f=document.getElementById('v-draft');if(r)r.hidden=d;if(f)f.hidden=!d;
 bs.forEach(c=>c.classList.toggle('on',c===btn));});})();
+
+(()=>{const base=document.currentScript.src.replace(/js\/site\.js.*$/,"assets/");
+const D=[[/standings|leaderboard|power/i,"01"],[/hero|zero|issues|archive|vault/i,"02"],[/transaction|trade|wire/i,"03"],[/rules|scoring|poll|bankroll|ledger/i,"04"],[/drama|desk|bottom/i,"05"],[/game|draft|week/i,"06"]];
+[...document.querySelectorAll("main h2.sec")].forEach((h,i)=>{if(!i)return;const m=D.find(x=>x[0].test(h.textContent));const im=new Image();im.src=base+"divider-"+(m?m[1]:"04")+".webp";im.alt="";im.className="divider";im.loading="lazy";im.onerror=()=>im.remove();h.before(im)})})();
