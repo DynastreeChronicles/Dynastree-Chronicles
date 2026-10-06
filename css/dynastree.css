@@ -510,3 +510,7 @@ h2.sec:has(.sbadge) .ic{display:none}
 .hf-aw .aw-b{height:1.8em;width:auto;vertical-align:middle;margin-right:.3rem}
 @media(max-width:700px){h2.sec .sbadge{height:3.6rem}.hero.crest,.hero:has(.pull){padding:1.2rem}.arch .r:has(.no.t){grid-template-columns:4.6rem 1fr auto}.arch .no.t img{width:72px;height:72px}.divider{margin:2.2rem auto -1rem}}
 @media(max-width:640px){.icard{display:none}.hero:has(.icard){grid-template-columns:1fr}}
+
+/* ===== v4b: nav dropdown fix ===== */
+/* the base nav rule sets overflow-x:auto, which clipped the absolutely positioned Vault menu; the inner .wrap already scrolls on small screens */
+nav.sticky{overflow:visible}

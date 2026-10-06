@@ -658,7 +658,7 @@ def scoring():
          f'<div class="ladder" role="img" aria-label="Points allowed ladder">{lad}</div>'
          f'<div class="scd-g"><div><h4>Plays</h4><ul>{"".join(row(r) for r in df.get("plays", []))}</ul></div>'
          f'<div><h4>Special teams</h4><ul>{"".join(row(r) for r in df.get("special", []))}</ul></div></div></div>') if df else ""
-    note = f'<p class="key scnote">{esc(st["kicking_note"])}</p>' if st.get("kicking_note") else ""
+    note = ""   # the kicker note is intentionally not shown on the home page
     return f'<div class="scg">{cards}</div>{d}{note}'
 
 def manifest():
