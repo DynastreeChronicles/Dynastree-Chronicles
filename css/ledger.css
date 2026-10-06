@@ -31,3 +31,11 @@
 .obit p{max-width:44rem;margin:.4rem auto}
 .lg-empty{opacity:.75;font-style:italic}
 @media(max-width:640px){.tx-card .sides{grid-template-columns:1fr}}
+.lg-score{border:1px solid rgba(230,185,74,.4);border-radius:12px;padding:.9rem 1.1rem;margin:.4rem 0 1rem;background:linear-gradient(160deg,rgba(230,185,74,.1),rgba(255,255,255,.02))}
+.lg-score .hd{display:flex;gap:.8rem;align-items:baseline;flex-wrap:wrap}
+.lg-score .hd b{font:700 1.05rem Oswald,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold,#e6b94a)}
+.lg-score .hd span,.lg-score p{font-size:.85rem;opacity:.75;margin:.5rem 0 0}
+.lg-score .chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:.6rem;margin-top:.7rem}
+.lg-score .chip{text-align:center;padding:.55rem .3rem;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+.lg-score .chip strong{display:block;font:700 1.7rem/1 Oswald,sans-serif;color:var(--gold,#e6b94a)}
+.lg-score .chip small{display:block;margin-top:.2rem;font-size:.75rem;opacity:.8}

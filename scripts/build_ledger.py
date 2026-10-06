@@ -104,6 +104,14 @@ def score(tx, S):
         n += (sd.get("receives_faab") or 0) // 10
     return n
 
+def legend(S):
+    pv = S.get("pick_value", {}); pl = S.get("player_value", 20)
+    chips = [("1st-round pick", pv.get("1", 75)), ("2nd-round pick", pv.get("2", 30)), ("3rd-round pick", pv.get("3", 10)),
+             ("Any other pick", pv.get("default", 5)), ("Each player", pl), ("Each $10 FAAB", 1)]
+    return ('<div class="lg-score"><div class="hd"><b>How the Blockbuster score works</b><span>A rough size gauge, not a grade.</span></div><div class="chips">'
+            + "".join(f'<div class="chip"><strong>{v}</strong><small>{esc(k)}</small></div>' for k, v in chips)
+            + f'</div><p>Add up everything both sides receive. Score {S.get("blockbuster_min", 60)} or more earns the Blockbuster tag.</p></div>')
+
 def trade_panel(L):
     S, T, takes, items = L.get("settings", {}), L.get("trades", {}), issue_takes(), []
     for y in sorted(ss.load()):
@@ -134,9 +142,9 @@ def trade_panel(L):
         cards += (f'<article class="tx-card{" big" if big else ""}"><h3>{"<span class=\"tag\">Blockbuster</span>" if big else ""}{esc(a["manager"])} &harr; {esc(b["manager"])}</h3>'
                   f'<p class="meta">{esc(date)} &middot; Week {tx.get("week", "?")} &middot; Blockbuster score {sc} &middot; {status}{grade}</p>'
                   f'<div class="sides">{side(a, b)}{side(b, a)}</div>{desk}</article>')
-    cem = obits or '<p class="lg-empty">The cemetery is empty. For now. Obituaries get filed once a trade has clearly gone wrong (see data/ledger.json).</p>'
-    return ('<h3 class="sub">Obituaries</h3><div class="lg-cards">' + cem + '</div><h3 class="sub">Every trade, biggest first</h3>'
-            '<p class="meta">Blockbuster score: 1st-round pick 75, 2nd 30, 3rd 10, any other pick 5, each player 20, each $10 of FAAB 1. A rough size gauge, not a grade.</p>'
+    cem = obits or '<p class="lg-empty">The cemetery is empty. For now. Obituaries get filed once a trade has clearly gone wrong.</p>'
+    return ('<h3 class="sub">Obituaries</h3><div class="lg-cards">' + cem + '</div><h3 class="sub">Every trade, biggest first</h3>' +
+            legend(S) +
             '<div class="lg-cards">' + cards + '</div>')
 
 # ------------------------------------------------------------------ page
@@ -154,7 +162,7 @@ def shell(body):
 {fonts}<link rel="stylesheet" href="{R}css/dynastree.css"><link rel="stylesheet" href="{R}css/history.css"><link rel="stylesheet" href="{R}css/ledger.css">
 <link rel="icon" type="image/png" sizes="32x32" href="{R}assets/favicon-32.png"><link rel="apple-touch-icon" href="{R}assets/apple-touch-icon.png"></head><body>
 <header class="mast"><div class="wrap"><img src="{R}assets/crest-mark.webp" alt="Dynastree Chronicles crest" width="79" height="96"><div><h1><a href="{R}">Dynastree <span>Chronicles</span></a></h1><p>Draft &amp; Trade Ledger</p></div></div></header>
-<nav class="sticky"><div class="wrap"><a href="{R}#archive">Issues</a><a href="{R}#standings">Standings</a><a href="{R}managers/">Managers</a><a href="{R}history/">History</a><a href="{R}ledger/">Ledger</a><a href="{R}#transactions">Transactions</a><a href="{R}#rules">Rules</a><a href="{R}#scoring">Scoring</a></div></nav>
+<nav class="sticky"><div class="wrap"><a href="{R}#archive">Issues</a><a href="{R}#standings">Standings</a><a href="{R}managers/">Managers</a><a href="{R}history/">History</a><a href="{R}ledger/">Ledger</a><a href="{R}receipts/">Receipts</a><a href="{R}#transactions">Transactions</a><a href="{R}#rules">Rules</a><a href="{R}#scoring">Scoring</a></div></nav>
 <main class="wrap">{body}</main>
 <footer><div class="wrap"><img class="tree" src="{R}assets/tree.webp" alt="" width="40"><p>Time heals all wounds, but screenshots last forever.</p></div></footer>
 <script src="{R}js/site.js"></script>{JS}</body></html>'''

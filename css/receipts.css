@@ -1,0 +1,18 @@
+/* The Receipts Archive. Builds on ledger.css (filter buttons) and history.css (hero). */
+.rc-bar{margin:1.2rem 0}.rc-ctl{display:flex;gap:.6rem;flex-wrap:wrap;margin:.6rem 0}
+.rc-ctl select,.rc-ctl input{font:inherit;padding:.5rem .8rem;border-radius:8px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:inherit;min-width:12rem}
+.rc-ctl .rnd{cursor:pointer;font:700 .95rem Oswald,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:.5rem 1rem;border-radius:999px;border:0;background:var(--gold,#e6b94a);color:#0b1630}
+.rc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem;margin-top:1rem}
+.rc{position:relative;display:flex;flex-direction:column;padding:.9rem 1.1rem;border:1px dashed rgba(255,255,255,.35);border-radius:6px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
+.rc[hidden]{display:none}
+.rc .rh{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;font:700 .72rem Oswald,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.rc .no{opacity:.6;margin-right:auto}
+.rc .kind,.rc .st,.rc .tg{padding:.1rem .45rem;border-radius:4px;background:rgba(255,255,255,.12)}
+.rc .st.ok{background:#2fbf71;color:#06210f}.rc .st.bad{background:#e5484d;color:#fff}.rc .st.pend{background:#8b97ad;color:#0b1630}.rc .st.fresh{background:var(--gold,#e6b94a);color:#0b1630}
+.rc blockquote{margin:.8rem 0 .4rem;font:italic 600 1.15rem/1.35 Inter,sans-serif;flex:1}
+.rc .cx,.rc .dk{margin:.2rem 0;font-size:.85rem;opacity:.8}.rc .dk{border-top:1px dotted rgba(255,255,255,.3);padding-top:.4rem}
+.rc .rf{display:flex;justify-content:space-between;align-items:center;gap:.6rem;margin-top:.7rem;padding-top:.5rem;border-top:1px dashed rgba(255,255,255,.3);font-size:.85rem}
+.rc .rf .ml{display:flex;align-items:center;gap:.4rem}.rc .sr{opacity:.7}
+.rc .tgs{margin-top:.4rem;display:flex;gap:.3rem;flex-wrap:wrap;font-size:.72rem}
+.rc.flash{animation:rcf 1.6s ease}@keyframes rcf{0%,60%{box-shadow:0 0 0 3px var(--gold,#e6b94a)}100%{box-shadow:none}}
+.rc-sec[hidden]{display:none}

@@ -16,6 +16,7 @@ on:
       - "data/settings.json"
       - "data/history.json"
       - "data/ledger.json"
+      - "data/receipts.json"
       - "data/bios/**"
       - "scripts/**"
       - "css/**"
@@ -56,6 +57,9 @@ jobs:
       - name: Build Draft and Trade Ledger page
         run: python scripts/build_ledger.py
 
+      - name: Build Receipts Archive page
+        run: python scripts/build_receipts.py
+
       - name: Write one-file brief for the next issue
         run: python scripts/make_brief.py
 
@@ -63,5 +67,5 @@ jobs:
         run: |
           git config user.name "dynastree-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A data index.html issues managers history ledger assets/avatars
+          git add -A data index.html issues managers history ledger receipts assets/avatars
           git diff --cached --quiet || (git commit -m "Update league data" && git push)
