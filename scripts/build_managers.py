@@ -17,7 +17,7 @@ def shell(title, desc, body, r, sub):
 {FONTS}<link rel="stylesheet" href="{r}css/dynastree.css"><link rel="stylesheet" href="{r}css/managers.css">
 <link rel="icon" type="image/png" sizes="32x32" href="{r}assets/favicon-32.png"><link rel="apple-touch-icon" href="{r}assets/apple-touch-icon.png"></head><body>
 <header class="mast"><div class="wrap"><img src="{r}assets/crest-mark.webp" alt="Dynastree Chronicles crest" width="79" height="96"><div><h1><a href="{r}">Dynastree <span>Chronicles</span></a></h1><p>{esc(sub)}</p></div></div></header>
-<nav class="sticky"><div class="wrap"><a href="{r}#archive">Issues</a><a href="{r}#standings">Standings</a><a href="{r}managers/">Managers</a><a href="{r}#transactions">Transactions</a><a href="{r}#rules">Rules</a></div></nav>
+<nav class="sticky"><div class="wrap"><a href="{r}#archive">Issues</a><a href="{r}#standings">Standings</a><a href="{r}managers/">Managers</a><a href="{r}history/">History</a><a href="{r}#transactions">Transactions</a><a href="{r}#rules">Rules</a><a href="{r}#scoring">Scoring</a></div></nav>
 <main class="wrap">{body}</main>
 <footer><div class="wrap"><img class="tree" src="{r}assets/tree.webp" alt="" width="40"><p>Time heals all wounds, but screenshots last forever.</p></div></footer></body></html>'''
 

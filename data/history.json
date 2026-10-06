@@ -1,0 +1,68 @@
+{
+ "_help": "Permanent league history. Never reset. Edit only the hand-entered fields below; every number on the History page is rebuilt from data/ on each run. Offseason ritual: fill in champion/runner_up/final_score for the season, optionally awards overrides and story, then set the season to closed in data/seasons.json.",
+ "seasons": {
+  "2026": {
+   "champion": null,
+   "runner_up": null,
+   "final_score": [
+    null,
+    null
+   ],
+   "note": "",
+   "story": "The inaugural volume. A 12-team, 23-round startup draft, a trade block full of nicknames, and a commissioner who rewrote the rookie-draft rules before Week 4.",
+   "playoffs": [],
+   "awards": {}
+  }
+ },
+ "predictions": {
+  "2026-1-0": {
+   "result": "hit",
+   "note": "Hades9mm scored 186.00 in Week 1, the third-highest score of the week."
+  },
+  "2026-1-1": {
+   "result": "miss",
+   "note": "Zygon beat Johnny4Skins 195.70 to 125.28."
+  },
+  "2026-1-2": {
+   "result": "hit",
+   "star": true,
+   "note": "Jake Ferguson went to Snipe58 in Week 2 and Matthew Stafford followed in Week 3."
+  },
+  "2026-1-3": {
+   "result": "miss",
+   "note": "Painty69 lost to Darkspaces in Week 1."
+  },
+  "2026-2-0": {
+   "result": "hit",
+   "note": "Hades9mm won Weeks 1, 2 and 3."
+  },
+  "2026-2-1": {
+   "result": "hit",
+   "note": "StealingGas lost Weeks 1 and 2."
+  },
+  "2026-2-2": {
+   "result": "hit",
+   "note": "The London deal cleared and Sleeper logs it in Week 2."
+  },
+  "2026-2-3": {
+   "result": "miss",
+   "note": "Painty69 lost to Johnny4Skins in Week 2."
+  },
+  "2026-3-0": {
+   "result": "hit",
+   "note": "Zygon won Weeks 1, 2 and 3."
+  },
+  "2026-3-1": {
+   "result": "pending",
+   "note": "Henderson went to Hades9mm in the London deal that Sleeper logs in Week 2. Needs a desk ruling."
+  },
+  "2026-3-2": {
+   "result": "hit",
+   "note": "YesChef23 beat Painty69 148.56 to 143.88."
+  },
+  "2026-3-3": {
+   "result": "hit",
+   "note": "Hades9mm won Weeks 1, 2 and 3."
+  }
+ }
+}

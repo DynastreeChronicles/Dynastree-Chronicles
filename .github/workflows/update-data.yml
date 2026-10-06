@@ -14,6 +14,7 @@ on:
       - "data/*/fut_cap.json"
       - "data/managers.json"
       - "data/settings.json"
+      - "data/history.json"
       - "data/bios/**"
       - "scripts/**"
       - "css/**"
@@ -44,6 +45,9 @@ jobs:
       - name: Build manager pages
         run: python scripts/build_managers.py
 
+      - name: Build Hall of Fame and League History page
+        run: python scripts/build_history.py
+
       - name: Write one-file brief for the next issue
         run: python scripts/make_brief.py
 
@@ -51,5 +55,5 @@ jobs:
         run: |
           git config user.name "dynastree-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A data index.html issues managers assets/avatars
+          git add -A data index.html issues managers history assets/avatars
           git diff --cached --quiet || (git commit -m "Update league data" && git push)
