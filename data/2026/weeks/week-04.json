@@ -47,17 +47,17 @@
         "pts": 11.68
       },
       "opponent": "YesChef23",
-      "opponent_points": 94.62,
+      "opponent_points": 100.46,
       "result": "W"
     },
     {
       "roster_id": 3,
       "manager": "StealingGas",
-      "points": 133.7,
-      "maxpf": 139.3,
-      "roster_points": 153.8,
-      "bench_points": 20.1,
-      "optimal": 139.3,
+      "points": 133.5,
+      "maxpf": 139.1,
+      "roster_points": 154.0,
+      "bench_points": 20.5,
+      "optimal": 139.1,
       "left_on_bench": 5.6,
       "efficiency": 96.0,
       "mvp": {
@@ -143,7 +143,7 @@
         "pts": 25.7
       },
       "opponent": "StealingGas",
-      "opponent_points": 133.7,
+      "opponent_points": 133.5,
       "result": "W"
     },
     {
@@ -173,13 +173,13 @@
     {
       "roster_id": 8,
       "manager": "C33DeezNutzz",
-      "points": 115.48,
-      "maxpf": 129.78,
-      "roster_points": 154.18,
+      "points": 121.78,
+      "maxpf": 136.08,
+      "roster_points": 160.48,
       "bench_points": 38.7,
-      "optimal": 129.78,
+      "optimal": 136.08,
       "left_on_bench": 14.3,
-      "efficiency": 89.0,
+      "efficiency": 89.5,
       "mvp": {
         "name": "Zay Flowers",
         "pos": "WR",
@@ -245,13 +245,13 @@
     {
       "roster_id": 11,
       "manager": "YesChef23",
-      "points": 94.62,
-      "maxpf": 132.82,
-      "roster_points": 153.32,
+      "points": 100.46,
+      "maxpf": 138.66,
+      "roster_points": 159.16,
       "bench_points": 58.7,
-      "optimal": 132.82,
+      "optimal": 138.66,
       "left_on_bench": 38.2,
-      "efficiency": 71.2,
+      "efficiency": 72.5,
       "mvp": {
         "name": "RJ Harvey",
         "pos": "RB",
@@ -287,7 +287,7 @@
         "pts": 28.0
       },
       "opponent": "C33DeezNutzz",
-      "opponent_points": 115.48,
+      "opponent_points": 121.78,
       "result": "W"
     }
   ]
