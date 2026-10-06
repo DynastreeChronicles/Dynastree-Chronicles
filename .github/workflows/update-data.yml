@@ -25,6 +25,12 @@ on:
 permissions:
   contents: write
 
+# One run at a time. A second trigger (an upload while the Tuesday run is mid-build, or two quick uploads)
+# waits in line instead of racing the first one to push, so the last upload always gets its own full rebuild.
+concurrency:
+  group: update-league-data
+  cancel-in-progress: false
+
 jobs:
   pull:
     runs-on: ubuntu-latest
@@ -68,4 +74,16 @@ jobs:
           git config user.name "dynastree-bot"
           git config user.email "actions@users.noreply.github.com"
           git add -A data index.html issues managers history ledger receipts assets/avatars
-          git diff --cached --quiet || (git commit -m "Update league data" && git push)
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git commit -m "Update league data"
+          # If someone uploaded a file while this run was building, pick it up and retry the push.
+          for attempt in 1 2 3; do
+            git pull --rebase --autostash origin main && git push && exit 0
+            echo "Push attempt $attempt failed; retrying in 10 seconds."
+            sleep 10
+          done
+          echo "Could not push after 3 attempts."
+          exit 1

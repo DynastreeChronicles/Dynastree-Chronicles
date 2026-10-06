@@ -514,3 +514,8 @@ h2.sec:has(.sbadge) .ic{display:none}
 /* ===== v4b: nav dropdown fix ===== */
 /* the base nav rule sets overflow-x:auto, which clipped the absolutely positioned Vault menu; the inner .wrap already scrolls on small screens */
 nav.sticky{overflow:visible}
+/* Accessibility: skip link (first focusable item on every page), main focus target, no-JS / load-error notes */
+.skip{position:absolute;left:.75rem;top:-6rem;z-index:1000;background:var(--green);color:#04210a;font:600 1rem/1 Oswald,"Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.02em;text-decoration:none;padding:.8rem 1.1rem;border-radius:.4rem}
+.skip:focus,.skip:focus-visible{top:.75rem;outline:3px solid #fff;outline-offset:2px}
+main:focus{outline:none}
+.nojs,.loaderr{margin:1rem 0;padding:1rem 1.25rem;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:.5rem;color:var(--cream)}
