@@ -49,3 +49,12 @@
 .dfile>div{padding:.9rem 1.1rem;border:1px solid var(--line);border-top:4px solid var(--green);border-radius:8px;background:rgba(17,26,48,.55)}
 .dfile>div:nth-child(2){border-top-color:#e6b94a}.dfile>div:nth-child(3){border-top-color:var(--red)}.dfile>div:nth-child(4){border-top-color:var(--blue)}
 .dfile small{font:700 .85rem Oswald,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}.dfile p{margin:.35rem 0 0;font-size:.95rem;line-height:1.45}
+
+/* trophy case: only trophies this manager has won (see trophy_case() in scripts/build_managers.py) */
+.tcase{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1rem}
+.tc{display:flex;align-items:center;gap:1rem;padding:.9rem 1.1rem;border:1px solid rgba(230,185,74,.45);border-top:4px solid #e6b94a;border-radius:10px;background:linear-gradient(170deg,rgba(230,185,74,.1),rgba(17,26,48,.7) 60%)}
+.tc-img{flex:none;height:120px;width:auto;border-radius:8px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.5))}
+.tc small{display:block;font:700 1rem Oswald,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#e6b94a}
+.tc small em{margin-left:.5rem;font-style:normal;color:var(--green)}
+.tc ul{list-style:none;margin:.4rem 0 0;padding:0}
+.tc li{margin:.15rem 0;color:var(--mute);font-size:.9rem;line-height:1.35}.tc li b{color:#fff;font:700 1.1rem Oswald,sans-serif}

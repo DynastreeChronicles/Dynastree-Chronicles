@@ -6,6 +6,7 @@ import glob, json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import build_site as bs
 import seasons as ss
+import trophies as tr
 from build_site import esc, av, jload, ROOT
 
 slug = lambda m: m.lower()
@@ -150,6 +151,32 @@ def is_active(m, display_names):
     e = bs.managers().get(m) or {}
     return bool(e["active"]) if "active" in e else m in display_names
 
+TROPHY_CASE = {}   # {manager: [{"key", "year", "note"}]}, filled once in main from build_history.trophy_wins()
+
+def load_trophy_case():
+    """Decided trophies by manager. Never lets a problem here stop the manager pages from building."""
+    try:
+        import build_history as bh
+        return bh.trophy_wins()
+    except Exception as e:
+        print(f"  note (trophy case skipped: {e})")
+        return {}
+
+def trophy_case(m, r):
+    """A manager's trophy case: only trophies they have actually won. Empty (no section at all) until the first one lands."""
+    wins = TROPHY_CASE.get(m) or []
+    if not wins:
+        return ""
+    cards = []
+    for key in tr.CASE_ORDER:
+        mine = sorted((w for w in wins if w["key"] == key), key=lambda w: w["year"])
+        if not mine:
+            continue
+        times = f'<em>{len(mine)}&times;</em>' if len(mine) > 1 else ""
+        lines = "".join(f'<li><b>{esc(w["year"])}</b>{" &middot; " + esc(w["note"]) if w["note"] else ""}</li>' for w in mine)
+        cards.append(f'<li class="tc">{tr.img(key, r, cls="tc-img", small=True)}<div><small>{esc(tr.label(key))}{times}</small><ul>{lines}</ul></div></li>')
+    return f'<h2 class="sec" id="trophies">Trophy case</h2><ul class="tcase">{"".join(cards)}</ul>'
+
 def manager_page(m, names, years, display, active):
     r = "../../"
     info = (bs.managers().get(m) or {}); team = info.get("team_name"); bio = jload(f"data/bios/{m}.json", {}) or {}
@@ -192,7 +219,7 @@ def manager_page(m, names, years, display, active):
     body = f'''<p class="crumb"><a href="../">All managers</a></p>
 <section class="mhero"><div class="mid">{av(m, 120, r)}<div><h2>{esc(m)}</h2><p class="tn">{esc(team) if team else "Team name pending. The desk has questions."}</p>{former}{status}{f'<p class="tag">{esc(bio["tagline"])}</p>' if bio.get("tagline") else ""}</div></div>
 {hero_stats}</section>
-{deskfile}<h2 class="sec" id="archive">The season archive</h2><p class="key">One folder per season. New years appear here automatically.</p><div class="yrs">{"".join(blocks)}</div>
+{trophy_case(m, r)}{deskfile}<h2 class="sec" id="archive">The season archive</h2><p class="key">One folder per season. New years appear here automatically.</p><div class="yrs">{"".join(blocks)}</div>
 {nav}'''
     return shell(m, f"{m}: biography, record, transactions and desk quotes.", body, r, f"Manager file: {m}")
 
@@ -223,6 +250,7 @@ def hub(rows, quotes, moves, active, alumni):
 
 if __name__ == "__main__":
     display = bs.display_season(); bs.use(display)
+    TROPHY_CASE.update(load_trophy_case()); bs.use(display)
     rows = jload(bs.S("standings.json"), []) or []
     years = {i["no"]: i["year"] for i in bs.manifest()}
     everyone = sorted({*bs.managers(), *(r["manager"] for r in rows)}, key=str.lower)

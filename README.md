@@ -53,6 +53,48 @@ Everything else (`data/*.json` other than those above, `data/weeks/`, `index.htm
 
 MAXPF is **Max PF: the points of each week's best possible lineup, added up over the season.** It matches Sleeper's own Max PF and is not starters plus bench. The lowest MAXPF gets rookie pick 1.01. The pull script prints a check against Sleeper's own figure on every run; if it prints a mismatch, look at the 1.01 order before publishing.
 
+## Trophies (reserved art)
+
+Five trophies are reserved for one job each. They live in `assets/trophies/` and are mapped in `scripts/trophies.py`, the single place that says which trophy means what. Each has a full version and a `-sm` version for tight spots.
+
+| Trophy | File | Used for |
+|---|---|---|
+| Lombardi Trophy | `lombardi` | League champion, once a year |
+| Toilet Bowl Trophy | `toilet-bowl` | The Toilet Bowl (last-place bracket) |
+| Best Manager (football with the rising arrow) | `best-manager` | Hall of Fame award shelf |
+| Biggest Tank (deflated football, 1.01) | `biggest-tank` | Hall of Fame award shelf |
+| Waiver Wire MVP (diamond) | `waiver-mvp` | Hall of Fame award shelf |
+
+They are separate from the in-season rank trophies (`trophy-gold`, `-silver`, `-bronze`, `-trash`), which belong to the live standings and leaderboard. Do not use the five above for rank.
+
+Where they appear:
+
+- **History page, Champions wall:** Lombardi on each season's champion card. If a season has a `toilet_bowl` entry, a Toilet Bowl card follows it.
+- **History page, Award shelf:** Best Manager, Biggest Tank and Waiver Wire MVP each show their own trophy.
+- **Manager pages, Trophy case:** a manager's page shows a Trophy case section only once they have actually won something, so nothing appears until the first win. Champion and Toilet Bowl come from `data/history.json`. The three awards count once their season is closed, or earlier if `history.json` names the winner by hand. A live season's current leader does not get the trophy early.
+
+To show one anywhere new, call `trophies.img("lombardi", root)` (keys: `lombardi`, `toilet_bowl`, `best_manager`, `biggest_tank`, `waiver_mvp`) instead of writing the `<img>` by hand.
+
+Recording a Toilet Bowl in `data/history.json`, next to the champion for that season:
+
+```json
+"2026": {
+  "champion": "Handle", "runner_up": "Handle", "final_score": [131.4, 118.2],
+  "toilet_bowl": {"winner": "Handle", "runner_up": "Handle", "final_score": [88.1, 71.5], "note": "Optional line."}
+}
+```
+
+Only `winner` is required. `winner` is whoever takes the Toilet Bowl trophy.
+
+## On-deck issue cards
+
+Cards for issues 18 to 36 are already in `assets/cards/` (`logo-NN.webp` is the crest "The Archive" card, `plain-NN.webp` is the number-only card). Nothing shows until that issue exists in `data/issues.json`. Then the build picks them up on its own:
+
+- the **logo** card appears beside the issue title on the issue page;
+- the **plain** card appears as the tile in the home page archive list.
+
+Finished art always wins. If `assets/issue-card-NN.webp` or `assets/archive-issue-NN.webp` exists for an issue, it is used instead. To swap which style goes where, edit `CARD_STYLE` near the top of the issue-art helpers in `scripts/build_site.py`.
+
 ## If the site looks wrong
 
 Open the Actions tab, click the latest "Update league data" run and read the red step. Common causes: invalid JSON, a handle typo, or a missing file. Style changes go in `css/dynastree.css` (site and issues) or `css/managers.css` (manager pages).

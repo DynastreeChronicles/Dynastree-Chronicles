@@ -2,21 +2,23 @@
 """Hall of Fame & League History: history/index.html. A permanent page that never resets.
 
 Numbers: rebuilt from every season's data/<season>/ folder on each run (weekly, with the Action).
-Hand-entered (data/history.json): champion, runner-up and final score per season, optional award overrides,
-the volume story, and the result of each bold prediction. Everything else is derived.
+Hand-entered (data/history.json): champion, runner-up and final score per season, the optional Toilet Bowl result
+("toilet_bowl": {"winner", "runner_up", "final_score", "note"}), optional award overrides, the volume story, and the result
+of each bold prediction. Everything else is derived. Trophy art is mapped in scripts/trophies.py.
 Run after build_managers.py:  python scripts/build_history.py"""
 import glob, json, os, re, sys
 from collections import defaultdict
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import build_site as bs
 import seasons as ss
+import trophies as tr
 from build_site import esc, av, jload, ROOT
 
 R = "../"
 NOTES = []
-AWARDS = [("best_manager", "&#127941;", "Best Manager", "Highest lineup efficiency: points scored as a share of the best possible lineup."),
-          ("biggest_tank", "&#128201;", "Biggest Tank", "Lowest MAXPF. The best possible lineup was the weakest, so the 1.01 is theirs."),
-          ("waiver_mvp", "&#128142;", "Waiver Wire MVP", "Most weekly Waiver Wire MVP nods from the desk."),
+AWARDS = [("best_manager", "", "Best Manager", "Highest lineup efficiency: points scored as a share of the best possible lineup."),
+          ("biggest_tank", "", "Biggest Tank", "Lowest MAXPF. The best possible lineup was the weakest, so the 1.01 is theirs."),
+          ("waiver_mvp", "", "Waiver Wire MVP", "Most weekly Waiver Wire MVP nods from the desk."),
           ("bold_hit", '<img class="aw-b" src="{R}assets/badge-bold-prediction.webp" alt="" loading="lazy">'.replace("{R}", R), "Bold Prediction Hit", "The desk's boldest call that came true.")]
 
 def ml(m):
@@ -124,6 +126,16 @@ def record_tiles(S, ps):
 def hist_season(H, y):
     return (H.get("seasons") or {}).get(y) or {}
 
+def toilet_card(tb, label):
+    """The Toilet Bowl (last-place bracket) result for one season, shown under that season's champion."""
+    w, r = tb["winner"], tb.get("runner_up")
+    fs = tb.get("final_score") or [None, None]
+    score = f'<div class="hf-fs"><b>{fmt(fs[0])}</b><span>&ndash;</span><b class="lo">{fmt(fs[1])}</b></div>' if fs[0] is not None and fs[1] is not None else ""
+    ru = "<p>Defeated " + ml(r) + " in the Toilet Bowl.</p>" if r else ""
+    note = '<p class="hf-note">' + esc(tb["note"]) + "</p>" if tb.get("note") else ""
+    return (f'<article class="hf-champ hf-toilet">{tr.img("toilet_bowl", R, cls="tro toilet", alt="Toilet Bowl Trophy")}'
+            f'<div class="hf-cmain"><small>{label} Toilet Bowl</small><h3>{who(w, 56)}</h3>{ru}{note}</div>{score}</article>')
+
 def champion_wall(S, H, ps, pt):
     cards = []
     for s in sorted(S, key=lambda s: s["year"], reverse=True):
@@ -137,7 +149,7 @@ def champion_wall(S, H, ps, pt):
             tn_html = '<p class="hf-tn">' + esc(tn) + "</p>" if tn else ""
             ru_html = "<p>Defeated " + ml(r) + " in the final.</p>" if r else ""
             note_html = '<p class="hf-note">' + esc(hs["note"]) + "</p>" if hs.get("note") else ""
-            cards.append(f'<article class="hf-champ"><img class="tro" src="{R}assets/trophy-gold.webp" alt="Champion trophy" width="132" height="240" loading="lazy">'
+            cards.append(f'<article class="hf-champ">{tr.img("lombardi", R, cls="tro lombardi", alt="Lombardi Trophy")}'
                          f'<div class="hf-cmain"><small>{label} champion</small><h3>{who(c, 56)}</h3>{tn_html}{ru_html}{note_html}</div>{score}</article>')
         elif s["closed"]:
             NOTES.append(f"history: {y} is closed but data/history.json has no champion for it")
@@ -150,6 +162,9 @@ def champion_wall(S, H, ps, pt):
             cards.append(f'<article class="hf-race"><small>{label} &middot; in progress</small><h3>The crown is still up for grabs</h3>'
                          f'<div class="hf-prog" role="img" aria-label="Week {done} of {reg_total}"><i style="width:{done / reg_total * 100:.0f}%"></i></div>'
                          f'<p class="hf-pt">Regular season: Week {done} of {reg_total}. Top {pt} make the playoffs, which start Week {ps}.</p><div class="hf-leads">{chips}</div></article>')
+        tb = hs.get("toilet_bowl") or {}
+        if tb.get("winner"):
+            cards.append(toilet_card(tb, label))
     return "".join(cards)
 
 # ------------------------------------------------------------------ careers
@@ -221,9 +236,39 @@ def award_shelf(S, H, preds):
         for key, ico, title, rule in AWARDS:
             v = vals[y].get(key)
             body = (who(v[0], 40) if v[0] else '<span class="hf-who hf-desk">The Desk</span>') + '<p class="hf-av">' + esc(v[1]) + "</p>" if v else '<p class="hf-av">No winner yet.</p>'
-            cards.append(f'<div class="hf-aw"><small><i aria-hidden="true">{ico}</i>{title}</small>{body}<p class="hf-rule">{rule}</p></div>')
+            if key in tr.AWARD_KEYS:   # the three shelf awards each have their own reserved trophy
+                stage = f'<div class="hf-stage">{tr.img(key, R, cls="hf-awt", alt=title + " trophy")}</div>'
+                head = f"<small>{title}</small>"
+            else:
+                stage, head = "", f'<small><i aria-hidden="true">{ico}</i>{title}</small>'
+            cards.append(f'<div class="hf-aw{" has-tro" if stage else ""}">{stage}{head}{body}<p class="hf-rule">{rule}</p></div>')
         out.append(f'<h3 class="sub">Volume {s["vol"]} &middot; {y} {live}</h3><div class="hf-aws">{"".join(cards)}</div>')
     return "".join(out)
+
+def trophy_wins(S=None, H=None):
+    """Every trophy that has actually been decided, by manager: {manager: [{"key", "year", "note"}]}.
+    Used by the manager pages for their trophy case. Only decided results count:
+    champion and Toilet Bowl come from data/history.json; an award counts once its season is closed
+    or data/history.json names its winner by hand. A live season's current leader does not get the trophy early."""
+    H = (jload("data/history.json", {}) or {}) if H is None else H
+    S = load_seasons() if S is None else S
+    vals = award_values(S, H, [])
+    al = bs.alias()
+    who_ = lambda m: al.get(m, m)
+    out = defaultdict(list)
+    for s in S:
+        y, hs = s["year"], hist_season(H, s["year"])
+        if hs.get("champion"):
+            out[who_(hs["champion"])].append({"key": "lombardi", "year": y, "note": ""})
+        tb = hs.get("toilet_bowl") or {}
+        if tb.get("winner"):
+            out[who_(tb["winner"])].append({"key": "toilet_bowl", "year": y, "note": tb.get("note", "")})
+        manual = hs.get("awards") or {}
+        for key in tr.AWARD_KEYS:
+            v = (vals.get(y) or {}).get(key)
+            if v and v[0] and (s["closed"] or key in manual):
+                out[who_(v[0])].append({"key": key, "year": y, "note": v[1]})
+    return out
 
 def ledger(preds):
     if not preds:

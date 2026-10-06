@@ -504,11 +504,11 @@ h2.sec:has(.sbadge) .ic{display:none}
 .final .gap .bo{height:72px;width:auto;margin-bottom:.3rem;filter:drop-shadow(0 4px 8px #0008)}
 /* archive list: tile art instead of the bare number */
 .arch .r:has(.no.t){grid-template-columns:6rem 1fr auto;align-items:center}
-.arch .no.t{line-height:0}.arch .no.t img{width:96px;height:96px;display:block;border-radius:10px;box-shadow:0 6px 18px #0008}
+.arch .no.t{line-height:0}.arch .no.t img{width:auto;max-width:100%;height:96px;display:block;border-radius:10px;box-shadow:0 6px 18px #0008}
 /* receipts + history: bold prediction badge */
 .rc .rc-b{height:2.9rem;width:auto;margin-left:.2rem}
 .hf-aw .aw-b{height:1.8em;width:auto;vertical-align:middle;margin-right:.3rem}
-@media(max-width:700px){h2.sec .sbadge{height:3.6rem}.hero.crest,.hero:has(.pull){padding:1.2rem}.arch .r:has(.no.t){grid-template-columns:4.6rem 1fr auto}.arch .no.t img{width:72px;height:72px}.divider{margin:2.2rem auto -1rem}}
+@media(max-width:700px){h2.sec .sbadge{height:3.6rem}.hero.crest,.hero:has(.pull){padding:1.2rem}.arch .r:has(.no.t){grid-template-columns:4.6rem 1fr auto}.arch .no.t img{width:auto;height:72px}.divider{margin:2.2rem auto -1rem}}
 @media(max-width:640px){.icard{display:none}.hero:has(.icard){grid-template-columns:1fr}}
 
 /* ===== v4b: nav dropdown fix ===== */

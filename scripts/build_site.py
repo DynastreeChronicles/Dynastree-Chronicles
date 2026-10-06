@@ -282,6 +282,35 @@ def art(name):
     """True when assets/<name>.webp exists, so pages fall back cleanly for issues that have no artwork yet."""
     return os.path.exists(os.path.join(ROOT, "assets", name + ".webp"))
 
+# On-deck issue cards: assets/cards/<style>-NN.webp, made ahead of the issue they belong to. Nothing shows until that issue
+# exists in data/issues.json. Finished art (assets/issue-card-NN.webp, assets/archive-issue-NN.webp) always wins over them.
+# To swap which style goes where, change the two words below ("logo" = The Archive card with the crest, "plain" = number only).
+CARD_STYLE = {"hero": "logo", "tile": "plain"}
+
+def issue_art(slot, no):
+    """Art for one issue. slot is "hero" (the card beside the issue title) or "tile" (the home page archive list).
+    no is the two-digit issue number as text. Returns (name under assets/, width, height) or None."""
+    for name in ({"hero": f"issue-card-{no}", "tile": f"archive-issue-{no}"}[slot], f"cards/{CARD_STYLE[slot]}-{int(no)}"):
+        if art(name):
+            try:
+                from PIL import Image
+                with Image.open(os.path.join(ROOT, "assets", name + ".webp")) as im:
+                    return name, im.width, im.height
+            except Exception:
+                return name, None, None
+    return None
+
+def issue_img(slot, no, alt, root, cls="", lazy=False):
+    """The <img> for an issue's hero card or archive tile, or "" when that issue has no art yet."""
+    a = issue_art(slot, no)
+    if not a:
+        return ""
+    name, w, h = a
+    size = f' width="{w}" height="{h}"' if w and h else ""
+    c = f' class="{cls}"' if cls else ""
+    lz = ' loading="lazy"' if lazy else ""
+    return f'<img{c} src="{root}assets/{name}.webp" alt="{alt}"{size}{lz}>'
+
 def final_banner(week):
     """Biggest margin of the week, straight from the week file."""
     w = load_week(week)
@@ -351,7 +380,7 @@ def render_page(man, d, y):
             "T_DRAMA": "Drama of the draft" if pre_s else "Drama of the week",
             "POLL_SEC": "" if (pre_s or not d.get("poll")) else '<h2 class="sec" id="poll-sec">Weekly poll</h2>\n<div id="poll"></div>',
             "PDF_NAV": "",
-            "CARD": f'<img class="icard" src="{root}assets/issue-card-{n}.webp" alt="Issue {man["no"]}" width="204" height="273">' if art(f"issue-card-{n}") else "",
+            "CARD": issue_img("hero", n, f"Issue {man['no']}", root, cls="icard"),
             "BADGE_POST": "" if pre_s else f'<img class="sbadge" src="{root}assets/badge-post-game.webp" alt="Post-Game" loading="lazy">',
             "PRINT": f'<p class="key"><a class="btn o" href="{root}">Back to the archive</a></p>\n'}
     for k, v in vals.items():
@@ -680,7 +709,10 @@ def home_blocks(m):
     top, out = max(x["year"] for x in m), []
     for y in sorted({x["year"] for x in m}, reverse=True):
         its = [x for x in m if x["year"] == y]
-        tile = lambda x: (f'<span class="no t"><img src="assets/archive-issue-{x["no"]:02d}.webp" alt="Issue {x["no"]}" width="96" height="96" loading="lazy"></span>' if art(f'archive-issue-{x["no"]:02d}') else f'<span class="no">{x["no"]}</span>')
+        def tile(x):
+            no = f"{x['no']:02d}"
+            im = issue_img("tile", no, f"Issue {x['no']}", "", lazy=True)
+            return f'<span class="no t">{im}</span>' if im else f'<span class="no">{x["no"]}</span>'
         rows = "".join(f'<div class="r">{tile(x)}<div><h3>Issue {x["no"]}</h3><p>{esc(x["weeks"])}</p></div><span class="go"><a href="{link(x)}">Read</a></span></div>' for x in its)
         out.append(f'<details class="yr"{" open" if y == top else ""}><summary>{f"Volume {vol(y)} &middot; " if vol(y) else ""}{y} <small>{len(its)} issues</small></summary>{rows}</details>')
     inject("index.html", "ARCHIVE", "\n".join(out))
