@@ -519,3 +519,23 @@ nav.sticky{overflow:visible}
 .skip:focus,.skip:focus-visible{top:.75rem;outline:3px solid #fff;outline-offset:2px}
 main:focus{outline:none}
 .nojs,.loaderr{margin:1rem 0;padding:1rem 1.25rem;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:.5rem;color:var(--cream)}
+
+/* Section badges (Post-Game, Trade Alert, Pre-Game) sit just left of the heading text, not at the far right */
+h2.sec::before{order:-2}
+h2.sec::after{order:2}
+h2.sec .sbadge{order:-1;margin:0 1rem 0 0;padding-left:0}
+
+/* Manager names in "From the desk" and "The bottom line" */
+.art strong{color:var(--green);font-weight:800}
+
+/* Match of the Week, Final verdict: each score sits below its manager's name */
+.verdict .vsc{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.9rem}
+.verdict .vsc>div{min-width:0}
+.verdict .vsc small{display:block;font:700 .95rem/1.2 Oswald,"Arial Narrow",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);overflow-wrap:anywhere}
+.verdict .vsc b{display:block;margin:.15rem 0 0;font-size:2.1rem;line-height:1.1;font-variant-numeric:tabular-nums}
+
+/* Issue archive rows (home page and history page share these): whole row is a link with a green hover border */
+.arch .r{position:relative;transition:border-color .15s,background .15s,box-shadow .15s,transform .15s}
+.arch .go a::after{content:"";position:absolute;inset:0;border-radius:12px}
+.arch .r:hover,.arch .r:focus-within{border-color:var(--green);background:linear-gradient(90deg,#0e1b45,#0b2a2a);box-shadow:0 8px 28px rgba(69,224,58,.14);transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){.arch .r{transition:none}.arch .r:hover{transform:none}}

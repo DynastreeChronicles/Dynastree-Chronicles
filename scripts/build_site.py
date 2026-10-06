@@ -696,6 +696,17 @@ def manifest():
 def link(i):
     return f'issues/{i["year"]}/issue-{i["no"]:02d}/'
 
+def archive_row(x, root=""):
+    """One row of the issue archive (art tile, "Issue N: title", weeks, Read link). Used by the home page and the
+    history page so the two always match. root is the path back to the site root ("" or "../")."""
+    no = f"{x['no']:02d}"
+    im = issue_img("tile", no, f"Issue {x['no']}", root, lazy=True)
+    tile = f'<span class="no t">{im}</span>' if im else f'<span class="no">{x["no"]}</span>'
+    title = (x.get("title") or "").strip()
+    head = f"Issue {x['no']}: {esc(title)}" if title else f"Issue {x['no']}"
+    return (f'<div class="r">{tile}<div><h3>{head}</h3><p>{esc(x.get("weeks", ""))}</p></div>'
+            f'<span class="go"><a href="{root}{link(x)}">Read</a></span></div>')
+
 def home_blocks(m):
     i = m[0]
     p = os.path.join(ROOT, "index.html"); h = open(p, encoding="utf-8").read()
@@ -709,11 +720,7 @@ def home_blocks(m):
     top, out = max(x["year"] for x in m), []
     for y in sorted({x["year"] for x in m}, reverse=True):
         its = [x for x in m if x["year"] == y]
-        def tile(x):
-            no = f"{x['no']:02d}"
-            im = issue_img("tile", no, f"Issue {x['no']}", "", lazy=True)
-            return f'<span class="no t">{im}</span>' if im else f'<span class="no">{x["no"]}</span>'
-        rows = "".join(f'<div class="r">{tile(x)}<div><h3>Issue {x["no"]}</h3><p>{esc(x["weeks"])}</p></div><span class="go"><a href="{link(x)}">Read</a></span></div>' for x in its)
+        rows = "".join(archive_row(x, "") for x in its)
         out.append(f'<details class="yr"{" open" if y == top else ""}><summary>{f"Volume {vol(y)} &middot; " if vol(y) else ""}{y} <small>{len(its)} issues</small></summary>{rows}</details>')
     inject("index.html", "ARCHIVE", "\n".join(out))
 

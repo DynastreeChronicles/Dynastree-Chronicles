@@ -58,3 +58,13 @@
 .tc small em{margin-left:.5rem;font-style:normal;color:var(--green)}
 .tc ul{list-style:none;margin:.4rem 0 0;padding:0}
 .tc li{margin:.15rem 0;color:var(--mute);font-size:.9rem;line-height:1.35}.tc li b{color:#fff;font:700 1.1rem Oswald,sans-serif}
+
+/* Stat tiles: accent bar, label above value, green on hover */
+.mstats{grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:.8rem}
+.mstats div{position:relative;padding:.75rem .95rem .8rem;border:1px solid var(--line);border-top:3px solid var(--blue);border-radius:10px;background:linear-gradient(165deg,rgba(47,109,240,.16),rgba(17,26,48,.7) 65%);transition:border-color .15s,box-shadow .15s,transform .15s}
+.mstats div:hover{border-color:var(--green);box-shadow:0 6px 20px rgba(69,224,58,.12);transform:translateY(-1px)}
+.mstats small{font:700 .78rem Oswald,"Arial Narrow",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.mstats b{display:block;margin-top:.1rem;font-size:1.75rem;line-height:1.15}
+.mstats i{display:block;margin-top:.1rem;font-style:normal;font-size:.8rem;color:var(--sky)}
+.mstats .hi b{color:var(--green)}
+@media(prefers-reduced-motion:reduce){.mstats div{transition:none}.mstats div:hover{transform:none}}

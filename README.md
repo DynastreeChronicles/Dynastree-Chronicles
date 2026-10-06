@@ -303,6 +303,13 @@ These apply to every page. Keep them when you change a shell.
 * The ticker and live-dot animations stop when the visitor has reduced-motion turned on.
 * The Vault dropdown is a real button with `aria-expanded`, and Escape closes it.
 
+**Shared look**
+
+* **Issue archive rows** (art tile, "Issue N: title", weeks, Read) come from one function, `archive_row()` in `scripts/build_site.py`, used by both the home page and the Hall of Fame issue index so the two always match. The whole row is a link and gets a green border on hover.
+* **Manager handles** are bold green in "From the desk" (bolded at build time by `bold_handles()` in `build_site.py`) and in "The bottom line" (bolded in the browser by `bh()` in `js/issue.js`). Both use the exact handles from `data/managers.json`, so write handles exactly in prose; nicknames are not picked up. The colour is the `.art strong` rule in `css/dynastree.css`.
+* **Section badges** (Post-Game, Trade Alert, Pre-Game) sit just left of the heading text; the rules are at the end of `css/dynastree.css`.
+* **Manager stat tiles** are built by `stat_tiles()` in `scripts/build_managers.py` and styled at the end of `css/managers.css`. The Receipts manager dropdown is styled at the end of `css/receipts.css`.
+
 **Pages that need JavaScript**
 
 * On **issue pages**, the bankroll watch, transaction wire, post-game cards, drama, trade machine, pre-game cards, match of the week, bottom line and poll are drawn by `js/issue.js` from JSON embedded in the page. The hero, desk, hero and zero, and standings are plain HTML. With JavaScript off, a `<noscript>` note at the top of the page says so. If the script fails, `issue.js` shows a "failed to load" note. Both notes use the `.nojs` / `.loaderr` style.

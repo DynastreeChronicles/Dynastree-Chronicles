@@ -308,7 +308,7 @@ def timeline(S, H, ps):
         story = f'<p class="hf-story">{esc(hs.get("story") or "")}</p><p class="hf-auto">{esc(auto)}</p>'
         tr = "".join(f'<div class="tx trade"><span class="tg trade">&#129309; TRADE &middot; WEEK {x["week"]}</span><div class="tb"><b>{" &harr; ".join(esc(sd["manager"]) for sd in x["sides"])}</b><small>{" &middot; ".join(gets(sd) for sd in x["sides"])}</small></div></div>' for x in sorted(trades, key=lambda x: x["created"]))
         its = [x for x in issues if str(x["year"]) == y]
-        rows = "".join(f'<div class="r"><span class="no">{x["no"]}</span><div><h3>{esc(x.get("title", "Issue " + str(x["no"])))}</h3><p>{esc(x.get("weeks", ""))}</p></div><span class="go"><a href="{R}issues/{y}/issue-{x["no"]:02d}/">Read</a></span></div>' for x in its)
+        rows = "".join(bs.archive_row(x, R) for x in its)   # identical to the home page archive
         status = "Complete" if s["closed"] else "In progress"
         out.append(f'<details class="yr hf-vol"{" open" if i == 0 else ""}><summary>Volume {s["vol"]} &middot; {y} <small>{status} &middot; {len(its)} issues</small></summary>'
                    f'{story}{stats}<h3 class="sub">Key trades</h3><div class="txl">{tr or NOTRADES}</div><h3 class="sub">Issue index</h3><div class="arch">{rows}</div></details>')
