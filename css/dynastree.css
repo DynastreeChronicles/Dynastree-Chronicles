@@ -514,3 +514,4 @@ h2.sec:has(.sbadge) .ic{display:none}
 /* ===== v4b: nav dropdown fix ===== */
 /* the base nav rule sets overflow-x:auto, which clipped the absolutely positioned Vault menu; the inner .wrap already scrolls on small screens */
 nav.sticky{overflow:visible}
+.vault{scroll-margin-top:5rem}
