@@ -186,10 +186,13 @@ def manager_page(m, names, years, display, active):
         hero_stats = '<p class="key">No finished games on file for this manager yet.</p>'
     nav = (f'<p class="mnav"><a class="btn o" href="{r}managers/{slug(names[ring - 1])}/">&larr; {esc(names[ring - 1])}</a><a class="btn o" href="{r}managers/{slug(names[(ring + 1) % len(names)])}/">{esc(names[(ring + 1) % len(names)])} &rarr;</a></p>'
            if ring is not None else "")
+    df = bio.get("file") or []
+    deskfile = ('<h2 class="sec" id="deskfile">The desk file</h2><div class="dfile">' + "".join(f'<div><small>{esc(a)}</small><p>{bs.bold_handles(b)}</p></div>' for a, b in df) + '</div>'
+                + (f'<p class="key">Written by the desk from what is on file. Last updated after {esc(bio["asof"])}.</p>' if bio.get("asof") else "")) if df else ""
     body = f'''<p class="crumb"><a href="../">All managers</a></p>
 <section class="mhero"><div class="mid">{av(m, 120, r)}<div><h2>{esc(m)}</h2><p class="tn">{esc(team) if team else "Team name pending. The desk has questions."}</p>{former}{status}{f'<p class="tag">{esc(bio["tagline"])}</p>' if bio.get("tagline") else ""}</div></div>
 {hero_stats}</section>
-<h2 class="sec" id="archive">The season archive</h2><p class="key">One folder per season. New years appear here automatically.</p><div class="yrs">{"".join(blocks)}</div>
+{deskfile}<h2 class="sec" id="archive">The season archive</h2><p class="key">One folder per season. New years appear here automatically.</p><div class="yrs">{"".join(blocks)}</div>
 {nav}'''
     return shell(m, f"{m}: biography, record, transactions and desk quotes.", body, r, f"Manager file: {m}")
 

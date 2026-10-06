@@ -93,6 +93,7 @@ def main():
         "managers": {k: v.get("team_name") for k, v in bs.managers().items() if v.get("active", True)},
         "alumni": [k for k, v in bs.managers().items() if not v.get("active", True)],
         "league": {k: league.get(k) for k in ("league_id", "name", "season", "volume", "roster_positions", "waiver_budget")},
+        "bios": {m: bs.jload(f"data/bios/{m}.json", {}) for m in bs.managers()},
         "previous_issue_json": prev_json,
         "issue_template": bs.jload("data/issues/issue-template.json"),
     }

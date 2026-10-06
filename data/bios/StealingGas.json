@@ -1,13 +1,36 @@
 {
  "tagline": "The open tank that keeps scoring.",
+ "asof": "Issue 4, through Week 3",
+ "file": [
+  [
+   "The type",
+   "A self-declared tanker with a competitor's wallet. Announces the plan, then spends against it."
+  ],
+  [
+   "Signature move",
+   "The announcement-then-purchase combo: tank declared in Week 2, $99 on Stribling immediately, then $298 on Jaxson Dart."
+  ],
+  [
+   "Nemesis",
+   "Darkspaces and the public chat, who have traded accusations, hashtags and a call to Barron Trump over the Deebo and Ferguson trades."
+  ],
+  [
+   "The desk is watching",
+   "Whether the 3rd-lowest MAXPF holds. The tank math depends on weak best-case lineups, and a perfect 152.42 does not help."
+  ]
+ ],
  "seasons": {
   "2026": {
    "headline": "Tank, but make it expensive",
+   "asof": "Issue 4, through Week 3",
    "story": [
-    "Opened the year by posting 83.32, the league's worst score, and being named worst manager of Week 1. Announced the tank in Week 2, then spent $298 on Jaxson Dart anyway and posted a perfect 152.42 lineup in Week 3 to beat Darkspaces by 83. Pulled off the London deal with Hades9mm. The team is called Future Therapy Bills. The desk has stopped asking when the tank starts."
+    "StealingGas opened the year with the league's worst score at 83.32, repeated it with 77.18 in Week 2, and announced the tank. Then he spent $99 on a waiver dart, followed it with $298 on Jaxson Dart, and in Week 3 posted a perfect 152.42 lineup to beat Darkspaces by 83. The team is called Future Therapy Bills and the desk has stopped asking when the tank starts.",
+    "He is also the league's most active seller of his own roster. Holani, Vele, Kyler and Pitts were all on the block at once, and he asked the league to take the curse. The London deal with Hades9mm was the real move: he took Drake London, Taylen Green and a 2027 1st, and sent Quentin Johnston, Cam Ward, TreVeyon Henderson and a 2027 3rd the other way.",
+    "On the chat side he supplies the hashtags: #releasethefiles, certified cheaters, and a request for twelve IR slots. The bits are reliable, the box scores are not. His efficiency is the lowest in the league apart from Painty69, and his points are the lowest of anyone, yet the pick he is racing for is the 1.03."
    ],
    "takes": [
-    "The tank is real, the box scores disagree."
+    "The tank is real, the box scores disagree.",
+    "See you in 2028, with a $298 receipt."
    ],
    "drama": []
   }
