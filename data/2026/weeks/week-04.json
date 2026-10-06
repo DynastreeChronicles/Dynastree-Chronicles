@@ -23,19 +23,19 @@
         "pts": 0.0
       },
       "opponent": "CMac91",
-      "opponent_points": 171.72,
+      "opponent_points": 172.92,
       "result": "L"
     },
     {
       "roster_id": 2,
       "manager": "Snipe58",
-      "points": 104.82,
-      "maxpf": 126.1,
-      "roster_points": 143.0,
+      "points": 108.72,
+      "maxpf": 130.0,
+      "roster_points": 146.9,
       "bench_points": 38.18,
-      "optimal": 126.1,
+      "optimal": 130.0,
       "left_on_bench": 21.28,
-      "efficiency": 83.1,
+      "efficiency": 83.6,
       "mvp": {
         "name": "Quinshon Judkins",
         "pos": "RB",
@@ -47,19 +47,19 @@
         "pts": 11.68
       },
       "opponent": "YesChef23",
-      "opponent_points": 88.72,
+      "opponent_points": 90.28,
       "result": "W"
     },
     {
       "roster_id": 3,
       "manager": "StealingGas",
-      "points": 109.12,
-      "maxpf": 117.88,
-      "roster_points": 125.72,
-      "bench_points": 16.6,
-      "optimal": 117.88,
-      "left_on_bench": 8.76,
-      "efficiency": 92.6,
+      "points": 119.58,
+      "maxpf": 125.88,
+      "roster_points": 136.58,
+      "bench_points": 17.0,
+      "optimal": 125.88,
+      "left_on_bench": 6.3,
+      "efficiency": 95.0,
       "mvp": {
         "name": "Puka Nacua",
         "pos": "WR",
@@ -126,12 +126,12 @@
       "roster_id": 6,
       "manager": "Johnny4Skins",
       "points": 157.9,
-      "maxpf": 167.4,
-      "roster_points": 213.9,
-      "bench_points": 56.0,
-      "optimal": 167.4,
-      "left_on_bench": 9.5,
-      "efficiency": 94.3,
+      "maxpf": 167.7,
+      "roster_points": 214.8,
+      "bench_points": 56.9,
+      "optimal": 167.7,
+      "left_on_bench": 9.8,
+      "efficiency": 94.2,
       "mvp": {
         "name": "Kyren Williams",
         "pos": "RB",
@@ -143,19 +143,19 @@
         "pts": 13.6
       },
       "opponent": "StealingGas",
-      "opponent_points": 109.12,
+      "opponent_points": 119.58,
       "result": "W"
     },
     {
       "roster_id": 7,
       "manager": "Sarge71",
-      "points": 127.06,
-      "maxpf": 180.58,
-      "roster_points": 209.58,
+      "points": 129.26,
+      "maxpf": 182.78,
+      "roster_points": 211.78,
       "bench_points": 82.52,
-      "optimal": 180.58,
+      "optimal": 182.78,
       "left_on_bench": 53.52,
-      "efficiency": 70.4,
+      "efficiency": 70.7,
       "mvp": {
         "name": "Tetairoa McMillan",
         "pos": "WR",
@@ -173,13 +173,13 @@
     {
       "roster_id": 8,
       "manager": "C33DeezNutzz",
-      "points": 107.58,
-      "maxpf": 122.78,
-      "roster_points": 146.28,
+      "points": 111.38,
+      "maxpf": 125.68,
+      "roster_points": 150.08,
       "bench_points": 38.7,
-      "optimal": 122.78,
-      "left_on_bench": 15.2,
-      "efficiency": 87.6,
+      "optimal": 125.68,
+      "left_on_bench": 14.3,
+      "efficiency": 88.6,
       "mvp": {
         "name": "Zay Flowers",
         "pos": "WR",
@@ -215,17 +215,17 @@
         "pts": 24.9
       },
       "opponent": "Sarge71",
-      "opponent_points": 127.06,
+      "opponent_points": 129.26,
       "result": "W"
     },
     {
       "roster_id": 10,
       "manager": "CMac91",
-      "points": 171.72,
-      "maxpf": 177.24,
-      "roster_points": 214.7,
+      "points": 172.92,
+      "maxpf": 178.44,
+      "roster_points": 215.9,
       "bench_points": 42.98,
-      "optimal": 177.24,
+      "optimal": 178.44,
       "left_on_bench": 5.52,
       "efficiency": 96.9,
       "mvp": {
@@ -245,13 +245,13 @@
     {
       "roster_id": 11,
       "manager": "YesChef23",
-      "points": 88.72,
+      "points": 90.28,
       "maxpf": 129.72,
-      "roster_points": 146.32,
-      "bench_points": 57.6,
+      "roster_points": 148.98,
+      "bench_points": 58.7,
       "optimal": 129.72,
-      "left_on_bench": 41.0,
-      "efficiency": 68.4,
+      "left_on_bench": 39.44,
+      "efficiency": 69.6,
       "mvp": {
         "name": "RJ Harvey",
         "pos": "RB",
@@ -263,7 +263,7 @@
         "pts": 28.1
       },
       "opponent": "Snipe58",
-      "opponent_points": 104.82,
+      "opponent_points": 108.72,
       "result": "L"
     },
     {
@@ -287,7 +287,7 @@
         "pts": 28.0
       },
       "opponent": "C33DeezNutzz",
-      "opponent_points": 107.58,
+      "opponent_points": 111.38,
       "result": "W"
     }
   ]

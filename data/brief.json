@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-06T01:28:40+00:00",
+ "generated_at": "2026-10-06T01:55:30+00:00",
  "season": "2026",
  "volume": 1,
  "season_status": "active",
- "data_pulled_at": "2026-10-06T01:28:36+00:00",
+ "data_pulled_at": "2026-10-06T01:55:28+00:00",
  "ready_for_new_issue": false,
  "warnings": [
   "Week 3 is already covered by Issue 4. Wait for Week 4 to go final (Tuesday after its Monday game) before drafting a new issue.",
@@ -925,6 +925,464 @@
    "BN"
   ],
   "waiver_budget": 500
+ },
+ "bios": {
+  "Darkspaces": {
+   "tagline": "Commissioner, negotiator, and the league's loudest trade block.",
+   "asof": "Issue 4, through Week 3",
+   "file": [
+    [
+     "The type",
+     "A commissioner who competes, and a competitor who negotiates in public. Every roster move comes with an audience."
+    ],
+    [
+     "Signature move",
+     "Parking a star on the block, naming a price in the group chat, then renegotiating it live. Achane and Swift are the current exhibits, with a first as the public floor."
+    ],
+    [
+     "Nemesis",
+     "Hades9mm, who keeps threatening to release the trade-talk files, and StealingGas, who answered a public Achane ask with an offer of a 3rd."
+    ],
+    [
+     "The desk is watching",
+     "Whether Achane actually moves for a first, and what is left of a FAAB budget that is down to about a fifth."
+    ]
+   ],
+   "seasons": {
+    "2026": {
+     "headline": "Commissioner, landlord, lead negotiator",
+     "asof": "Issue 4, through Week 3",
+     "story": [
+      "The draft set the tone. Darkspaces cut the pick timer to a minute, loaded up on receivers, and handed nicknames to twenty-three of his own players, then spent the first waiver run buying a tight end he had not drafted for $101 and Singleton for $301 on top of it. That is $402 gone before the first Monday night, and it has not slowed him down.",
+      "The pattern since is consistent: spend big, sell high, talk loudly. He sold Deebo Samuel to Snipe58 for a 2027 2nd, swapped Colston Loveland for Jake Ferguson, then flipped Matthew Stafford to the same buyer for two future 2nds and $100 of FAAB. Along the way he put Maye, Achane and Swift on the block and let the chat watch the price fall from a first to free and back to a first.",
+      "The results are mixed. Two wins to start, then a 69.16 against StealingGas's perfect 152.42, the worst score of Week 3. The 2027 pick is the quiet subplot: the new MAXPF rules hand the 1.01 to the team with the weakest best-possible lineup, and Darkspaces currently owns that spot. The desk will note that the commissioner wrote the rule and is leading the race to benefit from it."
+     ],
+     "takes": [
+      "The negotiation is the content.",
+      "I'll give him to you for free is not a price. It is a mood."
+     ],
+     "drama": []
+    }
+   }
+  },
+  "Snipe58": {
+   "tagline": "The quiet buyer with a very loud ledger.",
+   "asof": "Issue 4, through Week 3",
+   "file": [
+    [
+     "The type",
+     "A win-now buyer who pays with the future. Stays out of the chat and lets the transaction log do the talking."
+    ],
+    [
+     "Signature move",
+     "Quietly converting picks into veterans. Deebo Samuel cost a 2027 2nd, Jake Ferguson cost Colston Loveland, and Matthew Stafford cost two future 2nds and $100 of FAAB."
+    ],
+    [
+     "Nemesis",
+     "Darkspaces, who is both his supplier and the commissioner who gets paid in picks every time he buys."
+    ],
+    [
+     "The desk is watching",
+     "Whether Stafford converts, because the roster is now built around two quarterbacks and a 1-2 record."
+    ]
+   ],
+   "seasons": {
+    "2026": {
+     "headline": "Three trades, three veterans, one 1-2 record",
+     "asof": "Issue 4, through Week 3",
+     "story": [
+      "Snipe58 does not post much, but the ledger is loud. In three weeks he has bought Deebo Samuel for a 2027 2nd, traded Loveland for Ferguson, and paid a 2028 2nd, a 2029 2nd and $100 of FAAB for Stafford. Each deal was a present-tense purchase funded with future capital.",
+      "The roster has the pieces. Justin Jefferson was the Week 1 MVP at 31.2, Brock Purdy was the Week 3 MVP at 31.28 and still lost to Johnny4Skins by more than 37. With Stafford now on the roster too, he has the dual-QB problem the desk has been writing about.",
+      "The wins so far are one over StealingGas in Week 1. The 2027 slot is the other story: with the second-lowest MAXPF, he is sitting on the 1.02, which makes every future sell-off look more reasonable and every buy look more expensive."
+     ],
+     "takes": [
+      "Buys the present, sells the future, and hopes the schedule notices.",
+      "Therapy is ongoing. Results pending."
+     ],
+     "drama": []
+    }
+   }
+  },
+  "StealingGas": {
+   "tagline": "The open tank that keeps scoring.",
+   "asof": "Issue 4, through Week 3",
+   "file": [
+    [
+     "The type",
+     "A self-declared tanker with a competitor's wallet. Announces the plan, then spends against it."
+    ],
+    [
+     "Signature move",
+     "The announcement-then-purchase combo: tank declared in Week 2, $99 on Stribling immediately, then $298 on Jaxson Dart."
+    ],
+    [
+     "Nemesis",
+     "Darkspaces and the public chat, who have traded accusations, hashtags and a call to Barron Trump over the Deebo and Ferguson trades."
+    ],
+    [
+     "The desk is watching",
+     "Whether the 3rd-lowest MAXPF holds. The tank math depends on weak best-case lineups, and a perfect 152.42 does not help."
+    ]
+   ],
+   "seasons": {
+    "2026": {
+     "headline": "Tank, but make it expensive",
+     "asof": "Issue 4, through Week 3",
+     "story": [
+      "StealingGas opened the year with the league's worst score at 83.32, repeated it with 77.18 in Week 2, and announced the tank. Then he spent $99 on a waiver dart, followed it with $298 on Jaxson Dart, and in Week 3 posted a perfect 152.42 lineup to beat Darkspaces by 83. The team is called Future Therapy Bills and the desk has stopped asking when the tank starts.",
+      "He is also the league's most active seller of his own roster. Holani, Vele, Kyler and Pitts were all on the block at once, and he asked the league to take the curse. The London deal with Hades9mm was the real move: he took Drake London, Taylen Green and a 2027 1st, and sent Quentin Johnston, Cam Ward, TreVeyon Henderson and a 2027 3rd the other way.",
+      "On the chat side he supplies the hashtags: #releasethefiles, certified cheaters, and a request for twelve IR slots. The bits are reliable, the box scores are not. His efficiency is the lowest in the league apart from Painty69, and his points are the lowest of anyone, yet the pick he is racing for is the 1.03."
+     ],
+     "takes": [
+      "The tank is real, the box scores disagree.",
+      "See you in 2028, with a $298 receipt."
+     ],
+     "drama": []
+    }
+   }
+  },
+  "Zygon": {
+   "tagline": "The IR Predictor. The formula does not miss.",
+   "asof": "Issue 4, through Week 3",
+   "file": [
+    [
+     "The type",
+     "The algorithm manager. Builds the roster around production, then ignores the wire and lets the numbers run."
+    ],
+    [
+     "Signature move",
+     "Listing handcuffs on the block as a dare. Emmett Johnson and Blake Corum are posted with the line make me regret it when Walker tears his ACL."
+    ],
+    [
+     "Nemesis",
+     "Health. The team name is a prediction and Kenneth Walker and Mahomes are on the roster. Nobody else can hurt this team."
+    ],
+    [
+     "The desk is watching",
+     "Whether a roster with no bids since Week 1 can survive its first real injury."
+    ]
+   ],
+   "seasons": {
+    "2026": {
+     "headline": "3-0, no bids, and the nickname is still cashing",
+     "asof": "Issue 4, through Week 3",
+     "story": [
+      "Zygon is the only team in the league that has not needed the waiver wire. His total FAAB spend is $2, on Ollie Gordon, plus a free add on Barion Brown, and the team is 3-0 with the league's highest points total. The roster is built on Jaxon Smith-Njigba, Kenneth Walker and Patrick Mahomes, a group that sounds fragile and has not been.",
+      "The scores back it up. 195.70 in Week 1, a 172.96 in Week 2 that beat YesChef23 by 92.86 and earned Best Manager, and 149.78 in Week 3 over Sarge71. Smith-Njigba put up 42.5 in Week 2 and 35.36 in Week 3, and the efficiency is 91 percent, second only to C33DeezNutzz.",
+      "The desk's only complaint is that the formula is hard to write around. The open question is health. The handcuffs he listed are a dare, and the 1.11 slot says his best-case lineup is one of the league's strongest."
+     ],
+     "takes": [
+      "The formula does not bid on anyone.",
+      "Elite bit commitment: the injury nickname, the 195, and the win."
+     ],
+     "drama": []
+    }
+   }
+  },
+  "Hades9mm": {
+   "tagline": "The sleeper puss, fully awake.",
+   "asof": "Issue 4, through Week 3",
+   "file": [
+    [
+     "The type",
+     "A balanced, hand-built roster and a buyer's budget. Every one of his 23 picks was his own, which is the rarest thing in this league."
+    ],
+    [
+     "Signature move",
+     "Selling a star for depth. The London deal moved Drake London for Quentin Johnston, Cam Ward, TreVeyon Henderson and a 2027 3rd, and he is 3-0 anyway."
+    ],
+    [
+     "Nemesis",
+     "Darkspaces, who is the other half of the files feud, and the Week 7 schedule, which will say whether the London deal was fine."
+    ],
+    [
+     "The desk is watching",
+     "The 1.12 draft slot, the highest MAXPF in the league at 613.32, and whether efficiency (80.8 percent) ever catches up."
+    ]
+   ],
+   "seasons": {
+    "2026": {
+     "headline": "3-0 without London, and nobody asked for proof",
+     "asof": "Issue 4, through Week 3",
+     "story": [
+      "Hades9mm drafted every one of his 23 picks himself, and the roster shows it: Jayden Daniels and Jared Goff at quarterback, Amon-Ra St. Brown and London at receiver, Derrick Henry and Cam Skattebo at running back, Kittle and Kelce at tight end. It is the only roster in the league that is balanced, hand-built and finished. He is 3-0 with 186.00, 169.62 and 139.80, the second-most points in the league.",
+      "The money is the story. He spent $170 of FAAB in a single week on Benson and Gesicki, then traded London in the deal with StealingGas that Sleeper logged in Week 2, took a bag of young players and a 2027 3rd, and has not slowed down. When Daniels went down, he was on the block within hours.",
+      "The files feud with Darkspaces is his best content. He laid out the opening ask himself, four 1sts for Darkspaces' Mendoza, Maye, Achane and Egbuka, then threatened to release the trade-talk logs. The desk's view: the best lineup on the board wins weeks, but he leaves points on the bench, and the schedule has been kind."
+     ],
+     "takes": [
+      "The sleeper puss is no longer sleeping, and just spent like it.",
+      "3-0 without London. Either the deal was fine or the schedule is soft."
+     ],
+     "drama": []
+    }
+   }
+  },
+  "Johnny4Skins": {
+   "tagline": "Dual-QB, dual-autopilot.",
+   "asof": "Issue 4, through Week 3",
+   "file": [
+    [
+     "The type",
+     "The league's most hands-off roster. Johnny4Skins drafted a few good players, then left the room and let the system finish the job."
+    ],
+    [
+     "Signature move",
+     "Not spending. Zero FAAB used, $500 intact, and the roster is the same one the autopick built."
+    ],
+    [
+     "Nemesis",
+     "Injuries to either quarterback, and Zygon, who beat him by 70 in Week 1."
+    ],
+    [
+     "The desk is watching",
+     "The dual-QB gamble: Lamar Jackson and Jalen Hurts, one at 2.04 and one auto-drafted at 3.04. If one goes down, the plan is out of ideas."
+    ]
+   ],
+   "seasons": {
+    "2026": {
+     "headline": "Eighteen autopicks, and a 2-1 record anyway",
+     "asof": "Issue 4, through Week 3",
+     "story": [
+      "Johnny4Skins took Ja'Marr Chase and Lamar Jackson in the first two rounds, then, apparently, went to dinner. The autopick drafted eighteen of his players, tied with Painty69 for the most in the league, including Jalen Hurts, A.J. Brown, Tyler Warren, Kyren Williams, Brian Thomas and DK Metcalf. Not a single human opinion went into any of them.",
+      "It has worked. He lost to Zygon in Week 1, then beat Painty69 in Week 2 and posted the best score of Week 3, 158.46, over Snipe58. His efficiency is 85 percent, safely above the league's lower tier, and his $500 of FAAB is untouched, which the desk now treats as an identity.",
+      "The roster is dual-QB by design or by accident. The honest answer is that it does not matter until an injury forces a decision. He also has a new handle: the account was Cassellrole until October."
+     ],
+     "takes": [
+      "The robot spent nothing.",
+      "A good autopick is still not a plan."
+     ],
+     "drama": []
+    }
+   }
+  },
+  "Sarge71": {
+   "tagline": "The engine without the supporting cast.",
+   "asof": "Issue 4, through Week 3",
+   "file": [
+    [
+     "The type",
+     "A top-end roster with nothing underneath. Star power at running back, and a bench that cannot cover a bye week."
+    ],
+    [
+     "Signature move",
+     "The quiet transaction. One move this season, cutting Jaxson Dart, watching StealingGas pay $298 for him, and taking Aaron Rodgers instead."
+    ],
+    [
+     "Nemesis",
+     "The schedule. His 501.76 points against are the most in the league, and he has scored at least 110 every week."
+    ],
+    [
+     "The desk is watching",
+     "Whether Bijan Robinson and the roster add one real depth piece before the 0-3 turns into a pick."
+    ]
+   ],
+   "seasons": {
+    "2026": {
+     "headline": "Bijan can't do it alone, and the schedule is not helping",
+     "asof": "Issue 4, through Week 3",
+     "story": [
+      "Sarge71 is 0-3 with points that would win in a weaker schedule: 145.00 in Week 1, which lost to C33DeezNutzz's 195.82, 110.60 in Week 2 and 117.88 in Week 3. His points against are the highest in the league at 501.76, and his points for rank in the middle of the pack. The desk will call it bad luck, then note the pattern repeated.",
+      "The roster is Bijan Robinson and a supporting cast that cannot score. Robinson was the Week 1 MVP at 31.3 and the Week 3 MVP at 35.3. In Week 2, with Bijan quiet, the top scorer on the roster was Dalton Kincaid at 22.5. He cut Jaxson Dart, watched StealingGas bid $298 on him, and replaced him with Aaron Rodgers.",
+      "FAAB is untouched at $500, the efficiency is 84.7 percent, and the draft slot is the 1.04. The pick is useful, but the more useful move is a trade, and Sarge71 has not made one."
+     ],
+     "takes": [
+      "Sarge has the engine and no supporting cast. That is the whole story.",
+      "A very good score wins most weeks. This was not most weeks."
+     ],
+     "drama": []
+    }
+   }
+  },
+  "C33DeezNutzz": {
+   "tagline": "The efficient one. BBQnBBWs does not waste points.",
+   "asof": "Issue 4, through Week 3",
+   "file": [
+    [
+     "The type",
+     "A quiet, efficient contender. Highest lineup efficiency in the league at 93.2 percent, and the cleanest roster management on the board."
+    ],
+    [
+     "Signature move",
+     "The workmanlike win. Josh Allen for 35, 40 and a steady lineup behind him, and nothing flashy that the desk can roast."
+    ],
+    [
+     "Nemesis",
+     "Hades9mm, who beat him in Week 2 with a 169.62 and the only loss on the board."
+    ],
+    [
+     "The desk is watching",
+     "FAAB, which is untouched at $500. At some point the budget is a weapon, and he is not using it."
+    ]
+   ],
+   "seasons": {
+    "2026": {
+     "headline": "Highest efficiency in the league, lowest profile",
+     "asof": "Issue 4, through Week 3",
+     "story": [
+      "C33DeezNutzz opened with a 195.82, the highest score of Week 1, with Josh Allen providing 35.66, then lost to Hades9mm in Week 2 despite 40.82 from Allen, then beat CMac91 in Week 3 with a workmanlike 127.90. The efficiency is 93.2 percent, the best in the league, because he sets his lineup well and does not leave points on the bench.",
+      "The roster is a Josh Allen core with Justin Herbert, Chris Olave, Ladd McConkey and Bucky Irving around him, and the waiver activity is minimal: Shedeur Sanders, Sean Tucker and Ryan Flournoy moves cost nothing. His FAAB is a full $500.",
+      "The desk's complaint is that nothing gives it material. He is 2-1, third in the standings, has a good MAXPF and picks 10th. The rest of the league argues. C33DeezNutzz scores."
+     ],
+     "takes": [
+      "Not a fireworks card. Just a workmanlike win.",
+      "Quiet is not the same as safe, but it is close."
+     ],
+     "drama": []
+    }
+   }
+  },
+  "Painty69": {
+   "tagline": "Elite top end, a robot bottom, and a promise to be kind.",
+   "asof": "Issue 4, through Week 3",
+   "file": [
+    [
+     "The type",
+     "A star at running back and almost nothing else. Made his last real pick in round 6 and let the CPU draft the remaining seventeen rounds."
+    ],
+    [
+     "Signature move",
+     "The positive attitude. He promised to be positive and kind through the whole draft and has been quiet since Week 2."
+    ],
+    [
+     "Nemesis",
+     "YesChef23, who needles him in the restaurant arc and beat him in Week 3 by 4.68."
+    ],
+    [
+     "The desk is watching",
+     "Whether the Gibbs, McCaffrey and Barkley run-first approach has a plan B before the 0-3 becomes a lottery."
+    ]
+   ],
+   "seasons": {
+    "2026": {
+     "headline": "0-3, quiet, and the CPU drafted half the roster",
+     "asof": "Issue 4, through Week 3",
+     "story": [
+      "Painty69 took Jahmyr Gibbs at 1.01, then McCaffrey and Barkley back to back, and then stopped. The last real pick was in round 6, and the CPU made the remaining seventeen, tying him with Johnny4Skins at eighteen autopicks. The feed has since shown him moving Sarratt, Aiyuk and Klubnik, three of the robot's choices.",
+      "He is 0-3 with 363.82 points, 78.9 percent efficiency, the lowest in the league, and the Week 2 worst-manager award at 65 percent of a perfect lineup. Gibbs has been excellent, at 33.6, 23.3 and 41.4 in the three weeks, and the losses were by 12.7, 32.3 and 4.7. At one point he admitted he does not have a clue what he is doing in this league, and then went quiet.",
+      "The rivalry with YesChef23 produced the restaurant arc and the Uber Eats feud, and the Week 3 loss to YesChef23 by 4.68 gave it a result. The desk's view: a top-end roster with a robot bottom, and a manager who left in the middle. The 2027 pick is the consolation."
+     ],
+     "takes": [
+      "Gibbs did his job. Everyone else on the roster did not.",
+      "Positive and kind, right up until the robot took over."
+     ],
+     "drama": []
+    }
+   }
+  },
+  "CMac91": {
+   "tagline": "The depth collector who never spends.",
+   "asof": "Issue 4, through Week 3",
+   "file": [
+    [
+     "The type",
+     "The league's most patient manager. Builds depth, stays out of drama, and has not spent a dollar of FAAB."
+    ],
+    [
+     "Signature move",
+     "Adding depth at no cost. Jaydon Blue, Travis Hunter and Kimani Vidal arrived without a bid."
+    ],
+    [
+     "Nemesis",
+     "Hades9mm, who beat him by 53 in Week 1, and the C33DeezNutzz pack, who beat him by 9 in Week 3."
+    ],
+    [
+     "The desk is watching",
+     "Whether depth turns into points. The efficiency is 80.5 percent and the roster is waiting for a breakout."
+    ]
+   ],
+   "seasons": {
+    "2026": {
+     "headline": "Zero dollars, zero drama, 1-2",
+     "asof": "Issue 4, through Week 3",
+     "story": [
+      "CMac91 asked in round 5 whether there were seriously 23 rounds, played through round 11, and let the robot finish the draft, which gave him twelve autopicks. The first-round pick was James Cook, followed by CeeDee Lamb at 2.02 and Bo Nix at 3.02, and Lamb provided the Week 2 MVP at 35.3 in a 130.12 to 77.18 win over StealingGas.",
+      "The wire is his comfort zone. Jaydon Blue, Travis Hunter and Kimani Vidal moves cost nothing, the FAAB is a full $500, and the desk's note was depth first, spending never. The losses were to Hades9mm in Week 1 and C33DeezNutzz in Week 3, by 53 and by 9, and the Week 3 MVP was Bo Nix at 25.14.",
+      "In the hat saga his contribution was closing the matter with it works. That sums up the approach. The roster is not exciting, but it is competitive, and the 1.07 slot says the best lineup is average."
+     ],
+     "takes": [
+      "Depth first, spending never.",
+      "It works."
+     ],
+     "drama": []
+    }
+   }
+  },
+  "YesChef23": {
+   "tagline": "The restaurant arc. Wins ugly, complains loudly.",
+   "asof": "Issue 4, through Week 3",
+   "file": [
+    [
+     "The type",
+     "A chef who wins while complaining. Chatty in the draft room, aggressive on waivers, and 2-1 with the ninth-best points total."
+    ],
+    [
+     "Signature move",
+     "Cheap waiver insurance. $1 on Deshaun Watson when Caleb Williams went down, $1 on J.J. McCarthy the week after."
+    ],
+    [
+     "Nemesis",
+     "Painty69, who he has needled since the draft room and finally beat by 4.68 in Week 3."
+    ],
+    [
+     "The desk is watching",
+     "The quarterback situation: Caleb Williams is hurt, Tyler Shough is the MVP, and the wire is carrying the roster."
+    ]
+   ],
+   "seasons": {
+    "2026": {
+     "headline": "2-1 with the ninth-best scoring and a wire full of $1 claims",
+     "asof": "Issue 4, through Week 3",
+     "story": [
+      "YesChef23 opened the draft fighting an Uber Eats driver who stole a customer's order, took shots at the turtle ass drafters, and threatened to take defenses the rest of the way before settling for two. He beat fumbduckdumbfuck in Week 1, which the desk had at number one, lost to Zygon by 92.86 in Week 2, and beat Painty69 in Week 3 by 4.68.",
+      "The roster is built on Caleb Williams and Jeremiyah Love, and when Williams went down he paid $1 for Deshaun Watson and then $1 for J.J. McCarthy. Tyler Shough has been the MVP in Weeks 2 and 3 at 22.38 and 24.8. The wire is the roster, and it is working.",
+      "He is 2-1 with 355.72 points, which is the ninth-best total in the league, and the 79.7 percent efficiency says he is winning on schedule more than skill. The London deal made his brain hurt, and so does the standings."
+     ],
+     "takes": [
+      "Wins ugly, complains loudly.",
+      "The cheapest insurance policy in the league."
+     ],
+     "drama": []
+    }
+   }
+  },
+  "fumbduckdumbfuck": {
+   "tagline": "The Issue 1 No. 1, and an unlucky 1-2.",
+   "asof": "Issue 4, through Week 3",
+   "file": [
+    [
+     "The type",
+     "The desk's preseason favorite, and a roster that is better than the record. Fifth in points, seventh in the standings."
+    ],
+    [
+     "Signature move",
+     "Quietly good at running back. Jeanty, Taylor and Bowers form a core that scores every week."
+    ],
+    [
+     "Nemesis",
+     "YesChef23, who ended the Issue 1 No. 1 label in Week 1, and Hades9mm, who beat him by 12 in Week 3."
+    ],
+    [
+     "The desk is watching",
+     "Whether the quarterback room settles. Aaron Rodgers arrived as an autopick, and Drew Lock and Geno Smith are the other options."
+    ]
+   ],
+   "seasons": {
+    "2026": {
+     "headline": "Fifth in points, seventh in the standings",
+     "asof": "Issue 4, through Week 3",
+     "story": [
+      "fumbduckdumbfuck was the desk's number one in Issue 1, and the roster still supports it: Brock Bowers at 1.12, Ashton Jeanty at 2.01, Jonathan Taylor at 3.01, with Rashee Rice, DeVonta Smith and Dak Prescott behind them. He is 1-2 with 397.00 points, fifth in the league.",
+      "The losses were close. 113.10 to 127.06 against YesChef23 in Week 1, and 127.74 to 139.80 against Hades9mm in Week 3. The win was a 156.16 to 110.60 beat-down of Sarge71 in Week 2, with Dak Prescott leading at 29.76. Efficiency is 80.8 percent, which leaves room for more.",
+      "The quarterback room is the open question. Aaron Rodgers arrived as an autopick, was moved to free agency, and the Week 3 move was a swap involving Drew Lock and Geno Smith. Jonathan Taylor did the real work. The 1.09 slot says the roster has a good best case, and the record says it has not been realized."
+     ],
+     "takes": [
+      "Jonathan Taylor did the real work.",
+      "The Issue 1 No. 1 label is a lot to carry."
+     ],
+     "drama": []
+    }
+   }
+  }
  },
  "previous_issue_json": {
   "desk": [
