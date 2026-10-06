@@ -26,15 +26,14 @@
 <img src="assets/crest-mark.webp" alt="Dynastree Chronicles crest" width="79" height="96"><div><h1><a href="./">Dynastree <span>Chronicles</span></a></h1>
 <p>Documenting your worst takes and archiving your receipts.</p></div>
 </div></header>
-<nav class="sticky"><div class="wrap"><a href="#archive">Issues</a><a href="#standings">Standings</a><a href="managers/">Managers</a><a href="history/">History</a><a href="ledger/">Ledger</a><a href="receipts/">Receipts</a><a href="#transactions">Transactions</a><a href="#rules">Rules</a><a href="#scoring">Scoring</a></div></nav>
+<nav class="sticky"><div class="wrap"><a href="#archive">Issues</a><a href="#standings">Standings</a><button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button><a href="#transactions">Transactions</a><a href="#rules">Rules</a><a href="#scoring">Scoring</a></div><div class="ddm" id="vault" hidden><a href="managers/"><b>Managers</b><small>Meet the suspects</small></a><a href="history/"><b>History</b><small>Hall of Fame &amp; records</small></a><a href="ledger/"><b>Ledger</b><small>Drafts &amp; blockbusters</small></a><a href="receipts/"><b>Receipts</b><small>Hot takes on file</small></a></div></nav>
 
 <main class="wrap">
 <!--BANNER-->
 <a class="banner" href="issues/2026/issue-04/"><small>Latest &middot; Issue 4</small><h2>StealingGas drops 152.42 while tanking. Commish changes the draft rules!</h2><span class="btn">Read Issue 4</span></a>
 <!--/BANNER-->
 <section class="hero crest" id="latest">
-<img class="logo" src="assets/crest.webp" alt="Dynastree Chronicles crest: a football-topped trophy on a blue and green shield" width="600" height="730">
-</section>
+<img class="logo" src="assets/crest.webp" alt="Dynastree Chronicles crest: a football-topped trophy on a blue and green shield" width="600" height="730"><div class="vault"><p class="vh">Inside the Vault</p><div class="vg"><a class="vt" href="managers/"><b>Managers</b><span>Meet the suspects</span></a><a class="vt" href="history/"><b>History</b><span>Hall of Fame &amp; records</span></a><a class="vt" href="ledger/"><b>Ledger</b><span>Drafts &amp; blockbusters</span></a><a class="vt" href="receipts/"><b>Receipts</b><span>Hot takes on file</span></a></div></div></section>
 
 <section id="leaderboard">
 <h2 class="sec">Leaderboard preview</h2>
@@ -87,5 +86,5 @@
 const t=document.querySelector('.track');if(t)t.innerHTML+=t.innerHTML;
 </script>
 <script src="js/site.js"></script>
-</body>
+<script src="js/nav.js"></script></body>
 </html>

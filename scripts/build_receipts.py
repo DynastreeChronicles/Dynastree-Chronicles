@@ -42,16 +42,15 @@ def build():
         head = (f'<a class="ml" href="{R}managers/{who.lower()}/">{av(who, 30, R)}<b>{esc(who)}</b></a>' if who else f'<b>{esc(e["who"] or "Unattributed")}</b>')
         st = STATUS.get(e.get("status", ""), None) if e["kind"] in ("bold", "take") else None
         badges = f'<span class="kind">{KINDS[e["kind"]]}</span>' + (f'<span class="st {st[1]}">{st[0]}</span>' if st else "")
-        if e["kind"] == "take":
-            badges += f'<span class="st fresh">Used in Issue {", ".join(map(str, e["used"]))}</span>' if e.get("used") else '<span class="st fresh">Fresh</span>'
+        if e["kind"] == "take" and e.get("used"):
+            badges += f'<span class="st fresh">Used in Issue {", ".join(map(str, e["used"]))}</span>'
         src = (f'<a href="{R}issues/{e["season"]}/issue-{e["issue"]:02d}/">Issue {e["issue"]}</a>' if e.get("issue") else esc(e.get("date", "") or "Chat log"))
         tags = "".join(f'<span class="tg">#{esc(x)}</span>' for x in e.get("tags", []))
         mans = " ".join(m.lower() for m in set(([e["who"]] if e["who"] in mg else []) + handles(e["text"] + " " + e["ctx"])))
-        fresh = "1" if e["kind"] == "take" and not e.get("used") else "0"
         body = f'<blockquote>{"&ldquo;" if e["kind"] != "bold" else ""}{esc(e["text"])}{"&rdquo;" if e["kind"] != "bold" else ""}</blockquote>'
         body += f'<p class="cx">{esc(e["ctx"])}</p>' if e["ctx"] else ""
         body += f'<p class="dk">{"Ruling: " if e["kind"] == "bold" else "The desk: "}{esc(e["desk"])}</p>' if e["desk"] else ""
-        return (f'<article class="rc" data-k="{e["kind"]}" data-m="{esc(mans)}" data-f="{fresh}"><div class="rh"><span class="no">No. {num:03d}</span>{badges}</div>'
+        return (f'<article class="rc" data-k="{e["kind"]}" data-m="{esc(mans)}"><div class="rh"><span class="no">No. {num:03d}</span>{badges}</div>'
                 f'{body}<div class="rf">{head}<span class="sr">{src}</span></div>{("<div class=tgs>" + tags + "</div>") if tags else ""}</article>')
 
     items.sort(key=lambda e: (e["season"], e.get("issue") or 0), reverse=True)
@@ -63,18 +62,17 @@ def build():
         vol = ss.volume(y, reg) if y in reg else ""
         sec += f'<details class="yr rc-sec"{" open" if i == 0 else ""}><summary>{"Volume " + str(vol) + " &middot; " if vol else ""}{esc(y)} <small>{len(mine)} receipts</small></summary><div class="rc-grid">{cards}</div></details>'
     counts = {k: sum(1 for e in items if e["kind"] == k) for k in KINDS}
-    fresh = sum(1 for e in items if e["kind"] == "take" and not e.get("used"))
-    chips = "".join(f"<div><b>{v}</b><small>{KINDS[k]}s</small></div>" for k, v in counts.items() if v) + f"<div><b>{fresh}</b><small>Fresh for issues</small></div>"
+    chips = "".join(f"<div><b>{v}</b><small>{KINDS[k]}s</small></div>" for k, v in counts.items() if v)
     opts = "".join(f'<option value="{m.lower()}">{esc(m)}</option>' for m in sorted(mg, key=str.lower))
-    kb = '<button data-k="all" aria-pressed="true">All</button>' + "".join(f'<button data-k="{k}" aria-pressed="false">{v}s</button>' for k, v in KINDS.items()) + '<button data-k="fresh" aria-pressed="false">Fresh only</button>'
+    kb = '<button data-k="all" aria-pressed="true">All</button>' + "".join(f'<button data-k="{k}" aria-pressed="false">{v}s</button>' for k, v in KINDS.items())
     body = (f'<section class="hf-hero"><small>Archiving your receipts</small><h2>The Receipts <i>Archive</i></h2><p>Every hot take, every public negotiation, every prediction with a deadline. Filed by season so the desk can pull it back out when the timing is cruel.</p><div class="hf-stats">{chips}</div></section>'
             f'<div class="rc-bar"><div class="lg-filter" role="group" aria-label="Filter receipts">{kb}</div><div class="rc-ctl"><select id="rcm" aria-label="Manager"><option value="">All managers</option>{opts}</select>'
             f'<input id="rcq" type="search" placeholder="Search receipts" aria-label="Search receipts"><button id="rcr" class="rnd">&#127922; Random receipt</button></div><p id="rcn" class="meta"></p></div>' + sec)
     p = os.path.join(ROOT, "receipts", "index.html"); os.makedirs(os.path.dirname(p), exist_ok=True)
-    open(p, "w", encoding="utf-8").write(shell(body)); print(f"built receipts page ({len(items)} receipts, {fresh} fresh)")
+    open(p, "w", encoding="utf-8").write(shell(body)); print(f"built receipts page ({len(items)} receipts)")
 
 JS = '''<script>(function(){var K="all",C=[].slice.call(document.querySelectorAll('.rc')),m=document.getElementById('rcm'),q=document.getElementById('rcq'),n=document.getElementById('rcn');
-function go(){var s=q.value.toLowerCase(),v=0;C.forEach(function(c){var ok=(K==='all'||(K==='fresh'?c.dataset.f==='1':c.dataset.k===K))&&(!m.value||(' '+c.dataset.m+' ').indexOf(' '+m.value+' ')>-1)&&(!s||c.textContent.toLowerCase().indexOf(s)>-1);c.hidden=!ok;if(ok)v++});
+function go(){var s=q.value.toLowerCase(),v=0;C.forEach(function(c){var ok=(K==='all'||c.dataset.k===K)&&(!m.value||(' '+c.dataset.m+' ').indexOf(' '+m.value+' ')>-1)&&(!s||c.textContent.toLowerCase().indexOf(s)>-1);c.hidden=!ok;if(ok)v++});
 document.querySelectorAll('.rc-sec').forEach(function(d){var x=d.querySelectorAll('.rc:not([hidden])').length;d.hidden=!x;if(s||K!=='all'||m.value)d.open=!!x});n.textContent=v+' of '+C.length+' receipts'}
 document.querySelectorAll('.lg-filter button').forEach(function(b){b.onclick=function(){K=b.dataset.k;document.querySelectorAll('.lg-filter button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});go()}});
 m.onchange=go;q.oninput=go;document.getElementById('rcr').onclick=function(){var a=C.filter(function(c){return !c.hidden});if(!a.length)return;var c=a[Math.floor(Math.random()*a.length)];c.closest('details').open=true;c.scrollIntoView({behavior:'smooth',block:'center'});c.classList.remove('flash');void c.offsetWidth;c.classList.add('flash')};go()})();</script>'''
@@ -86,10 +84,10 @@ def shell(body):
 {fonts}<link rel="stylesheet" href="{R}css/dynastree.css"><link rel="stylesheet" href="{R}css/history.css"><link rel="stylesheet" href="{R}css/ledger.css"><link rel="stylesheet" href="{R}css/receipts.css">
 <link rel="icon" type="image/png" sizes="32x32" href="{R}assets/favicon-32.png"><link rel="apple-touch-icon" href="{R}assets/apple-touch-icon.png"></head><body>
 <header class="mast"><div class="wrap"><img src="{R}assets/crest-mark.webp" alt="Dynastree Chronicles crest" width="79" height="96"><div><h1><a href="{R}">Dynastree <span>Chronicles</span></a></h1><p>The Receipts Archive</p></div></div></header>
-<nav class="sticky"><div class="wrap"><a href="{R}#archive">Issues</a><a href="{R}#standings">Standings</a><a href="{R}managers/">Managers</a><a href="{R}history/">History</a><a href="{R}ledger/">Ledger</a><a href="{R}receipts/">Receipts</a><a href="{R}#transactions">Transactions</a><a href="{R}#rules">Rules</a><a href="{R}#scoring">Scoring</a></div></nav>
+<nav class="sticky"><div class="wrap"><a href="{R}#archive">Issues</a><a href="{R}#standings">Standings</a><button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button><a href="{R}#transactions">Transactions</a><a href="{R}#rules">Rules</a><a href="{R}#scoring">Scoring</a></div><div class="ddm" id="vault" hidden><a href="{R}managers/"><b>Managers</b><small>Meet the suspects</small></a><a href="{R}history/"><b>History</b><small>Hall of Fame &amp; records</small></a><a href="{R}ledger/"><b>Ledger</b><small>Drafts &amp; blockbusters</small></a><a href="{R}receipts/"><b>Receipts</b><small>Hot takes on file</small></a></div></nav>
 <main class="wrap">{body}</main>
 <footer><div class="wrap"><img class="tree" src="{R}assets/tree.webp" alt="" width="40"><p>Time heals all wounds, but screenshots last forever.</p></div></footer>
-<script src="{R}js/site.js"></script>{JS}</body></html>'''
+<script src="{R}js/site.js"></script><script src="{R}js/nav.js"></script>{JS}</body></html>'''
 
 if __name__ == "__main__":
     build()

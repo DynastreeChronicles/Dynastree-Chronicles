@@ -151,7 +151,7 @@ def trade_panel(L):
 JS = '''<script>(function(){var t=document.querySelectorAll('.lg-tabs button'),p=document.querySelectorAll('.lg-panel');
 function show(id){t.forEach(function(b){b.setAttribute('aria-selected',b.dataset.t===id)});p.forEach(function(x){x.hidden=x.id!==id})}
 t.forEach(function(b){b.onclick=function(){show(b.dataset.t);history.replaceState(null,'','#'+b.dataset.t)}});
-show(location.hash==='#trades'?'trades':'drafts');
+show(location.hash==='#drafts'?'drafts':'trades');
 document.querySelectorAll('.lg-filter button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.lg-filter button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
 document.querySelectorAll('tr.pk').forEach(function(r){r.hidden=b.dataset.f!=='all'&&r.dataset.v!==b.dataset.f})}})})();</script>'''
 
@@ -162,10 +162,10 @@ def shell(body):
 {fonts}<link rel="stylesheet" href="{R}css/dynastree.css"><link rel="stylesheet" href="{R}css/history.css"><link rel="stylesheet" href="{R}css/ledger.css">
 <link rel="icon" type="image/png" sizes="32x32" href="{R}assets/favicon-32.png"><link rel="apple-touch-icon" href="{R}assets/apple-touch-icon.png"></head><body>
 <header class="mast"><div class="wrap"><img src="{R}assets/crest-mark.webp" alt="Dynastree Chronicles crest" width="79" height="96"><div><h1><a href="{R}">Dynastree <span>Chronicles</span></a></h1><p>Draft &amp; Trade Ledger</p></div></div></header>
-<nav class="sticky"><div class="wrap"><a href="{R}#archive">Issues</a><a href="{R}#standings">Standings</a><a href="{R}managers/">Managers</a><a href="{R}history/">History</a><a href="{R}ledger/">Ledger</a><a href="{R}receipts/">Receipts</a><a href="{R}#transactions">Transactions</a><a href="{R}#rules">Rules</a><a href="{R}#scoring">Scoring</a></div></nav>
+<nav class="sticky"><div class="wrap"><a href="{R}#archive">Issues</a><a href="{R}#standings">Standings</a><button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button><a href="{R}#transactions">Transactions</a><a href="{R}#rules">Rules</a><a href="{R}#scoring">Scoring</a></div><div class="ddm" id="vault" hidden><a href="{R}managers/"><b>Managers</b><small>Meet the suspects</small></a><a href="{R}history/"><b>History</b><small>Hall of Fame &amp; records</small></a><a href="{R}ledger/"><b>Ledger</b><small>Drafts &amp; blockbusters</small></a><a href="{R}receipts/"><b>Receipts</b><small>Hot takes on file</small></a></div></nav>
 <main class="wrap">{body}</main>
 <footer><div class="wrap"><img class="tree" src="{R}assets/tree.webp" alt="" width="40"><p>Time heals all wounds, but screenshots last forever.</p></div></footer>
-<script src="{R}js/site.js"></script>{JS}</body></html>'''
+<script src="{R}js/site.js"></script><script src="{R}js/nav.js"></script>{JS}</body></html>'''
 
 def build():
     L = jload("data/ledger.json", {}) or {}
@@ -173,8 +173,8 @@ def build():
         STATS[os.path.basename(f)[:-5]] = json.load(open(f, encoding="utf-8"))
     hero = ('<section class="hf-hero"><small>Receipts on file</small><h2>Draft <i>&amp;</i> Trade Ledger</h2>'
             '<p>In dynasty, draft capital is everything. See how every pick aged and which trades deserve a eulogy.</p></section>')
-    body = (hero + '<div class="lg-tabs" role="tablist"><button data-t="drafts" role="tab">All-Time Draft History</button><button data-t="trades" role="tab">The Blockbuster Registry</button></div>'
-            f'<section class="lg-panel" id="drafts">{draft_panel(L)}</section><section class="lg-panel" id="trades" hidden>{trade_panel(L)}</section>')
+    body = (hero + '<div class="lg-tabs" role="tablist"><button data-t="trades" role="tab">The Blockbuster Registry</button><button data-t="drafts" role="tab">All-Time Draft History</button></div>'
+            f'<section class="lg-panel" id="drafts" hidden>{draft_panel(L)}</section><section class="lg-panel" id="trades">{trade_panel(L)}</section>')
     p = os.path.join(ROOT, "ledger", "index.html"); os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w", encoding="utf-8").write(shell(body))
     print(f'built ledger page ({len(L.get("verdicts", {}))} verdicts, {len(L.get("trades", {}))} trade notes)')

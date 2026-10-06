@@ -1,4 +1,4 @@
 {
- "_help": "The Receipts Archive. Chat greatest hits, quotes of the week and bold predictions are pulled automatically from every issue. Add extra hot takes from the chat log here: {season, who, text, context, date, tags, status, note, used_in}. status: aged_well | aged_badly | pending. used_in: list of issue numbers that already ran it (empty = Fresh, shows in the 'Fresh' filter as unused material). who must be an exact handle. Never paraphrase: paste the line as written.",
+ "_help": "The Receipts Archive. Chat greatest hits, quotes of the week and bold predictions are pulled automatically from every issue. Add extra hot takes from the chat log here: {season, who, text, context, date, tags, status, note, used_in}. status: aged_well | aged_badly | pending. used_in: optional list of issue numbers that already ran it (shows a 'Used in Issue N' badge). who must be an exact handle. Never paraphrase: paste the line as written.",
  "takes": []
 }

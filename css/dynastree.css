@@ -463,3 +463,23 @@ background:repeating-linear-gradient(115deg,transparent 0 22px,rgba(255,255,255,
 .closer small{font:700 .95rem Oswald,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#e6b94a}
 .closer h3{margin:.3rem 0 .4rem;font:italic 800 clamp(1.5rem,3.6vw,2.1rem)/1.1 Oswald,sans-serif;text-transform:uppercase;color:#fff}
 .closer p{margin:0;color:var(--mute);font-style:italic;font-size:1.05rem;line-height:1.55}
+
+/* nav dropdown ("The Vault") */
+nav.sticky .ddb{background:none;border:0;border-bottom:2px solid transparent;color:var(--gold,#e6b94a);font:inherit;text-transform:inherit;cursor:pointer;padding:.1rem 0;white-space:nowrap}
+nav.sticky .ddb i{font-style:normal;font-size:.8em}nav.sticky .ddb:hover,nav.sticky .ddb[aria-expanded=true]{border-color:var(--green)}
+.ddm{position:absolute;top:100%;z-index:30;min-width:15rem;margin-top:.35rem;padding:.4rem;border:1px solid var(--line);border-radius:10px;background:rgba(11,15,25,.98);box-shadow:0 14px 34px rgba(0,0,0,.55)}
+.ddm[hidden]{display:none}
+.ddm a{display:block;padding:.55rem .8rem;border-radius:8px;border:0!important;font-family:Inter,system-ui,sans-serif;font-style:normal;text-transform:none}
+.ddm a:hover{background:rgba(255,255,255,.08)}.ddm b{display:block;font:700 1rem Oswald,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff}.ddm small{display:block;color:var(--mute);font-size:.82rem}
+/* home: vault tiles beside the crest (below it on phones) */
+.hero.crest{display:flex;align-items:center;justify-content:center;gap:2.5rem;text-align:left}
+.hero.crest .logo{flex:none;margin:0}.vault{flex:1;max-width:30rem}
+.vh{margin:0 0 .7rem;font:700 1.1rem Oswald,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold,#e6b94a)}
+.vg{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.vt{display:block;padding:1rem 1.1rem;border:1px solid var(--line);border-top:4px solid var(--green);border-radius:10px;background:rgba(17,26,48,.55);text-decoration:none;transition:transform .15s,border-color .15s}
+.vt:hover{transform:translateY(-3px);border-top-color:var(--gold,#e6b94a)}
+.vt b{display:block;font:italic 800 1.35rem Oswald,sans-serif;text-transform:uppercase;color:#fff}.vt span{display:block;margin-top:.15rem;font-size:.88rem;color:var(--mute)}
+@media(max-width:760px){.hero.crest{flex-direction:column;gap:1.4rem;text-align:center}.vault{width:100%;max-width:none}.vg{text-align:left}}
+/* leaderboard podium spacing */
+.lbx .pd{gap:1.6rem;padding:1rem 1.2rem 1rem 1rem}.lbx .pd .pi{padding-left:.3rem}
+@media(max-width:980px){.lbx .pd{gap:1rem}.lbx .pd .pi{display:grid;grid-template-columns:auto 1fr;column-gap:.8rem;align-items:center;padding-left:0}.lbx .pd .pi .av{grid-row:1/3;margin:0}.lbx .pd .pi h3{align-self:end}.lbx .pd .pi p{align-self:start;margin:.1rem 0 0}}
