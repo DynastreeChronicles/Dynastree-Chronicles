@@ -23,19 +23,19 @@
         "pts": 0.0
       },
       "opponent": "CMac91",
-      "opponent_points": 172.92,
+      "opponent_points": 183.42,
       "result": "L"
     },
     {
       "roster_id": 2,
       "manager": "Snipe58",
-      "points": 108.72,
-      "maxpf": 130.0,
-      "roster_points": 146.9,
+      "points": 112.22,
+      "maxpf": 133.5,
+      "roster_points": 150.4,
       "bench_points": 38.18,
-      "optimal": 130.0,
+      "optimal": 133.5,
       "left_on_bench": 21.28,
-      "efficiency": 83.6,
+      "efficiency": 84.1,
       "mvp": {
         "name": "Quinshon Judkins",
         "pos": "RB",
@@ -47,19 +47,19 @@
         "pts": 11.68
       },
       "opponent": "YesChef23",
-      "opponent_points": 90.28,
+      "opponent_points": 94.62,
       "result": "W"
     },
     {
       "roster_id": 3,
       "manager": "StealingGas",
-      "points": 119.58,
-      "maxpf": 125.88,
-      "roster_points": 136.58,
-      "bench_points": 17.0,
-      "optimal": 125.88,
-      "left_on_bench": 6.3,
-      "efficiency": 95.0,
+      "points": 133.7,
+      "maxpf": 139.3,
+      "roster_points": 153.8,
+      "bench_points": 20.1,
+      "optimal": 139.3,
+      "left_on_bench": 5.6,
+      "efficiency": 96.0,
       "mvp": {
         "name": "Puka Nacua",
         "pos": "WR",
@@ -126,36 +126,36 @@
       "roster_id": 6,
       "manager": "Johnny4Skins",
       "points": 157.9,
-      "maxpf": 167.7,
-      "roster_points": 214.8,
-      "bench_points": 56.9,
-      "optimal": 167.7,
-      "left_on_bench": 9.8,
-      "efficiency": 94.2,
+      "maxpf": 182.4,
+      "roster_points": 229.5,
+      "bench_points": 71.6,
+      "optimal": 182.4,
+      "left_on_bench": 24.5,
+      "efficiency": 86.6,
       "mvp": {
         "name": "Kyren Williams",
         "pos": "RB",
         "pts": 36.7
       },
       "best_bench": {
-        "name": "Isaiah Likely",
-        "pos": "TE",
-        "pts": 13.6
+        "name": "Brian Robinson",
+        "pos": "RB",
+        "pts": 25.7
       },
       "opponent": "StealingGas",
-      "opponent_points": 119.58,
+      "opponent_points": 133.7,
       "result": "W"
     },
     {
       "roster_id": 7,
       "manager": "Sarge71",
-      "points": 129.26,
-      "maxpf": 182.78,
-      "roster_points": 211.78,
+      "points": 134.66,
+      "maxpf": 188.18,
+      "roster_points": 217.18,
       "bench_points": 82.52,
-      "optimal": 182.78,
+      "optimal": 188.18,
       "left_on_bench": 53.52,
-      "efficiency": 70.7,
+      "efficiency": 71.6,
       "mvp": {
         "name": "Tetairoa McMillan",
         "pos": "WR",
@@ -168,18 +168,18 @@
       },
       "opponent": "Painty69",
       "opponent_points": 133.32,
-      "result": "L"
+      "result": "W"
     },
     {
       "roster_id": 8,
       "manager": "C33DeezNutzz",
-      "points": 111.38,
-      "maxpf": 125.68,
-      "roster_points": 150.08,
+      "points": 115.48,
+      "maxpf": 129.78,
+      "roster_points": 154.18,
       "bench_points": 38.7,
-      "optimal": 125.68,
+      "optimal": 129.78,
       "left_on_bench": 14.3,
-      "efficiency": 88.6,
+      "efficiency": 89.0,
       "mvp": {
         "name": "Zay Flowers",
         "pos": "WR",
@@ -215,19 +215,19 @@
         "pts": 24.9
       },
       "opponent": "Sarge71",
-      "opponent_points": 129.26,
-      "result": "W"
+      "opponent_points": 134.66,
+      "result": "L"
     },
     {
       "roster_id": 10,
       "manager": "CMac91",
-      "points": 172.92,
-      "maxpf": 178.44,
-      "roster_points": 215.9,
+      "points": 183.42,
+      "maxpf": 188.94,
+      "roster_points": 226.4,
       "bench_points": 42.98,
-      "optimal": 178.44,
+      "optimal": 188.94,
       "left_on_bench": 5.52,
-      "efficiency": 96.9,
+      "efficiency": 97.1,
       "mvp": {
         "name": "CeeDee Lamb",
         "pos": "WR",
@@ -245,13 +245,13 @@
     {
       "roster_id": 11,
       "manager": "YesChef23",
-      "points": 90.28,
-      "maxpf": 129.72,
-      "roster_points": 148.98,
+      "points": 94.62,
+      "maxpf": 132.82,
+      "roster_points": 153.32,
       "bench_points": 58.7,
-      "optimal": 129.72,
-      "left_on_bench": 39.44,
-      "efficiency": 69.6,
+      "optimal": 132.82,
+      "left_on_bench": 38.2,
+      "efficiency": 71.2,
       "mvp": {
         "name": "RJ Harvey",
         "pos": "RB",
@@ -263,7 +263,7 @@
         "pts": 28.1
       },
       "opponent": "Snipe58",
-      "opponent_points": 108.72,
+      "opponent_points": 112.22,
       "result": "L"
     },
     {
@@ -287,7 +287,7 @@
         "pts": 28.0
       },
       "opponent": "C33DeezNutzz",
-      "opponent_points": 111.38,
+      "opponent_points": 115.48,
       "result": "W"
     }
   ]
