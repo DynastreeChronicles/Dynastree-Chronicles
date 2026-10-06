@@ -47,19 +47,19 @@
         "pts": 11.68
       },
       "opponent": "YesChef23",
-      "opponent_points": 84.52,
+      "opponent_points": 84.6,
       "result": "W"
     },
     {
       "roster_id": 3,
       "manager": "StealingGas",
-      "points": 98.48,
+      "points": 101.88,
       "maxpf": 117.08,
-      "roster_points": 117.08,
+      "roster_points": 120.48,
       "bench_points": 18.6,
       "optimal": 117.08,
-      "left_on_bench": 18.6,
-      "efficiency": 84.1,
+      "left_on_bench": 15.2,
+      "efficiency": 87.0,
       "mvp": {
         "name": "Puka Nacua",
         "pos": "WR",
@@ -143,19 +143,19 @@
         "pts": 13.6
       },
       "opponent": "StealingGas",
-      "opponent_points": 98.48,
+      "opponent_points": 101.88,
       "result": "W"
     },
     {
       "roster_id": 7,
       "manager": "Sarge71",
-      "points": 106.96,
-      "maxpf": 164.78,
-      "roster_points": 189.48,
+      "points": 119.16,
+      "maxpf": 172.68,
+      "roster_points": 201.68,
       "bench_points": 82.52,
-      "optimal": 164.78,
-      "left_on_bench": 57.82,
-      "efficiency": 64.9,
+      "optimal": 172.68,
+      "left_on_bench": 53.52,
+      "efficiency": 69.0,
       "mvp": {
         "name": "Tetairoa McMillan",
         "pos": "WR",
@@ -215,7 +215,7 @@
         "pts": 24.9
       },
       "opponent": "Sarge71",
-      "opponent_points": 106.96,
+      "opponent_points": 119.16,
       "result": "W"
     },
     {
@@ -245,12 +245,12 @@
     {
       "roster_id": 11,
       "manager": "YesChef23",
-      "points": 84.52,
+      "points": 84.6,
       "maxpf": 129.72,
-      "roster_points": 140.22,
-      "bench_points": 55.7,
+      "roster_points": 142.2,
+      "bench_points": 57.6,
       "optimal": 129.72,
-      "left_on_bench": 45.2,
+      "left_on_bench": 45.12,
       "efficiency": 65.2,
       "mvp": {
         "name": "RJ Harvey",
