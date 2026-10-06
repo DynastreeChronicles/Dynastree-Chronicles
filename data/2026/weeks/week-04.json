@@ -23,19 +23,19 @@
         "pts": 0.0
       },
       "opponent": "CMac91",
-      "opponent_points": 160.62,
+      "opponent_points": 165.22,
       "result": "L"
     },
     {
       "roster_id": 2,
       "manager": "Snipe58",
-      "points": 100.32,
+      "points": 103.62,
       "maxpf": 125.7,
-      "roster_points": 138.5,
+      "roster_points": 141.8,
       "bench_points": 38.18,
       "optimal": 125.7,
-      "left_on_bench": 25.38,
-      "efficiency": 79.8,
+      "left_on_bench": 22.08,
+      "efficiency": 82.4,
       "mvp": {
         "name": "Quinshon Judkins",
         "pos": "RB",
@@ -47,7 +47,7 @@
         "pts": 11.68
       },
       "opponent": "YesChef23",
-      "opponent_points": 84.6,
+      "opponent_points": 86.6,
       "result": "W"
     },
     {
@@ -55,8 +55,8 @@
       "manager": "StealingGas",
       "points": 101.88,
       "maxpf": 117.08,
-      "roster_points": 120.48,
-      "bench_points": 18.6,
+      "roster_points": 120.28,
+      "bench_points": 18.4,
       "optimal": 117.08,
       "left_on_bench": 15.2,
       "efficiency": 87.0,
@@ -149,13 +149,13 @@
     {
       "roster_id": 7,
       "manager": "Sarge71",
-      "points": 119.16,
-      "maxpf": 172.68,
-      "roster_points": 201.68,
+      "points": 119.46,
+      "maxpf": 172.98,
+      "roster_points": 201.98,
       "bench_points": 82.52,
-      "optimal": 172.68,
+      "optimal": 172.98,
       "left_on_bench": 53.52,
-      "efficiency": 69.0,
+      "efficiency": 69.1,
       "mvp": {
         "name": "Tetairoa McMillan",
         "pos": "WR",
@@ -215,19 +215,19 @@
         "pts": 24.9
       },
       "opponent": "Sarge71",
-      "opponent_points": 119.16,
+      "opponent_points": 119.46,
       "result": "W"
     },
     {
       "roster_id": 10,
       "manager": "CMac91",
-      "points": 160.62,
+      "points": 165.22,
       "maxpf": 174.34,
-      "roster_points": 203.6,
+      "roster_points": 208.2,
       "bench_points": 42.98,
       "optimal": 174.34,
-      "left_on_bench": 13.72,
-      "efficiency": 92.1,
+      "left_on_bench": 9.12,
+      "efficiency": 94.8,
       "mvp": {
         "name": "CeeDee Lamb",
         "pos": "WR",
@@ -245,13 +245,13 @@
     {
       "roster_id": 11,
       "manager": "YesChef23",
-      "points": 84.6,
+      "points": 86.6,
       "maxpf": 129.72,
-      "roster_points": 142.2,
+      "roster_points": 144.2,
       "bench_points": 57.6,
       "optimal": 129.72,
-      "left_on_bench": 45.12,
-      "efficiency": 65.2,
+      "left_on_bench": 43.12,
+      "efficiency": 66.8,
       "mvp": {
         "name": "RJ Harvey",
         "pos": "RB",
@@ -263,7 +263,7 @@
         "pts": 28.1
       },
       "opponent": "Snipe58",
-      "opponent_points": 100.32,
+      "opponent_points": 103.62,
       "result": "L"
     },
     {
