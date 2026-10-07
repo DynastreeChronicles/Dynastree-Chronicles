@@ -1,10 +1,10 @@
 {
  "tagline": "The IR Predictor. The formula does not miss.",
- "asof": "Issue 4, through Week 3",
+ "asof": "Issue 5, through Week 4",
  "file": [
   [
    "The type",
-   "The algorithm manager. Builds the roster around production, then ignores the wire and lets the numbers run."
+   "The algorithm manager. Builds the roster around production, then lets the numbers run."
   ],
   [
    "Signature move",
@@ -16,21 +16,21 @@
   ],
   [
    "The desk is watching",
-   "Whether a roster with no bids since Week 1 can survive its first real injury."
+   "Whether a $5 bid on Jacoby Brissett is insurance or a leak in the formula, and the Week 5 Match of the Week against C33DeezNutzz."
   ]
  ],
  "seasons": {
   "2026": {
-   "headline": "3-0, no bids, and the nickname is still cashing",
-   "asof": "Issue 4, through Week 3",
+   "headline": "4-0, the biggest bid yet, and the nickname still cashing",
+   "asof": "Issue 5, through Week 4",
    "story": [
-    "Zygon is the only team in the league that has not needed the waiver wire. His total FAAB spend is $2, on Ollie Gordon, plus a free add on Barion Brown, and the team is 3-0 with the league's highest points total. The roster is built on Jaxon Smith-Njigba, Kenneth Walker and Patrick Mahomes, a group that sounds fragile and has not been.",
-    "The scores back it up. 195.70 in Week 1, a 172.96 in Week 2 that beat YesChef23 by 92.86 and earned Best Manager, and 149.78 in Week 3 over Sarge71. Smith-Njigba put up 42.5 in Week 2 and 35.36 in Week 3, and the efficiency is 91 percent, second only to C33DeezNutzz.",
-    "The desk's only complaint is that the formula is hard to write around. The open question is health. The handcuffs he listed are a dare, and the 1.11 slot says his best-case lineup is one of the league's strongest."
+    "Zygon is the only team in the league that is unbeaten, and the only one that has barely touched the waiver wire. His FAAB spend is $7: $2 on Ollie Gordon and, in Week 4, $5 on Jacoby Brissett. The team is 4-0 with the league's highest points total, built on Jaxon Smith-Njigba, Kenneth Walker and Patrick Mahomes.",
+    "The scores back it up. 195.70 in Week 1, a 172.96 in Week 2 that beat YesChef23 by 92.86 and earned Best Manager, 149.78 in Week 3 over Sarge71, and 144.02 in Week 4 over Hades9mm. Walker led the Match of the Week at 30.9, though Javonte Williams on the other side scored 31.3, so Zygon won on depth, not on one star.",
+    "The desk's complaint is that the formula is hard to write around. Zygon left 36.08 on the bench and still won by 22.26, swapped Detroit for the Chicago Bears defense, and kept the handcuffs on the block. The 1.11 slot says his best-case lineup is one of the league's strongest. Next up is C33DeezNutzz, the cleanest lineup manager on the board."
    ],
    "takes": [
-    "The formula does not bid on anyone.",
-    "Elite bit commitment: the injury nickname, the 195, and the win."
+    "The formula does not bid on anyone. Until it does.",
+    "Elite bit commitment: the injury nickname, the 4-0, and the win."
    ],
    "drama": []
   }
