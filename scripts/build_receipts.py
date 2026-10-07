@@ -86,6 +86,7 @@ def shell(body):
     fonts = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">'
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Receipts Archive | Dynastree Chronicles</title><meta name="description" content="Every hot take, quote and bold prediction in the Dynastree dynasty league, filed by season."><meta name="robots" content="noindex">
+{bs.og_block("The Receipts Archive | Dynastree Chronicles", "Every quote, hit, bold prediction and hot take in the Dynastree dynasty league, with the receipts.", "receipts/")}
 {fonts}<link rel="stylesheet" href="{R}css/dynastree.css"><link rel="stylesheet" href="{R}css/history.css"><link rel="stylesheet" href="{R}css/ledger.css"><link rel="stylesheet" href="{R}css/receipts.css">
 <link rel="icon" type="image/png" sizes="32x32" href="{R}assets/favicon-32.png"><link rel="apple-touch-icon" href="{R}assets/apple-touch-icon.png"></head><body>
 <a class="skip" href="#main">Skip to main content</a>

@@ -373,13 +373,13 @@ def render_page(man, d, y):
             "DESK": "\n".join(f"<p>{bold_handles(x)}</p>" for x in desk),
             "HEROZERO": (hz_pre("hero", d["hero"]) + "\n" + hz_pre("zero", d["zero"])) if pre_s else (hz_block("hero", d.get("hero"), wk, root) + "\n" + hz_block("zero", d.get("zero"), wk, root)),
             "NAV_POST": "Draft Grades" if pre_s else "Post-Game",
-            "NAV_POLL": "" if (pre_s or not d.get("poll")) else '<a href="#poll-sec">Poll</a>',
+            "NAV_POLL": "" if (pre_s or not (d.get("poll") or d.get("prev_poll"))) else '<a href="#poll-sec">Poll</a>',
             "T_HZ": "Draft hero and draft zero" if pre_s else "Hero and zero of the week",
             "T_STAND": "The post-draft ledger" if pre_s else f"Standings: Week {wk}",
             "T_POST": "Draft grades and power rankings" if pre_s else f"Week {wk} post-game",
             "T_DRAMA": "Drama of the draft" if pre_s else "Drama of the week",
-            "POLL_SEC": "" if (pre_s or not d.get("poll")) else '<h2 class="sec" id="poll-sec">Weekly poll</h2>\n<div id="poll"></div>',
-            "PDF_NAV": "",
+            "POLL_SEC": "" if (pre_s or not (d.get("poll") or d.get("prev_poll"))) else '<h2 class="sec" id="poll-sec">Weekly poll</h2>\n<div id="poll"></div>',
+            "PDF_NAV": "", "OG_URL": f"{SITE_URL}issues/{y}/issue-{n}/",
             "CARD": issue_img("hero", n, f"Issue {man['no']}", root, cls="icard"),
             "BADGE_POST": "" if pre_s else f'<img class="sbadge" src="{root}assets/badge-post-game.webp" alt="Post-Game" loading="lazy">',
             "PRINT": f'<p class="key"><a class="btn o" href="{root}">Back to the archive</a></p>\n'}
@@ -506,6 +506,28 @@ def ipath(y, n):
     old = os.path.join(ROOT, f"data/issues/issue-{int(n):02d}.json")
     return new if os.path.exists(new) or not os.path.exists(old) else old
 
+# Site address and link-preview image (absolute URLs: chat apps ignore relative ones). The image is assets/apple-touch-icon.png.
+SITE_URL = "https://dynastreechronicles.github.io/Dynastree-Chronicles/"
+OG_IMAGE = SITE_URL + "assets/apple-touch-icon.png"
+# The weekly poll was introduced in Issue 4, and its results first run in Issue 5. Earlier issues never show either card.
+POLL_FROM, PREV_POLL_FROM = 4, 5
+
+def poll_gate(d, no):
+    d = dict(d)
+    if int(no) < POLL_FROM:
+        d.pop("poll", None)
+    if int(no) < PREV_POLL_FROM:
+        d.pop("prev_poll", None)
+    return d
+
+def og_block(title, desc, path):
+    """Open Graph / Twitter tags for link previews: absolute URL, the crest as a small square card."""
+    return ('<meta property="og:site_name" content="Dynastree Chronicles"><meta property="og:type" content="website">'
+            f'<meta property="og:title" content="{attr(title)}"><meta property="og:description" content="{attr(desc)}">'
+            f'<meta property="og:url" content="{SITE_URL}{path}"><meta property="og:image" content="{OG_IMAGE}">'
+            '<meta property="og:image:width" content="180"><meta property="og:image:height" content="180">'
+            '<meta name="twitter:card" content="summary">')
+
 def issue_files():
     """Every issue prose file as (season, issue no, path), newest first. Also covers the old flat layout."""
     man = {i["no"]: int(i.get("year", 2026)) for i in manifest() if "year" in i}
@@ -529,7 +551,7 @@ def issue(n="04", y=2026):
         return issue_pre(man, canon(json.load(open(ipath(y, n), encoding="utf-8"))), y, n)
     wk = man.get("wire_week") or man.get("standings_week")
     assert wk, f"issues.json needs wire_week for issue {n}"
-    d = canon(json.load(open(ipath(y, n), encoding="utf-8")))
+    d = poll_gate(canon(json.load(open(ipath(y, n), encoding="utf-8"))), n)
     render_page(man, d, y)
     rep = []
     win = man.get("tx_from")   # optional: only claims created AFTER these timestamps belong to this issue (retro issues)
@@ -626,7 +648,7 @@ def transactions(m):
         return ""
     fin = i.get("wire_week") or 1
     use(i["year"])
-    d = canon(json.load(open(ipath(i["year"], i["no"]), encoding="utf-8")))
+    d = poll_gate(canon(json.load(open(ipath(i["year"], i["no"]), encoding="utf-8"))), i["no"])
     ws = wire_waivers(d["wire"]["waivers"], fin)
     notable = lambda x: x[4] in ("mvp", "fav") or x[2] >= 50
     out = [f'<h3 class="wk">Week {fin} highlights</h3>']
