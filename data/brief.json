@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-07T01:21:04+00:00",
+ "generated_at": "2026-10-07T13:22:30+00:00",
  "season": "2026",
  "volume": 1,
  "season_status": "active",
- "data_pulled_at": "2026-10-07T01:21:01+00:00",
+ "data_pulled_at": "2026-10-07T13:22:27+00:00",
  "ready_for_new_issue": true,
  "warnings": [],
  "next_issue": {
@@ -207,7 +207,7 @@
    "pf": 662.46,
    "pa": 445.02,
    "maxpf": 749.74,
-   "faab_remaining": 498,
+   "faab_remaining": 493,
    "sleeper_maxpf": null,
    "rank": 1,
    "prev_rank": 1,
@@ -333,7 +333,7 @@
    "pf": 456.18,
    "pa": 542.16,
    "maxpf": 584.88,
-   "faab_remaining": 498,
+   "faab_remaining": 484,
    "sleeper_maxpf": null,
    "rank": 8,
    "prev_rank": 5,
@@ -416,8 +416,8 @@
  ],
  "bankroll": {
   "Zygon": {
-   "faab": 498,
-   "change_this_week": 0
+   "faab": 493,
+   "change_this_week": -5
   },
   "Hades9mm": {
    "faab": 330,
@@ -444,8 +444,8 @@
    "change_this_week": 0
   },
   "YesChef23": {
-   "faab": 498,
-   "change_this_week": 0
+   "faab": 484,
+   "change_this_week": -14
   },
   "Snipe58": {
    "faab": 400,
@@ -503,6 +503,64 @@
   }
  ],
  "transactions_this_week_and_later": [
+  {
+   "week": 4,
+   "type": "waiver",
+   "created": 1791304852233,
+   "id": "1413238616724959232",
+   "manager": "Zygon",
+   "added": {
+    "name": "Jacoby Brissett",
+    "pos": "QB",
+    "team": "ARI"
+   },
+   "dropped": [
+    "Tory Horton"
+   ],
+   "bid": 5
+  },
+  {
+   "week": 4,
+   "type": "waiver",
+   "created": 1791302676166,
+   "id": "1413229489642545152",
+   "manager": "YesChef23",
+   "added": {
+    "name": "Joe Mixon",
+    "pos": "RB",
+    "team": null
+   },
+   "dropped": [],
+   "bid": 1
+  },
+  {
+   "week": 4,
+   "type": "waiver",
+   "created": 1791157964051,
+   "id": "1412622523035602944",
+   "manager": "YesChef23",
+   "added": {
+    "name": "Roman Wilson",
+    "pos": "WR",
+    "team": "PIT"
+   },
+   "dropped": [],
+   "bid": 1
+  },
+  {
+   "week": 4,
+   "type": "waiver",
+   "created": 1791157949621,
+   "id": "1412622462511779840",
+   "manager": "YesChef23",
+   "added": {
+    "name": "Keon Coleman",
+    "pos": "WR",
+    "team": "BUF"
+   },
+   "dropped": [],
+   "bid": 12
+  },
   {
    "week": 4,
    "type": "free_agent",

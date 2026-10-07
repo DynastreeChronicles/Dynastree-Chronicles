@@ -823,6 +823,64 @@
   },
   {
     "week": 4,
+    "type": "waiver",
+    "created": 1791304852233,
+    "id": "1413238616724959232",
+    "manager": "Zygon",
+    "added": {
+      "name": "Jacoby Brissett",
+      "pos": "QB",
+      "team": "ARI"
+    },
+    "dropped": [
+      "Tory Horton"
+    ],
+    "bid": 5
+  },
+  {
+    "week": 4,
+    "type": "waiver",
+    "created": 1791302676166,
+    "id": "1413229489642545152",
+    "manager": "YesChef23",
+    "added": {
+      "name": "Joe Mixon",
+      "pos": "RB",
+      "team": null
+    },
+    "dropped": [],
+    "bid": 1
+  },
+  {
+    "week": 4,
+    "type": "waiver",
+    "created": 1791157964051,
+    "id": "1412622523035602944",
+    "manager": "YesChef23",
+    "added": {
+      "name": "Roman Wilson",
+      "pos": "WR",
+      "team": "PIT"
+    },
+    "dropped": [],
+    "bid": 1
+  },
+  {
+    "week": 4,
+    "type": "waiver",
+    "created": 1791157949621,
+    "id": "1412622462511779840",
+    "manager": "YesChef23",
+    "added": {
+      "name": "Keon Coleman",
+      "pos": "WR",
+      "team": "BUF"
+    },
+    "dropped": [],
+    "bid": 12
+  },
+  {
+    "week": 4,
     "type": "free_agent",
     "created": 1791120925974,
     "id": "1412467174085279744",
