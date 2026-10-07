@@ -39,6 +39,7 @@ LEAGUE_NAME = "Dynastree"
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import seasons as ss
+import season_events as se
 DATA = os.path.normpath(os.path.join(HERE, "..", "data"))
 OUT = DATA                                   # main() points this at data/<season>/
 CACHE = os.path.normpath(os.path.join(HERE, "..", ".cache"))
@@ -337,6 +338,40 @@ def dump(name, obj, base=None):
 
 
 ROOT = os.path.normpath(os.path.join(HERE, ".."))
+
+
+def pull_draft(lid, rid_name):
+    """Record the league's finished draft. draft_meta.json (draft date, type) is refreshed every run. draft.json (one row per
+    pick) is written only when it does not exist yet, so a hand-made one (the startup draft, with its auto-pick flags) is never
+    overwritten. Problems here are warnings and never fail the run."""
+    try:
+        done = [d for d in (get(f"/league/{lid}/drafts") or []) if d.get("status") == "complete"]
+        if not done:
+            return
+        d = max(done, key=lambda x: x.get("last_picked") or 0)
+        dump("draft_meta.json", se.draft_meta(d))
+        if not os.path.exists(os.path.join(OUT, "draft.json")):
+            rows = se.draft_records(get(f"/draft/{d['draft_id']}/picks"), rid_name)
+            if rows:
+                dump("draft.json", rows)
+                print(f"Draft: wrote draft.json ({len(rows)} picks, {d.get('type')} draft finished {se.draft_meta(d)['completed_at']})")
+    except Exception as ex:
+        print(f"::warning::draft pull skipped ({ex})")
+
+
+def detect_result(lid, src, weeks, rid_name):
+    """Champion, runner-up and final score from Sleeper's winners bracket plus our own week files, or None until decided."""
+    start = (src.get("settings") or {}).get("playoff_week_start")
+    if not start:
+        try:
+            start = json.load(open(os.path.join(ROOT, "data", "settings.json"), encoding="utf-8")).get("playoff_start")
+        except Exception:
+            start = None
+    if not start:
+        return None
+    return se.championship(get(f"/league/{lid}/winners_bracket"), weeks, start, rid_name)
+
+
 AV_DIR = os.path.join(ROOT, "assets", "avatars")
 AV_SIZE = 96
 
@@ -476,6 +511,9 @@ def main():
             rmeta[r["roster_id"]]["sleeper_ppts"] = round(st["ppts"] + st.get("ppts_decimal", 0) / 100, 2)
 
     sync_avatars(rmeta)
+    rid_name = {rid: m["manager"] for rid, m in rmeta.items()}
+    if league:
+        pull_draft(lid, rid_name)
 
     slots = [x for x in src["roster_positions"] if x != "BN"]
     cur_week = state.get("week", 1)
@@ -547,6 +585,27 @@ def main():
         "waiver_budget": budget,
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     })
+    # Season close: once Sleeper's bracket has a champion, record it (data/<season>/result.json). When the season-review issue
+    # ("season_final": true in data/issues.json) also exists, close the season so the next volume opens on its own.
+    result = None
+    if league:
+        try:
+            result = detect_result(lid, src, weeks, rid_name)
+        except Exception as ex:
+            print(f"::warning::champion check skipped ({ex})")
+    if result:
+        prev_r = {}
+        try:
+            prev_r = json.load(open(os.path.join(OUT, "result.json"), encoding="utf-8"))
+        except Exception:
+            pass
+        now_iso = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        dump("result.json", {"season": season, **result, "decided_at": prev_r.get("decided_at") or now_iso})
+        print(f"Champion: {result['champion']} over {result['runner_up']} ({result['final_score'][0]} to {result['final_score'][1]})")
+        if not ss.is_closed(entry) and ss.final_issue(season):
+            entry["status"] = "closed"
+            entry["closed_at"] = now_iso
+            print(f"Season {season} closed: the champion is decided and the season-review issue is published. The next pull opens Volume {(entry.get('volume') or 0) + 1}.")
     ss.save(reg)
     print(f"Wrote JSON to {OUT}")
 

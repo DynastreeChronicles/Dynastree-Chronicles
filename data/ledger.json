@@ -1,5 +1,5 @@
 {
- "_help": "Draft & Trade Ledger. Picks and trades are pulled automatically. Hand-enter only the verdicts. verdicts: key 'YEAR:R.SS' (e.g. '2026:1.01') -> {grade: hit|mid|bust, note}. Ungraded picks stay grey ('Too early'). Grade picks years later, once careers have played out. trades: key = Sleeper trade id (see data/<year>/transactions.json) -> {status: deceased|alive|pending, headline, cause, obituary, survived_by}. 'deceased' trades get an obituary card at the top of the Blockbuster Registry. drafts: key = season -> {label}. grading: auto-grades picks from data/stats/<season>.json after each of the first 3 seasons by position rank (hit = within 'hit' rank, mid = within 'mid' rank, else bust; picks after 'late_round' can't be busts). Hand-entered verdicts always override.",
+ "_help": "Draft & Trade Ledger. Picks and trades are pulled automatically, and picks are now GRADED automatically: at 12, 24 and 36 months after the pick (measured from the draft date Sleeper reports, or drafts.<year>.date here, else Sept 1 of the draft year), each pick gets a hit / mid / bust verdict from its position rank in the season just finished (thresholds under grading.hit and grading.mid; picks after grading.late_round can't be busts), nudged one step up or down when his actual points beat or missed Sleeper's projection for the weeks he played (grading.projection.over / under). Hand-enter only what the machine cannot know. verdicts: key 'YEAR:R.SS' (e.g. '2026:1.01') -> {grade: hit|mid|bust, note}; a hand verdict always overrides the automatic one. trades: key = Sleeper trade id (see data/<year>/transactions.json) -> {status: deceased|alive|pending, headline, cause, obituary, survived_by}; 'deceased' trades get an obituary card at the top of the Blockbuster Registry. drafts: key = season -> {label, date (optional YYYY-MM-DD, only when Sleeper does not report a draft date)}.",
  "settings": {
   "blockbuster_min": 60,
   "pick_value": {
@@ -18,7 +18,11 @@
  "verdicts": {},
  "trades": {},
  "grading": {
-  "seasons": 3,
+  "checkpoints_months": [
+   12,
+   24,
+   36
+  ],
   "hit": {
    "QB": 12,
    "RB": 18,
@@ -31,6 +35,11 @@
    "WR": 48,
    "TE": 16
   },
-  "late_round": 10
+  "late_round": 10,
+  "projection": {
+   "over": 1.15,
+   "under": 0.7,
+   "min_games": 4
+  }
  }
 }

@@ -196,5 +196,24 @@
   ],
   "result": "",
   "note": ""
- }
+ },
+ "rulings": [
+  {
+   "issue": 0,
+   "i": 0,
+   "result": "hit | miss | pending",
+   "note": "One sentence, with the evidence. Rules on a bold prediction from an EARLIER issue (issue number + its index in that issue's bold list). Leave [] if nothing resolved this week."
+  }
+ ],
+ "receipts": [
+  {
+   "who": "Exact handle",
+   "text": "The line exactly as written in the chat",
+   "context": "",
+   "date": "",
+   "tags": [],
+   "status": "pending | aged_well | aged_badly",
+   "note": "Optional desk line. Repeat a receipt in a later issue with a new status to update it."
+  }
+ ]
 }

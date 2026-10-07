@@ -8,6 +8,7 @@ import datetime, glob, json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import build_site as bs
 import seasons as ss
+import pick_grades as pg
 from build_site import esc, av, jload, ROOT
 R = "../"
 GR = {"hit": ("Hit", "v-hit"), "mid": ("Mid-tier", "v-mid"), "bust": ("Bust", "v-bust")}
@@ -17,20 +18,26 @@ STATS = {}
 def norm(n):
     return " ".join(re.sub(r"\b(jr|sr|ii|iii|iv|v)\b", "", re.sub(r"[^a-z ]", "", n.lower().replace("-", " "))).split())
 
-def grade_pick(y, p, G):
-    """Grade a pick after each of its first N seasons (default 3). The last graded season is the verdict; after season N it is final."""
-    n, out = int(G.get("seasons", 3)), {"grade": None, "yrs": [], "final": False}
-    hit, mid = G.get("hit", {}), G.get("mid", {})
-    for k in range(n):
-        st = STATS.get(str(int(y) + k))
-        rec = st and st["players"].get(norm(p["name"]) + "|" + p["pos"])
-        if not rec or p["pos"] not in hit: break
-        if not st.get("final"):
-            out["yrs"].append((k + 1, None, rec)); break
-        r = rec.get("posrank")
-        g = "hit" if r and r <= hit[p["pos"]] else "mid" if r and r <= mid.get(p["pos"], 0) else "mid" if p["r"] > G.get("late_round", 10) else "bust"
-        out["yrs"].append((k + 1, g, rec)); out["grade"] = g; out["final"] = k == n - 1
-    return out
+TODAY = datetime.date.today()
+
+def grade_pick(y, p, L):
+    """Automatic verdict for one pick at its 12 / 24 / 36-month checkpoints (see scripts/pick_grades.py)."""
+    meta = jload(f"data/{y}/draft_meta.json", None)
+    return pg.grade_pick(y, p, L.get("grading", {}), STATS, TODAY, pg.pick_date(y, meta, L.get("drafts")), norm(p["name"]) + "|" + p["pos"])
+
+def trail_html(p, au):
+    """One small line per checkpoint: '12-mo: WR14 (118% of projection) dot'."""
+    bits = []
+    for cp in au["cps"]:
+        r = f'{p["pos"]}{cp["posrank"] or "-"}'
+        if cp["state"] == "graded":
+            ratio = f' ({round(cp["ratio"] * 100)}% of projection)' if cp["ratio"] else ""
+            bits.append(f'{cp["months"]}-mo: {r}{ratio} <span class="dot {GR[cp["grade"]][1]}"></span>')
+        elif cp["state"] == "waiting":
+            bits.append(f'{cp["months"]}-mo: {r} so far, check due {cp["due"].strftime("%b %Y")} <span class="dot v-pend"></span>')
+        else:
+            bits.append(f'{cp["months"]}-mo: {r} (season in progress) <span class="dot v-pend"></span>')
+    return " &middot; ".join(bits)
 
 def ml(m):
     return f'<a class="ml" href="{R}managers/{esc(m.lower())}/">{esc(m)}</a>'
@@ -55,11 +62,11 @@ def draft_panel(L):
             if p["r"] != cur:
                 cur = p["r"]; rows += f'<tr class="rh"><td colspan="5">Round {cur}</td></tr>'
             v = V.get(f'{y}:{p["r"]}.{p["s"]:02d}') or {}
-            au = grade_pick(y, p, L.get("grading", {}))
+            au = grade_pick(y, p, L)
             g = v.get("grade") if v.get("grade") in GR else au["grade"]
             lab, cls = GR.get(g, ("Too early", "v-pend"))
             if g and not v.get("grade"): lab += " (final)" if au["final"] else " (so far)"
-            trail = " &middot; ".join(f'Y{k}: {p["pos"]}{r["posrank"] or "-"}' + ("" if gr else " (in progress)") + f' <span class="dot {GR[gr][1] if gr else "v-pend"}"></span>' for k, gr, r in au["yrs"])
+            trail = trail_html(p, au)
             t = tally.setdefault(p["m"], {"hit": 0, "mid": 0, "bust": 0})
             if g: t[g] += 1
             note = (f'<small>{esc(v["note"])}</small>' if v.get("note") else "") + (f'<small>{trail}</small>' if trail else "")

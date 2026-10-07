@@ -10,6 +10,7 @@ import glob, json, os, re, sys
 from collections import defaultdict
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import build_site as bs
+import auto_data as ad
 import seasons as ss
 import trophies as tr
 from build_site import esc, av, jload, ROOT
@@ -124,7 +125,17 @@ def record_tiles(S, ps):
 
 # ------------------------------------------------------------------ champions
 def hist_season(H, y):
-    return (H.get("seasons") or {}).get(y) or {}
+    """Hand-entered history for one season, with the champion, runner-up and final score filled in from
+    data/<season>/result.json (written by the pull when Sleeper's bracket is decided) wherever the hand entry is blank."""
+    h = dict((H.get("seasons") or {}).get(y) or {})
+    r = jload(f"data/{y}/result.json", None) or {}
+    for k in ("champion", "runner_up"):
+        if not h.get(k) and r.get(k):
+            h[k] = r[k]
+    fs = h.get("final_score") or [None, None]
+    if (fs[0] is None or fs[1] is None) and r.get("final_score"):
+        h["final_score"] = r["final_score"]
+    return h
 
 def toilet_card(tb, label):
     """The Toilet Bowl (last-place bracket) result for one season, shown under that season's champion."""
@@ -195,7 +206,7 @@ def careers(S, H, ps, pt):
 
 # ------------------------------------------------------------------ predictions and awards
 def predictions(H):
-    res, out = H.get("predictions") or {}, []
+    res, out = ad.merged_predictions(H), []
     for y, n, d in sorted(all_issue_data(), key=lambda x: (x[0], x[1])):
         for i, b in enumerate(d.get("bold") or []):
             k = f"{y}-{n}-{i}"

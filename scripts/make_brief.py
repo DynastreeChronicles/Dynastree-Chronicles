@@ -7,6 +7,36 @@ from datetime import datetime, timezone
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import build_site as bs
+import auto_data as ad
+
+def season_end(season):
+    """Has Sleeper's bracket decided the champion? And does the season-review issue exist yet? (The pull closes the season
+    on its own once both are true.)"""
+    r = bs.jload(f"data/{season}/result.json", None)
+    if not r:
+        return {"decided": False}
+    fin = bs.ss.final_issue(season)
+    out = {"decided": True, "champion": r.get("champion"), "runner_up": r.get("runner_up"), "final_score": r.get("final_score"),
+           "season_final_issue_published": bool(fin)}
+    if not fin:
+        out["action"] = ("The championship is decided. Write the season-review issue and set \"season_final\": true on its entry in "
+                         "data/issues.json. The next pull then closes the volume and opens the next one by itself. "
+                         "Also write the volume story for data/history.json (seasons.<year>.story) if it is still the placeholder.")
+    return out
+
+
+def unruled_predictions():
+    """Bold predictions from earlier issues that no issue has ruled on yet. The next issue's `rulings` should settle them."""
+    H = bs.jload("data/history.json", {}) or {}
+    res = ad.merged_predictions(H)
+    out = []
+    for y, n, f in sorted(bs.issue_files(), key=lambda x: (x[0], x[1])):
+        d = bs.canon(json.load(open(f, encoding="utf-8")))
+        for i, b in enumerate(d.get("bold") or []):
+            if (res.get(f"{y}-{n}-{i}") or {}).get("result", "pending") == "pending":
+                out.append({"year": y, "issue": n, "i": i, "prediction": b[0], "context": b[1] if len(b) > 1 else ""})
+    return out
+
 
 def main():
     reg = bs.ss.load()
@@ -42,6 +72,9 @@ def main():
            else {"no": no, "wire_week": wk + 1, "pre_week": wk + 2, "blocked_until": f"Week {wk + 1} is final"})
     if not ready:
         warn.append(f"Week {wk} is already covered by Issue {latest['no']}. Wait for Week {wk + 1} to go final (Tuesday after its Monday game) before drafting a new issue.")
+    se = season_end(season)
+    if se.get("action"):
+        warn.append(se["action"])
     if live:
         warn.append(f"Week {live[0]} is in progress (not final). It is excluded from records, standings and MAXPF.")
 
@@ -79,6 +112,8 @@ def main():
         "ready_for_new_issue": ready,
         "warnings": warn,
         "next_issue": nxt,
+        "season_end": se,
+        "predictions_to_rule": unruled_predictions(),
         "final_weeks": final, "in_progress_weeks": live,
         "latest_published_issue": latest,
         "week_summary": {"week": wk, "games": games, "perfect_lineups": perfect,

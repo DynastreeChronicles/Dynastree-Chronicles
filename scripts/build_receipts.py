@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """The Receipts Archive: receipts/index.html. Run after build_ledger.py:  python scripts/build_receipts.py
 
-Automatic: every issue's `hits` (chat greatest hits), `quote` (quote of the week) and `bold` (predictions, scored from data/history.json).
-Hand-fed (data/receipts.json): extra hot takes from the chat log, with status and used_in. Grouped by season (volume), newest first."""
+Automatic: every issue's `hits` (chat greatest hits), `quote` (quote of the week), `bold` (predictions, ruled by later issues' `rulings`), and `receipts` (hot takes
+spotted in the chat log). Optional hand-fed extras (data/receipts.json) and hand rulings (data/history.json) still work. Grouped by season (volume), newest first."""
 import json, os, random, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import build_site as bs
+import auto_data as ad
 import seasons as ss
 from build_site import esc, av, jload, ROOT
 R = "../"
@@ -14,7 +15,7 @@ STATUS = {"hit": ("Aged well", "ok"), "aged_well": ("Aged well", "ok"), "miss": 
 
 def build():
     mg = list(bs.managers()); H = jload("data/history.json", {}) or {}; reg = ss.load()
-    res = H.get("predictions") or {}
+    res = ad.merged_predictions(H)
     def handles(t): return [m for m in mg if m.lower() in t.lower()]
     items, seen = [], set()
     def add(**e):
@@ -32,6 +33,9 @@ def build():
         for i, b in enumerate(d.get("bold") or []):
             r = res.get(f"{y}-{n}-{i}") or {}
             add(season=str(y), kind="bold", who="The desk", text=b[0], ctx=b[1], issue=n, desk=r.get("note", ""), status=r.get("result", "pending"))
+    for e in ad.issue_receipts():   # hot takes carried by the issue files themselves (no separate upload)
+        add(season=e["season"], kind="take", who=e["who"], text=e["text"], ctx=e["ctx"], issue=e["issue"], desk=e["desk"],
+            status=e["status"], date=e["date"], used=[], tags=e["tags"])
     for t in (jload("data/receipts.json", {}) or {}).get("takes", []):
         used = t.get("used_in") or []
         add(season=str(t.get("season", "")), kind="take", who=t.get("who", ""), text=t["text"], ctx=t.get("context", ""), issue=None, desk=t.get("note", ""),

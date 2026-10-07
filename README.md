@@ -9,7 +9,7 @@ The official newsletter of the DYNASTREE dynasty league: a 12-team, superflex dy
 ## Contents
 
 1. [How this README and the master state file fit together](#1-how-this-readme-and-the-master-state-file-fit-together)
-2. [How the site works](#2-how-the-site-works)
+2. [How the site works](#2-how-the-site-works) (see also "Automation at a glance" above it)
 3. [Repo map](#3-repo-map)
 4. [The GitHub Action](#4-the-github-action)
 5. [Build scripts](#5-build-scripts)
@@ -47,20 +47,29 @@ Rules for keeping them in step:
 
 ---
 
+## Automation at a glance
+
+* **Automatic on every Action run:** standings, records, MAXPF, manager pages, the Hall of Fame, the Ledger and its pick grades, Receipts, drafts, the champion, closing a season, and `brief.json`.
+* **One bundle per issue (made in a Claude chat):** `issue-NN.json` (including `rulings` and `receipts`), the `data/issues.json` entry, `fut_cap.json`, and the 12 bios.
+* **Once a year:** the volume `story` in `data/history.json`, and `"season_final": true` on the season-review issue.
+* **By hand, rarely:** `data/settings.json` when league rules change, a hand verdict or trade obituary in `data/ledger.json`, a Toilet Bowl entry, and a rename the pull cannot match.
+
+---
+
 ## 2. How the site works
 
 Sleeper is the single source of truth for numbers. Nothing numeric is typed by hand. Words live in JSON files. Every page is generated, so never edit a generated HTML file: the next build overwrites it.
 
 ```
-Sleeper API --scripts/sleeper_pull.py--> data/<season>/*.json, data/managers.json, assets/avatars/   all numbers
+Sleeper API --scripts/sleeper_pull.py--> data/<season>/*.json (+ draft.json, draft_meta.json, result.json), data/managers.json, assets/avatars/   all numbers
 data/ + data/issues/<season>/*.json  --scripts/build_site.py--> index.html + issues/<season>/issue-NN/index.html
 data/ + data/bios/                   --scripts/build_managers.py--> managers/index.html + managers/<handle>/index.html
 all seasons + data/history.json      --scripts/build_history.py--> history/index.html
-Sleeper player stats                 --scripts/pull_player_stats.py--> data/stats/<season>.json
-data/ + data/ledger.json             --scripts/build_ledger.py--> ledger/index.html
-issue JSON + data/receipts.json      --scripts/build_receipts.py--> receipts/index.html
+Sleeper stats + projections         --scripts/pull_player_stats.py--> data/stats/<season>.json
+draft + stats + data/ledger.json    --scripts/build_ledger.py (+ pick_grades.py)--> ledger/index.html   pick grades at 12/24/36 months
+issue JSON (receipts, rulings)      --scripts/build_receipts.py, build_history.py (via auto_data.py)--> receipts/ and history/
 all of the above                     --scripts/make_brief.py--> data/brief.json   (the one file shared with Claude)
-chat log + master state + brief.json --Claude--> data/issues/<season>/issue-NN.json + data/issues.json (+ bios, fut_cap)   all words
+chat log + master state + brief.json --Claude--> data/issues/<season>/issue-NN.json (incl. rulings + receipts) + data/issues.json + fut_cap + bios   all words
 ```
 
 Two rules follow from this:
@@ -149,16 +158,19 @@ All scripts run from the repo root, in the order below, and read only from `data
 
 | Script | Reads | Writes | Notes |
 |---|---|---|---|
-| `sleeper_pull.py` | Sleeper's public API | `data/<season>/*`, `data/managers.json`, `assets/avatars/*.webp` | Finds the league by name. Never needs a league id typed in. Prints the MAXPF check. A missing league is a warning, not a failure. |
+| `sleeper_pull.py` | Sleeper's public API | `data/<season>/*` (incl. `draft_meta.json`, `draft.json` when missing, `result.json` once the champion is decided), `data/managers.json`, `assets/avatars/*.webp`, and `data/seasons.json` when it closes a season | Finds the league by name; no league id needed. Prints the MAXPF check. Closes the season when the champion is decided and the review issue (`season_final`) exists. A missing league is a warning, not a failure. |
 | `seasons.py` | `data/seasons.json` | (library) | Season registry and paths; migrates the old flat layout once. |
 | `build_site.py` | `data/`, `scripts/templates/issue.html` | `index.html` (between its `<!--MARKER-->` comments), every `issues/<season>/issue-NN/index.html` | Prints `note (issue NN): ...` lines that flag mismatches between prose and data. |
 | `build_managers.py` | `data/`, bios, issue JSON | `managers/` | Imports `build_site.py`, so it runs after it. |
-| `build_history.py` | every season, `data/history.json`, `data/settings.json` | `history/index.html` | Permanent; never resets. |
+| `build_history.py` | every season, `result.json`, `data/history.json`, `data/settings.json`, issue `rulings` | `history/index.html` | Permanent; never resets. |
 | `trophies.py` | (library) | none | The single place that says which trophy means what. |
-| `pull_player_stats.py` | Sleeper | `data/stats/<season>.json` | Feeds ledger auto-grading. Network trouble is a warning. |
-| `build_ledger.py` | draft, transactions, stats, `data/ledger.json`, issue JSON | `ledger/index.html` | |
-| `build_receipts.py` | issue JSON, `data/history.json`, `data/receipts.json` | `receipts/index.html` | |
-| `make_brief.py` | everything above | `data/brief.json` | Adds no new facts; gathers and summarises. |
+| `pull_player_stats.py` | Sleeper stats and projections | `data/stats/<season>.json` | Points, games, position rank and Sleeper's projected points for every drafted player. Network trouble, or no projections, is a warning. |
+| `build_ledger.py` | draft, draft_meta, stats, `data/ledger.json`, issue JSON | `ledger/index.html` | Grades picks at 12/24/36 months through `pick_grades.py`. |
+| `build_receipts.py` | issue JSON (`receipts`, `rulings`), `data/history.json`, `data/receipts.json` | `receipts/index.html` | |
+| `make_brief.py` | everything above | `data/brief.json` | Adds no new facts; gathers and summarises, including `predictions_to_rule` and `season_end`. |
+| `auto_data.py` | issue JSON | (library) | Merges each issue's `rulings` and `receipts` into History and Receipts. |
+| `season_events.py` | Sleeper JSON | (library) | Reads a finished draft and a decided championship; no network, testable offline. |
+| `pick_grades.py` | stats, draft dates | (library) | The 12/24/36-month pick grading rules. |
 
 Every script has a docstring at the top that says what it does, what it reads, and where it writes.
 
@@ -174,9 +186,9 @@ Every script has a docstring at the top that says what it does, what it reads, a
 | `data/issues.json` | The issue index. Replaced each issue. |
 | `data/<season>/fut_cap.json` | Future-capital score per manager, recomputed each issue. |
 | `data/bios/<handle>.json` | A manager's tagline, desk file, and per-season story. Normally all 12 each issue. |
-| `data/history.json` | Champions, runner-ups, prediction results, award overrides. |
-| `data/ledger.json` | Pick verdicts and trade obituaries. |
-| `data/receipts.json` | Extra hot takes from the chat log. |
+| `data/history.json` | Optional now: the volume `story`, `awards` and `toilet_bowl` entries, hand prediction overrides. The champion and prediction results come from `result.json` and the issue files. |
+| `data/ledger.json` | Grading thresholds, plus exceptions only: a hand verdict over an automatic grade, and trade obituaries. |
+| `data/receipts.json` | Optional: extra hot takes added by hand. Normal hot takes ride in each issue file. |
 | `data/settings.json`, `data/seasons.json`, `data/managers.json` | Edit only when a rule, season, or handle changes. |
 | `css/`, `js/`, `scripts/` | Style and code. Claude will name the exact path for every file it changes. |
 | `DYNASTREE_MASTER_STATE.md`, `README.md` | The two documents in section 1. |
@@ -203,6 +215,7 @@ The full procedure is in `DYNASTREE_MASTER_STATE.md` sections 1, 3 and 4. In sho
 
 * `data/issues.json` lists the issues, newest first. `wire_week` is the post-game week; the pre-game week is `wire_week + 1`. Each entry needs `"year"`.
 * `data/issues/<season>/issue-NN.json` is **prose only**: `desk`, `hero`, `zero`, headlines, takes, grades, projections, bold predictions, `wire.desk`, `bank.notes`, and `prev_motw`. The full schema is `DYNASTREE_MASTER_STATE.md` section 9; copy `data/issues/issue-template.json` to start one.
+* Two bundled lists in the issue file replace separate uploads: **`rulings`** settles earlier issues' bold predictions (each `{issue, i, result, note}`; `brief.json` > `predictions_to_rule` lists what is open) and **`receipts`** carries hot takes from the chat log (each `{who, text, context, status, note}`). History and Receipts read them straight from every issue.
 * Everything else on an issue page (standings, FAAB, draft slots, scores, records, bench points, MVPs, match-of-the-week stats, trade assets, waiver claims, bankroll) is computed at build time from `data/<season>/` as of the issue's week. The home page always shows the latest finished week.
 * Waiver flags and one-liners live in `wire.waivers` as `{mgr, player, flag, note}`; the claims themselves come from Sleeper.
 * Use exact handles everywhere (`C33DeezNutzz`, `fumbduckdumbfuck`, `CMac91`).
@@ -216,7 +229,7 @@ Volume N is season N. Volume 1 is 2026. Issue numbers restart at 1 each volume.
 
 * Each season has its own folder under `data/` (`data/2026/`, `data/2027/`, and so on). Prose is under `data/issues/<season>/`.
 * `data/seasons.json` is the one switch. The newest season that is not `"closed"` is the active season; the pull, the brief and the issue workflow all use it. A closed season is frozen.
-* **To close a volume:** after the season-review issue ships, set that season to `"status": "closed"` with a `"closed_at"` timestamp, and fill in the champion, runner-up, final score and story in `data/history.json`. Commit both. The next pull opens the next season.
+* **Closing a volume is automatic.** When Sleeper's winners bracket has a champion the pull writes `data/<season>/result.json`; History picks the champion, runner-up and score up from it. When the season-review issue is published with `"season_final": true` in its `data/issues.json` entry, the same run sets the season to `closed` with a `closed_at` timestamp, and the next pull opens the next volume. Only the volume `story` in `data/history.json` is hand-written (Claude does it once a year). The Toilet Bowl is not detected; add `toilet_bowl` to `data/history.json` by hand if you want it shown.
 * Sleeper makes a new league id each season. The pull finds it by name. Until it exists, the pull keeps reading the old league and files anything after `closed_at` as week 0 (offseason) of the new season.
 * The first issue of a new volume is the look-forward issue.
 

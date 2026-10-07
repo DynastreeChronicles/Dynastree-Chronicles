@@ -85,6 +85,16 @@ def active(reg=None, persist=False):
     return nxt
 
 
+def final_issue(season):
+    """The issue flagged "season_final": true in data/issues.json for this season (the season-review issue), or None.
+    Once the championship is decided AND this issue exists, the pull closes the season by itself."""
+    try:
+        issues = json.load(open(os.path.join(DATA, "issues.json"), encoding="utf-8"))
+    except Exception:
+        return None
+    return next((i for i in issues if str(i.get("year")) == str(season) and i.get("season_final")), None)
+
+
 def volume(season, reg=None):
     reg = load() if reg is None else reg
     return (reg.get(str(season)) or {}).get("volume") or (sorted(reg).index(str(season)) + 1 if str(season) in reg else None)
