@@ -90,7 +90,6 @@ css/
   dynastree.css                     the stylesheet for every page
   managers.css, history.css,        extra styles, loaded only by the page that needs them
   ledger.css, receipts.css
-  style.css                         legacy and unused; safe to delete
 js/
   issue.js                          draws the dynamic sections of an issue page
   site.js                           home page icons and the standings sort toggle
@@ -113,6 +112,7 @@ data/
 scripts/                            the build (section 5)
   templates/issue.html              the shell every issue page is built from
 index.html                          home page (shell + generated sections)
+404.html                            branded not-found page (hand-written; GitHub Pages serves it for any bad address; uses <base href="/Dynastree-Chronicles/">)
 issues/<season>/issue-NN/           one generated page per issue
 managers/                           the hub and one generated page per manager
 history/  ledger/  receipts/        generated pages
@@ -326,6 +326,7 @@ These apply to every page. Keep them when you change a shell.
 **Pages that need JavaScript**
 
 * On **issue pages**, the bankroll watch, transaction wire, post-game cards, drama, trade machine, pre-game cards, match of the week, bottom line and poll are drawn by `js/issue.js` from JSON embedded in the page. The hero, desk, hero and zero, and standings are plain HTML. With JavaScript off, a `<noscript>` note at the top of the page says so. If the script fails, `issue.js` shows a "failed to load" note. Both notes use the `.nojs` / `.loaderr` style.
+* **The weekly poll is read-only.** Voting happens in the league's Sleeper chat; the page shows the question and options ("Vote in the Sleeper chat"). From Issue 5, `prev_poll` shows last issue's results as bars (`result` = vote counts per option, taken from the chat log; or a short text line if only the winner is known). The poll started in Issue 4, so the build never shows a poll on Issues 1 to 3 or results before Issue 5 (`POLL_FROM` and `PREV_POLL_FROM` in `build_site.py`).
 * The home page, manager, history, ledger and receipts pages carry their content in HTML; scripts only add toggles, filters and the dropdown.
 
 **Fonts**
@@ -336,7 +337,7 @@ These apply to every page. Keep them when you change a shell.
 **Meta tags and privacy**
 
 * Every page has `<meta name="robots" content="noindex">`, so search engines are asked to skip the site. It is a members-only newsletter. The site and the repo are still public, so anyone with a link can open them.
-* Link previews use Open Graph tags in each page head.
+* Link previews use Open Graph and Twitter tags in every page head with absolute URLs (`og_block()` in `scripts/build_site.py`; static copies in `index.html` and `scripts/templates/issue.html`). The preview image is `assets/apple-touch-icon.png` (the crest, 180 px square, shown as a small "summary" card). To change it, change `OG_IMAGE` in `build_site.py` and the two static tags.
 
 ---
 

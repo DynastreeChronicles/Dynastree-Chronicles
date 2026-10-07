@@ -84,7 +84,6 @@
  },
  "poll": {
   "id": "",
-  "endpoint": "",
   "q": "",
   "opts": [
    ""
@@ -194,7 +193,9 @@
   "opts": [
    ""
   ],
-  "result": "",
+  "result": [
+   0
+  ],
   "note": ""
  },
  "rulings": [

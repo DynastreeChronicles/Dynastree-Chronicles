@@ -12,9 +12,10 @@ from build_site import esc, av, jload, ROOT
 slug = lambda m: m.lower()
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">'
 
-def shell(title, desc, body, r, sub):
+def shell(title, desc, body, r, sub, path=""):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | Dynastree Chronicles</title><meta name="description" content="{esc(desc)}"><meta name="robots" content="noindex">
+{bs.og_block(title + " | Dynastree Chronicles", desc, path)}
 {FONTS}<link rel="stylesheet" href="{r}css/dynastree.css"><link rel="stylesheet" href="{r}css/managers.css">
 <link rel="icon" type="image/png" sizes="32x32" href="{r}assets/favicon-32.png"><link rel="apple-touch-icon" href="{r}assets/apple-touch-icon.png"></head><body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -222,11 +223,11 @@ def manager_page(m, names, years, display, active):
     deskfile = ('<h2 class="sec" id="deskfile">The desk file</h2><div class="dfile">' + "".join(f'<div><small>{esc(a)}</small><p>{bs.bold_handles(b)}</p></div>' for a, b in df) + '</div>'
                 ) if df else ""
     body = f'''<p class="crumb"><a href="../">All managers</a></p>
-<section class="mhero"><div class="mid">{av(m, 120, r)}<div><h2>{esc(m)}</h2><p class="tn">{esc(team) if team else "Team name pending. The desk has questions."}</p>{former}{status}{f'<p class="tag">{esc(bio["tagline"])}</p>' if bio.get("tagline") else ""}</div></div>
+<section class="mhero"><div class="mid">{av(m, 120, r)}<div><h2>{esc(m)}</h2>{f'<p class="tn">{esc(team)}</p>' if team else ""}{former}{status}{f'<p class="tag">{esc(bio["tagline"])}</p>' if bio.get("tagline") else ""}</div></div>
 {hero_stats}</section>
 {trophy_case(m, r)}{deskfile}<h2 class="sec" id="archive">The season archive</h2><div class="yrs">{"".join(blocks)}</div>
 {nav}'''
-    return shell(m, f"{m}: biography, record, transactions and desk quotes.", body, r, f"Manager file: {m}")
+    return shell(m, f"{m}: biography, record, transactions and desk quotes.", body, r, f"Manager file: {m}", f"managers/{slug(m)}/")
 
 def blurb(t, n=120):
     t = t.strip()
@@ -250,7 +251,7 @@ def hub(rows, quotes, moves, active, alumni):
         groups.append(("Alumni", "No longer in the league. The files stay.", [card(r, f"<b>{y}</b>", y) for r, y in alumni]))
     body = "".join(
         f'<h2 class="sec">{t}</h2><p class="key">{d}</p><div class="mgrid">{"".join(g)}</div>' for t, d, g in groups if g)
-    return shell("Managers", "Every manager in the Dynastree league.", body, "../", "The league files")
+    return shell("Managers", "Every manager in the Dynastree league.", body, "../", "The league files", "managers/")
 
 if __name__ == "__main__":
     display = bs.display_season(); bs.use(display)

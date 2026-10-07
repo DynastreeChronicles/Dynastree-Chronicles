@@ -330,6 +330,7 @@ def shell(body, sub):
     fonts = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">'
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hall of Fame &amp; League History | Dynastree Chronicles</title><meta name="description" content="Champions, records, careers, awards and every volume of the Dynastree dynasty league. It never resets."><meta name="robots" content="noindex">
+{bs.og_block("Hall of Fame & League History | Dynastree Chronicles", "Champions, records, careers, awards and every volume of the Dynastree dynasty league. It never resets.", "history/")}
 {fonts}<link rel="stylesheet" href="{R}css/dynastree.css"><link rel="stylesheet" href="{R}css/history.css">
 <link rel="icon" type="image/png" sizes="32x32" href="{R}assets/favicon-32.png"><link rel="apple-touch-icon" href="{R}assets/apple-touch-icon.png"></head><body>
 <a class="skip" href="#main">Skip to main content</a>

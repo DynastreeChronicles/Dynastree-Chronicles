@@ -166,6 +166,7 @@ def shell(body):
     fonts = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">'
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Draft &amp; Trade Ledger | Dynastree Chronicles</title><meta name="description" content="Every draft pick graded and every blockbuster trade on record in the Dynastree dynasty league."><meta name="robots" content="noindex">
+{bs.og_block("Draft & Trade Ledger | Dynastree Chronicles", "Every draft pick graded and every blockbuster trade on record in the Dynastree dynasty league.", "ledger/")}
 {fonts}<link rel="stylesheet" href="{R}css/dynastree.css"><link rel="stylesheet" href="{R}css/history.css"><link rel="stylesheet" href="{R}css/ledger.css">
 <link rel="icon" type="image/png" sizes="32x32" href="{R}assets/favicon-32.png"><link rel="apple-touch-icon" href="{R}assets/apple-touch-icon.png"></head><body>
 <a class="skip" href="#main">Skip to main content</a>
