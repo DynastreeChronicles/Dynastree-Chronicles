@@ -539,3 +539,13 @@ h2.sec .sbadge{order:-1;margin:0 1rem 0 0;padding-left:0}
 .arch .go a::after{content:"";position:absolute;inset:0;border-radius:12px}
 .arch .r:hover,.arch .r:focus-within{border-color:var(--green);background:linear-gradient(90deg,#0e1b45,#0b2a2a);box-shadow:0 8px 28px rgba(69,224,58,.14);transform:translateY(-2px)}
 @media(prefers-reduced-motion:reduce){.arch .r{transition:none}.arch .r:hover{transform:none}}
+
+/* Poll result bars (own class names: .bar/.track are used by pre-game cards and the ticker) */
+.pbars{margin:.8rem 0}
+.pbar{margin:.7rem 0}
+.plab{display:block;color:var(--cream);margin-bottom:.3rem}
+.plab b{font:800 1.1rem Oswald,sans-serif;color:var(--green);margin-right:.35rem}
+.ptrack{display:block;height:10px;background:var(--line);border-radius:5px;overflow:hidden}
+.pfill{display:block;height:100%;background:var(--sky);border-radius:5px;min-width:0}
+.pbar.win .pfill{background:var(--green)}
+.pnum{display:block;margin-top:.25rem;font-size:.85rem;color:var(--mute)}
