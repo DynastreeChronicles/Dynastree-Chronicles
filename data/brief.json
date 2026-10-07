@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-07T00:40:44+00:00",
+ "generated_at": "2026-10-07T01:21:04+00:00",
  "season": "2026",
  "volume": 1,
  "season_status": "active",
- "data_pulled_at": "2026-10-07T00:40:40+00:00",
+ "data_pulled_at": "2026-10-07T01:21:01+00:00",
  "ready_for_new_issue": true,
  "warnings": [],
  "next_issue": {
@@ -1821,7 +1821,6 @@
   },
   "poll": {
    "id": "",
-   "endpoint": "",
    "q": "",
    "opts": [
     ""
@@ -1931,7 +1930,9 @@
    "opts": [
     ""
    ],
-   "result": "",
+   "result": [
+    0
+   ],
    "note": ""
   },
   "rulings": [
