@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-07T13:50:39+00:00",
+ "generated_at": "2026-10-07T20:25:53+00:00",
  "season": "2026",
  "volume": 1,
  "season_status": "active",
- "data_pulled_at": "2026-10-07T13:50:35+00:00",
+ "data_pulled_at": "2026-10-07T20:25:51+00:00",
  "ready_for_new_issue": true,
  "warnings": [],
  "next_issue": {
@@ -15,13 +15,6 @@
   "decided": false
  },
  "predictions_to_rule": [
-  {
-   "year": 2026,
-   "issue": 3,
-   "i": 1,
-   "prediction": "StealingGas moves Henderson or Tuten before the next waiver run",
-   "context": "A tank announcement with a $99 claim and a loaded block gives every contender leverage. Deadline: Week 3 final."
-  },
   {
    "year": 2026,
    "issue": 4,
@@ -49,6 +42,34 @@
    "i": 3,
    "prediction": "Painty69 stays quiet in chat",
    "context": "The desk and StealingGas already called it out. One spike week and the fire returns."
+  },
+  {
+   "year": 2026,
+   "issue": 5,
+   "i": 0,
+   "prediction": "A block player moves before Week 7",
+   "context": "Swift, Collins or Pickens is traded before Week 7 kickoff. Deadline: Week 6 final."
+  },
+  {
+   "year": 2026,
+   "issue": 5,
+   "i": 1,
+   "prediction": "StealingGas holds a top-3 draft slot through Week 6",
+   "context": "The 1.03 stays his unless he sells scorers. Deadline: Week 6 final."
+  },
+  {
+   "year": 2026,
+   "issue": 5,
+   "i": 2,
+   "prediction": "Painty69 is still winless after Week 5",
+   "context": "Hades9mm is the next test. Deadline: Week 5 final."
+  },
+  {
+   "year": 2026,
+   "issue": 5,
+   "i": 3,
+   "prediction": "Zygon is still the only unbeaten team after Week 5",
+   "context": "C33DeezNutzz is the best process in the league. The formula has not broken. Deadline: Week 5 final."
   }
  ],
  "final_weeks": [
@@ -718,8 +739,8 @@
  },
  "bios": {
   "Darkspaces": {
-   "tagline": "Commissioner, negotiator, and the league's loudest trade block.",
-   "asof": "Issue 4, through Week 3",
+   "tagline": "Commissioner, negotiator, and the owner of the 1.01.",
+   "asof": "Issue 5, through Week 4",
    "file": [
     [
      "The type",
@@ -727,29 +748,29 @@
     ],
     [
      "Signature move",
-     "Parking a star on the block, naming a price in the group chat, then renegotiating it live. Achane and Swift are the current exhibits, with a first as the public floor."
+     "Naming a price in the chat, then renegotiating it live. Swift for next year's 1st, Collins on the block, and an Achane ask that started at a first."
     ],
     [
      "Nemesis",
-     "Hades9mm, who keeps threatening to release the trade-talk files, and StealingGas, who answered a public Achane ask with an offer of a 3rd."
+     "The ceiling. A perfect lineup in Week 4 scored 118.36 and lost by 65.06 to CMac91."
     ],
     [
      "The desk is watching",
-     "Whether Achane actually moves for a first, and what is left of a FAAB budget that is down to about a fifth."
+     "Whether a block full of receivers and backs becomes a trade before the deadline, and what is left of a FAAB budget that is down to $104."
     ]
    ],
    "seasons": {
     "2026": {
-     "headline": "Commissioner, landlord, lead negotiator",
-     "asof": "Issue 4, through Week 3",
+     "headline": "A perfect lineup, a 65-point loss, and the 1.01",
+     "asof": "Issue 5, through Week 4",
      "story": [
-      "The draft set the tone. Darkspaces cut the pick timer to a minute, loaded up on receivers, and handed nicknames to twenty-three of his own players, then spent the first waiver run buying a tight end he had not drafted for $101 and Singleton for $301 on top of it. That is $402 gone before the first Monday night, and it has not slowed him down.",
-      "The pattern since is consistent: spend big, sell high, talk loudly. He sold Deebo Samuel to Snipe58 for a 2027 2nd, swapped Colston Loveland for Jake Ferguson, then flipped Matthew Stafford to the same buyer for two future 2nds and $100 of FAAB. Along the way he put Maye, Achane and Swift on the block and let the chat watch the price fall from a first to free and back to a first.",
-      "The results are mixed. Two wins to start, then a 69.16 against StealingGas's perfect 152.42, the worst score of Week 3. The 2027 pick is the quiet subplot: the new MAXPF rules hand the 1.01 to the team with the weakest best-possible lineup, and Darkspaces currently owns that spot. The desk will note that the commissioner wrote the rule and is leading the race to benefit from it."
+      "The draft set the tone. Darkspaces cut the pick timer to a minute, loaded up on receivers, and handed nicknames to twenty-three of his own players, then spent the first waiver run buying a tight end he had not drafted for $101 and Singleton for $301 on top of it. That is $402 gone before the first Monday night, and the wallet is down to $104.",
+      "The pattern since is spend big, sell high, talk loudly. Deebo Samuel went to Snipe58 for a 2027 2nd, Colston Loveland went for Jake Ferguson, and Matthew Stafford went to the same buyer for two future 2nds and $100 of FAAB. Week 4 brought no trade, only talk: Swift pitched to Painty69 and Sarge71 for next year's 1st, Nico Collins on the block, and Achane's knee in the chat.",
+      "The record is 2-2 after two wins and two losses. In Week 4 he set a perfect lineup, 118.36 with nothing left on the bench, and lost by 65.06 to CMac91. It was the lowest best-possible lineup of the week, which is how he holds the lowest MAXPF in the league and the 1.01. The desk will note that the commissioner wrote the MAXPF rule and is leading the race it created."
      ],
      "takes": [
-      "The negotiation is the content.",
-      "I'll give him to you for free is not a price. It is a mood."
+      "Perfect process, no ceiling.",
+      "The negotiation is the content."
      ],
      "drama": []
     }
@@ -757,7 +778,7 @@
   },
   "Snipe58": {
    "tagline": "The quiet buyer with a very loud ledger.",
-   "asof": "Issue 4, through Week 3",
+   "asof": "Issue 5, through Week 4",
    "file": [
     [
      "The type",
@@ -773,17 +794,17 @@
     ],
     [
      "The desk is watching",
-     "Whether Stafford converts, because the roster is now built around two quarterbacks and a 1-2 record."
+     "Whether Stafford converts, because the roster is built around two quarterbacks and a .500 record."
     ]
    ],
    "seasons": {
     "2026": {
-     "headline": "Three trades, three veterans, one 1-2 record",
-     "asof": "Issue 4, through Week 3",
+     "headline": "Three trades, three veterans, and 2-2",
+     "asof": "Issue 5, through Week 4",
      "story": [
-      "Snipe58 does not post much, but the ledger is loud. In three weeks he has bought Deebo Samuel for a 2027 2nd, traded Loveland for Ferguson, and paid a 2028 2nd, a 2029 2nd and $100 of FAAB for Stafford. Each deal was a present-tense purchase funded with future capital.",
-      "The roster has the pieces. Justin Jefferson was the Week 1 MVP at 31.2, Brock Purdy was the Week 3 MVP at 31.28 and still lost to Johnny4Skins by more than 37. With Stafford now on the roster too, he has the dual-QB problem the desk has been writing about.",
-      "The wins so far are one over StealingGas in Week 1. The 2027 slot is the other story: with the second-lowest MAXPF, he is sitting on the 1.02, which makes every future sell-off look more reasonable and every buy look more expensive."
+      "Snipe58 does not post much, but the ledger is loud. In four weeks he has bought Deebo Samuel for a 2027 2nd, traded Loveland for Ferguson, and paid a 2028 2nd, a 2029 2nd and $100 of FAAB for Stafford. Each deal was a present-tense purchase funded with future capital.",
+      "The roster has the pieces. Justin Jefferson was the Week 1 MVP at 31.2, Brock Purdy was the Week 3 MVP at 31.28 and still lost to Johnny4Skins, and Quinshon Judkins led Week 4 at 21.6. With Stafford on the roster too, he has the dual-QB problem the desk has been writing about.",
+      "Week 4 was the win he needed: 112.22 over YesChef23 by 11.76, with 21.28 left on the bench. The record is 2-2, ninth in the standings, and the second-lowest MAXPF gives him the 1.02, which makes every future sell-off look reasonable and every buy look expensive."
      ],
      "takes": [
       "Buys the present, sells the future, and hopes the schedule notices.",
@@ -794,8 +815,8 @@
    }
   },
   "StealingGas": {
-   "tagline": "The open tank that keeps scoring.",
-   "asof": "Issue 4, through Week 3",
+   "tagline": "The open tank with a conscience and a calendar.",
+   "asof": "Issue 5, through Week 4",
    "file": [
     [
      "The type",
@@ -807,21 +828,21 @@
     ],
     [
      "Nemesis",
-     "Darkspaces and the public chat, who have traded accusations, hashtags and a call to Barron Trump over the Deebo and Ferguson trades."
+     "Darkspaces and the public chat, plus Johnny4Skins, who beat him by 24.4 in Week 4."
     ],
     [
      "The desk is watching",
-     "Whether the 3rd-lowest MAXPF holds. The tank math depends on weak best-case lineups, and a perfect 152.42 does not help."
+     "Whether he stays the 1.03 or pivots. In Week 4 he said he may throw away all his capital to catch Hades9mm and Zygon, though it may end poorly. FAAB is down to $98."
     ]
    ],
    "seasons": {
     "2026": {
-     "headline": "Tank, but make it expensive",
-     "asof": "Issue 4, through Week 3",
+     "headline": "1-3, the 1.03, and a pivot on the table",
+     "asof": "Issue 5, through Week 4",
      "story": [
-      "StealingGas opened the year with the league's worst score at 83.32, repeated it with 77.18 in Week 2, and announced the tank. Then he spent $99 on a waiver dart, followed it with $298 on Jaxson Dart, and in Week 3 posted a perfect 152.42 lineup to beat Darkspaces by 83. The team is called Future Therapy Bills and the desk has stopped asking when the tank starts.",
-      "He is also the league's most active seller of his own roster. Holani, Vele, Kyler and Pitts were all on the block at once, and he asked the league to take the curse. The London deal with Hades9mm was the real move: he took Drake London, Taylen Green and a 2027 1st, and sent Quentin Johnston, Cam Ward, TreVeyon Henderson and a 2027 3rd the other way.",
-      "On the chat side he supplies the hashtags: #releasethefiles, certified cheaters, and a request for twelve IR slots. The bits are reliable, the box scores are not. His efficiency is the lowest in the league apart from Painty69, and his points are the lowest of anyone, yet the pick he is racing for is the 1.03."
+      "StealingGas opened the year with the league's worst score at 83.32, repeated it with 77.18 in Week 2, and announced the tank. Then he spent $99 on a waiver dart, followed it with $298 on Jaxson Dart, and in Week 3 posted a perfect 152.42 lineup to beat Darkspaces by 83. Week 4 brought a 133.5 loss to Johnny4Skins and a 1-3 record.",
+      "He is also the league's most active seller of his own roster. The London deal with Hades9mm was the real move: he took Drake London, Taylen Green and a 2027 1st, and sent Quentin Johnston, Cam Ward, TreVeyon Henderson and a 2027 3rd the other way. Week 4 was small change: Sampson and Kendre Miller from free agency, and Eli Raridon for $1 in place of Kyler Murray.",
+      "The chat bits stay reliable and the box scores stay confusing. His 446.42 points are the lowest in the league, and his MAXPF is the third-lowest, which keeps the 1.03 in reach. Then he told the chat he would see how the team looks in a few weeks, and that a pivot may end poorly for him. The desk is taking notes."
      ],
      "takes": [
       "The tank is real, the box scores disagree.",
@@ -833,11 +854,11 @@
   },
   "Zygon": {
    "tagline": "The IR Predictor. The formula does not miss.",
-   "asof": "Issue 4, through Week 3",
+   "asof": "Issue 5, through Week 4",
    "file": [
     [
      "The type",
-     "The algorithm manager. Builds the roster around production, then ignores the wire and lets the numbers run."
+     "The algorithm manager. Builds the roster around production, then lets the numbers run."
     ],
     [
      "Signature move",
@@ -849,29 +870,29 @@
     ],
     [
      "The desk is watching",
-     "Whether a roster with no bids since Week 1 can survive its first real injury."
+     "Whether a $5 bid on Jacoby Brissett is insurance or a leak in the formula, and the Week 5 Match of the Week against C33DeezNutzz."
     ]
    ],
    "seasons": {
     "2026": {
-     "headline": "3-0, no bids, and the nickname is still cashing",
-     "asof": "Issue 4, through Week 3",
+     "headline": "4-0, the biggest bid yet, and the nickname still cashing",
+     "asof": "Issue 5, through Week 4",
      "story": [
-      "Zygon is the only team in the league that has not needed the waiver wire. His total FAAB spend is $2, on Ollie Gordon, plus a free add on Barion Brown, and the team is 3-0 with the league's highest points total. The roster is built on Jaxon Smith-Njigba, Kenneth Walker and Patrick Mahomes, a group that sounds fragile and has not been.",
-      "The scores back it up. 195.70 in Week 1, a 172.96 in Week 2 that beat YesChef23 by 92.86 and earned Best Manager, and 149.78 in Week 3 over Sarge71. Smith-Njigba put up 42.5 in Week 2 and 35.36 in Week 3, and the efficiency is 91 percent, second only to C33DeezNutzz.",
-      "The desk's only complaint is that the formula is hard to write around. The open question is health. The handcuffs he listed are a dare, and the 1.11 slot says his best-case lineup is one of the league's strongest."
+      "Zygon is the only team in the league that is unbeaten, and the only one that has barely touched the waiver wire. His FAAB spend is $7: $2 on Ollie Gordon and, in Week 4, $5 on Jacoby Brissett. The team is 4-0 with the league's highest points total, built on Jaxon Smith-Njigba, Kenneth Walker and Patrick Mahomes.",
+      "The scores back it up. 195.70 in Week 1, a 172.96 in Week 2 that beat YesChef23 by 92.86 and earned Best Manager, 149.78 in Week 3 over Sarge71, and 144.02 in Week 4 over Hades9mm. Walker led the Match of the Week at 30.9, though Javonte Williams on the other side scored 31.3, so Zygon won on depth, not on one star.",
+      "The desk's complaint is that the formula is hard to write around. Zygon left 36.08 on the bench and still won by 22.26, swapped Detroit for the Chicago Bears defense, and kept the handcuffs on the block. The 1.11 slot says his best-case lineup is one of the league's strongest. Next up is C33DeezNutzz, the cleanest lineup manager on the board."
      ],
      "takes": [
-      "The formula does not bid on anyone.",
-      "Elite bit commitment: the injury nickname, the 195, and the win."
+      "The formula does not bid on anyone. Until it does.",
+      "Elite bit commitment: the injury nickname, the 4-0, and the win."
      ],
      "drama": []
     }
    }
   },
   "Hades9mm": {
-   "tagline": "The sleeper puss, fully awake.",
-   "asof": "Issue 4, through Week 3",
+   "tagline": "The sleeper puss, fully awake, with a first loss.",
+   "asof": "Issue 5, through Week 4",
    "file": [
     [
      "The type",
@@ -879,37 +900,37 @@
     ],
     [
      "Signature move",
-     "Selling a star for depth. The London deal moved Drake London for Quentin Johnston, Cam Ward, TreVeyon Henderson and a 2027 3rd, and he is 3-0 anyway."
+     "Selling a star for depth. The London deal moved Drake London for Quentin Johnston, Cam Ward, TreVeyon Henderson and a 2027 3rd."
     ],
     [
      "Nemesis",
-     "Darkspaces, who is the other half of the files feud, and the Week 7 schedule, which will say whether the London deal was fine."
+     "Zygon, who beat him in the Week 4 Match of the Week, and Darkspaces, the other half of the files feud."
     ],
     [
      "The desk is watching",
-     "The 1.12 draft slot, the highest MAXPF in the league at 613.32, and whether efficiency (80.8 percent) ever catches up."
+     "The 12th draft slot, the highest MAXPF in the league at 764.18, and the 29.1 left on the bench in Week 4."
     ]
    ],
    "seasons": {
     "2026": {
-     "headline": "3-0 without London, and nobody asked for proof",
-     "asof": "Issue 4, through Week 3",
+     "headline": "3-1 without London, and the first loss came against the leader",
+     "asof": "Issue 5, through Week 4",
      "story": [
-      "Hades9mm drafted every one of his 23 picks himself, and the roster shows it: Jayden Daniels and Jared Goff at quarterback, Amon-Ra St. Brown and London at receiver, Derrick Henry and Cam Skattebo at running back, Kittle and Kelce at tight end. It is the only roster in the league that is balanced, hand-built and finished. He is 3-0 with 186.00, 169.62 and 139.80, the second-most points in the league.",
-      "The money is the story. He spent $170 of FAAB in a single week on Benson and Gesicki, then traded London in the deal with StealingGas that Sleeper logged in Week 2, took a bag of young players and a 2027 3rd, and has not slowed down. When Daniels went down, he was on the block within hours.",
-      "The files feud with Darkspaces is his best content. He laid out the opening ask himself, four 1sts for Darkspaces' Mendoza, Maye, Achane and Egbuka, then threatened to release the trade-talk logs. The desk's view: the best lineup on the board wins weeks, but he leaves points on the bench, and the schedule has been kind."
+      "Hades9mm drafted every one of his 23 picks himself, and the roster shows it: Jayden Daniels and Jared Goff at quarterback, Amon-Ra St. Brown and London at receiver, Derrick Henry and Cam Skattebo at running back, Kittle and Kelce at tight end. He started 3-0 with 186.00, 169.62 and 139.80, then lost 144.02 to 121.76 against Zygon in Week 4. He is second in the standings and in points.",
+      "The money is the story. He spent $170 of FAAB in a single week on Benson and Gesicki, then traded London in the deal with StealingGas that Sleeper logged in Week 2, took a bag of young players and a 2027 3rd, and was quiet on the wire in Week 4. His FAAB is $330.",
+      "The files feud with Darkspaces is his best content. He laid out the opening ask himself, four 1sts for Darkspaces' Mendoza, Maye, Achane and Egbuka, then threatened to release the trade-talk logs. The desk's view: the best lineup on the board still leaves points on the bench, and the schedule has been kind. Painty69 is next, which will not hurt."
      ],
      "takes": [
       "The sleeper puss is no longer sleeping, and just spent like it.",
-      "3-0 without London. Either the deal was fine or the schedule is soft."
+      "3-1 without London. Either the deal was fine or the schedule is soft."
      ],
      "drama": []
     }
    }
   },
   "Johnny4Skins": {
-   "tagline": "Dual-QB, dual-autopilot.",
-   "asof": "Issue 4, through Week 3",
+   "tagline": "Dual-QB, dual-autopilot, and 3-1.",
+   "asof": "Issue 5, through Week 4",
    "file": [
     [
      "The type",
@@ -925,17 +946,17 @@
     ],
     [
      "The desk is watching",
-     "The dual-QB gamble: Lamar Jackson and Jalen Hurts, one at 2.04 and one auto-drafted at 3.04. If one goes down, the plan is out of ideas."
+     "Darkspaces in Week 5, and the dual-QB gamble: Lamar Jackson at 2.04 and Jalen Hurts auto-drafted at 3.04."
     ]
    ],
    "seasons": {
     "2026": {
-     "headline": "Eighteen autopicks, and a 2-1 record anyway",
-     "asof": "Issue 4, through Week 3",
+     "headline": "Eighteen autopicks, $500 untouched, 3-1",
+     "asof": "Issue 5, through Week 4",
      "story": [
       "Johnny4Skins took Ja'Marr Chase and Lamar Jackson in the first two rounds, then, apparently, went to dinner. The autopick drafted eighteen of his players, tied with Painty69 for the most in the league, including Jalen Hurts, A.J. Brown, Tyler Warren, Kyren Williams, Brian Thomas and DK Metcalf. Not a single human opinion went into any of them.",
-      "It has worked. He lost to Zygon in Week 1, then beat Painty69 in Week 2 and posted the best score of Week 3, 158.46, over Snipe58. His efficiency is 85 percent, safely above the league's lower tier, and his $500 of FAAB is untouched, which the desk now treats as an identity.",
-      "The roster is dual-QB by design or by accident. The honest answer is that it does not matter until an injury forces a decision. He also has a new handle: the account was Cassellrole until October."
+      "It keeps working. He lost to Zygon in Week 1, beat Painty69 in Week 2, posted 158.46 over Snipe58 in Week 3, and in Week 4 scored 157.9 over StealingGas with Kyren Williams at 36.7, leaving 24.5 on the bench. He is 3-1, third in the standings, and the $500 of FAAB is untouched, which the desk now treats as an identity.",
+      "The roster is dual-QB by design or by accident. The honest answer is that it does not matter until an injury forces a decision. He also has a new handle: the account was Cassellrole until October. Next up: Darkspaces."
      ],
      "takes": [
       "The robot spent nothing.",
@@ -946,8 +967,8 @@
    }
   },
   "Sarge71": {
-   "tagline": "The engine without the supporting cast.",
-   "asof": "Issue 4, through Week 3",
+   "tagline": "The engine without the supporting cast, finally with a win.",
+   "asof": "Issue 5, through Week 4",
    "file": [
     [
      "The type",
@@ -959,25 +980,25 @@
     ],
     [
      "Nemesis",
-     "The schedule. His 501.76 points against are the most in the league, and he has scored at least 110 every week."
+     "The schedule. His 635.08 points against are the most in the league."
     ],
     [
      "The desk is watching",
-     "Whether Bijan Robinson and the roster add one real depth piece before the 0-3 turns into a pick."
+     "Whether the roster adds one real depth piece, and the 53.52 points he left on the bench in Week 4."
     ]
    ],
    "seasons": {
     "2026": {
-     "headline": "Bijan can't do it alone, and the schedule is not helping",
-     "asof": "Issue 4, through Week 3",
+     "headline": "A win with the week's worst lineup",
+     "asof": "Issue 5, through Week 4",
      "story": [
-      "Sarge71 is 0-3 with points that would win in a weaker schedule: 145.00 in Week 1, which lost to C33DeezNutzz's 195.82, 110.60 in Week 2 and 117.88 in Week 3. His points against are the highest in the league at 501.76, and his points for rank in the middle of the pack. The desk will call it bad luck, then note the pattern repeated.",
-      "The roster is Bijan Robinson and a supporting cast that cannot score. Robinson was the Week 1 MVP at 31.3 and the Week 3 MVP at 35.3. In Week 2, with Bijan quiet, the top scorer on the roster was Dalton Kincaid at 22.5. He cut Jaxson Dart, watched StealingGas bid $298 on him, and replaced him with Aaron Rodgers.",
-      "FAAB is untouched at $500, the efficiency is 84.7 percent, and the draft slot is the 1.04. The pick is useful, but the more useful move is a trade, and Sarge71 has not made one."
+      "Sarge71 started 0-3 with points that would win in a weaker schedule: 145.00 in Week 1, which lost to C33DeezNutzz's 195.82, 110.60 in Week 2 and 117.88 in Week 3. Week 4 finally broke the streak, 134.66 to 133.32 over Painty69 by 1.34. His points against are the highest in the league at 635.08.",
+      "The roster is Bijan Robinson and a supporting cast that is finally scoring. Tetairoa McMillan went for 45.2 in Week 4, the best score of any player in the issue, on top of Robinson's Week 1 MVP at 31.3 and Week 3 MVP at 35.3. He cut Jaxson Dart, watched StealingGas bid $298 on him, and replaced him with Aaron Rodgers.",
+      "He also set the worst lineup of the week, 72% of a perfect one per Sleeper's report, and won anyway. At 1-3 he is 10th in the standings and holds the 1.05. FAAB is untouched at $500, and the more useful move is still a trade, which Sarge71 has not made."
      ],
      "takes": [
-      "Sarge has the engine and no supporting cast. That is the whole story.",
-      "A very good score wins most weeks. This was not most weeks."
+      "Sarge has the engine and, sometimes, a cast.",
+      "A very good score wins most weeks. A bad lineup won this one."
      ],
      "drama": []
     }
@@ -985,36 +1006,36 @@
   },
   "C33DeezNutzz": {
    "tagline": "The efficient one. BBQnBBWs does not waste points.",
-   "asof": "Issue 4, through Week 3",
+   "asof": "Issue 5, through Week 4",
    "file": [
     [
      "The type",
-     "A quiet, efficient contender. Highest lineup efficiency in the league at 93.2 percent, and the cleanest roster management on the board."
+     "A quiet, efficient contender. Cleanest lineup management on the board, and only 14.3 left on the bench in Week 4."
     ],
     [
      "Signature move",
-     "The workmanlike win. Josh Allen for 35, 40 and a steady lineup behind him, and nothing flashy that the desk can roast."
+     "The workmanlike win. Josh Allen as the engine and a steady lineup behind him."
     ],
     [
      "Nemesis",
-     "Hades9mm, who beat him in Week 2 with a 169.62 and the only loss on the board."
+     "Hades9mm, who beat him in Week 2, and fumbduckdumbfuck, who beat him by 12.1 in Week 4."
     ],
     [
      "The desk is watching",
-     "FAAB, which is untouched at $500. At some point the budget is a weapon, and he is not using it."
+     "Zygon in the Match of the Week, and FAAB, which is untouched at $500."
     ]
    ],
    "seasons": {
     "2026": {
-     "headline": "Highest efficiency in the league, lowest profile",
-     "asof": "Issue 4, through Week 3",
+     "headline": "2-2, the cleanest lineup, and the Zygon test",
+     "asof": "Issue 5, through Week 4",
      "story": [
-      "C33DeezNutzz opened with a 195.82, the highest score of Week 1, with Josh Allen providing 35.66, then lost to Hades9mm in Week 2 despite 40.82 from Allen, then beat CMac91 in Week 3 with a workmanlike 127.90. The efficiency is 93.2 percent, the best in the league, because he sets his lineup well and does not leave points on the bench.",
-      "The roster is a Josh Allen core with Justin Herbert, Chris Olave, Ladd McConkey and Bucky Irving around him, and the waiver activity is minimal: Shedeur Sanders, Sean Tucker and Ryan Flournoy moves cost nothing. His FAAB is a full $500.",
-      "The desk's complaint is that nothing gives it material. He is 2-1, third in the standings, has a good MAXPF and picks 10th. The rest of the league argues. C33DeezNutzz scores."
+      "C33DeezNutzz opened with a 195.82, the highest score of Week 1, with Josh Allen providing 35.66, then lost to Hades9mm in Week 2 despite 40.82 from Allen, then beat CMac91 in Week 3 with a workmanlike 127.90. In Week 4 he lost 133.88 to 121.78 against fumbduckdumbfuck, with Zay Flowers leading at 25.8.",
+      "The roster is a Josh Allen core with Justin Herbert, Chris Olave, Ladd McConkey and Bucky Irving around him, and the waiver activity is minimal. His FAAB is a full $500, and the desk keeps asking when it becomes a weapon.",
+      "He is 2-2, fourth in the standings, third in points, and picks 6th on MAXPF. The cleanest lineup in the league just lost to a roster that left 30.4 on the bench, which is football. Zygon is next, and a win would be the best argument for process over volume."
      ],
      "takes": [
-      "Not a fireworks card. Just a workmanlike win.",
+      "Not a fireworks card. Just a workmanlike manager.",
       "Quiet is not the same as safe, but it is close."
      ],
      "drama": []
@@ -1023,7 +1044,7 @@
   },
   "Painty69": {
    "tagline": "Elite top end, a robot bottom, and a promise to be kind.",
-   "asof": "Issue 4, through Week 3",
+   "asof": "Issue 5, through Week 4",
    "file": [
     [
      "The type",
@@ -1035,24 +1056,24 @@
     ],
     [
      "Nemesis",
-     "YesChef23, who needles him in the restaurant arc and beat him in Week 3 by 4.68."
+     "YesChef23, who needles him in the restaurant arc, and Sarge71, who beat him by 1.34 in Week 4."
     ],
     [
      "The desk is watching",
-     "Whether the Gibbs, McCaffrey and Barkley run-first approach has a plan B before the 0-3 becomes a lottery."
+     "Hades9mm in Week 5, and whether Gibbs gets a second scorer before the 0-4 hardens."
     ]
    ],
    "seasons": {
     "2026": {
-     "headline": "0-3, quiet, and the CPU drafted half the roster",
-     "asof": "Issue 4, through Week 3",
+     "headline": "0-4 by 1.34, and the league's last winless team",
+     "asof": "Issue 5, through Week 4",
      "story": [
       "Painty69 took Jahmyr Gibbs at 1.01, then McCaffrey and Barkley back to back, and then stopped. The last real pick was in round 6, and the CPU made the remaining seventeen, tying him with Johnny4Skins at eighteen autopicks. The feed has since shown him moving Sarratt, Aiyuk and Klubnik, three of the robot's choices.",
-      "He is 0-3 with 363.82 points, 78.9 percent efficiency, the lowest in the league, and the Week 2 worst-manager award at 65 percent of a perfect lineup. Gibbs has been excellent, at 33.6, 23.3 and 41.4 in the three weeks, and the losses were by 12.7, 32.3 and 4.7. At one point he admitted he does not have a clue what he is doing in this league, and then went quiet.",
-      "The rivalry with YesChef23 produced the restaurant arc and the Uber Eats feud, and the Week 3 loss to YesChef23 by 4.68 gave it a result. The desk's view: a top-end roster with a robot bottom, and a manager who left in the middle. The 2027 pick is the consolation."
+      "He is 0-4 with 497.14 points. The losses were by 12.7, 32.3, 4.7 and now 1.34 to Sarge71, with Joe Burrow leading Week 4 at 25.72 and 46.0 points left on the bench. Gibbs has been excellent, but Week 4 shows the problem: even a good lineup loses when the bench is carrying more than the margin.",
+      "The silence is the other story. Four of the five votes in the Issue 4 poll said he stays in the bottom three, and he did not say a word in this log. The rivalry with YesChef23 gave the restaurant arc a result, but the desk's view is simpler: a top-end roster with a robot bottom, and a manager who left in the middle. He picks 7th on MAXPF."
      ],
      "takes": [
-      "Gibbs did his job. Everyone else on the roster did not.",
+      "Gibbs did his job. Everyone else did not.",
       "Positive and kind, right up until the robot took over."
      ],
      "drama": []
@@ -1060,8 +1081,8 @@
    }
   },
   "CMac91": {
-   "tagline": "The depth collector who never spends.",
-   "asof": "Issue 4, through Week 3",
+   "tagline": "The depth collector who finally went off.",
+   "asof": "Issue 5, through Week 4",
    "file": [
     [
      "The type",
@@ -1073,21 +1094,21 @@
     ],
     [
      "Nemesis",
-     "Hades9mm, who beat him by 53 in Week 1, and the C33DeezNutzz pack, who beat him by 9 in Week 3."
+     "Hades9mm, who beat him by 53 in Week 1, and C33DeezNutzz, who beat him by 9 in Week 3."
     ],
     [
      "The desk is watching",
-     "Whether depth turns into points. The efficiency is 80.5 percent and the roster is waiting for a breakout."
+     "Whether 183.42 was a breakout or a spike, and fumbduckdumbfuck in Week 5."
     ]
    ],
    "seasons": {
     "2026": {
-     "headline": "Zero dollars, zero drama, 1-2",
-     "asof": "Issue 4, through Week 3",
+     "headline": "183.42, three spots up, zero dollars spent",
+     "asof": "Issue 5, through Week 4",
      "story": [
-      "CMac91 asked in round 5 whether there were seriously 23 rounds, played through round 11, and let the robot finish the draft, which gave him twelve autopicks. The first-round pick was James Cook, followed by CeeDee Lamb at 2.02 and Bo Nix at 3.02, and Lamb provided the Week 2 MVP at 35.3 in a 130.12 to 77.18 win over StealingGas.",
-      "The wire is his comfort zone. Jaydon Blue, Travis Hunter and Kimani Vidal moves cost nothing, the FAAB is a full $500, and the desk's note was depth first, spending never. The losses were to Hades9mm in Week 1 and C33DeezNutzz in Week 3, by 53 and by 9, and the Week 3 MVP was Bo Nix at 25.14.",
-      "In the hat saga his contribution was closing the matter with it works. That sums up the approach. The roster is not exciting, but it is competitive, and the 1.07 slot says the best lineup is average."
+      "CMac91 asked in round 5 whether there were seriously 23 rounds, played through round 11, and let the robot finish the draft, which gave him twelve autopicks. The first-round pick was James Cook, followed by CeeDee Lamb at 2.02 and Bo Nix at 3.02.",
+      "Lamb has been the engine. He provided the Week 2 MVP at 35.3 and the Week 4 MVP at 41.3, in a 183.42 to 118.36 win over Darkspaces by 65.06, the high score of the week and the biggest margin. Only 5.52 sat on the bench. The earlier losses were to Hades9mm in Week 1 and C33DeezNutzz in Week 3, by 53 and by 9.",
+      "The wire is still his comfort zone, and the FAAB is a full $500. At 2-2 he jumped three spots to 5th, with 564.98 points and the 9th pick on MAXPF. In the hat saga his contribution was closing the matter with it works. That sums up the approach."
      ],
      "takes": [
       "Depth first, spending never.",
@@ -1098,50 +1119,50 @@
    }
   },
   "YesChef23": {
-   "tagline": "The restaurant arc. Wins ugly, complains loudly.",
-   "asof": "Issue 4, through Week 3",
+   "tagline": "The restaurant arc. Wins ugly, complains loudly. Lost ugly this time.",
+   "asof": "Issue 5, through Week 4",
    "file": [
     [
      "The type",
-     "A chef who wins while complaining. Chatty in the draft room, aggressive on waivers, and 2-1 with the ninth-best points total."
+     "A chef who wins while complaining. Chatty in the draft room, aggressive on waivers, and 2-2 with the lowest score of the week."
     ],
     [
      "Signature move",
-     "Cheap waiver insurance. $1 on Deshaun Watson when Caleb Williams went down, $1 on J.J. McCarthy the week after."
+     "Cheap waiver insurance. $1 on Deshaun Watson when Caleb Williams went down, $1 on J.J. McCarthy the week after, and in Week 4 $12 on Keon Coleman."
     ],
     [
      "Nemesis",
-     "Painty69, who he has needled since the draft room and finally beat by 4.68 in Week 3."
+     "Painty69, who he has needled since the draft room, and Snipe58, who beat him by 11.76 in Week 4."
     ],
     [
      "The desk is watching",
-     "The quarterback situation: Caleb Williams is hurt, Tyler Shough is the MVP, and the wire is carrying the roster."
+     "The receiver room: Coleman, Roman Wilson and Joe Mixon are new, George Pickens is on the block, and 38.2 points sat on the bench in Week 4."
     ]
    ],
    "seasons": {
     "2026": {
-     "headline": "2-1 with the ninth-best scoring and a wire full of $1 claims",
-     "asof": "Issue 4, through Week 3",
+     "headline": "The lowest score of the week and a wire full of new names",
+     "asof": "Issue 5, through Week 4",
      "story": [
-      "YesChef23 opened the draft fighting an Uber Eats driver who stole a customer's order, took shots at the turtle ass drafters, and threatened to take defenses the rest of the way before settling for two. He beat fumbduckdumbfuck in Week 1, which the desk had at number one, lost to Zygon by 92.86 in Week 2, and beat Painty69 in Week 3 by 4.68.",
-      "The roster is built on Caleb Williams and Jeremiyah Love, and when Williams went down he paid $1 for Deshaun Watson and then $1 for J.J. McCarthy. Tyler Shough has been the MVP in Weeks 2 and 3 at 22.38 and 24.8. The wire is the roster, and it is working.",
-      "He is 2-1 with 355.72 points, which is the ninth-best total in the league, and the 79.7 percent efficiency says he is winning on schedule more than skill. The London deal made his brain hurt, and so does the standings."
+      "YesChef23 opened the draft fighting an Uber Eats driver who stole a customer's order, took shots at the turtle ass drafters, and threatened to take defenses the rest of the way before settling for two. He beat fumbduckdumbfuck in Week 1, lost to Zygon by 92.86 in Week 2, and beat Painty69 in Week 3 by 4.68.",
+      "The roster is built on Caleb Williams and Jeremiyah Love, and when Williams went down he paid $1 for Deshaun Watson and then $1 for J.J. McCarthy. In Week 4 he made three claims for $14: Coleman at $12, Wilson at $1 and Mixon at $1. Coleman had just been dropped by Darkspaces. Then he listed George Pickens.",
+      "The week went badly. 100.46 was the lowest score of the week, he left 38.2 on the bench, and Snipe58 beat him by 11.76. He is 2-2, down three spots to 8th, with 456.18 points and the 4th pick on MAXPF. The wire is still the roster."
      ],
      "takes": [
       "Wins ugly, complains loudly.",
-      "The cheapest insurance policy in the league."
+      "The cheapest insurance policy in the league, until the $12 bid."
      ],
      "drama": []
     }
    }
   },
   "fumbduckdumbfuck": {
-   "tagline": "The Issue 1 No. 1, and an unlucky 1-2.",
-   "asof": "Issue 4, through Week 3",
+   "tagline": "The Issue 1 No. 1, back to .500.",
+   "asof": "Issue 5, through Week 4",
    "file": [
     [
      "The type",
-     "The desk's preseason favorite, and a roster that is better than the record. Fifth in points, seventh in the standings."
+     "The desk's preseason favorite, and a roster that is better than the record. Fifth-best in points, sixth in the standings."
     ],
     [
      "Signature move",
@@ -1153,21 +1174,21 @@
     ],
     [
      "The desk is watching",
-     "Whether the quarterback room settles. Aaron Rodgers arrived as an autopick, and Drew Lock and Geno Smith are the other options."
+     "The quarterback room. Kyler Murray arrived free in Week 4 in place of Kayshon Boutte."
     ]
    ],
    "seasons": {
     "2026": {
-     "headline": "Fifth in points, seventh in the standings",
-     "asof": "Issue 4, through Week 3",
+     "headline": "Back to 2-2 and still searching for a quarterback",
+     "asof": "Issue 5, through Week 4",
      "story": [
-      "fumbduckdumbfuck was the desk's number one in Issue 1, and the roster still supports it: Brock Bowers at 1.12, Ashton Jeanty at 2.01, Jonathan Taylor at 3.01, with Rashee Rice, DeVonta Smith and Dak Prescott behind them. He is 1-2 with 397.00 points, fifth in the league.",
-      "The losses were close. 113.10 to 127.06 against YesChef23 in Week 1, and 127.74 to 139.80 against Hades9mm in Week 3. The win was a 156.16 to 110.60 beat-down of Sarge71 in Week 2, with Dak Prescott leading at 29.76. Efficiency is 80.8 percent, which leaves room for more.",
-      "The quarterback room is the open question. Aaron Rodgers arrived as an autopick, was moved to free agency, and the Week 3 move was a swap involving Drew Lock and Geno Smith. Jonathan Taylor did the real work. The 1.09 slot says the roster has a good best case, and the record says it has not been realized."
+      "fumbduckdumbfuck was the desk's number one in Issue 1, and the roster still supports it: Brock Bowers at 1.12, Ashton Jeanty at 2.01, Jonathan Taylor at 3.01, with Rashee Rice, DeVonta Smith and Dak Prescott behind them. He is 2-2 with 530.88 points and sits 6th, up one spot.",
+      "The losses were close. 113.10 to 127.06 against YesChef23 in Week 1, and 127.74 to 139.80 against Hades9mm in Week 3. The wins were a 156.16 to 110.60 beat-down of Sarge71 in Week 2 and a 133.88 to 121.78 win over C33DeezNutzz in Week 4, with Taylor leading at 22.7, despite 30.4 points on the bench.",
+      "The quarterback room is the open question. Aaron Rodgers arrived as an autopick, was moved to free agency, and the Week 3 move was a swap involving Drew Lock and Geno Smith. Week 4 brought Kyler Murray, cut by StealingGas earlier in the week, for Boutte. The 8th pick on MAXPF says the roster has a good best case, and the record says it is finally being realized."
      ],
      "takes": [
       "Jonathan Taylor did the real work.",
-      "The Issue 1 No. 1 label is a lot to carry."
+      "The Issue 1 No. 1 label is a lot to carry, but it is lighter at 2-2."
      ],
      "drama": []
     }
