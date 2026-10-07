@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-06T20:16:33+00:00",
+ "generated_at": "2026-10-07T00:40:44+00:00",
  "season": "2026",
  "volume": 1,
  "season_status": "active",
- "data_pulled_at": "2026-10-06T20:16:31+00:00",
+ "data_pulled_at": "2026-10-07T00:40:40+00:00",
  "ready_for_new_issue": true,
  "warnings": [],
  "next_issue": {
@@ -11,6 +11,46 @@
   "wire_week": 4,
   "pre_week": 5
  },
+ "season_end": {
+  "decided": false
+ },
+ "predictions_to_rule": [
+  {
+   "year": 2026,
+   "issue": 3,
+   "i": 1,
+   "prediction": "StealingGas moves Henderson or Tuten before the next waiver run",
+   "context": "A tank announcement with a $99 claim and a loaded block gives every contender leverage. Deadline: Week 3 final."
+  },
+  {
+   "year": 2026,
+   "issue": 4,
+   "i": 0,
+   "prediction": "Achane moves before Week 5",
+   "context": "Darkspaces already named the price in public. A first is the floor. Someone will pay it."
+  },
+  {
+   "year": 2026,
+   "issue": 4,
+   "i": 1,
+   "prediction": "StealingGas finishes bottom-2 in MAXPF",
+   "context": "New draft rules punish a strong best lineup. The laboratory must sell scorers or the 2027 pick slides."
+  },
+  {
+   "year": 2026,
+   "issue": 4,
+   "i": 2,
+   "prediction": "Zygon stays top-2 through Week 6",
+   "context": "The formula has not broken. Health is the only landmine and the nickname is still cashing."
+  },
+  {
+   "year": 2026,
+   "issue": 4,
+   "i": 3,
+   "prediction": "Painty69 stays quiet in chat",
+   "context": "The desk and StealingGas already called it out. One spike week and the fire returns."
+  }
+ ],
  "final_weeks": [
   1,
   2,
@@ -1893,6 +1933,25 @@
    ],
    "result": "",
    "note": ""
-  }
+  },
+  "rulings": [
+   {
+    "issue": 0,
+    "i": 0,
+    "result": "hit | miss | pending",
+    "note": "One sentence, with the evidence. Rules on a bold prediction from an EARLIER issue (issue number + its index in that issue's bold list). Leave [] if nothing resolved this week."
+   }
+  ],
+  "receipts": [
+   {
+    "who": "Exact handle",
+    "text": "The line exactly as written in the chat",
+    "context": "",
+    "date": "",
+    "tags": [],
+    "status": "pending | aged_well | aged_badly",
+    "note": "Optional desk line. Repeat a receipt in a later issue with a new status to update it."
+   }
+  ]
  }
 }
