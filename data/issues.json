@@ -1,5 +1,23 @@
 [
  {
+  "no": 5,
+  "year": 2026,
+  "title": "The Calm After the Storm",
+  "weeks": "Week 4 post-game and Week 5 pre-game",
+  "web": true,
+  "month": "October 2026",
+  "dek": "Darkspaces sets a perfect lineup and still loses by 65.06 to CMac91's 183.42. The chat goes quiet, the block stays open, and ten games remain before the playoffs. Issue 5 covers Week 4 and previews Week 5.",
+  "banner": "Darkspaces: perfect lineup, 65.06-point loss",
+  "ticker": [
+   "Darkspaces sets a perfect 118.36 and loses by 65.06 to CMac91",
+   "Zygon beats Hades9mm and stays the lone unbeaten team",
+   "Swift, Collins and Pickens hit the block as the chat goes quiet",
+   "Painty69 loses by 1.34 and is the last winless team"
+  ],
+  "wire_week": 4,
+  "standings_week": 4
+ },
+ {
   "no": 4,
   "year": 2026,
   "title": "Tank You for Your Service",
