@@ -17,7 +17,11 @@ from build_site import esc, av, jload, ROOT
 
 R = "../"
 NOTES = []
-AWARDS = [("best_manager", "", "Best Manager", "Highest lineup efficiency: points scored as a share of the best possible lineup."),
+AWARDS = [("lombardi", "", "League Champion", "Won the league championship game."),
+          ("silver_cup", "", "Silver Cup", "Runner-up: lost the championship game."),
+          ("apex_predator", "", "Apex Predator", "Highest regular-season points scored (PF)."),
+          ("best_manager", "", "Best Manager", "Highest lineup efficiency: points scored as a share of the best possible lineup."),
+          ("toilet_bowl", "", "Toilet Bowl Champion", "Won the Toilet Bowl, the losers' bracket."),
           ("biggest_tank", "", "Biggest Tank", "Lowest MAXPF. The best possible lineup was the weakest, so the 1.01 is theirs."),
           ("waiver_mvp", "", "Waiver Wire MVP", "Most weekly Waiver Wire MVP nods from the desk."),
           ("bold_hit", '<img class="aw-b" src="{R}assets/badge-bold-prediction.webp" alt="" loading="lazy">'.replace("{R}", R), "Bold Prediction Hit", "The desk's boldest call that came true.")]
@@ -225,6 +229,15 @@ def award_values(S, H, preds):
         y, a = s["year"], {}
         eff = {m: (r["pf"] / r["maxpf"] * 100) if r["maxpf"] else 0 for m, r in s["table"].items()}
         bm = max(eff, key=eff.get); a["best_manager"] = (bm, f"{eff[bm]:.1f}% efficiency")
+        ap = max(s["table"], key=lambda m: s["table"][m]["pf"]); a["apex_predator"] = (ap, f'{fmt(s["table"][ap]["pf"])} PF')
+        hs_ = hist_season(H, y)
+        if hs_.get("champion"):
+            a["lombardi"] = (hs_["champion"], "Won the championship" + (f' over {hs_["runner_up"]}' if hs_.get("runner_up") else ""))
+        if hs_.get("runner_up"):
+            a["silver_cup"] = (hs_["runner_up"], "Lost the championship" + (f' to {hs_["champion"]}' if hs_.get("champion") else ""))
+        tb_ = hs_.get("toilet_bowl") or {}
+        if tb_.get("winner"):
+            a["toilet_bowl"] = (tb_["winner"], tb_.get("note") or "Won the Toilet Bowl")
         tk = min(s["table"], key=lambda m: s["table"][m]["maxpf"]); a["biggest_tank"] = (tk, f'{fmt(s["table"][tk]["maxpf"])} MAXPF')
         mv = mvp.get(y) or {}
         if mv:
@@ -241,19 +254,21 @@ def award_values(S, H, preds):
 
 def award_shelf(S, H, preds):
     vals, out = award_values(S, H, preds), []
-    for s in sorted(S, key=lambda s: s["year"], reverse=True):
+    meta = {k: (ico, title, rule) for k, ico, title, rule in AWARDS}
+    for i, s in enumerate(sorted(S, key=lambda s: s["year"], reverse=True)):
         y, cards = s["year"], []
         live = "" if s["closed"] else f'<em class="hf-live">Live &middot; Week {s["thru"]}</em>'
-        for key, ico, title, rule in AWARDS:
+        for key in tr.SHELF_ORDER:
+            ico, title, rule = meta[key]
             v = vals[y].get(key)
             body = (who(v[0], 40) if v[0] else '<span class="hf-who hf-desk">The Desk</span>') + '<p class="hf-av">' + esc(v[1]) + "</p>" if v else '<p class="hf-av">No winner yet.</p>'
-            if key in tr.AWARD_KEYS:   # the three shelf awards each have their own reserved trophy
+            if key in tr.TROPHIES:   # every shelf award except the bold prediction has its own reserved trophy
                 stage = f'<div class="hf-stage">{tr.img(key, R, cls="hf-awt", alt=title + " trophy")}</div>'
                 head = f"<small>{title}</small>"
             else:
                 stage, head = "", f'<small><i aria-hidden="true">{ico}</i>{title}</small>'
             cards.append(f'<div class="hf-aw{" has-tro" if stage else ""}">{stage}{head}{body}<p class="hf-rule">{rule}</p></div>')
-        out.append(f'<h3 class="sub">Volume {s["vol"]} &middot; {y} {live}</h3><div class="hf-aws">{"".join(cards)}</div>')
+        out.append(f'<details class="yr hf-aws-vol"{" open" if i == 0 else ""}><summary>Volume {s["vol"]} &middot; {y} {live}</summary><div class="hf-aws">{"".join(cards)}</div></details>')
     return "".join(out)
 
 def trophy_wins(S=None, H=None):
@@ -271,6 +286,8 @@ def trophy_wins(S=None, H=None):
         y, hs = s["year"], hist_season(H, s["year"])
         if hs.get("champion"):
             out[who_(hs["champion"])].append({"key": "lombardi", "year": y, "note": ""})
+        if hs.get("runner_up"):
+            out[who_(hs["runner_up"])].append({"key": "silver_cup", "year": y, "note": ""})
         tb = hs.get("toilet_bowl") or {}
         if tb.get("winner"):
             out[who_(tb["winner"])].append({"key": "toilet_bowl", "year": y, "note": tb.get("note", "")})

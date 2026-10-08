@@ -103,3 +103,8 @@ background:radial-gradient(70% 160% at 12% 50%,rgba(230,185,74,.22),transparent 
 .hf-aw.has-tro .hf-av{text-align:center}
 .hf-aw.has-tro .hf-rule{margin-top:auto}
 @media(max-width:700px){.hf-champ .tro.lombardi,.hf-champ .tro.toilet{height:150px}.hf-awt{height:140px}}
+
+/* Award shelf: collapsible volumes, two rows of four (8 cards) */
+details.hf-aws-vol{margin:0 0 1rem}
+details.hf-aws-vol>summary{font:italic 800 1.5rem Oswald,sans-serif}
+details.hf-aws-vol .hf-live{font:600 .9rem Inter,sans-serif;font-style:normal;color:var(--gold);margin-left:.6rem}
