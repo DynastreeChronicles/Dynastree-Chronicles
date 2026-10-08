@@ -274,8 +274,9 @@ def award_shelf(S, H, preds):
             if key in tr.TROPHIES:   # every shelf award except the bold prediction has its own reserved trophy
                 stage = f'<div class="hf-stage">{tr.img(key, R, cls="hf-awt", alt=title + " trophy")}</div>'
                 head = f"<small>{title}</small>"
-            else:
-                stage, head = "", f'<small><i aria-hidden="true">{ico}</i>{title}</small>'
+            else:   # Bold Prediction Hit: its badge gets the same large stage as the trophies, text below
+                stage = f'<div class="hf-stage">{ico.replace("aw-b", "hf-awt hf-awb")}</div>'
+                head = f"<small>{title}</small>"
             cards.append(f'<div class="hf-aw{" has-tro" if stage else ""}">{stage}{head}{body}<p class="hf-rule">{rule}</p></div>')
         out.append(f'<details class="yr hf-aws-vol"{" open" if i == 0 else ""}><summary>Volume {s["vol"]} &middot; {y} {live}</summary><div class="hf-aws">{"".join(cards)}</div></details>')
     return "".join(out)
