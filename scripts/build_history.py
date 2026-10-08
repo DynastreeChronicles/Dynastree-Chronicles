@@ -203,10 +203,19 @@ def careers(S, H, ps, pt):
         alum = "" if mg.get(m, {}).get("active", True) else '<small class="hf-alum">Alumni</small>'
         rows.append(f'<tr><td class="n">{i}</td><td>{who(m, 28)}{alum}</td><td class="n hf-ti">{c["titles"] or "&ndash;"}</td><td class="n">{c["po"]}</td><td class="n">{pace}</td>'
                     f'<td class="n">{rec}</td><td class="n">{c["w"] / g * 100:.1f}%</td><td class="n">{fmt(c["pf"])}</td><td class="n">{c["seasons"]}</td></tr>')
-    heads = ["#", "Manager", "Titles", "Playoffs", "Pace", "Record", "Win %", "PF", "Seasons"]
+    cur = next((x["year"] for x in sorted(S, key=lambda x: x["year"], reverse=True) if not x["closed"]), None)
+    heads = ["#", "Manager", "Titles", "Playoffs", f"{cur} Pace" if cur else "Pace", "Record", "Win %", "Total PF", "Seasons"]
     head = "".join("<th" + ("" if i == 1 else ' class="n"') + ">" + h + "</th>" for i, h in enumerate(heads))
     return (f'<div class="sc"><table class="hf-tbl"><thead><tr>{head}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
-            f'<p class="key">Regular-season record and PF across every volume (weeks before {ps}). Playoffs counts finished seasons; Pace shows who sits in a playoff spot right now. Sorted by titles, playoff trips, then win rate.</p>')
+            f'<details class="legend hf-lg"><summary>How to read this table</summary><dl>'
+            f'<div><dt>Titles</dt><dd><b>Championships won</b> across every volume.</dd></div>'
+            f'<div><dt>Playoffs</dt><dd><b>Playoff trips.</b> Counts finished seasons only.</dd></div>'
+            f'<div><dt>{cur or "Season"} Pace</dt><dd><b>Playoff spot right now</b> in the open season. <span class="hf-in">In</span> = inside the top {pt}, <span class="hf-out">Out</span> = outside.</dd></div>'
+            f'<div><dt>Record</dt><dd><b>Regular-season W-L</b> across every volume (weeks before {ps}).</dd></div>'
+            f'<div><dt>Win %</dt><dd><b>Share of games won</b> across every volume.</dd></div>'
+            f'<div><dt>Total PF</dt><dd><b>Points for.</b> Regular-season points scored across every volume.</dd></div>'
+            f'<div><dt>Seasons</dt><dd><b>Seasons played</b> in the league.</dd></div>'
+            f'<div><dt>Sort order</dt><dd><b>Titles, then playoff trips, then win rate.</b></dd></div></dl></details>')
 
 # ------------------------------------------------------------------ predictions and awards
 def predictions(H):
