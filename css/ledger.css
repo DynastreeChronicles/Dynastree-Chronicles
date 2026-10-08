@@ -39,3 +39,14 @@
 .lg-score .chip{text-align:center;padding:.55rem .3rem;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
 .lg-score .chip strong{display:block;font:700 1.7rem/1 Oswald,sans-serif;color:var(--gold,#e6b94a)}
 .lg-score .chip small{display:block;margin-top:.2rem;font-size:.75rem;opacity:.8}
+
+/* Draft history: collapsible years, manager filter and player search (same controls as the Receipts Archive) */
+.dr-sec[hidden]{display:none}
+.lg-eval{margin:0 0 .8rem;font-size:.85rem;color:var(--mute,#9fb0d6)}
+.lg-ctl{display:flex;gap:.6rem;flex-wrap:wrap;margin:.6rem 0}
+.lg-ctl select,.lg-ctl input{font:inherit;padding:.5rem .8rem;border-radius:8px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:inherit;min-width:12rem}
+.lg-ctl select{color-scheme:dark;appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:2.4rem;font-weight:600;color:#eef3ff;background-color:#111a30;border:1px solid #2f6df0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%2345e03a' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9rem center}
+.lg-ctl select:hover,.lg-ctl select:focus{border-color:#45e03a}
+.lg-ctl select option{background:#111a30;color:#eef3ff}
+#dgn{margin:.2rem 0 1rem}
+details.yr>.lg-cards{margin-bottom:1.2rem}

@@ -21,22 +21,24 @@ def norm(n):
 TODAY = datetime.date.today()
 
 def grade_pick(y, p, L):
-    """Automatic verdict for one pick at its 12 / 24 / 36-month checkpoints (see scripts/pick_grades.py)."""
-    meta = jload(f"data/{y}/draft_meta.json", None)
-    return pg.grade_pick(y, p, L.get("grading", {}), STATS, TODAY, pg.pick_date(y, meta, L.get("drafts")), norm(p["name"]) + "|" + p["pos"])
+    """Automatic verdict for one pick, judged after each season ends (see scripts/pick_grades.py). The 2026 startup draft gets one season-long evaluation; rookie drafts get 1, 2 and 3 season evaluations."""
+    n = 1 if startup(y, L) else None
+    return pg.grade_pick(y, p, L.get("grading", {}), STATS, norm(p["name"]) + "|" + p["pos"], n)
 
-def trail_html(p, au):
-    """One small line per checkpoint: '12-mo: WR14 (118% of projection) dot'."""
+def startup(y, L):
+    return bool(((L.get("drafts") or {}).get(str(y)) or {}).get("startup"))
+
+def trail_html(p, au, su=False):
+    """One small line per evaluation: '1-season: WR14 (118% of projection) dot'. The startup draft has a single season-long evaluation."""
     bits = []
     for cp in au["cps"]:
         r = f'{p["pos"]}{cp["posrank"] or "-"}'
+        lab = "Season-long" if su else f'{cp["k"]}-season'
         if cp["state"] == "graded":
             ratio = f' ({round(cp["ratio"] * 100)}% of projection)' if cp["ratio"] else ""
-            bits.append(f'{cp["months"]}-mo: {r}{ratio} <span class="dot {GR[cp["grade"]][1]}"></span>')
-        elif cp["state"] == "waiting":
-            bits.append(f'{cp["months"]}-mo: {r} so far, check due {cp["due"].strftime("%b %Y")} <span class="dot v-pend"></span>')
+            bits.append(f'{lab}: {r}{ratio} <span class="dot {GR[cp["grade"]][1]}"></span>')
         else:
-            bits.append(f'{cp["months"]}-mo: {r} (season in progress) <span class="dot v-pend"></span>')
+            bits.append(f'{lab}: {r} (season in progress) <span class="dot v-pend"></span>')
     return " &middot; ".join(bits)
 
 def ml(m):
@@ -55,9 +57,9 @@ def draft_panel(L):
     D, V = drafts(L), L.get("verdicts", {})
     if not D:
         return '<p class="lg-empty">No drafts on record yet.</p>'
-    tally, html = {}, ""
-    for y, label, picks in D:
-        rows, cur = "", None
+    reg = ss.load(); tally, html = {}, ""
+    for i, (y, label, picks) in enumerate(reversed(D)):
+        su = startup(y, L); rows, cur = "", None
         for p in sorted(picks, key=lambda p: (p["r"], p["s"])):
             if p["r"] != cur:
                 cur = p["r"]; rows += f'<tr class="rh"><td colspan="5">Round {cur}</td></tr>'
@@ -66,25 +68,36 @@ def draft_panel(L):
             g = v.get("grade") if v.get("grade") in GR else au["grade"]
             lab, cls = GR.get(g, ("Too early", "v-pend"))
             if g and not v.get("grade"): lab += " (final)" if au["final"] else " (so far)"
-            trail = trail_html(p, au)
+            trail = trail_html(p, au, su)
             t = tally.setdefault(p["m"], {"hit": 0, "mid": 0, "bust": 0})
             if g: t[g] += 1
             note = (f'<small>{esc(v["note"])}</small>' if v.get("note") else "") + (f'<small>{trail}</small>' if trail else "")
             auto = " <small>(auto-pick)</small>" if p.get("auto") else ""
-            rows += (f'<tr class="pk {cls}" data-v="{cls}" data-r="{p["r"]}"><td>{p["r"]}.{p["s"]:02d}</td>'
+            rows += (f'<tr class="pk {cls}" data-v="{cls}" data-r="{p["r"]}" data-m="{esc(p["m"].lower())}" data-p="{esc(p["name"].lower())}"><td>{p["r"]}.{p["s"]:02d}</td>'
                      f'<td><b>{esc(p["name"])}</b> <small>{esc(p["pos"])} &middot; {esc(p["team"])}{auto}</small></td>'
                      f'<td>{ml(p["m"])}</td><td><span class="dot {cls}"></span>{lab}</td><td>{note}</td></tr>')
-        html += (f'<h3 class="sub">{esc(label)}</h3><div class="lg-wrap"><table class="lg-tbl"><thead><tr><th>Pick</th><th>Player</th><th>Drafted by</th><th>Verdict</th><th>Notes</th></tr></thead><tbody>{rows}</tbody></table></div>')
+        vol = ss.volume(y, reg) if y in reg else None
+        if su:
+            nxt = f"Volume {vol + 1}, Issue 1" if vol else "the next volume's Issue 1"
+            ev = f"Startup draft: one season-long evaluation, made after the season ends and filed in {nxt}."
+        else:
+            ev = "Rookie draft: 1, 2 and 3 season evaluations, each made after that season ends. Each new volume's Issue 1 reviews the last three drafts."
+        html += (f'<details class="yr dr-sec"{" open" if i == 0 else ""}><summary>{esc(label)} <small>{len(picks)} picks</small></summary><p class="lg-eval">{esc(ev)}</p>'
+                 f'<div class="lg-wrap"><table class="lg-tbl"><thead><tr><th>Pick</th><th>Player</th><th>Drafted by</th><th>Verdict</th><th>Notes</th></tr></thead><tbody>{rows}</tbody></table></div></details>')
     graded = {m: t for m, t in tally.items() if sum(t.values())}
     board = ""
     if graded:
         r = sorted(graded.items(), key=lambda kv: (-kv[1]["hit"] / sum(kv[1].values()), kv[0]))
         board = ('<h3 class="sub">Hit rate by manager</h3><div class="lg-wrap"><table class="lg-tbl"><thead><tr><th>Manager</th><th>Hits</th><th>Mid</th><th>Busts</th><th>Hit rate</th></tr></thead><tbody>'
                  + "".join(f'<tr><td>{ml(m)}</td><td>{t["hit"]}</td><td>{t["mid"]}</td><td>{t["bust"]}</td><td>{100 * t["hit"] // sum(t.values())}%</td></tr>' for m, t in r) + '</tbody></table></div>')
+    mgrs = sorted({p["m"] for _, _, ps in D for p in ps}, key=str.lower)
+    opts = "".join(f'<option value="{esc(m.lower())}">{esc(m)}</option>' for m in mgrs)
     legend = ('<div class="lg-legend"><span><span class="dot v-hit"></span>Hit</span><span><span class="dot v-mid"></span>Mid-tier</span><span><span class="dot v-bust"></span>Bust</span>'
               '<span><span class="dot v-pend"></span>Too early to call</span></div>'
               '<div class="lg-filter" role="group" aria-label="Filter picks"><button data-f="all" aria-pressed="true">All</button><button data-f="v-hit" aria-pressed="false">Hits</button>'
-              '<button data-f="v-mid" aria-pressed="false">Mid-tier</button><button data-f="v-bust" aria-pressed="false">Busts</button><button data-f="v-pend" aria-pressed="false">Ungraded</button></div>')
+              '<button data-f="v-mid" aria-pressed="false">Mid-tier</button><button data-f="v-bust" aria-pressed="false">Busts</button><button data-f="v-pend" aria-pressed="false">Ungraded</button></div>'
+              f'<div class="lg-ctl"><select id="dgm" aria-label="Manager"><option value="">All managers</option>{opts}</select>'
+              '<input id="dgq" type="search" placeholder="Search player" aria-label="Search player"></div><p id="dgn" class="meta"></p>')
     return legend + html + board
 
 # ------------------------------------------------------------------ trades
@@ -106,61 +119,77 @@ def assets(side):
 def score(tx, S):
     pv = S.get("pick_value", {}); n = 0
     for sd in tx["sides"]:
-        n += len(sd.get("receives_players", [])) * S.get("player_value", 20)
-        n += sum(pv.get(str(k["round"]), pv.get("default", 5)) for k in sd.get("receives_picks", []))
+        n += len(sd.get("receives_players", [])) * S.get("player_value", 25)
+        n += sum(pv.get(str(k["round"]), 0) for k in sd.get("receives_picks", []))
         n += (sd.get("receives_faab") or 0) // 10
     return n
 
 def legend(S):
-    pv = S.get("pick_value", {}); pl = S.get("player_value", 20)
-    chips = [("1st-round pick", pv.get("1", 75)), ("2nd-round pick", pv.get("2", 30)), ("3rd-round pick", pv.get("3", 10)),
-             ("Any other pick", pv.get("default", 5)), ("Each player", pl), ("Each $10 FAAB", 1)]
-    return ('<div class="lg-score"><div class="hd"><b>How the Blockbuster score works</b><span>A rough size gauge, not a grade.</span></div><div class="chips">'
-            + "".join(f'<div class="chip"><strong>{v}</strong><small>{esc(k)}</small></div>' for k, v in chips)
-            + f'</div><p>Add up everything both sides receive. Score {S.get("blockbuster_min", 60)} or more earns the Blockbuster tag.</p></div>')
+    pv = S.get("pick_value", {}); pl = S.get("player_value", 25)
+    chips = [("1st-round pick", pv.get("1", 50)), ("2nd-round pick", pv.get("2", 30)), ("3rd-round pick", pv.get("3", 10)),
+             ("Each player", pl), ("Each $10 FAAB", 1)]
+    return ('<div class="lg-score"><div class="hd"><b>How the Blockbuster score works</b></div><div class="chips">'
+            + "".join(f'<div class="chip"><strong>{v}</strong><small>{esc(k)}</small></div>' for k, v in chips) + '</div></div>')
 
 def trade_panel(L):
-    S, T, takes, items = L.get("settings", {}), L.get("trades", {}), issue_takes(), []
-    for y in sorted(ss.load()):
+    S, T, takes, reg = L.get("settings", {}), L.get("trades", {}), issue_takes(), ss.load()
+    by = {}
+    for y in sorted(reg):
         for tx in jload(f"data/{y}/transactions.json", []) or []:
             if tx.get("type") == "trade" and len(tx.get("sides", [])) == 2:
-                items.append((score(bs.canon(tx), S), y, bs.canon(tx)))
-    if not items:
+                c = bs.canon(tx); by.setdefault(y, []).append((score(c, S), c))
+    if not by:
         return '<p class="lg-empty">No trades on record yet.</p>'
-    items.sort(key=lambda i: (-i[0], i[2].get("created", 0)))
-    obits, cards = "", ""
-    for sc, y, tx in items:
+    def card_parts(sc, tx):
         a, b = tx["sides"]; meta = T.get(str(tx["id"])) or {}
         txt = " ".join(assets(a) + assets(b))
         take = next((t for m, t, ty, n in takes.get(frozenset((a["manager"], b["manager"])), []) if not m or m in txt), None)
         date = datetime.datetime.fromtimestamp(tx.get("created", 0) / 1000, datetime.timezone.utc).strftime("%b %d, %Y")
-        big = sc >= S.get("blockbuster_min", 60)
+        big = sc >= S.get("blockbuster_min", 60); obit = ""
         if meta.get("status") == "deceased":
-            obits += (f'<div class="obit"><small>In loving memory &middot; {esc(date)}</small><h3>{esc(meta.get("headline", "A trade that did not survive"))}</h3>'
-                      f'<p>{ml(a["manager"])} and {ml(b["manager"])} announce the passing of this deal.</p>'
-                      f'<p><b>Cause of death:</b> {esc(meta.get("cause", "Unspecified"))}</p><p>{esc(meta.get("obituary", ""))}</p>'
-                      + (f'<p><b>Survived by:</b> {esc(meta["survived_by"])}</p>' if meta.get("survived_by") else "") + '</div>')
+            obit = (f'<div class="obit"><small>In loving memory &middot; {esc(date)}</small><h3>{esc(meta.get("headline", "A trade that did not survive"))}</h3>'
+                    f'<p>{ml(a["manager"])} and {ml(b["manager"])} announce the passing of this deal.</p>'
+                    f'<p><b>Cause of death:</b> {esc(meta.get("cause", "Unspecified"))}</p><p>{esc(meta.get("obituary", ""))}</p>'
+                    + (f'<p><b>Survived by:</b> {esc(meta["survived_by"])}</p>' if meta.get("survived_by") else "") + '</div>')
         grade, desk = "", ""
         if take:
             if take.get("ga") and take.get("gb"): grade = f' &middot; Grades: {esc(a["manager"])} {esc(take["ga"])}, {esc(b["manager"])} {esc(take["gb"])}'
             desk = f'<p class="desk">The desk: {esc(take["desk"])}</p>' if take.get("desk") else ""
         status = {"alive": "Still standing", "pending": "Verdict pending"}.get(meta.get("status"), "Verdict pending")
         side = lambda s, o: f'<div><b>{ml(s["manager"])} gets</b><p>{esc("; ".join(assets(s)) or "nothing")}</p></div>'
-        cards += (f'<article class="tx-card{" big" if big else ""}"><h3>{"<span class=\"tag\">Blockbuster</span>" if big else ""}{esc(a["manager"])} &harr; {esc(b["manager"])}</h3>'
-                  f'<p class="meta">{esc(date)} &middot; Week {tx.get("week", "?")} &middot; Blockbuster score {sc} &middot; {status}{grade}</p>'
-                  f'<div class="sides">{side(a, b)}{side(b, a)}</div>{desk}</article>')
+        card = (f'<article class="tx-card{" big" if big else ""}"><h3>{"<span class=\"tag\">Blockbuster</span>" if big else ""}{esc(a["manager"])} &harr; {esc(b["manager"])}</h3>'
+                f'<p class="meta">{esc(date)} &middot; Week {tx.get("week", "?")} &middot; Blockbuster score {sc} &middot; {status}{grade}</p>'
+                f'<div class="sides">{side(a, b)}{side(b, a)}</div>{desk}</article>')
+        return card, obit
+    def year_block(y, inner, n, noun, first):
+        vol = ss.volume(y, reg)
+        return f'<details class="yr"{" open" if first else ""}><summary>{"Volume " + str(vol) + " &middot; " if vol else ""}{esc(y)} <small>{n} {noun}</small></summary><div class="lg-cards">{inner}</div></details>'
+    trades, obits, first_t, first_o = "", "", True, True
+    for y in sorted(by, reverse=True):
+        items = sorted(by[y], key=lambda i: (-i[0], i[1].get("created", 0)))
+        cards, ob = [], []
+        for sc, tx in items:
+            c, o = card_parts(sc, tx); cards.append(c)
+            if o: ob.append(o)
+        trades += year_block(y, "".join(cards), len(cards), "trade" + ("" if len(cards) == 1 else "s"), first_t); first_t = False
+        if ob:
+            obits += year_block(y, "".join(ob), len(ob), "obituar" + ("y" if len(ob) == 1 else "ies"), first_o); first_o = False
     cem = obits or '<p class="lg-empty">The cemetery is empty. For now. Obituaries get filed once a trade has clearly gone wrong.</p>'
-    return ('<h3 class="sub">Obituaries</h3><div class="lg-cards">' + cem + '</div><h3 class="sub">Every trade, biggest first</h3>' +
-            legend(S) +
-            '<div class="lg-cards">' + cards + '</div>')
+    return (legend(S) + '<h3 class="sub">Every trade, biggest first</h3>' + trades + '<h3 class="sub">Obituaries</h3>' + cem)
 
 # ------------------------------------------------------------------ page
 JS = '''<script>(function(){var t=document.querySelectorAll('.lg-tabs button'),p=document.querySelectorAll('.lg-panel');
 function show(id){t.forEach(function(b){b.setAttribute('aria-selected',b.dataset.t===id)});p.forEach(function(x){x.hidden=x.id!==id})}
 t.forEach(function(b){b.onclick=function(){show(b.dataset.t);history.replaceState(null,'','#'+b.dataset.t)}});
 show(location.hash==='#drafts'?'drafts':'trades');
-document.querySelectorAll('.lg-filter button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.lg-filter button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
-document.querySelectorAll('tr.pk').forEach(function(r){r.hidden=b.dataset.f!=='all'&&r.dataset.v!==b.dataset.f})}})})();</script>'''
+var K='all',R=[].slice.call(document.querySelectorAll('tr.pk')),m=document.getElementById('dgm'),q=document.getElementById('dgq'),n=document.getElementById('dgn');
+function go(){if(!m)return;var s=q.value.toLowerCase().trim(),v=0,f=K!=='all'||m.value||s;
+R.forEach(function(r){var ok=(K==='all'||r.dataset.v===K)&&(!m.value||r.dataset.m===m.value)&&(!s||r.dataset.p.indexOf(s)>-1);r.hidden=!ok;if(ok)v++});
+document.querySelectorAll('tr.rh').forEach(function(h){var x=h.nextElementSibling,any=false;while(x&&!x.classList.contains('rh')){if(!x.hidden)any=true;x=x.nextElementSibling}h.hidden=!any});
+document.querySelectorAll('.dr-sec').forEach(function(d){var c=d.querySelectorAll('tr.pk:not([hidden])').length;d.hidden=!c;if(f)d.open=!!c});
+n.textContent=v+' of '+R.length+' picks'}
+document.querySelectorAll('.lg-filter button').forEach(function(b){b.onclick=function(){K=b.dataset.f;document.querySelectorAll('.lg-filter button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});go()}});
+if(m){m.onchange=go;q.oninput=go}go()})();</script>'''
 
 def shell(body):
     fonts = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">'

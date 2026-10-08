@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
-"""Automatic draft-pick verdicts (hit / mid / bust), graded at 12, 24 and 36 months after the pick. Pure functions, no network.
+"""Automatic draft-pick verdicts (hit / mid / bust), judged after each season ends. Pure functions, no network.
 
-For each checkpoint k (default 12, 24, 36 months):
-  * It is DUE once today is that many months after the pick date AND the NFL season it judges has finished
-    (the k-th season since the pick: pick year + k - 1).
+Evaluations are per SEASON, not per calendar month:
+  * Rookie drafts get a 1-season, 2-season and 3-season evaluation (season k = draft year + k - 1), each made once that
+    NFL season is final.
+  * The 2026 startup draft (data/ledger.json drafts.2026.startup = true) gets a single season-long evaluation: its first
+    season, made after the season is finished and filed in the next volume's Issue 1.
   * Production grade: the player's position rank in that season, against the thresholds in data/ledger.json "grading"
     (hit = inside the "hit" rank for the position, mid = inside "mid", else bust; picks after "late_round" can't be busts).
-  * Sleeper projection check: the player's actual points divided by the points Sleeper projected for the weeks he played.
-    At or above "projection.over" (default 1.15) the grade moves up one step; at or below "projection.under" (default 0.70)
-    it moves down one step. Missing projections just mean no nudge.
-The verdict is the latest due checkpoint; after the last one it is final. Hand verdicts in data/ledger.json still override.
+  * Sleeper projection check: actual points divided by the points Sleeper projected for the weeks he played. At or above
+    "projection.over" (default 1.15) the grade moves up one step; at or below "projection.under" (default 0.70) it moves
+    down one step. Missing projections just mean no nudge.
+The verdict is the latest finished evaluation; after the last one it is final. Hand verdicts in data/ledger.json still override.
 """
 import calendar
 from datetime import date
@@ -62,29 +64,27 @@ def nudge(grade, rec, rnd, G):
     return g, round(ratio, 2)
 
 
-def grade_pick(year, p, G, stats, today, pdate, key):
+def grade_pick(year, p, G, stats, key, n=None):
     """p: {"r","pos",...}. stats: {"2026": {"final", "players": {key: {"pts","gp","posrank","proj"}}}}.
-    Returns {"grade", "final", "cps": [{"k","months","season","state","grade","posrank","ratio","due"}]}.
-    state: "graded" (checkpoint reached), "waiting" (season is over, the month mark is not), "building" (season in progress)."""
-    months = G.get("checkpoints_months") or [12, 24, 36]
+    n: number of season evaluations (startup draft = 1); default G["checkpoints_seasons"] or [1, 2, 3].
+    Returns {"grade", "final", "cps": [{"k","season","state","grade","posrank","ratio"}]}.
+    state: "graded" (season final) or "building" (season in progress)."""
+    ks = list(range(1, n + 1)) if n else (G.get("checkpoints_seasons") or [1, 2, 3])
     out = {"grade": None, "final": False, "cps": []}
     if p["pos"] not in G.get("hit", {}):
         return out
     graded = 0
-    for k, m in enumerate(months, 1):
+    for k in ks:
         season = int(year) + k - 1
         st = stats.get(str(season))
         rec = st and st["players"].get(key)
         if not rec:
             break
-        due = months_after(pdate, m)
-        cp = {"k": k, "months": m, "season": season, "posrank": rec.get("posrank"), "ratio": None, "due": due, "grade": None}
+        cp = {"k": k, "season": season, "posrank": rec.get("posrank"), "ratio": None, "grade": None}
         if not st.get("final"):
             cp["state"] = "building"; out["cps"].append(cp); break
-        if today < due:
-            cp["state"] = "waiting"; out["cps"].append(cp); break
         g, ratio = nudge(base_grade(rec.get("posrank"), p["pos"], p["r"], G), rec, p["r"], G)
         cp.update(state="graded", grade=g, ratio=ratio)
         out["cps"].append(cp); out["grade"] = g; graded += 1
-    out["final"] = graded == len(months)
+    out["final"] = graded == len(ks)
     return out

@@ -1,27 +1,27 @@
 {
- "_help": "Draft & Trade Ledger. Picks and trades are pulled automatically, and picks are now GRADED automatically: at 12, 24 and 36 months after the pick (measured from the draft date Sleeper reports, or drafts.<year>.date here, else Sept 1 of the draft year), each pick gets a hit / mid / bust verdict from its position rank in the season just finished (thresholds under grading.hit and grading.mid; picks after grading.late_round can't be busts), nudged one step up or down when his actual points beat or missed Sleeper's projection for the weeks he played (grading.projection.over / under). Hand-enter only what the machine cannot know. verdicts: key 'YEAR:R.SS' (e.g. '2026:1.01') -> {grade: hit|mid|bust, note}; a hand verdict always overrides the automatic one. trades: key = Sleeper trade id (see data/<year>/transactions.json) -> {status: deceased|alive|pending, headline, cause, obituary, survived_by}; 'deceased' trades get an obituary card at the top of the Blockbuster Registry. drafts: key = season -> {label, date (optional YYYY-MM-DD, only when Sleeper does not report a draft date)}.",
+ "_help": "Draft & Trade Ledger. Picks and trades are pulled automatically, and picks are GRADED automatically, once each NFL season ends: rookie drafts get a 1-season, 2-season and 3-season evaluation (grading.checkpoints_seasons); the startup draft (drafts.<year>.startup = true) gets ONE season-long evaluation, filed in the next volume's Issue 1. Each evaluation gives each pick a hit / mid / bust verdict from its position rank in the season just finished (thresholds under grading.hit and grading.mid; picks after grading.late_round can't be busts), nudged one step up or down when his actual points beat or missed Sleeper's projection for the weeks he played (grading.projection.over / under). Hand-enter only what the machine cannot know. verdicts: key 'YEAR:R.SS' (e.g. '2026:1.01') -> {grade: hit|mid|bust, note}; a hand verdict always overrides the automatic one. trades: key = Sleeper trade id (see data/<year>/transactions.json) -> {status: deceased|alive|pending, headline, cause, obituary, survived_by}; 'deceased' trades get an obituary card at the top of the Blockbuster Registry. drafts: key = season -> {label, startup (true for the one-time startup draft)}. Blockbuster score: 1st-round pick, 2nd, 3rd and each player are valued under settings (rookie drafts have 3 rounds, so no other-pick value).",
  "settings": {
   "blockbuster_min": 60,
   "pick_value": {
-   "1": 75,
+   "1": 50,
    "2": 30,
-   "3": 10,
-   "default": 5
+   "3": 10
   },
-  "player_value": 20
+  "player_value": 25
  },
  "drafts": {
   "2026": {
-   "label": "2026 Startup Draft"
+   "label": "2026 Startup Draft",
+   "startup": true
   }
  },
  "verdicts": {},
  "trades": {},
  "grading": {
-  "checkpoints_months": [
-   12,
-   24,
-   36
+  "checkpoints_seasons": [
+   1,
+   2,
+   3
   ],
   "hit": {
    "QB": 12,
