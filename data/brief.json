@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-09T20:02:06+00:00",
+ "generated_at": "2026-10-09T20:26:37+00:00",
  "season": "2026",
  "volume": 1,
  "season_status": "active",
- "data_pulled_at": "2026-10-09T20:02:02+00:00",
+ "data_pulled_at": "2026-10-09T20:26:33+00:00",
  "ready_for_new_issue": false,
  "warnings": [
   "Week 4 is already covered by Issue 5. Wait for Week 5 to go final (Tuesday after its Monday game) before drafting a new issue.",
@@ -862,15 +862,17 @@
     "move30_pct": -3.6,
     "since": null,
     "since_change": null,
-    "sidelined": 0,
-    "sidelined_pct": 0.0,
+    "sidelined": 2896,
+    "sidelined_pct": 4.5,
     "picks": 14854,
     "top_assets": [
      "Jahmyr Gibbs (RB) 10325",
      "Joe Burrow (QB) 6317",
      "Christian McCaffrey (RB) 4167"
     ],
-    "sidelined_players": []
+    "sidelined_players": [
+     "Saquon Barkley (Out) 2896"
+    ]
    },
    {
     "manager": "fumbduckdumbfuck",
@@ -881,8 +883,8 @@
     "move30_pct": -1.1,
     "since": null,
     "since_change": null,
-    "sidelined": 2019,
-    "sidelined_pct": 3.2,
+    "sidelined": 5492,
+    "sidelined_pct": 8.6,
     "picks": 14854,
     "top_assets": [
      "Brock Bowers (TE) 8103",
@@ -890,6 +892,7 @@
      "Jonathan Taylor (RB) 5908"
     ],
     "sidelined_players": [
+     "DeVonta Smith (Out) 3473",
      "Kyle Monangai (Out) 2019"
     ]
    },

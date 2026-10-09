@@ -7,7 +7,7 @@
   "numTeams": 12,
   "ppr": 1
  },
- "generated_at": "2026-10-09T20:02:03+00:00",
+ "generated_at": "2026-10-09T20:26:34+00:00",
  "thresholds": {
   "crash_move_pct": -5.0,
   "crash_sidelined_pct": 25.0,
@@ -1570,8 +1570,8 @@
    },
    "move30": -2414,
    "move30_pct": -3.6,
-   "sidelined": 0,
-   "sidelined_pct": 0.0,
+   "sidelined": 2896,
+   "sidelined_pct": 4.5,
    "status": "correction",
    "top": [
     {
@@ -1709,7 +1709,18 @@
      "trend30": 42
     }
    ],
-   "sidelined_players": [],
+   "sidelined_players": [
+    {
+     "name": "Saquon Barkley",
+     "pos": "RB",
+     "team": "PHI",
+     "value": 2896,
+     "rank": 73,
+     "trend30": -1260,
+     "sidelined": true,
+     "status": "Out"
+    }
+   ],
    "off_index": 0,
    "rank": 5,
    "since": null,
@@ -2109,8 +2120,8 @@
    },
    "move30": -734,
    "move30_pct": -1.1,
-   "sidelined": 2019,
-   "sidelined_pct": 3.2,
+   "sidelined": 5492,
+   "sidelined_pct": 8.6,
    "status": "stable",
    "top": [
     {
@@ -2160,8 +2171,8 @@
      "value": 3473,
      "rank": 57,
      "trend30": -317,
-     "sidelined": false,
-     "status": "Questionable"
+     "sidelined": true,
+     "status": "Out"
     },
     {
      "name": "Michael Wilson",
@@ -2249,6 +2260,16 @@
     }
    ],
    "sidelined_players": [
+    {
+     "name": "DeVonta Smith",
+     "pos": "WR",
+     "team": "PHI",
+     "value": 3473,
+     "rank": 57,
+     "trend30": -317,
+     "sidelined": true,
+     "status": "Out"
+    },
     {
      "name": "Kyle Monangai",
      "pos": "RB",
