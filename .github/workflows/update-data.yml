@@ -64,6 +64,10 @@ jobs:
         continue-on-error: true
         run: python scripts/pull_player_stats.py
 
+      - name: Value trades and picks with FantasyCalc
+        continue-on-error: true
+        run: python scripts/ledger_values.py
+
       - name: Build Draft and Trade Ledger page
         run: python scripts/build_ledger.py
 

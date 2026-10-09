@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """Automatic draft-pick verdicts (hit / mid / bust), judged after each season ends. Pure functions, no network.
 
+CURRENT METHOD (grade_pick_value): FantasyCalc market value. A pick's value at the time of the pick is compared with its value at each
+review point (the end of NFL season k). ratio = value at review point / max(value at pick, floor). At or above "value.over"
+(default 1.15) = hit, at or below "value.under" (default 0.70) = bust, otherwise mid; a bust after "late_round" becomes mid. The floor
+(default 500) keeps a pick that was near zero from looking like a miracle on a tiny gain. Values come from data/market/ledger_values.json
+(scripts/ledger_values.py). The older production-based grader below (position rank + Sleeper projection) is kept for reference only.
+
 Evaluations are per SEASON, not per calendar month:
   * Rookie drafts get a 1-season, 2-season and 3-season evaluation (season k = draft year + k - 1), each made once that
     NFL season is final.
@@ -86,5 +92,36 @@ def grade_pick(year, p, G, stats, key, n=None):
         g, ratio = nudge(base_grade(rec.get("posrank"), p["pos"], p["r"], G), rec, p["r"], G)
         cp.update(state="graded", grade=g, ratio=ratio)
         out["cps"].append(cp); out["grade"] = g; graded += 1
+    out["final"] = graded == len(ks)
+    return out
+
+
+def grade_pick_value(p, G, rec, n=None):
+    """Value-based verdicts. p: {"r","pos",...}; rec: data/market/ledger_values.json picks[key] ({"at": {...}, "cps": {"1": {...}}}).
+    Returns {"grade", "final", "at", "at_how", "cps": [{"k","season","state","grade","value","pct","ratio"}]}.
+    state: "graded" (season final, value locked) or "building" (season in progress, live value, no grade yet)."""
+    ks = list(range(1, n + 1)) if n else (G.get("checkpoints_seasons") or [1, 2, 3])
+    out = {"grade": None, "final": False, "at": None, "at_how": None, "cps": []}
+    if not rec or p["pos"] not in G.get("hit", {}):
+        return out
+    V = G.get("value") or {}
+    over, under, floor = V.get("over", 1.15), V.get("under", 0.70), V.get("floor", 500)
+    at = (rec.get("at") or {}).get("value") or 0
+    out["at"], out["at_how"] = at, (rec.get("at") or {}).get("how")
+    graded = 0
+    for k in ks:
+        cp = (rec.get("cps") or {}).get(str(k))
+        if not cp:
+            break
+        ratio = cp["value"] / max(at, floor)
+        item = {"k": k, "season": cp["season"], "value": cp["value"], "ratio": round(ratio, 2),
+                "pct": round(100 * (cp["value"] / at - 1)) if at else None, "grade": None}
+        if not cp.get("locked"):
+            item["state"] = "building"; out["cps"].append(item); break
+        g = "hit" if ratio >= over else "bust" if ratio <= under else "mid"
+        if g == "bust" and p["r"] > G.get("late_round", 10):
+            g = "mid"
+        item.update(state="graded", grade=g)
+        out["cps"].append(item); out["grade"] = g; graded += 1
     out["final"] = graded == len(ks)
     return out

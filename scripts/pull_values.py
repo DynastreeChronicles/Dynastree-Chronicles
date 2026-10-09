@@ -18,6 +18,8 @@ from datetime import datetime, timezone
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import sleeper_pull as sp
 import seasons as ss
+import market as mk
+from market import PickBook, ordinal
 
 ROOT = os.path.normpath(os.path.join(HERE, ".."))
 MARKET = os.path.join(ROOT, "data", "market")
@@ -55,63 +57,6 @@ def fetch_index():
     return top + [r for r in rows[TOP_N:] if r["pos"] == "PICK"]   # picks are always kept so no owned pick goes unvalued
 
 
-def parse_pick(name):
-    """FantasyCalc lists picks as players with position PICK. Names look like "2027 1st (Mid)", "2028 2nd" or "2027 Pick 1.05".
-    Returns (season, round, tier or None, slot or None); tier is Early, Mid or Late."""
-    n = name or ""
-    yr = re.search(r"(20\d\d)", n)
-    slot = re.search(r"Pick\s+(\d+)\.(\d+)", n, re.I)
-    rnd = re.search(r"(\d+)(?:st|nd|rd|th)\b", n, re.I)
-    tier = re.search(r"\b(Early|Mid|Late)\b", n, re.I)
-    if not yr or not (slot or rnd):
-        return None
-    return (int(yr.group(1)), int(slot.group(1)) if slot else int(rnd.group(1)),
-            tier.group(1).capitalize() if tier else None, int(slot.group(2)) if slot else None)
-
-
-def ordinal(n):
-    return {1: "1st", 2: "2nd", 3: "3rd"}.get(n, f"{n}th")
-
-
-def tier_for_slot(slot):
-    """Draft slot 1 to 12 (1 = 1.01) to a FantasyCalc tier: 1-4 Early, 5-8 Mid, 9-12 Late."""
-    return None if not slot else "Early" if slot <= 4 else "Mid" if slot <= 8 else "Late"
-
-
-class PickBook:
-    def __init__(self, index):
-        self.by_tier, self.by_slot = {}, {}
-        for v in index:
-            if v.get("pos") != "PICK":
-                continue
-            k = parse_pick(v.get("name"))
-            if not k:
-                continue
-            season, rnd, tier, slot = k
-            (self.by_slot if slot else self.by_tier)[(season, rnd, slot) if slot else (season, rnd, tier)] = v
-
-    def value(self, season, rnd, slot, next_draft):
-        """Best FantasyCalc row for a pick, plus a label. The next draft uses the exact slot, then the tier from that slot;
-        later drafts use FantasyCalc's untiered pick, then Mid, then the average of whatever tiers exist."""
-        if next_draft and slot:
-            v = self.by_slot.get((season, rnd, slot))
-            if v:
-                return v, v["name"]
-            v = self.by_tier.get((season, rnd, tier_for_slot(slot)))
-            if v:
-                return v, v["name"]
-        for t in (None, "Mid"):
-            v = self.by_tier.get((season, rnd, t))
-            if v:
-                return v, v["name"]
-        have = [x for (sn, r, t), x in self.by_tier.items() if sn == season and r == rnd]
-        if have:
-            avg = {"name": f"{season} {ordinal(rnd)}", "value": round(sum(x["value"] for x in have) / len(have)),
-                   "trend30": round(sum(x["trend30"] for x in have) / len(have))}
-            return avg, avg["name"]
-        return None, f"{season} {ordinal(rnd)}"
-
-
 def owned_picks(lid, rosters, season, draft_rounds):
     """Future picks per roster_id after trades. Sleeper's traded_picks lists only the ones that moved."""
     traded = sp.get(f"/league/{lid}/traded_picks")
@@ -139,23 +84,24 @@ def classify(move_pct, sidelined_pct):
 
 
 def main():
-    reg = ss.load()
-    season = ss.active(reg)
-    if not season or ss.is_closed(reg.get(season)):
-        print("Season closed or missing: portfolio left alone.")
-        return
-    lid = (reg.get(season) or {}).get("league_id")
-    if not lid:
-        print("No Sleeper league id for this season yet: nothing to value.")
-        return
-
     index = fetch_index()
     now = datetime.now(timezone.utc)
     os.makedirs(MARKET, exist_ok=True)
     with open(os.path.join(MARKET, "fantasycalc.json"), "w", encoding="utf-8") as f:
         json.dump({"source": "FantasyCalc", "url": "https://www.fantasycalc.com", "format": FORMAT,
                    "fetched_at": now.isoformat(timespec="seconds"), "count": len(index), "values": index}, f, separators=(",", ":"))
-    print(f"FantasyCalc: {len(index)} values")
+    mk.save_snapshot(index, now.date().isoformat())   # dated copy: the ledger values trades and picks "as of" a date from these
+    print(f"FantasyCalc: {len(index)} values, snapshot {now.date().isoformat()} saved")
+
+    reg = ss.load()
+    season = ss.active(reg)
+    if not season or ss.is_closed(reg.get(season)):
+        print("Season closed or missing: index and snapshot saved, portfolios left alone.")
+        return
+    lid = (reg.get(season) or {}).get("league_id")
+    if not lid:
+        print("No Sleeper league id for this season yet: nothing to value.")
+        return
 
     by_sid = {str(v["sleeper_id"]): v for v in index if v.get("sleeper_id")}
     book = PickBook(index)

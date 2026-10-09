@@ -50,3 +50,12 @@
 .lg-ctl select option{background:#111a30;color:#eef3ff}
 #dgn{margin:.2rem 0 1rem}
 details.yr>.lg-cards{margin-bottom:1.2rem}
+
+/* FantasyCalc values on trades and picks */
+.tx-card .val{font-size:.88rem;margin:.45rem 0 0;font-variant-numeric:tabular-nums}.tx-card .val b{color:var(--gold,#e6b94a)}
+.tx-card .val em{font-style:normal;font-weight:700}.tx-card .val em.up{color:var(--hit)}.tx-card .val em.dn{color:var(--bust)}
+.tx-card .valdet summary{cursor:pointer;font-size:.8rem;opacity:.75;margin-top:.2rem}.tx-card .valdet small{display:block;font-size:.8rem;opacity:.8;margin-top:.2rem;line-height:1.5}
+.tx-card .edge{margin:.7rem 0 0;padding-top:.5rem;border-top:1px dashed rgba(255,255,255,.15);font-size:.85rem}
+abbr[title]{text-decoration:none;cursor:help;color:var(--gold,#e6b94a)}
+.lg-panel .legend{margin:.4rem 0 1rem;border:1px solid rgba(255,255,255,.14);border-radius:8px}.lg-panel .legend summary{cursor:pointer;padding:.55rem .9rem;font:600 .9rem Oswald,sans-serif;text-transform:uppercase;letter-spacing:.05em}
+.lg-panel .legend p{margin:0;padding:0 .9rem .8rem;font-size:.88rem;opacity:.85}

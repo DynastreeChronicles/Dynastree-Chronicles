@@ -67,7 +67,8 @@ data/ + data/bios/                   --scripts/build_managers.py--> managers/ind
 FantasyCalc API + Sleeper rosters   --scripts/pull_values.py--> data/market/fantasycalc.json + data/<season>/portfolio.json   market values, manager portfolios (read by build_managers.py and make_brief.py)
 all seasons + data/history.json      --scripts/build_history.py--> history/index.html
 Sleeper stats + projections         --scripts/pull_player_stats.py--> data/stats/<season>.json
-draft + stats + data/ledger.json    --scripts/build_ledger.py (+ pick_grades.py)--> ledger/index.html   pick grades at 12/24/36 months
+snapshots + trades + drafts + stats --scripts/ledger_values.py--> data/market/ledger_values.json   FantasyCalc value of every trade and pick, then and now
+ledger_values.json + data/ledger.json --scripts/build_ledger.py (+ pick_grades.py)--> ledger/index.html   trade values and value-based pick verdicts
 issue JSON (receipts, rulings)      --scripts/build_receipts.py, build_history.py (via auto_data.py)--> receipts/ and history/
 all of the above                     --scripts/make_brief.py--> data/brief.json   (the one file shared with Claude)
 chat log + master state + brief.json --Claude--> data/issues/<season>/issue-NN.json (incl. rulings + receipts) + data/issues.json + fut_cap + bios   all words
@@ -111,6 +112,8 @@ data/
                                     schedule, draft, fut_cap, weeks/week-NN.json
   stats/<season>.json               NFL stats used for auto-grading draft picks
   market/fantasycalc.json           live FantasyCalc value index, top 1,000 players and picks
+  market/snapshots/<date>.json      one FantasyCalc snapshot per pull (what values are looked up from, as of a date)
+  market/ledger_values.json         FantasyCalc value of every trade and draft pick (written by ledger_values.py)
   <season>/portfolio.json           manager portfolios, crash flags and value history (inside each season folder)
 scripts/                            the build (section 5)
   templates/issue.html              the shell every issue page is built from
@@ -145,10 +148,11 @@ The zip you share with Claude can leave out `assets/`; Claude never needs the im
 5. `build_managers.py` (manager pages)
 6. `build_history.py` (Hall of Fame)
 7. `pull_player_stats.py` (allowed to fail without failing the run)
-8. `build_ledger.py` (ledger)
-9. `build_receipts.py` (receipts)
-10. `make_brief.py` (the one-file brief)
-11. Commit `data/`, `index.html`, `issues/`, `managers/`, `history/`, `ledger/`, `receipts/` and `assets/avatars/` as `dynastree-bot`, then push.
+8. `ledger_values.py` (FantasyCalc values for trades and picks; allowed to fail without failing the run)
+9. `build_ledger.py` (ledger)
+10. `build_receipts.py` (receipts)
+11. `make_brief.py` (the one-file brief)
+12. Commit `data/`, `index.html`, `issues/`, `managers/`, `history/`, `ledger/`, `receipts/` and `assets/avatars/` as `dynastree-bot`, then push.
 
 **One run at a time.** The workflow has a `concurrency` group, so overlapping triggers queue instead of racing. If you upload files while the Tuesday run is mid-build, your upload's run waits its turn and then rebuilds with your files. A queued or "pending" run is normal, not an error. The commit step also pulls and retries the push up to three times, so a late upload cannot make the bot's push fail on its own. A push made by the bot does not trigger another run, so there is no loop.
 
@@ -170,12 +174,14 @@ All scripts run from the repo root, in the order below, and read only from `data
 | `build_history.py` | every season, `result.json`, `data/history.json`, `data/settings.json`, issue `rulings` | `history/index.html` | Permanent; never resets. |
 | `trophies.py` | (library) | none | The single place that says which trophy means what. |
 | `pull_player_stats.py` | Sleeper stats and projections | `data/stats/<season>.json` | Points, games, position rank and Sleeper's projected points for every drafted player. Network trouble, or no projections, is a warning. |
-| `build_ledger.py` | draft, draft_meta, stats, `data/ledger.json`, issue JSON | `ledger/index.html` | Grades picks at 12/24/36 months through `pick_grades.py`. |
+| `ledger_values.py` | `data/market/snapshots/`, every season's transactions, draft, draft_meta, stats (final flag only), `data/ledger.json` | `data/market/ledger_values.json` | Values every trade (at the trade and latest) and every pick (at the pick and at each locked review point). See "Ledger values" below. |
+| `market.py` | (library) | none | FantasyCalc helpers: name keys, pick parsing and valuation, dated snapshots, the as-of-a-date lookup. |
+| `build_ledger.py` | draft, draft_meta, stats, `ledger_values.json`, `data/ledger.json`, issue JSON | `ledger/index.html` | Shows trade values and grades picks by FantasyCalc value through `pick_grades.py`. |
 | `build_receipts.py` | issue JSON (`receipts`, `rulings`), `data/history.json`, `data/receipts.json` | `receipts/index.html` | |
 | `make_brief.py` | everything above | `data/brief.json` | Adds no new facts; gathers and summarises, including `predictions_to_rule`, `season_end` and `market_portfolios`. |
 | `auto_data.py` | issue JSON | (library) | Merges each issue's `rulings` and `receipts` into History and Receipts. |
 | `season_events.py` | Sleeper JSON | (library) | Reads a finished draft and a decided championship; no network, testable offline. |
-| `pick_grades.py` | stats, draft dates | (library) | The 12/24/36-month pick grading rules. |
+| `pick_grades.py` | `ledger_values.json` rows | (library) | The value-based pick grading rules (`grade_pick_value`); the older production-based grader stays in the file for reference only. |
 
 ### Market values and portfolios
 
@@ -187,6 +193,16 @@ All scripts run from the repo root, in the order below, and read only from `data
 * **Status flags.** `crash` when the 30-day market move is -5% or worse, or 25% or more of the portfolio is sidelined. `correction` at -2.5%, `bull` at +5%, otherwise `stable`. Change the thresholds in the constants at the top of `pull_values.py`, and the headline wording in the `STATUS` table in `build_managers.py`.
 * **Where it shows.** A "Portfolio value" section on every manager page (chart, position split, biggest holdings) and a ranked "The Market" section on the home page (between Transactions and Rules, with its own item in the top nav and a collapsible legend that explains the columns and the status flags). Both portfolio legends are collapsible. Both disappear quietly if `portfolio.json` is missing. `brief.json` gets `market_portfolios` for the next issue.
 * **Credit.** The page links to FantasyCalc as the source.
+
+### Ledger values (trades and pick verdicts)
+
+FantasyCalc only serves current values, so `pull_values.py` also saves a dated snapshot on every run (`data/market/snapshots/YYYY-MM-DD.json`, about 30 KB each; a second run the same day replaces that day's file, and it keeps saving after a season closes). `ledger_values.py` looks values up "as of" a date from those snapshots.
+
+* **As-of lookups.** A real snapshot within 3 days of the event counts as exact. Before the first snapshot there is nothing to read, so the lookup builds an estimate from the first snapshot's own 30-day trend (value minus trend is roughly the value 30 days earlier). Anything older than that uses the nearest value on file. The pages mark anything that is not exact with a `~`. This assumes FantasyCalc's `trend30Day` is the 30-day change in value.
+* **Trades.** For each side, the combined value of what it received at the time of the trade and in the latest pull, a per-asset breakdown, and a one-line value edge (who came out ahead then, who is ahead now). FAAB has no value. Picks inside trades use the tier of the original owner's draft slot, as on the manager pages.
+* **Pick verdicts.** `ratio = value at the review point / max(value at pick, floor)`. A hit is at or above `grading.value.over` (1.15), a bust at or below `grading.value.under` (0.70), otherwise mid. Picks after `late_round` cannot be busts. The floor (500) stops a near-zero pick from looking like a miracle. All three numbers are in `data/ledger.json` under `grading.value`. `grading.hit` now only lists which positions are graded (QB, RB, WR, TE).
+* **Review points.** A rookie draft gets three verdicts, one per season (pick year, +1, +2). Each is judged once its NFL season is final (the `final` flag in `data/stats/<season>.json`) and is then locked in `ledger_values.json`, so later market swings never change it. The 2026 startup draft gets one verdict, locked when the 2026 season is final, filed in Volume 2 Issue 1. A hand verdict in `ledger.json` still overrides.
+* **Honest limits.** Early on, every trade and the startup draft pre-date the first snapshot, so they show estimated values (~). A trend-based estimate only reaches about 30 days back; older events show the nearest value on file.
 
 Every script has a docstring at the top that says what it does, what it reads, and where it writes.
 
@@ -380,6 +396,7 @@ python scripts/build_site.py
 python scripts/build_managers.py
 python scripts/build_history.py
 python scripts/pull_player_stats.py
+python scripts/ledger_values.py
 python scripts/build_ledger.py
 python scripts/build_receipts.py
 python scripts/make_brief.py
@@ -404,6 +421,7 @@ Open the **Actions** tab, click the latest "Update league data" run, and read th
 * **Handle typo:** the build prints `issue-NN.json names 'X', who is not in the league data`. Use the exact handle.
 * **Numbers look wrong:** the data is stale. Run the Action by hand and check `data_pulled_at` in `data/brief.json`. Never patch a number into prose.
 * **A manager page is missing or wrong:** read the "Build manager pages" step. It needs `scripts/build_managers.py`, `css/managers.css` and `data/managers.json`.
+* **Ledger shows no values, or every value has a ~:** read the "Value trades and picks with FantasyCalc" step. It needs at least one file in `data/market/snapshots/`; a `~` is normal for events before the first snapshot.
 * **Portfolio section or market table missing:** read the "Pull FantasyCalc values and build portfolios" step. It can warn and still pass; the pages show nothing until `data/<season>/portfolio.json` exists. A "Picks with no FantasyCalc value" warning means FantasyCalc has no value for that pick (or renamed it); check `parse_pick`.
 * **Style changes:** `css/dynastree.css` (site and issues) or the page's own stylesheet (`css/managers.css`, `history.css`, `ledger.css`, `receipts.css`).
 * **Push failed in the Commit step:** it retries three times. If it still fails, run the Action again by hand.

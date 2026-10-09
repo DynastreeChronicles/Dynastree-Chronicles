@@ -14,6 +14,7 @@ R = "../"
 GR = {"hit": ("Hit", "v-hit"), "mid": ("Mid-tier", "v-mid"), "bust": ("Bust", "v-bust")}
 NOTES = []
 STATS = {}
+LV = {}   # data/market/ledger_values.json: FantasyCalc values for trades and picks (scripts/ledger_values.py)
 
 def norm(n):
     return " ".join(re.sub(r"\b(jr|sr|ii|iii|iv|v)\b", "", re.sub(r"[^a-z ]", "", n.lower().replace("-", " "))).split())
@@ -21,25 +22,33 @@ def norm(n):
 TODAY = datetime.date.today()
 
 def grade_pick(y, p, L):
-    """Automatic verdict for one pick, judged after each season ends (see scripts/pick_grades.py). The 2026 startup draft gets one season-long evaluation; rookie drafts get 1, 2 and 3 season evaluations."""
+    """Automatic verdict for one pick from FantasyCalc market value (see scripts/pick_grades.py): the value at the time of the pick against
+    the value at the end of each season. The 2026 startup draft gets one season-long evaluation; rookie drafts get 1, 2 and 3 season evaluations."""
     n = 1 if startup(y, L) else None
-    return pg.grade_pick(y, p, L.get("grading", {}), STATS, norm(p["name"]) + "|" + p["pos"], n)
+    return pg.grade_pick_value(p, L.get("grading", {}), (LV.get("picks") or {}).get(f'{y}:{p["r"]}.{p["s"]:02d}'), n)
+
+def tilde(how):
+    return '' if how in (None, "snapshot") else ' <abbr title="Estimated: FantasyCalc keeps no history, so this uses the nearest value on file or its 30-day trend">~</abbr>'
 
 def startup(y, L):
     return bool(((L.get("drafts") or {}).get(str(y)) or {}).get("startup"))
 
-def trail_html(p, au, su=False):
-    """One small line per evaluation: '1-season: WR14 (118% of projection) dot'. The startup draft has a single season-long evaluation."""
-    bits = []
+def trail_html(p, au, su=False, y=None):
+    """The value story, one line per review point. The first line is the value at the time of the pick. Each later line is that
+    season's own verdict: '1-season: Hit, 3,200 to 4,100 (+28%)'. The startup draft has a single season-long evaluation."""
+    if au["at"] is None:
+        return ""
+    bits = [f'Value at pick: {au["at"]:,}{tilde(au["at_how"])}']
     for cp in au["cps"]:
-        r = f'{p["pos"]}{cp["posrank"] or "-"}'
-        lab = "Season-long" if su else f'{cp["k"]}-season'
+        lab = f'Season-long ({cp["season"]})' if su else f'{cp["k"]}-season ({cp["season"]})'
+        pct = f' ({cp["pct"]:+d}%)' if cp["pct"] is not None else ""
+        rk = (STATS.get(str(cp["season"]), {}).get("players") or {}).get(norm(p["name"]) + "|" + p["pos"], {}).get("posrank")
+        rk = f' &middot; {p["pos"]}{rk}' if rk else ""
         if cp["state"] == "graded":
-            ratio = f' ({round(cp["ratio"] * 100)}% of projection)' if cp["ratio"] else ""
-            bits.append(f'{lab}: {r}{ratio} <span class="dot {GR[cp["grade"]][1]}"></span>')
+            bits.append(f'{lab}: <b>{GR[cp["grade"]][0]}</b>, {au["at"]:,} &rarr; {cp["value"]:,}{pct}{rk} <span class="dot {GR[cp["grade"]][1]}"></span>')
         else:
-            bits.append(f'{lab}: {r} (season in progress) <span class="dot v-pend"></span>')
-    return " &middot; ".join(bits)
+            bits.append(f'{lab}: season in progress, {cp["value"]:,} now{pct}{rk} <span class="dot v-pend"></span>')
+    return "<br>".join(bits)
 
 def ml(m):
     return f'<a class="ml" href="{R}managers/{esc(m.lower())}/">{esc(m)}</a>'
@@ -68,7 +77,7 @@ def draft_panel(L):
             g = v.get("grade") if v.get("grade") in GR else au["grade"]
             lab, cls = GR.get(g, ("Too early", "v-pend"))
             if g and not v.get("grade"): lab += " (final)" if au["final"] else " (so far)"
-            trail = trail_html(p, au, su)
+            trail = trail_html(p, au, su, y)
             t = tally.setdefault(p["m"], {"hit": 0, "mid": 0, "bust": 0})
             if g: t[g] += 1
             note = (f'<small>{esc(v["note"])}</small>' if v.get("note") else "") + (f'<small>{trail}</small>' if trail else "")
@@ -79,9 +88,9 @@ def draft_panel(L):
         vol = ss.volume(y, reg) if y in reg else None
         if su:
             nxt = f"Volume {vol + 1}, Issue 1" if vol else "the next volume's Issue 1"
-            ev = f"Startup draft: one season-long evaluation, made after the season ends and filed in {nxt}."
+            ev = f"Startup draft: one season-long verdict, comparing each pick's FantasyCalc value at the time of the pick with its value when the season ends, filed in {nxt}."
         else:
-            ev = "Rookie draft: 1, 2 and 3 season evaluations, each made after that season ends. Each new volume's Issue 1 reviews the last three drafts."
+            ev = "Rookie draft: three verdicts, one per season. Each compares the pick's FantasyCalc value at the time of the pick with its value when that season ended. Each new volume's Issue 1 reviews the last three drafts."
         html += (f'<details class="yr dr-sec"{" open" if i == 0 else ""}><summary>{esc(label)} <small>{len(picks)} picks</small></summary><p class="lg-eval">{esc(ev)}</p>'
                  f'<div class="lg-wrap"><table class="lg-tbl"><thead><tr><th>Pick</th><th>Player</th><th>Drafted by</th><th>Verdict</th><th>Notes</th></tr></thead><tbody>{rows}</tbody></table></div></details>')
     graded = {m: t for m, t in tally.items() if sum(t.values())}
@@ -131,6 +140,25 @@ def legend(S):
     return ('<div class="lg-score"><div class="hd"><b>How the Blockbuster score works</b></div><div class="chips">'
             + "".join(f'<div class="chip"><strong>{v}</strong><small>{esc(k)}</small></div>' for k, v in chips) + '</div></div>')
 
+def value_note():
+    if not LV:
+        return ""
+    return (f'<details class="legend"><summary>How trade values are measured</summary><p>Values are <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values '
+            f'(superflex, 12 teams, full PPR). <b>At the trade</b> is the value of what each side received on the day of the deal; <b>Latest</b> is the same assets in the newest pull '
+            f'({esc(LV.get("latest_snapshot", ""))}). FantasyCalc keeps no history, so the site has saved a snapshot on every update since {esc(LV.get("first_snapshot", ""))}. '
+            f'An older trade shows a <abbr title="Estimated">~</abbr>: it uses the nearest value on file, or FantasyCalc\'s own 30-day trend to estimate the value just before the first snapshot. '
+            f'Picks use the tier (early, mid or late) of the original owner\'s draft slot. FAAB has no value here.</p></details>')
+
+def edge(tv, a, b):
+    """One line saying who came out ahead at the time of the trade and who is ahead now, from the FantasyCalc values."""
+    vs = {x["manager"]: x for x in (tv or {}).get("sides", [])}
+    if a["manager"] not in vs or b["manager"] not in vs:
+        return ""
+    def lead(k):
+        d = vs[a["manager"]][k] - vs[b["manager"]][k]
+        return "even" if abs(d) < 1 else f'{esc((a if d > 0 else b)["manager"])} +{abs(d):,}'
+    return f'<p class="edge">Value edge: at the trade {lead("then")} &middot; latest {lead("now")}</p>'
+
 def trade_panel(L):
     S, T, takes, reg = L.get("settings", {}), L.get("trades", {}), issue_takes(), ss.load()
     by = {}
@@ -156,10 +184,19 @@ def trade_panel(L):
             if take.get("ga") and take.get("gb"): grade = f' &middot; Grades: {esc(a["manager"])} {esc(take["ga"])}, {esc(b["manager"])} {esc(take["gb"])}'
             desk = f'<p class="desk">The desk: {esc(take["desk"])}</p>' if take.get("desk") else ""
         status = {"alive": "Still standing", "pending": "Verdict pending"}.get(meta.get("status"), "Verdict pending")
-        side = lambda s, o: f'<div><b>{ml(s["manager"])} gets</b><p>{esc("; ".join(assets(s)) or "nothing")}</p></div>'
+        tv = (LV.get("trades") or {}).get(str(tx["id"])) or {}
+        vs = {x["manager"]: x for x in tv.get("sides", [])}
+        def vline(s):
+            x = vs.get(s["manager"])
+            if not x: return ""
+            ch = f' <em class="{"dn" if x["now"] < x["then"] else "up"}">{(x["now"] / x["then"] - 1) * 100:+.0f}%</em>' if x["then"] else ""
+            det = " &middot; ".join(f'{esc(a["label"])} {a["then"]:,} &rarr; {a["now"]:,}' for a in x["assets"])
+            return (f'<p class="val">At the trade: <b>{x["then"]:,}</b>{tilde(tv.get("how"))} &middot; Latest: <b>{x["now"]:,}</b>{ch}</p>'
+                    + (f'<details class="valdet"><summary>Asset values</summary><small>{det}</small></details>' if det else ""))
+        side = lambda s, o: f'<div><b>{ml(s["manager"])} gets</b><p>{esc("; ".join(assets(s)) or "nothing")}</p>{vline(s)}</div>'
         card = (f'<article class="tx-card{" big" if big else ""}"><h3>{"<span class=\"tag\">Blockbuster</span>" if big else ""}{esc(a["manager"])} &harr; {esc(b["manager"])}</h3>'
                 f'<p class="meta">{esc(date)} &middot; Week {tx.get("week", "?")} &middot; Blockbuster score {sc} &middot; {status}{grade}</p>'
-                f'<div class="sides">{side(a, b)}{side(b, a)}</div>{desk}</article>')
+                f'<div class="sides">{side(a, b)}{side(b, a)}</div>{edge(tv, a, b)}{desk}</article>')
         return card, obit
     def year_block(y, inner, n, noun, first):
         vol = ss.volume(y, reg)
@@ -175,7 +212,7 @@ def trade_panel(L):
         if ob:
             obits += year_block(y, "".join(ob), len(ob), "obituar" + ("y" if len(ob) == 1 else "ies"), first_o); first_o = False
     cem = obits or '<p class="lg-empty">The cemetery is empty. For now. Obituaries get filed once a trade has clearly gone wrong.</p>'
-    return (legend(S) + '<h3 class="sub">Every trade, biggest first</h3>' + trades + '<h3 class="sub">Obituaries</h3>' + cem)
+    return (legend(S) + value_note() + '<h3 class="sub">Every trade, biggest first</h3>' + trades + '<h3 class="sub">Obituaries</h3>' + cem)
 
 # ------------------------------------------------------------------ page
 JS = '''<script>(function(){var t=document.querySelectorAll('.lg-tabs button'),p=document.querySelectorAll('.lg-panel');
@@ -209,6 +246,7 @@ def build():
     L = jload("data/ledger.json", {}) or {}
     for f in glob.glob(os.path.join(ROOT, "data", "stats", "*.json")):
         STATS[os.path.basename(f)[:-5]] = json.load(open(f, encoding="utf-8"))
+    LV.update(jload("data/market/ledger_values.json", {}) or {})
     hero = ('<section class="hf-hero"><small>Receipts on file</small><h2>Draft <i>&amp;</i> Trade Ledger</h2>'
             '<p>In dynasty, draft capital is everything. See how every pick aged and which trades deserve a eulogy.</p></section>')
     body = (hero + '<div class="lg-tabs" role="tablist"><button data-t="trades" role="tab">The Blockbuster Registry</button><button data-t="drafts" role="tab">All-Time Draft History</button></div>'
