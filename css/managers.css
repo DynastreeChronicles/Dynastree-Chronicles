@@ -80,3 +80,4 @@
 .ptab{width:100%;margin-top:1rem;border-collapse:collapse;font-variant-numeric:tabular-nums}.ptab caption{text-align:left;color:var(--mute);font-size:.85rem;padding-bottom:.3rem}
 .ptab th,.ptab td{padding:.3rem .5rem;border-bottom:1px solid var(--line);text-align:left}.ptab td:nth-child(n+3),.ptab th:nth-child(n+3){text-align:right}
 .ptab .up{color:var(--green)}.ptab .dn{color:var(--red)}.ptab em.out{margin-left:.4rem;padding:0 .35rem;border-radius:2px;font-size:.75rem;font-style:normal;background:var(--red);color:#1b0505}
+.ptab em.via{margin-left:.4rem;font-size:.8rem;font-style:normal;color:var(--mute)}

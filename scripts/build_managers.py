@@ -212,16 +212,25 @@ def portfolio_block(m, r):
         tag = f' <em class="out">{esc(a["status"] or "OUT")}</em>' if a["sidelined"] else ""
         return f'<tr><td>{esc(a["name"])}{tag}</td><td>{esc(a["pos"])}</td><td>{a["value"]:,}</td><td class="{"dn" if a["trend30"] < 0 else "up"}">{a["trend30"]:+,}</td></tr>'
     top = "".join(row(a) for a in t["top"])
+    pl = [x for x in t.get("pick_list", []) if x["value"] > 0]
+    shown, rest = pl[:8], pl[8:]
+    def prow_one(x):
+        via = f' <em class="via">via {esc(x["via"])}</em>' if x.get("via") else ""
+        return (f'<tr><td>{esc(x["label"])}{via}</td><td>{x["value"]:,}</td>'
+                f'<td class="{"dn" if x["trend30"] < 0 else "up"}">{x["trend30"]:+,}</td></tr>')
+    prow = "".join(prow_one(x) for x in shown)
+    more = f'<tr><td colspan="3" class="key">plus {len(rest)} more picks worth {sum(x["value"] for x in rest):,}</td></tr>' if rest else ""
+    picks_tab = (f'<table class="ptab"><caption>Draft picks owned</caption><thead><tr><th>Pick</th><th>Value</th><th>30d</th></tr></thead><tbody>{prow}{more}</tbody></table>' if pl else "")
     return (f'<h2 class="sec" id="portfolio">Portfolio value</h2><section class="port {t["status"]}"><p class="pflag"><b>{badge}</b> {esc(head.format(m=m))}</p>'
             f'<div class="mstats">{tiles}</div>{history_chart(m)}<div class="pbar">{bar}</div><p class="pkey">{key}</p>'
-            f'<table class="ptab"><caption>Biggest holdings</caption><thead><tr><th>Asset</th><th>Pos</th><th>Value</th><th>30d</th></tr></thead><tbody>{top}</tbody></table>'
+            f'<table class="ptab"><caption>Biggest holdings</caption><thead><tr><th>Asset</th><th>Pos</th><th>Value</th><th>30d</th></tr></thead><tbody>{top}</tbody></table>{picks_tab}'
             f'<details class="legend"><summary>Legend: what these numbers mean</summary>'
             f'<p>Values: <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values, superflex, 12 teams, full PPR.</p>'
             f'<dl><dt>Portfolio value</dt><dd>The combined FantasyCalc value of every player on the roster plus every future pick owned. Players outside FantasyCalc\'s top 1,000 count as zero.</dd>'
             f'<dt>League rank</dt><dd>Where this portfolio sits among all 12, highest value first.</dd>'
             f'<dt>30-day market move</dt><dd>How much the market moved the value of the players and picks held right now over the last 30 days, in points and percent. Trades do not change it.</dd>'
             f'<dt>On IR or out</dt><dd>Value sitting on players who are on IR or listed Out, PUP, Doubtful or Suspended, and the share of the portfolio that is.</dd>'
-            f'<dt>Draft capital</dt><dd>The combined value of the future picks this manager owns after trades. Every pick is valued as a mid pick of its round.</dd>'
+            f'<dt>Draft capital</dt><dd>The combined value of the future picks this manager owns after trades. Picks use FantasyCalc\'s own pick values. For the next draft the tier (early, mid or late) comes from the original owner\'s current draft slot.</dd>'
             f'<dt>League average</dt><dd>The average portfolio value across all 12 managers.</dd>'
             f'<dt>Status flag</dt><dd>{STATUS_RULE}</dd></dl></details></section>')
 
