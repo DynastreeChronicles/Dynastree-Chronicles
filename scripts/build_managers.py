@@ -20,7 +20,7 @@ def shell(title, desc, body, r, sub, path=""):
 <link rel="icon" type="image/png" sizes="32x32" href="{r}assets/favicon-32.png"><link rel="apple-touch-icon" href="{r}assets/apple-touch-icon.png"></head><body>
 <a class="skip" href="#main">Skip to main content</a>
 <header class="mast"><div class="wrap"><img src="{r}assets/crest-mark.webp" alt="Dynastree Chronicles crest" width="79" height="96"><div><h1><a href="{r}">Dynastree <span>Chronicles</span></a></h1><p>{esc(sub)}</p></div></div></header>
-<nav class="sticky"><div class="wrap"><a href="{r}#archive">Issues</a><button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button><a href="{r}#standings">Standings</a><a href="{r}#transactions">Transactions</a><a href="{r}#rules">Rules</a><a href="{r}#scoring">Scoring</a></div><div class="ddm" id="vault" hidden><a href="{r}managers/"><b>Managers</b><small>Meet the suspects</small></a><a href="{r}history/"><b>History</b><small>Hall of Fame &amp; records</small></a><a href="{r}ledger/"><b>Ledger</b><small>Drafts &amp; blockbusters</small></a><a href="{r}receipts/"><b>Receipts</b><small>Hot takes on file</small></a></div></nav>
+<nav class="sticky"><div class="wrap"><a href="{r}#archive">Issues</a><button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button><a href="{r}#standings">Standings</a><a href="{r}#transactions">Transactions</a><a href="{r}#market">The Market</a><a href="{r}#rules">Rules</a><a href="{r}#scoring">Scoring</a></div><div class="ddm" id="vault" hidden><a href="{r}managers/"><b>Managers</b><small>Meet the suspects</small></a><a href="{r}history/"><b>History</b><small>Hall of Fame &amp; records</small></a><a href="{r}ledger/"><b>Ledger</b><small>Drafts &amp; blockbusters</small></a><a href="{r}receipts/"><b>Receipts</b><small>Hot takes on file</small></a></div></nav>
 <main class="wrap" id="main" tabindex="-1">{body}</main>
 <footer><div class="wrap"><img class="tree wm" src="{r}assets/logo-dynastree-chronicles.webp" alt="Dynastree Chronicles" width="180" height="69" loading="lazy"><p>Time heals all wounds, but screenshots last forever.</p></div></footer><script src="{r}js/nav.js"></script></body></html>'''
 
@@ -171,6 +171,8 @@ def load_trophy_case():
 
 PORTFOLIO = {}   # data/<display season>/portfolio.json, filled once in main (empty = no portfolio block anywhere)
 
+STATUS_RULE = ("Market crash: the 30-day market move is -5% or worse, or 25% or more of the value is on IR or out. Correction: down 2.5% or more. "
+               "Bull run: up 5% or more. Stable: anything else.")
 STATUS = {   # status -> (badge, headline). {m} is the manager handle; swap the wording freely, the logic lives in pull_values.py
     "crash": ("Market crash", "Market Crash: {m} is bleeding capital."),
     "correction": ("Correction", "Correction: {m}'s portfolio is down. Nobody has panicked yet."),
@@ -183,8 +185,7 @@ def history_chart(m):
     """Inline SVG line chart of this manager's portfolio value, one point per pull. Needs two points to draw a line."""
     pts = [(h["date"], h["totals"][m]) for h in PORTFOLIO.get("history", []) if m in h.get("totals", {})]
     if len(pts) < 2:
-        d = pts[0][0] if pts else "the first pull"
-        return f'<p class="key">Value history starts {esc(d)}. The line draws itself after the next update.</p>'
+        return ""   # the line appears once there are two snapshots
     W, H, P = 640, 150, 14
     lo, hi = min(v for _, v in pts), max(v for _, v in pts); span = (hi - lo) or 1
     xy = [(P + i * (W - 2 * P) / (len(pts) - 1), H - P - (v - lo) * (H - 2 * P) / span) for i, (_, v) in enumerate(pts)]
@@ -214,8 +215,15 @@ def portfolio_block(m, r):
     return (f'<h2 class="sec" id="portfolio">Portfolio value</h2><section class="port {t["status"]}"><p class="pflag"><b>{badge}</b> {esc(head.format(m=m))}</p>'
             f'<div class="mstats">{tiles}</div>{history_chart(m)}<div class="pbar">{bar}</div><p class="pkey">{key}</p>'
             f'<table class="ptab"><caption>Biggest holdings</caption><thead><tr><th>Asset</th><th>Pos</th><th>Value</th><th>30d</th></tr></thead><tbody>{top}</tbody></table>'
-            f'<p class="key">Values: <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values, superflex, 12 teams, full PPR. '
-            f'The 30-day move tracks the players you hold now, so trades do not move it. Updated {esc((PORTFOLIO.get("generated_at") or "")[:10])}.</p></section>')
+            f'<details class="legend"><summary>Legend: what these numbers mean</summary>'
+            f'<p>Values: <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values, superflex, 12 teams, full PPR.</p>'
+            f'<dl><dt>Portfolio value</dt><dd>The combined FantasyCalc value of every player on the roster plus every future pick owned. Players outside FantasyCalc\'s top 1,000 count as zero.</dd>'
+            f'<dt>League rank</dt><dd>Where this portfolio sits among all 12, highest value first.</dd>'
+            f'<dt>30-day market move</dt><dd>How much the market moved the value of the players and picks held right now over the last 30 days, in points and percent. Trades do not change it.</dd>'
+            f'<dt>On IR or out</dt><dd>Value sitting on players who are on IR or listed Out, PUP, Doubtful or Suspended, and the share of the portfolio that is.</dd>'
+            f'<dt>Draft capital</dt><dd>The combined value of the future picks this manager owns after trades. Every pick is valued as a mid pick of its round.</dd>'
+            f'<dt>League average</dt><dd>The average portfolio value across all 12 managers.</dd>'
+            f'<dt>Status flag</dt><dd>{STATUS_RULE}</dd></dl></details></section>')
 
 def trophy_case(m, r):
     """A manager's trophy case: only trophies they have actually won. Empty (no section at all) until the first one lands."""
@@ -273,7 +281,7 @@ def manager_page(m, names, years, display, active):
     body = f'''<p class="crumb"><a href="../">All managers</a></p>
 <section class="mhero"><div class="mid">{av(m, 120, r)}<div><h2>{esc(m)}</h2>{f'<p class="tn">{esc(team)}</p>' if team else ""}{former}{status}{f'<p class="tag">{esc(bio["tagline"])}</p>' if bio.get("tagline") else ""}</div></div>
 {hero_stats}</section>
-{trophy_case(m, r)}{portfolio_block(m, r)}{deskfile}<h2 class="sec" id="archive">The season archive</h2><div class="yrs">{"".join(blocks)}</div>
+{trophy_case(m, r)}{deskfile}{portfolio_block(m, r)}<h2 class="sec" id="archive">The season archive</h2><div class="yrs">{"".join(blocks)}</div>
 {nav}'''
     return shell(m, f"{m}: biography, record, transactions and desk quotes.", body, r, f"Manager file: {m}", f"managers/{slug(m)}/")
 
@@ -282,24 +290,34 @@ def blurb(t, n=120):
     if len(t) <= n: return t
     return t[:n].rsplit(" ", 1)[0].rstrip(",;: ") + "..."
 
-def market_board():
-    """League-wide portfolio leaderboard for the managers hub. Empty string until the first FantasyCalc pull has run."""
+def market_board(prefix=""):
+    """"The market" table for the home page: every portfolio ranked, with a collapsible legend. `prefix` is the path back to the site root."""
     teams = PORTFOLIO.get("teams")
     if not teams:
-        return ""
-    ranked = sorted(teams, key=lambda m: teams[m]["rank"]); top = max(t["total"] for t in teams.values()) or 1
+        return '<p class="key">Market values appear after the next data update.</p>'
+    th = PORTFOLIO.get("thresholds") or {}
+    ranked = sorted(teams, key=lambda m: teams[m]["rank"])
+    hi = max(t["total"] for t in teams.values()); lo = min(t["total"] for t in teams.values()); span = (hi - lo) or 1
     rows = []
     for m in ranked:
-        t = teams[m]; badge = STATUS[t["status"]][0]
-        rows.append(f'<tr class="{t["status"]}"><td>{t["rank"]}</td><td><a href="{slug(m)}/#portfolio">{esc(m)}</a></td>'
-                    f'<td class="bar"><span style="width:{100 * t["total"] / top:.1f}%"></span><b>{t["total"]:,}</b></td>'
-                    f'<td class="{"dn" if t["move30"] < 0 else "up"}">{t["move30_pct"]:+.1f}%</td><td>{t["sidelined_pct"]:.0f}%</td><td><em class="st {t["status"]}">{badge}</em></td></tr>')
-    crash = [m for m in ranked if teams[m]["status"] == "crash"]
-    watch = (f'<p class="pflag watch"><b>Crash watch</b> {", ".join(f"<a href=\"{slug(m)}/#portfolio\">{esc(m)}</a>" for m in crash)} '
-             f'{"is" if len(crash) == 1 else "are"} bleeding capital.</p>') if crash else '<p class="key">No managers are in a market crash right now.</p>'
-    return (f'<h2 class="sec" id="market">The market</h2><p class="key">Every roster and pick, valued by FantasyCalc dynasty trade values. '
-            f'Updated {esc((PORTFOLIO.get("generated_at") or "")[:10])}.</p>{watch}'
-            f'<div class="tw2"><table class="mkt"><thead><tr><th>#</th><th>Manager</th><th>Portfolio value</th><th>30d move</th><th>On IR</th><th>Status</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>')
+        t = teams[m]; badge = STATUS[t["status"]][0]; w = 14 + 86 * (t["total"] - lo) / span
+        rows.append(f'<tr><td class="rk">{t["rank"]}</td><td><a class="mn" href="{prefix}managers/{slug(m)}/#portfolio">{esc(m)}</a></td>'
+                    f'<td><div class="vcell"><b>{t["total"]:,}</b><span class="vtrack"><i class="{t["status"]}" style="width:{w:.1f}%"></i></span></div></td>'
+                    f'<td class="{"dn" if t["move30"] < 0 else "up"}">{t["move30_pct"]:+.1f}%</td><td>{t["sidelined_pct"]:.0f}%</td>'
+                    f'<td><em class="st {t["status"]}">{badge}</em></td></tr>')
+    crash, corr, bull = th.get("crash_move_pct", -5.0), th.get("correction_move_pct", -2.5), th.get("bull_move_pct", 5.0)
+    side = th.get("crash_sidelined_pct", 25.0)
+    legend = (f'<details class="legend"><summary>Legend: what the columns mean</summary>'
+              f'<p>Every roster and pick, valued by <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values. Updated {esc((PORTFOLIO.get("generated_at") or "")[:10])}.</p>'
+              f'<dl><dt>#</dt><dd>Rank by portfolio value, highest first.</dd>'
+              f'<dt>Manager</dt><dd>Click a name for that manager\'s portfolio.</dd>'
+              f'<dt>Portfolio value</dt><dd>The combined value of every player and future pick the manager owns. The bar compares managers with each other (shortest to longest), not against zero.</dd>'
+              f'<dt>30d move</dt><dd>How much the market moved the value of the players and picks held right now over the last 30 days. Trades do not change it.</dd>'
+              f'<dt>On IR</dt><dd>The share of the portfolio value sitting on players who are on IR or listed Out, PUP, Doubtful or Suspended.</dd>'
+              f'<dt>Status</dt><dd><b>Market crash</b>: the 30-day move is {crash:+g}% or worse, or {side:g}% or more of the value is on IR or out. '
+              f'<b>Correction</b>: down {abs(corr):g}% or more. <b>Bull run</b>: up {bull:g}% or more. <b>Stable</b>: anything else.</dd></dl></details>')
+    return (f'<div class="tw2"><table class="mkt"><thead><tr><th>#</th><th>Manager</th><th>Portfolio value</th><th>30d move</th><th>On IR</th><th>Status</th></tr></thead>'
+            f'<tbody>{"".join(rows)}</tbody></table></div>{legend}')
 
 def hub(rows, quotes, moves, active, alumni):
     """rows: the display season's standings. alumni: [(manager, last season)] for people with no row in it."""
@@ -316,7 +334,7 @@ def hub(rows, quotes, moves, active, alumni):
     groups = [("The podium", "Top three right now.", [card(r) for r in rows[:3]]), ("The middle", "Everyone still arguing about the playoffs.", [card(r) for r in rows[3:-2]]), ("The danger zone", "Bottom two. Draft position is the consolation.", [card(r) for r in rows[-2:]])]
     if alumni:
         groups.append(("Alumni", "No longer in the league. The files stay.", [card(r, f"<b>{y}</b>", y) for r, y in alumni]))
-    body = market_board() + "".join(
+    body = "".join(
         f'<h2 class="sec">{t}</h2><p class="key">{d}</p><div class="mgrid">{"".join(g)}</div>' for t, d, g in groups if g)
     return shell("Managers", "Every manager in the Dynastree league.", body, "../", "The league files", "managers/")
 
@@ -324,6 +342,7 @@ if __name__ == "__main__":
     display = bs.display_season(); bs.use(display)
     TROPHY_CASE.update(load_trophy_case()); bs.use(display)
     PORTFOLIO.update(jload(f"data/{display}/portfolio.json", {}) or {})
+    bs.inject("index.html", "MARKET", market_board())   # home page section between Transactions and Rules
     rows = jload(bs.S("standings.json"), []) or []
     years = {i["no"]: i["year"] for i in bs.manifest()}
     everyone = sorted({*bs.managers(), *(r["manager"] for r in rows)}, key=str.lower)

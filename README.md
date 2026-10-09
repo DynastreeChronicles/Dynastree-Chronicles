@@ -49,7 +49,7 @@ Rules for keeping them in step:
 
 ## Automation at a glance
 
-* **Automatic on every Action run:** standings, records, MAXPF, manager pages, the Hall of Fame, the Ledger and its pick grades, Receipts, drafts, the champion, closing a season, and `brief.json`.
+* **Automatic on every Action run:** standings, records, MAXPF, manager pages and their FantasyCalc portfolio values, the Hall of Fame, the Ledger and its pick grades, Receipts, drafts, the champion, closing a season, and `brief.json`.
 * **One bundle per issue (made in a Claude chat):** `issue-NN.json` (including `rulings` and `receipts`), the `data/issues.json` entry, `fut_cap.json`, and the 12 bios.
 * **Once a year:** the volume `story` in `data/history.json`, and `"season_final": true` on the season-review issue.
 * **By hand, rarely:** `data/settings.json` when league rules change, a hand verdict or trade obituary in `data/ledger.json`, a Toilet Bowl entry, and a rename the pull cannot match.
@@ -64,6 +64,7 @@ Sleeper is the single source of truth for numbers. Nothing numeric is typed by h
 Sleeper API --scripts/sleeper_pull.py--> data/<season>/*.json (+ draft.json, draft_meta.json, result.json), data/managers.json, assets/avatars/   all numbers
 data/ + data/issues/<season>/*.json  --scripts/build_site.py--> index.html + issues/<season>/issue-NN/index.html
 data/ + data/bios/                   --scripts/build_managers.py--> managers/index.html + managers/<handle>/index.html
+FantasyCalc API + Sleeper rosters   --scripts/pull_values.py--> data/market/fantasycalc.json + data/<season>/portfolio.json   market values, manager portfolios (read by build_managers.py and make_brief.py)
 all seasons + data/history.json      --scripts/build_history.py--> history/index.html
 Sleeper stats + projections         --scripts/pull_player_stats.py--> data/stats/<season>.json
 draft + stats + data/ledger.json    --scripts/build_ledger.py (+ pick_grades.py)--> ledger/index.html   pick grades at 12/24/36 months
@@ -109,6 +110,8 @@ data/
   <season>/                         one folder per season: league, standings, efficiency, transactions,
                                     schedule, draft, fut_cap, weeks/week-NN.json
   stats/<season>.json               NFL stats used for auto-grading draft picks
+  market/fantasycalc.json           live FantasyCalc value index, top 1,000 players and picks
+  <season>/portfolio.json           manager portfolios, crash flags and value history (inside each season folder)
 scripts/                            the build (section 5)
   templates/issue.html              the shell every issue page is built from
 index.html                          home page (shell + generated sections)
@@ -137,14 +140,15 @@ The zip you share with Claude can leave out `assets/`; Claude never needs the im
 
 1. Check out the repo, set up Python 3.12, `pip install pillow` (used only for avatar images).
 2. `sleeper_pull.py` (Sleeper data)
-3. `build_site.py` (home and issue pages)
-4. `build_managers.py` (manager pages)
-5. `build_history.py` (Hall of Fame)
-6. `pull_player_stats.py` (allowed to fail without failing the run)
-7. `build_ledger.py` (ledger)
-8. `build_receipts.py` (receipts)
-9. `make_brief.py` (the one-file brief)
-10. Commit `data/`, `index.html`, `issues/`, `managers/`, `history/`, `ledger/`, `receipts/` and `assets/avatars/` as `dynastree-bot`, then push.
+3. `pull_values.py` (FantasyCalc values and portfolios; allowed to fail without failing the run)
+4. `build_site.py` (home and issue pages)
+5. `build_managers.py` (manager pages)
+6. `build_history.py` (Hall of Fame)
+7. `pull_player_stats.py` (allowed to fail without failing the run)
+8. `build_ledger.py` (ledger)
+9. `build_receipts.py` (receipts)
+10. `make_brief.py` (the one-file brief)
+11. Commit `data/`, `index.html`, `issues/`, `managers/`, `history/`, `ledger/`, `receipts/` and `assets/avatars/` as `dynastree-bot`, then push.
 
 **One run at a time.** The workflow has a `concurrency` group, so overlapping triggers queue instead of racing. If you upload files while the Tuesday run is mid-build, your upload's run waits its turn and then rebuilds with your files. A queued or "pending" run is normal, not an error. The commit step also pulls and retries the push up to three times, so a late upload cannot make the bot's push fail on its own. A push made by the bot does not trigger another run, so there is no loop.
 
@@ -161,16 +165,28 @@ All scripts run from the repo root, in the order below, and read only from `data
 | `sleeper_pull.py` | Sleeper's public API | `data/<season>/*` (incl. `draft_meta.json`, `draft.json` when missing, `result.json` once the champion is decided), `data/managers.json`, `assets/avatars/*.webp`, and `data/seasons.json` when it closes a season | Finds the league by name; no league id needed. Prints the MAXPF check. Closes the season when the champion is decided and the review issue (`season_final`) exists. A missing league is a warning, not a failure. |
 | `seasons.py` | `data/seasons.json` | (library) | Season registry and paths; migrates the old flat layout once. |
 | `build_site.py` | `data/`, `scripts/templates/issue.html` | `index.html` (between its `<!--MARKER-->` comments), every `issues/<season>/issue-NN/index.html` | Prints `note (issue NN): ...` lines that flag mismatches between prose and data. |
-| `build_managers.py` | `data/`, bios, issue JSON | `managers/` | Imports `build_site.py`, so it runs after it. |
+| `pull_values.py` | FantasyCalc API, Sleeper rosters and traded picks | `data/market/fantasycalc.json`, `data/<season>/portfolio.json` | Runs right after `sleeper_pull.py`; allowed to fail without failing the run. Skips a closed season. See "Market values and portfolios" below. |
+| `build_managers.py` | `data/`, bios, issue JSON, `portfolio.json` | `managers/` | Imports `build_site.py`, so it runs after it. Draws the Portfolio value section on each page and "The market" section of the home page (`index.html`, between `<!--MARKET-->` markers). |
 | `build_history.py` | every season, `result.json`, `data/history.json`, `data/settings.json`, issue `rulings` | `history/index.html` | Permanent; never resets. |
 | `trophies.py` | (library) | none | The single place that says which trophy means what. |
 | `pull_player_stats.py` | Sleeper stats and projections | `data/stats/<season>.json` | Points, games, position rank and Sleeper's projected points for every drafted player. Network trouble, or no projections, is a warning. |
 | `build_ledger.py` | draft, draft_meta, stats, `data/ledger.json`, issue JSON | `ledger/index.html` | Grades picks at 12/24/36 months through `pick_grades.py`. |
 | `build_receipts.py` | issue JSON (`receipts`, `rulings`), `data/history.json`, `data/receipts.json` | `receipts/index.html` | |
-| `make_brief.py` | everything above | `data/brief.json` | Adds no new facts; gathers and summarises, including `predictions_to_rule` and `season_end`. |
+| `make_brief.py` | everything above | `data/brief.json` | Adds no new facts; gathers and summarises, including `predictions_to_rule`, `season_end` and `market_portfolios`. |
 | `auto_data.py` | issue JSON | (library) | Merges each issue's `rulings` and `receipts` into History and Receipts. |
 | `season_events.py` | Sleeper JSON | (library) | Reads a finished draft and a decided championship; no network, testable offline. |
 | `pick_grades.py` | stats, draft dates | (library) | The 12/24/36-month pick grading rules. |
+
+### Market values and portfolios
+
+`pull_values.py` gives every manager a portfolio value, using [FantasyCalc](https://www.fantasycalc.com) dynasty trade values (built from real trades) for this league's format: superflex, 12 teams, full PPR (the `FORMAT` constant at the top of the script).
+
+* **What it writes.** `data/market/fantasycalc.json` is the live index of the top 1,000 players and picks, overwritten every run. `data/<season>/portfolio.json` holds each manager's total, position split, top holdings, IR exposure, status flag and rank, plus a `history` of one snapshot per run (the last 120 are kept; a second run on the same day replaces that day's snapshot). A closed season is frozen.
+* **What it values.** Every rostered player matched by Sleeper id, and every future pick the manager owns after trades (Sleeper's `traded_picks`). Players outside the top 1,000 count as 0 and are tallied as `off_index`. Every pick is valued as a Mid pick of its round. If FantasyCalc renames its picks, the script prints "Picks with no FantasyCalc match" and values them 0; fix `pick_label` in the script.
+* **The two numbers behind the flag.** `move30` is the 30-day change in value of the players held now, from FantasyCalc's own trend, so trades do not move it. `sidelined` is the value sitting on IR or on players Sleeper marks Out, IR, PUP, Doubtful or Sus. FantasyCalc dynasty values react slowly to injuries, which is why IR exposure is its own number. `since_change` is the change since the last snapshot at least 5 days old and does include trades; it is empty until the second weekly run.
+* **Status flags.** `crash` when the 30-day market move is -5% or worse, or 25% or more of the portfolio is sidelined. `correction` at -2.5%, `bull` at +5%, otherwise `stable`. Change the thresholds in the constants at the top of `pull_values.py`, and the headline wording in the `STATUS` table in `build_managers.py`.
+* **Where it shows.** A "Portfolio value" section on every manager page (chart, position split, biggest holdings) and a ranked "The Market" section on the home page (between Transactions and Rules, with its own item in the top nav and a collapsible legend that explains the columns and the status flags). Both portfolio legends are collapsible. Both disappear quietly if `portfolio.json` is missing. `brief.json` gets `market_portfolios` for the next issue.
+* **Credit.** The page links to FantasyCalc as the source.
 
 Every script has a docstring at the top that says what it does, what it reads, and where it writes.
 
@@ -193,7 +209,7 @@ Every script has a docstring at the top that says what it does, what it reads, a
 | `css/`, `js/`, `scripts/` | Style and code. Claude will name the exact path for every file it changes. |
 | `DYNASTREE_MASTER_STATE.md`, `README.md` | The two documents in section 1. |
 
-**Written by the Action (never upload or edit):** `index.html` between its markers, `issues/`, `managers/`, `history/`, `ledger/`, `receipts/`, `data/brief.json`, `data/stats/`, `data/<season>/` (except `fut_cap.json`), and `assets/avatars/`.
+**Written by the Action (never upload or edit):** `index.html` between its markers, `issues/`, `managers/`, `history/`, `ledger/`, `receipts/`, `data/brief.json`, `data/stats/`, `data/market/`, `data/<season>/` (except `fut_cap.json`), and `assets/avatars/`.
 
 When Claude changes site code, it hands back only the edited files and says where each one goes. Upload just those; do not re-upload the whole repo.
 
@@ -241,14 +257,14 @@ Details: `DYNASTREE_MASTER_STATE.md` sections 3b and 6c.
 
 | Page | Address | Built by | What it shows |
 |---|---|---|---|
-| Home | `/` | `build_site.py` | Latest-issue banner, news ticker, leaderboard, standings (rank or draft order), archive, transactions, league rules and scoring. |
+| Home | `/` | `build_site.py` (+ `build_managers.py` for The Market) | Latest-issue banner, news ticker, leaderboard, standings (rank or draft order), archive, transactions, The Market (portfolio values), league rules and scoring. |
 | Issue | `/issues/<season>/issue-NN/` | `build_site.py` + `js/issue.js` | One frozen issue: desk, hero and zero, standings, bankroll, transaction wire, post-game cards, drama, trade machine, pre-game cards, match of the week, bottom line, poll. |
-| Managers | `/managers/` and `/managers/<handle>/` | `build_managers.py` | One page per manager: record, stat tiles, game log, transactions, desk quotes, bio, trophy case. Alumni keep their pages. |
+| Managers | `/managers/` and `/managers/<handle>/` | `build_managers.py` | One page per manager: record, stat tiles, game log, transactions, desk quotes, bio, trophy case, portfolio value. Alumni keep their pages. The home page gets the ranked portfolio table, "The Market". |
 | History | `/history/` | `build_history.py` | Hall of Fame: champions, all-time records, careers, award shelf, prediction ledger, timeline. |
 | Ledger | `/ledger/` | `build_ledger.py` | Every draft pick and trade, with grades and blockbuster scores. |
 | Receipts | `/receipts/` | `build_receipts.py` | Every quote, hit, bold prediction and hot take, with filters and a random-receipt button. |
 
-Navigation: the sticky top bar has **Issues**, **The Vault** (a dropdown with Managers, History, Ledger, Receipts), **Standings**, **Transactions**, **Rules**, **Scoring**. Issue pages use their own section nav instead (Desk, Standings, Wire and so on). To add a page to The Vault, add a link to the `#vault` block in `index.html` and in every `build_*.py` shell (see section 15).
+Navigation: the sticky top bar has **Issues**, **The Vault** (a dropdown with Managers, History, Ledger, Receipts), **Standings**, **Transactions**, **The Market**, **Rules**, **Scoring**. Issue pages use their own section nav instead (Desk, Standings, Wire and so on). To add a page to The Vault, add a link to the `#vault` block in `index.html` and in every `build_*.py` shell (see section 15).
 
 ---
 
@@ -359,6 +375,7 @@ You almost never need to. The Action does it. If you want to preview a change:
 ```
 pip install pillow
 python scripts/sleeper_pull.py
+python scripts/pull_values.py
 python scripts/build_site.py
 python scripts/build_managers.py
 python scripts/build_history.py
@@ -368,7 +385,7 @@ python scripts/build_receipts.py
 python scripts/make_brief.py
 ```
 
-Python 3.12. Pillow is only needed for avatars. Skip `sleeper_pull.py` and `pull_player_stats.py` to rebuild from the data already in the repo (they need internet). Serve the folder (`python -m http.server`) rather than opening files directly, so paths resolve.
+Python 3.12. Pillow is only needed for avatars. Skip `sleeper_pull.py`, `pull_values.py` and `pull_player_stats.py` to rebuild from the data already in the repo (they need internet). Serve the folder (`python -m http.server`) rather than opening files directly, so paths resolve.
 
 ---
 
@@ -387,5 +404,6 @@ Open the **Actions** tab, click the latest "Update league data" run, and read th
 * **Handle typo:** the build prints `issue-NN.json names 'X', who is not in the league data`. Use the exact handle.
 * **Numbers look wrong:** the data is stale. Run the Action by hand and check `data_pulled_at` in `data/brief.json`. Never patch a number into prose.
 * **A manager page is missing or wrong:** read the "Build manager pages" step. It needs `scripts/build_managers.py`, `css/managers.css` and `data/managers.json`.
+* **Portfolio section or market table missing:** read the "Pull FantasyCalc values and build portfolios" step. It can warn and still pass; the pages show nothing until `data/<season>/portfolio.json` exists. A "Picks with no FantasyCalc match" warning means FantasyCalc renamed its picks.
 * **Style changes:** `css/dynastree.css` (site and issues) or the page's own stylesheet (`css/managers.css`, `history.css`, `ledger.css`, `receipts.css`).
 * **Push failed in the Commit step:** it retries three times. If it still fails, run the Action again by hand.

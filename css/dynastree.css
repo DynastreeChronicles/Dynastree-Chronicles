@@ -549,3 +549,24 @@ h2.sec .sbadge{order:-1;margin:0 1rem 0 0;padding-left:0}
 .pfill{display:block;height:100%;background:var(--sky);border-radius:5px;min-width:0}
 .pbar.win .pfill{background:var(--green)}
 .pnum{display:block;margin-top:.25rem;font-size:.85rem;color:var(--mute)}
+
+/* The market (home page) and portfolio legends */
+.tw2{overflow-x:auto}.mkt{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.mkt th,.mkt td{padding:.55rem .7rem;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+.mkt th{font:600 .8rem Oswald,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
+.mkt td:nth-child(n+4),.mkt th:nth-child(n+4){text-align:right}.mkt td.rk{color:var(--mute);width:2rem}
+.mkt .up{color:var(--green)}.mkt .dn{color:var(--red)}
+.mkt a.mn{color:var(--green);text-decoration:none;font-weight:600}.mkt a.mn:hover,.mkt a.mn:focus-visible{color:#fff;text-shadow:0 0 12px var(--green)}
+.vcell{display:flex;align-items:center;gap:.8rem;min-width:15rem}.vcell b{min-width:4.2rem;text-align:right;font-weight:700}
+.vtrack{flex:1;height:.7rem;border-radius:99px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);overflow:hidden}
+.vtrack i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#1f4fc4,#45e03a);box-shadow:0 0 10px rgba(69,224,58,.35)}
+.vtrack i.crash{background:linear-gradient(90deg,#8e1b1b,#ff6b6b);box-shadow:0 0 10px rgba(255,107,107,.4)}
+.vtrack i.correction{background:linear-gradient(90deg,#9a6a00,#f0b429);box-shadow:0 0 10px rgba(240,180,41,.35)}
+.mkt .st{padding:.05rem .5rem;border-radius:2px;font:600 .8rem Oswald,sans-serif;font-style:normal;text-transform:uppercase;background:var(--mute);color:#04101f}
+.mkt .st.crash{background:var(--red)}.mkt .st.bull{background:var(--green)}.mkt .st.correction{background:#f0b429}
+.legend{margin-top:.9rem;border:1px solid var(--line);border-radius:8px;background:rgba(17,26,48,.5)}
+.legend summary{cursor:pointer;padding:.6rem .9rem;font:600 .9rem Oswald,sans-serif;text-transform:uppercase;letter-spacing:.05em}
+.legend>p{margin:0;padding:0 .9rem .5rem;color:var(--mute);font-size:.9rem}.legend a{color:var(--green)}
+.legend dl{margin:0;padding:0 .9rem .8rem;display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1rem;font-size:.9rem}
+.legend dt{font-weight:700}.legend dd{margin:0;color:var(--mute)}.legend dd b{color:inherit}
+@media(max-width:600px){.legend dl{grid-template-columns:1fr}.legend dd{margin-bottom:.4rem}}

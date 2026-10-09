@@ -80,12 +80,3 @@
 .ptab{width:100%;margin-top:1rem;border-collapse:collapse;font-variant-numeric:tabular-nums}.ptab caption{text-align:left;color:var(--mute);font-size:.85rem;padding-bottom:.3rem}
 .ptab th,.ptab td{padding:.3rem .5rem;border-bottom:1px solid var(--line);text-align:left}.ptab td:nth-child(n+3),.ptab th:nth-child(n+3){text-align:right}
 .ptab .up{color:var(--green)}.ptab .dn{color:var(--red)}.ptab em.out{margin-left:.4rem;padding:0 .35rem;border-radius:2px;font-size:.75rem;font-style:normal;background:var(--red);color:#1b0505}
-
-/* Hub: the market */
-.tw2{overflow-x:auto}.mkt{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-.mkt th,.mkt td{padding:.4rem .6rem;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}.mkt td:nth-child(n+4),.mkt th:nth-child(n+4){text-align:right}
-.mkt td.bar{position:relative;min-width:11rem}.mkt td.bar span{position:absolute;left:0;top:18%;height:64%;border-radius:2px;background:rgba(47,109,240,.35)}.mkt td.bar b{position:relative;font-weight:600}
-.mkt .up{color:var(--green)}.mkt .dn{color:var(--red)}.mkt a{color:var(--cream)}
-.mkt .st{padding:.05rem .5rem;border-radius:2px;font:600 .8rem Oswald,sans-serif;font-style:normal;text-transform:uppercase;background:var(--mute);color:#04101f}
-.mkt .st.crash{background:var(--red)}.mkt .st.bull{background:var(--green)}.mkt .st.correction{background:#f0b429}
-.pflag.watch b{background:var(--red)}
