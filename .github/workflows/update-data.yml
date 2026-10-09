@@ -47,6 +47,10 @@ jobs:
       - name: Pull Sleeper data
         run: python scripts/sleeper_pull.py
 
+      - name: Pull FantasyCalc values and build portfolios
+        continue-on-error: true
+        run: python scripts/pull_values.py
+
       - name: Build site
         run: python scripts/build_site.py
 

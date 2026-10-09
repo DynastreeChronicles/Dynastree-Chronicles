@@ -169,6 +169,54 @@ def load_trophy_case():
         print(f"  note (trophy case skipped: {e})")
         return {}
 
+PORTFOLIO = {}   # data/<display season>/portfolio.json, filled once in main (empty = no portfolio block anywhere)
+
+STATUS = {   # status -> (badge, headline). {m} is the manager handle; swap the wording freely, the logic lives in pull_values.py
+    "crash": ("Market crash", "Market Crash: {m} is bleeding capital."),
+    "correction": ("Correction", "Correction: {m}'s portfolio is down. Nobody has panicked yet."),
+    "bull": ("Bull run", "Bull Run: {m}'s portfolio is printing."),
+    "stable": ("Stable", "Stable: {m}'s portfolio is holding. Boring, but solvent."),
+}
+POS_COLOR = {"QB": "#ff6b6b", "RB": "#45e03a", "WR": "#2f6df0", "TE": "#f0b429", "PICK": "#8fb4ff"}
+
+def history_chart(m):
+    """Inline SVG line chart of this manager's portfolio value, one point per pull. Needs two points to draw a line."""
+    pts = [(h["date"], h["totals"][m]) for h in PORTFOLIO.get("history", []) if m in h.get("totals", {})]
+    if len(pts) < 2:
+        d = pts[0][0] if pts else "the first pull"
+        return f'<p class="key">Value history starts {esc(d)}. The line draws itself after the next update.</p>'
+    W, H, P = 640, 150, 14
+    lo, hi = min(v for _, v in pts), max(v for _, v in pts); span = (hi - lo) or 1
+    xy = [(P + i * (W - 2 * P) / (len(pts) - 1), H - P - (v - lo) * (H - 2 * P) / span) for i, (_, v) in enumerate(pts)]
+    path = " ".join(f"{'M' if i == 0 else 'L'}{x:.1f},{y:.1f}" for i, (x, y) in enumerate(xy))
+    return (f'<svg class="pchart" viewBox="0 0 {W} {H}" role="img" aria-label="Portfolio value from {esc(pts[0][0])} to {esc(pts[-1][0])}: {pts[0][1]:,} to {pts[-1][1]:,}">'
+            f'<path d="{path}" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>'
+            f'<circle cx="{xy[-1][0]:.1f}" cy="{xy[-1][1]:.1f}" r="5" fill="currentColor"/></svg>'
+            f'<p class="key">{esc(pts[0][0])} to {esc(pts[-1][0])}. Low {lo:,}, high {hi:,}.</p>')
+
+def portfolio_block(m, r):
+    t = (PORTFOLIO.get("teams") or {}).get(m)
+    if not t:
+        return ""
+    badge, head = STATUS[t["status"]]
+    sign = lambda n: f"+{n:,}" if n > 0 else f"{n:,}"
+    tiles = "".join(f'<div><small>{a}</small><b>{b}</b></div>' for a, b in (
+        ("Portfolio value", f'{t["total"]:,}'), ("League rank", f'#{t["rank"]} of {len(PORTFOLIO["teams"])}'),
+        ("30-day market move", f'{sign(t["move30"])} ({t["move30_pct"]:+.1f}%)'), ("On IR or out", f'{t["sidelined"]:,} ({t["sidelined_pct"]:.0f}%)'),
+        ("Draft capital", f'{t["picks"]:,}'), ("League average", f'{PORTFOLIO["league_avg"]:,}')))
+    tot = sum(t["by_pos"].values()) or 1
+    bar = "".join(f'<i style="width:{100 * v / tot:.2f}%;background:{POS_COLOR.get(k, "#9fb0d6")}" title="{k} {v:,}"></i>' for k, v in sorted(t["by_pos"].items(), key=lambda kv: -kv[1]))
+    key = " ".join(f'<span><i style="background:{POS_COLOR.get(k, "#9fb0d6")}"></i>{k} {100 * v / tot:.0f}%</span>' for k, v in sorted(t["by_pos"].items(), key=lambda kv: -kv[1]))
+    def row(a):
+        tag = f' <em class="out">{esc(a["status"] or "OUT")}</em>' if a["sidelined"] else ""
+        return f'<tr><td>{esc(a["name"])}{tag}</td><td>{esc(a["pos"])}</td><td>{a["value"]:,}</td><td class="{"dn" if a["trend30"] < 0 else "up"}">{a["trend30"]:+,}</td></tr>'
+    top = "".join(row(a) for a in t["top"])
+    return (f'<h2 class="sec" id="portfolio">Portfolio value</h2><section class="port {t["status"]}"><p class="pflag"><b>{badge}</b> {esc(head.format(m=m))}</p>'
+            f'<div class="mstats">{tiles}</div>{history_chart(m)}<div class="pbar">{bar}</div><p class="pkey">{key}</p>'
+            f'<table class="ptab"><caption>Biggest holdings</caption><thead><tr><th>Asset</th><th>Pos</th><th>Value</th><th>30d</th></tr></thead><tbody>{top}</tbody></table>'
+            f'<p class="key">Values: <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values, superflex, 12 teams, full PPR. '
+            f'The 30-day move tracks the players you hold now, so trades do not move it. Updated {esc((PORTFOLIO.get("generated_at") or "")[:10])}.</p></section>')
+
 def trophy_case(m, r):
     """A manager's trophy case: only trophies they have actually won. Empty (no section at all) until the first one lands."""
     wins = TROPHY_CASE.get(m) or []
@@ -225,7 +273,7 @@ def manager_page(m, names, years, display, active):
     body = f'''<p class="crumb"><a href="../">All managers</a></p>
 <section class="mhero"><div class="mid">{av(m, 120, r)}<div><h2>{esc(m)}</h2>{f'<p class="tn">{esc(team)}</p>' if team else ""}{former}{status}{f'<p class="tag">{esc(bio["tagline"])}</p>' if bio.get("tagline") else ""}</div></div>
 {hero_stats}</section>
-{trophy_case(m, r)}{deskfile}<h2 class="sec" id="archive">The season archive</h2><div class="yrs">{"".join(blocks)}</div>
+{trophy_case(m, r)}{portfolio_block(m, r)}{deskfile}<h2 class="sec" id="archive">The season archive</h2><div class="yrs">{"".join(blocks)}</div>
 {nav}'''
     return shell(m, f"{m}: biography, record, transactions and desk quotes.", body, r, f"Manager file: {m}", f"managers/{slug(m)}/")
 
@@ -233,6 +281,25 @@ def blurb(t, n=120):
     t = t.strip()
     if len(t) <= n: return t
     return t[:n].rsplit(" ", 1)[0].rstrip(",;: ") + "..."
+
+def market_board():
+    """League-wide portfolio leaderboard for the managers hub. Empty string until the first FantasyCalc pull has run."""
+    teams = PORTFOLIO.get("teams")
+    if not teams:
+        return ""
+    ranked = sorted(teams, key=lambda m: teams[m]["rank"]); top = max(t["total"] for t in teams.values()) or 1
+    rows = []
+    for m in ranked:
+        t = teams[m]; badge = STATUS[t["status"]][0]
+        rows.append(f'<tr class="{t["status"]}"><td>{t["rank"]}</td><td><a href="{slug(m)}/#portfolio">{esc(m)}</a></td>'
+                    f'<td class="bar"><span style="width:{100 * t["total"] / top:.1f}%"></span><b>{t["total"]:,}</b></td>'
+                    f'<td class="{"dn" if t["move30"] < 0 else "up"}">{t["move30_pct"]:+.1f}%</td><td>{t["sidelined_pct"]:.0f}%</td><td><em class="st {t["status"]}">{badge}</em></td></tr>')
+    crash = [m for m in ranked if teams[m]["status"] == "crash"]
+    watch = (f'<p class="pflag watch"><b>Crash watch</b> {", ".join(f"<a href=\"{slug(m)}/#portfolio\">{esc(m)}</a>" for m in crash)} '
+             f'{"is" if len(crash) == 1 else "are"} bleeding capital.</p>') if crash else '<p class="key">No managers are in a market crash right now.</p>'
+    return (f'<h2 class="sec" id="market">The market</h2><p class="key">Every roster and pick, valued by FantasyCalc dynasty trade values. '
+            f'Updated {esc((PORTFOLIO.get("generated_at") or "")[:10])}.</p>{watch}'
+            f'<div class="tw2"><table class="mkt"><thead><tr><th>#</th><th>Manager</th><th>Portfolio value</th><th>30d move</th><th>On IR</th><th>Status</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>')
 
 def hub(rows, quotes, moves, active, alumni):
     """rows: the display season's standings. alumni: [(manager, last season)] for people with no row in it."""
@@ -249,13 +316,14 @@ def hub(rows, quotes, moves, active, alumni):
     groups = [("The podium", "Top three right now.", [card(r) for r in rows[:3]]), ("The middle", "Everyone still arguing about the playoffs.", [card(r) for r in rows[3:-2]]), ("The danger zone", "Bottom two. Draft position is the consolation.", [card(r) for r in rows[-2:]])]
     if alumni:
         groups.append(("Alumni", "No longer in the league. The files stay.", [card(r, f"<b>{y}</b>", y) for r, y in alumni]))
-    body = "".join(
+    body = market_board() + "".join(
         f'<h2 class="sec">{t}</h2><p class="key">{d}</p><div class="mgrid">{"".join(g)}</div>' for t, d, g in groups if g)
     return shell("Managers", "Every manager in the Dynastree league.", body, "../", "The league files", "managers/")
 
 if __name__ == "__main__":
     display = bs.display_season(); bs.use(display)
     TROPHY_CASE.update(load_trophy_case()); bs.use(display)
+    PORTFOLIO.update(jload(f"data/{display}/portfolio.json", {}) or {})
     rows = jload(bs.S("standings.json"), []) or []
     years = {i["no"]: i["year"] for i in bs.manifest()}
     everyone = sorted({*bs.managers(), *(r["manager"] for r in rows)}, key=str.lower)

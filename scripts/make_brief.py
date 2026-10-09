@@ -38,6 +38,28 @@ def unruled_predictions():
     return out
 
 
+def market_portfolios(season):
+    """FantasyCalc portfolio standings for the brief: who is up, who is crashing, what is sitting on IR. Empty if the pull has not run."""
+    P = bs.jload(f"data/{season}/portfolio.json", None)
+    if not P or not P.get("teams"):
+        return None
+    teams = P["teams"]
+    ranked = sorted(teams, key=lambda m: teams[m]["rank"])
+    return {"source": P.get("source"), "as_of": (P.get("generated_at") or "")[:10], "league_avg": P.get("league_avg"),
+            "how_to_read": ("Values are FantasyCalc dynasty trade values (superflex, 12 teams, full PPR). move30 = 30-day market move of the "
+                            "players held now (trade-neutral). since_change = change since the snapshot dated `since` (includes trades). "
+                            "sidelined = value on IR/Out/PUP. Status flags: crash, correction, stable, bull."),
+            "crash_watch": [m for m in ranked if teams[m]["status"] == "crash"],
+            "teams": [{"manager": m, "rank": teams[m]["rank"], "total": teams[m]["total"], "status": teams[m]["status"],
+                       "move30": teams[m]["move30"], "move30_pct": teams[m]["move30_pct"],
+                       "since": teams[m].get("since"), "since_change": teams[m].get("since_change"),
+                       "sidelined": teams[m]["sidelined"], "sidelined_pct": teams[m]["sidelined_pct"],
+                       "picks": teams[m]["picks"],
+                       "top_assets": [f'{a["name"]} ({a["pos"]}) {a["value"]}' for a in teams[m]["top"][:3]],
+                       "sidelined_players": [f'{a["name"]} ({a["status"] or "OUT"}) {a["value"]}' for a in teams[m]["sidelined_players"]]}
+                      for m in ranked]}
+
+
 def main():
     reg = bs.ss.load()
     season = bs.ss.active(reg) or bs.display_season()
@@ -57,6 +79,7 @@ def main():
                               f"{sum(1 for t in bs.txfeed() if t['week'] == 0)}. The Volume {bs.vol(season)} opener is a look-forward issue, "
                               "written from the chat log plus transactions_offseason."],
                  "transactions_offseason": [t for t in bs.txfeed() if t["week"] == 0],
+                 "market_portfolios": market_portfolios(season),
                  "latest_published_issue": man[0] if man else None, "league": league,
                  "managers": {k: v.get("team_name") for k, v in bs.managers().items() if v.get("active", True)},
                  "alumni": [k for k, v in bs.managers().items() if not v.get("active", True)],
@@ -125,6 +148,7 @@ def main():
         "next_week_matchups": [{"a": a, "a_record": rec.get(a), "b": b, "b_record": rec.get(b)} for a, b in (sched or [])],
         "transactions_this_week_and_later": tx,
         "fut_cap": bs.jload(bs.S("fut_cap.json"), {}),
+        "market_portfolios": market_portfolios(season),
         "managers": {k: v.get("team_name") for k, v in bs.managers().items() if v.get("active", True)},
         "alumni": [k for k, v in bs.managers().items() if not v.get("active", True)],
         "league": {k: league.get(k) for k in ("league_id", "name", "season", "volume", "roster_positions", "waiver_budget")},
