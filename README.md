@@ -115,6 +115,7 @@ data/
   market/snapshots/<date>.json      one FantasyCalc snapshot per pull (what values are looked up from, as of a date)
   market/ledger_values.json         FantasyCalc value of every trade and draft pick (written by ledger_values.py)
   <season>/portfolio.json           manager portfolios, crash flags and value history (inside each season folder)
+  <season>/wealth.json              Wealth Index: roster, pick and total value per team for each finished week
 scripts/                            the build (section 5)
   templates/issue.html              the shell every issue page is built from
 index.html                          home page (shell + generated sections)
@@ -193,6 +194,13 @@ All scripts run from the repo root, in the order below, and read only from `data
 * **Status flags.** `crash` when the 30-day market move is -5% or worse, or 25% or more of the portfolio is sidelined. `correction` at -2.5%, `bull` at +5%, otherwise `stable`. Change the thresholds in the constants at the top of `pull_values.py`, and the headline wording in the `STATUS` table in `build_managers.py`.
 * **Where it shows.** A "Portfolio value" section on every manager page (chart, position split, biggest holdings) and a ranked "The Market" section on the home page (between Transactions and Rules, with its own item in the top nav and a collapsible legend that explains the columns and the status flags). Both portfolio legends are collapsible. Both disappear quietly if `portfolio.json` is missing. `brief.json` gets `market_portfolios` for the next issue.
 * **Credit.** The page links to FantasyCalc as the source.
+
+### Wealth Index (third standings tab)
+
+The standings block, on the home page and in every issue, has a third tab, **Wealth index**: every team ranked by total FantasyCalc dynasty asset value, split into **Roster value**, **Draft capital** and **Total wealth**, with rank movement (MOV) and the change in total wealth since the previous tracked week. It has its own collapsible "How to read the Wealth Index" legend.
+
+* **Data.** `pull_values.py` writes `data/<season>/wealth.json`: one entry per finished NFL week (`weeks.<N>` with `date` and each manager's `roster`, `picks`, `total`). The entry for the newest finished week is rewritten on every run until the next week finishes, then it is frozen. Movement compares a week with the nearest earlier week on file; the first tracked week shows a dash.
+* **Where it shows.** The home page shows the newest week on file. An issue page shows its own week; if that week was never saved (every issue before the feature existed), the tab is simply not there. Built by `wealth_view()` in `build_site.py`; the tab toggle is in `js/site.js`.
 
 ### Ledger values (trades and pick verdicts)
 

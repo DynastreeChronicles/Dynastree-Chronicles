@@ -166,9 +166,49 @@ def legend():
     out = "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in items)
     return f'<details class="legend"><summary>How to read this table</summary><dl>{out}</dl></details>'
 
+def wealth_legend(k, date, prevk):
+    up, dn = '<span class="up">&#9650;</span>', '<span class="dn">&#9660;</span>'
+    items = [("Roster value", "<b>Players.</b> The combined FantasyCalc dynasty trade value of every player on the roster (superflex, 12 teams, full PPR). Players outside FantasyCalc's top 1,000 count as zero."),
+             ("Draft capital", "<b>Owned picks.</b> The combined FantasyCalc value of every future rookie pick the team owns after trades."),
+             ("Total wealth", "<b>Roster value plus draft capital.</b> This is what the table is ranked by."),
+             ("MOV", f"<b>Movement</b> in rank since {'Week ' + str(prevk) if prevk else 'last week'}. {up} 2 = climbed two spots, {dn} 2 = dropped two, &mdash; = no change."),
+             ("Change", f"<b>Points of total wealth</b> gained or lost since {'Week ' + str(prevk) if prevk else 'last week'}. Trades move it as well as the market."),
+             ("As of", f"Week {k} ({date}). The numbers are saved each week and frozen once the next week is final.")]
+    out = "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in items)
+    return f'<details class="legend"><summary>How to read the Wealth Index</summary><dl>{out}</dl></details>'
+
+def wealth_view(fin, root, team, h, latest):
+    """The Wealth Index tab: rank by total FantasyCalc dynasty asset value, split into roster and draft capital, with movement vs the previous
+    tracked week. Home page shows the newest week on file; an issue page shows its own week (no tab if that week was never saved)."""
+    W = jload(S("wealth.json"), {}) or {}
+    weeks = {int(k): v for k, v in (W.get("weeks") or {}).items()}
+    k = max(weeks) if weeks and latest else (fin if fin in weeks else None)
+    if k is None:
+        return None
+    cur = weeks[k]["teams"]
+    prevk = max((x for x in weeks if x < k), default=None)
+    prev = weeks[prevk]["teams"] if prevk is not None else {}
+    order = sorted(cur, key=lambda m: (-cur[m]["total"], m.lower()))
+    prank = {m: i for i, m in enumerate(sorted(prev, key=lambda m: (-prev[m]["total"], m.lower())), 1)}
+    rows = ""
+    for i, m in enumerate(order, 1):
+        c = cur[m]
+        if m in prev and m in prank:
+            d = c["total"] - prev[m]["total"]
+            move, delta = mv(prank[m] - i), (f'<span class="up">+{d:,}</span>' if d > 0 else f'<span class="dn">&minus;{-d:,}</span>' if d < 0 else '<span class="flat">&mdash;</span>')
+        else:
+            move = delta = '<span class="flat">&mdash;</span>'
+        rows += (f'<tr><td class="n rkc">{i}</td>{team({"manager": m})}<td class="n">{c["roster"]:,}</td><td class="n">{c["picks"]:,}</td>'
+                 f'<td class="n wl"><b>{c["total"]:,}</b></td><td class="n mv">{move}</td><td class="n">{delta}</td></tr>')
+    note = (f'FantasyCalc dynasty values after Week {k}. Movement compares with Week {prevk}.' if prevk is not None else
+            f'FantasyCalc dynasty values after Week {k}. Movement starts once a second week is on file.')
+    return (f'<div class="sc" id="v-wealth" hidden><table id="wealthtable"><thead>{h(["#", "Team", "Roster value", "Draft capital", "Total wealth", "MOV", "Change"])}</thead><tbody>{rows}</tbody></table>'
+            f'<p class="key">{note}</p>{wealth_legend(k, weeks[k]["date"], prevk)}</div>')
+
 def standings(rows=None, fin=None, root=""):
     """The standings block (Standings order / Draft order). Used by the home page (live data)
     and by each issue page (snapshot rows), so both always look and read the same."""
+    latest = rows is None   # home page: live data, newest Wealth Index week
     if rows is None:
         rows = jload(S("standings.json"))
     fin = fin or (rows and max(r["wins"] + r["losses"] + r["ties"] for r in rows))
@@ -191,11 +231,13 @@ def standings(rows=None, fin=None, root=""):
         dr += (f'<tr><td class="n pick">1.{r["draft_pick"]:02d}</td>{team(r)}<td class="n">{"&mdash;" if f is None else f}</td>'
                f'<td class="n">{r["maxpf"]:.2f}</td><td class="n mv">{mv(pp.get(r["roster_id"], r["draft_pick"]) - r["draft_pick"])}</td><td class="n">${r["faab_remaining"]}</td></tr>')
     h = lambda cols: "<tr>" + "".join(f'<th{" class=\"n\"" if i else ""}>{c}</th>' if c != "Team" else "<th>Team</th>" for i, c in enumerate(cols)) + "</tr>"
-    return (f'<div class="sortbar" role="group" aria-label="Standings view"><button class="chip on" data-view="rank">Standings order</button><button class="chip" data-view="draft">Draft order</button></div>'
+    wv = wealth_view(fin, root, team, h, latest)
+    tab = '<button class="chip" data-view="wealth">Wealth index</button>' if wv else ""
+    return (f'<div class="sortbar" role="group" aria-label="Standings view"><button class="chip on" data-view="rank">Standings order</button><button class="chip" data-view="draft">Draft order</button>{tab}</div>'
             f'<div class="sc" id="v-rank"><table id="standtable"><thead>{h(["#", "Team", "W-L", "MOV", "PF", "FAAB"])}</thead><tbody>{rk}</tbody></table>'
             f'{legend()}</div>'
             f'<div class="sc" id="v-draft" hidden><table id="drafttable"><thead>{h(["Pick", "Team", "FUT CAP", "MAXPF", "MOV", "FAAB"])}</thead><tbody>{dr}</tbody></table>'
-            f'{legend()}</div>')
+            f'{legend()}</div>' + (wv or ""))
 
 # ---------------------------------------------------------------- issue pages
 def ordinal(n):

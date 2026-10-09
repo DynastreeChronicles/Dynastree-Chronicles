@@ -3,9 +3,7 @@ const base=document.currentScript.src.replace(/js\/site\.js.*$/,"assets/");
 document.querySelectorAll("h2.sec").forEach(h=>{if(h.id==="hero-zero")return;const m=M.find(x=>x[0].test(h.textContent));const i=new Image();i.src=base+"icon-"+(m?m[1]:"standings")+".webp";i.alt="";i.className="ic";i.onerror=()=>i.remove();h.prepend(i)});})();
 
 (()=>{const bs=document.querySelectorAll('.sortbar .chip');if(!bs.length)return;
-bs.forEach(btn=>btn.onclick=()=>{const d=btn.dataset.view==='draft';
-const r=document.getElementById('v-rank'),f=document.getElementById('v-draft');if(r)r.hidden=d;if(f)f.hidden=!d;
-bs.forEach(c=>c.classList.toggle('on',c===btn));});})();
+bs.forEach(btn=>btn.onclick=()=>{bs.forEach(c=>{const on=c===btn,el=document.getElementById('v-'+c.dataset.view);c.classList.toggle('on',on);if(el)el.hidden=!on;});});})();
 
 (()=>{const base=document.currentScript.src.replace(/js\/site\.js.*$/,"assets/");
 const D=[[/standings|leaderboard|power/i,"01"],[/hero|zero|issues|archive|vault/i,"02"],[/transaction|trade|wire/i,"03"],[/rules|scoring|poll|bankroll|ledger/i,"04"],[/drama|desk|bottom/i,"05"],[/game|draft|week/i,"06"]];

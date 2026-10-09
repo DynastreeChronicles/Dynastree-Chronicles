@@ -178,6 +178,24 @@ def main():
     for i, m in enumerate(ranked, 1):
         team[m]["rank"] = i
     today = now.date().isoformat()
+    # Wealth Index: one entry per finished NFL week, rewritten until the next week finishes, then frozen (movement compares with the week before).
+    wk = 0
+    wdir = os.path.join(out_dir, "weeks")
+    for fn in (os.listdir(wdir) if os.path.isdir(wdir) else []):
+        try:
+            d = json.load(open(os.path.join(wdir, fn), encoding="utf-8"))
+            if d.get("final"):
+                wk = max(wk, int(d["week"]))
+        except Exception:
+            pass
+    wpath = os.path.join(out_dir, "wealth.json")
+    try:
+        W = json.load(open(wpath, encoding="utf-8"))
+    except Exception:
+        W = {}
+    W.setdefault("weeks", {})[str(wk)] = {"date": today, "teams": {m: {"roster": t["players"], "picks": t["picks"], "total": t["total"]} for m, t in team.items()}}
+    W.update(season=season, source="FantasyCalc", format=FORMAT)
+    json.dump(W, open(wpath, "w", encoding="utf-8"), indent=1)
     # Change since the last snapshot at least 5 days old (includes trades, unlike the 30-day market move).
     old = [h for h in hist if (now.date() - datetime.fromisoformat(h["date"]).date()).days >= 5]
     base = old[-1] if old else None

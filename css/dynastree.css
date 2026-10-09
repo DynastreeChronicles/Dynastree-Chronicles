@@ -570,3 +570,8 @@ h2.sec .sbadge{order:-1;margin:0 1rem 0 0;padding-left:0}
 .legend dl{margin:0;padding:0 .9rem .8rem;display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1rem;font-size:.9rem}
 .legend dt{font-weight:700}.legend dd{margin:0;color:var(--mute)}.legend dd b{color:inherit}
 @media(max-width:600px){.legend dl{grid-template-columns:1fr}.legend dd{margin-bottom:.4rem}}
+
+/* Wealth Index tab */
+#wealthtable th{white-space:normal;line-height:1.15}#wealthtable td.wl b{color:var(--green)}
+@media(max-width:560px){#v-wealth td,#v-wealth th{padding:.45rem .25rem;font-size:.8rem;letter-spacing:0}#v-wealth td:nth-child(2){max-width:5.2rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#v-wealth{-webkit-mask-image:none;mask-image:none}#v-wealth .av{display:none}}
+@media(max-width:380px){#v-wealth td,#v-wealth th{font-size:.72rem;padding:.45rem .15rem}}
