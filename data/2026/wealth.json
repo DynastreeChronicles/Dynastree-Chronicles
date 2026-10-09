@@ -1,0 +1,77 @@
+{
+ "weeks": {
+  "4": {
+   "date": "2026-10-09",
+   "teams": {
+    "Darkspaces": {
+     "roster": 53647,
+     "picks": 21732,
+     "total": 75379
+    },
+    "Snipe58": {
+     "roster": 42022,
+     "picks": 12392,
+     "total": 54414
+    },
+    "StealingGas": {
+     "roster": 57373,
+     "picks": 18342,
+     "total": 75715
+    },
+    "Zygon": {
+     "roster": 61637,
+     "picks": 13761,
+     "total": 75398
+    },
+    "Hades9mm": {
+     "roster": 46407,
+     "picks": 12481,
+     "total": 58888
+    },
+    "Johnny4Skins": {
+     "roster": 51983,
+     "picks": 13761,
+     "total": 65744
+    },
+    "Sarge71": {
+     "roster": 40626,
+     "picks": 14854,
+     "total": 55480
+    },
+    "C33DeezNutzz": {
+     "roster": 47417,
+     "picks": 14854,
+     "total": 62271
+    },
+    "Painty69": {
+     "roster": 49953,
+     "picks": 14854,
+     "total": 64807
+    },
+    "CMac91": {
+     "roster": 47019,
+     "picks": 13761,
+     "total": 60780
+    },
+    "YesChef23": {
+     "roster": 46807,
+     "picks": 17062,
+     "total": 63869
+    },
+    "fumbduckdumbfuck": {
+     "roster": 49100,
+     "picks": 14854,
+     "total": 63954
+    }
+   }
+  }
+ },
+ "season": "2026",
+ "source": "FantasyCalc",
+ "format": {
+  "isDynasty": "true",
+  "numQbs": 2,
+  "numTeams": 12,
+  "ppr": 1
+ }
+}
