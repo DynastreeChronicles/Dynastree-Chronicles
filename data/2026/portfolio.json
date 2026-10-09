@@ -7,30 +7,31 @@
   "numTeams": 12,
   "ppr": 1
  },
- "generated_at": "2026-10-09T19:50:21+00:00",
+ "generated_at": "2026-10-09T20:02:03+00:00",
  "thresholds": {
   "crash_move_pct": -5.0,
   "crash_sidelined_pct": 25.0,
   "correction_move_pct": -2.5,
   "bull_move_pct": 5.0
  },
- "league_avg": 49499,
+ "league_avg": 64725,
  "teams": {
   "Darkspaces": {
-   "total": 53647,
+   "total": 75379,
    "players": 53647,
-   "picks": 0,
-   "pick_count": 0,
+   "picks": 21732,
+   "pick_count": 12,
    "by_pos": {
     "WR": 26173,
     "QB": 12180,
     "TE": 5621,
-    "RB": 9673
+    "RB": 9673,
+    "PICK": 21732
    },
-   "move30": -4816,
-   "move30_pct": -8.2,
+   "move30": -4003,
+   "move30_pct": -5.0,
    "sidelined": 11863,
-   "sidelined_pct": 22.1,
+   "sidelined_pct": 15.7,
    "status": "crash",
    "top": [
     {
@@ -94,6 +95,104 @@
      "status": ""
     }
    ],
+   "pick_list": [
+    {
+     "label": "2027 1st (Early)",
+     "season": 2027,
+     "round": 1,
+     "via": null,
+     "value": 5016,
+     "trend30": 274
+    },
+    {
+     "label": "2028 1st",
+     "season": 2028,
+     "round": 1,
+     "via": null,
+     "value": 2271,
+     "trend30": 104
+    },
+    {
+     "label": "2027 2nd (Early)",
+     "season": 2027,
+     "round": 2,
+     "via": null,
+     "value": 2037,
+     "trend30": 92
+    },
+    {
+     "label": "2027 2nd (Early)",
+     "season": 2027,
+     "round": 2,
+     "via": "Snipe58",
+     "value": 2037,
+     "trend30": 92
+    },
+    {
+     "label": "2029 1st",
+     "season": 2029,
+     "round": 1,
+     "via": null,
+     "value": 1885,
+     "trend30": 23
+    },
+    {
+     "label": "2028 2nd",
+     "season": 2028,
+     "round": 2,
+     "via": null,
+     "value": 1358,
+     "trend30": 8
+    },
+    {
+     "label": "2028 2nd",
+     "season": 2028,
+     "round": 2,
+     "via": "Snipe58",
+     "value": 1358,
+     "trend30": 8
+    },
+    {
+     "label": "2029 2nd",
+     "season": 2029,
+     "round": 2,
+     "via": null,
+     "value": 1275,
+     "trend30": 40
+    },
+    {
+     "label": "2029 2nd",
+     "season": 2029,
+     "round": 2,
+     "via": "Snipe58",
+     "value": 1275,
+     "trend30": 40
+    },
+    {
+     "label": "2027 3rd (Early)",
+     "season": 2027,
+     "round": 3,
+     "via": null,
+     "value": 1261,
+     "trend30": 45
+    },
+    {
+     "label": "2028 3rd",
+     "season": 2028,
+     "round": 3,
+     "via": null,
+     "value": 1014,
+     "trend30": 45
+    },
+    {
+     "label": "2029 3rd",
+     "season": 2029,
+     "round": 3,
+     "via": null,
+     "value": 945,
+     "trend30": 42
+    }
+   ],
    "sidelined_players": [
     {
      "name": "De'Von Achane",
@@ -152,20 +251,21 @@
    "since_change": null
   },
   "Snipe58": {
-   "total": 42022,
+   "total": 54414,
    "players": 42022,
-   "picks": 0,
-   "pick_count": 0,
+   "picks": 12392,
+   "pick_count": 6,
    "by_pos": {
     "WR": 14660,
     "RB": 13209,
     "QB": 10896,
-    "TE": 3257
+    "TE": 3257,
+    "PICK": 12392
    },
-   "move30": -4680,
-   "move30_pct": -10.0,
+   "move30": -4147,
+   "move30_pct": -7.1,
    "sidelined": 2170,
-   "sidelined_pct": 5.2,
+   "sidelined_pct": 4.0,
    "status": "crash",
    "top": [
     {
@@ -229,6 +329,56 @@
      "status": ""
     }
    ],
+   "pick_list": [
+    {
+     "label": "2027 1st (Early)",
+     "season": 2027,
+     "round": 1,
+     "via": null,
+     "value": 5016,
+     "trend30": 274
+    },
+    {
+     "label": "2028 1st",
+     "season": 2028,
+     "round": 1,
+     "via": null,
+     "value": 2271,
+     "trend30": 104
+    },
+    {
+     "label": "2029 1st",
+     "season": 2029,
+     "round": 1,
+     "via": null,
+     "value": 1885,
+     "trend30": 23
+    },
+    {
+     "label": "2027 3rd (Early)",
+     "season": 2027,
+     "round": 3,
+     "via": null,
+     "value": 1261,
+     "trend30": 45
+    },
+    {
+     "label": "2028 3rd",
+     "season": 2028,
+     "round": 3,
+     "via": null,
+     "value": 1014,
+     "trend30": 45
+    },
+    {
+     "label": "2029 3rd",
+     "season": 2029,
+     "round": 3,
+     "via": null,
+     "value": 945,
+     "trend30": 42
+    }
+   ],
    "sidelined_players": [
     {
      "name": "Jonah Coleman",
@@ -252,25 +402,26 @@
     }
    ],
    "off_index": 0,
-   "rank": 11,
+   "rank": 12,
    "since": null,
    "since_change": null
   },
   "StealingGas": {
-   "total": 57373,
+   "total": 75715,
    "players": 57373,
-   "picks": 0,
-   "pick_count": 0,
+   "picks": 18342,
+   "pick_count": 9,
    "by_pos": {
     "QB": 11929,
     "RB": 8448,
     "WR": 32083,
-    "TE": 4913
+    "TE": 4913,
+    "PICK": 18342
    },
-   "move30": -1329,
-   "move30_pct": -2.3,
+   "move30": -573,
+   "move30_pct": -0.8,
    "sidelined": 12965,
-   "sidelined_pct": 22.6,
+   "sidelined_pct": 17.1,
    "status": "stable",
    "top": [
     {
@@ -334,6 +485,80 @@
      "status": ""
     }
    ],
+   "pick_list": [
+    {
+     "label": "2027 1st (Early)",
+     "season": 2027,
+     "round": 1,
+     "via": null,
+     "value": 5016,
+     "trend30": 274
+    },
+    {
+     "label": "2027 1st (Late)",
+     "season": 2027,
+     "round": 1,
+     "via": "Hades9mm",
+     "value": 2541,
+     "trend30": 128
+    },
+    {
+     "label": "2028 1st",
+     "season": 2028,
+     "round": 1,
+     "via": null,
+     "value": 2271,
+     "trend30": 104
+    },
+    {
+     "label": "2027 2nd (Early)",
+     "season": 2027,
+     "round": 2,
+     "via": null,
+     "value": 2037,
+     "trend30": 92
+    },
+    {
+     "label": "2029 1st",
+     "season": 2029,
+     "round": 1,
+     "via": null,
+     "value": 1885,
+     "trend30": 23
+    },
+    {
+     "label": "2028 2nd",
+     "season": 2028,
+     "round": 2,
+     "via": null,
+     "value": 1358,
+     "trend30": 8
+    },
+    {
+     "label": "2029 2nd",
+     "season": 2029,
+     "round": 2,
+     "via": null,
+     "value": 1275,
+     "trend30": 40
+    },
+    {
+     "label": "2028 3rd",
+     "season": 2028,
+     "round": 3,
+     "via": null,
+     "value": 1014,
+     "trend30": 45
+    },
+    {
+     "label": "2029 3rd",
+     "season": 2029,
+     "round": 3,
+     "via": null,
+     "value": 945,
+     "trend30": 42
+    }
+   ],
    "sidelined_players": [
     {
      "name": "Jaxson Dart",
@@ -387,25 +612,26 @@
     }
    ],
    "off_index": 0,
-   "rank": 2,
+   "rank": 1,
    "since": null,
    "since_change": null
   },
   "Zygon": {
-   "total": 61637,
+   "total": 75398,
    "players": 61637,
-   "picks": 0,
-   "pick_count": 0,
+   "picks": 13761,
+   "pick_count": 9,
    "by_pos": {
     "RB": 18697,
     "WR": 20753,
     "TE": 10070,
-    "QB": 12117
+    "QB": 12117,
+    "PICK": 13761
    },
-   "move30": 6287,
-   "move30_pct": 11.4,
+   "move30": 6777,
+   "move30_pct": 9.9,
    "sidelined": 6877,
-   "sidelined_pct": 11.2,
+   "sidelined_pct": 9.1,
    "status": "bull",
    "top": [
     {
@@ -469,6 +695,80 @@
      "status": "Questionable"
     }
    ],
+   "pick_list": [
+    {
+     "label": "2027 1st (Late)",
+     "season": 2027,
+     "round": 1,
+     "via": null,
+     "value": 2541,
+     "trend30": 128
+    },
+    {
+     "label": "2028 1st",
+     "season": 2028,
+     "round": 1,
+     "via": null,
+     "value": 2271,
+     "trend30": 104
+    },
+    {
+     "label": "2029 1st",
+     "season": 2029,
+     "round": 1,
+     "via": null,
+     "value": 1885,
+     "trend30": 23
+    },
+    {
+     "label": "2027 2nd (Late)",
+     "season": 2027,
+     "round": 2,
+     "via": null,
+     "value": 1445,
+     "trend30": 54
+    },
+    {
+     "label": "2028 2nd",
+     "season": 2028,
+     "round": 2,
+     "via": null,
+     "value": 1358,
+     "trend30": 8
+    },
+    {
+     "label": "2029 2nd",
+     "season": 2029,
+     "round": 2,
+     "via": null,
+     "value": 1275,
+     "trend30": 40
+    },
+    {
+     "label": "2027 3rd (Late)",
+     "season": 2027,
+     "round": 3,
+     "via": null,
+     "value": 1027,
+     "trend30": 46
+    },
+    {
+     "label": "2028 3rd",
+     "season": 2028,
+     "round": 3,
+     "via": null,
+     "value": 1014,
+     "trend30": 45
+    },
+    {
+     "label": "2029 3rd",
+     "season": 2029,
+     "round": 3,
+     "via": null,
+     "value": 945,
+     "trend30": 42
+    }
+   ],
    "sidelined_players": [
     {
      "name": "Baker Mayfield",
@@ -512,25 +812,26 @@
     }
    ],
    "off_index": 0,
-   "rank": 1,
+   "rank": 2,
    "since": null,
    "since_change": null
   },
   "Hades9mm": {
-   "total": 46407,
+   "total": 58888,
    "players": 46407,
-   "picks": 0,
-   "pick_count": 0,
+   "picks": 12481,
+   "pick_count": 9,
    "by_pos": {
     "QB": 11787,
     "WR": 16411,
     "RB": 12900,
-    "TE": 5309
+    "TE": 5309,
+    "PICK": 12481
    },
-   "move30": -276,
-   "move30_pct": -0.6,
+   "move30": 131,
+   "move30_pct": 0.2,
    "sidelined": 1440,
-   "sidelined_pct": 3.1,
+   "sidelined_pct": 2.4,
    "status": "stable",
    "top": [
     {
@@ -594,6 +895,80 @@
      "status": "Questionable"
     }
    ],
+   "pick_list": [
+    {
+     "label": "2028 1st",
+     "season": 2028,
+     "round": 1,
+     "via": null,
+     "value": 2271,
+     "trend30": 104
+    },
+    {
+     "label": "2029 1st",
+     "season": 2029,
+     "round": 1,
+     "via": null,
+     "value": 1885,
+     "trend30": 23
+    },
+    {
+     "label": "2027 2nd (Late)",
+     "season": 2027,
+     "round": 2,
+     "via": null,
+     "value": 1445,
+     "trend30": 54
+    },
+    {
+     "label": "2028 2nd",
+     "season": 2028,
+     "round": 2,
+     "via": null,
+     "value": 1358,
+     "trend30": 8
+    },
+    {
+     "label": "2029 2nd",
+     "season": 2029,
+     "round": 2,
+     "via": null,
+     "value": 1275,
+     "trend30": 40
+    },
+    {
+     "label": "2027 3rd (Early)",
+     "season": 2027,
+     "round": 3,
+     "via": "StealingGas",
+     "value": 1261,
+     "trend30": 45
+    },
+    {
+     "label": "2027 3rd (Late)",
+     "season": 2027,
+     "round": 3,
+     "via": null,
+     "value": 1027,
+     "trend30": 46
+    },
+    {
+     "label": "2028 3rd",
+     "season": 2028,
+     "round": 3,
+     "via": null,
+     "value": 1014,
+     "trend30": 45
+    },
+    {
+     "label": "2029 3rd",
+     "season": 2029,
+     "round": 3,
+     "via": null,
+     "value": 945,
+     "trend30": 42
+    }
+   ],
    "sidelined_players": [
     {
      "name": "Stefon Diggs",
@@ -612,20 +987,21 @@
    "since_change": null
   },
   "Johnny4Skins": {
-   "total": 51983,
+   "total": 65744,
    "players": 51983,
-   "picks": 0,
-   "pick_count": 0,
+   "picks": 13761,
+   "pick_count": 9,
    "by_pos": {
     "WR": 20055,
     "TE": 7113,
     "QB": 12880,
-    "RB": 11935
+    "RB": 11935,
+    "PICK": 13761
    },
-   "move30": -2536,
-   "move30_pct": -4.7,
+   "move30": -2046,
+   "move30_pct": -3.0,
    "sidelined": 12191,
-   "sidelined_pct": 23.5,
+   "sidelined_pct": 18.5,
    "status": "correction",
    "top": [
     {
@@ -689,6 +1065,80 @@
      "status": "IR"
     }
    ],
+   "pick_list": [
+    {
+     "label": "2027 1st (Late)",
+     "season": 2027,
+     "round": 1,
+     "via": null,
+     "value": 2541,
+     "trend30": 128
+    },
+    {
+     "label": "2028 1st",
+     "season": 2028,
+     "round": 1,
+     "via": null,
+     "value": 2271,
+     "trend30": 104
+    },
+    {
+     "label": "2029 1st",
+     "season": 2029,
+     "round": 1,
+     "via": null,
+     "value": 1885,
+     "trend30": 23
+    },
+    {
+     "label": "2027 2nd (Late)",
+     "season": 2027,
+     "round": 2,
+     "via": null,
+     "value": 1445,
+     "trend30": 54
+    },
+    {
+     "label": "2028 2nd",
+     "season": 2028,
+     "round": 2,
+     "via": null,
+     "value": 1358,
+     "trend30": 8
+    },
+    {
+     "label": "2029 2nd",
+     "season": 2029,
+     "round": 2,
+     "via": null,
+     "value": 1275,
+     "trend30": 40
+    },
+    {
+     "label": "2027 3rd (Late)",
+     "season": 2027,
+     "round": 3,
+     "via": null,
+     "value": 1027,
+     "trend30": 46
+    },
+    {
+     "label": "2028 3rd",
+     "season": 2028,
+     "round": 3,
+     "via": null,
+     "value": 1014,
+     "trend30": 45
+    },
+    {
+     "label": "2029 3rd",
+     "season": 2029,
+     "round": 3,
+     "via": null,
+     "value": 945,
+     "trend30": 42
+    }
+   ],
    "sidelined_players": [
     {
      "name": "Lamar Jackson",
@@ -737,21 +1187,22 @@
    "since_change": null
   },
   "Sarge71": {
-   "total": 40626,
+   "total": 55480,
    "players": 40626,
-   "picks": 0,
-   "pick_count": 0,
+   "picks": 14854,
+   "pick_count": 9,
    "by_pos": {
     "TE": 5286,
     "RB": 16684,
     "WR": 14341,
-    "QB": 4315
+    "QB": 4315,
+    "PICK": 14854
    },
-   "move30": -2702,
-   "move30_pct": -6.2,
+   "move30": -2155,
+   "move30_pct": -3.7,
    "sidelined": 4025,
-   "sidelined_pct": 9.9,
-   "status": "crash",
+   "sidelined_pct": 7.3,
+   "status": "correction",
    "top": [
     {
      "name": "Bijan Robinson",
@@ -814,6 +1265,80 @@
      "status": "IR"
     }
    ],
+   "pick_list": [
+    {
+     "label": "2027 1st (Mid)",
+     "season": 2027,
+     "round": 1,
+     "via": null,
+     "value": 3303,
+     "trend30": 181
+    },
+    {
+     "label": "2028 1st",
+     "season": 2028,
+     "round": 1,
+     "via": null,
+     "value": 2271,
+     "trend30": 104
+    },
+    {
+     "label": "2029 1st",
+     "season": 2029,
+     "round": 1,
+     "via": null,
+     "value": 1885,
+     "trend30": 23
+    },
+    {
+     "label": "2027 2nd (Mid)",
+     "season": 2027,
+     "round": 2,
+     "via": null,
+     "value": 1687,
+     "trend30": 67
+    },
+    {
+     "label": "2028 2nd",
+     "season": 2028,
+     "round": 2,
+     "via": null,
+     "value": 1358,
+     "trend30": 8
+    },
+    {
+     "label": "2029 2nd",
+     "season": 2029,
+     "round": 2,
+     "via": null,
+     "value": 1275,
+     "trend30": 40
+    },
+    {
+     "label": "2027 3rd (Mid)",
+     "season": 2027,
+     "round": 3,
+     "via": null,
+     "value": 1116,
+     "trend30": 37
+    },
+    {
+     "label": "2028 3rd",
+     "season": 2028,
+     "round": 3,
+     "via": null,
+     "value": 1014,
+     "trend30": 45
+    },
+    {
+     "label": "2029 3rd",
+     "season": 2029,
+     "round": 3,
+     "via": null,
+     "value": 945,
+     "trend30": 42
+    }
+   ],
    "sidelined_players": [
     {
      "name": "Travis Etienne",
@@ -847,26 +1372,27 @@
     }
    ],
    "off_index": 1,
-   "rank": 12,
+   "rank": 11,
    "since": null,
    "since_change": null
   },
   "C33DeezNutzz": {
-   "total": 47417,
+   "total": 62271,
    "players": 47417,
-   "picks": 0,
-   "pick_count": 0,
+   "picks": 14854,
+   "pick_count": 9,
    "by_pos": {
     "WR": 22042,
     "RB": 7344,
     "TE": 3241,
-    "QB": 14790
+    "QB": 14790,
+    "PICK": 14854
    },
-   "move30": -2045,
-   "move30_pct": -4.1,
+   "move30": -1498,
+   "move30_pct": -2.3,
    "sidelined": 2681,
-   "sidelined_pct": 5.7,
-   "status": "correction",
+   "sidelined_pct": 4.3,
+   "status": "stable",
    "top": [
     {
      "name": "Josh Allen",
@@ -929,6 +1455,80 @@
      "status": ""
     }
    ],
+   "pick_list": [
+    {
+     "label": "2027 1st (Mid)",
+     "season": 2027,
+     "round": 1,
+     "via": null,
+     "value": 3303,
+     "trend30": 181
+    },
+    {
+     "label": "2028 1st",
+     "season": 2028,
+     "round": 1,
+     "via": null,
+     "value": 2271,
+     "trend30": 104
+    },
+    {
+     "label": "2029 1st",
+     "season": 2029,
+     "round": 1,
+     "via": null,
+     "value": 1885,
+     "trend30": 23
+    },
+    {
+     "label": "2027 2nd (Mid)",
+     "season": 2027,
+     "round": 2,
+     "via": null,
+     "value": 1687,
+     "trend30": 67
+    },
+    {
+     "label": "2028 2nd",
+     "season": 2028,
+     "round": 2,
+     "via": null,
+     "value": 1358,
+     "trend30": 8
+    },
+    {
+     "label": "2029 2nd",
+     "season": 2029,
+     "round": 2,
+     "via": null,
+     "value": 1275,
+     "trend30": 40
+    },
+    {
+     "label": "2027 3rd (Mid)",
+     "season": 2027,
+     "round": 3,
+     "via": null,
+     "value": 1116,
+     "trend30": 37
+    },
+    {
+     "label": "2028 3rd",
+     "season": 2028,
+     "round": 3,
+     "via": null,
+     "value": 1014,
+     "trend30": 45
+    },
+    {
+     "label": "2029 3rd",
+     "season": 2029,
+     "round": 3,
+     "via": null,
+     "value": 945,
+     "trend30": 42
+    }
+   ],
    "sidelined_players": [
     {
      "name": "Jayden Reed",
@@ -952,26 +1552,27 @@
     }
    ],
    "off_index": 1,
-   "rank": 7,
+   "rank": 8,
    "since": null,
    "since_change": null
   },
   "Painty69": {
-   "total": 49953,
+   "total": 64807,
    "players": 49953,
-   "picks": 0,
-   "pick_count": 0,
+   "picks": 14854,
+   "pick_count": 9,
    "by_pos": {
     "QB": 11561,
     "TE": 6031,
     "WR": 10656,
-    "RB": 21705
+    "RB": 21705,
+    "PICK": 14854
    },
-   "move30": -2961,
-   "move30_pct": -5.6,
+   "move30": -2414,
+   "move30_pct": -3.6,
    "sidelined": 0,
    "sidelined_pct": 0.0,
-   "status": "crash",
+   "status": "correction",
    "top": [
     {
      "name": "Jahmyr Gibbs",
@@ -1011,7 +1612,7 @@
      "rank": 50,
      "trend30": -111,
      "sidelined": false,
-     "status": ""
+     "status": "Questionable"
     },
     {
      "name": "C.J. Stroud",
@@ -1034,6 +1635,80 @@
      "status": ""
     }
    ],
+   "pick_list": [
+    {
+     "label": "2027 1st (Mid)",
+     "season": 2027,
+     "round": 1,
+     "via": null,
+     "value": 3303,
+     "trend30": 181
+    },
+    {
+     "label": "2028 1st",
+     "season": 2028,
+     "round": 1,
+     "via": null,
+     "value": 2271,
+     "trend30": 104
+    },
+    {
+     "label": "2029 1st",
+     "season": 2029,
+     "round": 1,
+     "via": null,
+     "value": 1885,
+     "trend30": 23
+    },
+    {
+     "label": "2027 2nd (Mid)",
+     "season": 2027,
+     "round": 2,
+     "via": null,
+     "value": 1687,
+     "trend30": 67
+    },
+    {
+     "label": "2028 2nd",
+     "season": 2028,
+     "round": 2,
+     "via": null,
+     "value": 1358,
+     "trend30": 8
+    },
+    {
+     "label": "2029 2nd",
+     "season": 2029,
+     "round": 2,
+     "via": null,
+     "value": 1275,
+     "trend30": 40
+    },
+    {
+     "label": "2027 3rd (Mid)",
+     "season": 2027,
+     "round": 3,
+     "via": null,
+     "value": 1116,
+     "trend30": 37
+    },
+    {
+     "label": "2028 3rd",
+     "season": 2028,
+     "round": 3,
+     "via": null,
+     "value": 1014,
+     "trend30": 45
+    },
+    {
+     "label": "2029 3rd",
+     "season": 2029,
+     "round": 3,
+     "via": null,
+     "value": 945,
+     "trend30": 42
+    }
+   ],
    "sidelined_players": [],
    "off_index": 0,
    "rank": 5,
@@ -1041,21 +1716,22 @@
    "since_change": null
   },
   "CMac91": {
-   "total": 47019,
+   "total": 60780,
    "players": 47019,
-   "picks": 0,
-   "pick_count": 0,
+   "picks": 13761,
+   "pick_count": 9,
    "by_pos": {
     "TE": 3919,
     "QB": 12132,
     "WR": 17092,
-    "RB": 13876
+    "RB": 13876,
+    "PICK": 13761
    },
-   "move30": -1243,
-   "move30_pct": -2.6,
+   "move30": -753,
+   "move30_pct": -1.2,
    "sidelined": 8356,
-   "sidelined_pct": 17.8,
-   "status": "correction",
+   "sidelined_pct": 13.7,
+   "status": "stable",
    "top": [
     {
      "name": "CeeDee Lamb",
@@ -1118,6 +1794,80 @@
      "status": "Out"
     }
    ],
+   "pick_list": [
+    {
+     "label": "2027 1st (Late)",
+     "season": 2027,
+     "round": 1,
+     "via": null,
+     "value": 2541,
+     "trend30": 128
+    },
+    {
+     "label": "2028 1st",
+     "season": 2028,
+     "round": 1,
+     "via": null,
+     "value": 2271,
+     "trend30": 104
+    },
+    {
+     "label": "2029 1st",
+     "season": 2029,
+     "round": 1,
+     "via": null,
+     "value": 1885,
+     "trend30": 23
+    },
+    {
+     "label": "2027 2nd (Late)",
+     "season": 2027,
+     "round": 2,
+     "via": null,
+     "value": 1445,
+     "trend30": 54
+    },
+    {
+     "label": "2028 2nd",
+     "season": 2028,
+     "round": 2,
+     "via": null,
+     "value": 1358,
+     "trend30": 8
+    },
+    {
+     "label": "2029 2nd",
+     "season": 2029,
+     "round": 2,
+     "via": null,
+     "value": 1275,
+     "trend30": 40
+    },
+    {
+     "label": "2027 3rd (Late)",
+     "season": 2027,
+     "round": 3,
+     "via": null,
+     "value": 1027,
+     "trend30": 46
+    },
+    {
+     "label": "2028 3rd",
+     "season": 2028,
+     "round": 3,
+     "via": null,
+     "value": 1014,
+     "trend30": 45
+    },
+    {
+     "label": "2029 3rd",
+     "season": 2029,
+     "round": 3,
+     "via": null,
+     "value": 945,
+     "trend30": 42
+    }
+   ],
    "sidelined_players": [
     {
      "name": "Breece Hall",
@@ -1157,7 +1907,7 @@
      "rank": 163,
      "trend30": 130,
      "sidelined": true,
-     "status": "Doubtful"
+     "status": "Out"
     },
     {
      "name": "Jack Bech",
@@ -1171,25 +1921,26 @@
     }
    ],
    "off_index": 0,
-   "rank": 8,
+   "rank": 9,
    "since": null,
    "since_change": null
   },
   "YesChef23": {
-   "total": 46807,
+   "total": 63869,
    "players": 46807,
-   "picks": 0,
-   "pick_count": 0,
+   "picks": 17062,
+   "pick_count": 9,
    "by_pos": {
     "QB": 15260,
     "WR": 14020,
     "RB": 13923,
-    "TE": 3604
+    "TE": 3604,
+    "PICK": 17062
    },
-   "move30": 1313,
-   "move30_pct": 2.9,
+   "move30": 1986,
+   "move30_pct": 3.2,
    "sidelined": 2511,
-   "sidelined_pct": 5.4,
+   "sidelined_pct": 3.9,
    "status": "stable",
    "top": [
     {
@@ -1253,6 +2004,80 @@
      "status": ""
     }
    ],
+   "pick_list": [
+    {
+     "label": "2027 1st (Early)",
+     "season": 2027,
+     "round": 1,
+     "via": null,
+     "value": 5016,
+     "trend30": 274
+    },
+    {
+     "label": "2028 1st",
+     "season": 2028,
+     "round": 1,
+     "via": null,
+     "value": 2271,
+     "trend30": 104
+    },
+    {
+     "label": "2027 2nd (Early)",
+     "season": 2027,
+     "round": 2,
+     "via": null,
+     "value": 2037,
+     "trend30": 92
+    },
+    {
+     "label": "2029 1st",
+     "season": 2029,
+     "round": 1,
+     "via": null,
+     "value": 1885,
+     "trend30": 23
+    },
+    {
+     "label": "2028 2nd",
+     "season": 2028,
+     "round": 2,
+     "via": null,
+     "value": 1358,
+     "trend30": 8
+    },
+    {
+     "label": "2029 2nd",
+     "season": 2029,
+     "round": 2,
+     "via": null,
+     "value": 1275,
+     "trend30": 40
+    },
+    {
+     "label": "2027 3rd (Early)",
+     "season": 2027,
+     "round": 3,
+     "via": null,
+     "value": 1261,
+     "trend30": 45
+    },
+    {
+     "label": "2028 3rd",
+     "season": 2028,
+     "round": 3,
+     "via": null,
+     "value": 1014,
+     "trend30": 45
+    },
+    {
+     "label": "2029 3rd",
+     "season": 2029,
+     "round": 3,
+     "via": null,
+     "value": 945,
+     "trend30": 42
+    }
+   ],
    "sidelined_players": [
     {
      "name": "Jadarian Price",
@@ -1266,26 +2091,27 @@
     }
    ],
    "off_index": 0,
-   "rank": 9,
+   "rank": 7,
    "since": null,
    "since_change": null
   },
   "fumbduckdumbfuck": {
-   "total": 49100,
+   "total": 63954,
    "players": 49100,
-   "picks": 0,
-   "pick_count": 0,
+   "picks": 14854,
+   "pick_count": 9,
    "by_pos": {
     "WR": 14366,
     "RB": 16904,
     "TE": 10672,
-    "QB": 7158
+    "QB": 7158,
+    "PICK": 14854
    },
-   "move30": -1281,
-   "move30_pct": -2.5,
+   "move30": -734,
+   "move30_pct": -1.1,
    "sidelined": 2019,
-   "sidelined_pct": 4.1,
-   "status": "correction",
+   "sidelined_pct": 3.2,
+   "status": "stable",
    "top": [
     {
      "name": "Brock Bowers",
@@ -1348,6 +2174,80 @@
      "status": ""
     }
    ],
+   "pick_list": [
+    {
+     "label": "2027 1st (Mid)",
+     "season": 2027,
+     "round": 1,
+     "via": null,
+     "value": 3303,
+     "trend30": 181
+    },
+    {
+     "label": "2028 1st",
+     "season": 2028,
+     "round": 1,
+     "via": null,
+     "value": 2271,
+     "trend30": 104
+    },
+    {
+     "label": "2029 1st",
+     "season": 2029,
+     "round": 1,
+     "via": null,
+     "value": 1885,
+     "trend30": 23
+    },
+    {
+     "label": "2027 2nd (Mid)",
+     "season": 2027,
+     "round": 2,
+     "via": null,
+     "value": 1687,
+     "trend30": 67
+    },
+    {
+     "label": "2028 2nd",
+     "season": 2028,
+     "round": 2,
+     "via": null,
+     "value": 1358,
+     "trend30": 8
+    },
+    {
+     "label": "2029 2nd",
+     "season": 2029,
+     "round": 2,
+     "via": null,
+     "value": 1275,
+     "trend30": 40
+    },
+    {
+     "label": "2027 3rd (Mid)",
+     "season": 2027,
+     "round": 3,
+     "via": null,
+     "value": 1116,
+     "trend30": 37
+    },
+    {
+     "label": "2028 3rd",
+     "season": 2028,
+     "round": 3,
+     "via": null,
+     "value": 1014,
+     "trend30": 45
+    },
+    {
+     "label": "2029 3rd",
+     "season": 2029,
+     "round": 3,
+     "via": null,
+     "value": 945,
+     "trend30": 42
+    }
+   ],
    "sidelined_players": [
     {
      "name": "Kyle Monangai",
@@ -1370,18 +2270,18 @@
   {
    "date": "2026-10-09",
    "totals": {
-    "Darkspaces": 53647,
-    "Snipe58": 42022,
-    "StealingGas": 57373,
-    "Zygon": 61637,
-    "Hades9mm": 46407,
-    "Johnny4Skins": 51983,
-    "Sarge71": 40626,
-    "C33DeezNutzz": 47417,
-    "Painty69": 49953,
-    "CMac91": 47019,
-    "YesChef23": 46807,
-    "fumbduckdumbfuck": 49100
+    "Darkspaces": 75379,
+    "Snipe58": 54414,
+    "StealingGas": 75715,
+    "Zygon": 75398,
+    "Hades9mm": 58888,
+    "Johnny4Skins": 65744,
+    "Sarge71": 55480,
+    "C33DeezNutzz": 62271,
+    "Painty69": 64807,
+    "CMac91": 60780,
+    "YesChef23": 63869,
+    "fumbduckdumbfuck": 63954
    }
   }
  ]
