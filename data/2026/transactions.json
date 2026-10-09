@@ -974,5 +974,51 @@
       "Keon Coleman"
     ],
     "bid": 0
+  },
+  {
+    "week": 5,
+    "type": "free_agent",
+    "created": 1791484003649,
+    "id": "1413990032225689600",
+    "manager": "Johnny4Skins",
+    "added": {
+      "name": "Jalon Daniels",
+      "pos": "QB",
+      "team": "TB"
+    },
+    "dropped": [
+      "Jordan James"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 5,
+    "type": "free_agent",
+    "created": 1791482612304,
+    "id": "1413984196501708800",
+    "manager": "Zygon",
+    "added": {
+      "name": "Jacksonville Jaguars",
+      "pos": "DEF",
+      "team": "JAX"
+    },
+    "dropped": [
+      "Chicago Bears"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 5,
+    "type": "free_agent",
+    "created": 1791471329588,
+    "id": "1413936873365147648",
+    "manager": "Hades9mm",
+    "added": {
+      "name": "Devaughn Vele",
+      "pos": "WR",
+      "team": "NO"
+    },
+    "dropped": [],
+    "bid": 0
   }
 ]

@@ -1,0 +1,1366 @@
+{
+ "season": "2026",
+ "source": "FantasyCalc",
+ "format": {
+  "isDynasty": "true",
+  "numQbs": 2,
+  "numTeams": 12,
+  "ppr": 1
+ },
+ "generated_at": "2026-10-09T14:58:10+00:00",
+ "thresholds": {
+  "crash_move_pct": -5.0,
+  "crash_sidelined_pct": 25.0,
+  "correction_move_pct": -2.5,
+  "bull_move_pct": 5.0
+ },
+ "league_avg": 49454,
+ "teams": {
+  "Darkspaces": {
+   "total": 53412,
+   "players": 53412,
+   "picks": 0,
+   "pick_count": 0,
+   "by_pos": {
+    "WR": 26095,
+    "QB": 12032,
+    "TE": 5610,
+    "RB": 9675
+   },
+   "move30": -5049,
+   "move30_pct": -8.6,
+   "sidelined": 11787,
+   "sidelined_pct": 22.1,
+   "status": "crash",
+   "top": [
+    {
+     "name": "Drake Maye",
+     "pos": "QB",
+     "team": "NE",
+     "value": 6033,
+     "rank": 18,
+     "trend30": -2211,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Nico Collins",
+     "pos": "WR",
+     "team": "HOU",
+     "value": 4841,
+     "rank": 30,
+     "trend30": 401,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "De'Von Achane",
+     "pos": "RB",
+     "team": "MIA",
+     "value": 4062,
+     "rank": 40,
+     "trend30": -1772,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Colston Loveland",
+     "pos": "TE",
+     "team": "CHI",
+     "value": 3963,
+     "rank": 43,
+     "trend30": -1365,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Fernando Mendoza",
+     "pos": "QB",
+     "team": "LV",
+     "value": 3823,
+     "rank": 49,
+     "trend30": 334,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Parker Washington",
+     "pos": "WR",
+     "team": "JAX",
+     "value": 3522,
+     "rank": 55,
+     "trend30": 756,
+     "sidelined": false,
+     "status": ""
+    }
+   ],
+   "sidelined_players": [
+    {
+     "name": "De'Von Achane",
+     "pos": "RB",
+     "team": "MIA",
+     "value": 4062,
+     "rank": 40,
+     "trend30": -1772,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Zach Charbonnet",
+     "pos": "RB",
+     "team": "SEA",
+     "value": 1896,
+     "rank": 106,
+     "trend30": 192,
+     "sidelined": true,
+     "status": "PUP"
+    },
+    {
+     "name": "Terrance Ferguson",
+     "pos": "TE",
+     "team": "LAR",
+     "value": 1647,
+     "rank": 125,
+     "trend30": -9,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Omar Cooper",
+     "pos": "WR",
+     "team": "NYJ",
+     "value": 1640,
+     "rank": 127,
+     "trend30": -54,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Ricky Pearsall",
+     "pos": "WR",
+     "team": "SF",
+     "value": 1363,
+     "rank": 156,
+     "trend30": 35,
+     "sidelined": true,
+     "status": "IR"
+    }
+   ],
+   "off_index": 0,
+   "rank": 3,
+   "since": null,
+   "since_change": null
+  },
+  "Snipe58": {
+   "total": 41822,
+   "players": 41822,
+   "picks": 0,
+   "pick_count": 0,
+   "by_pos": {
+    "WR": 14570,
+    "RB": 13281,
+    "QB": 10700,
+    "TE": 3271
+   },
+   "move30": -4878,
+   "move30_pct": -10.4,
+   "sidelined": 1883,
+   "sidelined_pct": 4.5,
+   "status": "crash",
+   "top": [
+    {
+     "name": "Justin Jefferson",
+     "pos": "WR",
+     "team": "MIN",
+     "value": 6143,
+     "rank": 17,
+     "trend30": -623,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "Brock Purdy",
+     "pos": "QB",
+     "team": "SF",
+     "value": 5887,
+     "rank": 20,
+     "trend30": 1598,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Omarion Hampton",
+     "pos": "RB",
+     "team": "LAC",
+     "value": 3897,
+     "rank": 45,
+     "trend30": -2133,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Quinshon Judkins",
+     "pos": "RB",
+     "team": "CLE",
+     "value": 3273,
+     "rank": 59,
+     "trend30": -359,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Matthew Stafford",
+     "pos": "QB",
+     "team": "LAR",
+     "value": 2466,
+     "rank": 88,
+     "trend30": -97,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "KC Concepcion",
+     "pos": "WR",
+     "team": "CLE",
+     "value": 2388,
+     "rank": 90,
+     "trend30": -394,
+     "sidelined": false,
+     "status": ""
+    }
+   ],
+   "sidelined_players": [
+    {
+     "name": "Jonah Coleman",
+     "pos": "RB",
+     "team": "DEN",
+     "value": 1883,
+     "rank": 108,
+     "trend30": 44,
+     "sidelined": true,
+     "status": "IR"
+    }
+   ],
+   "off_index": 0,
+   "rank": 11,
+   "since": null,
+   "since_change": null
+  },
+  "StealingGas": {
+   "total": 57687,
+   "players": 57687,
+   "picks": 0,
+   "pick_count": 0,
+   "by_pos": {
+    "QB": 11957,
+    "RB": 8393,
+    "WR": 32425,
+    "TE": 4912
+   },
+   "move30": -1014,
+   "move30_pct": -1.7,
+   "sidelined": 13064,
+   "sidelined_pct": 22.6,
+   "status": "stable",
+   "top": [
+    {
+     "name": "Puka Nacua",
+     "pos": "WR",
+     "team": "LAR",
+     "value": 7670,
+     "rank": 8,
+     "trend30": -610,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Drake London",
+     "pos": "WR",
+     "team": "ATL",
+     "value": 5795,
+     "rank": 22,
+     "trend30": 616,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Malik Nabers",
+     "pos": "WR",
+     "team": "NYG",
+     "value": 5629,
+     "rank": 23,
+     "trend30": -802,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "Trevor Lawrence",
+     "pos": "QB",
+     "team": "JAX",
+     "value": 5357,
+     "rank": 25,
+     "trend30": 206,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Jaxson Dart",
+     "pos": "QB",
+     "team": "NYG",
+     "value": 4443,
+     "rank": 32,
+     "trend30": -588,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Garrett Wilson",
+     "pos": "WR",
+     "team": "NYJ",
+     "value": 4417,
+     "rank": 34,
+     "trend30": 352,
+     "sidelined": false,
+     "status": ""
+    }
+   ],
+   "sidelined_players": [
+    {
+     "name": "Jaxson Dart",
+     "pos": "QB",
+     "team": "NYG",
+     "value": 4443,
+     "rank": 32,
+     "trend30": -588,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Jordyn Tyson",
+     "pos": "WR",
+     "team": "NO",
+     "value": 3028,
+     "rank": 66,
+     "trend30": 22,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "De'Zhaun Stribling",
+     "pos": "WR",
+     "team": "SF",
+     "value": 1805,
+     "rank": 111,
+     "trend30": -154,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Eli Stowers",
+     "pos": "TE",
+     "team": "PHI",
+     "value": 1570,
+     "rank": 133,
+     "trend30": -13,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Jayden Higgins",
+     "pos": "WR",
+     "team": "HOU",
+     "value": 1520,
+     "rank": 135,
+     "trend30": -3,
+     "sidelined": true,
+     "status": "IR"
+    }
+   ],
+   "off_index": 0,
+   "rank": 2,
+   "since": null,
+   "since_change": null
+  },
+  "Zygon": {
+   "total": 61615,
+   "players": 61615,
+   "picks": 0,
+   "pick_count": 0,
+   "by_pos": {
+    "RB": 18709,
+    "WR": 20621,
+    "TE": 10111,
+    "QB": 12174
+   },
+   "move30": 6265,
+   "move30_pct": 11.3,
+   "sidelined": 6833,
+   "sidelined_pct": 11.1,
+   "status": "bull",
+   "top": [
+    {
+     "name": "Jaxon Smith-Njigba",
+     "pos": "WR",
+     "team": "SEA",
+     "value": 10156,
+     "rank": 4,
+     "trend30": 1417,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Trey McBride",
+     "pos": "TE",
+     "team": "ARI",
+     "value": 6939,
+     "rank": 11,
+     "trend30": 560,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Kenneth Walker",
+     "pos": "RB",
+     "team": "KC",
+     "value": 6900,
+     "rank": 12,
+     "trend30": 2366,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Patrick Mahomes",
+     "pos": "QB",
+     "team": "KC",
+     "value": 5885,
+     "rank": 21,
+     "trend30": 807,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Chase Brown",
+     "pos": "RB",
+     "team": "CIN",
+     "value": 4273,
+     "rank": 37,
+     "trend30": -239,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Tee Higgins",
+     "pos": "WR",
+     "team": "CIN",
+     "value": 3541,
+     "rank": 54,
+     "trend30": 286,
+     "sidelined": false,
+     "status": "Questionable"
+    }
+   ],
+   "sidelined_players": [
+    {
+     "name": "Baker Mayfield",
+     "pos": "QB",
+     "team": "TB",
+     "value": 2581,
+     "rank": 84,
+     "trend30": -854,
+     "sidelined": true,
+     "status": "Out"
+    },
+    {
+     "name": "Jalen Coker",
+     "pos": "WR",
+     "team": "CAR",
+     "value": 2197,
+     "rank": 97,
+     "trend30": 678,
+     "sidelined": true,
+     "status": "Out"
+    },
+    {
+     "name": "Ja'Kobi Lane",
+     "pos": "WR",
+     "team": "BAL",
+     "value": 1388,
+     "rank": 152,
+     "trend30": -279,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Chris Brazzell",
+     "pos": "WR",
+     "team": "CAR",
+     "value": 667,
+     "rank": 232,
+     "trend30": 177,
+     "sidelined": true,
+     "status": "IR"
+    }
+   ],
+   "off_index": 0,
+   "rank": 1,
+   "since": null,
+   "since_change": null
+  },
+  "Hades9mm": {
+   "total": 46693,
+   "players": 46693,
+   "picks": 0,
+   "pick_count": 0,
+   "by_pos": {
+    "QB": 11704,
+    "WR": 16642,
+    "RB": 13062,
+    "TE": 5285
+   },
+   "move30": 10,
+   "move30_pct": 0.0,
+   "sidelined": 0,
+   "sidelined_pct": 0.0,
+   "status": "stable",
+   "top": [
+    {
+     "name": "Amon-Ra St. Brown",
+     "pos": "WR",
+     "team": "DET",
+     "value": 7742,
+     "rank": 7,
+     "trend30": 589,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Jayden Daniels",
+     "pos": "QB",
+     "team": "WAS",
+     "value": 5253,
+     "rank": 26,
+     "trend30": -1407,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "team": "DAL",
+     "value": 3951,
+     "rank": 44,
+     "trend30": 612,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Jared Goff",
+     "pos": "QB",
+     "team": "DET",
+     "value": 3694,
+     "rank": 50,
+     "trend30": 261,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Derrick Henry",
+     "pos": "RB",
+     "team": "BAL",
+     "value": 3667,
+     "rank": 51,
+     "trend30": 492,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Cam Skattebo",
+     "pos": "RB",
+     "team": "NYG",
+     "value": 2821,
+     "rank": 74,
+     "trend30": -295,
+     "sidelined": false,
+     "status": "Questionable"
+    }
+   ],
+   "sidelined_players": [],
+   "off_index": 0,
+   "rank": 9,
+   "since": null,
+   "since_change": null
+  },
+  "Johnny4Skins": {
+   "total": 51816,
+   "players": 51816,
+   "picks": 0,
+   "pick_count": 0,
+   "by_pos": {
+    "WR": 19935,
+    "TE": 7196,
+    "QB": 12756,
+    "RB": 11929
+   },
+   "move30": -2701,
+   "move30_pct": -5.0,
+   "sidelined": 5056,
+   "sidelined_pct": 9.8,
+   "status": "crash",
+   "top": [
+    {
+     "name": "Ja'Marr Chase",
+     "pos": "WR",
+     "team": "CIN",
+     "value": 8495,
+     "rank": 5,
+     "trend30": -1071,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "Lamar Jackson",
+     "pos": "QB",
+     "team": "BAL",
+     "value": 6990,
+     "rank": 10,
+     "trend30": -718,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "Jalen Hurts",
+     "pos": "QB",
+     "team": "PHI",
+     "value": 4574,
+     "rank": 31,
+     "trend30": -740,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Kyren Williams",
+     "pos": "RB",
+     "team": "LAR",
+     "value": 4349,
+     "rank": 36,
+     "trend30": 818,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Tyler Warren",
+     "pos": "TE",
+     "team": "IND",
+     "value": 4053,
+     "rank": 41,
+     "trend30": -828,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "A.J. Brown",
+     "pos": "WR",
+     "team": "NE",
+     "value": 3065,
+     "rank": 65,
+     "trend30": -1107,
+     "sidelined": true,
+     "status": "IR"
+    }
+   ],
+   "sidelined_players": [
+    {
+     "name": "A.J. Brown",
+     "pos": "WR",
+     "team": "NE",
+     "value": 3065,
+     "rank": 65,
+     "trend30": -1107,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Adonai Mitchell",
+     "pos": "WR",
+     "team": "NYJ",
+     "value": 1300,
+     "rank": 168,
+     "trend30": 240,
+     "sidelined": true,
+     "status": "Out"
+    },
+    {
+     "name": "Jalen McMillan",
+     "pos": "WR",
+     "team": "TB",
+     "value": 691,
+     "rank": 230,
+     "trend30": -491,
+     "sidelined": true,
+     "status": "IR"
+    }
+   ],
+   "off_index": 0,
+   "rank": 4,
+   "since": null,
+   "since_change": null
+  },
+  "Sarge71": {
+   "total": 40650,
+   "players": 40650,
+   "picks": 0,
+   "pick_count": 0,
+   "by_pos": {
+    "TE": 5241,
+    "RB": 16659,
+    "WR": 14444,
+    "QB": 4306
+   },
+   "move30": -3033,
+   "move30_pct": -6.9,
+   "sidelined": 4087,
+   "sidelined_pct": 10.1,
+   "status": "crash",
+   "top": [
+    {
+     "name": "Bijan Robinson",
+     "pos": "RB",
+     "team": "ATL",
+     "value": 10181,
+     "rank": 3,
+     "trend30": 198,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Tetairoa McMillan",
+     "pos": "WR",
+     "team": "CAR",
+     "value": 5224,
+     "rank": 27,
+     "trend30": 757,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Sam Darnold",
+     "pos": "QB",
+     "team": "SEA",
+     "value": 3019,
+     "rank": 67,
+     "trend30": 182,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Jaylen Waddle",
+     "pos": "WR",
+     "team": "DEN",
+     "value": 2769,
+     "rank": 76,
+     "trend30": -784,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Dalton Kincaid",
+     "pos": "TE",
+     "team": "BUF",
+     "value": 2644,
+     "rank": 80,
+     "trend30": 582,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Travis Etienne",
+     "pos": "RB",
+     "team": "NO",
+     "value": 2022,
+     "rank": 101,
+     "trend30": -1048,
+     "sidelined": true,
+     "status": "IR"
+    }
+   ],
+   "sidelined_players": [
+    {
+     "name": "Travis Etienne",
+     "pos": "RB",
+     "team": "NO",
+     "value": 2022,
+     "rank": 101,
+     "trend30": -1048,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Michael Pittman",
+     "pos": "WR",
+     "team": "PIT",
+     "value": 1137,
+     "rank": 189,
+     "trend30": -519,
+     "sidelined": true,
+     "status": "Out"
+    },
+    {
+     "name": "Tank Bigsby",
+     "pos": "RB",
+     "team": "PHI",
+     "value": 890,
+     "rank": 214,
+     "trend30": -310,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Jake Tonges",
+     "pos": "TE",
+     "team": "SF",
+     "value": 38,
+     "rank": 384,
+     "trend30": -317,
+     "sidelined": true,
+     "status": "IR"
+    }
+   ],
+   "off_index": 0,
+   "rank": 12,
+   "since": null,
+   "since_change": null
+  },
+  "C33DeezNutzz": {
+   "total": 47478,
+   "players": 47478,
+   "picks": 0,
+   "pick_count": 0,
+   "by_pos": {
+    "WR": 22138,
+    "RB": 7209,
+    "TE": 3246,
+    "QB": 14885
+   },
+   "move30": -1982,
+   "move30_pct": -4.0,
+   "sidelined": 2690,
+   "sidelined_pct": 5.7,
+   "status": "correction",
+   "top": [
+    {
+     "name": "Josh Allen",
+     "pos": "QB",
+     "team": "BUF",
+     "value": 10989,
+     "rank": 1,
+     "trend30": 648,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Chris Olave",
+     "pos": "WR",
+     "team": "NO",
+     "value": 5407,
+     "rank": 24,
+     "trend30": 1058,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "Zay Flowers",
+     "pos": "WR",
+     "team": "BAL",
+     "value": 4986,
+     "rank": 29,
+     "trend30": 1272,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "Justin Herbert",
+     "pos": "QB",
+     "team": "LAC",
+     "value": 3896,
+     "rank": 46,
+     "trend30": -1961,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Christian Watson",
+     "pos": "WR",
+     "team": "GB",
+     "value": 3071,
+     "rank": 64,
+     "trend30": 705,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Bucky Irving",
+     "pos": "RB",
+     "team": "TB",
+     "value": 2975,
+     "rank": 69,
+     "trend30": -47,
+     "sidelined": false,
+     "status": ""
+    }
+   ],
+   "sidelined_players": [
+    {
+     "name": "Jayden Reed",
+     "pos": "WR",
+     "team": "GB",
+     "value": 1383,
+     "rank": 153,
+     "trend30": -433,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Jonathon Brooks",
+     "pos": "RB",
+     "team": "CAR",
+     "value": 1307,
+     "rank": 166,
+     "trend30": -576,
+     "sidelined": true,
+     "status": "IR"
+    }
+   ],
+   "off_index": 1,
+   "rank": 7,
+   "since": null,
+   "since_change": null
+  },
+  "Painty69": {
+   "total": 49766,
+   "players": 49766,
+   "picks": 0,
+   "pick_count": 0,
+   "by_pos": {
+    "QB": 11524,
+    "TE": 6001,
+    "WR": 10528,
+    "RB": 21713
+   },
+   "move30": -3148,
+   "move30_pct": -5.9,
+   "sidelined": 0,
+   "sidelined_pct": 0.0,
+   "status": "crash",
+   "top": [
+    {
+     "name": "Jahmyr Gibbs",
+     "pos": "RB",
+     "team": "DET",
+     "value": 10343,
+     "rank": 2,
+     "trend30": 326,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Joe Burrow",
+     "pos": "QB",
+     "team": "CIN",
+     "value": 6326,
+     "rank": 15,
+     "trend30": -490,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Christian McCaffrey",
+     "pos": "RB",
+     "team": "SF",
+     "value": 4195,
+     "rank": 38,
+     "trend30": -465,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Carnell Tate",
+     "pos": "WR",
+     "team": "TEN",
+     "value": 3647,
+     "rank": 52,
+     "trend30": -142,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "C.J. Stroud",
+     "pos": "QB",
+     "team": "HOU",
+     "value": 3469,
+     "rank": 56,
+     "trend30": 274,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Saquon Barkley",
+     "pos": "RB",
+     "team": "PHI",
+     "value": 2932,
+     "rank": 71,
+     "trend30": -1224,
+     "sidelined": false,
+     "status": "Questionable"
+    }
+   ],
+   "sidelined_players": [],
+   "off_index": 0,
+   "rank": 5,
+   "since": null,
+   "since_change": null
+  },
+  "CMac91": {
+   "total": 47074,
+   "players": 47074,
+   "picks": 0,
+   "pick_count": 0,
+   "by_pos": {
+    "TE": 4013,
+    "QB": 12047,
+    "WR": 17109,
+    "RB": 13905
+   },
+   "move30": -1188,
+   "move30_pct": -2.5,
+   "sidelined": 8420,
+   "sidelined_pct": 17.9,
+   "status": "correction",
+   "top": [
+    {
+     "name": "CeeDee Lamb",
+     "pos": "WR",
+     "team": "DAL",
+     "value": 7232,
+     "rank": 9,
+     "trend30": 1059,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "James Cook",
+     "pos": "RB",
+     "team": "BUF",
+     "value": 5217,
+     "rank": 28,
+     "trend30": -434,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Bryce Young",
+     "pos": "QB",
+     "team": "CAR",
+     "value": 4145,
+     "rank": 39,
+     "trend30": 1431,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Bo Nix",
+     "pos": "QB",
+     "team": "DEN",
+     "value": 4023,
+     "rank": 42,
+     "trend30": -935,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Jordan Love",
+     "pos": "QB",
+     "team": "GB",
+     "value": 3879,
+     "rank": 47,
+     "trend30": 38,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Breece Hall",
+     "pos": "RB",
+     "team": "NYJ",
+     "value": 3575,
+     "rank": 53,
+     "trend30": -199,
+     "sidelined": true,
+     "status": "Out"
+    }
+   ],
+   "sidelined_players": [
+    {
+     "name": "Breece Hall",
+     "pos": "RB",
+     "team": "NYJ",
+     "value": 3575,
+     "rank": 53,
+     "trend30": -199,
+     "sidelined": true,
+     "status": "Out"
+    },
+    {
+     "name": "Alec Pierce",
+     "pos": "WR",
+     "team": "IND",
+     "value": 1736,
+     "rank": 117,
+     "trend30": -258,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Pat Bryant",
+     "pos": "WR",
+     "team": "DEN",
+     "value": 1359,
+     "rank": 158,
+     "trend30": 148,
+     "sidelined": true,
+     "status": "Doubtful"
+    },
+    {
+     "name": "Jordan Mason",
+     "pos": "RB",
+     "team": "MIN",
+     "value": 1341,
+     "rank": 160,
+     "trend30": -130,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Jack Bech",
+     "pos": "WR",
+     "team": "LV",
+     "value": 409,
+     "rank": 256,
+     "trend30": -342,
+     "sidelined": true,
+     "status": "IR"
+    }
+   ],
+   "off_index": 0,
+   "rank": 8,
+   "since": null,
+   "since_change": null
+  },
+  "YesChef23": {
+   "total": 46506,
+   "players": 46506,
+   "picks": 0,
+   "pick_count": 0,
+   "by_pos": {
+    "QB": 15321,
+    "WR": 13849,
+    "RB": 13720,
+    "TE": 3616
+   },
+   "move30": 1012,
+   "move30_pct": 2.2,
+   "sidelined": 9359,
+   "sidelined_pct": 20.1,
+   "status": "stable",
+   "top": [
+    {
+     "name": "Caleb Williams",
+     "pos": "QB",
+     "team": "CHI",
+     "value": 6832,
+     "rank": 13,
+     "trend30": -495,
+     "sidelined": true,
+     "status": "Out"
+    },
+    {
+     "name": "Jeremiyah Love",
+     "pos": "RB",
+     "team": "ARI",
+     "value": 6174,
+     "rank": 16,
+     "trend30": -122,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "Tyler Shough",
+     "pos": "QB",
+     "team": "NO",
+     "value": 4418,
+     "rank": 33,
+     "trend30": 1121,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "George Pickens",
+     "pos": "WR",
+     "team": "DAL",
+     "value": 3849,
+     "rank": 48,
+     "trend30": -1156,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Luther Burden",
+     "pos": "WR",
+     "team": "CHI",
+     "value": 3412,
+     "rank": 57,
+     "trend30": -173,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Matthew Golden",
+     "pos": "WR",
+     "team": "GB",
+     "value": 2949,
+     "rank": 70,
+     "trend30": 962,
+     "sidelined": false,
+     "status": ""
+    }
+   ],
+   "sidelined_players": [
+    {
+     "name": "Caleb Williams",
+     "pos": "QB",
+     "team": "CHI",
+     "value": 6832,
+     "rank": 13,
+     "trend30": -495,
+     "sidelined": true,
+     "status": "Out"
+    },
+    {
+     "name": "Jadarian Price",
+     "pos": "RB",
+     "team": "SEA",
+     "value": 2527,
+     "rank": 87,
+     "trend30": -1051,
+     "sidelined": true,
+     "status": "IR"
+    }
+   ],
+   "off_index": 0,
+   "rank": 10,
+   "since": null,
+   "since_change": null
+  },
+  "fumbduckdumbfuck": {
+   "total": 48927,
+   "players": 48927,
+   "picks": 0,
+   "pick_count": 0,
+   "by_pos": {
+    "WR": 14172,
+    "RB": 17040,
+    "TE": 10535,
+    "QB": 7180
+   },
+   "move30": -1451,
+   "move30_pct": -2.9,
+   "sidelined": 0,
+   "sidelined_pct": 0.0,
+   "status": "correction",
+   "top": [
+    {
+     "name": "Brock Bowers",
+     "pos": "TE",
+     "team": "LV",
+     "value": 7919,
+     "rank": 6,
+     "trend30": 405,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Ashton Jeanty",
+     "pos": "RB",
+     "team": "LV",
+     "value": 6444,
+     "rank": 14,
+     "trend30": 73,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "Jonathan Taylor",
+     "pos": "RB",
+     "team": "IND",
+     "value": 5940,
+     "rank": 19,
+     "trend30": 296,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Dak Prescott",
+     "pos": "QB",
+     "team": "DAL",
+     "value": 4398,
+     "rank": 35,
+     "trend30": 220,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "DeVonta Smith",
+     "pos": "WR",
+     "team": "PHI",
+     "value": 3353,
+     "rank": 58,
+     "trend30": -437,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "Rashee Rice",
+     "pos": "WR",
+     "team": "KC",
+     "value": 2998,
+     "rank": 68,
+     "trend30": -430,
+     "sidelined": false,
+     "status": "Questionable"
+    }
+   ],
+   "sidelined_players": [],
+   "off_index": 0,
+   "rank": 6,
+   "since": null,
+   "since_change": null
+  }
+ },
+ "history": [
+  {
+   "date": "2026-10-09",
+   "totals": {
+    "Darkspaces": 53412,
+    "Snipe58": 41822,
+    "StealingGas": 57687,
+    "Zygon": 61615,
+    "Hades9mm": 46693,
+    "Johnny4Skins": 51816,
+    "Sarge71": 40650,
+    "C33DeezNutzz": 47478,
+    "Painty69": 49766,
+    "CMac91": 47074,
+    "YesChef23": 46506,
+    "fumbduckdumbfuck": 48927
+   }
+  }
+ ]
+}
