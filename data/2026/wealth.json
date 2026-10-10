@@ -1,67 +1,67 @@
 {
  "weeks": {
   "4": {
-   "date": "2026-10-09",
+   "date": "2026-10-10",
    "teams": {
     "Darkspaces": {
-     "roster": 53647,
-     "picks": 21732,
-     "total": 75379
+     "roster": 53363,
+     "picks": 21695,
+     "total": 75058
     },
     "Snipe58": {
-     "roster": 42022,
-     "picks": 12392,
-     "total": 54414
+     "roster": 42242,
+     "picks": 12377,
+     "total": 54619
     },
     "StealingGas": {
-     "roster": 57373,
-     "picks": 18342,
-     "total": 75715
+     "roster": 57719,
+     "picks": 18323,
+     "total": 76042
     },
     "Zygon": {
-     "roster": 61637,
-     "picks": 13761,
-     "total": 75398
+     "roster": 61731,
+     "picks": 13719,
+     "total": 75450
     },
     "Hades9mm": {
-     "roster": 46407,
-     "picks": 12481,
-     "total": 58888
+     "roster": 46159,
+     "picks": 12432,
+     "total": 58591
     },
     "Johnny4Skins": {
-     "roster": 51983,
-     "picks": 13761,
-     "total": 65744
+     "roster": 51962,
+     "picks": 13719,
+     "total": 65681
     },
     "Sarge71": {
-     "roster": 40626,
-     "picks": 14854,
-     "total": 55480
+     "roster": 40368,
+     "picks": 14818,
+     "total": 55186
     },
     "C33DeezNutzz": {
-     "roster": 47417,
-     "picks": 14854,
-     "total": 62271
+     "roster": 47909,
+     "picks": 14818,
+     "total": 62727
     },
     "Painty69": {
-     "roster": 49953,
-     "picks": 14854,
-     "total": 64807
+     "roster": 49975,
+     "picks": 14818,
+     "total": 64793
     },
     "CMac91": {
-     "roster": 47019,
-     "picks": 13761,
-     "total": 60780
+     "roster": 46810,
+     "picks": 13719,
+     "total": 60529
     },
     "YesChef23": {
-     "roster": 46807,
-     "picks": 17062,
-     "total": 63869
+     "roster": 46559,
+     "picks": 17036,
+     "total": 63595
     },
     "fumbduckdumbfuck": {
-     "roster": 49100,
-     "picks": 14854,
-     "total": 63954
+     "roster": 49182,
+     "picks": 14818,
+     "total": 64000
     }
    }
   }
