@@ -133,17 +133,10 @@ def score(tx, S):
         n += (sd.get("receives_faab") or 0) // 10
     return n
 
-def legend(S):
-    pv = S.get("pick_value", {}); pl = S.get("player_value", 25)
-    chips = [("1st-round pick", pv.get("1", 50)), ("2nd-round pick", pv.get("2", 30)), ("3rd-round pick", pv.get("3", 10)),
-             ("Each player", pl), ("Each $10 FAAB", 1)]
-    return ('<div class="lg-score"><div class="hd"><b>How the Blockbuster score works</b></div><div class="chips">'
-            + "".join(f'<div class="chip"><strong>{v}</strong><small>{esc(k)}</small></div>' for k, v in chips) + '</div></div>')
-
 def value_note():
     if not LV:
         return ""
-    return (f'<details class="legend"><summary>How trade values are measured</summary><p>Values are <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values '
+    return (f'<details class="legend wide"><summary>How trade values are measured</summary><p>Values are <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values '
             f'(superflex, 12 teams, full PPR). <b>At the trade</b> is the value of what each side received on the day of the deal; <b>Latest</b> is the same assets in the newest pull '
             f'({esc(LV.get("latest_snapshot", ""))}). FantasyCalc keeps no history, so the site has saved a snapshot on every update since {esc(LV.get("first_snapshot", ""))}. '
             f'An older trade shows a <abbr title="Estimated">~</abbr>: it uses the nearest value on file, or FantasyCalc\'s own 30-day trend to estimate the value just before the first snapshot. '
@@ -212,7 +205,7 @@ def trade_panel(L):
         if ob:
             obits += year_block(y, "".join(ob), len(ob), "obituar" + ("y" if len(ob) == 1 else "ies"), first_o); first_o = False
     cem = obits or '<p class="lg-empty">The cemetery is empty. For now. Obituaries get filed once a trade has clearly gone wrong.</p>'
-    return (legend(S) + value_note() + '<h3 class="sub">Every trade, biggest first</h3>' + trades + '<h3 class="sub">Obituaries</h3>' + cem)
+    return (value_note() + '<h3 class="sub">Every trade, biggest first</h3>' + trades + '<h3 class="sub">Obituaries</h3>' + cem)
 
 # ------------------------------------------------------------------ page
 JS = '''<script>(function(){var t=document.querySelectorAll('.lg-tabs button'),p=document.querySelectorAll('.lg-panel');
@@ -237,7 +230,7 @@ def shell(body):
 <link rel="icon" type="image/png" sizes="32x32" href="{R}assets/favicon-32.png"><link rel="apple-touch-icon" href="{R}assets/apple-touch-icon.png"></head><body>
 <a class="skip" href="#main">Skip to main content</a>
 <header class="mast"><div class="wrap"><img src="{R}assets/crest-mark.webp" alt="Dynastree Chronicles crest" width="79" height="96"><div><h1><a href="{R}">Dynastree <span>Chronicles</span></a></h1><p>Draft &amp; Trade Ledger</p></div></div></header>
-<nav class="sticky"><div class="wrap"><a href="{R}#archive">Issues</a><button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button><a href="{R}#standings">Standings</a><a href="{R}#transactions">Transactions</a><a href="{R}#market">The Market</a><a href="{R}#rules">Rules</a><a href="{R}#scoring">Scoring</a></div><div class="ddm" id="vault" hidden><a href="{R}managers/"><b>Managers</b><small>Meet the suspects</small></a><a href="{R}history/"><b>History</b><small>Hall of Fame &amp; records</small></a><a href="{R}ledger/"><b>Ledger</b><small>Drafts &amp; blockbusters</small></a><a href="{R}receipts/"><b>Receipts</b><small>Hot takes on file</small></a></div></nav>
+<nav class="sticky"><div class="wrap"><button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button><a href="{R}#standings">Standings</a><a href="{R}#transactions">Transactions</a><a href="{R}#market">The Market</a><a href="{R}#archive">Issues</a><a href="{R}#rules">Rules</a><a href="{R}#scoring">Scoring</a></div><div class="ddm" id="vault" hidden><a href="{R}managers/"><b>Managers</b><small>Meet the suspects</small></a><a href="{R}history/"><b>History</b><small>Hall of Fame &amp; records</small></a><a href="{R}ledger/"><b>Ledger</b><small>Drafts &amp; blockbusters</small></a><a href="{R}receipts/"><b>Receipts</b><small>Hot takes on file</small></a></div></nav>
 <main class="wrap" id="main" tabindex="-1">{body}</main>
 <footer><div class="wrap"><img class="tree wm" src="{R}assets/logo-dynastree-chronicles.webp" alt="Dynastree Chronicles" width="180" height="69" loading="lazy"><p>Time heals all wounds, but screenshots last forever.</p></div></footer>
 <script src="{R}js/site.js"></script><script src="{R}js/nav.js"></script>{JS}</body></html>'''

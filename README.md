@@ -192,7 +192,7 @@ All scripts run from the repo root, in the order below, and read only from `data
 * **What it values.** Every rostered player matched by Sleeper id, and every future pick the manager owns after trades (Sleeper's `traded_picks`). Players outside the top 1,000 count as 0 and are tallied as `off_index`. FantasyCalc lists picks as players with position `PICK` and names like "2027 1st (Mid)", "2028 2nd" or "2027 Pick 1.05"; `parse_pick` in the script reads all three. For the next draft the tier comes from the original owner's current draft slot in `standings.json` (slots 1-4 Early, 5-8 Mid, 9-12 Late), using the exact `Pick R.SS` value when FantasyCalc has one. Later drafts use FantasyCalc's untiered pick, then Mid. A pick with no FantasyCalc value counts as 0 and is printed as a warning ("Picks with no FantasyCalc value"). Each manager's owned picks, with a "via" tag for acquired ones, are listed in `pick_list` and shown on the manager page.
 * **The two numbers behind the flag.** `move30` is the 30-day change in value of the players held now, from FantasyCalc's own trend, so trades do not move it. `sidelined` is the value sitting on IR or on players Sleeper marks Out, IR, PUP, Doubtful or Sus. FantasyCalc dynasty values react slowly to injuries, which is why IR exposure is its own number. `since_change` is the change since the last snapshot at least 5 days old and does include trades; it is empty until the second weekly run.
 * **Status flags.** `crash` when the 30-day market move is -5% or worse, or 25% or more of the portfolio is sidelined. `correction` at -2.5%, `bull` at +5%, otherwise `stable`. Change the thresholds in the constants at the top of `pull_values.py`, and the headline wording in the `STATUS` table in `build_managers.py`.
-* **Where it shows.** A "Portfolio value" section on every manager page (chart, position split, biggest holdings) and a ranked "The Market" section on the home page (between Transactions and Rules, with its own item in the top nav and a collapsible legend that explains the columns and the status flags). Both portfolio legends are collapsible. Both disappear quietly if `portfolio.json` is missing. `brief.json` gets `market_portfolios` for the next issue.
+* **Where it shows.** A "Portfolio value" section on every manager page (chart, position split, biggest holdings) and a ranked "The Market" section on the home page (between Transactions and Rules, with its own item in the top nav and a collapsible legend that explains the columns and the status flags). Both portfolio legends are collapsible. The holdings and picks tables show the top 6 players and top 8 picks, with a "Show all" button for the full roster (defenses are never listed); the full list is `assets` in `portfolio.json`. Both disappear quietly if `portfolio.json` is missing. `brief.json` gets `market_portfolios` for the next issue.
 * **Credit.** The page links to FantasyCalc as the source.
 
 ### Wealth Index (third standings tab)
@@ -281,14 +281,14 @@ Details: `DYNASTREE_MASTER_STATE.md` sections 3b and 6c.
 
 | Page | Address | Built by | What it shows |
 |---|---|---|---|
-| Home | `/` | `build_site.py` (+ `build_managers.py` for The Market) | Latest-issue banner, news ticker, leaderboard, standings (rank or draft order), archive, transactions, The Market (portfolio values), league rules and scoring. |
+| Home | `/` | `build_site.py` (+ `build_managers.py` for The Market) | Latest-issue banner, news ticker, leaderboard, standings (rank, draft or wealth order), transactions, The Market (portfolio values), archive, league rules and scoring. |
 | Issue | `/issues/<season>/issue-NN/` | `build_site.py` + `js/issue.js` | One frozen issue: desk, hero and zero, standings, bankroll, transaction wire, post-game cards, drama, trade machine, pre-game cards, match of the week, bottom line, poll. |
 | Managers | `/managers/` and `/managers/<handle>/` | `build_managers.py` | One page per manager: record, stat tiles, game log, transactions, desk quotes, bio, trophy case, portfolio value. Alumni keep their pages. The home page gets the ranked portfolio table, "The Market". |
-| History | `/history/` | `build_history.py` | Hall of Fame: champions, all-time records, careers, award shelf, prediction ledger, timeline. |
+| History | `/history/` | `build_history.py` | Hall of Fame, in order: award shelf (with a live regular-season progress bar on the active season), prediction ledger, manager careers, all-time records, season-by-season timeline. There is no Champions wall; the champion and the Toilet Bowl winner are on the award shelf. |
 | Ledger | `/ledger/` | `build_ledger.py` | Every draft pick and trade, with grades and blockbuster scores. |
 | Receipts | `/receipts/` | `build_receipts.py` | Every quote, hit, bold prediction and hot take, with filters and a random-receipt button. |
 
-Navigation: the sticky top bar has **Issues**, **The Vault** (a dropdown with Managers, History, Ledger, Receipts), **Standings**, **Transactions**, **The Market**, **Rules**, **Scoring**. Issue pages use their own section nav instead (Desk, Standings, Wire and so on). To add a page to The Vault, add a link to the `#vault` block in `index.html` and in every `build_*.py` shell (see section 15).
+Navigation: the sticky top bar has **The Vault** (a dropdown with Managers, History, Ledger, Receipts), **Standings**, **Transactions**, **The Market**, **Issues**, **Rules**, **Scoring**. Issue pages use their own section nav instead (Desk, Standings, Wire and so on). To add a page to The Vault, add a link to the `#vault` block in `index.html` and in every `build_*.py` shell (see section 15).
 
 ---
 
@@ -314,7 +314,7 @@ They are separate from the in-season rank trophies (`trophy-gold`, `-silver`, `-
 
 Where they appear:
 
-* **History page, Champions wall:** Lombardi on each season's champion card. If a season has a `toilet_bowl` entry, a Toilet Bowl card follows it.
+* **History page:** the Champions wall was removed. `build_history.py` still warns in the build log when a closed season has no champion in `data/history.json`.
 * **History page, Award shelf:** Best Manager, Biggest Tank and Waiver Wire MVP each show their own trophy.
 * **Manager pages, Trophy case:** appears only once a manager has actually won something. Champion and Toilet Bowl come from `data/history.json`. The three awards count once their season is closed, or earlier if `history.json` names the winner by hand. A live season's current leader does not get the trophy early.
 

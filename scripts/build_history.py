@@ -151,36 +151,11 @@ def toilet_card(tb, label):
     return (f'<article class="hf-champ hf-toilet">{tr.img("toilet_bowl", R, cls="tro toilet", alt="Toilet Bowl Trophy")}'
             f'<div class="hf-cmain"><small>{label} Toilet Bowl</small><h3>{who(w, 56)}</h3>{ru}{note}</div>{score}</article>')
 
-def champion_wall(S, H, ps, pt):
-    cards = []
-    for s in sorted(S, key=lambda s: s["year"], reverse=True):
-        y, hs = s["year"], hist_season(H, s["year"])
-        label = f'Volume {s["vol"]} &middot; {y}'
-        if hs.get("champion"):
-            c, r = hs["champion"], hs.get("runner_up")
-            fs = hs.get("final_score") or [None, None]
-            score = f'<div class="hf-fs"><b>{fmt(fs[0])}</b><span>&ndash;</span><b class="lo">{fmt(fs[1])}</b></div>' if fs[0] is not None and fs[1] is not None else ""
-            tn = (bs.managers().get(c) or {}).get("team_name")
-            tn_html = '<p class="hf-tn">' + esc(tn) + "</p>" if tn else ""
-            ru_html = "<p>Defeated " + ml(r) + " in the final.</p>" if r else ""
-            note_html = '<p class="hf-note">' + esc(hs["note"]) + "</p>" if hs.get("note") else ""
-            cards.append(f'<article class="hf-champ">{tr.img("lombardi", R, cls="tro lombardi", alt="Lombardi Trophy")}'
-                         f'<div class="hf-cmain"><small>{label} champion</small><h3>{who(c, 56)}</h3>{tn_html}{ru_html}{note_html}</div>{score}</article>')
-        elif s["closed"]:
-            NOTES.append(f"history: {y} is closed but data/history.json has no champion for it")
-            cards.append(f'<article class="hf-race"><small>{label}</small><h3>Champion not recorded yet</h3><p>Add the champion, runner-up and final score for {y} to data/history.json.</p></article>')
-        else:
-            top = s["rank"][:3]
-            chips = "".join(f'<div class="hf-lead"><em>{i + 1}</em>{who(m, 40)}<span>{s["table"][m]["w"]}-{s["table"][m]["l"]}{"-" + str(s["table"][m]["t"]) if s["table"][m]["t"] else ""} &middot; {s["table"][m]["pf"]:.1f} PF</span></div>' for i, m in enumerate(top))
-            reg_total = ps - 1
-            done = min(s["thru"], reg_total)
-            cards.append(f'<article class="hf-race"><small>{label} &middot; in progress</small><h3>The crown is still up for grabs</h3>'
-                         f'<div class="hf-prog" role="img" aria-label="Week {done} of {reg_total}"><i style="width:{done / reg_total * 100:.0f}%"></i></div>'
-                         f'<p class="hf-pt">Regular season: Week {done} of {reg_total}. Top {pt} make the playoffs, which start Week {ps}.</p><div class="hf-leads">{chips}</div></article>')
-        tb = hs.get("toilet_bowl") or {}
-        if tb.get("winner"):
-            cards.append(toilet_card(tb, label))
-    return "".join(cards)
+def check_champions(S, H):
+    """The Champions wall is gone (the Award shelf carries the champion and the Toilet Bowl winner), but keep the reminder when a closed season has no champion on file."""
+    for s in S:
+        if s["closed"] and not hist_season(H, s["year"]).get("champion"):
+            NOTES.append(f'history: {s["year"]} is closed but data/history.json has no champion for it')
 
 # ------------------------------------------------------------------ careers
 def careers(S, H, ps, pt):
@@ -261,12 +236,17 @@ def award_values(S, H, preds):
         out[y] = a
     return out
 
-def award_shelf(S, H, preds):
+def award_shelf(S, H, preds, ps, pt):
     vals, out = award_values(S, H, preds), []
     meta = {k: (ico, title, rule) for k, ico, title, rule in AWARDS}
     for i, s in enumerate(sorted(S, key=lambda s: s["year"], reverse=True)):
         y, cards = s["year"], []
         live = "" if s["closed"] else f'<em class="hf-live">Live &middot; Week {s["thru"]}</em>'
+        prog = ""
+        if not s["closed"]:   # the season is still being played: show how far along the regular season is
+            reg_total = ps - 1; done = min(s["thru"], reg_total)
+            prog = (f'<div class="hf-prog" role="img" aria-label="Week {done} of {reg_total}"><i style="width:{done / reg_total * 100:.0f}%"></i></div>'
+                    f'<p class="hf-pt">Regular season: Week {done} of {reg_total}. Top {pt} make the playoffs, which start Week {ps}.</p>')
         for key in tr.SHELF_ORDER:
             ico, title, rule = meta[key]
             v = vals[y].get(key)
@@ -278,7 +258,7 @@ def award_shelf(S, H, preds):
                 stage = f'<div class="hf-stage">{ico.replace("aw-b", "hf-awt hf-awb")}</div>'
                 head = f"<small>{title}</small>"
             cards.append(f'<div class="hf-aw{" has-tro" if stage else ""}">{stage}{head}{body}<p class="hf-rule">{rule}</p></div>')
-        out.append(f'<details class="yr hf-aws-vol"{" open" if i == 0 else ""}><summary>Volume {s["vol"]} &middot; {y} {live}</summary><div class="hf-aws">{"".join(cards)}</div></details>')
+        out.append(f'<details class="yr hf-aws-vol"{" open" if i == 0 or not s["closed"] else ""}><summary>Volume {s["vol"]} &middot; {y} {live}</summary>{prog}<div class="hf-aws">{"".join(cards)}</div></details>')
     return "".join(out)
 
 def trophy_wins(S=None, H=None):
@@ -362,7 +342,7 @@ def shell(body, sub):
 <link rel="icon" type="image/png" sizes="32x32" href="{R}assets/favicon-32.png"><link rel="apple-touch-icon" href="{R}assets/apple-touch-icon.png"></head><body>
 <a class="skip" href="#main">Skip to main content</a>
 <header class="mast"><div class="wrap"><img src="{R}assets/crest-mark.webp" alt="Dynastree Chronicles crest" width="79" height="96"><div><h1><a href="{R}">Dynastree <span>Chronicles</span></a></h1><p>{esc(sub)}</p></div></div></header>
-<nav class="sticky"><div class="wrap"><a href="{R}#archive">Issues</a><button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button><a href="{R}#standings">Standings</a><a href="{R}#transactions">Transactions</a><a href="{R}#market">The Market</a><a href="{R}#rules">Rules</a><a href="{R}#scoring">Scoring</a></div><div class="ddm" id="vault" hidden><a href="{R}managers/"><b>Managers</b><small>Meet the suspects</small></a><a href="{R}history/"><b>History</b><small>Hall of Fame &amp; records</small></a><a href="{R}ledger/"><b>Ledger</b><small>Drafts &amp; blockbusters</small></a><a href="{R}receipts/"><b>Receipts</b><small>Hot takes on file</small></a></div></nav>
+<nav class="sticky"><div class="wrap"><button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button><a href="{R}#standings">Standings</a><a href="{R}#transactions">Transactions</a><a href="{R}#market">The Market</a><a href="{R}#archive">Issues</a><a href="{R}#rules">Rules</a><a href="{R}#scoring">Scoring</a></div><div class="ddm" id="vault" hidden><a href="{R}managers/"><b>Managers</b><small>Meet the suspects</small></a><a href="{R}history/"><b>History</b><small>Hall of Fame &amp; records</small></a><a href="{R}ledger/"><b>Ledger</b><small>Drafts &amp; blockbusters</small></a><a href="{R}receipts/"><b>Receipts</b><small>Hot takes on file</small></a></div></nav>
 <main class="wrap" id="main" tabindex="-1">{body}</main>
 <footer><div class="wrap"><img class="tree wm" src="{R}assets/logo-dynastree-chronicles.webp" alt="Dynastree Chronicles" width="180" height="69" loading="lazy"><p>Time heals all wounds, but screenshots last forever.</p></div></footer>
 <script src="{R}js/site.js"></script><script src="{R}js/nav.js"></script></body></html>'''
@@ -382,12 +362,12 @@ def build():
     hero = ('<section class="hf-hero"><small>The permanent record</small><h2>Hall of Fame <i>&amp;</i> League History</h2>'
             '<p>This page never resets. Every volume stays on the wall, every record keeps counting, and each offseason adds a new crown.</p>'
             '<div class="hf-stats">' + "".join(f"<div><b>{a}</b><small>{b}</small></div>" for a, b in chips) + '</div>'
-            '<p class="hf-jump"><a href="#champions">Champions</a><a href="#records">Records</a><a href="#careers">Careers</a><a href="#awards">Awards</a><a href="#timeline">Timeline</a></p></section>')
+            '<p class="hf-jump"><a href="#awards">Awards</a><a href="#careers">Careers</a><a href="#records">Records</a><a href="#timeline">Timeline</a></p></section>')
+    check_champions(S, H)
     body = (hero +
-            '<h2 class="sec" id="champions">Champions wall</h2><div class="hf-wall">' + champion_wall(S, H, ps, pt) + "</div>"
-            '<h2 class="sec" id="records">All-time records</h2>' + record_tiles(S, ps) +
+            '<h2 class="sec" id="awards">Award shelf</h2>' + award_shelf(S, H, preds, ps, pt) + ledger(preds) +
             '<h2 class="sec" id="careers">Manager careers</h2>' + careers(S, H, ps, pt) +
-            '<h2 class="sec" id="awards">Award shelf</h2>' + award_shelf(S, H, preds) + ledger(preds) +
+            '<h2 class="sec" id="records">All-time records</h2>' + record_tiles(S, ps) +
             '<h2 class="sec" id="timeline">Season by season</h2>' + timeline(S, H, ps))
     p = os.path.join(ROOT, "history", "index.html"); os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w", encoding="utf-8").write(shell(body, "Hall of Fame & League History"))

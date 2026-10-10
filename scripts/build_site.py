@@ -166,16 +166,16 @@ def legend():
     out = "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in items)
     return f'<details class="legend"><summary>How to read this table</summary><dl>{out}</dl></details>'
 
-def wealth_legend(k, date, prevk):
+def wealth_legend(k, date, prevk, note):
     up, dn = '<span class="up">&#9650;</span>', '<span class="dn">&#9660;</span>'
     items = [("Roster value", "<b>Players.</b> The combined FantasyCalc dynasty trade value of every player on the roster (superflex, 12 teams, full PPR). Players outside FantasyCalc's top 1,000 count as zero."),
              ("Draft capital", "<b>Owned picks.</b> The combined FantasyCalc value of every future rookie pick the team owns after trades."),
              ("Total wealth", "<b>Roster value plus draft capital.</b> This is what the table is ranked by."),
              ("MOV", f"<b>Movement</b> in rank since {'Week ' + str(prevk) if prevk else 'last week'}. {up} 2 = climbed two spots, {dn} 2 = dropped two, &mdash; = no change."),
              ("Change", f"<b>Points of total wealth</b> gained or lost since {'Week ' + str(prevk) if prevk else 'last week'}. Trades move it as well as the market."),
-             ("As of", f"Week {k} ({date}). The numbers are saved each week and frozen once the next week is final.")]
+             ("Saved", f"{date}. Each week's numbers are saved and frozen once the next week is final.")]
     out = "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in items)
-    return f'<details class="legend"><summary>How to read the Wealth Index</summary><dl>{out}</dl></details>'
+    return f'<details class="legend wide"><summary>How to read the Wealth Index</summary><p>{note}</p><dl>{out}</dl></details>'
 
 def wealth_view(fin, root, team, h, latest):
     """The Wealth Index tab: rank by total FantasyCalc dynasty asset value, split into roster and draft capital, with movement vs the previous
@@ -203,7 +203,7 @@ def wealth_view(fin, root, team, h, latest):
     note = (f'FantasyCalc dynasty values after Week {k}. Movement compares with Week {prevk}.' if prevk is not None else
             f'FantasyCalc dynasty values after Week {k}. Movement starts once a second week is on file.')
     return (f'<div class="sc" id="v-wealth" hidden><table id="wealthtable"><thead>{h(["#", "Team", "Roster value", "Draft capital", "Total wealth", "MOV", "Change"])}</thead><tbody>{rows}</tbody></table>'
-            f'<p class="key">{note}</p>{wealth_legend(k, weeks[k]["date"], prevk)}</div>')
+            f'{wealth_legend(k, weeks[k]["date"], prevk, note)}</div>')
 
 def standings(rows=None, fin=None, root=""):
     """The standings block (Standings order / Draft order). Used by the home page (live data)

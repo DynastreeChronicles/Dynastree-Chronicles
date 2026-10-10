@@ -171,7 +171,7 @@ def main():
         team[mgr] = {"total": round(grand), "players": round(total), "picks": round(pick_val), "pick_count": pick_n,
                      "by_pos": {k: round(v) for k, v in by_pos.items() if v},
                      "move30": round(move), "move30_pct": move_pct, "sidelined": round(sidelined), "sidelined_pct": sid_pct,
-                     "status": classify(move_pct, sid_pct), "top": assets[:6], "pick_list": pick_list,
+                     "status": classify(move_pct, sid_pct), "top": assets[:6], "assets": assets, "pick_list": pick_list,
                      "sidelined_players": [a for a in assets if a["sidelined"]][:5], "off_index": off_index}
 
     ranked = sorted(team, key=lambda m: -team[m]["total"])

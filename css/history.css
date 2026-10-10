@@ -116,3 +116,5 @@ details.hf-aws-vol .hf-live{font:600 .9rem Inter,sans-serif;font-style:normal;co
 /* Bold Prediction Hit: big badge on the stage, same as the trophy cards */
 .hf-awt.hf-awb{height:170px;width:auto;max-width:100%;object-fit:contain;border-radius:0}
 @media(max-width:700px){.hf-awt.hf-awb{height:140px}}
+
+.hf-aws-vol>.hf-prog{margin:.8rem 0 .3rem}.hf-aws-vol>.hf-pt{margin:0 0 .9rem;color:var(--mute);font-size:.95rem}

@@ -553,7 +553,7 @@ h2.sec .sbadge{order:-1;margin:0 1rem 0 0;padding-left:0}
 /* The market (home page) and portfolio legends */
 .tw2{overflow-x:auto}.mkt{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
 .mkt th,.mkt td{padding:.55rem .7rem;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
-.mkt th{font:600 .8rem Oswald,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
+.mkt th{font:600 .8rem Oswald,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:#fff}
 .mkt td:nth-child(n+4),.mkt th:nth-child(n+4){text-align:right}.mkt td.rk{color:var(--mute);width:2rem}
 .mkt .up{color:var(--green)}.mkt .dn{color:var(--red)}
 .mkt a.mn{color:var(--green);text-decoration:none;font-weight:600}.mkt a.mn:hover,.mkt a.mn:focus-visible{color:#fff;text-shadow:0 0 12px var(--green)}
@@ -564,14 +564,17 @@ h2.sec .sbadge{order:-1;margin:0 1rem 0 0;padding-left:0}
 .vtrack i.correction{background:linear-gradient(90deg,#9a6a00,#f0b429);box-shadow:0 0 10px rgba(240,180,41,.35)}
 .mkt .st{padding:.05rem .5rem;border-radius:2px;font:600 .8rem Oswald,sans-serif;font-style:normal;text-transform:uppercase;background:var(--mute);color:#04101f}
 .mkt .st.crash{background:var(--red)}.mkt .st.bull{background:var(--green)}.mkt .st.correction{background:#f0b429}
-.legend{margin-top:.9rem;border:1px solid var(--line);border-radius:8px;background:rgba(17,26,48,.5)}
-.legend summary{cursor:pointer;padding:.6rem .9rem;font:600 .9rem Oswald,sans-serif;text-transform:uppercase;letter-spacing:.05em}
-.legend>p{margin:0;padding:0 .9rem .5rem;color:var(--mute);font-size:.9rem}.legend a{color:var(--green)}
-.legend dl{margin:0;padding:0 .9rem .8rem;display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1rem;font-size:.9rem}
-.legend dt{font-weight:700}.legend dd{margin:0;color:var(--mute)}.legend dd b{color:inherit}
-@media(max-width:600px){.legend dl{grid-template-columns:1fr}.legend dd{margin-bottom:.4rem}}
+/* legends that carry longer labels (market, portfolio, wealth index, ledger): same look as the standings legend, wider label column */
+.legend>p{margin:0;padding:.1rem .9rem .6rem;color:var(--mute);font-size:.9rem;line-height:1.45}.legend>p a{color:var(--green)}
+.legend.wide dl{grid-template-columns:repeat(auto-fill,minmax(min(26rem,100%),1fr))}.legend.wide dl>div{grid-template-columns:9.5rem 1fr}.legend.wide dt{white-space:normal}
+@media(max-width:560px){.legend.wide dl>div{grid-template-columns:1fr;gap:.1rem}}
 
 /* Wealth Index tab */
 #wealthtable th{white-space:normal;line-height:1.15}#wealthtable td.wl b{color:var(--green)}
 @media(max-width:560px){#v-wealth td,#v-wealth th{padding:.45rem .25rem;font-size:.8rem;letter-spacing:0}#v-wealth td:nth-child(2){max-width:5.2rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#v-wealth{-webkit-mask-image:none;mask-image:none}#v-wealth .av{display:none}}
 @media(max-width:380px){#v-wealth td,#v-wealth th{font-size:.72rem;padding:.45rem .15rem}}
+
+/* poll options: the green letter is the label, no list numbers */
+ol.opts,ol.opts li{list-style:none}ol.opts{padding-left:0;margin-left:0}
+/* show more / show less under portfolio tables */
+.showmore{margin:.5rem 0 0;padding:.35rem .9rem;background:none;color:var(--sky);border:1.5px solid var(--blue);border-radius:2px;font:600 .9rem Inter,system-ui,sans-serif;cursor:pointer}.showmore:hover{color:#fff;border-color:var(--sky)}

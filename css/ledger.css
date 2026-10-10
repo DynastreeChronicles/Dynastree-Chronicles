@@ -57,5 +57,3 @@ details.yr>.lg-cards{margin-bottom:1.2rem}
 .tx-card .valdet summary{cursor:pointer;font-size:.8rem;opacity:.75;margin-top:.2rem}.tx-card .valdet small{display:block;font-size:.8rem;opacity:.8;margin-top:.2rem;line-height:1.5}
 .tx-card .edge{margin:.7rem 0 0;padding-top:.5rem;border-top:1px dashed rgba(255,255,255,.15);font-size:.85rem}
 abbr[title]{text-decoration:none;cursor:help;color:var(--gold,#e6b94a)}
-.lg-panel .legend{margin:.4rem 0 1rem;border:1px solid rgba(255,255,255,.14);border-radius:8px}.lg-panel .legend summary{cursor:pointer;padding:.55rem .9rem;font:600 .9rem Oswald,sans-serif;text-transform:uppercase;letter-spacing:.05em}
-.lg-panel .legend p{margin:0;padding:0 .9rem .8rem;font-size:.88rem;opacity:.85}

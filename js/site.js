@@ -8,3 +8,5 @@ bs.forEach(btn=>btn.onclick=()=>{bs.forEach(c=>{const on=c===btn,el=document.get
 (()=>{const base=document.currentScript.src.replace(/js\/site\.js.*$/,"assets/");
 const D=[[/standings|leaderboard|power/i,"01"],[/hero|zero|issues|archive|vault/i,"02"],[/transaction|trade|wire/i,"03"],[/rules|scoring|poll|bankroll|ledger/i,"04"],[/drama|desk|bottom/i,"05"],[/game|draft|week/i,"06"]];
 [...document.querySelectorAll("main h2.sec")].forEach((h,i)=>{if(!i)return;const m=D.find(x=>x[0].test(h.textContent));const im=new Image();im.src=base+"divider-"+(m?m[1]:"04")+".webp";im.alt="";im.className="divider";im.loading="lazy";im.onerror=()=>im.remove();h.before(im)})})();
+
+(()=>{document.querySelectorAll('.showmore').forEach(b=>b.onclick=()=>{const t=document.getElementById(b.dataset.t);if(!t)return;const open=t.hidden;t.hidden=!open;b.setAttribute('aria-expanded',open);b.textContent=open?b.dataset.less:b.dataset.more;});})();

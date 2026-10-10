@@ -20,7 +20,7 @@ def shell(title, desc, body, r, sub, path=""):
 <link rel="icon" type="image/png" sizes="32x32" href="{r}assets/favicon-32.png"><link rel="apple-touch-icon" href="{r}assets/apple-touch-icon.png"></head><body>
 <a class="skip" href="#main">Skip to main content</a>
 <header class="mast"><div class="wrap"><img src="{r}assets/crest-mark.webp" alt="Dynastree Chronicles crest" width="79" height="96"><div><h1><a href="{r}">Dynastree <span>Chronicles</span></a></h1><p>{esc(sub)}</p></div></div></header>
-<nav class="sticky"><div class="wrap"><a href="{r}#archive">Issues</a><button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button><a href="{r}#standings">Standings</a><a href="{r}#transactions">Transactions</a><a href="{r}#market">The Market</a><a href="{r}#rules">Rules</a><a href="{r}#scoring">Scoring</a></div><div class="ddm" id="vault" hidden><a href="{r}managers/"><b>Managers</b><small>Meet the suspects</small></a><a href="{r}history/"><b>History</b><small>Hall of Fame &amp; records</small></a><a href="{r}ledger/"><b>Ledger</b><small>Drafts &amp; blockbusters</small></a><a href="{r}receipts/"><b>Receipts</b><small>Hot takes on file</small></a></div></nav>
+<nav class="sticky"><div class="wrap"><button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button><a href="{r}#standings">Standings</a><a href="{r}#transactions">Transactions</a><a href="{r}#market">The Market</a><a href="{r}#archive">Issues</a><a href="{r}#rules">Rules</a><a href="{r}#scoring">Scoring</a></div><div class="ddm" id="vault" hidden><a href="{r}managers/"><b>Managers</b><small>Meet the suspects</small></a><a href="{r}history/"><b>History</b><small>Hall of Fame &amp; records</small></a><a href="{r}ledger/"><b>Ledger</b><small>Drafts &amp; blockbusters</small></a><a href="{r}receipts/"><b>Receipts</b><small>Hot takes on file</small></a></div></nav>
 <main class="wrap" id="main" tabindex="-1">{body}</main>
 <footer><div class="wrap"><img class="tree wm" src="{r}assets/logo-dynastree-chronicles.webp" alt="Dynastree Chronicles" width="180" height="69" loading="lazy"><p>Time heals all wounds, but screenshots last forever.</p></div></footer><script src="{r}js/nav.js"></script></body></html>'''
 
@@ -211,28 +211,33 @@ def portfolio_block(m, r):
     def row(a):
         tag = f' <em class="out">{esc(a["status"] or "OUT")}</em>' if a["sidelined"] else ""
         return f'<tr><td>{esc(a["name"])}{tag}</td><td>{esc(a["pos"])}</td><td>{a["value"]:,}</td><td class="{"dn" if a["trend30"] < 0 else "up"}">{a["trend30"]:+,}</td></tr>'
-    top = "".join(row(a) for a in t["top"])
-    pl = [x for x in t.get("pick_list", []) if x["value"] > 0]
-    shown, rest = pl[:8], pl[8:]
+    allp = t.get("assets") or t["top"]          # full roster once the new data is on file, else the old top six
+    TOPN = 6
+    first = "".join(row(a) for a in allp[:TOPN]); rest_a = "".join(row(a) for a in allp[TOPN:])
+    pl = t.get("pick_list", [])
+    valued = [x for x in pl if x["value"] > 0]
+    PN = 8
     def prow_one(x):
         via = f' <em class="via">via {esc(x["via"])}</em>' if x.get("via") else ""
         return (f'<tr><td>{esc(x["label"])}{via}</td><td>{x["value"]:,}</td>'
                 f'<td class="{"dn" if x["trend30"] < 0 else "up"}">{x["trend30"]:+,}</td></tr>')
-    prow = "".join(prow_one(x) for x in shown)
-    more = f'<tr><td colspan="3" class="key">plus {len(rest)} more picks worth {sum(x["value"] for x in rest):,}</td></tr>' if rest else ""
-    picks_tab = (f'<table class="ptab"><caption>Draft picks owned</caption><thead><tr><th>Pick</th><th>Value</th><th>30d</th></tr></thead><tbody>{prow}{more}</tbody></table>' if pl else "")
+    pfirst = "".join(prow_one(x) for x in valued[:PN]); prest = "".join(prow_one(x) for x in valued[PN:] + [x for x in pl if x["value"] <= 0])
+    def more_btn(tid, n, noun):
+        return f'<button type="button" class="showmore" aria-expanded="false" data-t="{tid}" data-more="Show all {n} {noun}" data-less="Show fewer {noun}">Show all {n} {noun}</button>' if n else ""
+    picks_tab = (f'<table class="ptab"><caption>Draft picks owned</caption><thead><tr><th>Pick</th><th>Value</th><th>30d</th></tr></thead><tbody>{pfirst}</tbody>'
+                 f'<tbody id="pk-more" hidden>{prest}</tbody></table>{more_btn("pk-more", len(valued[PN:]) + len([x for x in pl if x["value"] <= 0]), "picks")}' if pl else "")
     return (f'<h2 class="sec" id="portfolio">Portfolio value</h2><section class="port {t["status"]}"><p class="pflag"><b>{badge}</b> {esc(head.format(m=m))}</p>'
             f'<div class="mstats">{tiles}</div>{history_chart(m)}<div class="pbar">{bar}</div><p class="pkey">{key}</p>'
-            f'<table class="ptab"><caption>Biggest holdings</caption><thead><tr><th>Asset</th><th>Pos</th><th>Value</th><th>30d</th></tr></thead><tbody>{top}</tbody></table>{picks_tab}'
-            f'<details class="legend"><summary>Legend: what these numbers mean</summary>'
-            f'<p>Values: <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values, superflex, 12 teams, full PPR.</p>'
-            f'<dl><dt>Portfolio value</dt><dd>The combined FantasyCalc value of every player on the roster plus every future pick owned. Players outside FantasyCalc\'s top 1,000 count as zero.</dd>'
-            f'<dt>League rank</dt><dd>Where this portfolio sits among all 12, highest value first.</dd>'
-            f'<dt>30-day market move</dt><dd>How much the market moved the value of the players and picks held right now over the last 30 days, in points and percent. Trades do not change it.</dd>'
-            f'<dt>On IR or out</dt><dd>Value sitting on players who are on IR or listed Out, PUP, Doubtful or Suspended, and the share of the portfolio that is.</dd>'
-            f'<dt>Draft capital</dt><dd>The combined value of the future picks this manager owns after trades. Picks use FantasyCalc\'s own pick values. For the next draft the tier (early, mid or late) comes from the original owner\'s current draft slot.</dd>'
-            f'<dt>League average</dt><dd>The average portfolio value across all 12 managers.</dd>'
-            f'<dt>Status flag</dt><dd>{STATUS_RULE}</dd></dl></details></section>')
+            f'<table class="ptab"><caption>Biggest holdings</caption><thead><tr><th>Asset</th><th>Pos</th><th>Value</th><th>30d</th></tr></thead><tbody>{first}</tbody><tbody id="as-more" hidden>{rest_a}</tbody></table>{more_btn("as-more", len(allp[TOPN:]), "players")}{picks_tab}'
+            f'<details class="legend wide"><summary>Legend: what these numbers mean</summary>'
+            f'<p>Values: <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values, superflex, 12 teams, full PPR.</p><dl>'
+            f'<div><dt>Portfolio value</dt><dd>The combined FantasyCalc value of every player on the roster plus every future pick owned. Players outside FantasyCalc\'s top 1,000 count as zero.</dd></div>'
+            f'<div><dt>League rank</dt><dd>Where this portfolio sits among all 12, highest value first.</dd></div>'
+            f'<div><dt>30-day market move</dt><dd>How much the market moved the value of the players and picks held right now over the last 30 days, in points and percent. Trades do not change it.</dd></div>'
+            f'<div><dt>On IR or out</dt><dd>Value sitting on players who are on IR or listed Out, PUP, Doubtful or Suspended, and the share of the portfolio that is.</dd></div>'
+            f'<div><dt>Draft capital</dt><dd>The combined value of the future picks this manager owns after trades. Picks use FantasyCalc\'s own pick values. For the next draft the tier (early, mid or late) comes from the original owner\'s current draft slot.</dd></div>'
+            f'<div><dt>League average</dt><dd>The average portfolio value across all 12 managers.</dd></div>'
+            f'<div><dt>Status flag</dt><dd>{STATUS_RULE}</dd></div></dl></details></section>')
 
 def trophy_case(m, r):
     """A manager's trophy case: only trophies they have actually won. Empty (no section at all) until the first one lands."""
@@ -316,15 +321,16 @@ def market_board(prefix=""):
                     f'<td><em class="st {t["status"]}">{badge}</em></td></tr>')
     crash, corr, bull = th.get("crash_move_pct", -5.0), th.get("correction_move_pct", -2.5), th.get("bull_move_pct", 5.0)
     side = th.get("crash_sidelined_pct", 25.0)
-    legend = (f'<details class="legend"><summary>Legend: what the columns mean</summary>'
-              f'<p>Every roster and pick, valued by <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values. Updated {esc((PORTFOLIO.get("generated_at") or "")[:10])}.</p>'
-              f'<dl><dt>#</dt><dd>Rank by portfolio value, highest first.</dd>'
-              f'<dt>Manager</dt><dd>Click a name for that manager\'s portfolio.</dd>'
-              f'<dt>Portfolio value</dt><dd>The combined value of every player and future pick the manager owns. The bar compares managers with each other (shortest to longest), not against zero.</dd>'
-              f'<dt>30d move</dt><dd>How much the market moved the value of the players and picks held right now over the last 30 days. Trades do not change it.</dd>'
-              f'<dt>On IR</dt><dd>The share of the portfolio value sitting on players who are on IR or listed Out, PUP, Doubtful or Suspended.</dd>'
-              f'<dt>Status</dt><dd><b>Market crash</b>: the 30-day move is {crash:+g}% or worse, or {side:g}% or more of the value is on IR or out. '
-              f'<b>Correction</b>: down {abs(corr):g}% or more. <b>Bull run</b>: up {bull:g}% or more. <b>Stable</b>: anything else.</dd></dl></details>')
+    def it(t, d): return f'<div><dt>{t}</dt><dd>{d}</dd></div>'
+    legend = (f'<details class="legend wide"><summary>Legend: what the columns mean</summary>'
+              f'<p>Every roster and pick, valued by <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values. Updated {esc((PORTFOLIO.get("generated_at") or "")[:10])}.</p><dl>'
+              + it("#", "Rank by portfolio value, highest first.")
+              + it("Manager", "Click a name for that manager\'s portfolio.")
+              + it("Portfolio value", "The combined value of every player and future pick the manager owns. The bar compares managers with each other (shortest to longest), not against zero.")
+              + it("30d move", "How much the market moved the value of the players and picks held right now over the last 30 days. Trades do not change it.")
+              + it("On IR", "The share of the portfolio value sitting on players who are on IR or listed Out, PUP, Doubtful or Suspended.")
+              + it("Status", f'<b>Market crash</b>: the 30-day move is {crash:+g}% or worse, or {side:g}% or more of the value is on IR or out. <b>Correction</b>: down {abs(corr):g}% or more. <b>Bull run</b>: up {bull:g}% or more. <b>Stable</b>: anything else.')
+              + '</dl></details>')
     return (f'<div class="tw2"><table class="mkt"><thead><tr><th>#</th><th>Manager</th><th>Portfolio value</th><th>30d move</th><th>On IR</th><th>Status</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>{legend}')
 
