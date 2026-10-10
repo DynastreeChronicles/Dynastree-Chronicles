@@ -40,7 +40,7 @@ There are two documents, and they have different jobs.
 
 Rules for keeping them in step:
 
-* **The master state file is the authority for anything about league content and the issue workflow** (rules, voice, schema, FUT CAP weights, steps for an issue). This README only summarises those and points to the matching master section.
+* **The master state file is the authority for anything about league content and the issue workflow** (rules, voice, schema, steps for an issue). This README only summarises those and points to the matching master section.
 * **This README is the authority for how the repo and the site are put together** (folders, scripts, the Action, conventions). The master state file keeps a shorter copy of the same facts in its sections 2, 3 and 6.
 * **When code, the workflow, or a page changes, update both.** The master state file's section 14b lists exactly which sections to touch.
 * If the two ever disagree, the code wins. Read the script, fix whichever document is wrong, and fix the other one in the same commit.
@@ -50,7 +50,7 @@ Rules for keeping them in step:
 ## Automation at a glance
 
 * **Automatic on every Action run:** standings, records, MAXPF, manager pages and their FantasyCalc portfolio values, the Hall of Fame, the Ledger and its pick grades, Receipts, drafts, the champion, closing a season, and `brief.json`.
-* **One bundle per issue (made in a Claude chat):** `issue-NN.json` (including `rulings` and `receipts`), the `data/issues.json` entry, `fut_cap.json`, and the 12 bios.
+* **One bundle per issue (made in a Claude chat):** `issue-NN.json` (including `rulings` and `receipts`), the `data/issues.json` entry and the 12 bios.
 * **Once a year:** the volume `story` in `data/history.json`, and `"season_final": true` on the season-review issue.
 * **By hand, rarely:** `data/settings.json` when league rules change, a hand verdict or trade obituary in `data/ledger.json`, a Toilet Bowl entry, and a rename the pull cannot match.
 
@@ -71,7 +71,7 @@ snapshots + trades + drafts + stats --scripts/ledger_values.py--> data/market/le
 ledger_values.json + data/ledger.json --scripts/build_ledger.py (+ pick_grades.py)--> ledger/index.html   trade values and value-based pick verdicts
 issue JSON (receipts, rulings)      --scripts/build_receipts.py, build_history.py (via auto_data.py)--> receipts/ and history/
 all of the above                     --scripts/make_brief.py--> data/brief.json   (the one file shared with Claude)
-chat log + master state + brief.json --Claude--> data/issues/<season>/issue-NN.json (incl. rulings + receipts) + data/issues.json + fut_cap + bios   all words
+chat log + master state + brief.json --Claude--> data/issues/<season>/issue-NN.json (incl. rulings + receipts) + data/issues.json + bios   all words
 ```
 
 Two rules follow from this:
@@ -109,7 +109,7 @@ data/
   issues/<season>/issue-NN.json     all prose for one issue
   issues/issue-template.json        empty issue schema
   <season>/                         one folder per season: league, standings, efficiency, transactions,
-                                    schedule, draft, fut_cap, weeks/week-NN.json
+                                    schedule, draft, weeks/week-NN.json
   stats/<season>.json               NFL stats used for auto-grading draft picks
   market/fantasycalc.json           live FantasyCalc value index, top 1,000 players and picks
   market/snapshots/<date>.json      one FantasyCalc snapshot per pull (what values are looked up from, as of a date)
@@ -138,7 +138,7 @@ The zip you share with Claude can leave out `assets/`; Claude never needs the im
 
 * Tuesday 11:00 UTC (after Monday Night Football) and Wednesday 13:00 UTC (after stat corrections).
 * By hand: **Actions** > "Update league data" > **Run workflow**.
-* Automatically on any push to `main` that touches `data/issues/**`, `data/issues.json`, `data/seasons.json`, `data/*/fut_cap.json`, `data/managers.json`, `data/settings.json`, `data/history.json`, `data/ledger.json`, `data/receipts.json`, `data/bios/**`, `scripts/**`, `css/**`, or `js/**`.
+* Automatically on any push to `main` that touches `data/issues/**`, `data/issues.json`, `data/seasons.json`, `data/managers.json`, `data/settings.json`, `data/history.json`, `data/ledger.json`, `data/receipts.json`, `data/bios/**`, `scripts/**`, `css/**`, or `js/**`.
 
 **Steps, in order:**
 
@@ -197,7 +197,9 @@ All scripts run from the repo root, in the order below, and read only from `data
 
 ### Issue trade values (locked per issue)
 
-From the issue named in `data/settings.json` > `issue_values_from` (`[2026, 6]`, so Issue 6 onward) the Hypothetical Trade Machine and the graded trades in the Transaction wire carry FantasyCalc values. `build_site.py` (`issue_values()`) computes them the first time the issue is built and saves them to `data/issues/<year>/values-NN.json`; every later build reads that file, so a published issue never changes. Earlier issues have no file and are untouched. Delete a values file only if you want that issue recomputed.
+**Freeze rule.** Every FantasyCalc number an issue shows is frozen the first time that issue is built: the Hypothetical Trade Machine and graded-trade values, and the Wealth index and Draft order tabs (this week's and last week's Wealth rows and the draft-slot values). All of it is stored in `data/issues/<year>/values-NN.json`, each part is written once, and a part already in the file is never recomputed, so market moves, new snapshots and rebuilds cannot change a published issue. A part that could not be computed at first build (no snapshot or no Wealth row yet) is filled in the first time its data exists. Delete a values file only to recompute that issue on purpose.
+
+From the issue named in `data/settings.json` > `issue_values_from` (`[2026, 6]`, so Issue 6 onward) the freeze rule above applies. Earlier issues have no values file and are untouched; they keep reading the live Wealth rows for their own week only, which stop changing once the following week is final.
 
 * **Hypothetical trades:** the current value of what each side sends, a "value edge" line, and how many assets could be valued. Players are matched by name; picks like "2027 1st-round pick" use FantasyCalc's value for that pick (a "(from Name)" suffix uses that team's draft slot). FAAB, "depth WR" and other unnamed assets are left out and the card says how many assets were valued.
 * **Graded trades:** per side, the value at the time of the trade and the value when the issue ran, with the percent change and a value edge line for both moments. The trade is found in `transactions.json` by the two managers and the issue week. A `~` means the value at the trade is an estimate (see Ledger values).
@@ -207,7 +209,7 @@ From the issue named in `data/settings.json` > `issue_values_from` (`[2026, 6]`,
 
 The standings block, on the home page and in every issue, has a third tab, **Wealth index**: every team ranked by total FantasyCalc dynasty asset value, split into **Roster value**, **Draft capital** and **Total wealth**, with rank movement (MOV) and the change in total wealth since the previous tracked week. It has its own collapsible "How to read the Wealth Index" legend.
 
-* **Data.** `pull_values.py` writes `data/<season>/wealth.json`: one entry per finished NFL week (`weeks.<N>` with `date` and each manager's `roster`, `picks`, `total`). The entry for the newest finished week is rewritten on every run until the next week finishes, then it is frozen. Movement compares a week with the nearest earlier week on file; the first tracked week shows a dash. Each week entry also stores `slots`, the FantasyCalc value of each round-1 draft slot (1.01 to 1.12), which feeds the **Pick value** column of the Draft order tab (same pick values as The Market and the manager pages; an issue with no entry for its week has no such column).
+* **Data.** `pull_values.py` writes `data/<season>/wealth.json`: one entry per finished NFL week (`weeks.<N>` with `date` and each manager's `roster`, `picks`, `total`). The entry for the newest finished week is rewritten on every run until the next week finishes, then it is frozen. Movement compares a week with the nearest earlier week on file; the first tracked week shows a dash. Each week entry also stores `slots`, the FantasyCalc value of each round-1 draft slot (1.01 to 1.12), which feeds the **Pick value** and **Draft capital** columns of the Draft order tab (same pick values as The Market and the manager pages; an issue with no entry for its week has neither column). Draft capital is the combined value of every pick the team owns. The old FUT CAP score is gone: nothing in the site, the brief or the workflow uses `fut_cap.json` any more, and it is no longer part of an issue bundle (delete `data/<season>/fut_cap.json` if it is still in the repo).
 * **Where it shows.** The home page shows the newest week on file. An issue page shows its own week; if that week was never saved (every issue before the feature existed), the tab is simply not there. Built by `wealth_view()` in `build_site.py`; the tab toggle is in `js/site.js`.
 
 ### Ledger values (trades and pick verdicts)
@@ -232,7 +234,6 @@ Every script has a docstring at the top that says what it does, what it reads, a
 |---|---|
 | `data/issues/<season>/issue-NN.json` | All prose for one issue. New each issue. |
 | `data/issues.json` | The issue index. Replaced each issue. |
-| `data/<season>/fut_cap.json` | Future-capital score per manager, recomputed each issue. |
 | `data/bios/<handle>.json` | A manager's tagline, desk file, and per-season story. Normally all 12 each issue. |
 | `data/history.json` | Optional now: the volume `story`, `awards` and `toilet_bowl` entries, hand prediction overrides. The champion and prediction results come from `result.json` and the issue files. |
 | `data/ledger.json` | Grading thresholds, plus exceptions only: a hand verdict over an automatic grade, and trade obituaries. |

@@ -147,7 +147,6 @@ def main():
         "bankroll": bank,
         "next_week_matchups": [{"a": a, "a_record": rec.get(a), "b": b, "b_record": rec.get(b)} for a, b in (sched or [])],
         "transactions_this_week_and_later": tx,
-        "fut_cap": bs.jload(bs.S("fut_cap.json"), {}),
         "market_portfolios": market_portfolios(season),
         "managers": {k: v.get("team_name") for k, v in bs.managers().items() if v.get("active", True)},
         "alumni": [k for k, v in bs.managers().items() if not v.get("active", True)],

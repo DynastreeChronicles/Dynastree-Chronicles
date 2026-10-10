@@ -161,8 +161,8 @@ def legend(pick_value=False):
              ("PF", "<b>Points for.</b> Total points your team has scored this season."),
              ("Pick", f"<b>{draft_year()} rookie draft slot.</b> 1.01 is the first overall pick."),
              ("MAXPF", MAXPF_TEXT),
-             *([("Pick value", "<b>Market value of the slot.</b> What FantasyCalc dynasty trade values put on that first-round pick right now (the same values used in The Market and on manager pages).")] if pick_value else []),
-             ("FUT CAP", "<b>Future capital.</b> Points for owned picks: Early 1st 100, Mid-Late 1st 75, 2nd-year 1st 60, 3rd-year 1st 50, any 2nd 30, any 3rd 10."),
+             *([("Pick value", "<b>Market value of the slot.</b> What FantasyCalc dynasty trade values put on that first-round pick right now (the same values used in The Market and on manager pages)."),
+                ("Draft capital", "<b>Owned picks.</b> The combined FantasyCalc value of every future rookie pick the team owns after trades.")] if pick_value else []),
              ("FAAB", "<b>Waiver budget</b> left, out of $500.")]
     out = "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in items)
     return f'<details class="legend"><summary>How to read this table</summary><dl>{out}</dl></details>'
@@ -178,10 +178,10 @@ def wealth_legend(k, date, prevk, note):
     out = "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in items)
     return f'<details class="legend wide"><summary>How to read the Wealth Index</summary><p>{note}</p><dl>{out}</dl></details>'
 
-def wealth_view(fin, root, team, h, latest):
+def wealth_view(fin, root, team, h, latest, W=None):
     """The Wealth Index tab: rank by total FantasyCalc dynasty asset value, split into roster and draft capital, with movement vs the previous
     tracked week. Home page shows the newest week on file; an issue page shows its own week (no tab if that week was never saved)."""
-    W = jload(S("wealth.json"), {}) or {}
+    W = W if W is not None else (jload(S("wealth.json"), {}) or {})
     weeks = {int(k): v for k, v in (W.get("weeks") or {}).items()}
     k = max(weeks) if weeks and latest else (fin if fin in weeks else None)
     if k is None:
@@ -206,7 +206,7 @@ def wealth_view(fin, root, team, h, latest):
     return (f'<div class="sc" id="v-wealth" hidden><table id="wealthtable"><thead>{h(["#", "Team", "Roster value", "Draft capital", "Total wealth", "MOV", "Change"])}</thead><tbody>{rows}</tbody></table>'
             f'{wealth_legend(k, weeks[k]["date"], prevk, note)}</div>')
 
-def standings(rows=None, fin=None, root=""):
+def standings(rows=None, fin=None, root="", locked=None):
     """The standings block (Standings order / Draft order). Used by the home page (live data)
     and by each issue page (snapshot rows), so both always look and read the same."""
     latest = rows is None   # home page: live data, newest Wealth Index week
@@ -214,7 +214,6 @@ def standings(rows=None, fin=None, root=""):
         rows = jload(S("standings.json"))
     fin = fin or (rows and max(r["wins"] + r["losses"] + r["ties"] for r in rows))
     pp = prev_picks(fin)
-    fc = jload(S("fut_cap.json"), {})
     team = lambda r: f'<td><a class="ml" href="{root}managers/{r["manager"].lower()}/">{av(r["manager"], 24, root)}<b>{esc(r["manager"])}</b></a></td>'
     n = len(rows)
     def rank_cell(r):
@@ -226,24 +225,25 @@ def standings(rows=None, fin=None, root=""):
             return f'<img class="rkt" src="{root}assets/trophy-trash-sm.webp" alt="#{k}" width="26" height="44">'
         return str(k)
     rk = "".join(f'<tr><td class="n rkc">{rank_cell(r)}</td>{team(r)}<td class="n">{esc(r["record"])}</td><td class="n mv">{mv(r.get("move", 0))}</td><td class="n">{r["pf"]:.2f}</td><td class="n">${r["faab_remaining"]}</td></tr>' for r in rows)
-    Wk = jload(S("wealth.json"), {}) or {}
+    Wk = locked if locked is not None else (jload(S("wealth.json"), {}) or {})   # an issue passes its own frozen copy
     wkeys = {int(k): v for k, v in (Wk.get("weeks") or {}).items()}
     wsel = max(wkeys) if wkeys and latest else (fin if fin in wkeys else None)
     slot_val = (wkeys[wsel].get("slots") or {}) if wsel is not None else {}
+    cur_w = (wkeys[wsel].get("teams") or {}) if wsel is not None else {}
     dr = ""
     for r in sorted(rows, key=lambda r: r["draft_pick"]):
-        f = fc.get(r["manager"])
         sv = slot_val.get(str(r["draft_pick"]))
-        pvc = (f'<td class="n">{"&mdash;" if sv is None else format(sv, ",")}</td>') if slot_val else ""
-        dr += (f'<tr><td class="n pick">1.{r["draft_pick"]:02d}</td>{team(r)}{pvc}<td class="n">{"&mdash;" if f is None else f}</td>'
+        dc = (cur_w.get(r["manager"]) or {}).get("picks")
+        pvc = (f'<td class="n">{"&mdash;" if sv is None else format(sv, ",")}</td><td class="n">{"&mdash;" if dc is None else format(dc, ",")}</td>') if slot_val else ""
+        dr += (f'<tr><td class="n pick">1.{r["draft_pick"]:02d}</td>{team(r)}{pvc}'
                f'<td class="n">{r["maxpf"]:.2f}</td><td class="n mv">{mv(pp.get(r["roster_id"], r["draft_pick"]) - r["draft_pick"])}</td><td class="n">${r["faab_remaining"]}</td></tr>')
     h = lambda cols: "<tr>" + "".join(f'<th{" class=\"n\"" if i else ""}>{c}</th>' if c != "Team" else "<th>Team</th>" for i, c in enumerate(cols)) + "</tr>"
-    wv = wealth_view(fin, root, team, h, latest)
+    wv = wealth_view(fin, root, team, h, latest, Wk)
     tab = '<button class="chip" data-view="wealth">Wealth index</button>' if wv else ""
     return (f'<div class="sortbar" role="group" aria-label="Standings view"><button class="chip on" data-view="rank">Standings order</button><button class="chip" data-view="draft">Draft order</button>{tab}</div>'
             f'<div class="sc" id="v-rank"><table id="standtable"><thead>{h(["#", "Team", "W-L", "MOV", "PF", "FAAB"])}</thead><tbody>{rk}</tbody></table>'
             f'{legend()}</div>'
-            f'<div class="sc" id="v-draft" hidden><table id="drafttable"><thead>{h(["Pick", "Team"] + (["Pick value"] if slot_val else []) + ["FUT CAP", "MAXPF", "MOV", "FAAB"])}</thead><tbody>{dr}</tbody></table>'
+            f'<div class="sc" id="v-draft" hidden><table id="drafttable"><thead>{h(["Pick", "Team"] + (["Pick value", "Draft capital"] if slot_val else []) + ["MAXPF", "MOV", "FAAB"])}</thead><tbody>{dr}</tbody></table>'
             f'{legend(bool(slot_val))}</div>' + (wv or ""))
 
 # ---------------------------------------------------------------- issue pages
@@ -551,38 +551,49 @@ def issue_pre(man, d, y, n):
 
 
 def issue_values(y, n, wk, d):
-    """FantasyCalc values for an issue's Hypothetical Trade Machine and its graded trades, LOCKED the first time the issue is built
-    (data/issues/<year>/values-NN.json) so later market moves never change a published issue. Only issues from data/settings.json
-    "issue_values_from" (default [2026, 6]) on get values; earlier issues are left exactly as they were."""
+    """Everything an issue shows from FantasyCalc, FROZEN the moment the issue is first built (data/issues/<year>/values-NN.json):
+      wealth = this week's and last week's Wealth Index rows plus the draft-slot values (the Draft order and Wealth index tabs),
+      hyp / wire = values for the Hypothetical Trade Machine and the graded trades.
+    Each part is written once. A part that is already in the file is never recomputed, so a published issue never changes; a part that could
+    not be computed yet (no snapshot, no wealth row) is filled in the first time its data exists. Only issues from data/settings.json
+    "issue_values_from" (default [2026, 6]) on are covered; earlier issues are left exactly as they were."""
     cut = tuple((jload("data/settings.json", {}) or {}).get("issue_values_from") or (2026, 6))
     if (int(y), int(n)) < cut:
         return None
     lock = os.path.join(ROOT, f"data/issues/{y}/values-{int(n):02d}.json")
-    if os.path.exists(lock):
-        return json.load(open(lock, encoding="utf-8"))
-    import market as mk
-    tl = mk.Timeline()
-    if not tl.snaps:
-        return None
-    latest = tl.latest; pb_now = latest.picks()
-    slot_of = {r["manager"]: r.get("draft_pick") for r in (jload(S("standings.json"), []) or [])}
-    nxt = int(y) + 1
-    hyp = [{"a": mk.text_assets(t.get("as"), latest, pb_now, slot_of, nxt), "b": mk.text_assets(t.get("bs"), latest, pb_now, slot_of, nxt)}
-           for t in (d.get("trades") or {}).get("items", [])]
-    trades = [x for x in txfeed() if x.get("type") == "trade" and len(x.get("sides", [])) == 2 and x.get("created")]
-    wire = []
-    for t in (d.get("wire") or {}).get("trades", []):
-        cand = [x for x in trades if {sd["manager"] for sd in x["sides"]} == {t["a"], t["b"]} and wk - 1 <= int(x.get("week") or 0) <= wk + 1]
-        if not cand:
-            wire.append(None); continue
-        x = max(cand, key=lambda z: z["created"])
-        dt = datetime.datetime.fromtimestamp(x["created"] / 1000, datetime.timezone.utc).date()
-        snap, how, off = tl.at(dt)
-        sv = {sd["manager"]: mk.side_values(sd, snap, latest, snap.picks(), pb_now, slot_of, nxt) for sd in x["sides"]}
-        wire.append({"date": dt.isoformat(), "how": how, "a": sv[t["a"]], "b": sv[t["b"]]})
-    out = {"as_of": latest.date.isoformat(), "first_snapshot": tl.first.isoformat(), "hyp": hyp, "wire": wire}
-    json.dump(out, open(lock, "w", encoding="utf-8"), indent=1)
-    return out
+    cur = json.load(open(lock, encoding="utf-8")) if os.path.exists(lock) else {}
+    changed = False
+    if "wealth" not in cur:
+        ws = {int(k): v for k, v in ((jload(S("wealth.json"), {}) or {}).get("weeks") or {}).items()}
+        if wk in ws:
+            pk = max((x for x in ws if x < wk), default=None)
+            cur["wealth"] = {"weeks": {str(x): ws[x] for x in (wk, pk) if x is not None}}
+            changed = True
+    if "hyp" not in cur:
+        import market as mk
+        tl = mk.Timeline()
+        if tl.snaps:
+            latest = tl.latest; pb_now = latest.picks()
+            slot_of = {r["manager"]: r.get("draft_pick") for r in (jload(S("standings.json"), []) or [])}
+            nxt = int(y) + 1
+            hyp = [{"a": mk.text_assets(t.get("as"), latest, pb_now, slot_of, nxt), "b": mk.text_assets(t.get("bs"), latest, pb_now, slot_of, nxt)}
+                   for t in (d.get("trades") or {}).get("items", [])]
+            trades = [x for x in txfeed() if x.get("type") == "trade" and len(x.get("sides", [])) == 2 and x.get("created")]
+            wire = []
+            for t in (d.get("wire") or {}).get("trades", []):
+                cand = [x for x in trades if {sd["manager"] for sd in x["sides"]} == {t["a"], t["b"]} and wk - 1 <= int(x.get("week") or 0) <= wk + 1]
+                if not cand:
+                    wire.append(None); continue
+                x = max(cand, key=lambda z: z["created"])
+                dt = datetime.datetime.fromtimestamp(x["created"] / 1000, datetime.timezone.utc).date()
+                snap, how, off = tl.at(dt)
+                sv = {sd["manager"]: mk.side_values(sd, snap, latest, snap.picks(), pb_now, slot_of, nxt) for sd in x["sides"]}
+                wire.append({"date": dt.isoformat(), "how": how, "a": sv[t["a"]], "b": sv[t["b"]]})
+            cur.update(as_of=latest.date.isoformat(), first_snapshot=tl.first.isoformat(), hyp=hyp, wire=wire)
+            changed = True
+    if changed:
+        json.dump(cur, open(lock, "w", encoding="utf-8"), indent=1)
+    return cur or None
 
 def ipath(y, n):
     """Issue prose file: data/issues/<season>/issue-NN.json (the old flat data/issues/issue-NN.json still works until migrated)."""
@@ -652,8 +663,9 @@ def issue(n="04", y=2026):
             raise SystemExit(f"issue-{n}.json names {m!r}, who is not in the league data")
         return by[m]
 
+    iv = issue_values(y, n, wk, d)   # FantasyCalc numbers this issue shows, frozen on first build
     # standings (same block as the home page)
-    inject(f"issues/{y}/issue-{n}/index.html", "STAND", standings(rows, wk, "../../../"))
+    inject(f"issues/{y}/issue-{n}/index.html", "STAND", standings(rows, wk, "../../../", (iv or {}).get("wealth")))
     pm = d.get("prev_motw")
     inject(f"issues/{y}/issue-{n}/index.html", "FINAL", (motw_banner(wk, pm, rep) + "\n" if pm else "") + final_banner(wk))
 
@@ -709,9 +721,8 @@ def issue(n="04", y=2026):
                    ["AVG PF", f"{avg(mo['a']):.1f}", f"{avg(mo['b']):.1f}"]]
 
     d["meta"] = {"week": wk, "maxpf": MAXPF_LONG if (int(y), int(n)) in EXPLAIN else ""}
-    iv = issue_values(y, n, wk, d)
     if iv:
-        d["values"] = iv
+        d["values"] = {k: v for k, v in iv.items() if k != "wealth"}   # the frozen Wealth rows only feed the standings tabs
     path = f"issues/{y}/issue-{n}/index.html"
     blob = json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
     inject(path, "ISSUE-DATA", f'<script id="issue-data" type="application/json">{blob}</script>')

@@ -6,7 +6,7 @@ Shared across seasons (never inside a season folder):
 
 Inside data/<season>/:
     league.json, standings.json, efficiency.json, transactions.json, schedule.json,
-    draft.json, fut_cap.json, weeks/week-NN.json
+    draft.json, weeks/week-NN.json
 
 data/seasons.json is the registry. Volume N = the Nth season. Example:
     {"2026": {"volume": 1, "league_id": "1389...", "status": "active"},
@@ -26,7 +26,7 @@ DATA = os.path.join(ROOT, "data")
 REG = os.path.join(DATA, "seasons.json")
 
 # files that live inside a season folder (everything the pull writes, plus the two hand-kept season files)
-SEASON_FILES = ["league.json", "standings.json", "efficiency.json", "transactions.json", "schedule.json", "draft.json", "fut_cap.json"]
+SEASON_FILES = ["league.json", "standings.json", "efficiency.json", "transactions.json", "schedule.json", "draft.json"]
 
 
 def sdir(season, rel=""):
