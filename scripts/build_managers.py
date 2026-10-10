@@ -272,15 +272,24 @@ def manager_page(m, names, years, display, active):
         story = head + "".join(f"<p>{bs.bold_handles(x)}</p>" for x in paras) + asof or '<p class="key">No story filed for this season yet.</p>'
         tk = takes_html(mi["takes"], r) + "".join(f'<figure class="tk"><blockquote>{esc(x)}</blockquote></figure>' for x in bs_.get("takes", []))
         dm = drama_html(mi["drama"]) + "".join(f'<article class="dm"><div><p>{esc(x)}</p></div></article>' for x in bs_.get("drama", []))
-        extra = ""
+        def sec(title, body, open_=False, ident=""):
+            return (f'<details class="ysec"{" open" if open_ else ""}{f" id={chr(34)}{ident}{chr(34)}" if ident else ""}><summary>{title}</summary><div class="ysb">{body}</div></details>')
+        sfx = "" if hero_season else "-" + y
+        lead = ""
+        parts = []
         if sd:
-            qh = "".join(f'<figure class="dq"><blockquote class="desk">{esc(t)}</blockquote><figcaption>Issue {n}, <a href="{r}issues/{yy}/issue-{n:02d}/#{anc}">{esc(sec)}</a></figcaption></figure>' for n, yy, sec, anc, t in qs if str(yy) == y) or '<p class="key">The desk has not said anything about this manager yet. That is its own kind of insult.</p>'
             lead = "" if hero_season else f'<h3 class="sub">{"Final standing" if sd["closed"] else "Standing so far"}</h3><div class="mstats">{stat_tiles(sd)}</div>'
-            extra = (f'{lead}<h3 class="sub" id="log{"" if hero_season else "-" + y}">Game log</h3>{log_table(sd["games"])}<h3 class="sub" id="tx{"" if hero_season else "-" + y}">Transactions</h3><div class="txl">{sd["tx_html"]}</div>'
-                     f'<h3 class="sub" id="desk{"" if hero_season else "-" + y}">What the desk said</h3><div class="dqs">{qh}</div>')
+            qh = "".join(f'<figure class="dq"><blockquote class="desk">{esc(t)}</blockquote><figcaption>Issue {n}, <a href="{r}issues/{yy}/issue-{n:02d}/#{anc}">{esc(sec_)}</a></figcaption></figure>' for n, yy, sec_, anc, t in qs if str(yy) == y) or '<p class="key">The desk has not said anything about this manager yet. That is its own kind of insult.</p>'
+        parts.append(sec("The season", lead + f'<div class="story">{story}</div>', True))
+        if sd:
+            parts.append(sec("Game log", log_table(sd["games"]), True, "log" + sfx))
+            parts.append(sec("Transactions", f'<div class="txl">{sd["tx_html"]}</div>', False, "tx" + sfx))
+        parts.append(sec("The takes", tk or "<p class=key>No takes on file.</p>"))
+        parts.append(sec("The drama", dm or "<p class=key>No drama on file. Suspiciously quiet.</p>"))
+        if sd:
+            parts.append(sec("What the desk said", f'<div class="dqs">{qh}</div>', False, "desk" + sfx))
         sm = f'{y} <small>{esc(sd["row"]["record"]) if sd else "archived"}</small>'
-        blocks.append(f'<details class="ys"{" open" if y == ys[0] else ""}><summary>{sm}</summary><div class="yb"><h3 class="sub">The season</h3><div class="story">{story}</div>'
-                      f'<h3 class="sub">The takes</h3>{tk or "<p class=key>No takes on file.</p>"}<h3 class="sub">The drama</h3>{dm or "<p class=key>No drama on file. Suspiciously quiet.</p>"}{extra}</div></details>')
+        blocks.append(f'<details class="ys"{" open" if y == ys[0] else ""}><summary>{sm}</summary><div class="yb">{"".join(parts)}</div></details>')
     if hd:
         best = max(hd["games"], key=lambda g: g["points"]) if hd["games"] else None
         cap = f'<p class="key">{esc(last)} season{" (final)" if hd["closed"] else ""}.</p>' if (not active or len(mine_seasons) > 1 or hd["closed"]) else ""

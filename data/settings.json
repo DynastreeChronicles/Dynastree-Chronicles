@@ -222,5 +222,9 @@
  },
  "kicking_note": "Kicker scoring is on in Sleeper (FG 3 to 6 by distance, PAT +1, misses -1), but the lineup has no K slot, so it never counts.",
  "playoff_start": 15,
- "playoff_teams": 6
+ "playoff_teams": 6,
+ "issue_values_from": [
+  2026,
+  6
+ ]
 }

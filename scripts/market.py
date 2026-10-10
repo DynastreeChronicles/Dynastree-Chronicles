@@ -153,3 +153,41 @@ class Timeline:
         off = abs((best.date - d).days)
         how = "estimate" if best.est else "snapshot" if off <= EXACT_DAYS else "nearest"
         return best, how, off
+
+
+# ---------------------------------------------------------------- valuing trades
+def side_values(side, snap_then, snap_now, pb_then, pb_now, slot_of, next_year):
+    """One side of a Sleeper trade (what it received): per-asset value in snap_then and snap_now. Picks use the tier of the original owner's draft slot."""
+    assets = []
+    for p in side.get("receives_players", []):
+        a, b = snap_then.player(p["name"], p["pos"]), snap_now.player(p["name"], p["pos"])
+        assets.append({"label": f'{p["name"]} ({p["pos"]})', "then": a[0] if a else 0, "now": b[0] if b else 0})
+    for k in side.get("receives_picks", []):
+        slot = slot_of.get(k["original_owner"]); nxt = int(k["season"]) == next_year
+        a, la = pb_then.value(int(k["season"]), int(k["round"]), slot, nxt)
+        b, lb = pb_now.value(int(k["season"]), int(k["round"]), slot, nxt)
+        assets.append({"label": lb if b else la, "then": a["value"] if a else 0, "now": b["value"] if b else 0, "pick": True})
+    return {"manager": side["manager"], "assets": assets, "then": sum(x["then"] for x in assets), "now": sum(x["now"] for x in assets),
+            "faab": side.get("receives_faab") or 0}
+
+
+def text_assets(texts, snap, pb, slot_of, next_year):
+    """Value free-text assets such as "D'Andre Swift", "2027 1st-round pick" or "2028 2nd (from Hades9mm)" in a snapshot.
+    Anything that is not a player or a pick (FAAB, "depth WR", "any contender") is listed with value None and left out of the total."""
+    out = []
+    for text in texts or []:
+        t = (text or "").strip()
+        v = None
+        pk = re.search(r"(20\d\d)\s+(\d+)(?:st|nd|rd|th)\b", t, re.I)
+        if pk and re.search(r"pick|round", t, re.I):
+            frm = re.search(r"from\s+([A-Za-z0-9_]+)", t)
+            season, rnd = int(pk.group(1)), int(pk.group(2))
+            row, _ = pb.value(season, rnd, slot_of.get(frm.group(1)) if frm else None, season == next_year)
+            v = row["value"] if row else None
+        elif not re.search(r"faab|\$\d|^depth\b|^any\b|\bcontender\b|\bpick\b", t, re.I):
+            name = re.sub(r"\s*\([^)]*\)", "", t).strip()
+            row = snap.player(name, "") if name else None
+            v = row[0] if row else None
+        out.append({"label": t, "value": v})
+    got = [x["value"] for x in out if x["value"] is not None]
+    return {"assets": out, "total": sum(got), "n": len(out), "valued": len(got)}

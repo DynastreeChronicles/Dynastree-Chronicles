@@ -193,7 +193,12 @@ def main():
         W = json.load(open(wpath, encoding="utf-8"))
     except Exception:
         W = {}
-    W.setdefault("weeks", {})[str(wk)] = {"date": today, "teams": {m: {"roster": t["players"], "picks": t["picks"], "total": t["total"]} for m, t in team.items()}}
+    slots = {}   # value of each round-1 draft slot of the next draft (same PickBook as the portfolios, so every page agrees)
+    for sl in range(1, 13):
+        row, _ = book.value(int(season) + 1, 1, sl, True)
+        if row:
+            slots[str(sl)] = round(row["value"])
+    W.setdefault("weeks", {})[str(wk)] = {"date": today, "slots": slots, "teams": {m: {"roster": t["players"], "picks": t["picks"], "total": t["total"]} for m, t in team.items()}}
     W.update(season=season, source="FantasyCalc", format=FORMAT)
     json.dump(W, open(wpath, "w", encoding="utf-8"), indent=1)
     # Change since the last snapshot at least 5 days old (includes trades, unlike the 30-day market move).

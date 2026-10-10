@@ -19,18 +19,7 @@ from build_site import jload, ROOT
 OUT = os.path.join(ROOT, "data", "market", "ledger_values.json")
 
 
-def side_values(side, snap_then, snap_now, pb_then, pb_now, slot_of, next_year):
-    assets = []
-    for p in side.get("receives_players", []):
-        a, b = snap_then.player(p["name"], p["pos"]), snap_now.player(p["name"], p["pos"])
-        assets.append({"label": f'{p["name"]} ({p["pos"]})', "then": a[0] if a else 0, "now": b[0] if b else 0})
-    for k in side.get("receives_picks", []):
-        slot = slot_of.get(k["original_owner"]); nxt = int(k["season"]) == next_year
-        a, la = pb_then.value(int(k["season"]), int(k["round"]), slot, nxt)
-        b, lb = pb_now.value(int(k["season"]), int(k["round"]), slot, nxt)
-        assets.append({"label": lb if b else la, "then": a["value"] if a else 0, "now": b["value"] if b else 0, "pick": True})
-    return {"manager": side["manager"], "assets": assets, "then": sum(x["then"] for x in assets), "now": sum(x["now"] for x in assets),
-            "faab": side.get("receives_faab") or 0}
+side_values = mk.side_values
 
 
 def main():

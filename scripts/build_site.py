@@ -8,7 +8,7 @@
     and its entry in data/issues.json: no hand-made HTML.
 Every season lives in its own folder (data/2026/, data/2027/, ...); see scripts/seasons.py. Each issue page is built from
 the data of ITS season, so a new season never overwrites an old issue. Run after sleeper_pull.py (the GitHub Action does this)."""
-import glob, json, os, re, sys
+import datetime, glob, json, os, re, sys
 from collections import defaultdict
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, ".."))
@@ -153,7 +153,7 @@ MAXPF_LONG = ("MAXPF (Max PF) is the points your best possible lineup would have
               "It is the same figure Sleeper shows as Max PF, not starters plus bench. Lowest MAXPF gets the 1st overall pick; highest picks 12th. "
               "The draft is linear, so the lowest MAXPF also picks first every round. Payouts still go to the playoff winner.")
 
-def legend():
+def legend(pick_value=False):
     """Collapsed 'how to read this' glossary shared by the home and issue standings."""
     up, dn = '<span class="up">&#9650;</span>', '<span class="dn">&#9660;</span>'
     items = [("W-L", "<b>Record</b> through the latest finished week."),
@@ -161,6 +161,7 @@ def legend():
              ("PF", "<b>Points for.</b> Total points your team has scored this season."),
              ("Pick", f"<b>{draft_year()} rookie draft slot.</b> 1.01 is the first overall pick."),
              ("MAXPF", MAXPF_TEXT),
+             *([("Pick value", "<b>Market value of the slot.</b> What FantasyCalc dynasty trade values put on that first-round pick right now (the same values used in The Market and on manager pages).")] if pick_value else []),
              ("FUT CAP", "<b>Future capital.</b> Points for owned picks: Early 1st 100, Mid-Late 1st 75, 2nd-year 1st 60, 3rd-year 1st 50, any 2nd 30, any 3rd 10."),
              ("FAAB", "<b>Waiver budget</b> left, out of $500.")]
     out = "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in items)
@@ -225,10 +226,16 @@ def standings(rows=None, fin=None, root=""):
             return f'<img class="rkt" src="{root}assets/trophy-trash-sm.webp" alt="#{k}" width="26" height="44">'
         return str(k)
     rk = "".join(f'<tr><td class="n rkc">{rank_cell(r)}</td>{team(r)}<td class="n">{esc(r["record"])}</td><td class="n mv">{mv(r.get("move", 0))}</td><td class="n">{r["pf"]:.2f}</td><td class="n">${r["faab_remaining"]}</td></tr>' for r in rows)
+    Wk = jload(S("wealth.json"), {}) or {}
+    wkeys = {int(k): v for k, v in (Wk.get("weeks") or {}).items()}
+    wsel = max(wkeys) if wkeys and latest else (fin if fin in wkeys else None)
+    slot_val = (wkeys[wsel].get("slots") or {}) if wsel is not None else {}
     dr = ""
     for r in sorted(rows, key=lambda r: r["draft_pick"]):
         f = fc.get(r["manager"])
-        dr += (f'<tr><td class="n pick">1.{r["draft_pick"]:02d}</td>{team(r)}<td class="n">{"&mdash;" if f is None else f}</td>'
+        sv = slot_val.get(str(r["draft_pick"]))
+        pvc = (f'<td class="n">{"&mdash;" if sv is None else format(sv, ",")}</td>') if slot_val else ""
+        dr += (f'<tr><td class="n pick">1.{r["draft_pick"]:02d}</td>{team(r)}{pvc}<td class="n">{"&mdash;" if f is None else f}</td>'
                f'<td class="n">{r["maxpf"]:.2f}</td><td class="n mv">{mv(pp.get(r["roster_id"], r["draft_pick"]) - r["draft_pick"])}</td><td class="n">${r["faab_remaining"]}</td></tr>')
     h = lambda cols: "<tr>" + "".join(f'<th{" class=\"n\"" if i else ""}>{c}</th>' if c != "Team" else "<th>Team</th>" for i, c in enumerate(cols)) + "</tr>"
     wv = wealth_view(fin, root, team, h, latest)
@@ -236,8 +243,8 @@ def standings(rows=None, fin=None, root=""):
     return (f'<div class="sortbar" role="group" aria-label="Standings view"><button class="chip on" data-view="rank">Standings order</button><button class="chip" data-view="draft">Draft order</button>{tab}</div>'
             f'<div class="sc" id="v-rank"><table id="standtable"><thead>{h(["#", "Team", "W-L", "MOV", "PF", "FAAB"])}</thead><tbody>{rk}</tbody></table>'
             f'{legend()}</div>'
-            f'<div class="sc" id="v-draft" hidden><table id="drafttable"><thead>{h(["Pick", "Team", "FUT CAP", "MAXPF", "MOV", "FAAB"])}</thead><tbody>{dr}</tbody></table>'
-            f'{legend()}</div>' + (wv or ""))
+            f'<div class="sc" id="v-draft" hidden><table id="drafttable"><thead>{h(["Pick", "Team"] + (["Pick value"] if slot_val else []) + ["FUT CAP", "MAXPF", "MOV", "FAAB"])}</thead><tbody>{dr}</tbody></table>'
+            f'{legend(bool(slot_val))}</div>' + (wv or ""))
 
 # ---------------------------------------------------------------- issue pages
 def ordinal(n):
@@ -542,6 +549,41 @@ def issue_pre(man, d, y, n):
     for line in rep:
         print(f"  note (issue {n}): {line}")
 
+
+def issue_values(y, n, wk, d):
+    """FantasyCalc values for an issue's Hypothetical Trade Machine and its graded trades, LOCKED the first time the issue is built
+    (data/issues/<year>/values-NN.json) so later market moves never change a published issue. Only issues from data/settings.json
+    "issue_values_from" (default [2026, 6]) on get values; earlier issues are left exactly as they were."""
+    cut = tuple((jload("data/settings.json", {}) or {}).get("issue_values_from") or (2026, 6))
+    if (int(y), int(n)) < cut:
+        return None
+    lock = os.path.join(ROOT, f"data/issues/{y}/values-{int(n):02d}.json")
+    if os.path.exists(lock):
+        return json.load(open(lock, encoding="utf-8"))
+    import market as mk
+    tl = mk.Timeline()
+    if not tl.snaps:
+        return None
+    latest = tl.latest; pb_now = latest.picks()
+    slot_of = {r["manager"]: r.get("draft_pick") for r in (jload(S("standings.json"), []) or [])}
+    nxt = int(y) + 1
+    hyp = [{"a": mk.text_assets(t.get("as"), latest, pb_now, slot_of, nxt), "b": mk.text_assets(t.get("bs"), latest, pb_now, slot_of, nxt)}
+           for t in (d.get("trades") or {}).get("items", [])]
+    trades = [x for x in txfeed() if x.get("type") == "trade" and len(x.get("sides", [])) == 2 and x.get("created")]
+    wire = []
+    for t in (d.get("wire") or {}).get("trades", []):
+        cand = [x for x in trades if {sd["manager"] for sd in x["sides"]} == {t["a"], t["b"]} and wk - 1 <= int(x.get("week") or 0) <= wk + 1]
+        if not cand:
+            wire.append(None); continue
+        x = max(cand, key=lambda z: z["created"])
+        dt = datetime.datetime.fromtimestamp(x["created"] / 1000, datetime.timezone.utc).date()
+        snap, how, off = tl.at(dt)
+        sv = {sd["manager"]: mk.side_values(sd, snap, latest, snap.picks(), pb_now, slot_of, nxt) for sd in x["sides"]}
+        wire.append({"date": dt.isoformat(), "how": how, "a": sv[t["a"]], "b": sv[t["b"]]})
+    out = {"as_of": latest.date.isoformat(), "first_snapshot": tl.first.isoformat(), "hyp": hyp, "wire": wire}
+    json.dump(out, open(lock, "w", encoding="utf-8"), indent=1)
+    return out
+
 def ipath(y, n):
     """Issue prose file: data/issues/<season>/issue-NN.json (the old flat data/issues/issue-NN.json still works until migrated)."""
     new = os.path.join(ROOT, f"data/issues/{y}/issue-{int(n):02d}.json")
@@ -667,6 +709,9 @@ def issue(n="04", y=2026):
                    ["AVG PF", f"{avg(mo['a']):.1f}", f"{avg(mo['b']):.1f}"]]
 
     d["meta"] = {"week": wk, "maxpf": MAXPF_LONG if (int(y), int(n)) in EXPLAIN else ""}
+    iv = issue_values(y, n, wk, d)
+    if iv:
+        d["values"] = iv
     path = f"issues/{y}/issue-{n}/index.html"
     blob = json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
     inject(path, "ISSUE-DATA", f'<script id="issue-data" type="application/json">{blob}</script>')

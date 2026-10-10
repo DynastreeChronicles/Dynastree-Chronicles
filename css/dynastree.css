@@ -578,3 +578,15 @@ h2.sec .sbadge{order:-1;margin:0 1rem 0 0;padding-left:0}
 ol.opts,ol.opts li{list-style:none}ol.opts{padding-left:0;margin-left:0}
 /* show more / show less under portfolio tables */
 .showmore{margin:.5rem 0 0;padding:.35rem .9rem;background:none;color:var(--sky);border:1.5px solid var(--blue);border-radius:2px;font:600 .9rem Inter,system-ui,sans-serif;cursor:pointer}.showmore:hover{color:#fff;border-color:var(--sky)}
+
+/* every clickable manager name: green, no underline, glow on hover (same as The Market) */
+a.ml,a.ml b{color:var(--green);text-decoration:none}a.ml:hover,a.ml:hover b,a.ml:focus-visible,a.ml:focus-visible b{color:#fff;text-shadow:0 0 12px var(--green)}
+/* trade values on issue pages */
+.tval{margin:.5rem 0 0;font-size:.9rem;font-variant-numeric:tabular-nums}.tval b{color:var(--green)}.tval em{font-style:normal;font-weight:700}.tval em.up{color:var(--green)}.tval em.dn{color:var(--red)}
+.tedge{margin:.7rem 0 0;padding-top:.5rem;border-top:1px dashed var(--line);font-size:.9rem;color:var(--mute)}.tedge b{color:var(--green)}
+.tvnote a{color:var(--green)}
+/* manager page season sections */
+.ysec{margin:.7rem 0;border:1px solid var(--line);border-radius:4px;background:rgba(17,26,48,.35)}
+.ysec>summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;padding:.6rem .9rem;font:700 1.05rem Oswald,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
+.ysec>summary::-webkit-details-marker{display:none}.ysec>summary::after{content:"+";font:700 1.3rem Inter,sans-serif;color:var(--sky)}.ysec[open]>summary::after{content:"\2212"}
+.ysec>summary:hover{color:#fff}.ysb{padding:.1rem .9rem .9rem}.ysb>h3.sub:first-child{margin-top:.4rem}
