@@ -226,5 +226,8 @@
  "issue_values_from": [
   2026,
   6
- ]
+ ],
+ "snapshots": {
+  "daily_days": 60
+ }
 }

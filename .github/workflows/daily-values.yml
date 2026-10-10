@@ -38,6 +38,11 @@ jobs:
         continue-on-error: true
         run: python scripts/ledger_values.py
 
+      - name: Thin out old snapshots
+        if: steps.values.outcome == 'success'
+        continue-on-error: true
+        run: python scripts/prune_snapshots.py
+
       - name: Rebuild the pages that show values
         if: steps.values.outcome == 'success'
         run: |
