@@ -5,6 +5,7 @@ Run after build_site.py:  python scripts/build_managers.py"""
 import datetime, glob, json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import build_site as bs
+import shell as sh
 import seasons as ss
 import trophies as tr
 from build_site import esc, av, jload, ROOT, ordinal
@@ -20,7 +21,7 @@ def shell(title, desc, body, r, sub, path=""):
 <link rel="icon" type="image/png" sizes="32x32" href="{r}assets/favicon-32.png"><link rel="apple-touch-icon" href="{r}assets/apple-touch-icon.png"></head><body>
 <a class="skip" href="#main">Skip to main content</a>
 <header class="mast"><div class="wrap"><img src="{r}assets/crest-mark.webp" alt="Dynastree Chronicles crest" width="79" height="96"><div><h1><a href="{r}">Dynastree <span>Chronicles</span></a></h1><p>{esc(sub)}</p></div></div></header>
-<nav class="sticky"><div class="wrap"><button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button><a href="{r}#standings">Standings</a><a href="{r}#transactions">Transactions</a><a href="{r}#market">The Market</a><a href="{r}#archive">Issues</a><a href="{r}#rules">Rules</a><a href="{r}#scoring">Scoring</a></div><div class="ddm" id="vault" hidden><a href="{r}managers/"><b>Managers</b><small>Meet the suspects</small></a><a href="{r}history/"><b>History</b><small>Hall of Fame &amp; records</small></a><a href="{r}ledger/"><b>Ledger</b><small>Drafts &amp; blockbusters</small></a><a href="{r}receipts/"><b>Receipts</b><small>Hot takes on file</small></a></div></nav>
+{sh.nav(r)}
 <main class="wrap" id="main" tabindex="-1">{body}</main>
 <footer><div class="wrap"><img class="tree wm" src="{r}assets/logo-dynastree-chronicles.webp" alt="Dynastree Chronicles" width="180" height="69" loading="lazy"><p>Time heals all wounds, but screenshots last forever.</p></div></footer><script src="{r}js/nav.js"></script></body></html>'''
 
@@ -443,6 +444,16 @@ def market_board(prefix=""):
     return (f'<div class="tw2"><table class="mkt"><thead><tr><th>#</th><th>Manager</th><th>Portfolio value</th><th>Trend</th><th>30d move</th><th>On IR</th><th>Status</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>{legend}')
 
+def market_page():
+    """market/index.html: The Market at the top, the trade calculator below it. The top bar links to #market and to #calculator."""
+    calc = ('<div class="calc-soon"><h3>Coming next</h3><p>Pick players and picks for each side of a deal and see the combined FantasyCalc value of each, '
+            'the same values used in The Market above and on every manager page, plus who comes out ahead.</p></div>')
+    body = ('<section id="market"><h2 class="sec">The market</h2>' + market_board("../") + '</section>'
+            '<section id="calculator"><h2 class="sec">Trade calculator</h2>' + calc + '</section>')
+    bs.write_page("market/index.html", sh.page("../", "The Market", "The Market &amp; Trade Calculator", body,
+                  bs.og_block("The Market | Dynastree Chronicles", "Every roster and pick in the Dynastree dynasty league, valued by FantasyCalc.", "market/"),
+                  "Every roster and pick in the Dynastree dynasty league, valued by FantasyCalc dynasty trade values."))
+
 def hub(rows, quotes, moves, active, alumni):
     """rows: the display season's standings. alumni: [(manager, last season)] for people with no row in it."""
     total = len(rows); teams = lambda m: (bs.managers().get(m) or {}).get("team_name")
@@ -467,7 +478,7 @@ if __name__ == "__main__":
     TROPHY_CASE.update(load_trophy_case()); bs.use(display)
     PORTFOLIO.update(jload(f"data/{display}/portfolio.json", {}) or {})
     WEALTH.update(jload(f"data/{display}/wealth.json", {}) or {})
-    bs.inject("index.html", "MARKET", market_board())   # home page section between Transactions and Rules
+    market_page()
     rows = jload(bs.S("standings.json"), []) or []
     years = {i["no"]: i["year"] for i in bs.manifest()}
     everyone = sorted({*bs.managers(), *(r["manager"] for r in rows)}, key=str.lower)

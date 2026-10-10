@@ -473,7 +473,7 @@ nav.sticky .ddb i{font-style:normal;font-size:.8em}nav.sticky .ddb:hover,nav.sti
 .ddm a:hover{background:rgba(255,255,255,.08)}.ddm b{display:block;font:700 1rem Oswald,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff}.ddm small{display:block;color:var(--mute);font-size:.82rem}
 /* home: vault tiles beside the crest (below it on phones) */
 .hero.crest{display:flex;align-items:center;justify-content:center;gap:2.5rem;text-align:left}
-.hero.crest .logo{flex:none;margin:0}.vault{flex:1;max-width:30rem}
+.hero.crest .logo{flex:none;margin:0}.vaults{flex:1;max-width:36rem;display:flex;flex-direction:column;gap:1rem}.vault{flex:none}
 .vh{margin:0 0 .7rem;font:700 1.1rem Oswald,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold,#e6b94a)}
 .vg{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
 .vt{display:block;padding:1rem 1.1rem;border:1px solid var(--line);border-top:4px solid var(--green);border-radius:10px;background:rgba(17,26,48,.55);text-decoration:none;transition:transform .15s,border-color .15s}
@@ -597,3 +597,11 @@ a.ml,a.ml b{color:var(--green);text-decoration:none}a.ml:hover,a.ml:hover b,a.ml
 /* The Market: trend sparkline */
 .mkt td.sp{text-align:center}.spark{display:block;margin:0 auto;overflow:visible}.spark.up{color:var(--green)}.spark.dn{color:var(--red)}.spark.flat{color:var(--mute)}
 .mkt td:nth-child(4),.mkt th:nth-child(4){text-align:center}
+
+/* home: two groups of links (Vault, Research) */
+.vaults .vault{padding:.9rem 1rem}.vaults .vt{padding:.75rem .95rem}.vaults .vt b{font-size:1.2rem}.vaults .vt span{font-size:.84rem}
+.vault.research .vt{border-top-color:var(--gold,#e6b94a)}.vault.research .vt:hover{border-top-color:var(--green)}
+.vault.research .vh{color:var(--sky,#8fb4ff)}
+@media(max-width:760px){.vaults{width:100%;max-width:none}}
+/* trade calculator placeholder on the market page */
+.calc-soon{padding:1.2rem 1.4rem;border:1px dashed var(--gold,#e6b94a);border-radius:12px;background:rgba(17,26,48,.5)}.calc-soon h3{margin:0 0 .4rem;font:700 1.2rem Oswald,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--gold,#e6b94a)}.calc-soon p{margin:0;color:var(--mute);max-width:46rem}

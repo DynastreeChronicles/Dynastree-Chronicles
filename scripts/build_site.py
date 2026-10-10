@@ -14,6 +14,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, ".."))
 sys.path.insert(0, HERE)
 import seasons as ss
+import shell
 import sleeper_pull as sp   # build_standings() is shared so the issue snapshot uses the exact homepage logic
 
 SEASON = None
@@ -41,6 +42,11 @@ def attr(x):
     """Escape text for use inside a double-quoted HTML attribute."""
     return esc(x).replace('"', "&quot;")
 esc = lambda s: str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+def write_page(path, html):
+    p = os.path.join(ROOT, path)
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    open(p, "w", encoding="utf-8").write(html)
 
 def inject(path, tag, html):
     p = os.path.join(ROOT, path)
@@ -849,8 +855,16 @@ if __name__ == "__main__":
     use(display_season())                      # standings and leaderboard: newest season with finished weeks
     inject("index.html", "LEADERBOARD", leaderboard())
     inject("index.html", "STANDINGS", standings())
-    inject("index.html", "RULES", rules())
-    inject("index.html", "SCORING", scoring())
+    inject("index.html", "NAV", shell.nav(""))
+    inject("index.html", "VAULT", shell.vault_block(""))
+    write_page("rules/index.html", shell.page("../", "Rules &amp; Settings", "Rules &amp; Settings",
+               f'<section id="rules"><h2 class="sec">Rules &amp; settings</h2>{rules()}</section>',
+               og_block("Rules & Settings | Dynastree Chronicles", "League rules, settings and starting lineup for the Dynastree dynasty league.", "rules/"),
+               "League rules, settings and starting lineup for the Dynastree dynasty league."))
+    write_page("scoring/index.html", shell.page("../", "Scoring System", "Scoring System",
+               f'<section id="scoring"><h2 class="sec">Scoring system</h2>{scoring()}</section>',
+               og_block("Scoring System | Dynastree Chronicles", "Every scoring category in the Dynastree dynasty league.", "scoring/"),
+               "Every scoring category in the Dynastree dynasty league."))
     inject("index.html", "TX", transactions(m))   # highlights come from the newest issue's own season
     home_blocks(m)
     [issue(f'{x["no"]:02d}', x["year"]) for x in m]

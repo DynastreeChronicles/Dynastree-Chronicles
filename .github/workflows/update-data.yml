@@ -80,7 +80,7 @@ jobs:
         run: |
           git config user.name "dynastree-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A data index.html issues managers history ledger receipts assets/avatars
+          git add -A data index.html issues managers history ledger receipts market rules scoring assets/avatars
           if git diff --cached --quiet; then
             echo "Nothing changed."
             exit 0
