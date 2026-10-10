@@ -161,8 +161,7 @@ def legend(pick_value=False):
              ("PF", "<b>Points for.</b> Total points your team has scored this season."),
              ("Pick", f"<b>{draft_year()} rookie draft slot.</b> 1.01 is the first overall pick."),
              ("MAXPF", MAXPF_TEXT),
-             *([("Pick value", "<b>Market value of the slot.</b> What FantasyCalc dynasty trade values put on that first-round pick right now (the same values used in The Market and on manager pages)."),
-                ("Draft capital", "<b>Owned picks.</b> The combined FantasyCalc value of every future rookie pick the team owns after trades.")] if pick_value else []),
+             *([("Draft capital", "<b>Owned picks.</b> The combined FantasyCalc value of every future rookie pick the team owns after trades (the same values used in The Market and on manager pages).")] if pick_value else []),
              ("FAAB", "<b>Waiver budget</b> left, out of $500.")]
     out = "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in items)
     return f'<details class="legend"><summary>How to read this table</summary><dl>{out}</dl></details>'
@@ -224,7 +223,7 @@ def standings(rows=None, fin=None, root="", locked=None):
         if k >= n - 1:
             return f'<img class="rkt" src="{root}assets/trophy-trash-sm.webp" alt="#{k}" width="26" height="44">'
         return str(k)
-    rk = "".join(f'<tr><td class="n rkc">{rank_cell(r)}</td>{team(r)}<td class="n">{esc(r["record"])}</td><td class="n mv">{mv(r.get("move", 0))}</td><td class="n">{r["pf"]:.2f}</td><td class="n">${r["faab_remaining"]}</td></tr>' for r in rows)
+    rk = "".join(f'<tr><td class="n rkc">{rank_cell(r)}</td>{team(r)}<td class="n">{esc(r["record"])}</td><td class="n mv">{mv(r.get("move", 0))}</td><td class="n">{r["pf"]:.2f}</td><td class="n">{r["pa"]:.2f}</td><td class="n">${r["faab_remaining"]}</td></tr>' for r in rows)
     Wk = locked if locked is not None else (jload(S("wealth.json"), {}) or {})   # an issue passes its own frozen copy
     wkeys = {int(k): v for k, v in (Wk.get("weeks") or {}).items()}
     wsel = max(wkeys) if wkeys and latest else (fin if fin in wkeys else None)
@@ -232,19 +231,18 @@ def standings(rows=None, fin=None, root="", locked=None):
     cur_w = (wkeys[wsel].get("teams") or {}) if wsel is not None else {}
     dr = ""
     for r in sorted(rows, key=lambda r: r["draft_pick"]):
-        sv = slot_val.get(str(r["draft_pick"]))
         dc = (cur_w.get(r["manager"]) or {}).get("picks")
-        pvc = (f'<td class="n">{"&mdash;" if sv is None else format(sv, ",")}</td><td class="n">{"&mdash;" if dc is None else format(dc, ",")}</td>') if slot_val else ""
+        pvc = (f'<td class="n">{"&mdash;" if dc is None else format(dc, ",")}</td>') if cur_w else ""
         dr += (f'<tr><td class="n pick">1.{r["draft_pick"]:02d}</td>{team(r)}{pvc}'
                f'<td class="n">{r["maxpf"]:.2f}</td><td class="n mv">{mv(pp.get(r["roster_id"], r["draft_pick"]) - r["draft_pick"])}</td><td class="n">${r["faab_remaining"]}</td></tr>')
     h = lambda cols: "<tr>" + "".join(f'<th{" class=\"n\"" if i else ""}>{c}</th>' if c != "Team" else "<th>Team</th>" for i, c in enumerate(cols)) + "</tr>"
     wv = wealth_view(fin, root, team, h, latest, Wk)
     tab = '<button class="chip" data-view="wealth">Wealth index</button>' if wv else ""
     return (f'<div class="sortbar" role="group" aria-label="Standings view"><button class="chip on" data-view="rank">Standings order</button><button class="chip" data-view="draft">Draft order</button>{tab}</div>'
-            f'<div class="sc" id="v-rank"><table id="standtable"><thead>{h(["#", "Team", "W-L", "MOV", "PF", "FAAB"])}</thead><tbody>{rk}</tbody></table>'
+            f'<div class="sc" id="v-rank"><table id="standtable"><thead>{h(["#", "Team", "W-L", "MOV", "PF", "PA", "FAAB"])}</thead><tbody>{rk}</tbody></table>'
             f'{legend()}</div>'
-            f'<div class="sc" id="v-draft" hidden><table id="drafttable"><thead>{h(["Pick", "Team"] + (["Pick value", "Draft capital"] if slot_val else []) + ["MAXPF", "MOV", "FAAB"])}</thead><tbody>{dr}</tbody></table>'
-            f'{legend(bool(slot_val))}</div>' + (wv or ""))
+            f'<div class="sc" id="v-draft" hidden><table id="drafttable"><thead>{h(["Pick", "Team"] + (["Draft capital"] if cur_w else []) + ["MAXPF", "MOV", "FAAB"])}</thead><tbody>{dr}</tbody></table>'
+            f'{legend(bool(cur_w))}</div>' + (wv or ""))
 
 # ---------------------------------------------------------------- issue pages
 def ordinal(n):
@@ -649,6 +647,8 @@ def issue(n="04", y=2026):
     d = poll_gate(canon(json.load(open(ipath(y, n), encoding="utf-8"))), n)
     render_page(man, d, y)
     rep = []
+    if (int(y), int(n)) >= (2026, 6) and len(d.get("bold") or []) != 2:
+        rep.append(f"issue {n}: from Issue 6 on an issue carries exactly 2 bold predictions, this one has {len(d.get('bold') or [])}")
     win = man.get("tx_from")   # optional: only claims created AFTER these timestamps belong to this issue (retro issues)
     keep = (lambda x: (x.get("created") or 0) > win.get(x["type"], 0)) if win else None
     rows = asof(wk)

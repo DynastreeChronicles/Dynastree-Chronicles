@@ -66,7 +66,6 @@
 .mstats small{font:700 .78rem Oswald,"Arial Narrow",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
 .mstats b{display:block;margin-top:.1rem;font-size:1.75rem;line-height:1.15}
 .mstats i{display:block;margin-top:.1rem;font-style:normal;font-size:.8rem;color:var(--sky)}
-.mstats .hi b{color:var(--green)}
 @media(prefers-reduced-motion:reduce){.mstats div{transition:none}.mstats div:hover{transform:none}}
 
 /* Portfolio value (FantasyCalc) */
@@ -81,3 +80,19 @@
 .ptab th,.ptab td{padding:.3rem .5rem;border-bottom:1px solid var(--line);text-align:left}.ptab td:nth-child(n+3),.ptab th:nth-child(n+3){text-align:right}
 .ptab .up{color:var(--green)}.ptab .dn{color:var(--red)}.ptab em.out{margin-left:.4rem;padding:0 .35rem;border-radius:2px;font-size:.75rem;font-style:normal;background:var(--red);color:#1b0505}
 .ptab em.via{margin-left:.4rem;font-size:.8rem;font-style:normal;color:var(--mute)}
+
+/* tiles shaded by league rank (--tc is set per tile) */
+.mstats div[style*="--tc"]{background:linear-gradient(165deg,rgba(var(--tc),.34),rgba(17,26,48,.72) 72%);border-color:rgba(var(--tc),.7);border-top-color:rgb(var(--tc))}
+.mstats div[style*="--tc"]:hover{border-color:rgb(var(--tc));box-shadow:0 6px 20px rgba(var(--tc),.22)}
+.mstats .tkey{grid-column:1/-1;margin:.1rem 0 0}
+/* bigger collapsible headers on manager pages */
+.ys>summary{padding:1.15rem 1.3rem;font-size:2.1rem}.ys>summary::before{font-size:1.7rem}
+/* portfolio chart caption */
+.pmeta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.7rem}
+.pm{display:flex;flex-direction:column;padding:.45rem .85rem;border:1px solid var(--line);border-radius:8px;background:rgba(7,10,18,.45);min-width:6.5rem}
+.pm small{font:700 .72rem Oswald,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.pm b{font:700 1.15rem Oswald,sans-serif;color:#fff;font-variant-numeric:tabular-nums}.pm.up b{color:var(--green)}.pm.dn b{color:var(--red)}
+/* sortable holdings */
+.ptab caption small{color:var(--mute);font-size:.8rem}
+.sb{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}
+th.sorted .sb{color:#fff;text-decoration:none}th.sorted.desc .sb::after{content:" \25BE";color:var(--green)}th.sorted.asc .sb::after{content:" \25B4";color:var(--green)}

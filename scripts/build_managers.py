@@ -2,12 +2,12 @@
 """Manager pages: managers/index.html (the league hub) + managers/<handle>/index.html (one per manager).
 Everything numeric comes from data/ (same sources as build_site.py); desk quotes are mined from data/issues/*.json.
 Run after build_site.py:  python scripts/build_managers.py"""
-import glob, json, os, re, sys
+import datetime, glob, json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import build_site as bs
 import seasons as ss
 import trophies as tr
-from build_site import esc, av, jload, ROOT
+from build_site import esc, av, jload, ROOT, ordinal
 
 slug = lambda m: m.lower()
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">'
@@ -138,7 +138,46 @@ def sdata(m, y):
     _SD[k] = out
     return out
 
-HI = ("Best week", "FAAB spent")   # the two extra tiles that get the green value
+# Tile shading: each tile is coloured by where the manager ranks in the league for that category (green = 1st, slate = middle, red = last).
+# True = higher is better, False = lower is better. Flip an entry here to change what counts as 1st.
+TILE_HIGHER = {"Record": None, "Rank": None, "Points for": True, "Points against": False, "MAXPF": True, "Efficiency": True,
+               "Draft slot": False, "FAAB left": True, "Moves": True, "Best week": True, "FAAB spent": False}
+GREEN, SLATE, RED = (69, 224, 58), (111, 130, 168), (230, 70, 70)
+
+def tile_value(label, d):
+    """The number a tile is ranked on, or None when there is nothing to rank."""
+    row, eff = d["row"], d["eff"]
+    if label == "Record": return -row["rank"]
+    if label == "Rank": return -row["rank"]
+    if label == "Points for": return row["pf"]
+    if label == "Points against": return row["pa"]
+    if label == "MAXPF": return row["maxpf"]
+    if label == "Efficiency": return eff["efficiency"] if eff else None
+    if label == "Draft slot": return row["draft_pick"]
+    if label == "FAAB left": return row["faab_remaining"]
+    if label == "Moves": return d["ntx"]
+    if label == "Best week": return max((g["points"] for g in d.get("games") or []), default=None)
+    if label == "FAAB spent": return d["spent"] if d.get("games") else None
+    return None
+
+def tile_rank(label, d):
+    """(rank, of) for this manager in this tile's category among every manager in the same season, ties share a rank."""
+    mine = tile_value(label, d)
+    if mine is None: return None
+    higher = TILE_HIGHER.get(label); higher = True if higher is None else higher
+    vals = []
+    for r in d["rows"]:
+        o = sdata(r["manager"], d["season"])
+        v = tile_value(label, o) if o else None
+        if v is not None: vals.append(v)
+    if not vals: return None
+    better = sum(1 for v in vals if (v > mine if higher else v < mine))
+    return better + 1, len(vals)
+
+def tile_rgb(rank, n):
+    t = 0 if n <= 1 else (rank - 1) / (n - 1)
+    a, b, u = (GREEN, SLATE, t * 2) if t <= .5 else (SLATE, RED, (t - .5) * 2)
+    return ",".join(str(round(a[i] + (b[i] - a[i]) * u)) for i in range(3))
 
 def stat_tiles(d):
     row, eff = d["row"], d["eff"]
@@ -148,7 +187,12 @@ def stat_tiles(d):
     best = max(d["games"], key=lambda g: g["points"]) if d.get("games") else None
     if best:
         stats += [("Best week", f'{best["points"]:.2f}', f'Week {best["week"]}'), ("FAAB spent", f'${d["spent"]}', "")]
-    return "".join(f'<div{" class=hi" if t[0] in HI else ""}><small>{t[0]}</small><b>{t[1]}</b>{f"<i>{t[2]}</i>" if len(t) > 2 and t[2] else ""}</div>' for t in stats)
+    out = []
+    for t in stats:
+        rk = tile_rank(t[0], d)
+        st = f' style="--tc:{tile_rgb(*rk)}" title="{ordinal(rk[0])} of {rk[1]} in the league"' if rk else ""
+        out.append(f'<div{st}><small>{t[0]}</small><b>{t[1]}</b>{f"<i>{t[2]}</i>" if len(t) > 2 and t[2] else ""}</div>')
+    return "".join(out) + '<p class="key tkey">Tile colour shows the rank in the league for that category: green for 1st, red for last.</p>'
 
 def seasons_of(m):
     """Seasons (oldest to newest) in which this manager has a row in that season's own standings."""
@@ -189,11 +233,18 @@ def history_chart(m):
     W, H, P = 640, 150, 14
     lo, hi = min(v for _, v in pts), max(v for _, v in pts); span = (hi - lo) or 1
     xy = [(P + i * (W - 2 * P) / (len(pts) - 1), H - P - (v - lo) * (H - 2 * P) / span) for i, (_, v) in enumerate(pts)]
-    path = " ".join(f"{'M' if i == 0 else 'L'}{x:.1f},{y:.1f}" for i, (x, y) in enumerate(xy))
+    line = " ".join(f"{'M' if i == 0 else 'L'}{x:.1f},{y:.1f}" for i, (x, y) in enumerate(xy))
+    area = f"{line} L{xy[-1][0]:.1f},{H - P:.1f} L{xy[0][0]:.1f},{H - P:.1f} Z"
+    nice = lambda d: datetime.date.fromisoformat(d).strftime("%b %-d")
+    chg = pts[-1][1] - pts[0][1]
+    chip = lambda lab, val, cls="": f'<span class="pm {cls}"><small>{lab}</small><b>{val}</b></span>'
     return (f'<svg class="pchart" viewBox="0 0 {W} {H}" role="img" aria-label="Portfolio value from {esc(pts[0][0])} to {esc(pts[-1][0])}: {pts[0][1]:,} to {pts[-1][1]:,}">'
-            f'<path d="{path}" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>'
+            f'<defs><linearGradient id="pfill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".32"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>'
+            f'<line x1="{P}" x2="{W - P}" y1="{H / 2:.0f}" y2="{H / 2:.0f}" stroke="currentColor" stroke-opacity=".15" stroke-dasharray="4 6"/>'
+            f'<path d="{area}" fill="url(#pfill)"/><path d="{line}" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>'
             f'<circle cx="{xy[-1][0]:.1f}" cy="{xy[-1][1]:.1f}" r="5" fill="currentColor"/></svg>'
-            f'<p class="key">{esc(pts[0][0])} to {esc(pts[-1][0])}. Low {lo:,}, high {hi:,}.</p>')
+            f'<div class="pmeta">{chip("Period", f"{nice(pts[0][0])} &rarr; {nice(pts[-1][0])}")}{chip("Low", f"{lo:,}")}{chip("High", f"{hi:,}")}'
+            f'{chip("Change", f"{chg:+,}", "dn" if chg < 0 else "up" if chg > 0 else "")}</div>')
 
 def portfolio_block(m, r):
     t = (PORTFOLIO.get("teams") or {}).get(m)
@@ -213,22 +264,24 @@ def portfolio_block(m, r):
         return f'<tr><td>{esc(a["name"])}{tag}</td><td>{esc(a["pos"])}</td><td>{a["value"]:,}</td><td class="{"dn" if a["trend30"] < 0 else "up"}">{a["trend30"]:+,}</td></tr>'
     allp = t.get("assets") or t["top"]          # full roster once the new data is on file, else the old top six
     TOPN = 6
-    first = "".join(row(a) for a in allp[:TOPN]); rest_a = "".join(row(a) for a in allp[TOPN:])
+    POSO = {"QB": 0, "RB": 1, "WR": 2, "TE": 3}
+    srow = lambda a: row(a).replace("<tr>", f'<tr data-pos="{POSO.get(a["pos"], 4)}" data-v="{a["value"]}" data-t="{a["trend30"]}">', 1)
+    first = "".join(srow(a) for a in allp[:TOPN]); rest_a = "".join(srow(a) for a in allp[TOPN:])
     pl = t.get("pick_list", [])
-    valued = [x for x in pl if x["value"] > 0]
-    PN = 8
+    valued = pl            # every pick, best value first; at least 9 are always shown
+    PN = 9
     def prow_one(x):
         via = f' <em class="via">via {esc(x["via"])}</em>' if x.get("via") else ""
         return (f'<tr><td>{esc(x["label"])}{via}</td><td>{x["value"]:,}</td>'
                 f'<td class="{"dn" if x["trend30"] < 0 else "up"}">{x["trend30"]:+,}</td></tr>')
-    pfirst = "".join(prow_one(x) for x in valued[:PN]); prest = "".join(prow_one(x) for x in valued[PN:] + [x for x in pl if x["value"] <= 0])
+    pfirst = "".join(prow_one(x) for x in valued[:PN]); prest = "".join(prow_one(x) for x in valued[PN:])
     def more_btn(tid, n, noun):
         return f'<button type="button" class="showmore" aria-expanded="false" data-t="{tid}" data-more="Show all {n} {noun}" data-less="Show fewer {noun}">Show all {n} {noun}</button>' if n else ""
     picks_tab = (f'<table class="ptab"><caption>Draft picks owned</caption><thead><tr><th>Pick</th><th>Value</th><th>30d</th></tr></thead><tbody>{pfirst}</tbody>'
-                 f'<tbody id="pk-more" hidden>{prest}</tbody></table>{more_btn("pk-more", len(valued[PN:]) + len([x for x in pl if x["value"] <= 0]), "picks")}' if pl else "")
+                 f'<tbody id="pk-more" hidden>{prest}</tbody></table>{more_btn("pk-more", len(valued[PN:]), "picks")}' if pl else "")
     return (f'<h2 class="sec" id="portfolio">Portfolio value</h2><section class="port {t["status"]}"><p class="pflag"><b>{badge}</b> {esc(head.format(m=m))}</p>'
             f'<div class="mstats">{tiles}</div>{history_chart(m)}<div class="pbar">{bar}</div><p class="pkey">{key}</p>'
-            f'<table class="ptab"><caption>Biggest holdings</caption><thead><tr><th>Asset</th><th>Pos</th><th>Value</th><th>30d</th></tr></thead><tbody>{first}</tbody><tbody id="as-more" hidden>{rest_a}</tbody></table>{more_btn("as-more", len(allp[TOPN:]), "players")}{picks_tab}'
+            f'<table class="ptab sortable" id="as-tab" data-n="{TOPN}"><caption>Biggest holdings <small>(tap Pos, Value or 30d to sort)</small></caption><thead><tr><th>Asset</th><th><button type="button" class="sb" data-k="pos">Pos</button></th><th class="sorted desc"><button type="button" class="sb" data-k="v">Value</button></th><th><button type="button" class="sb" data-k="t">30d</button></th></tr></thead><tbody id="as-first">{first}</tbody><tbody id="as-more" hidden>{rest_a}</tbody></table>{more_btn("as-more", len(allp[TOPN:]), "players")}{picks_tab}'
             f'<details class="legend wide"><summary>Legend: what these numbers mean</summary>'
             f'<p>Values: <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values, superflex, 12 teams, full PPR.</p><dl>'
             f'<div><dt>Portfolio value</dt><dd>The combined FantasyCalc value of every player on the roster plus every future pick owned. Players outside FantasyCalc\'s top 1,000 count as zero.</dd></div>'

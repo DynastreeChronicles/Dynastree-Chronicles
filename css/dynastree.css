@@ -587,6 +587,9 @@ a.ml,a.ml b{color:var(--green);text-decoration:none}a.ml:hover,a.ml:hover b,a.ml
 .tvnote a{color:var(--green)}
 /* manager page season sections */
 .ysec{margin:.7rem 0;border:1px solid var(--line);border-radius:4px;background:rgba(17,26,48,.35)}
-.ysec>summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;padding:.6rem .9rem;font:700 1.05rem Oswald,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
-.ysec>summary::-webkit-details-marker{display:none}.ysec>summary::after{content:"+";font:700 1.3rem Inter,sans-serif;color:var(--sky)}.ysec[open]>summary::after{content:"\2212"}
+.ysec>summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;font:700 1.4rem Oswald,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
+.ysec>summary::-webkit-details-marker{display:none}.ysec>summary::after{content:"+";font:700 1.9rem Inter,sans-serif;color:var(--sky)}.ysec[open]>summary::after{content:"\2212"}
 .ysec>summary:hover{color:#fff}.ysb{padding:.1rem .9rem .9rem}.ysb>h3.sub:first-child{margin-top:.4rem}
+
+/* final verdict: team avatars beside name and score */
+.verdict .vsc>.vt{display:flex;align-items:center;gap:.9rem}.verdict .vsc .vt .av{flex:none}.verdict .vsc .vt>div{min-width:0}
