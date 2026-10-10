@@ -37,8 +37,9 @@ def vault_block(R=""):
     return '<div class="vaults">' + group("", "Inside the Vault", VAULT) + group(" research", "Research", RESEARCH) + '</div>'
 
 
-def page(R, title, sub, body, og, desc, css=()):
+def page(R, title, sub, body, og, desc, css=(), scripts=()):
     """A plain content page: masthead, top bar, main, footer. `og` is the Open Graph block from build_site.og_block."""
+    extra = "".join(f'<script src="{R}js/{s}.js"></script>' for s in scripts)
     sheets = "".join(f'<link rel="stylesheet" href="{R}css/{c}.css">' for c in ("dynastree", *css))
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title} | Dynastree Chronicles</title><meta name="description" content="{desc}"><meta name="robots" content="noindex">
@@ -50,4 +51,4 @@ def page(R, title, sub, body, og, desc, css=()):
 {nav(R)}
 <main class="wrap" id="main" tabindex="-1">{body}</main>
 <footer><div class="wrap"><img class="tree wm" src="{R}assets/logo-dynastree-chronicles.webp" alt="Dynastree Chronicles" width="180" height="69" loading="lazy"><p>Time heals all wounds, but screenshots last forever.</p></div></footer>
-<script src="{R}js/site.js"></script><script src="{R}js/nav.js"></script></body></html>'''
+<script src="{R}js/site.js"></script><script src="{R}js/nav.js"></script>{extra}</body></html>'''

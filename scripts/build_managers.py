@@ -6,6 +6,7 @@ import datetime, glob, json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import build_site as bs
 import shell as sh
+import market as mk
 import seasons as ss
 import trophies as tr
 from build_site import esc, av, jload, ROOT, ordinal
@@ -444,15 +445,63 @@ def market_board(prefix=""):
     return (f'<div class="tw2"><table class="mkt"><thead><tr><th>#</th><th>Manager</th><th>Portfolio value</th><th>Trend</th><th>30d move</th><th>On IR</th><th>Status</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>{legend}')
 
+def calc_data():
+    """Everything the trade calculator needs, embedded in the market page: the FantasyCalc index, each manager's roster and picks, recent real trades."""
+    idx = (jload("data/market/fantasycalc.json", {}) or {}).get("values") or []
+    if not idx or not PORTFOLIO.get("teams"):
+        return None
+    players = [[mk.vkey(v["name"], v["pos"]), v["name"], v["pos"], v.get("team") or "", v["value"], v.get("trend30") or 0] for v in idx if v.get("pos") != "PICK"]
+    picks = [[v["name"], v["value"], v.get("trend30") or 0] for v in idx if v.get("pos") == "PICK"]
+    mgrs = {}
+    for name, t in PORTFOLIO["teams"].items():
+        mgrs[name] = {"total": t["total"], "roster": t["players"], "picks": t["picks"],
+                      "assets": [[mk.vkey(a["name"], a["pos"]), a["name"], a["pos"], a["value"], a["trend30"], a.get("status") or ""] for a in (t.get("assets") or t["top"])],
+                      "picklist": [[x["label"], x["value"], x.get("via") or "", x["trend30"]] for x in t.get("pick_list", [])]}
+    have = {p[0] for p in players}; byname = {}
+    for p in players:
+        byname.setdefault(mk.norm(p[1]), p[0])
+    pb = mk.PickBook(idx)
+    display = bs.display_season()
+    slot_of = {r["manager"]: r.get("draft_pick") for r in (jload(f"data/{display}/standings.json", []) or [])}
+    nxt = int(display) + 1
+    def asset(side):
+        out = []
+        for p in side.get("receives_players", []):
+            k = mk.vkey(p["name"], p["pos"])
+            k = k if k in have else byname.get(mk.norm(p["name"]))
+            out.append({"k": ("p:" + k) if k else None, "n": p["name"], "p": p["pos"]})
+        for pk in side.get("receives_picks", []):
+            row, label = pb.value(int(pk["season"]), int(pk["round"]), slot_of.get(pk["original_owner"]), int(pk["season"]) == nxt)
+            out.append({"k": ("k:" + label) if row else None, "n": label, "p": "PICK"})
+        return out
+    trades = []
+    for y in sorted(ss.load()):
+        for tx in jload(f"data/{y}/transactions.json", []) or []:
+            if tx.get("type") == "trade" and len(tx.get("sides", [])) == 2 and tx.get("created"):
+                s0, s1 = tx["sides"]
+                d = datetime.datetime.fromtimestamp(tx["created"] / 1000, datetime.timezone.utc).date()
+                # side A sends what side B received, and the other way round
+                trades.append({"id": str(tx["id"]), "d": d.strftime("%b %-d"), "ts": tx["created"], "a": s0["manager"], "b": s1["manager"], "as": asset(s1), "bs": asset(s0)})
+    trades.sort(key=lambda t: -t["ts"])
+    for t in trades:
+        t.pop("ts")
+    return {"players": players, "picks": picks, "managers": mgrs, "trades": trades[:40]}
+
 def market_page():
     """market/index.html: The Market at the top, the trade calculator below it. The top bar links to #market and to #calculator."""
-    calc = ('<div class="calc-soon"><h3>Coming next</h3><p>Pick players and picks for each side of a deal and see the combined FantasyCalc value of each, '
-            'the same values used in The Market above and on every manager page, plus who comes out ahead.</p></div>')
+    data = calc_data()
+    if data:
+        blob = json.dumps(data, separators=(",", ":")).replace("</", "<\\/")
+        calc = (f'<div id="calc-app" class="calc"><noscript><p class="key">The trade calculator needs JavaScript.</p></noscript></div>'
+                f'<script type="application/json" id="calc-data">{blob}</script>')
+    else:
+        calc = '<div class="calc-soon"><h3>Waiting for data</h3><p>The calculator appears after the first FantasyCalc update has run.</p></div>'
     body = ('<section id="market"><h2 class="sec">The market</h2>' + market_board("../") + '</section>'
             '<section id="calculator"><h2 class="sec">Trade calculator</h2>' + calc + '</section>')
     bs.write_page("market/index.html", sh.page("../", "The Market", "The Market &amp; Trade Calculator", body,
-                  bs.og_block("The Market | Dynastree Chronicles", "Every roster and pick in the Dynastree dynasty league, valued by FantasyCalc.", "market/"),
-                  "Every roster and pick in the Dynastree dynasty league, valued by FantasyCalc dynasty trade values."))
+                  bs.og_block("The Market | Dynastree Chronicles", "Every roster and pick in the Dynastree dynasty league, valued by FantasyCalc, and a trade calculator.", "market/"),
+                  "Every roster and pick in the Dynastree dynasty league, valued by FantasyCalc dynasty trade values, and a trade calculator.",
+                  css=("calc",), scripts=("calc",) if data else ()))
 
 def hub(rows, quotes, moves, active, alumni):
     """rows: the display season's standings. alumni: [(manager, last season)] for people with no row in it."""
