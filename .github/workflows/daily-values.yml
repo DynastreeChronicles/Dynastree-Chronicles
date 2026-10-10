@@ -1,0 +1,64 @@
+name: Daily FantasyCalc snapshot
+
+# Light daily run: saves one FantasyCalc snapshot (so charts, trade values "at the time" and the Wealth Index have a point every day),
+# then rebuilds only the pages that show values. The full Tuesday/Wednesday run still does everything else.
+on:
+  schedule:
+    - cron: "30 9 * * *"    # every day, 09:30 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Same group as the main workflow, so the two never race each other to push.
+concurrency:
+  group: update-league-data
+  cancel-in-progress: false
+
+jobs:
+  values:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Pillow
+        run: pip install pillow
+
+      - name: Pull FantasyCalc values and build portfolios
+        id: values
+        continue-on-error: true
+        run: python scripts/pull_values.py
+
+      - name: Value trades and picks with FantasyCalc
+        if: steps.values.outcome == 'success'
+        continue-on-error: true
+        run: python scripts/ledger_values.py
+
+      - name: Rebuild the pages that show values
+        if: steps.values.outcome == 'success'
+        run: |
+          python scripts/build_site.py
+          python scripts/build_managers.py
+          python scripts/build_ledger.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "dynastree-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A data index.html issues managers ledger
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git commit -m "Daily FantasyCalc snapshot"
+          for attempt in 1 2 3; do
+            git pull --rebase --autostash origin main && git push && exit 0
+            echo "Push attempt $attempt failed; retrying in 10 seconds."
+            sleep 10
+          done
+          echo "Could not push after 3 attempts."
+          exit 1

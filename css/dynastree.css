@@ -593,3 +593,7 @@ a.ml,a.ml b{color:var(--green);text-decoration:none}a.ml:hover,a.ml:hover b,a.ml
 
 /* final verdict: team avatars beside name and score */
 .verdict .vsc>.vt{display:flex;align-items:center;gap:.9rem}.verdict .vsc .vt .av{flex:none}.verdict .vsc .vt>div{min-width:0}
+
+/* The Market: trend sparkline */
+.mkt td.sp{text-align:center}.spark{display:block;margin:0 auto;overflow:visible}.spark.up{color:var(--green)}.spark.dn{color:var(--red)}.spark.flat{color:var(--mute)}
+.mkt td:nth-child(4),.mkt th:nth-child(4){text-align:center}

@@ -191,8 +191,9 @@ def stat_tiles(d):
     for t in stats:
         rk = tile_rank(t[0], d)
         st = f' style="--tc:{tile_rgb(*rk)}" title="{ordinal(rk[0])} of {rk[1]} in the league"' if rk else ""
-        out.append(f'<div{st}><small>{t[0]}</small><b>{t[1]}</b>{f"<i>{t[2]}</i>" if len(t) > 2 and t[2] else ""}</div>')
-    return "".join(out) + '<p class="key tkey">Tile colour shows the rank in the league for that category: green for 1st, red for last.</p>'
+        lab = f'<span class="rkl">{ordinal(rk[0])}</span>' if rk else ""
+        out.append(f'<div{st}>{lab}<small>{t[0]}</small><b>{t[1]}</b>{f"<i>{t[2]}</i>" if len(t) > 2 and t[2] else ""}</div>')
+    return "".join(out) + '<p class="key tkey">The label in the corner of each tile is the rank in the league for that category, and the colour follows it: green for 1st, red for last.</p>'
 
 def seasons_of(m):
     """Seasons (oldest to newest) in which this manager has a row in that season's own standings."""
@@ -213,6 +214,7 @@ def load_trophy_case():
         print(f"  note (trophy case skipped: {e})")
         return {}
 
+WEALTH = {}      # data/<display season>/wealth.json, filled once in main
 PORTFOLIO = {}   # data/<display season>/portfolio.json, filled once in main (empty = no portfolio block anywhere)
 
 STATUS_RULE = ("Market crash: the 30-day market move is -5% or worse, or 25% or more of the value is on IR or out. Correction: down 2.5% or more. "
@@ -224,6 +226,32 @@ STATUS = {   # status -> (badge, headline). {m} is the manager handle; swap the 
     "stable": ("Stable", "Stable: {m}'s portfolio is holding. Boring, but solvent."),
 }
 POS_COLOR = {"QB": "#ff6b6b", "RB": "#45e03a", "WR": "#2f6df0", "TE": "#f0b429", "PICK": "#8fb4ff"}
+
+WORDS = ["", "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"]
+
+def wealth_line(m):
+    """One automatic sentence for the desk file: where the portfolio ranks, how much sits on IR, picks, the 30-day market, and the move since last week."""
+    teams = PORTFOLIO.get("teams") or {}
+    t = teams.get(m)
+    if not t:
+        return None
+    n, rk = len(teams), t["rank"]
+    rich = "The richest portfolio in the league" if rk == 1 else "The poorest portfolio in the league" if rk == n else \
+        f'The {WORDS[rk] if rk < len(WORDS) else str(rk) + "th"}-richest portfolio in the league'
+    s = f'{rich}, {t["total"]:,} in market value'
+    s += f', with {t["sidelined_pct"]:.0f}% of it on IR or out' if t["sidelined_pct"] >= 1 else ", with nothing on IR"
+    s += f'. Draft picks make up {100 * t["picks"] / t["total"]:.0f}% of it' if t["total"] else ""
+    s += f'; the 30-day market move is {t["move30_pct"]:+.1f}%. Status: {STATUS[t["status"]][0].lower()}.'
+    ws = {int(k): v for k, v in (WEALTH.get("weeks") or {}).items()}
+    if len(ws) >= 2:
+        cur, prev = max(ws), max(k for k in ws if k < max(ws))
+        rank_of = lambda wk: {x: i for i, x in enumerate(sorted(ws[wk]["teams"], key=lambda q: -ws[wk]["teams"][q]["total"]), 1)}
+        a, b = rank_of(cur), rank_of(prev)
+        if m in a and m in b:
+            mv_, dv = b[m] - a[m], ws[cur]["teams"][m]["total"] - ws[prev]["teams"][m]["total"]
+            move = f"up {mv_} {'spot' if mv_ == 1 else 'spots'}" if mv_ > 0 else f"down {-mv_} {'spot' if mv_ == -1 else 'spots'}" if mv_ < 0 else "no change in rank"
+            s += f' Since Week {prev}: {move}, {dv:+,} in value.'
+    return s
 
 def history_chart(m):
     """Inline SVG line chart of this manager's portfolio value, one point per pull. Needs two points to draw a line."""
@@ -351,7 +379,10 @@ def manager_page(m, names, years, display, active):
         hero_stats = '<p class="key">No finished games on file for this manager yet.</p>'
     nav = (f'<p class="mnav"><a class="btn o" href="{r}managers/{slug(names[ring - 1])}/">&larr; {esc(names[ring - 1])}</a><a class="btn o" href="{r}managers/{slug(names[(ring + 1) % len(names)])}/">{esc(names[(ring + 1) % len(names)])} &rarr;</a></p>'
            if ring is not None else "")
-    df = bio.get("file") or []
+    df = list(bio.get("file") or [])
+    wl = wealth_line(m)
+    if wl:
+        df.append(("The balance sheet", wl))
     deskfile = ('<h2 class="sec" id="deskfile">The desk file</h2><div class="dfile">' + "".join(f'<div><small>{esc(a)}</small><p>{bs.bold_handles(b)}</p></div>' for a, b in df) + '</div>'
                 ) if df else ""
     body = f'''<p class="crumb"><a href="../">All managers</a></p>
@@ -366,6 +397,20 @@ def blurb(t, n=120):
     if len(t) <= n: return t
     return t[:n].rsplit(" ", 1)[0].rstrip(",;: ") + "..."
 
+def sparkline(m, n=14):
+    """Tiny inline SVG of this manager's last few portfolio values, for The Market table. A dash until there are two points."""
+    pts = [h["totals"][m] for h in PORTFOLIO.get("history", []) if m in h.get("totals", {})][-n:]
+    if len(pts) < 2:
+        return '<span class="flat">&mdash;</span>'
+    W, H, P = 84, 26, 3
+    lo, hi = min(pts), max(pts); span = (hi - lo) or 1
+    xy = [(P + i * (W - 2 * P) / (len(pts) - 1), H - P - (v - lo) * (H - 2 * P) / span) for i, v in enumerate(pts)]
+    d = " ".join(f"{'M' if i == 0 else 'L'}{x:.1f},{y:.1f}" for i, (x, y) in enumerate(xy))
+    chg = pts[-1] - pts[0]; cls = "dn" if chg < 0 else "up" if chg > 0 else "flat"
+    return (f'<svg class="spark {cls}" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="Change over the last {len(pts)} updates: {chg:+,}">'
+            f'<title>{chg:+,} over the last {len(pts)} updates</title><path d="{d}" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>'
+            f'<circle cx="{xy[-1][0]:.1f}" cy="{xy[-1][1]:.1f}" r="2.6" fill="currentColor"/></svg>')
+
 def market_board(prefix=""):
     """"The market" table for the home page: every portfolio ranked, with a collapsible legend. `prefix` is the path back to the site root."""
     teams = PORTFOLIO.get("teams")
@@ -379,6 +424,7 @@ def market_board(prefix=""):
         t = teams[m]; badge = STATUS[t["status"]][0]; w = 14 + 86 * (t["total"] - lo) / span
         rows.append(f'<tr><td class="rk">{t["rank"]}</td><td><a class="mn" href="{prefix}managers/{slug(m)}/#portfolio">{esc(m)}</a></td>'
                     f'<td><div class="vcell"><b>{t["total"]:,}</b><span class="vtrack"><i class="{t["status"]}" style="width:{w:.1f}%"></i></span></div></td>'
+                    f'<td class="sp">{sparkline(m)}</td>'
                     f'<td class="{"dn" if t["move30"] < 0 else "up"}">{t["move30_pct"]:+.1f}%</td><td>{t["sidelined_pct"]:.0f}%</td>'
                     f'<td><em class="st {t["status"]}">{badge}</em></td></tr>')
     crash, corr, bull = th.get("crash_move_pct", -5.0), th.get("correction_move_pct", -2.5), th.get("bull_move_pct", 5.0)
@@ -389,11 +435,12 @@ def market_board(prefix=""):
               + it("#", "Rank by portfolio value, highest first.")
               + it("Manager", "Click a name for that manager\'s portfolio.")
               + it("Portfolio value", "The combined value of every player and future pick the manager owns. The bar compares managers with each other (shortest to longest), not against zero.")
+              + it("Trend", "The portfolio's value at each recent update, as a tiny line (up to the last 14). It fills in as updates accumulate; a dash means fewer than two so far. Hover for the change.")
               + it("30d move", "How much the market moved the value of the players and picks held right now over the last 30 days. Trades do not change it.")
               + it("On IR", "The share of the portfolio value sitting on players who are on IR or listed Out, PUP, Doubtful or Suspended.")
               + it("Status", f'<b>Market crash</b>: the 30-day move is {crash:+g}% or worse, or {side:g}% or more of the value is on IR or out. <b>Correction</b>: down {abs(corr):g}% or more. <b>Bull run</b>: up {bull:g}% or more. <b>Stable</b>: anything else.')
               + '</dl></details>')
-    return (f'<div class="tw2"><table class="mkt"><thead><tr><th>#</th><th>Manager</th><th>Portfolio value</th><th>30d move</th><th>On IR</th><th>Status</th></tr></thead>'
+    return (f'<div class="tw2"><table class="mkt"><thead><tr><th>#</th><th>Manager</th><th>Portfolio value</th><th>Trend</th><th>30d move</th><th>On IR</th><th>Status</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>{legend}')
 
 def hub(rows, quotes, moves, active, alumni):
@@ -419,6 +466,7 @@ if __name__ == "__main__":
     display = bs.display_season(); bs.use(display)
     TROPHY_CASE.update(load_trophy_case()); bs.use(display)
     PORTFOLIO.update(jload(f"data/{display}/portfolio.json", {}) or {})
+    WEALTH.update(jload(f"data/{display}/wealth.json", {}) or {})
     bs.inject("index.html", "MARKET", market_board())   # home page section between Transactions and Rules
     rows = jload(bs.S("standings.json"), []) or []
     years = {i["no"]: i["year"] for i in bs.manifest()}

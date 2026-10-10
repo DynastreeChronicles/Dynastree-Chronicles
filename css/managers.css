@@ -96,3 +96,6 @@
 .ptab caption small{color:var(--mute);font-size:.8rem}
 .sb{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}
 th.sorted .sb{color:#fff;text-decoration:none}th.sorted.desc .sb::after{content:" \25BE";color:var(--green)}th.sorted.asc .sb::after{content:" \25B4";color:var(--green)}
+
+/* rank label in each stat tile (so colour is never the only signal) */
+.mstats .rkl{position:absolute;top:.5rem;right:.6rem;padding:.05rem .5rem;border:1px solid rgba(255,255,255,.28);border-radius:99px;background:rgba(7,10,18,.55);font:700 .78rem Oswald,sans-serif;letter-spacing:.04em;color:#fff}

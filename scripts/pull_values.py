@@ -36,7 +36,7 @@ CRASH_MOVE_PCT = -5.0
 CRASH_SIDELINED_PCT = 25.0
 CORRECTION_MOVE_PCT = -2.5
 BULL_MOVE_PCT = 5.0
-KEEP_SNAPSHOTS = 120
+KEEP_SNAPSHOTS = 400   # daily pulls: about a year of chart points
 
 
 def fetch_index():
@@ -83,6 +83,24 @@ def classify(move_pct, sidelined_pct):
     return "stable"
 
 
+def freeze_season_wealth(season):
+    """Once a season is closed, copy its last Wealth Index week into data/history.json (seasons.<year>.wealth_final) so the season-end
+    wealth of every team is kept permanently, one point per season for a multi-year "dynasty arc". Written once, never changed."""
+    hp = os.path.join(ROOT, "data", "history.json")
+    wp = os.path.join(ROOT, "data", str(season), "wealth.json")
+    if not (os.path.exists(hp) and os.path.exists(wp)):
+        return
+    H = json.load(open(hp, encoding="utf-8")); W = json.load(open(wp, encoding="utf-8"))
+    S = H.setdefault("seasons", {}).setdefault(str(season), {})
+    weeks = W.get("weeks") or {}
+    if "wealth_final" in S or not weeks:
+        return
+    k = max(weeks, key=int)
+    S["wealth_final"] = {"week": int(k), "date": weeks[k]["date"], "teams": weeks[k]["teams"]}
+    json.dump(H, open(hp, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+    print(f"Season {season} is closed: end-of-season wealth (after week {k}) saved to data/history.json")
+
+
 def main():
     index = fetch_index()
     now = datetime.now(timezone.utc)
@@ -96,6 +114,8 @@ def main():
     reg = ss.load()
     season = ss.active(reg)
     if not season or ss.is_closed(reg.get(season)):
+        if season:
+            freeze_season_wealth(season)
         print("Season closed or missing: index and snapshot saved, portfolios left alone.")
         return
     lid = (reg.get(season) or {}).get("league_id")

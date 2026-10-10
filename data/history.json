@@ -1,5 +1,5 @@
 {
- "_help": "Permanent league history. Never reset. Edit only the hand-entered fields below; every number on the History page is rebuilt from data/ on each run. Offseason ritual: fill in champion/runner_up/final_score for the season, optionally awards overrides and story, then set the season to closed in data/seasons.json.",
+ "_help": "Permanent league history. Never reset. Edit only the hand-entered fields below; every number on the History page is rebuilt from data/ on each run. Offseason ritual: fill in champion/runner_up/final_score for the season, optionally awards overrides and story, then set the season to closed in data/seasons.json. wealth_final (seasons.<year>.wealth_final) is written automatically, once, the first run after a season is closed: a copy of that season's last Wealth Index week (roster, picks and total value per team). Do not edit it.",
  "seasons": {
   "2026": {
    "champion": null,
