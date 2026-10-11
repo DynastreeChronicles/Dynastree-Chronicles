@@ -978,6 +978,22 @@
   {
     "week": 5,
     "type": "free_agent",
+    "created": 1791701217917,
+    "id": "1414901094902935552",
+    "manager": "StealingGas",
+    "added": {
+      "name": "Geno Smith",
+      "pos": "QB",
+      "team": "NYJ"
+    },
+    "dropped": [
+      "Kendre Miller"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 5,
+    "type": "free_agent",
     "created": 1791484003649,
     "id": "1413990032225689600",
     "manager": "Johnny4Skins",
