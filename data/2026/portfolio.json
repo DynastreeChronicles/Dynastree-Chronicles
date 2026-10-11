@@ -7,7 +7,7 @@
   "numTeams": 12,
   "ppr": 1
  },
- "generated_at": "2026-10-10T22:40:46+00:00",
+ "generated_at": "2026-10-11T00:28:51+00:00",
  "thresholds": {
   "crash_move_pct": -5.0,
   "crash_sidelined_pct": 25.0,
@@ -4721,6 +4721,23 @@
   },
   {
    "date": "2026-10-10",
+   "totals": {
+    "Darkspaces": 75556,
+    "Snipe58": 55039,
+    "StealingGas": 76587,
+    "Zygon": 75436,
+    "Hades9mm": 58258,
+    "Johnny4Skins": 65794,
+    "Sarge71": 55206,
+    "C33DeezNutzz": 62767,
+    "Painty69": 64895,
+    "CMac91": 61358,
+    "YesChef23": 63431,
+    "fumbduckdumbfuck": 63473
+   }
+  },
+  {
+   "date": "2026-10-11",
    "totals": {
     "Darkspaces": 75556,
     "Snipe58": 55039,

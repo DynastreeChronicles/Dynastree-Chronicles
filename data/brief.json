@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-10T22:40:50+00:00",
+ "generated_at": "2026-10-11T00:28:56+00:00",
  "season": "2026",
  "volume": 1,
  "season_status": "active",
- "data_pulled_at": "2026-10-10T22:40:46+00:00",
+ "data_pulled_at": "2026-10-11T00:28:50+00:00",
  "ready_for_new_issue": false,
  "warnings": [
   "Week 4 is already covered by Issue 5. Wait for Week 5 to go final (Tuesday after its Monday game) before drafting a new issue.",
@@ -733,7 +733,7 @@
  ],
  "market_portfolios": {
   "source": "FantasyCalc",
-  "as_of": "2026-10-10",
+  "as_of": "2026-10-11",
   "league_avg": 64817,
   "how_to_read": "Values are FantasyCalc dynasty trade values (superflex, 12 teams, full PPR). move30 = 30-day market move of the players held now (trade-neutral). since_change = change since the snapshot dated `since` (includes trades). sidelined = value on IR/Out/PUP. Status flags: crash, correction, stable, bull.",
   "crash_watch": [
