@@ -153,11 +153,11 @@ def league_suggestions(D, limit=8):
         t = M[r["team"]]; u = M[me]
         why = []
         enter = [x for x in r["t_enter"] if any(s["k"] == x["k"] for s in r["send"])]
-        if enter: why.append(f'{r["team"]} ({LAB[r["tm"]]}) would start {", ".join(x["n"] for x in enter)}, a {round(r["net_t"]):,} upgrade to their starting lineup.')
-        else: why.append(f'{r["team"]} is a {LAB[r["tm"]]}: the deal fits their timeline, not their lineup.')
-        why.append(f'{me} ({LAB[u["mode"]]}) {"gains" if r["net_u"] > 0 else "gives up"} {abs(round(r["net_u"])):,} in starting lineup value.')
+        if enter: why.append(f'{r["team"]} would start {", ".join(x["n"] for x in enter)}, a {round(r["net_t"]):,} upgrade to their starting lineup.')
+        else: why.append(f'{r["team"]}: the deal works on value and timing rather than a lineup hole.')
+        why.append(f'{me} {"gains" if r["net_u"] > 0 else "gives up"} {abs(round(r["net_u"])):,} in starting lineup value.')
         out.append({"a": me, "b": r["team"], "as": [issue_text(x) for x in r["send"]], "bs": [issue_text(x) for x in r["get"]],
                     "a_sends_value": round(r["vO"]), "b_sends_value": round(r["vR"]), "gap_pct": round(100 * abs(r["vO"] - r["vR"]) / max(r["vO"], r["vR"])),
-                    "windows": {me: LAB[u["mode"]], r["team"]: LAB[r["tm"]]}, "why": why})
+                    "why": why})
         if len(out) >= limit: break
     return out

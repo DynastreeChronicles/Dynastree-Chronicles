@@ -247,7 +247,7 @@ def award_shelf(S, H, preds, ps, pt):
         if not s["closed"]:   # the season is still being played: show how far along the regular season is
             reg_total = ps - 1; done = min(s["thru"], reg_total)
             prog = (f'<div class="hf-prog" role="img" aria-label="Week {done} of {reg_total}"><i style="width:{done / reg_total * 100:.0f}%"></i></div>'
-                    f'<p class="hf-pt">Regular season: Week {done} of {reg_total}. Top {pt} make the playoffs, which start Week {ps}.</p>')
+                    f'<p class="hf-pt">Regular season: Week {done} of {reg_total}.</p>')
         for key in tr.SHELF_ORDER:
             ico, title, rule = meta[key]
             v = vals[y].get(key)

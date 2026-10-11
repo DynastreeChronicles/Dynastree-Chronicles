@@ -105,13 +105,10 @@ function find(me,offerPool,opts){
 const q=r=>root.querySelector(`[data-r="${r}"]`);
 const names=a=>a.map(x=>x.n).join(' and ');
 const agel=x=>x.p==='PICK'?'':x.age?` \u00b7 age ${Math.round(x.age)}`:'';
-function why(o,M){
-  const L=[],t=M[o.team],lab=LAB[o.tm].toLowerCase();
-  const inn=o.tEnter.filter(x=>o.send.some(s=>s.k===x.k));
-  if(inn.length)L.push(`<b>${E(o.team)}</b> (${lab}, starters average ${t.age.toFixed(1)}) has the need: ${E(names(inn))} would start for them${o.tOut[0]?`, pushing ${E(o.tOut[0].n)} out of the lineup`:' in an open spot'}, a ${SG(o.netT)} upgrade to their starting lineup.`);
-  else L.push(`<b>${E(o.team)}</b> is ${ISA[o.tm]} (starters average ${t.age.toFixed(1)}), so this is about timeline, not lineup: they read what they get as ${NF(o.rPerc)} against ${NF(o.gPerc)} for what they give up.`);
-  if(o.tm==='rebuild'&&(o.send.some(x=>x.p==='PICK'||x.age&&x.age<=24)))L.push('A rebuilding team prices picks and young players above market and older players below it, which is why they say yes.');
-  if(o.tm==='contend'&&o.get.some(x=>x.p==='PICK'))L.push('A contending team gives up picks more easily than players who help now.');
+function why(o){
+  const L=[],inn=o.tEnter.filter(x=>o.send.some(s=>s.k===x.k));
+  if(inn.length)L.push(`<b>${E(o.team)}</b> has the need: ${E(names(inn))} would start for them${o.tOut[0]?`, pushing ${E(o.tOut[0].n)} out of the lineup`:' in an open spot'}, a ${SG(o.netT)} upgrade to their starting lineup.`);
+  else L.push(`<b>${E(o.team)}</b>: this one is about value and timing rather than a lineup hole. They would value what they get at ${NF(o.rPerc)} against ${NF(o.gPerc)} for what they give up.`);
   const bench=o.get.filter(x=>x.p==='PICK'||!o.tOut.some(y=>y.k===x.k));
   if(o.netT>0)L.push(bench.length===o.get.length?`It costs their lineup nothing: ${E(names(o.get))} ${o.get.every(x=>x.p==='PICK')?'are picks':'come off their bench'}.`:`It does cost them ${E(names(o.tOut.filter(x=>o.get.some(g=>g.k===x.k))))} in the lineup, but the upgrade is bigger.`);
   const e=o.uEnter.filter(x=>o.get.some(g=>g.k===x.k));
@@ -119,11 +116,11 @@ function why(o,M){
   return L.map(x=>`<li>${x}</li>`).join('');
 }
 function row(i){return `<li><span class="cn"><b>${E(i.n)}</b><small>${E(i.p==='PICK'?'Pick':i.p)}${agel(i)}</small></span><span class="cv">${NF(i.v)}</span></li>`}
-function card(o,idx,M){
+function card(o,idx){
   const pct=Math.round(100*Math.abs(o.vR-o.vO)/Math.max(o.vR,o.vO)),lab=pct<5?'Even':'Fair';
   return `<article class="fopt"><header><span class="fn">Option ${idx+1}</span><h4>with ${E(o.team)}</h4><span class="cvm even"><em>${lab} &middot; ${pct}% apart</em></span></header>
 <div class="fcols"><div><small>You send</small><ul>${o.send.map(row).join('')}</ul><p>${NF(o.vO)}</p></div><div><small>You get</small><ul>${o.get.map(row).join('')}</ul><p>${NF(o.vR)}</p></div></div>
-<ul class="fwhy">${why(o,M)}</ul><p class="fact"><button type="button" class="btn o" data-act="open" data-i="${idx}">Open in calculator</button></p></article>`;
+<ul class="fwhy">${why(o)}</ul><p class="fact"><button type="button" class="btn o" data-act="open" data-i="${idx}">Open in calculator</button></p></article>`;
 }
 function pool(){
   const mine=items(ST.me),out=[],have=new Set();
@@ -140,35 +137,28 @@ function renderChips(){
   q('f-pos').innerHTML=POS.concat('PICK').map(p=>`<button type="button" class="chip" aria-pressed="${ST.pos.has(p)}" data-act="chip" data-k="pos" data-p="${p}">${p==='PICK'?'Picks':p}</button>`).join('');
   q('f-want').innerHTML=POS.map(p=>`<button type="button" class="chip" aria-pressed="${ST.want.has(p)}" data-act="chip" data-k="want" data-p="${p}">${p}</button>`).join('');
   const n=pool().length;q('f-count').textContent=ST.me?(n?`${n} ${n===1?'asset is':'assets are'} on the table.`:'Nothing is on the table yet.'):'';
-  const a=q('f-auto');if(a)a.textContent=ST.me?`Auto reads ${ST.me} as: ${LAB[modes()[ST.me].mode]}.`:'';
-}
-function renderModes(){
-  const M=modes(),rows=Object.keys(M).sort((x,y)=>M[y].score-M[x].score).map(m=>`<tr><th scope="row">${E(m)}</th><td>${LAB[M[m].mode]}</td><td>${M[m].age.toFixed(1)}</td><td>#${M[m].lineupRank}</td><td>#${M[m].standing}</td></tr>`).join('');
-  q('f-modes').innerHTML=`<summary>How the finder reads every team</summary><table class="cimp"><thead><tr><th>Team</th><th>Window</th><th>Avg starter age</th><th>Lineup rank</th><th>Standing</th></tr></thead><tbody>${rows}</tbody></table><p class="key">Window = 50% lineup strength, 30% record, 20% starter age. Contenders pay for players who help now; rebuilders pay for picks and youth.</p>`;
 }
 function run(){
   if(!ST.me){q('f-msg').textContent='Choose your team first.';return}
   const p=pool();if(!p.length){q('f-msg').textContent='Offer at least one position, pick or player.';return}
   q('f-msg').textContent='';
   LAST=find(ST.me,p,{tol:ST.tol,want:[...ST.want],picks:ST.picks,mode:ST.mode});
-  const M=modes();
-  q('f-out').innerHTML=LAST.length?LAST.map((o,i)=>card(o,i,M)).join(''):'<p class="key">No team has a deal that works for both sides at these values. Try offering something different, widening the value tolerance, or letting picks come back.</p>';
+  q('f-out').innerHTML=LAST.length?LAST.map((o,i)=>card(o,i)).join(''):'<p class="key">No team has a deal that works for both sides at these values. Try offering something different, widening the value tolerance, or letting picks come back.</p>';
 }
 function init(el,data){
   root=el;DATA=data;ST={me:'',chk:new Set(),pos:new Set(),want:new Set(),tol:.10,picks:true,mode:'auto'};
   const mg=Object.keys(DATA.managers).sort((x,y)=>x.toLowerCase()<y.toLowerCase()?-1:1);
   root.innerHTML=`<div class="fnd"><div class="ctool"><label class="cl">Your team<select data-f="me" data-r="f-team"><option value="">Choose&hellip;</option>${mg.map(m=>`<option value="${E(m)}">${E(m)}</option>`).join('')}</select></label>
-<label class="cl">Your approach<select data-f="mode"><option value="auto" selected>Auto</option><option value="contend">Contender</option><option value="retool">Retooling</option><option value="rebuild">Rebuilder</option></select></label>
+<label class="cl">Your role<select data-f="mode"><option value="auto" selected>Let the finder decide</option><option value="contend">Win now</option><option value="retool">Balanced</option><option value="rebuild">Build for the future</option></select></label>
 <label class="cl">How close in value<select data-f="tol" data-r="f-tol"><option value=".05">Very close (within 5%)</option><option value=".10" selected>Fair (within 10%)</option><option value=".20">Flexible (within 20%)</option></select></label>
-<label class="chk"><input type="checkbox" data-f="picks" checked> Include draft picks in return</label></div><p class="key" data-r="f-auto"></p>
+<label class="chk"><input type="checkbox" data-f="picks" checked> Include draft picks in return</label></div>
 <p class="key cap">Offer by position or picks (everything you have there is available)</p><div class="chips" data-r="f-pos"></div>
 <p class="key cap">Looking for (optional)</p><div class="chips" data-r="f-want"></div>
 <details class="cown" data-r="f-ownbox" open hidden><summary>Or pick the exact players and picks to offer</summary><ul class="cownl" data-r="f-own"></ul></details>
 <p class="fgo"><button type="button" class="btn" data-act="find">Find trades</button><button type="button" class="btn o" data-act="reset">Reset</button><span class="key" data-r="f-count"></span><span class="key" data-r="f-msg" aria-live="polite"></span></p>
 <div data-r="f-out" aria-live="polite"></div>
-<details class="cown" data-r="f-modes"></details>
 </div>`;
-  renderChips();renderModes();
+  renderChips();
   root.addEventListener('change',e=>{const f=e.target.closest&&e.target.closest('[data-f]');if(!f)return;const k=f.dataset.f;
     if(k==='me'){ST.me=f.value;ST.chk.clear();renderOwn();renderChips()}
     else if(k==='tol')ST.tol=+f.value;else if(k==='mode')ST.mode=f.value;else if(k==='picks')ST.picks=!!f.checked;

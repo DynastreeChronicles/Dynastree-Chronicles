@@ -154,7 +154,7 @@ def mv(m):
 # Issues that carry the "How MAXPF works" explainer. Every other issue gets the desk closer card in its place. Bold predictions show in every issue.
 EXPLAIN = {(2026, 4)}
 
-MAXPF_TEXT = "<b>Max PF.</b> The points of your best possible lineup each week, added up (the same number as Sleeper's Max PF). The lowest total gets pick 1.01."
+MAXPF_TEXT = "<b>Max PF.</b> The points of your best possible lineup each week. The lowest total gets pick 1.01."
 MAXPF_LONG = ("MAXPF (Max PF) is the points your best possible lineup would have scored each week, added up across the season. "
               "It is the same figure Sleeper shows as Max PF, not starters plus bench. Lowest MAXPF gets the 1st overall pick; highest picks 12th. "
               "The draft is linear, so the lowest MAXPF also picks first every round. Payouts still go to the playoff winner.")
@@ -163,23 +163,22 @@ def legend(pick_value=False):
     """Collapsed 'how to read this' glossary shared by the home and issue standings."""
     up, dn = '<span class="up">&#9650;</span>', '<span class="dn">&#9660;</span>'
     items = [("W-L", "<b>Record</b> through the latest finished week."),
-             ("MOV", f"<b>Movement</b> since last week. {up} 2 = climbed two spots, {dn} 2 = dropped two, &mdash; = no change. In Draft order it is the pick: {up} = earlier (closer to 1.01), {dn} = later."),
+             ("MOV", f"<b>Movement</b> since last week. {up} 2 = climbed two spots, {dn} 2 = dropped two, &mdash; = no change."),
              ("PF", "<b>Points for.</b> Total points your team has scored this season."),
              ("Pick", f"<b>{draft_year()} rookie draft slot.</b> 1.01 is the first overall pick."),
              ("MAXPF", MAXPF_TEXT),
-             *([("Draft capital", "<b>Owned picks.</b> The combined FantasyCalc value of every future rookie pick the team owns after trades (the same values used in The Market and on manager pages).")] if pick_value else []),
+             *([("Draft capital", "<b>Owned picks.</b> The combined FantasyCalc value of every future rookie pick the team owns.")] if pick_value else []),
              ("FAAB", "<b>Waiver budget</b> left, out of $500.")]
     out = "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in items)
     return f'<details class="legend"><summary>How to read this table</summary><dl>{out}</dl></details>'
 
 def wealth_legend(k, date, prevk, note):
     up, dn = '<span class="up">&#9650;</span>', '<span class="dn">&#9660;</span>'
-    items = [("Roster value", "<b>Players.</b> The combined FantasyCalc dynasty trade value of every player on the roster (superflex, 12 teams, full PPR). Players outside FantasyCalc's top 1,000 count as zero."),
-             ("Draft capital", "<b>Owned picks.</b> The combined FantasyCalc value of every future rookie pick the team owns after trades."),
+    items = [("Roster value", "<b>Players.</b> The combined FantasyCalc dynasty trade value of every player on the roster (superflex, 12 teams, full PPR)."),
+             ("Draft capital", "<b>Owned picks.</b> The combined FantasyCalc value of every future rookie pick the team owns."),
              ("Total wealth", "<b>Roster value plus draft capital.</b> This is what the table is ranked by."),
              ("MOV", f"<b>Movement</b> in rank since {'Week ' + str(prevk) if prevk else 'last week'}. {up} 2 = climbed two spots, {dn} 2 = dropped two, &mdash; = no change."),
-             ("Change", f"<b>Points of total wealth</b> gained or lost since {'Week ' + str(prevk) if prevk else 'last week'}. Trades move it as well as the market."),
-             ("Saved", f"{date}. Each week's numbers are saved and frozen once the next week is final.")]
+             ("Change", f"<b>Points of total wealth</b> gained or lost since {'Week ' + str(prevk) if prevk else 'last week'}. Trades move it as well as the market.")]
     out = "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in items)
     return f'<details class="legend wide"><summary>How to read the Wealth Index</summary><p>{note}</p><dl>{out}</dl></details>'
 
@@ -206,7 +205,7 @@ def wealth_view(fin, root, team, h, latest, W=None):
             move = delta = '<span class="flat">&mdash;</span>'
         rows += (f'<tr><td class="n rkc">{i}</td>{team({"manager": m})}<td class="n">{c["roster"]:,}</td><td class="n">{c["picks"]:,}</td>'
                  f'<td class="n wl"><b>{c["total"]:,}</b></td><td class="n mv">{move}</td><td class="n">{delta}</td></tr>')
-    note = f'FantasyCalc dynasty values after Week {k}.'
+    note = f'<a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty values after Week {k}.'
     return (f'<div class="sc" id="v-wealth" hidden><table id="wealthtable"><thead>{h(["#", "Team", "Roster value", "Draft capital", "Total wealth", "MOV", "Change"])}</thead><tbody>{rows}</tbody></table>'
             f'{wealth_legend(k, weeks[k]["date"], prevk, note)}</div>')
 
@@ -773,7 +772,7 @@ def transactions(m):
         cards.append(f'<div class="txg"><div class="txh">{av(mg, 28)}<b>{esc(mg)}</b><small>{len(keep)} of {len(allm)} moves</small></div>' + "".join(move_html(x) for x in keep) + (f'<p class="desk mdesk">{esc(desk[mg])}</p>' if desk.get(mg) else "") + "</div>")
     out.append('<div class="txgrid">' + "".join(cards) + "</div>")
     link = f'issues/{i["year"]}/issue-{i["no"]:02d}/#wire'
-    return '<div class="txl">' + "".join(out) + f'</div><p class="key"><a class="btn o" href="{link}">See all {len(ws)} waiver moves and trade grades in Issue {i["no"]}</a></p>'
+    return '<div class="txl">' + "".join(out) + f'</div><p class="key"><a class="btn o" href="{link}">See all waiver moves and trades in Issue {i["no"]}</a></p>'
 
 def settings():
     return jload("data/settings.json", {}) or {}
