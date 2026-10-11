@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-11T03:51:52+00:00",
+ "generated_at": "2026-10-11T04:17:15+00:00",
  "season": "2026",
  "volume": 1,
  "season_status": "active",
- "data_pulled_at": "2026-10-11T03:51:50+00:00",
+ "data_pulled_at": "2026-10-11T04:17:11+00:00",
  "ready_for_new_issue": false,
  "warnings": [
   "Week 4 is already covered by Issue 5. Wait for Week 5 to go final (Tuesday after its Monday game) before drafting a new issue.",
@@ -745,8 +745,8 @@
     "rank": 1,
     "total": 76587,
     "status": "stable",
-    "move30": 451,
-    "move30_pct": 0.6,
+    "move30": 297,
+    "move30_pct": 0.4,
     "since": null,
     "since_change": null,
     "sidelined": 13295,
@@ -770,8 +770,8 @@
     "rank": 2,
     "total": 75468,
     "status": "correction",
-    "move30": -3261,
-    "move30_pct": -4.1,
+    "move30": -3298,
+    "move30_pct": -4.2,
     "since": null,
     "since_change": null,
     "sidelined": 13336,
@@ -795,8 +795,8 @@
     "rank": 3,
     "total": 74731,
     "status": "bull",
-    "move30": 6574,
-    "move30_pct": 9.6,
+    "move30": 6206,
+    "move30_pct": 9.1,
     "since": null,
     "since_change": null,
     "sidelined": 6796,
@@ -818,9 +818,9 @@
     "manager": "Johnny4Skins",
     "rank": 4,
     "total": 65342,
-    "status": "stable",
-    "move30": -1478,
-    "move30_pct": -2.2,
+    "status": "correction",
+    "move30": -1672,
+    "move30_pct": -2.5,
     "since": null,
     "since_change": null,
     "sidelined": 11918,
@@ -843,8 +843,8 @@
     "rank": 5,
     "total": 64983,
     "status": "correction",
-    "move30": -1872,
-    "move30_pct": -2.8,
+    "move30": -1940,
+    "move30_pct": -2.9,
     "since": null,
     "since_change": null,
     "sidelined": 2967,
@@ -864,7 +864,7 @@
     "rank": 6,
     "total": 63540,
     "status": "stable",
-    "move30": 1906,
+    "move30": 1882,
     "move30_pct": 3.1,
     "since": null,
     "since_change": null,
@@ -885,8 +885,8 @@
     "rank": 7,
     "total": 63326,
     "status": "stable",
-    "move30": -1184,
-    "move30_pct": -1.8,
+    "move30": -1102,
+    "move30_pct": -1.7,
     "since": null,
     "since_change": null,
     "sidelined": 5104,
@@ -907,8 +907,8 @@
     "rank": 8,
     "total": 62614,
     "status": "stable",
-    "move30": -1076,
-    "move30_pct": -1.7,
+    "move30": -1258,
+    "move30_pct": -2.0,
     "since": null,
     "since_change": null,
     "sidelined": 2701,
@@ -929,8 +929,8 @@
     "rank": 9,
     "total": 61074,
     "status": "stable",
-    "move30": 709,
-    "move30_pct": 1.2,
+    "move30": 311,
+    "move30_pct": 0.5,
     "since": null,
     "since_change": null,
     "sidelined": 11345,
@@ -954,8 +954,8 @@
     "rank": 10,
     "total": 58417,
     "status": "stable",
-    "move30": -800,
-    "move30_pct": -1.4,
+    "move30": -704,
+    "move30_pct": -1.2,
     "since": null,
     "since_change": null,
     "sidelined": 2527,
@@ -976,8 +976,8 @@
     "rank": 11,
     "total": 55018,
     "status": "correction",
-    "move30": -2476,
-    "move30_pct": -4.3,
+    "move30": -2604,
+    "move30_pct": -4.5,
     "since": null,
     "since_change": null,
     "sidelined": 3902,
@@ -999,8 +999,8 @@
     "rank": 12,
     "total": 54808,
     "status": "crash",
-    "move30": -3767,
-    "move30_pct": -6.4,
+    "move30": -4131,
+    "move30_pct": -7.0,
     "since": null,
     "since_change": null,
     "sidelined": 2166,
@@ -1014,6 +1014,189 @@
     "sidelined_players": [
      "Jonah Coleman (IR) 1863",
      "Jalen Nailor (Out) 303"
+    ]
+   }
+  ]
+ },
+ "trade_finder": {
+  "how": "Each suggestion comes from the Trade Finder logic: one side has a real need (the offered players would raise its starting lineup) or, for a rebuilder, the deal fits its timeline; the two sides are within 10% in FantasyCalc market value; each team is read as a contender, retooling or rebuilder. Build the issue's hypothetical trades from these (a and b are the two managers; as/bs are already in issue wording, keep them as written so the values and the Load in trade calculator link work). Write the desk commentary yourself; do not invent assets or values.",
+  "suggestions": [
+   {
+    "a": "Zygon",
+    "b": "CMac91",
+    "as": [
+     "2028 1st-round pick",
+     "Ollie Gordon"
+    ],
+    "bs": [
+     "Jordan Love"
+    ],
+    "a_sends_value": 3808,
+    "b_sends_value": 3793,
+    "gap_pct": 0,
+    "windows": {
+     "Zygon": "contender",
+     "CMac91": "rebuilder"
+    },
+    "why": [
+     "CMac91 (rebuilder) would start Ollie Gordon, a 340 upgrade to their starting lineup.",
+     "Zygon (contender) gains 1,884 in starting lineup value."
+    ]
+   },
+   {
+    "a": "Zygon",
+    "b": "Darkspaces",
+    "as": [
+     "2027 1st-round pick",
+     "2028 1st-round pick"
+    ],
+    "bs": [
+     "Nico Collins"
+    ],
+    "a_sends_value": 4776,
+    "b_sends_value": 4825,
+    "gap_pct": 1,
+    "windows": {
+     "Zygon": "contender",
+     "Darkspaces": "rebuilder"
+    },
+    "why": [
+     "Darkspaces is a rebuilder: the deal fits their timeline, not their lineup.",
+     "Zygon (contender) gains 3,094 in starting lineup value."
+    ]
+   },
+   {
+    "a": "C33DeezNutzz",
+    "b": "Darkspaces",
+    "as": [
+     "2028 1st-round pick",
+     "Josh Downs"
+    ],
+    "bs": [
+     "D'Andre Swift",
+     "Tyreek Hill"
+    ],
+    "a_sends_value": 4050,
+    "b_sends_value": 4040,
+    "gap_pct": 0,
+    "windows": {
+     "C33DeezNutzz": "contender",
+     "Darkspaces": "rebuilder"
+    },
+    "why": [
+     "Darkspaces is a rebuilder: the deal fits their timeline, not their lineup.",
+     "C33DeezNutzz (contender) gains 1,330 in starting lineup value."
+    ]
+   },
+   {
+    "a": "Hades9mm",
+    "b": "Sarge71",
+    "as": [
+     "2028 1st-round pick",
+     "2029 1st-round pick"
+    ],
+    "bs": [
+     "Jaylen Waddle",
+     "Aaron Rodgers"
+    ],
+    "a_sends_value": 4138,
+    "b_sends_value": 4140,
+    "gap_pct": 0,
+    "windows": {
+     "Hades9mm": "contender",
+     "Sarge71": "rebuilder"
+    },
+    "why": [
+     "Sarge71 is a rebuilder: the deal fits their timeline, not their lineup.",
+     "Hades9mm (contender) gains 410 in starting lineup value."
+    ]
+   },
+   {
+    "a": "StealingGas",
+    "b": "Snipe58",
+    "as": [
+     "2027 1st-round pick",
+     "Antonio Williams"
+    ],
+    "bs": [
+     "Justin Jefferson",
+     "Demond Claiborne"
+    ],
+    "a_sends_value": 6721,
+    "b_sends_value": 6726,
+    "gap_pct": 0,
+    "windows": {
+     "StealingGas": "retooling",
+     "Snipe58": "rebuilder"
+    },
+    "why": [
+     "Snipe58 (rebuilder) would start Antonio Williams, a -4,489 upgrade to their starting lineup.",
+     "StealingGas (retooling) gains 3,851 in starting lineup value."
+    ]
+   },
+   {
+    "a": "C33DeezNutzz",
+    "b": "Sarge71",
+    "as": [
+     "2027 1st-round pick"
+    ],
+    "bs": [
+     "David Montgomery",
+     "Brenton Strange"
+    ],
+    "a_sends_value": 3289,
+    "b_sends_value": 3284,
+    "gap_pct": 0,
+    "windows": {
+     "C33DeezNutzz": "contender",
+     "Sarge71": "rebuilder"
+    },
+    "why": [
+     "Sarge71 is a rebuilder: the deal fits their timeline, not their lineup.",
+     "C33DeezNutzz (contender) gains 324 in starting lineup value."
+    ]
+   },
+   {
+    "a": "StealingGas",
+    "b": "CMac91",
+    "as": [
+     "2027 1st-round pick"
+    ],
+    "bs": [
+     "Jordan Love",
+     "Alvin Kamara"
+    ],
+    "a_sends_value": 4994,
+    "b_sends_value": 4977,
+    "gap_pct": 0,
+    "windows": {
+     "StealingGas": "retooling",
+     "CMac91": "rebuilder"
+    },
+    "why": [
+     "CMac91 is a rebuilder: the deal fits their timeline, not their lineup.",
+     "StealingGas (retooling) gains 1,428 in starting lineup value."
+    ]
+   },
+   {
+    "a": "Johnny4Skins",
+    "b": "Snipe58",
+    "as": [
+     "2027 1st-round pick"
+    ],
+    "bs": [
+     "Matthew Stafford"
+    ],
+    "a_sends_value": 2529,
+    "b_sends_value": 2528,
+    "gap_pct": 0,
+    "windows": {
+     "Johnny4Skins": "retooling",
+     "Snipe58": "rebuilder"
+    },
+    "why": [
+     "Snipe58 is a rebuilder: the deal fits their timeline, not their lineup.",
+     "Johnny4Skins (retooling) gains 565 in starting lineup value."
     ]
    }
   ]
