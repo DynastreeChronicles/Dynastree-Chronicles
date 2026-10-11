@@ -450,12 +450,18 @@ def calc_data():
     idx = (jload("data/market/fantasycalc.json", {}) or {}).get("values") or []
     if not idx or not PORTFOLIO.get("teams"):
         return None
-    players = [[mk.vkey(v["name"], v["pos"]), v["name"], v["pos"], v.get("team") or "", v["value"], v.get("trend30") or 0] for v in idx if v.get("pos") != "PICK"]
+    age_of, age_byname = {}, {}
+    for v in idx:
+        if v.get("pos") != "PICK" and v.get("age"):
+            age_of[mk.vkey(v["name"], v["pos"])] = round(v["age"], 1); age_byname.setdefault(mk.norm(v["name"]), round(v["age"], 1))
+    age = lambda name, pos: age_of.get(mk.vkey(name, pos)) or age_byname.get(mk.norm(name)) or 0
+    players = [[mk.vkey(v["name"], v["pos"]), v["name"], v["pos"], v.get("team") or "", v["value"], v.get("trend30") or 0, age(v["name"], v["pos"])] for v in idx if v.get("pos") != "PICK"]
     picks = [[v["name"], v["value"], v.get("trend30") or 0] for v in idx if v.get("pos") == "PICK"]
     mgrs = {}
+    stand = {r["manager"]: r["rank"] for r in (jload(f"data/{bs.display_season()}/standings.json", []) or [])}
     for name, t in PORTFOLIO["teams"].items():
-        mgrs[name] = {"total": t["total"], "roster": t["players"], "picks": t["picks"],
-                      "assets": [[mk.vkey(a["name"], a["pos"]), a["name"], a["pos"], a["value"], a["trend30"], a.get("status") or "", 1 if a.get("sidelined") else 0] for a in (t.get("assets") or t["top"])],
+        mgrs[name] = {"standing": stand.get(name), "total": t["total"], "roster": t["players"], "picks": t["picks"],
+                      "assets": [[mk.vkey(a["name"], a["pos"]), a["name"], a["pos"], a["value"], a["trend30"], a.get("status") or "", 1 if a.get("sidelined") else 0, age(a["name"], a["pos"])] for a in (t.get("assets") or t["top"])],
                       "picklist": [[x["label"], x["value"], x.get("via") or "", x["trend30"]] for x in t.get("pick_list", [])]}
     have = {p[0] for p in players}; byname = {}
     for p in players:
