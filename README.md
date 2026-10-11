@@ -225,6 +225,15 @@ The standings block, on the home page and in every issue, has a third tab, **Wea
 * **Method.** A plain sum of FantasyCalc values, the same numbers as The Market; no adjustment for roster spots. Players outside the top 1,000 count as 0. If a team has no roster data yet the portfolio table is skipped for that side.
 * **Page weight.** About 70 KB of embedded data. No data appears until the first FantasyCalc update has run (the page shows a short "waiting for data" note).
 
+### Trade finder
+
+`market/#finder` (Research dropdown > Trade Finder; it is a menu-only item, so the home page keeps its 4 + 4 tiles: add or remove menu-only links in `RESEARCH_MENU_ONLY` in `scripts/shell.py`). `js/finder.js`, using the same embedded data as the calculator.
+
+* **Use.** Pick your team. Offer by position (any player you have at QB, RB, WR or TE) and/or tick exact players and picks. Optionally say which positions you want back, choose how close in value the sides must be (5%, 10% or 20%), and whether picks may come back. Press **Find trades**: up to five options, at most two per team, each with a plain-English reason and an **Open in calculator** button.
+* **How "need" works.** Each team's starting lineup is filled by value from the league's slots (QB, 2 RB, 2 WR, TE, 2 FLEX, SUPER_FLEX; the counts come from `league.json`): fixed slots first, then FLEX, then SUPER_FLEX, taking the best value still available. Players on IR or out do not start. A team has a need when adding your offered players raises that lineup total (a weak starter, an injured one, or an empty slot); a team that is already deep there scores zero and is skipped.
+* **How trades are built.** For each other team and each offer package (single assets and pairs from what you put on the table), it looks for 1 or 2 assets they could send back whose value is within your tolerance, then scores each deal: 45% how much it raises their starting lineup, 35% how close the values are, 20% what it does to your own starting lineup (plus a small bonus for a position you asked for). Deals that would lower their starting lineup are dropped.
+* **Limits.** Value-based and lineup-based, not point projections; no ages or contender/rebuilder logic yet; a plain sum of values with no roster-spot adjustment; the lineup fill is greedy, not an exhaustive best lineup. Treat the output as conversation starters.
+
 ### Ledger values (trades and pick verdicts)
 
 FantasyCalc only serves current values, so `pull_values.py` also saves a dated snapshot on every run (`data/market/snapshots/YYYY-MM-DD.json`, about 30 KB each; a second run the same day replaces that day's file, and it keeps saving after a season closes). `ledger_values.py` looks values up "as of" a date from those snapshots.

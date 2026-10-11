@@ -455,7 +455,7 @@ def calc_data():
     mgrs = {}
     for name, t in PORTFOLIO["teams"].items():
         mgrs[name] = {"total": t["total"], "roster": t["players"], "picks": t["picks"],
-                      "assets": [[mk.vkey(a["name"], a["pos"]), a["name"], a["pos"], a["value"], a["trend30"], a.get("status") or ""] for a in (t.get("assets") or t["top"])],
+                      "assets": [[mk.vkey(a["name"], a["pos"]), a["name"], a["pos"], a["value"], a["trend30"], a.get("status") or "", 1 if a.get("sidelined") else 0] for a in (t.get("assets") or t["top"])],
                       "picklist": [[x["label"], x["value"], x.get("via") or "", x["trend30"]] for x in t.get("pick_list", [])]}
     have = {p[0] for p in players}; byname = {}
     for p in players:
@@ -485,7 +485,10 @@ def calc_data():
     trades.sort(key=lambda t: -t["ts"])
     for t in trades:
         t.pop("ts")
-    return {"players": players, "picks": picks, "managers": mgrs, "trades": trades[:40]}
+    from collections import Counter
+    pos = Counter((jload(f"data/{display}/league.json", {}) or {}).get("roster_positions", []))
+    lineup = {k: pos.get(k, 0) for k in ("QB", "RB", "WR", "TE", "FLEX", "SUPER_FLEX")}
+    return {"players": players, "picks": picks, "managers": mgrs, "trades": trades[:40], "lineup": lineup}
 
 def market_page():
     """market/index.html: The Market at the top, the trade calculator below it. The top bar links to #market and to #calculator."""
@@ -496,12 +499,15 @@ def market_page():
                 f'<script type="application/json" id="calc-data">{blob}</script>')
     else:
         calc = '<div class="calc-soon"><h3>Waiting for data</h3><p>The calculator appears after the first FantasyCalc update has run.</p></div>'
+    finder = ('<div id="finder-app" class="calc"><noscript><p class="key">The trade finder needs JavaScript.</p></noscript></div>' if data else
+              '<div class="calc-soon"><h3>Waiting for data</h3><p>The finder appears after the first FantasyCalc update has run.</p></div>')
     body = ('<section id="market"><h2 class="sec">The market</h2>' + market_board("../") + '</section>'
-            '<section id="calculator"><h2 class="sec">Trade calculator</h2>' + calc + '</section>')
+            '<section id="calculator"><h2 class="sec">Trade calculator</h2>' + calc + '</section>'
+            '<section id="finder"><h2 class="sec">Trade finder</h2>' + finder + '</section>')
     bs.write_page("market/index.html", sh.page("../", "The Market", "The Market &amp; Trade Calculator", body,
                   bs.og_block("The Market | Dynastree Chronicles", "Every roster and pick in the Dynastree dynasty league, valued by FantasyCalc, and a trade calculator.", "market/"),
                   "Every roster and pick in the Dynastree dynasty league, valued by FantasyCalc dynasty trade values, and a trade calculator.",
-                  css=("calc",), scripts=("calc",) if data else ()))
+                  css=("calc",), scripts=("calc", "finder") if data else ()))
 
 def hub(rows, quotes, moves, active, alumni):
     """rows: the display season's standings. alumni: [(manager, last season)] for people with no row in it."""

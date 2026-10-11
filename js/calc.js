@@ -137,5 +137,7 @@ function init(el){
       if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(l).then(done,()=>{if(m)m.textContent=l});else if(m)m.textContent=l}});
 }
 if(typeof module!=='undefined')module.exports={build,ownList,sum,verdict,impact,ranksAfter,suggestions,search,mkItem,_set:s=>{ST=s},_init:init};
-else{const el=document.getElementById('calc-app');if(el)init(el)}
+else{const el=document.getElementById('calc-app');if(el){init(el);
+  window.DynCalc={data:()=>DATA,load:(a,b,as,bs)=>{ST={a:{mgr:a,items:[]},b:{mgr:b,items:[]}};as.forEach(k=>add('a',k));bs.forEach(k=>add('b',k));
+    q('mgr-a').value=a;q('mgr-b').value=b;render();const t=document.getElementById('calculator');if(t&&t.scrollIntoView)t.scrollIntoView({behavior:'smooth'})}}}}
 })();

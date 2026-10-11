@@ -10,6 +10,8 @@ RESEARCH = [("market/", "The Market", "Portfolio values &amp; trends"),
             ("market/#calculator", "Trade Calculator", "Test a deal before you send it"),
             ("rules/", "Rules", "League settings"),
             ("scoring/", "Scoring", "Every point, every position")]
+# Menu-only extras (not shown as home tiles, so the home page keeps its 4 + 4 layout). Add a (href, title, sub) here.
+RESEARCH_MENU_ONLY = [("market/#finder", "Trade Finder", "Find deals for your surplus")]
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">')
@@ -26,7 +28,7 @@ def nav(R=""):
             '<button class="ddb" type="button" aria-expanded="false" aria-controls="vault">The Vault <i>&#9662;</i></button>'
             '<button class="ddb" type="button" aria-expanded="false" aria-controls="research">Research <i>&#9662;</i></button>'
             f'<a href="{R}#standings">Standings</a><a href="{R}#transactions">Transactions</a><a href="{R}#archive">Issues</a></div>'
-            + _menu(R, "vault", VAULT) + _menu(R, "research", RESEARCH) + '</nav>')
+            + _menu(R, "vault", VAULT) + _menu(R, "research", RESEARCH[:2] + RESEARCH_MENU_ONLY + RESEARCH[2:]) + '</nav>')
 
 
 def vault_block(R=""):
