@@ -195,7 +195,7 @@ def stat_tiles(d):
         st = f' style="--tc:{tile_rgb(*rk)}" title="{ordinal(rk[0])} of {rk[1]} in the league"' if rk else ""
         lab = f'<span class="rkl">{ordinal(rk[0])}</span>' if rk else ""
         out.append(f'<div{st}>{lab}<small>{t[0]}</small><b>{t[1]}</b>{f"<i>{t[2]}</i>" if len(t) > 2 and t[2] else ""}</div>')
-    return "".join(out) + '<p class="key tkey">The label in the corner of each tile is the rank in the league for that category, and the colour follows it: green for 1st, red for last.</p>'
+    return "".join(out)
 
 def seasons_of(m):
     """Seasons (oldest to newest) in which this manager has a row in that season's own standings."""
@@ -311,7 +311,7 @@ def portfolio_block(m, r):
                  f'<tbody id="pk-more" hidden>{prest}</tbody></table>{more_btn("pk-more", len(valued[PN:]), "picks")}' if pl else "")
     return (f'<h2 class="sec" id="portfolio">Portfolio value</h2><section class="port {t["status"]}"><p class="pflag"><b>{badge}</b> {esc(head.format(m=m))}</p>'
             f'<div class="mstats">{tiles}</div>{history_chart(m)}<div class="pbar">{bar}</div><p class="pkey">{key}</p>'
-            f'<table class="ptab sortable" id="as-tab" data-n="{TOPN}"><caption>Biggest holdings <small>(tap Pos, Value or 30d to sort)</small></caption><thead><tr><th>Asset</th><th><button type="button" class="sb" data-k="pos">Pos</button></th><th class="sorted desc"><button type="button" class="sb" data-k="v">Value</button></th><th><button type="button" class="sb" data-k="t">30d</button></th></tr></thead><tbody id="as-first">{first}</tbody><tbody id="as-more" hidden>{rest_a}</tbody></table>{more_btn("as-more", len(allp[TOPN:]), "players")}{picks_tab}'
+            f'<table class="ptab sortable" id="as-tab" data-n="{TOPN}"><caption>Holdings</caption><thead><tr><th>Asset</th><th><button type="button" class="sb" data-k="pos">Pos</button></th><th class="sorted desc"><button type="button" class="sb" data-k="v">Value</button></th><th><button type="button" class="sb" data-k="t">30d</button></th></tr></thead><tbody id="as-first">{first}</tbody><tbody id="as-more" hidden>{rest_a}</tbody></table>{more_btn("as-more", len(allp[TOPN:]), "players")}{picks_tab}'
             f'<details class="legend wide"><summary>Legend: what these numbers mean</summary>'
             f'<p>Values: <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values, superflex, 12 teams, full PPR.</p><dl>'
             f'<div><dt>Portfolio value</dt><dd>The combined FantasyCalc value of every player on the roster plus every future pick owned. Players outside FantasyCalc\'s top 1,000 count as zero.</dd></div>'
@@ -446,7 +446,7 @@ def market_board(prefix=""):
             f'<tbody>{"".join(rows)}</tbody></table></div>{legend}')
 
 def calc_data():
-    """Everything the trade calculator needs, embedded in the market page: the FantasyCalc index, each manager's roster and picks, recent real trades."""
+    """Everything the trade calculator needs, embedded in the market page: the FantasyCalc index, each manager's roster and picks."""
     idx = (jload("data/market/fantasycalc.json", {}) or {}).get("values") or []
     if not idx or not PORTFOLIO.get("teams"):
         return None
@@ -463,38 +463,11 @@ def calc_data():
         mgrs[name] = {"standing": stand.get(name), "total": t["total"], "roster": t["players"], "picks": t["picks"],
                       "assets": [[mk.vkey(a["name"], a["pos"]), a["name"], a["pos"], a["value"], a["trend30"], a.get("status") or "", 1 if a.get("sidelined") else 0, age(a["name"], a["pos"])] for a in (t.get("assets") or t["top"])],
                       "picklist": [[x["label"], x["value"], x.get("via") or "", x["trend30"]] for x in t.get("pick_list", [])]}
-    have = {p[0] for p in players}; byname = {}
-    for p in players:
-        byname.setdefault(mk.norm(p[1]), p[0])
-    pb = mk.PickBook(idx)
     display = bs.display_season()
-    slot_of = {r["manager"]: r.get("draft_pick") for r in (jload(f"data/{display}/standings.json", []) or [])}
-    nxt = int(display) + 1
-    def asset(side):
-        out = []
-        for p in side.get("receives_players", []):
-            k = mk.vkey(p["name"], p["pos"])
-            k = k if k in have else byname.get(mk.norm(p["name"]))
-            out.append({"k": ("p:" + k) if k else None, "n": p["name"], "p": p["pos"]})
-        for pk in side.get("receives_picks", []):
-            row, label = pb.value(int(pk["season"]), int(pk["round"]), slot_of.get(pk["original_owner"]), int(pk["season"]) == nxt)
-            out.append({"k": ("k:" + label) if row else None, "n": label, "p": "PICK"})
-        return out
-    trades = []
-    for y in sorted(ss.load()):
-        for tx in jload(f"data/{y}/transactions.json", []) or []:
-            if tx.get("type") == "trade" and len(tx.get("sides", [])) == 2 and tx.get("created"):
-                s0, s1 = tx["sides"]
-                d = datetime.datetime.fromtimestamp(tx["created"] / 1000, datetime.timezone.utc).date()
-                # side A sends what side B received, and the other way round
-                trades.append({"id": str(tx["id"]), "d": d.strftime("%b %-d"), "ts": tx["created"], "a": s0["manager"], "b": s1["manager"], "as": asset(s1), "bs": asset(s0)})
-    trades.sort(key=lambda t: -t["ts"])
-    for t in trades:
-        t.pop("ts")
     from collections import Counter
     pos = Counter((jload(f"data/{display}/league.json", {}) or {}).get("roster_positions", []))
     lineup = {k: pos.get(k, 0) for k in ("QB", "RB", "WR", "TE", "FLEX", "SUPER_FLEX")}
-    return {"players": players, "picks": picks, "managers": mgrs, "trades": trades[:40], "lineup": lineup}
+    return {"players": players, "picks": picks, "managers": mgrs, "lineup": lineup}
 
 def market_page():
     """market/index.html: The Market at the top, the trade calculator below it. The top bar links to #market and to #calculator."""

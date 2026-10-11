@@ -60,6 +60,22 @@ def market_portfolios(season):
                       for m in ranked]}
 
 
+def trade_finder_block(season):
+    """Realistic hypothetical trades for the Hypothetical Trade Machine, from the same logic as the site's Trade Finder (scripts/trade_finder.py)."""
+    try:
+        import trade_finder as tf
+        D = tf.build_data(bs.jload, season)
+        if len(D["managers"]) < 4:
+            return None
+        return {"how": ("Each suggestion comes from the Trade Finder logic: one side has a real need (the offered players would raise its starting lineup) or, for a "
+                        "rebuilder, the deal fits its timeline; the two sides are within 10% in FantasyCalc market value; each team is read as a contender, retooling or "
+                        "rebuilder. Build the issue's hypothetical trades from these (a and b are the two managers; as/bs are already in issue wording, keep them as written so "
+                        "the values and the Load in trade calculator link work). Write the desk commentary yourself; do not invent assets or values."),
+                "suggestions": tf.league_suggestions(D)}
+    except Exception as ex:
+        print(f"  note: trade finder suggestions skipped ({ex})")
+        return None
+
 def main():
     reg = bs.ss.load()
     season = bs.ss.active(reg) or bs.display_season()
@@ -80,6 +96,7 @@ def main():
                               "written from the chat log plus transactions_offseason."],
                  "transactions_offseason": [t for t in bs.txfeed() if t["week"] == 0],
                  "market_portfolios": market_portfolios(season),
+                 "trade_finder": trade_finder_block(season),
                  "latest_published_issue": man[0] if man else None, "league": league,
                  "managers": {k: v.get("team_name") for k, v in bs.managers().items() if v.get("active", True)},
                  "alumni": [k for k, v in bs.managers().items() if not v.get("active", True)],
@@ -148,6 +165,7 @@ def main():
         "next_week_matchups": [{"a": a, "a_record": rec.get(a), "b": b, "b_record": rec.get(b)} for a, b in (sched or [])],
         "transactions_this_week_and_later": tx,
         "market_portfolios": market_portfolios(season),
+        "trade_finder": trade_finder_block(season),
         "managers": {k: v.get("team_name") for k, v in bs.managers().items() if v.get("active", True)},
         "alumni": [k for k, v in bs.managers().items() if not v.get("active", True)],
         "league": {k: league.get(k) for k in ("league_id", "name", "season", "volume", "roster_positions", "waiver_budget")},

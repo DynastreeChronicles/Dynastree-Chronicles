@@ -164,10 +164,10 @@ function init(el,data){
 <p class="key cap">Offer by position or picks (everything you have there is available)</p><div class="chips" data-r="f-pos"></div>
 <p class="key cap">Looking for (optional)</p><div class="chips" data-r="f-want"></div>
 <details class="cown" data-r="f-ownbox" open hidden><summary>Or pick the exact players and picks to offer</summary><ul class="cownl" data-r="f-own"></ul></details>
-<p class="fgo"><button type="button" class="btn" data-act="find">Find trades</button><span class="key" data-r="f-count"></span><span class="key" data-r="f-msg" aria-live="polite"></span></p>
+<p class="fgo"><button type="button" class="btn" data-act="find">Find trades</button><button type="button" class="btn o" data-act="reset">Reset</button><span class="key" data-r="f-count"></span><span class="key" data-r="f-msg" aria-live="polite"></span></p>
 <div data-r="f-out" aria-live="polite"></div>
 <details class="cown" data-r="f-modes"></details>
-<p class="key">A team has a "need" when the players you offer would raise its starting lineup (best value in each starting slot; injured players do not start). A rebuilder values picks and young players above market, a contender values proven players, so a deal must also make sense for the other team's window. Values are FantasyCalc, a plain sum. Suggestions are starting points for a conversation, not offers anyone has agreed to.</p></div>`;
+</div>`;
   renderChips();renderModes();
   root.addEventListener('change',e=>{const f=e.target.closest&&e.target.closest('[data-f]');if(!f)return;const k=f.dataset.f;
     if(k==='me'){ST.me=f.value;ST.chk.clear();renderOwn();renderChips()}
@@ -176,6 +176,9 @@ function init(el,data){
   root.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-act]');if(!b)return;const a=b.dataset.act;
     if(a==='chip'){const s=ST[b.dataset.k],p=b.dataset.p;s.has(p)?s.delete(p):s.add(p);renderChips()}
     else if(a==='find')run();
+    else if(a==='reset'){ST={me:'',chk:new Set(),pos:new Set(),want:new Set(),tol:.10,picks:true,mode:'auto'};LAST=[];
+      root.querySelectorAll('[data-f="me"]').forEach(x=>x.value='');root.querySelectorAll('[data-f="mode"]').forEach(x=>x.value='auto');root.querySelectorAll('[data-f="tol"]').forEach(x=>x.value='.10');
+      root.querySelectorAll('[data-f="picks"]').forEach(x=>x.checked=true);q('f-out').innerHTML='';q('f-msg').textContent='';renderOwn();renderChips()}
     else if(a==='open'){const o=LAST[+b.dataset.i];if(o&&window.DynCalc)window.DynCalc.load(ST.me,o.team,o.send.map(x=>x.k),o.get.map(x=>x.k))}});
 }
 if(typeof module!=='undefined')module.exports={init,items,lineup,modes,factor,find,packages,combos,pool,_set:d=>{DATA=d}};

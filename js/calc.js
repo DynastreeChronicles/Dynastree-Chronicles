@@ -91,11 +91,16 @@ function q(r){return root.querySelector(`[data-r="${r}"]`)}
 
 /* ---------- state, link sharing ---------- */
 function add(x,k){const b=mkItem(k,{n:k});if(!ST[x].items.some(i=>i.k===b.k)){ST[x].items.push(b)}}
-function loadTrade(id){
-  const t=(DATA.trades||[]).find(z=>String(z.id)===String(id));if(!t)return;
-  ST={a:{mgr:t.a,items:[]},b:{mgr:t.b,items:[]}};
-  t.as.forEach(a=>ST.a.items.push(mkItem(a.k,a)));t.bs.forEach(a=>ST.b.items.push(mkItem(a.k,a)));
-  q('mgr-a').value=t.a;q('mgr-b').value=t.b;render();
+function norm(s){return String(s).toLowerCase().replace(/[^a-z ]/g,'').replace(/\b(jr|sr|ii|iii|iv|v)\b/g,'').replace(/\s+/g,' ').trim()}
+const ORD=n=>({1:'1st',2:'2nd',3:'3rd'}[n]||n+'th');
+/* A key from this page, or a plain name such as "D'Andre Swift" or "2027 1st-round pick" (used by the links on the issue pages). */
+function resolve(tok){
+  if(BYK[tok])return tok;
+  const low=String(tok).trim().toLowerCase(),pk=low.match(/(20\d\d)\s+(\d+)(?:st|nd|rd|th)/);
+  if(pk&&/pick|round/.test(low)){const pre=(pk[1]+' '+ORD(+pk[2])).toLowerCase(),c=ALL.filter(i=>i.p==='PICK'&&i.n.toLowerCase().startsWith(pre));
+    const hit=c.find(i=>/\(mid\)/i.test(i.n))||c.find(i=>!/\(/.test(i.n))||c[0];return hit?hit.k:null}
+  const name=low.replace(/\s*\([^)]*\)/g,'').trim(),hit=ALL.find(i=>i.p!=='PICK'&&i.n.toLowerCase()===name)||ALL.find(i=>i.p!=='PICK'&&norm(i.n)===norm(name));
+  return hit?hit.k:null;
 }
 function link(){
   const u=new URLSearchParams();if(ST.a.mgr)u.set('a',ST.a.mgr);if(ST.b.mgr)u.set('b',ST.b.mgr);
@@ -105,7 +110,7 @@ function link(){
 function fromQuery(){
   const u=new URLSearchParams(location.search);
   ['a','b'].forEach(x=>{const m=u.get(x);if(m&&DATA.managers[m]){ST[x].mgr=m;q('mgr-'+x).value=m}
-    (u.get(x+'s')||'').split('~').filter(Boolean).forEach(k=>{if(BYK[k])add(x,k)})});
+    (u.get(x+'s')||'').split('~').filter(Boolean).forEach(k=>{const r=resolve(k);if(r)add(x,r)})});
 }
 function init(el){
   root=el;const raw=document.getElementById('calc-data');if(!raw)return;
@@ -117,13 +122,12 @@ function init(el){
 <div class="cq"><label class="vh2" for="q-${x}">Search any player or pick for side ${x.toUpperCase()}</label><input id="q-${x}" type="search" data-f="q" data-s="${x}" data-r="q-${x}" placeholder="Search any player or pick" autocomplete="off"><ul class="sug" data-r="sug-${x}" hidden></ul></div>
 <p class="key cap">Sends</p><ul class="citems" data-r="items-${x}"></ul>
 <details class="cown" data-r="own-${x}" open hidden><summary data-r="own-title-${x}"></summary><ul class="cownl" data-r="own-list-${x}"></ul></details></div>`;
-  const tr=(DATA.trades||[]).length?`<label class="cl">Replay a real trade<select data-f="replay" data-r="replay"><option value="">Choose a trade&hellip;</option>${DATA.trades.map(t=>`<option value="${E(t.id)}">${E(t.d)} &middot; ${E(t.a)} &harr; ${E(t.b)}</option>`).join('')}</select></label>`:'';
-  root.innerHTML=`<div class="ctool">${tr}<button type="button" class="btn o" data-act="swap">Swap sides</button><button type="button" class="btn o" data-act="reset">Reset</button><button type="button" class="btn o" data-act="copy">Copy link</button><span class="key" data-r="msg" aria-live="polite"></span></div>
+  root.innerHTML=`<div class="ctool"><button type="button" class="btn o" data-act="swap">Swap sides</button><button type="button" class="btn o" data-act="reset">Reset</button><button type="button" class="btn o" data-act="copy">Copy link</button><span class="key" data-r="msg" aria-live="polite"></span></div>
 <div class="csides">${side('a')}${side('b')}</div><section class="cres" data-r="res" aria-live="polite" aria-label="Result"></section>
-<p class="key">Values are <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values (superflex, 12 teams, full PPR), added up as they are, the same numbers as The Market. They do not adjust for roster spots, so two mid assets for one star is a rougher call than the sum suggests.</p>`;
+<p class="key">Values are <a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty trade values based on superflex, 12 teams, full PPR.</p>`;
   fromQuery();render();
   root.addEventListener('change',e=>{const f=e.target.closest&&e.target.closest('[data-f]');if(!f)return;const k=f.dataset.f;
-    if(k==='mgr'){ST[f.dataset.s].mgr=f.value;render()}else if(k==='replay'&&f.value){loadTrade(f.value)}});
+    if(k==='mgr'){ST[f.dataset.s].mgr=f.value;render()}});
   root.addEventListener('input',e=>{const f=e.target.closest&&e.target.closest('[data-f="q"]');if(!f)return;const x=f.dataset.s,ul=q('sug-'+x),r=search(f.value,ST[x].mgr);
     ul.hidden=!r.length;ul.innerHTML=r.map(i=>itemRow(i,x,'add')).join('')});
   root.addEventListener('keydown',e=>{const f=e.target.closest&&e.target.closest('[data-f="q"]');if(!f||e.key!=='Enter')return;e.preventDefault();

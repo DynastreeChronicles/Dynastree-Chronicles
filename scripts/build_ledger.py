@@ -35,21 +35,24 @@ def startup(y, L):
     return bool(((L.get("drafts") or {}).get(str(y)) or {}).get("startup"))
 
 def trail_html(p, au, su=False, y=None):
-    """The value story, one line per review point. The first line is the value at the time of the pick. Each later line is that
-    season's own verdict: '1-season: Hit, 3,200 to 4,100 (+28%)'. The startup draft has a single season-long evaluation."""
+    """The value story as a small row of cards: the value at the time of the pick, then one card per review point with that season's own verdict
+    (value then to value now, percent change, verdict, position rank). The startup draft has a single season-long review point."""
     if au["at"] is None:
         return ""
-    bits = [f'Value at pick: {au["at"]:,}{tilde(au["at_how"])}']
+    out = [f'<div class="tl-at"><small>At the pick</small><b>{au["at"]:,}</b>{tilde(au["at_how"])}</div>']
     for cp in au["cps"]:
-        lab = f'Season-long ({cp["season"]})' if su else f'{cp["k"]}-season ({cp["season"]})'
-        pct = f' ({cp["pct"]:+d}%)' if cp["pct"] is not None else ""
+        lab = "Season-long" if su else f'{cp["k"]}-season'
+        pct = f'<span class="tl-d {"dn" if cp["pct"] < 0 else "up"}">{cp["pct"]:+d}%</span>' if cp["pct"] is not None else ""
         rk = (STATS.get(str(cp["season"]), {}).get("players") or {}).get(norm(p["name"]) + "|" + p["pos"], {}).get("posrank")
-        rk = f' &middot; {p["pos"]}{rk}' if rk else ""
+        rk = f'<span class="tl-r">{p["pos"]}{rk}</span>' if rk else ""
         if cp["state"] == "graded":
-            bits.append(f'{lab}: <b>{GR[cp["grade"]][0]}</b>, {au["at"]:,} &rarr; {cp["value"]:,}{pct}{rk} <span class="dot {GR[cp["grade"]][1]}"></span>')
+            g = GR[cp["grade"]]
+            out.append(f'<div class="tl-cp {g[1]}"><small>{lab} &middot; {cp["season"]}</small><b class="tl-g">{g[0]}</b>'
+                       f'<span class="tl-v">{au["at"]:,} &rarr; {cp["value"]:,}</span>{pct}{rk}</div>')
         else:
-            bits.append(f'{lab}: season in progress, {cp["value"]:,} now{pct}{rk} <span class="dot v-pend"></span>')
-    return "<br>".join(bits)
+            out.append(f'<div class="tl-cp v-pend"><small>{lab} &middot; {cp["season"]}</small><b class="tl-g">In progress</b>'
+                       f'<span class="tl-v">{cp["value"]:,} now</span>{pct}{rk}</div>')
+    return '<div class="trail">' + "".join(out) + '</div>'
 
 def ml(m):
     return f'<a class="ml" href="{R}managers/{esc(m.lower())}/">{esc(m)}</a>'
@@ -81,11 +84,11 @@ def draft_panel(L):
             trail = trail_html(p, au, su, y)
             t = tally.setdefault(p["m"], {"hit": 0, "mid": 0, "bust": 0})
             if g: t[g] += 1
-            note = (f'<small>{esc(v["note"])}</small>' if v.get("note") else "") + (f'<small>{trail}</small>' if trail else "")
+            note = (f'<p class="tl-note">{esc(v["note"])}</p>' if v.get("note") else "") + trail
             auto = " <small>(auto-pick)</small>" if p.get("auto") else ""
             rows += (f'<tr class="pk {cls}" data-v="{cls}" data-r="{p["r"]}" data-m="{esc(p["m"].lower())}" data-p="{esc(p["name"].lower())}"><td>{p["r"]}.{p["s"]:02d}</td>'
                      f'<td><b>{esc(p["name"])}</b> <small>{esc(p["pos"])} &middot; {esc(p["team"])}{auto}</small></td>'
-                     f'<td>{ml(p["m"])}</td><td><span class="dot {cls}"></span>{lab}</td><td>{note}</td></tr>')
+                     f'<td>{ml(p["m"])}</td><td><span class="dot {cls}"></span>{lab}</td><td class="nt">{note}</td></tr>')
         vol = ss.volume(y, reg) if y in reg else None
         if su:
             nxt = f"Volume {vol + 1}, Issue 1" if vol else "the next volume's Issue 1"

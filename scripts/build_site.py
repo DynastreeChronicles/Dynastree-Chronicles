@@ -206,8 +206,7 @@ def wealth_view(fin, root, team, h, latest, W=None):
             move = delta = '<span class="flat">&mdash;</span>'
         rows += (f'<tr><td class="n rkc">{i}</td>{team({"manager": m})}<td class="n">{c["roster"]:,}</td><td class="n">{c["picks"]:,}</td>'
                  f'<td class="n wl"><b>{c["total"]:,}</b></td><td class="n mv">{move}</td><td class="n">{delta}</td></tr>')
-    note = (f'FantasyCalc dynasty values after Week {k}. Movement compares with Week {prevk}.' if prevk is not None else
-            f'FantasyCalc dynasty values after Week {k}. Movement starts once a second week is on file.')
+    note = f'FantasyCalc dynasty values after Week {k}.'
     return (f'<div class="sc" id="v-wealth" hidden><table id="wealthtable"><thead>{h(["#", "Team", "Roster value", "Draft capital", "Total wealth", "MOV", "Change"])}</thead><tbody>{rows}</tbody></table>'
             f'{wealth_legend(k, weeks[k]["date"], prevk, note)}</div>')
 
