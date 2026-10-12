@@ -244,6 +244,8 @@ The Hypothetical Trade Machine in each issue is built from the Trade Finder logi
 
 ### Ledger values (trades and pick verdicts)
 
+**How the ledger shows it.** The draft tables have value columns instead of a notes block: for the startup draft, Value at pick, End of 2026 and Change (green or red percent); for rookie drafts, Value at pick and one End-of-season column per review point (value over percent). A grey italic value is live and not final yet. A hand note from `ledger.json` sits under the player's name. Each trade's value edge is two small cards, At the trade and Latest, with a Flipped tag when the lead changed hands. The managers hub shows The podium (top three) and The rest (everyone else); the manager-page stat tiles are all ranked and colored except Moves, which is gray and last.
+
 FantasyCalc only serves current values, so `pull_values.py` also saves a dated snapshot on every run (`data/market/snapshots/YYYY-MM-DD.json`, about 30 KB each; a second run the same day replaces that day's file, and it keeps saving after a season closes). `ledger_values.py` looks values up "as of" a date from those snapshots.
 
 * **As-of lookups.** A real snapshot within 3 days of the event counts as exact. Before the first snapshot there is nothing to read, so the lookup builds an estimate from the first snapshot's own 30-day trend (value minus trend is roughly the value 30 days earlier). Anything older than that uses the nearest value on file. The pages mark anything that is not exact with a `~`. This assumes FantasyCalc's `trend30Day` is the 30-day change in value.

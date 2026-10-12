@@ -58,14 +58,16 @@ details.yr>.lg-cards{margin-bottom:1.2rem}
 .tx-card .edge{margin:.7rem 0 0;padding-top:.5rem;border-top:1px dashed rgba(255,255,255,.15);font-size:.85rem}
 abbr[title]{text-decoration:none;cursor:help;color:var(--gold,#e6b94a)}
 
-/* pick notes: value story as cards */
-.lg-tbl td.nt{white-space:normal;min-width:15rem}
-.trail{display:flex;flex-wrap:wrap;gap:.5rem;align-items:stretch}
-.trail>div{display:flex;flex-direction:column;gap:.1rem;padding:.45rem .7rem;border:1px solid rgba(255,255,255,.14);border-top:3px solid var(--pend);border-radius:8px;background:rgba(7,10,18,.45);min-width:6.8rem}
-.trail small{font:700 .7rem Oswald,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.62);white-space:nowrap}
-.tl-at{border-top-color:var(--sky,#8fb4ff)!important}.tl-at b{font:700 1.2rem Oswald,sans-serif;color:#fff;font-variant-numeric:tabular-nums}
-.tl-cp.v-hit{border-top-color:var(--hit)!important;background:rgba(47,191,113,.12)!important}.tl-cp.v-mid{border-top-color:var(--mid)!important;background:rgba(230,185,74,.12)!important}.tl-cp.v-bust{border-top-color:var(--bust)!important;background:rgba(229,72,77,.14)!important}
-.tl-g{font:italic 800 1.05rem Oswald,sans-serif;text-transform:uppercase;letter-spacing:.04em;color:#fff}
-.tl-v{font-size:.85rem;color:rgba(255,255,255,.8);font-variant-numeric:tabular-nums;white-space:nowrap}
-.tl-d{font-weight:700;font-size:.85rem}.tl-d.up{color:var(--hit)}.tl-d.dn{color:var(--bust)}.tl-r{font-size:.78rem;color:rgba(255,255,255,.62)}
-.tl-note{margin:0 0 .5rem;font-size:.9rem;color:rgba(255,255,255,.85);max-width:34rem;line-height:1.4}
+/* draft table: compact value columns */
+.lg-tbl .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.lg-tbl td.live{color:rgba(255,255,255,.55);font-style:italic}
+.lg-tbl td.num b{display:block;font-weight:700}.lg-tbl .chg{font-weight:700;font-size:.88rem}.lg-tbl td.num b+.chg{display:block}
+.chg.up{color:var(--hit)}.chg.dn{color:var(--bust)}.chg.flat{color:rgba(255,255,255,.5)}
+.lg-tbl .tl-note{margin:.15rem 0 0;font-size:.82rem;font-weight:400;white-space:normal;opacity:.8;max-width:22rem}
+@media(max-width:700px){.lg-tbl th,.lg-tbl td{padding:.3rem .4rem;font-size:.84rem}.lg-tbl tr.rh td{padding-top:.6rem}.lg-tbl td small{font-size:.74rem}.lg-tbl .chg{font-size:.78rem}}
+/* trade value edge */
+.edge2{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .7rem;margin-top:.8rem;padding:.6rem .8rem;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(7,10,18,.45)}
+.edge2 .eh{font:700 .8rem Oswald,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold,#e6b94a);margin-right:.2rem}
+.edge2 .ec{display:flex;align-items:baseline;gap:.5rem;padding:.3rem .8rem;border-radius:99px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.edge2 .ec small{font:700 .7rem Oswald,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.62);display:inline;opacity:1}
+.edge2 .ec b{font-weight:700;color:#fff}.edge2 .ec b.even{color:rgba(255,255,255,.75)}.edge2 .ec em{font-style:normal;font-weight:800;color:var(--hit);font-variant-numeric:tabular-nums}
+.edge2 .ear{color:rgba(255,255,255,.45)}.edge2 .flip{padding:.12rem .6rem;border-radius:99px;background:var(--mid);color:#1b1304;font:800 .72rem Oswald,sans-serif;letter-spacing:.1em;text-transform:uppercase}

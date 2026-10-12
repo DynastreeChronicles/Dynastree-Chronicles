@@ -185,13 +185,14 @@ def stat_tiles(d):
     row, eff = d["row"], d["eff"]
     stats = [("Record", row["record"]), ("Rank", f'#{row["rank"]}'), ("Points for", f'{row["pf"]:.1f}'), ("Points against", f'{row["pa"]:.1f}'),
              ("MAXPF", f'{row["maxpf"]:.1f}'), ("Efficiency", f'{eff["efficiency"]}%' if eff else "n/a"), ("Draft slot", f'1.{row["draft_pick"]:02d}'),
-             ("FAAB left", f'${row["faab_remaining"]}'), ("Moves", str(d["ntx"]))]
+             ("FAAB left", f'${row["faab_remaining"]}')]
     best = max(d["games"], key=lambda g: g["points"]) if d.get("games") else None
     if best:
         stats += [("Best week", f'{best["points"]:.2f}', f'Week {best["week"]}'), ("FAAB spent", f'${d["spent"]}', "")]
+    stats.append(("Moves", str(d["ntx"])))   # activity, not performance: last, gray, never ranked
     out = []
     for t in stats:
-        rk = tile_rank(t[0], d)
+        rk = None if t[0] == "Moves" else tile_rank(t[0], d)
         st = f' style="--tc:{tile_rgb(*rk)}" title="{ordinal(rk[0])} of {rk[1]} in the league"' if rk else ""
         lab = f'<span class="rkl">{ordinal(rk[0])}</span>' if rk else ""
         out.append(f'<div{st}>{lab}<small>{t[0]}</small><b>{t[1]}</b>{f"<i>{t[2]}</i>" if len(t) > 2 and t[2] else ""}</div>')
@@ -500,7 +501,7 @@ def hub(rows, quotes, moves, active, alumni):
         tn = " &middot; ".join(p for p in (esc(teams(m)) if teams(m) else "", ("Alumni" + (f" ({year})" if year else "")) if not active.get(m, True) else "") if p)
         return (f'<a class="mc2" href="{slug(m)}/"><div class="mtop">{av(m, 72, "../")}<div class="mn"><h3>{esc(m)}</h3><p class="mt">{tn}</p></div><span class="rk">{badge}</span></div>'
                 f'<div class="mrow">{stat("Record", esc(r["record"]))}{stat("PF", format(r["pf"], ".1f"))}{stat("FAAB", "$" + str(r["faab_remaining"]))}{stat("Moves", moves.get(m, 0))}</div>{q}<span class="open">Open file</span></a>')
-    groups = [("The podium", "Top three right now.", [card(r) for r in rows[:3]]), ("The middle", "Everyone still arguing about the playoffs.", [card(r) for r in rows[3:-2]]), ("The danger zone", "Bottom two. Draft position is the consolation.", [card(r) for r in rows[-2:]])]
+    groups = [("The podium", "Top three right now.", [card(r) for r in rows[:3]]), ("The rest", "Everyone else, in standings order.", [card(r) for r in rows[3:]])]
     if alumni:
         groups.append(("Alumni", "No longer in the league. The files stay.", [card(r, f"<b>{y}</b>", y) for r, y in alumni]))
     body = "".join(

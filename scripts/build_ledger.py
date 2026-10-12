@@ -34,25 +34,33 @@ def tilde(how):
 def startup(y, L):
     return bool(((L.get("drafts") or {}).get(str(y)) or {}).get("startup"))
 
-def trail_html(p, au, su=False, y=None):
-    """The value story as a small row of cards: the value at the time of the pick, then one card per review point with that season's own verdict
-    (value then to value now, percent change, verdict, position rank). The startup draft has a single season-long review point."""
-    if au["at"] is None:
-        return ""
-    out = [f'<div class="tl-at"><small>At the pick</small><b>{au["at"]:,}</b>{tilde(au["at_how"])}</div>']
-    for cp in au["cps"]:
-        lab = "Season-long" if su else f'{cp["k"]}-season'
-        pct = f'<span class="tl-d {"dn" if cp["pct"] < 0 else "up"}">{cp["pct"]:+d}%</span>' if cp["pct"] is not None else ""
-        rk = (STATS.get(str(cp["season"]), {}).get("players") or {}).get(norm(p["name"]) + "|" + p["pos"], {}).get("posrank")
-        rk = f'<span class="tl-r">{p["pos"]}{rk}</span>' if rk else ""
-        if cp["state"] == "graded":
-            g = GR[cp["grade"]]
-            out.append(f'<div class="tl-cp {g[1]}"><small>{lab} &middot; {cp["season"]}</small><b class="tl-g">{g[0]}</b>'
-                       f'<span class="tl-v">{au["at"]:,} &rarr; {cp["value"]:,}</span>{pct}{rk}</div>')
+def pct_html(pct, live=False):
+    if pct is None:
+        return '<span class="chg flat">&mdash;</span>'
+    return f'<span class="chg {"dn" if pct < 0 else "up" if pct > 0 else "flat"}">{pct:+d}%</span>'
+
+def value_cells(au, su):
+    """Table cells for one pick. Startup draft: value at the pick, value at the end of the season, percent change (three cells).
+    Rookie drafts: value at the pick, then one cell per season-end review (value over percent). An unfinished season shows the live value in grey."""
+    dash = '<span class="chg flat">&mdash;</span>'
+    at = f'{au["at"]:,}' if au["at"] is not None else dash
+    cps = {cp["k"]: cp for cp in au["cps"]}
+    if su:
+        cp = cps.get(1)
+        if not cp:
+            return f'<td class="num">{at}</td><td class="num">{dash}</td><td class="num">{dash}</td>'
+        live = ' live' if cp["state"] != "graded" else ""
+        return (f'<td class="num">{at}</td><td class="num{live}" title="{"Live value until the season ends" if live else ""}">{cp["value"]:,}</td>'
+                f'<td class="num">{pct_html(cp["pct"])}</td>')
+    out = f'<td class="num">{at}</td>'
+    for k in (1, 2, 3):
+        cp = cps.get(k)
+        if not cp:
+            out += f'<td class="num">{dash}</td>'
         else:
-            out.append(f'<div class="tl-cp v-pend"><small>{lab} &middot; {cp["season"]}</small><b class="tl-g">In progress</b>'
-                       f'<span class="tl-v">{cp["value"]:,} now</span>{pct}{rk}</div>')
-    return '<div class="trail">' + "".join(out) + '</div>'
+            live = ' live' if cp["state"] != "graded" else ""
+            out += f'<td class="num{live}"><b>{cp["value"]:,}</b>{pct_html(cp["pct"])}</td>'
+    return out
 
 def ml(m):
     return f'<a class="ml" href="{R}managers/{esc(m.lower())}/">{esc(m)}</a>'
@@ -73,30 +81,32 @@ def draft_panel(L):
     reg = ss.load(); tally, html = {}, ""
     for i, (y, label, picks) in enumerate(reversed(D)):
         su = startup(y, L); rows, cur = "", None
+        ncol = 7 if su else 8; est = False
         for p in sorted(picks, key=lambda p: (p["r"], p["s"])):
             if p["r"] != cur:
-                cur = p["r"]; rows += f'<tr class="rh"><td colspan="5">Round {cur}</td></tr>'
+                cur = p["r"]; rows += f'<tr class="rh"><td colspan="{ncol}">Round {cur}</td></tr>'
             v = V.get(f'{y}:{p["r"]}.{p["s"]:02d}') or {}
             au = grade_pick(y, p, L)
             g = v.get("grade") if v.get("grade") in GR else au["grade"]
             lab, cls = GR.get(g, ("Too early", "v-pend"))
             if g and not v.get("grade"): lab += " (final)" if au["final"] else " (so far)"
-            trail = trail_html(p, au, su, y)
+            vals = value_cells(au, su); est = est or (au["at_how"] not in (None, "snapshot"))
             t = tally.setdefault(p["m"], {"hit": 0, "mid": 0, "bust": 0})
             if g: t[g] += 1
-            note = (f'<p class="tl-note">{esc(v["note"])}</p>' if v.get("note") else "") + trail
+            note = f'<p class="tl-note">{esc(v["note"])}</p>' if v.get("note") else ""
             auto = " <small>(auto-pick)</small>" if p.get("auto") else ""
             rows += (f'<tr class="pk {cls}" data-v="{cls}" data-r="{p["r"]}" data-m="{esc(p["m"].lower())}" data-p="{esc(p["name"].lower())}"><td>{p["r"]}.{p["s"]:02d}</td>'
-                     f'<td><b>{esc(p["name"])}</b> <small>{esc(p["pos"])} &middot; {esc(p["team"])}{auto}</small></td>'
-                     f'<td>{ml(p["m"])}</td><td><span class="dot {cls}"></span>{lab}</td><td class="nt">{note}</td></tr>')
+                     f'<td><b>{esc(p["name"])}</b> <small>{esc(p["pos"])} &middot; {esc(p["team"])}{auto}</small>{note}</td>'
+                     f'<td>{ml(p["m"])}</td><td><span class="dot {cls}"></span>{lab}</td>{vals}</tr>')
+        heads = ('<th class="num">Value at pick</th>' + f'<th class="num">End of {y}</th><th class="num">Change</th>') if su else ('<th class="num">Value at pick</th>' + "".join(f'<th class="num">End of {int(y) + k}</th>' for k in range(3)))
         vol = ss.volume(y, reg) if y in reg else None
         if su:
             nxt = f"Volume {vol + 1}, Issue 1" if vol else "the next volume's Issue 1"
             ev = f"Startup draft: one season-long verdict, comparing each pick's FantasyCalc value at the time of the pick with its value when the season ends, filed in {nxt}."
         else:
             ev = "Rookie draft: three verdicts, one per season. Each compares the pick's FantasyCalc value at the time of the pick with its value when that season ended. Each new volume's Issue 1 reviews the last three drafts."
-        html += (f'<details class="yr dr-sec"{" open" if i == 0 else ""}><summary>{esc(label)} <small>{len(picks)} picks</small></summary><p class="lg-eval">{esc(ev)}</p>'
-                 f'<div class="lg-wrap"><table class="lg-tbl"><thead><tr><th>Pick</th><th>Player</th><th>Drafted by</th><th>Verdict</th><th>Notes</th></tr></thead><tbody>{rows}</tbody></table></div></details>')
+        html += (f'<details class="yr dr-sec"{" open" if i == 0 else ""}><summary>{esc(label)} <small>{len(picks)} picks</small></summary><p class="lg-eval">{esc(ev + (' Values at the pick from before the first FantasyCalc snapshot are estimates.' if est else ''))}</p>'
+                 f'<div class="lg-wrap"><table class="lg-tbl"><thead><tr><th>Pick</th><th>Player</th><th>Drafted by</th><th>Verdict</th>{heads}</tr></thead><tbody>{rows}</tbody></table></div></details>')
     graded = {m: t for m, t in tally.items() if sum(t.values())}
     board = ""
     if graded:
@@ -147,14 +157,17 @@ def value_note():
             f'Picks use the tier (early, mid or late) of the original owner\'s draft slot. FAAB has no value here.</p></details>')
 
 def edge(tv, a, b):
-    """One line saying who came out ahead at the time of the trade and who is ahead now, from the FantasyCalc values."""
+    """Who came out ahead at the time of the trade and who is ahead now, from the FantasyCalc values, as two small cards."""
     vs = {x["manager"]: x for x in (tv or {}).get("sides", [])}
     if a["manager"] not in vs or b["manager"] not in vs:
         return ""
     def lead(k):
         d = vs[a["manager"]][k] - vs[b["manager"]][k]
-        return "even" if abs(d) < 1 else f'{esc((a if d > 0 else b)["manager"])} +{abs(d):,}'
-    return f'<p class="edge">Value edge: at the trade {lead("then")} &middot; latest {lead("now")}</p>'
+        return (None, 0) if abs(d) < 1 else ((a if d > 0 else b)["manager"], abs(d))
+    t, n = lead("then"), lead("now")
+    card = lambda lab, w: (f'<div class="ec"><small>{lab}</small>' + (f'<b>{esc(w[0])}</b><em>+{w[1]:,}</em>' if w[0] else '<b class="even">Even</b>') + '</div>')
+    flip = '<span class="flip">Flipped</span>' if t[0] and n[0] and t[0] != n[0] else ""
+    return f'<div class="edge2"><span class="eh">Value edge</span>{card("At the trade", t)}<span class="ear" aria-hidden="true">&rarr;</span>{card("Latest", n)}{flip}</div>'
 
 def trade_panel(L):
     S, T, takes, reg = L.get("settings", {}), L.get("trades", {}), issue_takes(), ss.load()

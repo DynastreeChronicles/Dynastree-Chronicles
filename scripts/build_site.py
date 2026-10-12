@@ -741,7 +741,7 @@ def leaderboard():
         return (f'<div class="pd {cls}"><img class="tro" src="assets/trophy-{k}.webp" alt="{label}" width="132" height="240" loading="lazy">'
                 f'<div class="pi">{av(r["manager"], 44)}<h3><a class="ml" href="managers/{r["manager"].lower()}/">{esc(r["manager"])}</a></h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>')
     top = "".join(pod(r, c, k, l) for r, c, k, l in zip(rows[:3], ("p1", "p2", "p3"), ("gold", "silver", "bronze"), ("1st place", "2nd place", "3rd place")))
-    low = "".join(f'<div class="lo"><img class="tro tt" src="assets/trophy-trash.webp" alt="Last place" width="132" height="240" loading="lazy">{av(r["manager"], 40)}<div><h3><a class="ml" href="managers/{r["manager"].lower()}/">{esc(r["manager"])}</a></h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div>' for r in rows[-2:])
+    low = "".join(f'<div class="lo"><img class="tro tt" src="assets/trophy-trash.webp" alt="Last place" width="132" height="240" loading="lazy"><div class="lw">{av(r["manager"], 40)}<div><h3><a class="ml" href="managers/{r["manager"].lower()}/">{esc(r["manager"])}</a></h3><p>{esc(r["record"])} &middot; {r["pf"]:.1f} PF</p></div></div></div>' for r in rows[-2:])
     return f'<div class="lbx"><div class="podium">{top}</div><div class="dz"><h3 class="dzh">The Danger Zone</h3><div class="dzg">{low}</div></div></div>'
 
 def transactions(m):
