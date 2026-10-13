@@ -1,19 +1,15 @@
 {
- "generated_at": "2026-10-12T21:00:23+00:00",
+ "generated_at": "2026-10-13T11:14:13+00:00",
  "season": "2026",
  "volume": 1,
  "season_status": "active",
- "data_pulled_at": "2026-10-12T21:00:20+00:00",
- "ready_for_new_issue": false,
- "warnings": [
-  "Week 4 is already covered by Issue 5. Wait for Week 5 to go final (Tuesday after its Monday game) before drafting a new issue.",
-  "Week 5 is in progress (not final). It is excluded from records, standings and MAXPF."
- ],
+ "data_pulled_at": "2026-10-13T11:14:10+00:00",
+ "ready_for_new_issue": true,
+ "warnings": [],
  "next_issue": {
   "no": 6,
   "wire_week": 5,
-  "pre_week": 6,
-  "blocked_until": "Week 5 is final"
+  "pre_week": 6
  },
  "season_end": {
   "decided": false
@@ -80,11 +76,10 @@
   1,
   2,
   3,
-  4
- ],
- "in_progress_weeks": [
+  4,
   5
  ],
+ "in_progress_weeks": [],
  "latest_published_issue": {
   "no": 5,
   "year": 2026,
@@ -104,365 +99,374 @@
   "standings_week": 4
  },
  "week_summary": {
-  "week": 4,
+  "week": 5,
   "games": [
    {
-    "winner": "CMac91",
-    "winner_pts": 183.42,
+    "winner": "Johnny4Skins",
+    "winner_pts": 163.56,
     "loser": "Darkspaces",
-    "loser_pts": 118.36,
-    "margin": 65.06,
-    "winner_mvp": "CeeDee Lamb 41.3",
-    "loser_mvp": "Nico Collins 30.8",
-    "winner_bench": 42.98,
-    "loser_bench": 0.0,
-    "winner_left_on_bench": 5.52,
+    "loser_pts": 140.36,
+    "margin": 23.2,
+    "winner_mvp": "Jaylen Warren 36.8",
+    "loser_mvp": "Drake Maye 39.46",
+    "winner_bench": 43.6,
+    "loser_bench": 4.82,
+    "winner_left_on_bench": 27.3,
     "loser_left_on_bench": 0.0
    },
    {
     "winner": "Snipe58",
-    "winner_pts": 112.22,
+    "winner_pts": 114.88,
+    "loser": "Sarge71",
+    "loser_pts": 74.8,
+    "margin": 40.08,
+    "winner_mvp": "Matthew Stafford 27.32",
+    "loser_mvp": "Aaron Rodgers 22.0",
+    "winner_bench": 45.98,
+    "loser_bench": 60.3,
+    "winner_left_on_bench": 15.62,
+    "loser_left_on_bench": 45.5
+   },
+   {
+    "winner": "StealingGas",
+    "winner_pts": 202.54,
     "loser": "YesChef23",
-    "loser_pts": 100.46,
-    "margin": 11.76,
-    "winner_mvp": "Quinshon Judkins 21.6",
-    "loser_mvp": "RJ Harvey 19.3",
-    "winner_bench": 38.18,
-    "loser_bench": 58.7,
-    "winner_left_on_bench": 21.28,
-    "loser_left_on_bench": 38.2
+    "loser_pts": 88.14,
+    "margin": 114.4,
+    "winner_mvp": "Puka Nacua 37.7",
+    "loser_mvp": "George Pickens 28.0",
+    "winner_bench": 34.58,
+    "loser_bench": 30.4,
+    "winner_left_on_bench": 0.0,
+    "loser_left_on_bench": 25.46
    },
    {
-    "winner": "Johnny4Skins",
-    "winner_pts": 157.9,
-    "loser": "StealingGas",
-    "loser_pts": 133.5,
-    "margin": 24.4,
-    "winner_mvp": "Kyren Williams 36.7",
-    "loser_mvp": "Puka Nacua 27.7",
-    "winner_bench": 71.6,
-    "loser_bench": 20.5,
-    "winner_left_on_bench": 24.5,
-    "loser_left_on_bench": 5.6
+    "winner": "C33DeezNutzz",
+    "winner_pts": 154.24,
+    "loser": "Zygon",
+    "loser_pts": 124.36,
+    "margin": 29.88,
+    "winner_mvp": "Christian Watson 32.3",
+    "loser_mvp": "Jacoby Brissett 26.28",
+    "winner_bench": 49.1,
+    "loser_bench": 29.5,
+    "winner_left_on_bench": 18.0,
+    "loser_left_on_bench": 21.8
    },
    {
-    "winner": "Zygon",
-    "winner_pts": 144.02,
+    "winner": "Painty69",
+    "winner_pts": 153.1,
     "loser": "Hades9mm",
-    "loser_pts": 121.76,
-    "margin": 22.26,
-    "winner_mvp": "Kenneth Walker 30.9",
-    "loser_mvp": "Javonte Williams 31.3",
-    "winner_bench": 82.9,
-    "loser_bench": 55.3,
-    "winner_left_on_bench": 36.08,
-    "loser_left_on_bench": 29.1
-   },
-   {
-    "winner": "Sarge71",
-    "winner_pts": 134.66,
-    "loser": "Painty69",
-    "loser_pts": 133.32,
-    "margin": 1.34,
-    "winner_mvp": "Tetairoa McMillan 45.2",
-    "loser_mvp": "Joe Burrow 25.72",
-    "winner_bench": 82.52,
-    "loser_bench": 108.58,
-    "winner_left_on_bench": 53.52,
-    "loser_left_on_bench": 46.0
+    "loser_pts": 126.24,
+    "margin": 26.86,
+    "winner_mvp": "Jahmyr Gibbs 37.7",
+    "loser_mvp": "Jared Goff 28.94",
+    "winner_bench": 44.76,
+    "loser_bench": 54.46,
+    "winner_left_on_bench": 21.14,
+    "loser_left_on_bench": 37.06
    },
    {
     "winner": "fumbduckdumbfuck",
-    "winner_pts": 133.88,
-    "loser": "C33DeezNutzz",
-    "loser_pts": 121.78,
-    "margin": 12.1,
-    "winner_mvp": "Jonathan Taylor 22.7",
-    "loser_mvp": "Zay Flowers 25.8",
-    "winner_bench": 64.7,
-    "loser_bench": 38.7,
-    "winner_left_on_bench": 30.4,
-    "loser_left_on_bench": 14.3
+    "winner_pts": 121.98,
+    "loser": "CMac91",
+    "loser_pts": 74.52,
+    "margin": 47.46,
+    "winner_mvp": "Brock Bowers 23.0",
+    "loser_mvp": "James Cook 22.8",
+    "winner_bench": 40.2,
+    "loser_bench": 51.68,
+    "winner_left_on_bench": 17.92,
+    "loser_left_on_bench": 47.98
    }
   ],
   "perfect_lineups": [
-   "Darkspaces"
+   "Darkspaces",
+   "StealingGas"
   ],
   "top_score": {
-   "manager": "CMac91",
-   "points": 183.42
+   "manager": "StealingGas",
+   "points": 202.54
   },
   "low_score": {
-   "manager": "YesChef23",
-   "points": 100.46
+   "manager": "CMac91",
+   "points": 74.52
   },
   "biggest_margin": {
-   "winner": "CMac91",
-   "winner_pts": 183.42,
-   "loser": "Darkspaces",
-   "loser_pts": 118.36,
-   "margin": 65.06,
-   "winner_mvp": "CeeDee Lamb 41.3",
-   "loser_mvp": "Nico Collins 30.8",
-   "winner_bench": 42.98,
-   "loser_bench": 0.0,
-   "winner_left_on_bench": 5.52,
-   "loser_left_on_bench": 0.0
+   "winner": "StealingGas",
+   "winner_pts": 202.54,
+   "loser": "YesChef23",
+   "loser_pts": 88.14,
+   "margin": 114.4,
+   "winner_mvp": "Puka Nacua 37.7",
+   "loser_mvp": "George Pickens 28.0",
+   "winner_bench": 34.58,
+   "loser_bench": 30.4,
+   "winner_left_on_bench": 0.0,
+   "loser_left_on_bench": 25.46
   },
   "closest": {
-   "winner": "Sarge71",
-   "winner_pts": 134.66,
-   "loser": "Painty69",
-   "loser_pts": 133.32,
-   "margin": 1.34,
-   "winner_mvp": "Tetairoa McMillan 45.2",
-   "loser_mvp": "Joe Burrow 25.72",
-   "winner_bench": 82.52,
-   "loser_bench": 108.58,
-   "winner_left_on_bench": 53.52,
-   "loser_left_on_bench": 46.0
+   "winner": "Johnny4Skins",
+   "winner_pts": 163.56,
+   "loser": "Darkspaces",
+   "loser_pts": 140.36,
+   "margin": 23.2,
+   "winner_mvp": "Jaylen Warren 36.8",
+   "loser_mvp": "Drake Maye 39.46",
+   "winner_bench": 43.6,
+   "loser_bench": 4.82,
+   "winner_left_on_bench": 27.3,
+   "loser_left_on_bench": 0.0
   }
  },
  "standings_after_week": [
   {
    "roster_id": 4,
    "manager": "Zygon",
-   "record": "4-0",
+   "record": "4-1",
    "wins": 4,
-   "losses": 0,
+   "losses": 1,
    "ties": 0,
-   "pf": 662.46,
-   "pa": 445.02,
-   "maxpf": 749.74,
+   "pf": 786.82,
+   "pa": 599.26,
+   "maxpf": 895.9,
    "faab_remaining": 493,
    "sleeper_maxpf": null,
    "rank": 1,
    "prev_rank": 1,
    "move": 0,
    "draft_pick": 11,
-   "maxpf_gap_to_1_01": 240.82
-  },
-  {
-   "roster_id": 5,
-   "manager": "Hades9mm",
-   "record": "3-1",
-   "wins": 3,
-   "losses": 1,
-   "ties": 0,
-   "pf": 617.18,
-   "pa": 541.18,
-   "maxpf": 764.18,
-   "faab_remaining": 330,
-   "sleeper_maxpf": null,
-   "rank": 2,
-   "prev_rank": 2,
-   "move": 0,
-   "draft_pick": 12,
-   "maxpf_gap_to_1_01": 255.26
+   "maxpf_gap_to_1_01": 246.62
   },
   {
    "roster_id": 6,
    "manager": "Johnny4Skins",
-   "record": "3-1",
-   "wins": 3,
+   "record": "4-1",
+   "wins": 4,
    "losses": 1,
    "ties": 0,
-   "pf": 569.0,
-   "pa": 545.16,
-   "maxpf": 664.8,
+   "pf": 732.56,
+   "pa": 685.52,
+   "maxpf": 855.66,
    "faab_remaining": 500,
    "sleeper_maxpf": null,
-   "rank": 3,
-   "prev_rank": 4,
+   "rank": 2,
+   "prev_rank": 3,
    "move": 1,
    "draft_pick": 10,
-   "maxpf_gap_to_1_01": 155.88
+   "maxpf_gap_to_1_01": 206.38
+  },
+  {
+   "roster_id": 5,
+   "manager": "Hades9mm",
+   "record": "3-2",
+   "wins": 3,
+   "losses": 2,
+   "ties": 0,
+   "pf": 743.42,
+   "pa": 694.28,
+   "maxpf": 927.48,
+   "faab_remaining": 330,
+   "sleeper_maxpf": null,
+   "rank": 3,
+   "prev_rank": 2,
+   "move": -1,
+   "draft_pick": 12,
+   "maxpf_gap_to_1_01": 278.2
   },
   {
    "roster_id": 8,
    "manager": "C33DeezNutzz",
-   "record": "2-2",
-   "wins": 2,
+   "record": "3-2",
+   "wins": 3,
    "losses": 2,
    "ties": 0,
-   "pf": 582.4,
-   "pa": 567.42,
-   "maxpf": 630.4,
+   "pf": 736.64,
+   "pa": 691.78,
+   "maxpf": 802.64,
    "faab_remaining": 500,
    "sleeper_maxpf": null,
    "rank": 4,
-   "prev_rank": 3,
-   "move": -1,
-   "draft_pick": 6,
-   "maxpf_gap_to_1_01": 121.48
-  },
-  {
-   "roster_id": 10,
-   "manager": "CMac91",
-   "record": "2-2",
-   "wins": 2,
-   "losses": 2,
-   "ties": 0,
-   "pf": 564.98,
-   "pa": 509.44,
-   "maxpf": 663.08,
-   "faab_remaining": 500,
-   "sleeper_maxpf": null,
-   "rank": 5,
-   "prev_rank": 8,
-   "move": 3,
-   "draft_pick": 9,
-   "maxpf_gap_to_1_01": 154.16
+   "prev_rank": 4,
+   "move": 0,
+   "draft_pick": 8,
+   "maxpf_gap_to_1_01": 153.36
   },
   {
    "roster_id": 12,
    "manager": "fumbduckdumbfuck",
-   "record": "2-2",
-   "wins": 2,
+   "record": "3-2",
+   "wins": 3,
    "losses": 2,
    "ties": 0,
-   "pf": 530.88,
-   "pa": 499.24,
-   "maxpf": 655.58,
+   "pf": 652.86,
+   "pa": 573.76,
+   "maxpf": 795.48,
    "faab_remaining": 500,
    "sleeper_maxpf": null,
-   "rank": 6,
-   "prev_rank": 7,
+   "rank": 5,
+   "prev_rank": 6,
    "move": 1,
-   "draft_pick": 8,
-   "maxpf_gap_to_1_01": 146.66
+   "draft_pick": 7,
+   "maxpf_gap_to_1_01": 146.2
+  },
+  {
+   "roster_id": 2,
+   "manager": "Snipe58",
+   "record": "3-2",
+   "wins": 3,
+   "losses": 2,
+   "ties": 0,
+   "pf": 566.44,
+   "pa": 549.44,
+   "maxpf": 656.34,
+   "faab_remaining": 400,
+   "sleeper_maxpf": null,
+   "rank": 6,
+   "prev_rank": 9,
+   "move": 3,
+   "draft_pick": 2,
+   "maxpf_gap_to_1_01": 7.06
+  },
+  {
+   "roster_id": 3,
+   "manager": "StealingGas",
+   "record": "2-3",
+   "wins": 2,
+   "losses": 3,
+   "ties": 0,
+   "pf": 648.96,
+   "pa": 566.32,
+   "maxpf": 735.24,
+   "faab_remaining": 98,
+   "sleeper_maxpf": null,
+   "rank": 7,
+   "prev_rank": 11,
+   "move": 4,
+   "draft_pick": 4,
+   "maxpf_gap_to_1_01": 85.96
+  },
+  {
+   "roster_id": 10,
+   "manager": "CMac91",
+   "record": "2-3",
+   "wins": 2,
+   "losses": 3,
+   "ties": 0,
+   "pf": 639.5,
+   "pa": 631.42,
+   "maxpf": 785.58,
+   "faab_remaining": 500,
+   "sleeper_maxpf": null,
+   "rank": 8,
+   "prev_rank": 5,
+   "move": -3,
+   "draft_pick": 6,
+   "maxpf_gap_to_1_01": 136.3
   },
   {
    "roster_id": 1,
    "manager": "Darkspaces",
-   "record": "2-2",
+   "record": "2-3",
    "wins": 2,
-   "losses": 2,
+   "losses": 3,
    "ties": 0,
-   "pf": 457.44,
-   "pa": 558.16,
-   "maxpf": 508.92,
+   "pf": 597.8,
+   "pa": 721.72,
+   "maxpf": 649.28,
    "faab_remaining": 104,
    "sleeper_maxpf": null,
-   "rank": 7,
-   "prev_rank": 6,
-   "move": -1,
+   "rank": 9,
+   "prev_rank": 7,
+   "move": -2,
    "draft_pick": 1,
    "maxpf_gap_to_1_01": 0.0
   },
   {
    "roster_id": 11,
    "manager": "YesChef23",
-   "record": "2-2",
+   "record": "2-3",
    "wins": 2,
-   "losses": 2,
+   "losses": 3,
    "ties": 0,
-   "pf": 456.18,
-   "pa": 542.16,
-   "maxpf": 584.88,
+   "pf": 544.32,
+   "pa": 744.7,
+   "maxpf": 698.48,
    "faab_remaining": 484,
    "sleeper_maxpf": null,
-   "rank": 8,
-   "prev_rank": 5,
-   "move": -3,
-   "draft_pick": 4,
-   "maxpf_gap_to_1_01": 75.96
-  },
-  {
-   "roster_id": 2,
-   "manager": "Snipe58",
-   "record": "2-2",
-   "wins": 2,
-   "losses": 2,
-   "ties": 0,
-   "pf": 451.56,
-   "pa": 474.64,
-   "maxpf": 525.84,
-   "faab_remaining": 400,
-   "sleeper_maxpf": null,
-   "rank": 9,
-   "prev_rank": 9,
-   "move": 0,
-   "draft_pick": 2,
-   "maxpf_gap_to_1_01": 16.92
-  },
-  {
-   "roster_id": 7,
-   "manager": "Sarge71",
-   "record": "1-3",
-   "wins": 1,
-   "losses": 3,
-   "ties": 0,
-   "pf": 508.14,
-   "pa": 635.08,
-   "maxpf": 629.12,
-   "faab_remaining": 500,
-   "sleeper_maxpf": null,
    "rank": 10,
-   "prev_rank": 11,
-   "move": 1,
-   "draft_pick": 5,
-   "maxpf_gap_to_1_01": 120.2
-  },
-  {
-   "roster_id": 3,
-   "manager": "StealingGas",
-   "record": "1-3",
-   "wins": 1,
-   "losses": 3,
-   "ties": 0,
-   "pf": 446.42,
-   "pa": 478.18,
-   "maxpf": 532.7,
-   "faab_remaining": 98,
-   "sleeper_maxpf": null,
-   "rank": 11,
-   "prev_rank": 10,
-   "move": -1,
+   "prev_rank": 8,
+   "move": -2,
    "draft_pick": 3,
-   "maxpf_gap_to_1_01": 23.78
+   "maxpf_gap_to_1_01": 49.2
   },
   {
    "roster_id": 9,
    "manager": "Painty69",
-   "record": "0-4",
-   "wins": 0,
+   "record": "1-4",
+   "wins": 1,
    "losses": 4,
    "ties": 0,
-   "pf": 497.14,
-   "pa": 548.1,
-   "maxpf": 640.22,
+   "pf": 650.24,
+   "pa": 674.34,
+   "maxpf": 814.46,
+   "faab_remaining": 500,
+   "sleeper_maxpf": null,
+   "rank": 11,
+   "prev_rank": 12,
+   "move": 1,
+   "draft_pick": 9,
+   "maxpf_gap_to_1_01": 165.18
+  },
+  {
+   "roster_id": 7,
+   "manager": "Sarge71",
+   "record": "1-4",
+   "wins": 1,
+   "losses": 4,
+   "ties": 0,
+   "pf": 582.94,
+   "pa": 749.96,
+   "maxpf": 749.42,
    "faab_remaining": 500,
    "sleeper_maxpf": null,
    "rank": 12,
-   "prev_rank": 12,
-   "move": 0,
-   "draft_pick": 7,
-   "maxpf_gap_to_1_01": 131.3
+   "prev_rank": 10,
+   "move": -2,
+   "draft_pick": 5,
+   "maxpf_gap_to_1_01": 100.14
   }
  ],
  "bankroll": {
   "Zygon": {
    "faab": 493,
-   "change_this_week": -5
-  },
-  "Hades9mm": {
-   "faab": 330,
    "change_this_week": 0
   },
   "Johnny4Skins": {
    "faab": 500,
    "change_this_week": 0
   },
+  "Hades9mm": {
+   "faab": 330,
+   "change_this_week": 0
+  },
   "C33DeezNutzz": {
    "faab": 500,
    "change_this_week": 0
   },
-  "CMac91": {
+  "fumbduckdumbfuck": {
    "faab": 500,
    "change_this_week": 0
   },
-  "fumbduckdumbfuck": {
+  "Snipe58": {
+   "faab": 400,
+   "change_this_week": 0
+  },
+  "StealingGas": {
+   "faab": 98,
+   "change_this_week": 0
+  },
+  "CMac91": {
    "faab": 500,
    "change_this_week": 0
   },
@@ -472,21 +476,13 @@
   },
   "YesChef23": {
    "faab": 484,
-   "change_this_week": -14
-  },
-  "Snipe58": {
-   "faab": 400,
    "change_this_week": 0
   },
-  "Sarge71": {
+  "Painty69": {
    "faab": 500,
    "change_this_week": 0
   },
-  "StealingGas": {
-   "faab": 98,
-   "change_this_week": -1
-  },
-  "Painty69": {
+  "Sarge71": {
    "faab": 500,
    "change_this_week": 0
   }
@@ -494,196 +490,42 @@
  "next_week_matchups": [
   {
    "a": "Darkspaces",
-   "a_record": "2-2",
-   "b": "Johnny4Skins",
-   "b_record": "3-1"
+   "a_record": "2-3",
+   "b": "YesChef23",
+   "b_record": "2-3"
   },
   {
    "a": "Snipe58",
-   "a_record": "2-2",
-   "b": "Sarge71",
-   "b_record": "1-3"
+   "a_record": "3-2",
+   "b": "Hades9mm",
+   "b_record": "3-2"
   },
   {
    "a": "StealingGas",
-   "a_record": "1-3",
-   "b": "YesChef23",
-   "b_record": "2-2"
+   "a_record": "2-3",
+   "b": "Sarge71",
+   "b_record": "1-4"
   },
   {
    "a": "Zygon",
-   "a_record": "4-0",
-   "b": "C33DeezNutzz",
-   "b_record": "2-2"
-  },
-  {
-   "a": "Hades9mm",
-   "a_record": "3-1",
-   "b": "Painty69",
-   "b_record": "0-4"
-  },
-  {
-   "a": "CMac91",
-   "a_record": "2-2",
+   "a_record": "4-1",
    "b": "fumbduckdumbfuck",
-   "b_record": "2-2"
+   "b_record": "3-2"
+  },
+  {
+   "a": "Johnny4Skins",
+   "a_record": "4-1",
+   "b": "CMac91",
+   "b_record": "2-3"
+  },
+  {
+   "a": "C33DeezNutzz",
+   "a_record": "3-2",
+   "b": "Painty69",
+   "b_record": "1-4"
   }
  ],
  "transactions_this_week_and_later": [
-  {
-   "week": 4,
-   "type": "waiver",
-   "created": 1791304852233,
-   "id": "1413238616724959232",
-   "manager": "Zygon",
-   "added": {
-    "name": "Jacoby Brissett",
-    "pos": "QB",
-    "team": "ARI"
-   },
-   "dropped": [
-    "Tory Horton"
-   ],
-   "bid": 5
-  },
-  {
-   "week": 4,
-   "type": "waiver",
-   "created": 1791302676166,
-   "id": "1413229489642545152",
-   "manager": "YesChef23",
-   "added": {
-    "name": "Joe Mixon",
-    "pos": "RB",
-    "team": null
-   },
-   "dropped": [],
-   "bid": 1
-  },
-  {
-   "week": 4,
-   "type": "waiver",
-   "created": 1791157964051,
-   "id": "1412622523035602944",
-   "manager": "YesChef23",
-   "added": {
-    "name": "Roman Wilson",
-    "pos": "WR",
-    "team": "PIT"
-   },
-   "dropped": [],
-   "bid": 1
-  },
-  {
-   "week": 4,
-   "type": "waiver",
-   "created": 1791157949621,
-   "id": "1412622462511779840",
-   "manager": "YesChef23",
-   "added": {
-    "name": "Keon Coleman",
-    "pos": "WR",
-    "team": "BUF"
-   },
-   "dropped": [],
-   "bid": 12
-  },
-  {
-   "week": 4,
-   "type": "free_agent",
-   "created": 1791120925974,
-   "id": "1412467174085279744",
-   "manager": "fumbduckdumbfuck",
-   "added": {
-    "name": "Kyler Murray",
-    "pos": "QB",
-    "team": "MIN"
-   },
-   "dropped": [
-    "Kayshon Boutte"
-   ],
-   "bid": 0
-  },
-  {
-   "week": 4,
-   "type": "free_agent",
-   "created": 1790870140526,
-   "id": "1411415303677661184",
-   "manager": "StealingGas",
-   "added": {
-    "name": "Kendre Miller",
-    "pos": "RB",
-    "team": "NO"
-   },
-   "dropped": [
-    "Jaylin Noel"
-   ],
-   "bid": 0
-  },
-  {
-   "week": 4,
-   "type": "waiver",
-   "created": 1790868084443,
-   "id": "1411406679840452608",
-   "manager": "StealingGas",
-   "added": {
-    "name": "Eli Raridon",
-    "pos": "TE",
-    "team": "NE"
-   },
-   "dropped": [
-    "Kyler Murray"
-   ],
-   "bid": 1
-  },
-  {
-   "week": 4,
-   "type": "free_agent",
-   "created": 1790867842485,
-   "id": "1411405664995098624",
-   "manager": "StealingGas",
-   "added": {
-    "name": "Dylan Sampson",
-    "pos": "RB",
-    "team": "CLE"
-   },
-   "dropped": [
-    "Los Angeles Chargers"
-   ],
-   "bid": 0
-  },
-  {
-   "week": 4,
-   "type": "free_agent",
-   "created": 1790800894365,
-   "id": "1411124864227569664",
-   "manager": "Zygon",
-   "added": {
-    "name": "Chicago Bears",
-    "pos": "DEF",
-    "team": "CHI"
-   },
-   "dropped": [
-    "Detroit Lions"
-   ],
-   "bid": 0
-  },
-  {
-   "week": 4,
-   "type": "free_agent",
-   "created": 1790782315574,
-   "id": "1411046939130130432",
-   "manager": "Darkspaces",
-   "added": {
-    "name": "Caleb Douglas",
-    "pos": "WR",
-    "team": "MIA"
-   },
-   "dropped": [
-    "Keon Coleman"
-   ],
-   "bid": 0
-  },
   {
    "week": 5,
    "type": "free_agent",
@@ -749,10 +591,11 @@
  ],
  "market_portfolios": {
   "source": "FantasyCalc",
-  "as_of": "2026-10-12",
-  "league_avg": 64877,
+  "as_of": "2026-10-13",
+  "league_avg": 64683,
   "how_to_read": "Values are FantasyCalc dynasty trade values (superflex, 12 teams, full PPR). move30 = 30-day market move of the players held now (trade-neutral). since_change = change since the snapshot dated `since` (includes trades). sidelined = value on IR/Out/PUP. Status flags: crash, correction, stable, bull.",
   "crash_watch": [
+   "Darkspaces",
    "Sarge71",
    "Snipe58"
   ],
@@ -760,290 +603,291 @@
    {
     "manager": "StealingGas",
     "rank": 1,
-    "total": 77173,
+    "total": 76735,
     "status": "stable",
-    "move30": -1058,
-    "move30_pct": -1.4,
+    "move30": -1753,
+    "move30_pct": -2.2,
     "since": null,
     "since_change": null,
-    "sidelined": 14079,
-    "sidelined_pct": 18.2,
-    "picks": 18485,
+    "sidelined": 13762,
+    "sidelined_pct": 17.9,
+    "picks": 18359,
     "top_assets": [
-     "Puka Nacua (WR) 7993",
-     "Drake London (WR) 5861",
-     "Malik Nabers (WR) 5502"
+     "Puka Nacua (WR) 7948",
+     "Drake London (WR) 5659",
+     "Malik Nabers (WR) 5587"
     ],
     "sidelined_players": [
-     "Jaxson Dart (IR) 4256",
-     "Jordyn Tyson (IR) 3000",
-     "De'Zhaun Stribling (IR) 1792",
-     "Eli Stowers (IR) 1535",
-     "Jayden Higgins (IR) 1526"
+     "Jaxson Dart (IR) 4154",
+     "Jordyn Tyson (IR) 2979",
+     "De'Zhaun Stribling (IR) 1702",
+     "Jayden Higgins (IR) 1526",
+     "Eli Stowers (IR) 1426"
     ]
    },
    {
     "manager": "Darkspaces",
     "rank": 2,
-    "total": 75884,
-    "status": "correction",
-    "move30": -3888,
-    "move30_pct": -4.9,
+    "total": 75407,
+    "status": "crash",
+    "move30": -5287,
+    "move30_pct": -6.6,
     "since": null,
     "since_change": null,
-    "sidelined": 14352,
-    "sidelined_pct": 18.9,
-    "picks": 21905,
+    "sidelined": 16224,
+    "sidelined_pct": 21.5,
+    "picks": 21705,
     "top_assets": [
-     "Drake Maye (QB) 6329",
-     "Nico Collins (WR) 4823",
-     "De'Von Achane (RB) 4233"
+     "Drake Maye (QB) 6435",
+     "Nico Collins (WR) 4850",
+     "De'Von Achane (RB) 4021"
     ],
     "sidelined_players": [
-     "De'Von Achane (IR) 4233",
-     "Zach Charbonnet (PUP) 1857",
-     "Omar Cooper (IR) 1627",
-     "Terrance Ferguson (IR) 1589",
-     "Ricky Pearsall (IR) 1355"
+     "De'Von Achane (IR) 4021",
+     "Ty Simpson (Out) 2327",
+     "Zach Charbonnet (PUP) 1835",
+     "Omar Cooper (IR) 1592",
+     "Terrance Ferguson (IR) 1561"
     ]
    },
    {
     "manager": "Zygon",
     "rank": 3,
-    "total": 74855,
+    "total": 74736,
     "status": "bull",
-    "move30": 5287,
-    "move30_pct": 7.6,
+    "move30": 4638,
+    "move30_pct": 6.6,
     "since": null,
     "since_change": null,
-    "sidelined": 9278,
-    "sidelined_pct": 12.4,
-    "picks": 13870,
+    "sidelined": 9386,
+    "sidelined_pct": 12.6,
+    "picks": 13738,
     "top_assets": [
-     "Jaxon Smith-Njigba (WR) 10062",
-     "Kenneth Walker (RB) 6986",
-     "Trey McBride (TE) 6954"
+     "Jaxon Smith-Njigba (WR) 9987",
+     "Kenneth Walker (RB) 7105",
+     "Trey McBride (TE) 7033"
     ],
     "sidelined_players": [
-     "Baker Mayfield (Out) 2550",
-     "Jalen Coker (Out) 2383",
-     "Jordan Addison (Out) 1705",
-     "Ja'Kobi Lane (IR) 1475",
-     "Kaytron Allen (Out) 659"
+     "Baker Mayfield (Out) 2534",
+     "Jalen Coker (Out) 2533",
+     "Jordan Addison (Out) 1729",
+     "Ja'Kobi Lane (IR) 1443",
+     "Chris Brazzell (IR) 622"
     ]
    },
    {
     "manager": "Johnny4Skins",
     "rank": 4,
-    "total": 66089,
-    "status": "stable",
-    "move30": -1150,
-    "move30_pct": -1.7,
+    "total": 65705,
+    "status": "correction",
+    "move30": -1677,
+    "move30_pct": -2.5,
     "since": null,
     "since_change": null,
-    "sidelined": 12152,
-    "sidelined_pct": 18.4,
-    "picks": 13870,
+    "sidelined": 11732,
+    "sidelined_pct": 17.9,
+    "picks": 13738,
     "top_assets": [
-     "Ja'Marr Chase (WR) 8723",
-     "Lamar Jackson (QB) 6804",
-     "Kyren Williams (RB) 4516"
+     "Ja'Marr Chase (WR) 8773",
+     "Lamar Jackson (QB) 6617",
+     "Kyren Williams (RB) 4488"
     ],
     "sidelined_players": [
-     "Lamar Jackson (Out) 6804",
-     "A.J. Brown (IR) 3320",
-     "Adonai Mitchell (Out) 1341",
-     "Jalen McMillan (IR) 687"
+     "Lamar Jackson (Out) 6617",
+     "A.J. Brown (IR) 3191",
+     "Adonai Mitchell (Out) 1353",
+     "Jalen McMillan (IR) 571"
     ]
    },
    {
     "manager": "Painty69",
     "rank": 5,
-    "total": 65563,
+    "total": 64542,
     "status": "correction",
-    "move30": -1814,
-    "move30_pct": -2.7,
+    "move30": -2061,
+    "move30_pct": -3.1,
     "since": null,
     "since_change": null,
-    "sidelined": 4260,
-    "sidelined_pct": 6.5,
-    "picks": 14976,
+    "sidelined": 4354,
+    "sidelined_pct": 6.7,
+    "picks": 13738,
     "top_assets": [
-     "Jahmyr Gibbs (RB) 10035",
-     "Joe Burrow (QB) 6479",
-     "Christian McCaffrey (RB) 4269"
+     "Jahmyr Gibbs (RB) 10237",
+     "Joe Burrow (QB) 6372",
+     "Christian McCaffrey (RB) 4353"
     ],
     "sidelined_players": [
-     "Saquon Barkley (Out) 2906",
-     "T.J. Hockenson (Out) 1354"
+     "Saquon Barkley (Out) 2929",
+     "T.J. Hockenson (Out) 1425"
     ]
    },
    {
     "manager": "YesChef23",
     "rank": 6,
-    "total": 63789,
+    "total": 63369,
     "status": "stable",
-    "move30": 2543,
-    "move30_pct": 4.2,
+    "move30": 1754,
+    "move30_pct": 2.8,
     "since": null,
     "since_change": null,
-    "sidelined": 14933,
-    "sidelined_pct": 23.4,
-    "picks": 17199,
+    "sidelined": 14994,
+    "sidelined_pct": 23.7,
+    "picks": 17070,
     "top_assets": [
-     "Caleb Williams (QB) 7008",
-     "Jeremiyah Love (RB) 6016",
-     "Tyler Shough (QB) 4358"
+     "Caleb Williams (QB) 6948",
+     "Jeremiyah Love (RB) 5980",
+     "Tyler Shough (QB) 4199"
     ],
     "sidelined_players": [
-     "Caleb Williams (Out) 7008",
-     "Kenyon Sadiq (Out) 2829",
-     "Jadarian Price (IR) 2553",
-     "Roman Wilson (Out) 1278",
-     "Carson Beck (Out) 1265"
+     "Caleb Williams (Out) 6948",
+     "Kenyon Sadiq (Out) 2813",
+     "Jadarian Price (IR) 2586",
+     "Carson Beck (Out) 1383",
+     "Roman Wilson (Out) 1264"
     ]
    },
    {
     "manager": "C33DeezNutzz",
     "rank": 7,
-    "total": 63242,
+    "total": 62916,
     "status": "stable",
-    "move30": -518,
-    "move30_pct": -0.8,
+    "move30": -1533,
+    "move30_pct": -2.4,
     "since": null,
     "since_change": null,
-    "sidelined": 2639,
-    "sidelined_pct": 4.2,
-    "picks": 14976,
+    "sidelined": 2596,
+    "sidelined_pct": 4.1,
+    "picks": 14849,
     "top_assets": [
-     "Josh Allen (QB) 11127",
-     "Chris Olave (WR) 5333",
-     "Zay Flowers (WR) 4897"
+     "Josh Allen (QB) 10856",
+     "Chris Olave (WR) 5241",
+     "Zay Flowers (WR) 4872"
     ],
     "sidelined_players": [
-     "Jonathon Brooks (IR) 1339",
-     "Jayden Reed (IR) 1300"
+     "Jonathon Brooks (IR) 1377",
+     "Jayden Reed (IR) 1219"
     ]
    },
    {
     "manager": "fumbduckdumbfuck",
     "rank": 8,
-    "total": 62611,
+    "total": 62797,
     "status": "correction",
-    "move30": -2183,
-    "move30_pct": -3.4,
+    "move30": -2595,
+    "move30_pct": -4.0,
     "since": null,
     "since_change": null,
-    "sidelined": 5098,
-    "sidelined_pct": 8.1,
-    "picks": 14976,
+    "sidelined": 5206,
+    "sidelined_pct": 8.3,
+    "picks": 14849,
     "top_assets": [
-     "Brock Bowers (TE) 8081",
-     "Ashton Jeanty (RB) 6341",
-     "Jonathan Taylor (RB) 5755"
+     "Brock Bowers (TE) 7985",
+     "Ashton Jeanty (RB) 6178",
+     "Jonathan Taylor (RB) 5945"
     ],
     "sidelined_players": [
-     "DeVonta Smith (Out) 3142",
-     "Kyle Monangai (Out) 1956"
+     "DeVonta Smith (Out) 3227",
+     "Kyle Monangai (Out) 1979"
     ]
    },
    {
     "manager": "CMac91",
     "rank": 9,
-    "total": 61561,
+    "total": 62574,
     "status": "stable",
-    "move30": 366,
-    "move30_pct": 0.6,
+    "move30": -705,
+    "move30_pct": -1.1,
     "since": null,
     "since_change": null,
-    "sidelined": 11278,
-    "sidelined_pct": 18.3,
-    "picks": 13870,
+    "sidelined": 11321,
+    "sidelined_pct": 18.1,
+    "picks": 14849,
     "top_assets": [
-     "CeeDee Lamb (WR) 7210",
-     "James Cook (RB) 5318",
-     "Bryce Young (QB) 4326"
+     "CeeDee Lamb (WR) 7217",
+     "James Cook (RB) 5285",
+     "Bryce Young (QB) 4307"
     ],
     "sidelined_players": [
-     "Breece Hall (Out) 3686",
-     "Marvin Harrison Jr (Out) 2582",
-     "Alec Pierce (IR) 1785",
-     "Jordan Mason (IR) 1397",
-     "Pat Bryant (IR) 1361"
+     "Breece Hall (Out) 3718",
+     "Marvin Harrison Jr (Out) 2571",
+     "Alec Pierce (IR) 1840",
+     "Jordan Mason (IR) 1424",
+     "Pat Bryant (IR) 1335"
     ]
    },
    {
     "manager": "Hades9mm",
     "rank": 10,
-    "total": 58393,
+    "total": 58414,
     "status": "stable",
-    "move30": -568,
-    "move30_pct": -1.0,
+    "move30": -1183,
+    "move30_pct": -2.0,
     "since": null,
     "since_change": null,
-    "sidelined": 5482,
-    "sidelined_pct": 9.4,
-    "picks": 12584,
+    "sidelined": 7289,
+    "sidelined_pct": 12.5,
+    "picks": 12449,
     "top_assets": [
-     "Amon-Ra St. Brown (WR) 7433",
-     "Jayden Daniels (QB) 4970",
-     "Javonte Williams (RB) 3682"
+     "Amon-Ra St. Brown (WR) 7354",
+     "Jayden Daniels (QB) 5134",
+     "Jared Goff (QB) 3824"
     ],
     "sidelined_players": [
-     "TreVeyon Henderson (Out) 2780",
-     "Stefon Diggs (Out) 1320",
-     "Quentin Johnston (Out) 1196",
-     "Taylen Green (Out) 186"
+     "TreVeyon Henderson (Out) 2693",
+     "DJ Moore (Out) 1977",
+     "Stefon Diggs (Out) 1305",
+     "Quentin Johnston (Out) 1194",
+     "Taylen Green (Out) 120"
     ]
    },
    {
     "manager": "Sarge71",
     "rank": 11,
-    "total": 55089,
+    "total": 54819,
     "status": "crash",
-    "move30": -3330,
-    "move30_pct": -5.7,
+    "move30": -3848,
+    "move30_pct": -6.6,
     "since": null,
     "since_change": null,
-    "sidelined": 5820,
-    "sidelined_pct": 10.6,
-    "picks": 14976,
+    "sidelined": 5685,
+    "sidelined_pct": 10.4,
+    "picks": 14849,
     "top_assets": [
-     "Bijan Robinson (RB) 10034",
-     "Tetairoa McMillan (WR) 5172",
-     "Sam Darnold (QB) 2923"
+     "Bijan Robinson (RB) 10231",
+     "Tetairoa McMillan (WR) 4984",
+     "Sam Darnold (QB) 2873"
     ],
     "sidelined_players": [
-     "Travis Etienne (IR) 2119",
-     "David Montgomery (Out) 1652",
-     "Michael Pittman (IR) 1114",
-     "Tank Bigsby (IR) 752",
-     "Jake Tonges (IR) 183"
+     "Travis Etienne (IR) 2104",
+     "David Montgomery (Out) 1643",
+     "Michael Pittman (IR) 1045",
+     "Tank Bigsby (IR) 722",
+     "Jake Tonges (IR) 171"
     ]
    },
    {
     "manager": "Snipe58",
     "rank": 12,
-    "total": 54279,
+    "total": 54177,
     "status": "crash",
-    "move30": -5343,
-    "move30_pct": -9.0,
+    "move30": -5780,
+    "move30_pct": -9.6,
     "since": null,
     "since_change": null,
-    "sidelined": 7108,
+    "sidelined": 7096,
     "sidelined_pct": 13.1,
-    "picks": 12493,
+    "picks": 12435,
     "top_assets": [
-     "Justin Jefferson (WR) 6172",
-     "Brock Purdy (QB) 5910",
-     "Omarion Hampton (RB) 3539"
+     "Justin Jefferson (WR) 6192",
+     "Brock Purdy (QB) 6141",
+     "Omarion Hampton (RB) 3421"
     ],
     "sidelined_players": [
-     "KC Concepcion (Out) 2480",
-     "Jonah Coleman (IR) 1728",
-     "Deebo Samuel (Out) 1614",
-     "Drew Allar (Out) 730",
-     "Jalen Nailor (Out) 350"
+     "KC Concepcion (Out) 2475",
+     "Jonah Coleman (IR) 1754",
+     "Deebo Samuel (Out) 1517",
+     "Drew Allar (Out) 763",
+     "Jalen Nailor (Out) 376"
     ]
    }
   ]
@@ -1061,142 +905,140 @@
     "bs": [
      "Nico Collins"
     ],
-    "a_sends_value": 4853,
-    "b_sends_value": 4823,
-    "gap_pct": 1,
+    "a_sends_value": 4829,
+    "b_sends_value": 4850,
+    "gap_pct": 0,
     "why": [
      "Darkspaces: the deal works on value and timing rather than a lineup hole.",
-     "Zygon gains 3,135 in starting lineup value."
+     "Zygon gains 3,225 in starting lineup value."
     ]
    },
    {
-    "a": "Darkspaces",
-    "b": "Sarge71",
+    "a": "Johnny4Skins",
+    "b": "Darkspaces",
     "as": [
-     "Ty Simpson"
+     "2027 1st-round pick",
+     "2028 1st-round pick"
     ],
     "bs": [
-     "Aaron Rodgers",
-     "Tyjae Spears"
+     "Nico Collins"
     ],
-    "a_sends_value": 2358,
-    "b_sends_value": 2366,
+    "a_sends_value": 4829,
+    "b_sends_value": 4850,
     "gap_pct": 0,
     "why": [
-     "Sarge71 would start Ty Simpson, a 905 upgrade to their starting lineup.",
-     "Darkspaces gains 945 in starting lineup value."
+     "Darkspaces: the deal works on value and timing rather than a lineup hole.",
+     "Johnny4Skins gains 2,978 in starting lineup value."
     ]
    },
    {
     "a": "Zygon",
-    "b": "Sarge71",
+    "b": "CMac91",
     "as": [
      "2028 1st-round pick",
-     "Blake Corum"
+     "Emmett Johnson"
     ],
     "bs": [
-     "Sam Darnold",
-     "Kaleb Johnson"
+     "Jordan Love"
     ],
-    "a_sends_value": 3876,
-    "b_sends_value": 3875,
+    "a_sends_value": 3916,
+    "b_sends_value": 3874,
+    "gap_pct": 1,
+    "why": [
+     "CMac91 would start Emmett Johnson, a 432 upgrade to their starting lineup.",
+     "Zygon gains 2,006 in starting lineup value."
+    ]
+   },
+   {
+    "a": "Johnny4Skins",
+    "b": "CMac91",
+    "as": [
+     "2027 1st-round pick",
+     "2028 1st-round pick"
+    ],
+    "bs": [
+     "Jordan Love",
+     "Chig Okonkwo"
+    ],
+    "a_sends_value": 4829,
+    "b_sends_value": 4824,
     "gap_pct": 0,
     "why": [
-     "Sarge71 would start Blake Corum, a -877 upgrade to their starting lineup.",
-     "Zygon gains 1,022 in starting lineup value."
+     "CMac91: the deal works on value and timing rather than a lineup hole.",
+     "Johnny4Skins gains 2,002 in starting lineup value."
+    ]
+   },
+   {
+    "a": "Hades9mm",
+    "b": "Sarge71",
+    "as": [
+     "Cam Ward"
+    ],
+    "bs": [
+     "Aaron Rodgers",
+     "Chris Godwin"
+    ],
+    "a_sends_value": 2587,
+    "b_sends_value": 2585,
+    "gap_pct": 0,
+    "why": [
+     "Sarge71 would start Cam Ward, a 1,088 upgrade to their starting lineup.",
+     "Hades9mm gives up 0 in starting lineup value."
     ]
    },
    {
     "a": "C33DeezNutzz",
     "b": "Snipe58",
     "as": [
-     "2028 1st-round pick"
-    ],
-    "bs": [
-     "Juwan Johnson",
-     "Seth McGowan"
-    ],
-    "a_sends_value": 2299,
-    "b_sends_value": 2299,
-    "gap_pct": 0,
-    "why": [
-     "Snipe58: the deal works on value and timing rather than a lineup hole.",
-     "C33DeezNutzz gains 316 in starting lineup value."
-    ]
-   },
-   {
-    "a": "StealingGas",
-    "b": "Snipe58",
-    "as": [
      "2027 1st-round pick",
-     "2027 1st-round pick (from Hades9mm)"
+     "2028 1st-round pick",
+     "Josh Downs"
     ],
     "bs": [
-     "Brock Purdy",
-     "Juwan Johnson"
+     "Justin Jefferson",
+     "Kaelon Black"
     ],
-    "a_sends_value": 7606,
-    "b_sends_value": 7624,
-    "gap_pct": 0,
+    "a_sends_value": 7380,
+    "b_sends_value": 7420,
+    "gap_pct": 1,
     "why": [
-     "Snipe58: the deal works on value and timing rather than a lineup hole.",
-     "StealingGas gains 3,558 in starting lineup value."
+     "Snipe58 would start Josh Downs, a -4,426 upgrade to their starting lineup.",
+     "C33DeezNutzz gains 3,335 in starting lineup value."
     ]
    },
    {
     "a": "Hades9mm",
-    "b": "YesChef23",
+    "b": "Snipe58",
     "as": [
-     "2028 1st-round pick"
+     "2029 1st-round pick"
     ],
     "bs": [
-     "Jacory Croskey-Merritt",
-     "Darren Waller"
+     "Malik Willis"
     ],
-    "a_sends_value": 2299,
-    "b_sends_value": 2293,
+    "a_sends_value": 1908,
+    "b_sends_value": 1908,
     "gap_pct": 0,
     "why": [
-     "YesChef23: the deal works on value and timing rather than a lineup hole.",
+     "Snipe58: the deal works on value and timing rather than a lineup hole.",
      "Hades9mm gives up 0 in starting lineup value."
     ]
    },
    {
-    "a": "CMac91",
-    "b": "YesChef23",
+    "a": "C33DeezNutzz",
+    "b": "Sarge71",
     "as": [
-     "2027 1st-round pick",
-     "2028 1st-round pick"
+     "2027 1st-round pick"
     ],
     "bs": [
-     "George Pickens",
-     "Darren Waller"
+     "Terry McLaurin",
+     "Brenton Strange"
     ],
-    "a_sends_value": 4853,
-    "b_sends_value": 4860,
+    "a_sends_value": 3320,
+    "b_sends_value": 3305,
     "gap_pct": 0,
     "why": [
-     "YesChef23: the deal works on value and timing rather than a lineup hole.",
-     "CMac91 gains 2,780 in starting lineup value."
-    ]
-   },
-   {
-    "a": "Johnny4Skins",
-    "b": "StealingGas",
-    "as": [
-     "2027 1st-round pick",
-     "2028 1st-round pick"
-    ],
-    "bs": [
-     "Michael Penix",
-     "2028 1st-round pick"
-    ],
-    "a_sends_value": 4853,
-    "b_sends_value": 4651,
-    "gap_pct": 4,
-    "why": [
-     "StealingGas: the deal works on value and timing rather than a lineup hole.",
-     "Johnny4Skins gains 417 in starting lineup value."
+     "Sarge71: the deal works on value and timing rather than a lineup hole.",
+     "C33DeezNutzz gains 205 in starting lineup value."
     ]
    }
   ]
