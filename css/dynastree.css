@@ -238,7 +238,7 @@ nav.sticky .wrap{gap:clamp(.6rem,3.2vw,1rem);font-size:1rem;justify-content:spac
 .legend[open]>summary::after{content:"Hide"}
 .legend>summary:hover{color:var(--cream)}
 .legend dl{margin:0;padding:.2rem .9rem .9rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:.7rem 1.6rem}
-.legend dl>div{display:grid;grid-template-columns:4.6rem 1fr;gap:.6rem;align-items:baseline}
+.legend dl>div{display:grid;grid-template-columns:5.8rem 1fr;gap:.6rem;align-items:baseline}
 .legend dt{font:700 .95rem Oswald,sans-serif;letter-spacing:.04em;color:var(--green);white-space:nowrap}
 .legend dd{margin:0;font-size:.9rem;line-height:1.4;color:var(--mute)}
 .legend dd b{color:var(--cream);font-weight:600}

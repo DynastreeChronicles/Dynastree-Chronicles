@@ -439,11 +439,11 @@ def market_board(prefix=""):
               + it("Manager", "Click a name for that manager\'s portfolio.")
               + it("Portfolio value", "The combined value of every player and future pick the manager owns. The bar compares managers with each other (shortest to longest), not against zero.")
               + it("Trend", "The portfolio's value at each recent update, as a tiny line (up to the last 14). It fills in as updates accumulate; a dash means fewer than two so far. Hover for the change.")
-              + it("30d move", "How much the market moved the value of the players and picks held right now over the last 30 days. Trades do not change it.")
+              + it("30-day move", "How much the market moved the value of the players and picks held right now over the last 30 days. Trades do not change it.")
               + it("On IR", "The share of the portfolio value sitting on players who are on IR or listed Out, PUP, Doubtful or Suspended.")
               + it("Status", f'<b>Market crash</b>: the 30-day move is {crash:+g}% or worse, or {side:g}% or more of the value is on IR or out. <b>Correction</b>: down {abs(corr):g}% or more. <b>Bull run</b>: up {bull:g}% or more. <b>Stable</b>: anything else.')
               + '</dl></details>')
-    return (f'<div class="tw2"><table class="mkt"><thead><tr><th>#</th><th>Manager</th><th>Portfolio value</th><th>Trend</th><th>30d move</th><th>On IR</th><th>Status</th></tr></thead>'
+    return (f'<div class="tw2"><table class="mkt"><thead><tr><th>#</th><th>Manager</th><th>Portfolio value</th><th>Trend</th><th>30-day move</th><th>On IR</th><th>Status</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>{legend}')
 
 def calc_data():

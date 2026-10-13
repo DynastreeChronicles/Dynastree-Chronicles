@@ -165,20 +165,21 @@ def legend(pick_value=False):
     items = [("W-L", "<b>Record</b> through the latest finished week."),
              ("MOV", f"<b>Movement</b> since last week. {up} 2 = climbed two spots, {dn} 2 = dropped two, &mdash; = no change."),
              ("PF", "<b>Points for.</b> Total points your team has scored this season."),
+             ("PA", "<b>Points against.</b> Total points your opponents have scored against your team this season."),
              ("Pick", f"<b>{draft_year()} rookie draft slot.</b> 1.01 is the first overall pick."),
              ("MAXPF", MAXPF_TEXT),
-             *([("Draft capital", "<b>Owned picks.</b> The combined FantasyCalc value of every future rookie pick the team owns.")] if pick_value else []),
+             *([("DRAFT CAP", "<b>Owned picks.</b> The combined FantasyCalc value of every future rookie pick the team owns.")] if pick_value else []),
              ("FAAB", "<b>Waiver budget</b> left, out of $500.")]
     out = "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in items)
     return f'<details class="legend"><summary>How to read this table</summary><dl>{out}</dl></details>'
 
 def wealth_legend(k, date, prevk, note):
     up, dn = '<span class="up">&#9650;</span>', '<span class="dn">&#9660;</span>'
-    items = [("Roster value", "<b>Players.</b> The combined FantasyCalc dynasty trade value of every player on the roster (superflex, 12 teams, full PPR)."),
-             ("Draft capital", "<b>Owned picks.</b> The combined FantasyCalc value of every future rookie pick the team owns."),
-             ("Total wealth", "<b>Roster value plus draft capital.</b> This is what the table is ranked by."),
+    items = [("ROSTER CAP", "<b>Players.</b> The combined FantasyCalc dynasty trade value of every player on the roster (superflex, 12 teams, full PPR)."),
+             ("DRAFT CAP", "<b>Owned picks.</b> The combined FantasyCalc value of every future rookie pick the team owns."),
+             ("Total wealth", "<b>Roster cap plus draft cap.</b> This is what the table is ranked by."),
              ("MOV", f"<b>Movement</b> in rank since {'Week ' + str(prevk) if prevk else 'last week'}. {up} 2 = climbed two spots, {dn} 2 = dropped two, &mdash; = no change."),
-             ("Change", f"<b>Points of total wealth</b> gained or lost since {'Week ' + str(prevk) if prevk else 'last week'}. Trades move it as well as the market.")]
+             ("CHANGE", f"<b>Points of total wealth</b> gained or lost since {'Week ' + str(prevk) if prevk else 'last week'}. Trades move it as well as the market.")]
     out = "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in items)
     return f'<details class="legend wide"><summary>How to read the Wealth Index</summary><p>{note}</p><dl>{out}</dl></details>'
 
@@ -206,7 +207,7 @@ def wealth_view(fin, root, team, h, latest, W=None):
         rows += (f'<tr><td class="n rkc">{i}</td>{team({"manager": m})}<td class="n">{c["roster"]:,}</td><td class="n">{c["picks"]:,}</td>'
                  f'<td class="n wl"><b>{c["total"]:,}</b></td><td class="n mv">{move}</td><td class="n">{delta}</td></tr>')
     note = f'<a href="https://www.fantasycalc.com">FantasyCalc</a> dynasty values after Week {k}.'
-    return (f'<div class="sc" id="v-wealth" hidden><table id="wealthtable"><thead>{h(["#", "Team", "Roster value", "Draft capital", "Total wealth", "MOV", "Change"])}</thead><tbody>{rows}</tbody></table>'
+    return (f'<div class="sc" id="v-wealth" hidden><table id="wealthtable"><thead>{h(["#", "Team", "ROSTER CAP", "DRAFT CAP", "Total wealth", "MOV", "CHANGE"])}</thead><tbody>{rows}</tbody></table>'
             f'{wealth_legend(k, weeks[k]["date"], prevk, note)}</div>')
 
 def standings(rows=None, fin=None, root="", locked=None):
@@ -245,7 +246,7 @@ def standings(rows=None, fin=None, root="", locked=None):
     return (f'<div class="sortbar" role="group" aria-label="Standings view"><button class="chip on" data-view="rank">Standings order</button><button class="chip" data-view="draft">Draft order</button>{tab}</div>'
             f'<div class="sc" id="v-rank"><table id="standtable"><thead>{h(["#", "Team", "W-L", "MOV", "PF", "PA", "FAAB"])}</thead><tbody>{rk}</tbody></table>'
             f'{legend()}</div>'
-            f'<div class="sc" id="v-draft" hidden><table id="drafttable"><thead>{h(["Pick", "Team"] + (["Draft capital"] if cur_w else []) + ["MAXPF", "MOV", "FAAB"])}</thead><tbody>{dr}</tbody></table>'
+            f'<div class="sc" id="v-draft" hidden><table id="drafttable"><thead>{h(["Pick", "Team"] + (["DRAFT CAP"] if cur_w else []) + ["MAXPF", "MOV", "FAAB"])}</thead><tbody>{dr}</tbody></table>'
             f'{legend(bool(cur_w))}</div>' + (wv or ""))
 
 # ---------------------------------------------------------------- issue pages
