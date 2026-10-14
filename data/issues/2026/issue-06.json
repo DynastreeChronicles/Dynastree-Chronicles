@@ -1,0 +1,631 @@
+{
+ "desk": [
+  "Week 5 broke both of last issue's headlines. Zygon, the only unbeaten team, lost the Match of the Week to C33DeezNutzz, and Painty69, the only winless team, beat Hades9mm. Zygon and Johnny4Skins now share the top at 4-1. The rest of the week belonged to StealingGas: a perfect lineup, 202.54 with nothing left on the bench, the best score in the league and a 114.4-point win over YesChef23.",
+  "MAXPF, the points each week's best possible lineup would have scored, added up, sets the 2027 rookie draft order, which is why a perfect week is not all good news. StealingGas's best lineup is now worth more, his slot slid from the 1.03 to the 1.04, and YesChef23 holds the 1.03. At the top, Darkspaces set a second straight perfect lineup, 140.36 with nothing left on the bench, and lost again, this time by 23.2 to Johnny4Skins. He holds the 1.01 by 7.06 points of MAXPF over Snipe58. No block player has moved, and the chat spent the week on food poisoning, a gif of a nuclear bomb, and a commissioner who says his IR slot is staying put."
+ ],
+ "pull": "A perfect 202.54, and the 1.03 changed hands.",
+ "hero": {
+  "manager": "StealingGas",
+  "text": "202.54, the best score in the league and a perfect lineup with 0.0 left on the bench. Puka Nacua led at 37.7 in a 114.4-point win over YesChef23. Up four spots to 7th.",
+  "desk": "The tank announced a pivot and then played it as a perfect lineup. The 1.04 is the receipt."
+ },
+ "zero": {
+  "manager": "CMac91",
+  "text": "74.52, the lowest score of the week, with 47.98 left on the bench. Lost to fumbduckdumbfuck by 47.46 and fell three spots to 8th.",
+  "desk": "The bench held more than the margin of defeat. Last week's 183.42 turned out to be a visit, not a move."
+ },
+ "prev_motw": {
+  "issue": 5,
+  "a": "Zygon",
+  "b": "C33DeezNutzz",
+  "note": "Issue 5's Match of the Week: C33DeezNutzz beat the formula on process, and the unbeaten label is gone."
+ },
+ "prev_poll": {
+  "issue": 5,
+  "q": "Which block player moves first?",
+  "opts": [
+   "Swift: the first is the price",
+   "Collins: Darkspaces can be talked",
+   "Pickens: YesChef23 is shopping",
+   "Nobody: everyone waits for the deadline"
+  ],
+  "result": [
+   2,
+   0,
+   1,
+   1
+  ],
+  "note": "Two votes for Swift, one for Pickens, one for Nobody. So far Nobody is right: the block is still open and no one has moved."
+ },
+ "quote": {
+  "text": "Someone go give Josh Allen food poisoning or something so I can keep my undefeated status",
+  "by": "Zygon, before Josh Allen's game",
+  "desk": "Josh Allen is C33DeezNutzz's quarterback. C33DeezNutzz won by 29.88. The IR Predictor forgot that the algorithm also needs a healthy opponent."
+ },
+ "drama": [
+  {
+   "h": "A Perfect 202.54, and the 1.03 Changes Hands",
+   "heat": 95,
+   "p": "StealingGas set a perfect lineup at 202.54 with 0.0 left on the bench and beat YesChef23 by 114.4. Puka Nacua led at 37.7. His MAXPF is now 735.24, the 1.03 moved to YesChef23 at 698.48, and StealingGas holds the 1.04. In the chat he said he may have no firsts come the trade deadline.",
+   "desk": "He asked to be a seller and scored like a buyer. Under the draft rule, the best week of his season is also the most expensive."
+  },
+  {
+   "h": "The Unbeaten Became Two",
+   "heat": 88,
+   "p": "Zygon asked the chat for food poisoning on Josh Allen to protect his undefeated status, then lost 154.24 to 124.36 to C33DeezNutzz. Jacoby Brissett, the $5 insurance quarterback, led Zygon at 26.28. Painty69 beat Hades9mm in the same week, so nobody is winless and nobody is unbeaten.",
+   "desk": "The formula lost to the cleanest lineup in the league. Both asterisks fell in the same week."
+  },
+  {
+   "h": "Perfect Again, Beaten Again",
+   "heat": 80,
+   "p": "Darkspaces set a perfect lineup for the second week in a row, 140.36 with 0.0 left on the bench, and lost to Johnny4Skins 163.56 to 140.36. Drake Maye was the QB of the week at 39.46. Johnny4Skins left 27.3 on the bench and still won by 23.2. StealingGas said he would trade for Maye now, and Darkspaces answered with a gif of a nuclear bomb.",
+   "desk": "Two perfect lineups, two losses, and the 1.01 by 7.06 points. The commissioner is running the best process in the league and the worst luck."
+  },
+  {
+   "h": "The Block Stays Open, the Chat Keeps Shopping",
+   "heat": 72,
+   "p": "Zygon asked about Achane and offered about tree fiddy. Darkspaces said Achane is going to sit in his IR slot until next year. Zygon also asked about Swift, and StealingGas said he might be interested in the Swift sweepstakes too. Nothing cleared.",
+   "desk": "Three bidders, one seller, and no deal. Whoever keeps waiting will find the price after the deadline."
+  }
+ ],
+ "hits": [
+  [
+   "imagine losing to someone this weekend who drafted like shit, manages like shit, blew $300 of FAAB on a 5th string RB for the titans, has a brain injury, and is gay.",
+   "Darkspaces"
+  ],
+  [
+   "I didn’t know you had a brain injury, @Darkspaces.  Is that new?",
+   "StealingGas"
+  ],
+  [
+   "momma dropped me",
+   "Darkspaces"
+  ],
+  [
+   "ceedee lamb fucked me in 2 leagues and he was on my team",
+   "Darkspaces"
+  ],
+  [
+   "He is real good at fuckin’",
+   "StealingGas"
+  ],
+  [
+   "Mevis and I have the same body type",
+   "YesChef23"
+  ],
+  [
+   "Josh Allen may not have shit himself from food poisoning but I bet he did when his teammate blocked that FG for the win",
+   "Zygon"
+  ]
+ ],
+ "trades": {
+  "note": "The Hypothetical Trade Machine stays open through Week 12. These four come from the Trade Finder, within 10% on FantasyCalc value.",
+  "items": [
+   {
+    "t": "The Collins Conversation",
+    "a": "Zygon",
+    "as": [
+     "2027 1st-round pick",
+     "2028 1st-round pick"
+    ],
+    "b": "Darkspaces",
+    "bs": [
+     "Nico Collins"
+    ],
+    "ay": "Adds a WR1 and gains 2,801 in starting lineup value.",
+    "by": "Cashes the receiver he listed for two future firsts.",
+    "desk": "Darkspaces said he could be talked into it. Zygon has the picks and a team that just lost. Talk."
+   },
+   {
+    "t": "The Jefferson Swap",
+    "a": "StealingGas",
+    "as": [
+     "2027 1st-round pick",
+     "Antonio Williams"
+    ],
+    "b": "Snipe58",
+    "bs": [
+     "Justin Jefferson",
+     "Demond Claiborne"
+    ],
+    "ay": "Gains 3,969 in starting lineup value and a real WR1.",
+    "by": "Turns a veteran WR into a first and a young receiver.",
+    "desk": "StealingGas said he may have no firsts by the deadline. This is how he gets there."
+   },
+   {
+    "t": "The Waddle Offer",
+    "a": "Johnny4Skins",
+    "as": [
+     "2027 1st-round pick"
+    ],
+    "b": "Sarge71",
+    "bs": [
+     "Jaylen Waddle"
+    ],
+    "ay": "Gains 604 in starting lineup value without touching the roster core.",
+    "by": "Sarge71 gets a first for a receiver and the supporting cast gets thinner.",
+    "desk": "Johnny4Skins has $500 and a first. Sarge71 has a 1-4 record and a need. The robot has not spoken."
+   },
+   {
+    "t": "The Watson and Waller Package",
+    "a": "StealingGas",
+    "as": [
+     "2027 1st-round pick (from Hades9mm)"
+    ],
+    "b": "YesChef23",
+    "bs": [
+     "Deshaun Watson",
+     "Darren Waller"
+    ],
+    "ay": "Moves the pick he received in the London deal for a QB and a tight end.",
+    "by": "Turns two depth pieces into a first.",
+    "desk": "A first from Hades9mm for two names YesChef23 picked up for almost nothing. The restaurant is open."
+   }
+  ]
+ },
+ "pre": [
+  {
+   "a": "Snipe58",
+   "ar": "3-2",
+   "b": "Hades9mm",
+   "br": "3-2",
+   "pa": 113,
+   "pb": 149,
+   "wa": 30,
+   "wb": 70,
+   "ma": "Matthew Stafford led at 27.32. Start him and fix the 15.62 left on the bench.",
+   "mb": "Jared Goff led at 28.94. Use the 54.46 bench points before they hurt.",
+   "la": "Second-lowest points total in the league, 566.44.",
+   "lb": "Hades9mm left 37.06 on the bench in a loss to Painty69.",
+   "edge": "Edge Hades9mm on scoring. Snipe58 needs Stafford to keep converting.",
+   "desk": "3-2 against 3-2, with the best MAXPF against the second-lowest."
+  },
+  {
+   "a": "StealingGas",
+   "ar": "2-3",
+   "b": "Sarge71",
+   "br": "1-4",
+   "pa": 130,
+   "pb": 117,
+   "wa": 62,
+   "wb": 38,
+   "ma": "Puka Nacua went for 37.7. Keep Geno Smith in the QB room.",
+   "mb": "Aaron Rodgers led at 22.0. Start every healthy starter.",
+   "la": "A repeat of 202.54 would cost him another pick slot.",
+   "lb": "Left 45.5 on the bench in a 74.8 week.",
+   "edge": "Edge StealingGas, if the lineup is set.",
+   "desk": "The tank plays the team with the worst lineup in the league. Both of them have a reason to lose."
+  },
+  {
+   "a": "Zygon",
+   "ar": "4-1",
+   "b": "fumbduckdumbfuck",
+   "br": "3-2",
+   "pa": 157,
+   "pb": 131,
+   "wa": 68,
+   "wb": 32,
+   "ma": "Brissett led at 26.28. Get the real starters back and healthy.",
+   "mb": "Brock Bowers led at 23.0. Keep the ground game moving.",
+   "la": "A first loss and 21.8 left on the bench.",
+   "lb": "Left 17.92 on the bench in a 47.46-point win.",
+   "edge": "Edge Zygon on points. fumb has the better recent form.",
+   "desk": "The formula needs a bounce-back and the Issue 1 No. 1 needs a statement."
+  },
+  {
+   "a": "Johnny4Skins",
+   "ar": "4-1",
+   "b": "CMac91",
+   "br": "2-3",
+   "pa": 147,
+   "pb": 128,
+   "wa": 64,
+   "wb": 36,
+   "ma": "Jaylen Warren went for 36.8. Fix the 27.3 left on the bench.",
+   "mb": "James Cook led at 22.8. Set the lineup and use the bench.",
+   "la": "Won with 27.3 points left on the bench.",
+   "lb": "74.52, the lowest score of Week 5, with 47.98 on the bench.",
+   "edge": "Edge Johnny4Skins on every line.",
+   "desk": "The autopick manager against the lowest score of the week. The robot is favored."
+  },
+  {
+   "a": "C33DeezNutzz",
+   "ar": "3-2",
+   "b": "Painty69",
+   "br": "1-4",
+   "pa": 147,
+   "pb": 130,
+   "wa": 62,
+   "wb": 38,
+   "ma": "Christian Watson led at 32.3. Keep the lineup clean.",
+   "mb": "Jahmyr Gibbs went for 37.7. Find a second scorer.",
+   "la": "The winner of the Match of the Week, with 18.0 left on the bench.",
+   "lb": "Left 21.14 on the bench in a win.",
+   "edge": "Edge C33DeezNutzz on depth. Painty69 wins if Gibbs repeats.",
+   "desk": "The cleanest lineup in the league meets the one that just got its first win."
+  }
+ ],
+ "motw": {
+  "a": "Darkspaces",
+  "ar": "2-3",
+  "b": "YesChef23",
+  "br": "2-3",
+  "pa": 120,
+  "pb": 109,
+  "wa": 58,
+  "wb": 42,
+  "ma": "Drake Maye was the 39.46 QB of the week. Keep the lineup perfect and find a ceiling.",
+  "mb": "George Pickens led at 28.0. Fix the 25.46 left on the bench.",
+  "la": "Two perfect lineups, two losses. Darkspaces cannot out-process a low ceiling.",
+  "lb": "The lowest points total in the league, 544.32.",
+  "edge": "Edge Darkspaces on scoring. YesChef23 wins if the bench becomes a lineup.",
+  "desk": "The 1.01 against the 1.03, two block players, and a win that cannot move the MAXPF ledger. The league's best soap opera.",
+  "stakes": "Both teams are 2-3 and both are on the pick board: Darkspaces holds the 1.01 and YesChef23 just took the 1.03. A win does nothing for MAXPF, since only the best possible lineup counts, so this is about pride and a block that has been open for weeks. Darkspaces listed Nico Collins and talked Swift and Achane. YesChef23 listed George Pickens. The dynasty question: who sells first when the deadline gets close?",
+  "sw": [
+   [
+    "Darkspaces",
+    [
+     "Drake Maye, 39.46 QB of the week",
+     "0.0 left on the bench two weeks running",
+     "Holds the 1.01"
+    ],
+    [
+     "2-3 and 9th in the standings",
+     "Only $104 of FAAB left",
+     "Collins, Swift and Achane all on the block"
+    ]
+   ],
+   [
+    "YesChef23",
+    [
+     "Pickens led at 28.0",
+     "$484 of FAAB left",
+     "Holds the 1.03"
+    ],
+    [
+     "Lowest points total in the league",
+     "25.46 left on the bench",
+     "2-3 and 10th in the standings"
+    ]
+   ]
+  ],
+  "verdict": "Projection edge to Darkspaces on scoring, but the lineup is not the problem. The desk leans Darkspaces and watches the block."
+ },
+ "poll": {
+  "id": "issue-06",
+  "q": "Who holds the 1.01 after Week 6?",
+  "opts": [
+   "Darkspaces: perfect lineups, no ceiling",
+   "Snipe58: seven points behind and closing",
+   "YesChef23: lowest scorer in the league",
+   "Someone else: a seller moves in"
+  ],
+  "desk": "A 7.06-point gap is smaller than one bad start. Pick carefully."
+ },
+ "wire": {
+  "trades": [],
+  "waivers": [
+   {
+    "mgr": "Johnny4Skins",
+    "player": "Jalon Daniels",
+    "flag": "mvp",
+    "note": "Daniels for free, dropping Jordan James. The dual-QB roster adds a third name and still has $500 of FAAB."
+   },
+   {
+    "mgr": "StealingGas",
+    "player": "Geno Smith",
+    "flag": "fav",
+    "note": "Geno Smith for free, dropping Kendre Miller, whom he added a week ago. The tank keeps recycling."
+   },
+   {
+    "mgr": "Zygon",
+    "player": "Jacksonville Jaguars",
+    "flag": "fav",
+    "note": "Jaguars DEF for free, dropping the Bears. The formula changes defenses like it changes its mind."
+   },
+   {
+    "mgr": "Hades9mm",
+    "player": "Devaughn Vele",
+    "flag": "note",
+    "note": "Vele for free, no drop. The roster has room."
+   }
+  ],
+  "desk": {
+   "StealingGas": "Two free moves: Geno Smith in, Kendre Miller out. Still $98 of FAAB, still the 1.04, still taking calls.",
+   "Johnny4Skins": "One free move: Jalon Daniels in, Jordan James out. FAAB stays at $500.",
+   "Zygon": "One free move: the Jaguars defense for the Bears. $493 left and a first loss to think about.",
+   "Hades9mm": "One free move, Devaughn Vele, no drop. The $330 wallet stayed closed."
+  }
+ },
+ "post": [
+  {
+   "a": "StealingGas",
+   "ar": "2-3",
+   "b": "YesChef23",
+   "br": "2-3",
+   "sa": 202.54,
+   "sb": 88.14,
+   "tag": "A perfect 202.54 and a 114.4-point demolition",
+   "aged": [
+    "StealingGas posts the week's best score, 202.54.",
+    "Puka Nacua led at 37.7.",
+    "YesChef23's George Pickens led at 28.0 in a loss."
+   ],
+   "means": [
+    "StealingGas climbs four spots to 7th.",
+    "YesChef23 falls two spots to 10th and takes the 1.03.",
+    "A perfect week costs StealingGas a pick slot."
+   ],
+   "key": [
+    "StealingGas left 0.0 on the bench.",
+    "YesChef23 left 25.46 on the bench.",
+    "Biggest margin of the week, 114.4."
+   ],
+   "ba": "34.58",
+   "bb": "30.4",
+   "ma": "Puka Nacua 37.7",
+   "mb": "George Pickens 28.0",
+   "ga": "A+",
+   "gb": "D",
+   "desk": "Perfect lineup, 0.0 on the pine, and the game was never close. YesChef23 left almost a quarter of his score on the bench."
+  },
+  {
+   "a": "C33DeezNutzz",
+   "ar": "3-2",
+   "b": "Zygon",
+   "br": "4-1",
+   "sa": 154.24,
+   "sb": 124.36,
+   "tag": "C33DeezNutzz hands Zygon the first loss and the Match of the Week",
+   "aged": [
+    "C33DeezNutzz wins 154.24 to 124.36.",
+    "Christian Watson led at 32.3.",
+    "Zygon's Jacoby Brissett led at 26.28."
+   ],
+   "means": [
+    "Zygon is 4-1 but still 1st.",
+    "C33DeezNutzz holds 4th at 3-2.",
+    "Process beat the formula."
+   ],
+   "key": [
+    "C33DeezNutzz left 18.0 on the bench.",
+    "Zygon left 21.8 on the bench.",
+    "C33DeezNutzz's bench scored 49.1 to Zygon's 29.5."
+   ],
+   "ba": "49.1",
+   "bb": "29.5",
+   "ma": "Christian Watson 32.3",
+   "mb": "Jacoby Brissett 26.28",
+   "ga": "A-",
+   "gb": "C+",
+   "desk": "The efficient one won the argument. The unbeaten label lasted four weeks."
+  },
+  {
+   "a": "Painty69",
+   "ar": "1-4",
+   "b": "Hades9mm",
+   "br": "3-2",
+   "sa": 153.1,
+   "sb": 126.24,
+   "tag": "Painty69 wins and is no longer winless",
+   "aged": [
+    "Painty69 wins 153.1 to 126.24.",
+    "Jahmyr Gibbs led at 37.7.",
+    "Hades9mm's Jared Goff led at 28.94."
+   ],
+   "means": [
+    "Painty69 climbs one spot to 11th.",
+    "Hades9mm slips to 3rd with a second loss.",
+    "The league has no winless team."
+   ],
+   "key": [
+    "Painty69 left 21.14 on the bench.",
+    "Hades9mm left 37.06 on the bench.",
+    "Hades9mm's bench scored 54.46."
+   ],
+   "ba": "44.76",
+   "bb": "54.46",
+   "ma": "Jahmyr Gibbs 37.7",
+   "mb": "Jared Goff 28.94",
+   "ga": "B+",
+   "gb": "D+",
+   "desk": "Gibbs delivered and the bench did not need to. Hades9mm called the matchup a victory royal and left 37.06 on the pine."
+  },
+  {
+   "a": "Johnny4Skins",
+   "ar": "4-1",
+   "b": "Darkspaces",
+   "br": "2-3",
+   "sa": 163.56,
+   "sb": 140.36,
+   "tag": "Another perfect lineup, another loss for Darkspaces",
+   "aged": [
+    "Johnny4Skins wins 163.56 to 140.36.",
+    "Jaylen Warren led at 36.8.",
+    "Drake Maye led Darkspaces at 39.46, the QB of the week."
+   ],
+   "means": [
+    "Johnny4Skins moves up to 2nd.",
+    "Darkspaces falls two spots to 9th.",
+    "Perfect lineups in Weeks 4 and 5, two losses."
+   ],
+   "key": [
+    "Johnny4Skins left 27.3 on the bench.",
+    "Darkspaces left 0.0 on the bench.",
+    "The winner left more on the pine than the margin, 23.2."
+   ],
+   "ba": "43.6",
+   "bb": "4.82",
+   "ma": "Jaylen Warren 36.8",
+   "mb": "Drake Maye 39.46",
+   "ga": "A-",
+   "gb": "B",
+   "desk": "The robot left 27.3 on the bench and won anyway. The commissioner left nothing and lost. Football."
+  },
+  {
+   "a": "Snipe58",
+   "ar": "3-2",
+   "b": "Sarge71",
+   "br": "1-4",
+   "sa": 114.88,
+   "sb": 74.8,
+   "tag": "Snipe58 wins and climbs three spots to 6th",
+   "aged": [
+    "Snipe58 wins 114.88 to 74.8.",
+    "Matthew Stafford led at 27.32.",
+    "Aaron Rodgers led Sarge71 at 22.0."
+   ],
+   "means": [
+    "Snipe58 jumps three spots to 6th.",
+    "Sarge71 falls two spots to 12th.",
+    "Snipe58 holds the 1.02, 7.06 behind Darkspaces."
+   ],
+   "key": [
+    "Snipe58 left 15.62 on the bench.",
+    "Sarge71 left 45.5 on the bench.",
+    "Sarge71's bench scored 60.3 to his 74.8."
+   ],
+   "ba": "45.98",
+   "bb": "60.3",
+   "ma": "Matthew Stafford 27.32",
+   "mb": "Aaron Rodgers 22.0",
+   "ga": "B+",
+   "gb": "D-",
+   "desk": "Stafford at 27.32 is the conversion the desk asked for. Sarge71 left more on the bench than he lost by, again."
+  },
+  {
+   "a": "fumbduckdumbfuck",
+   "ar": "3-2",
+   "b": "CMac91",
+   "br": "2-3",
+   "sa": 121.98,
+   "sb": 74.52,
+   "tag": "fumb wins by 47.46 and CMac91 posts the week's lowest score",
+   "aged": [
+    "fumbduckdumbfuck wins 121.98 to 74.52.",
+    "Brock Bowers led at 23.0.",
+    "James Cook led CMac91 at 22.8."
+   ],
+   "means": [
+    "fumb moves up one spot to 5th.",
+    "CMac91 falls three spots to 8th.",
+    "The 183.42 from Week 4 did not repeat."
+   ],
+   "key": [
+    "fumb left 17.92 on the bench.",
+    "CMac91 left 47.98 on the bench.",
+    "CMac91's bench scored 51.68 to his 74.52."
+   ],
+   "ba": "40.2",
+   "bb": "51.68",
+   "ma": "Brock Bowers 23.0",
+   "mb": "James Cook 22.8",
+   "ga": "B",
+   "gb": "F",
+   "desk": "fumb won with no one above 23.0. CMac91 lost with 47.98 on the bench. Both stories fit in the score."
+  }
+ ],
+ "bottom": {
+  "paras": [
+   "Zygon and Johnny4Skins lead at 4-1. Hades9mm, C33DeezNutzz, fumbduckdumbfuck and Snipe58 sit at 3-2, StealingGas, CMac91, Darkspaces and YesChef23 at 2-3, and Painty69 and Sarge71 at 1-4. The draft order by MAXPF now reads Darkspaces 1.01, Snipe58 1.02, YesChef23 1.03, StealingGas 1.04 and Sarge71 1.05, and the 1.01 is a 7.06-point race.",
+   "Issue 5's poll went two votes for Swift, one for Pickens, one for Nobody and none for Collins, and no block player has moved. Next up: Darkspaces and YesChef23 in the Match of the Week, Zygon needing a bounce-back against fumbduckdumbfuck, Johnny4Skins against the lowest score of Week 5, and a new poll below. Cast your vote, then go start somebody."
+  ]
+ },
+ "closer": {
+  "label": "The desk's last word",
+  "h": "Perfect is not a plan",
+  "text": "Two perfect lineups for Darkspaces, one for StealingGas, and a 1-4 team that finally won. The scoreboard stopped matching the storylines. The deadline will not."
+ },
+ "bold": [
+  [
+   "The 1.01 changes hands by Week 6",
+   "Snipe58 sits 7.06 MAXPF points behind Darkspaces. One better week of best-possible lineups from Darkspaces moves the pick. Deadline: Week 6 final."
+  ],
+  [
+   "Zygon and Johnny4Skins both reach 5-1",
+   "Zygon needs a bounce-back against fumbduckdumbfuck and Johnny4Skins plays CMac91. Deadline: Week 6 final."
+  ]
+ ],
+ "rulings": [
+  {
+   "issue": 4,
+   "i": 0,
+   "result": "miss",
+   "note": "Achane is still on Darkspaces' roster and no trade cleared before Week 5. Darkspaces told the chat he is staying in the IR slot till next year."
+  },
+  {
+   "issue": 5,
+   "i": 2,
+   "result": "miss",
+   "note": "Painty69 beat Hades9mm 153.1 to 126.24 in Week 5 and is 1-4."
+  },
+  {
+   "issue": 5,
+   "i": 3,
+   "result": "miss",
+   "note": "Zygon lost to C33DeezNutzz 154.24 to 124.36 in Week 5 and is 4-1, tied with Johnny4Skins at the top."
+  }
+ ],
+ "receipts": [
+  {
+   "who": "StealingGas",
+   "text": "I may have no firsts come trade deadline.",
+   "context": "Reacting to the count of his 2027 firsts after the London deal",
+   "tags": [
+    "tank",
+    "trade deadline"
+   ],
+   "status": "pending",
+   "note": "The deadline is the audit."
+  },
+  {
+   "who": "Darkspaces",
+   "text": "at this point he's gonna sit in my IR slot till next year. I'll hit you up then lol",
+   "context": "Answering Zygon's offer for Achane",
+   "tags": [
+    "Achane",
+    "trade block"
+   ],
+   "status": "pending",
+   "note": "Achane is still on the roster. Check at the deadline."
+  },
+  {
+   "who": "StealingGas",
+   "text": "Okay I’ll trade for Drake maye now",
+   "context": "After Maye's 39.46 week",
+   "tags": [
+    "trade block",
+    "Drake Maye"
+   ],
+   "status": "pending",
+   "note": "Darkspaces answered with a gif of a nuclear bomb. Pending a real offer."
+  },
+  {
+   "who": "Zygon",
+   "text": "Byes are going to hit me hard this week",
+   "context": "Before Week 5 kickoff",
+   "tags": [
+    "Zygon",
+    "injuries"
+   ],
+   "status": "aged_well",
+   "note": "Zygon scored 124.36 and lost by 29.88."
+  }
+ ],
+ "bank": {
+  "notes": {
+   "StealingGas": "Geno Smith, free. $98 left",
+   "Darkspaces": "Quiet week, $104 left",
+   "Hades9mm": "Vele, free",
+   "Snipe58": "Quiet week",
+   "Zygon": "Jaguars DEF, free",
+   "YesChef23": "Quiet week",
+   "C33DeezNutzz": "Untouched",
+   "fumbduckdumbfuck": "Quiet week",
+   "CMac91": "Untouched",
+   "Johnny4Skins": "Daniels, free. Still $500",
+   "Sarge71": "Untouched",
+   "Painty69": "Untouched"
+  }
+ }
+}

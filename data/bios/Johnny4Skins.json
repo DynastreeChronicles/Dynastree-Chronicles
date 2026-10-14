@@ -1,6 +1,6 @@
 {
- "tagline": "Dual-QB, dual-autopilot, and 3-1.",
- "asof": "Issue 5, through Week 4",
+ "tagline": "Dual-QB, dual-autopilot, and 4-1.",
+ "asof": "Issue 6, through Week 5",
  "file": [
   [
    "The type",
@@ -8,7 +8,7 @@
   ],
   [
    "Signature move",
-   "Not spending. Zero FAAB used, $500 intact, and the roster is the same one the autopick built."
+   "Not spending. $500 of FAAB intact, and the only moves are free ones."
   ],
   [
    "Nemesis",
@@ -16,21 +16,21 @@
   ],
   [
    "The desk is watching",
-   "Darkspaces in Week 5, and the dual-QB gamble: Lamar Jackson at 2.04 and Jalen Hurts auto-drafted at 3.04."
+   "The 27.3 points left on the bench in Week 5, and CMac91 in Week 6."
   ]
  ],
  "seasons": {
   "2026": {
-   "headline": "Eighteen autopicks, $500 untouched, 3-1",
-   "asof": "Issue 5, through Week 4",
+   "headline": "4-1, second place, and a new QB for free",
+   "asof": "Issue 6, through Week 5",
    "story": [
-    "Johnny4Skins took Ja'Marr Chase and Lamar Jackson in the first two rounds, then, apparently, went to dinner. The autopick drafted eighteen of his players, tied with Painty69 for the most in the league, including Jalen Hurts, A.J. Brown, Tyler Warren, Kyren Williams, Brian Thomas and DK Metcalf. Not a single human opinion went into any of them.",
-    "It keeps working. He lost to Zygon in Week 1, beat Painty69 in Week 2, posted 158.46 over Snipe58 in Week 3, and in Week 4 scored 157.9 over StealingGas with Kyren Williams at 36.7, leaving 24.5 on the bench. He is 3-1, third in the standings, and the $500 of FAAB is untouched, which the desk now treats as an identity.",
-    "The roster is dual-QB by design or by accident. The honest answer is that it does not matter until an injury forces a decision. He also has a new handle: the account was Cassellrole until October. Next up: Darkspaces."
+    "Johnny4Skins took Ja'Marr Chase and Lamar Jackson in the first two rounds, then went to dinner. The autopick drafted eighteen of his players, including Jalen Hurts, A.J. Brown, Tyler Warren, Kyren Williams, Brian Thomas and DK Metcalf. Not a single human opinion went into any of them.",
+    "It keeps working. After the Week 1 loss to Zygon he has won four straight, and in Week 5 he beat Darkspaces 163.56 to 140.36 with Jaylen Warren at 36.8, leaving 27.3 on the bench. He added Jalon Daniels for free and dropped Jordan James. He is 4-1, second in the standings, and his $500 of FAAB is untouched.",
+    "The roster is dual-QB by design or by accident, and now has a third name. The account was Cassellrole until October. Next up: CMac91, with a 147-point average against a 128 one."
    ],
    "takes": [
-    "The robot spent nothing.",
-    "A good autopick is still not a plan."
+    "The robot spent nothing and won again.",
+    "A good autopick is still not a plan, but it is a pattern."
    ],
    "drama": []
   }

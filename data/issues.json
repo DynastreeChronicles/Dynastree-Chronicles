@@ -1,5 +1,23 @@
 [
  {
+ "no": 6,
+ "year": 2026,
+ "title": "The Unbeaten Falls, the Tank Goes Perfect",
+ "weeks": "Week 5 post-game and Week 6 pre-game",
+ "web": true,
+ "month": "October 2026",
+ "dek": "StealingGas set a perfect 202.54 lineup and moved from the 1.03 to the 1.04. Zygon lost the Match of the Week and the unbeaten label, and Painty69 won to end the winless one.",
+ "banner": "StealingGas: perfect 202.54, a 114.4-point win",
+ "ticker": [
+  "StealingGas posts a perfect 202.54 and wins by 114.4",
+  "C33DeezNutzz ends Zygon's unbeaten run, 154.24 to 124.36",
+  "Painty69 beats Hades9mm and is no longer winless",
+  "Darkspaces sets a second perfect lineup and loses again"
+ ],
+ "wire_week": 5,
+ "standings_week": 5
+},
+{
   "no": 5,
   "year": 2026,
   "title": "The Calm After the Storm",
