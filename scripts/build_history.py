@@ -213,7 +213,13 @@ def award_values(S, H, preds):
     for s in S:
         y, a = s["year"], {}
         eff = {m: (r["pf"] / r["maxpf"] * 100) if r["maxpf"] else 0 for m, r in s["table"].items()}
-        bm = max(eff, key=eff.get); a["best_manager"] = (bm, f"{eff[bm]:.1f}% efficiency")
+        def _wr(r):
+            g = r["w"] + r["l"] + r["t"]
+            return (r["w"] + 0.5 * r["t"]) / g if g else 0
+        _gp = max((r["w"] + r["l"] + r["t"] for r in s["table"].values()), default=0)
+        _ok = {m: v for m, v in eff.items() if _gp < 5 or _wr(s["table"][m]) >= 0.44}
+        if _ok:
+            bm = max(_ok, key=_ok.get); a["best_manager"] = (bm, f"{_ok[bm]:.1f}% efficiency")
         ap = max(s["table"], key=lambda m: s["table"][m]["pf"]); a["apex_predator"] = (ap, f'{fmt(s["table"][ap]["pf"])} PF')
         hs_ = hist_season(H, y)
         if hs_.get("champion"):
