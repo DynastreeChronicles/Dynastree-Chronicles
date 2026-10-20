@@ -1036,5 +1036,51 @@
     },
     "dropped": [],
     "bid": 0
+  },
+  {
+    "week": 6,
+    "type": "free_agent",
+    "created": 1792326791512,
+    "id": "1417524940734791680",
+    "manager": "C33DeezNutzz",
+    "added": {
+      "name": "Dameon Pierce",
+      "pos": "RB",
+      "team": "PHI"
+    },
+    "dropped": [],
+    "bid": 0
+  },
+  {
+    "week": 6,
+    "type": "free_agent",
+    "created": 1792116619695,
+    "id": "1416643416242016256",
+    "manager": "YesChef23",
+    "added": {
+      "name": "Tyler Higbee",
+      "pos": "TE",
+      "team": "LAR"
+    },
+    "dropped": [
+      "Joe Mixon"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 6,
+    "type": "free_agent",
+    "created": 1791979512218,
+    "id": "1416068345798635520",
+    "manager": "StealingGas",
+    "added": {
+      "name": "New England Patriots",
+      "pos": "DEF",
+      "team": "NE"
+    },
+    "dropped": [
+      "Travis Hunter"
+    ],
+    "bid": 0
   }
 ]
