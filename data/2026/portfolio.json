@@ -7,7 +7,7 @@
   "numTeams": 12,
   "ppr": 1
  },
- "generated_at": "2026-10-21T10:04:22+00:00",
+ "generated_at": "2026-10-21T11:57:49+00:00",
  "thresholds": {
   "crash_move_pct": -5.0,
   "crash_sidelined_pct": 25.0,
@@ -28,8 +28,8 @@
     "RB": 9649,
     "PICK": 22203
    },
-   "move30": -340,
-   "move30_pct": -0.4,
+   "move30": 141,
+   "move30_pct": 0.2,
    "sidelined": 10043,
    "sidelined_pct": 13.2,
    "status": "stable",
@@ -40,7 +40,7 @@
      "team": "NE",
      "value": 6872,
      "rank": 11,
-     "trend30": -16,
+     "trend30": 39,
      "sidelined": false,
      "status": ""
     },
@@ -50,7 +50,7 @@
      "team": "HOU",
      "value": 4503,
      "rank": 33,
-     "trend30": 84,
+     "trend30": 25,
      "sidelined": false,
      "status": ""
     },
@@ -60,7 +60,7 @@
      "team": "JAX",
      "value": 4250,
      "rank": 37,
-     "trend30": 826,
+     "trend30": 867,
      "sidelined": false,
      "status": ""
     },
@@ -70,7 +70,7 @@
      "team": "MIA",
      "value": 3969,
      "rank": 45,
-     "trend30": -1108,
+     "trend30": -1126,
      "sidelined": true,
      "status": "IR"
     },
@@ -80,7 +80,7 @@
      "team": "LV",
      "value": 3646,
      "rank": 50,
-     "trend30": 158,
+     "trend30": 135,
      "sidelined": false,
      "status": ""
     },
@@ -90,7 +90,7 @@
      "team": "CHI",
      "value": 3579,
      "rank": 53,
-     "trend30": -798,
+     "trend30": -788,
      "sidelined": false,
      "status": ""
     }
@@ -102,7 +102,7 @@
      "team": "NE",
      "value": 6872,
      "rank": 11,
-     "trend30": -16,
+     "trend30": 39,
      "sidelined": false,
      "status": ""
     },
@@ -112,7 +112,7 @@
      "team": "HOU",
      "value": 4503,
      "rank": 33,
-     "trend30": 84,
+     "trend30": 25,
      "sidelined": false,
      "status": ""
     },
@@ -122,7 +122,7 @@
      "team": "JAX",
      "value": 4250,
      "rank": 37,
-     "trend30": 826,
+     "trend30": 867,
      "sidelined": false,
      "status": ""
     },
@@ -132,7 +132,7 @@
      "team": "MIA",
      "value": 3969,
      "rank": 45,
-     "trend30": -1108,
+     "trend30": -1126,
      "sidelined": true,
      "status": "IR"
     },
@@ -142,7 +142,7 @@
      "team": "LV",
      "value": 3646,
      "rank": 50,
-     "trend30": 158,
+     "trend30": 135,
      "sidelined": false,
      "status": ""
     },
@@ -152,7 +152,7 @@
      "team": "CHI",
      "value": 3579,
      "rank": 53,
-     "trend30": -798,
+     "trend30": -788,
      "sidelined": false,
      "status": ""
     },
@@ -162,7 +162,7 @@
      "team": "TB",
      "value": 3443,
      "rank": 57,
-     "trend30": -562,
+     "trend30": -544,
      "sidelined": false,
      "status": ""
     },
@@ -172,7 +172,7 @@
      "team": "CHI",
      "value": 2928,
      "rank": 70,
-     "trend30": -134,
+     "trend30": -94,
      "sidelined": false,
      "status": ""
     },
@@ -182,7 +182,7 @@
      "team": "CHI",
      "value": 2237,
      "rank": 94,
-     "trend30": -708,
+     "trend30": -669,
      "sidelined": false,
      "status": ""
     },
@@ -192,7 +192,7 @@
      "team": "LAR",
      "value": 2165,
      "rank": 100,
-     "trend30": -67,
+     "trend30": -45,
      "sidelined": false,
      "status": ""
     },
@@ -202,7 +202,7 @@
      "team": "NYJ",
      "value": 2033,
      "rank": 105,
-     "trend30": 208,
+     "trend30": 282,
      "sidelined": false,
      "status": ""
     },
@@ -212,7 +212,7 @@
      "team": "SEA",
      "value": 1876,
      "rank": 110,
-     "trend30": 272,
+     "trend30": 281,
      "sidelined": true,
      "status": "PUP"
     },
@@ -222,7 +222,7 @@
      "team": "LAR",
      "value": 1567,
      "rank": 135,
-     "trend30": 169,
+     "trend30": 175,
      "sidelined": true,
      "status": "IR"
     },
@@ -232,7 +232,7 @@
      "team": "MIA",
      "value": 1429,
      "rank": 152,
-     "trend30": -162,
+     "trend30": -135,
      "sidelined": false,
      "status": ""
     },
@@ -242,7 +242,7 @@
      "team": "HOU",
      "value": 1339,
      "rank": 161,
-     "trend30": 465,
+     "trend30": 473,
      "sidelined": true,
      "status": "IR"
     },
@@ -252,7 +252,7 @@
      "team": "LV",
      "value": 1318,
      "rank": 165,
-     "trend30": 101,
+     "trend30": 97,
      "sidelined": false,
      "status": ""
     },
@@ -262,7 +262,7 @@
      "team": "SF",
      "value": 1292,
      "rank": 172,
-     "trend30": -74,
+     "trend30": -82,
      "sidelined": true,
      "status": "IR"
     },
@@ -272,7 +272,7 @@
      "team": "MIA",
      "value": 1233,
      "rank": 179,
-     "trend30": -210,
+     "trend30": -189,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -282,7 +282,7 @@
      "team": "TB",
      "value": 1200,
      "rank": 188,
-     "trend30": -149,
+     "trend30": -136,
      "sidelined": false,
      "status": ""
     },
@@ -292,7 +292,7 @@
      "team": "KC",
      "value": 1200,
      "rank": 187,
-     "trend30": 113,
+     "trend30": 124,
      "sidelined": false,
      "status": ""
     },
@@ -302,7 +302,7 @@
      "team": "TEN",
      "value": 876,
      "rank": 218,
-     "trend30": -235,
+     "trend30": -240,
      "sidelined": false,
      "status": ""
     },
@@ -312,7 +312,7 @@
      "team": null,
      "value": 683,
      "rank": 234,
-     "trend30": 102,
+     "trend30": 132,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -322,7 +322,7 @@
      "team": "MIA",
      "value": 284,
      "rank": 286,
-     "trend30": 41,
+     "trend30": 68,
      "sidelined": false,
      "status": ""
     }
@@ -334,7 +334,7 @@
      "round": 1,
      "via": null,
      "value": 5099,
-     "trend30": 305
+     "trend30": 350
     },
     {
      "label": "2028 1st",
@@ -342,7 +342,7 @@
      "round": 1,
      "via": null,
      "value": 2257,
-     "trend30": 88
+     "trend30": 98
     },
     {
      "label": "2027 2nd (Early)",
@@ -350,7 +350,7 @@
      "round": 2,
      "via": null,
      "value": 2078,
-     "trend30": 112
+     "trend30": 144
     },
     {
      "label": "2027 2nd (Early)",
@@ -358,7 +358,7 @@
      "round": 2,
      "via": "Snipe58",
      "value": 2078,
-     "trend30": 112
+     "trend30": 144
     },
     {
      "label": "2029 1st",
@@ -366,7 +366,7 @@
      "round": 1,
      "via": null,
      "value": 2018,
-     "trend30": 124
+     "trend30": 127
     },
     {
      "label": "2028 2nd",
@@ -374,7 +374,7 @@
      "round": 2,
      "via": null,
      "value": 1396,
-     "trend30": 112
+     "trend30": 109
     },
     {
      "label": "2028 2nd",
@@ -382,7 +382,7 @@
      "round": 2,
      "via": "Snipe58",
      "value": 1396,
-     "trend30": 112
+     "trend30": 109
     },
     {
      "label": "2027 3rd (Early)",
@@ -390,7 +390,7 @@
      "round": 3,
      "via": null,
      "value": 1300,
-     "trend30": 86
+     "trend30": 97
     },
     {
      "label": "2029 2nd",
@@ -398,7 +398,7 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 72
+     "trend30": 75
     },
     {
      "label": "2029 2nd",
@@ -406,7 +406,7 @@
      "round": 2,
      "via": "Snipe58",
      "value": 1277,
-     "trend30": 72
+     "trend30": 75
     },
     {
      "label": "2028 3rd",
@@ -414,7 +414,7 @@
      "round": 3,
      "via": null,
      "value": 1049,
-     "trend30": 91
+     "trend30": 99
     },
     {
      "label": "2029 3rd",
@@ -422,7 +422,7 @@
      "round": 3,
      "via": null,
      "value": 978,
-     "trend30": 58
+     "trend30": 64
     }
    ],
    "sidelined_players": [
@@ -432,7 +432,7 @@
      "team": "MIA",
      "value": 3969,
      "rank": 45,
-     "trend30": -1108,
+     "trend30": -1126,
      "sidelined": true,
      "status": "IR"
     },
@@ -442,7 +442,7 @@
      "team": "SEA",
      "value": 1876,
      "rank": 110,
-     "trend30": 272,
+     "trend30": 281,
      "sidelined": true,
      "status": "PUP"
     },
@@ -452,7 +452,7 @@
      "team": "LAR",
      "value": 1567,
      "rank": 135,
-     "trend30": 169,
+     "trend30": 175,
      "sidelined": true,
      "status": "IR"
     },
@@ -462,7 +462,7 @@
      "team": "HOU",
      "value": 1339,
      "rank": 161,
-     "trend30": 465,
+     "trend30": 473,
      "sidelined": true,
      "status": "IR"
     },
@@ -472,7 +472,7 @@
      "team": "SF",
      "value": 1292,
      "rank": 172,
-     "trend30": -74,
+     "trend30": -82,
      "sidelined": true,
      "status": "IR"
     }
@@ -494,7 +494,7 @@
     "TE": 3065,
     "PICK": 12701
    },
-   "move30": -2482,
+   "move30": -2456,
    "move30_pct": -4.3,
    "sidelined": 3200,
    "sidelined_pct": 5.9,
@@ -506,7 +506,7 @@
      "team": "SF",
      "value": 6309,
      "rank": 17,
-     "trend30": 1359,
+     "trend30": 1391,
      "sidelined": false,
      "status": ""
     },
@@ -516,7 +516,7 @@
      "team": "MIN",
      "value": 6289,
      "rank": 18,
-     "trend30": -672,
+     "trend30": -645,
      "sidelined": false,
      "status": ""
     },
@@ -526,7 +526,7 @@
      "team": "LAC",
      "value": 3050,
      "rank": 68,
-     "trend30": -1868,
+     "trend30": -1870,
      "sidelined": false,
      "status": ""
     },
@@ -536,7 +536,7 @@
      "team": "CLE",
      "value": 2840,
      "rank": 73,
-     "trend30": -228,
+     "trend30": -184,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -546,7 +546,7 @@
      "team": "LAR",
      "value": 2708,
      "rank": 77,
-     "trend30": -104,
+     "trend30": -124,
      "sidelined": false,
      "status": ""
     },
@@ -556,7 +556,7 @@
      "team": "DET",
      "value": 2486,
      "rank": 87,
-     "trend30": -77,
+     "trend30": -139,
      "sidelined": false,
      "status": ""
     }
@@ -568,7 +568,7 @@
      "team": "SF",
      "value": 6309,
      "rank": 17,
-     "trend30": 1359,
+     "trend30": 1391,
      "sidelined": false,
      "status": ""
     },
@@ -578,7 +578,7 @@
      "team": "MIN",
      "value": 6289,
      "rank": 18,
-     "trend30": -672,
+     "trend30": -645,
      "sidelined": false,
      "status": ""
     },
@@ -588,7 +588,7 @@
      "team": "LAC",
      "value": 3050,
      "rank": 68,
-     "trend30": -1868,
+     "trend30": -1870,
      "sidelined": false,
      "status": ""
     },
@@ -598,7 +598,7 @@
      "team": "CLE",
      "value": 2840,
      "rank": 73,
-     "trend30": -228,
+     "trend30": -184,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -608,7 +608,7 @@
      "team": "LAR",
      "value": 2708,
      "rank": 77,
-     "trend30": -104,
+     "trend30": -124,
      "sidelined": false,
      "status": ""
     },
@@ -618,7 +618,7 @@
      "team": "DET",
      "value": 2486,
      "rank": 87,
-     "trend30": -77,
+     "trend30": -139,
      "sidelined": false,
      "status": ""
     },
@@ -628,7 +628,7 @@
      "team": "CLE",
      "value": 2174,
      "rank": 99,
-     "trend30": -90,
+     "trend30": -85,
      "sidelined": false,
      "status": ""
     },
@@ -638,7 +638,7 @@
      "team": "PIT",
      "value": 2121,
      "rank": 102,
-     "trend30": 861,
+     "trend30": 877,
      "sidelined": false,
      "status": ""
     },
@@ -648,7 +648,7 @@
      "team": "MIA",
      "value": 1856,
      "rank": 111,
-     "trend30": -287,
+     "trend30": -294,
      "sidelined": false,
      "status": ""
     },
@@ -658,7 +658,7 @@
      "team": "DEN",
      "value": 1782,
      "rank": 118,
-     "trend30": -67,
+     "trend30": -62,
      "sidelined": true,
      "status": "IR"
     },
@@ -668,7 +668,7 @@
      "team": "NO",
      "value": 1589,
      "rank": 133,
-     "trend30": 46,
+     "trend30": 29,
      "sidelined": false,
      "status": ""
     },
@@ -678,7 +678,7 @@
      "team": "DAL",
      "value": 1476,
      "rank": 145,
-     "trend30": -317,
+     "trend30": -321,
      "sidelined": false,
      "status": ""
     },
@@ -688,7 +688,7 @@
      "team": "LV",
      "value": 1449,
      "rank": 151,
-     "trend30": -97,
+     "trend30": -76,
      "sidelined": false,
      "status": ""
     },
@@ -698,7 +698,7 @@
      "team": "SF",
      "value": 1418,
      "rank": 154,
-     "trend30": -156,
+     "trend30": -151,
      "sidelined": true,
      "status": "Out"
     },
@@ -708,7 +708,7 @@
      "team": "SF",
      "value": 1295,
      "rank": 170,
-     "trend30": -242,
+     "trend30": -245,
      "sidelined": false,
      "status": ""
     },
@@ -718,7 +718,7 @@
      "team": "IND",
      "value": 869,
      "rank": 219,
-     "trend30": 351,
+     "trend30": 315,
      "sidelined": false,
      "status": ""
     },
@@ -728,7 +728,7 @@
      "team": "PIT",
      "value": 817,
      "rank": 225,
-     "trend30": -200,
+     "trend30": -182,
      "sidelined": false,
      "status": ""
     },
@@ -738,7 +738,7 @@
      "team": "MIN",
      "value": 466,
      "rank": 254,
-     "trend30": -482,
+     "trend30": -510,
      "sidelined": false,
      "status": ""
     },
@@ -748,7 +748,7 @@
      "team": "TEN",
      "value": 430,
      "rank": 257,
-     "trend30": -316,
+     "trend30": -327,
      "sidelined": false,
      "status": ""
     },
@@ -758,7 +758,7 @@
      "team": "LV",
      "value": 323,
      "rank": 276,
-     "trend30": -520,
+     "trend30": -542,
      "sidelined": false,
      "status": ""
     },
@@ -768,7 +768,7 @@
      "team": "PIT",
      "value": 128,
      "rank": 326,
-     "trend30": -53,
+     "trend30": -63,
      "sidelined": false,
      "status": ""
     },
@@ -778,7 +778,7 @@
      "team": "LAR",
      "value": 57,
      "rank": 364,
-     "trend30": -75,
+     "trend30": -83,
      "sidelined": false,
      "status": ""
     }
@@ -790,7 +790,7 @@
      "round": 1,
      "via": null,
      "value": 5099,
-     "trend30": 305
+     "trend30": 350
     },
     {
      "label": "2028 1st",
@@ -798,7 +798,7 @@
      "round": 1,
      "via": null,
      "value": 2257,
-     "trend30": 88
+     "trend30": 98
     },
     {
      "label": "2029 1st",
@@ -806,7 +806,7 @@
      "round": 1,
      "via": null,
      "value": 2018,
-     "trend30": 124
+     "trend30": 127
     },
     {
      "label": "2027 3rd (Early)",
@@ -814,7 +814,7 @@
      "round": 3,
      "via": null,
      "value": 1300,
-     "trend30": 86
+     "trend30": 97
     },
     {
      "label": "2028 3rd",
@@ -822,7 +822,7 @@
      "round": 3,
      "via": null,
      "value": 1049,
-     "trend30": 91
+     "trend30": 99
     },
     {
      "label": "2029 3rd",
@@ -830,7 +830,7 @@
      "round": 3,
      "via": null,
      "value": 978,
-     "trend30": 58
+     "trend30": 64
     }
    ],
    "sidelined_players": [
@@ -840,7 +840,7 @@
      "team": "DEN",
      "value": 1782,
      "rank": 118,
-     "trend30": -67,
+     "trend30": -62,
      "sidelined": true,
      "status": "IR"
     },
@@ -850,7 +850,7 @@
      "team": "SF",
      "value": 1418,
      "rank": 154,
-     "trend30": -156,
+     "trend30": -151,
      "sidelined": true,
      "status": "Out"
     }
@@ -872,8 +872,8 @@
     "TE": 5228,
     "PICK": 16644
    },
-   "move30": 2382,
-   "move30_pct": 3.2,
+   "move30": 2421,
+   "move30_pct": 3.3,
    "sidelined": 12683,
    "sidelined_pct": 16.6,
    "status": "stable",
@@ -884,7 +884,7 @@
      "team": "LAR",
      "value": 8263,
      "rank": 6,
-     "trend30": 504,
+     "trend30": 466,
      "sidelined": false,
      "status": ""
     },
@@ -894,7 +894,7 @@
      "team": "NYG",
      "value": 6413,
      "rank": 16,
-     "trend30": -202,
+     "trend30": -249,
      "sidelined": false,
      "status": ""
     },
@@ -904,7 +904,7 @@
      "team": "JAX",
      "value": 5664,
      "rank": 22,
-     "trend30": 63,
+     "trend30": 83,
      "sidelined": false,
      "status": ""
     },
@@ -914,7 +914,7 @@
      "team": "ATL",
      "value": 5547,
      "rank": 24,
-     "trend30": 799,
+     "trend30": 798,
      "sidelined": false,
      "status": ""
     },
@@ -924,7 +924,7 @@
      "team": "NYJ",
      "value": 4666,
      "rank": 31,
-     "trend30": 780,
+     "trend30": 802,
      "sidelined": false,
      "status": ""
     },
@@ -934,7 +934,7 @@
      "team": "NYG",
      "value": 4009,
      "rank": 44,
-     "trend30": -1771,
+     "trend30": -1700,
      "sidelined": true,
      "status": "IR"
     }
@@ -946,7 +946,7 @@
      "team": "LAR",
      "value": 8263,
      "rank": 6,
-     "trend30": 504,
+     "trend30": 466,
      "sidelined": false,
      "status": ""
     },
@@ -956,7 +956,7 @@
      "team": "NYG",
      "value": 6413,
      "rank": 16,
-     "trend30": -202,
+     "trend30": -249,
      "sidelined": false,
      "status": ""
     },
@@ -966,7 +966,7 @@
      "team": "JAX",
      "value": 5664,
      "rank": 22,
-     "trend30": 63,
+     "trend30": 83,
      "sidelined": false,
      "status": ""
     },
@@ -976,7 +976,7 @@
      "team": "ATL",
      "value": 5547,
      "rank": 24,
-     "trend30": 799,
+     "trend30": 798,
      "sidelined": false,
      "status": ""
     },
@@ -986,7 +986,7 @@
      "team": "NYJ",
      "value": 4666,
      "rank": 31,
-     "trend30": 780,
+     "trend30": 802,
      "sidelined": false,
      "status": ""
     },
@@ -996,7 +996,7 @@
      "team": "NYG",
      "value": 4009,
      "rank": 44,
-     "trend30": -1771,
+     "trend30": -1700,
      "sidelined": true,
      "status": "IR"
     },
@@ -1006,7 +1006,7 @@
      "team": "JAX",
      "value": 3290,
      "rank": 60,
-     "trend30": 865,
+     "trend30": 791,
      "sidelined": false,
      "status": ""
     },
@@ -1016,7 +1016,7 @@
      "team": "NO",
      "value": 3115,
      "rank": 66,
-     "trend30": 98,
+     "trend30": 91,
      "sidelined": true,
      "status": "IR"
     },
@@ -1026,7 +1026,7 @@
      "team": "ATL",
      "value": 2393,
      "rank": 90,
-     "trend30": 542,
+     "trend30": 558,
      "sidelined": false,
      "status": ""
     },
@@ -1036,7 +1036,7 @@
      "team": "ATL",
      "value": 2137,
      "rank": 101,
-     "trend30": -189,
+     "trend30": -171,
      "sidelined": false,
      "status": ""
     },
@@ -1046,7 +1046,7 @@
      "team": "SF",
      "value": 1792,
      "rank": 115,
-     "trend30": 123,
+     "trend30": 108,
      "sidelined": true,
      "status": "IR"
     },
@@ -1056,7 +1056,7 @@
      "team": "NYJ",
      "value": 1646,
      "rank": 126,
-     "trend30": 482,
+     "trend30": 471,
      "sidelined": false,
      "status": ""
     },
@@ -1066,7 +1066,7 @@
      "team": "WAS",
      "value": 1636,
      "rank": 127,
-     "trend30": -154,
+     "trend30": -166,
      "sidelined": false,
      "status": ""
     },
@@ -1076,7 +1076,7 @@
      "team": "NYJ",
      "value": 1500,
      "rank": 142,
-     "trend30": -22,
+     "trend30": 35,
      "sidelined": false,
      "status": ""
     },
@@ -1086,7 +1086,7 @@
      "team": "PHI",
      "value": 1461,
      "rank": 147,
-     "trend30": -144,
+     "trend30": -149,
      "sidelined": true,
      "status": "IR"
     },
@@ -1096,7 +1096,7 @@
      "team": "HOU",
      "value": 1382,
      "rank": 158,
-     "trend30": -156,
+     "trend30": -152,
      "sidelined": true,
      "status": "IR"
     },
@@ -1106,7 +1106,7 @@
      "team": "NE",
      "value": 1306,
      "rank": 167,
-     "trend30": 8,
+     "trend30": 2,
      "sidelined": false,
      "status": ""
     },
@@ -1116,7 +1116,7 @@
      "team": "PIT",
      "value": 1285,
      "rank": 173,
-     "trend30": -240,
+     "trend30": -262,
      "sidelined": false,
      "status": ""
     },
@@ -1126,7 +1126,7 @@
      "team": "LAC",
      "value": 999,
      "rank": 201,
-     "trend30": -28,
+     "trend30": -42,
      "sidelined": false,
      "status": ""
     },
@@ -1136,7 +1136,7 @@
      "team": "CLE",
      "value": 924,
      "rank": 210,
-     "trend30": 152,
+     "trend30": 130,
      "sidelined": true,
      "status": "IR"
     },
@@ -1146,7 +1146,7 @@
      "team": "NO",
      "value": 324,
      "rank": 275,
-     "trend30": -109,
+     "trend30": -123,
      "sidelined": false,
      "status": ""
     }
@@ -1158,7 +1158,7 @@
      "round": 1,
      "via": null,
      "value": 3358,
-     "trend30": 201
+     "trend30": 231
     },
     {
      "label": "2027 1st (Late)",
@@ -1166,7 +1166,7 @@
      "round": 1,
      "via": "Hades9mm",
      "value": 2587,
-     "trend30": 148
+     "trend30": 178
     },
     {
      "label": "2028 1st",
@@ -1174,7 +1174,7 @@
      "round": 1,
      "via": null,
      "value": 2257,
-     "trend30": 88
+     "trend30": 98
     },
     {
      "label": "2029 1st",
@@ -1182,7 +1182,7 @@
      "round": 1,
      "via": null,
      "value": 2018,
-     "trend30": 124
+     "trend30": 127
     },
     {
      "label": "2027 2nd (Mid)",
@@ -1190,7 +1190,7 @@
      "round": 2,
      "via": null,
      "value": 1724,
-     "trend30": 87
+     "trend30": 119
     },
     {
      "label": "2028 2nd",
@@ -1198,7 +1198,7 @@
      "round": 2,
      "via": null,
      "value": 1396,
-     "trend30": 112
+     "trend30": 109
     },
     {
      "label": "2029 2nd",
@@ -1206,7 +1206,7 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 72
+     "trend30": 75
     },
     {
      "label": "2028 3rd",
@@ -1214,7 +1214,7 @@
      "round": 3,
      "via": null,
      "value": 1049,
-     "trend30": 91
+     "trend30": 99
     },
     {
      "label": "2029 3rd",
@@ -1222,7 +1222,7 @@
      "round": 3,
      "via": null,
      "value": 978,
-     "trend30": 58
+     "trend30": 64
     }
    ],
    "sidelined_players": [
@@ -1232,7 +1232,7 @@
      "team": "NYG",
      "value": 4009,
      "rank": 44,
-     "trend30": -1771,
+     "trend30": -1700,
      "sidelined": true,
      "status": "IR"
     },
@@ -1242,7 +1242,7 @@
      "team": "NO",
      "value": 3115,
      "rank": 66,
-     "trend30": 98,
+     "trend30": 91,
      "sidelined": true,
      "status": "IR"
     },
@@ -1252,7 +1252,7 @@
      "team": "SF",
      "value": 1792,
      "rank": 115,
-     "trend30": 123,
+     "trend30": 108,
      "sidelined": true,
      "status": "IR"
     },
@@ -1262,7 +1262,7 @@
      "team": "PHI",
      "value": 1461,
      "rank": 147,
-     "trend30": -144,
+     "trend30": -149,
      "sidelined": true,
      "status": "IR"
     },
@@ -1272,7 +1272,7 @@
      "team": "HOU",
      "value": 1382,
      "rank": 158,
-     "trend30": -156,
+     "trend30": -152,
      "sidelined": true,
      "status": "IR"
     }
@@ -1294,8 +1294,8 @@
     "QB": 11792,
     "PICK": 14097
    },
-   "move30": 2552,
-   "move30_pct": 3.6,
+   "move30": 2674,
+   "move30_pct": 3.8,
    "sidelined": 636,
    "sidelined_pct": 0.9,
    "status": "stable",
@@ -1306,7 +1306,7 @@
      "team": "SEA",
      "value": 9830,
      "rank": 4,
-     "trend30": 511,
+     "trend30": 568,
      "sidelined": false,
      "status": ""
     },
@@ -1316,7 +1316,7 @@
      "team": "KC",
      "value": 7092,
      "rank": 9,
-     "trend30": 1375,
+     "trend30": 1378,
      "sidelined": false,
      "status": ""
     },
@@ -1326,7 +1326,7 @@
      "team": "ARI",
      "value": 6641,
      "rank": 14,
-     "trend30": -30,
+     "trend30": -72,
      "sidelined": false,
      "status": ""
     },
@@ -1336,7 +1336,7 @@
      "team": "KC",
      "value": 5749,
      "rank": 21,
-     "trend30": 393,
+     "trend30": 388,
      "sidelined": false,
      "status": ""
     },
@@ -1346,7 +1346,7 @@
      "team": "CIN",
      "value": 3672,
      "rank": 49,
-     "trend30": -725,
+     "trend30": -701,
      "sidelined": false,
      "status": ""
     },
@@ -1356,7 +1356,7 @@
      "team": "CIN",
      "value": 3217,
      "rank": 62,
-     "trend30": 123,
+     "trend30": 112,
      "sidelined": false,
      "status": ""
     }
@@ -1368,7 +1368,7 @@
      "team": "SEA",
      "value": 9830,
      "rank": 4,
-     "trend30": 511,
+     "trend30": 568,
      "sidelined": false,
      "status": ""
     },
@@ -1378,7 +1378,7 @@
      "team": "KC",
      "value": 7092,
      "rank": 9,
-     "trend30": 1375,
+     "trend30": 1378,
      "sidelined": false,
      "status": ""
     },
@@ -1388,7 +1388,7 @@
      "team": "ARI",
      "value": 6641,
      "rank": 14,
-     "trend30": -30,
+     "trend30": -72,
      "sidelined": false,
      "status": ""
     },
@@ -1398,7 +1398,7 @@
      "team": "KC",
      "value": 5749,
      "rank": 21,
-     "trend30": 393,
+     "trend30": 388,
      "sidelined": false,
      "status": ""
     },
@@ -1408,7 +1408,7 @@
      "team": "CIN",
      "value": 3672,
      "rank": 49,
-     "trend30": -725,
+     "trend30": -701,
      "sidelined": false,
      "status": ""
     },
@@ -1418,7 +1418,7 @@
      "team": "CIN",
      "value": 3217,
      "rank": 62,
-     "trend30": 123,
+     "trend30": 112,
      "sidelined": false,
      "status": ""
     },
@@ -1428,7 +1428,7 @@
      "team": "CAR",
      "value": 2733,
      "rank": 76,
-     "trend30": 265,
+     "trend30": 278,
      "sidelined": false,
      "status": ""
     },
@@ -1438,7 +1438,7 @@
      "team": "TB",
      "value": 2689,
      "rank": 78,
-     "trend30": -457,
+     "trend30": -488,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -1448,7 +1448,7 @@
      "team": "CLE",
      "value": 2661,
      "rank": 79,
-     "trend30": -80,
+     "trend30": -89,
      "sidelined": false,
      "status": ""
     },
@@ -1458,7 +1458,7 @@
      "team": "IND",
      "value": 1835,
      "rank": 113,
-     "trend30": -411,
+     "trend30": -374,
      "sidelined": false,
      "status": ""
     },
@@ -1468,7 +1468,7 @@
      "team": "MIA",
      "value": 1789,
      "rank": 117,
-     "trend30": 1413,
+     "trend30": 1412,
      "sidelined": false,
      "status": ""
     },
@@ -1478,7 +1478,7 @@
      "team": "LAR",
      "value": 1697,
      "rank": 123,
-     "trend30": -268,
+     "trend30": -256,
      "sidelined": false,
      "status": ""
     },
@@ -1488,7 +1488,7 @@
      "team": "MIN",
      "value": 1696,
      "rank": 124,
-     "trend30": -138,
+     "trend30": -148,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -1498,7 +1498,7 @@
      "team": "BAL",
      "value": 1612,
      "rank": 128,
-     "trend30": 154,
+     "trend30": 185,
      "sidelined": false,
      "status": ""
     },
@@ -1508,7 +1508,7 @@
      "team": "ARI",
      "value": 1519,
      "rank": 140,
-     "trend30": -97,
+     "trend30": -93,
      "sidelined": false,
      "status": ""
     },
@@ -1518,7 +1518,7 @@
      "team": "KC",
      "value": 1505,
      "rank": 141,
-     "trend30": -121,
+     "trend30": -119,
      "sidelined": false,
      "status": ""
     },
@@ -1528,7 +1528,7 @@
      "team": "SEA",
      "value": 1178,
      "rank": 191,
-     "trend30": 749,
+     "trend30": 738,
      "sidelined": false,
      "status": ""
     },
@@ -1538,7 +1538,7 @@
      "team": "JAX",
      "value": 950,
      "rank": 208,
-     "trend30": -51,
+     "trend30": -40,
      "sidelined": false,
      "status": ""
     },
@@ -1548,7 +1548,7 @@
      "team": "CAR",
      "value": 636,
      "rank": 236,
-     "trend30": 60,
+     "trend30": 69,
      "sidelined": true,
      "status": "IR"
     },
@@ -1558,7 +1558,7 @@
      "team": "BAL",
      "value": 589,
      "rank": 240,
-     "trend30": -412,
+     "trend30": -438,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -1568,7 +1568,7 @@
      "team": "MIA",
      "value": 309,
      "rank": 283,
-     "trend30": -431,
+     "trend30": -458,
      "sidelined": false,
      "status": ""
     },
@@ -1578,7 +1578,7 @@
      "team": "NO",
      "value": 139,
      "rank": 320,
-     "trend30": -115,
+     "trend30": -104,
      "sidelined": false,
      "status": ""
     }
@@ -1590,7 +1590,7 @@
      "round": 1,
      "via": null,
      "value": 2587,
-     "trend30": 148
+     "trend30": 178
     },
     {
      "label": "2028 1st",
@@ -1598,7 +1598,7 @@
      "round": 1,
      "via": null,
      "value": 2257,
-     "trend30": 88
+     "trend30": 98
     },
     {
      "label": "2029 1st",
@@ -1606,7 +1606,7 @@
      "round": 1,
      "via": null,
      "value": 2018,
-     "trend30": 124
+     "trend30": 127
     },
     {
      "label": "2027 2nd (Late)",
@@ -1614,7 +1614,7 @@
      "round": 2,
      "via": null,
      "value": 1484,
-     "trend30": 87
+     "trend30": 107
     },
     {
      "label": "2028 2nd",
@@ -1622,7 +1622,7 @@
      "round": 2,
      "via": null,
      "value": 1396,
-     "trend30": 112
+     "trend30": 109
     },
     {
      "label": "2029 2nd",
@@ -1630,7 +1630,7 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 72
+     "trend30": 75
     },
     {
      "label": "2027 3rd (Late)",
@@ -1638,7 +1638,7 @@
      "round": 3,
      "via": null,
      "value": 1051,
-     "trend30": 65
+     "trend30": 69
     },
     {
      "label": "2028 3rd",
@@ -1646,7 +1646,7 @@
      "round": 3,
      "via": null,
      "value": 1049,
-     "trend30": 91
+     "trend30": 99
     },
     {
      "label": "2029 3rd",
@@ -1654,7 +1654,7 @@
      "round": 3,
      "via": null,
      "value": 978,
-     "trend30": 58
+     "trend30": 64
     }
    ],
    "sidelined_players": [
@@ -1664,7 +1664,7 @@
      "team": "CAR",
      "value": 636,
      "rank": 236,
-     "trend30": 60,
+     "trend30": 69,
      "sidelined": true,
      "status": "IR"
     }
@@ -1686,8 +1686,8 @@
     "TE": 4969,
     "PICK": 12667
    },
-   "move30": -1130,
-   "move30_pct": -1.9,
+   "move30": -1040,
+   "move30_pct": -1.8,
    "sidelined": 4332,
    "sidelined_pct": 7.5,
    "status": "stable",
@@ -1698,7 +1698,7 @@
      "team": "DET",
      "value": 7269,
      "rank": 8,
-     "trend30": -500,
+     "trend30": -493,
      "sidelined": false,
      "status": ""
     },
@@ -1708,7 +1708,7 @@
      "team": "WAS",
      "value": 5581,
      "rank": 23,
-     "trend30": -35,
+     "trend30": -55,
      "sidelined": false,
      "status": ""
     },
@@ -1718,7 +1718,7 @@
      "team": "DET",
      "value": 4010,
      "rank": 43,
-     "trend30": 409,
+     "trend30": 396,
      "sidelined": false,
      "status": ""
     },
@@ -1728,7 +1728,7 @@
      "team": "DAL",
      "value": 3602,
      "rank": 51,
-     "trend30": 168,
+     "trend30": 206,
      "sidelined": false,
      "status": ""
     },
@@ -1738,7 +1738,7 @@
      "team": "BAL",
      "value": 3569,
      "rank": 55,
-     "trend30": -88,
+     "trend30": -94,
      "sidelined": false,
      "status": ""
     },
@@ -1748,7 +1748,7 @@
      "team": "SF",
      "value": 2593,
      "rank": 84,
-     "trend30": 531,
+     "trend30": 497,
      "sidelined": false,
      "status": ""
     }
@@ -1760,7 +1760,7 @@
      "team": "DET",
      "value": 7269,
      "rank": 8,
-     "trend30": -500,
+     "trend30": -493,
      "sidelined": false,
      "status": ""
     },
@@ -1770,7 +1770,7 @@
      "team": "WAS",
      "value": 5581,
      "rank": 23,
-     "trend30": -35,
+     "trend30": -55,
      "sidelined": false,
      "status": ""
     },
@@ -1780,7 +1780,7 @@
      "team": "DET",
      "value": 4010,
      "rank": 43,
-     "trend30": 409,
+     "trend30": 396,
      "sidelined": false,
      "status": ""
     },
@@ -1790,7 +1790,7 @@
      "team": "DAL",
      "value": 3602,
      "rank": 51,
-     "trend30": 168,
+     "trend30": 206,
      "sidelined": false,
      "status": ""
     },
@@ -1800,7 +1800,7 @@
      "team": "BAL",
      "value": 3569,
      "rank": 55,
-     "trend30": -88,
+     "trend30": -94,
      "sidelined": false,
      "status": ""
     },
@@ -1810,7 +1810,7 @@
      "team": "SF",
      "value": 2593,
      "rank": 84,
-     "trend30": 531,
+     "trend30": 497,
      "sidelined": false,
      "status": ""
     },
@@ -1820,7 +1820,7 @@
      "team": "NE",
      "value": 2567,
      "rank": 85,
-     "trend30": -511,
+     "trend30": -497,
      "sidelined": false,
      "status": ""
     },
@@ -1830,7 +1830,7 @@
      "team": "TEN",
      "value": 2473,
      "rank": 88,
-     "trend30": -231,
+     "trend30": -214,
      "sidelined": false,
      "status": ""
     },
@@ -1840,7 +1840,7 @@
      "team": "NYG",
      "value": 2360,
      "rank": 91,
-     "trend30": -1008,
+     "trend30": -1024,
      "sidelined": false,
      "status": ""
     },
@@ -1850,7 +1850,7 @@
      "team": "BUF",
      "value": 2214,
      "rank": 96,
-     "trend30": -335,
+     "trend30": -264,
      "sidelined": true,
      "status": "Out"
     },
@@ -1860,7 +1860,7 @@
      "team": "LAR",
      "value": 2118,
      "rank": 104,
-     "trend30": 144,
+     "trend30": 101,
      "sidelined": true,
      "status": "IR"
     },
@@ -1870,7 +1870,7 @@
      "team": "KC",
      "value": 1609,
      "rank": 129,
-     "trend30": -28,
+     "trend30": -21,
      "sidelined": false,
      "status": ""
     },
@@ -1880,7 +1880,7 @@
      "team": "WAS",
      "value": 1530,
      "rank": 138,
-     "trend30": 35,
+     "trend30": 0,
      "sidelined": false,
      "status": ""
     },
@@ -1890,7 +1890,7 @@
      "team": "NO",
      "value": 1258,
      "rank": 175,
-     "trend30": -6,
+     "trend30": -5,
      "sidelined": false,
      "status": ""
     },
@@ -1900,7 +1900,7 @@
      "team": "LAC",
      "value": 1159,
      "rank": 192,
-     "trend30": -381,
+     "trend30": -389,
      "sidelined": false,
      "status": ""
     },
@@ -1910,7 +1910,7 @@
      "team": "CIN",
      "value": 767,
      "rank": 228,
-     "trend30": 12,
+     "trend30": 73,
      "sidelined": false,
      "status": ""
     },
@@ -1920,7 +1920,7 @@
      "team": "BUF",
      "value": 591,
      "rank": 238,
-     "trend30": -5,
+     "trend30": -2,
      "sidelined": false,
      "status": ""
     },
@@ -1930,7 +1930,7 @@
      "team": "CLE",
      "value": 100,
      "rank": 340,
-     "trend30": -84,
+     "trend30": -93,
      "sidelined": false,
      "status": ""
     }
@@ -1942,7 +1942,7 @@
      "round": 1,
      "via": null,
      "value": 2257,
-     "trend30": 88
+     "trend30": 98
     },
     {
      "label": "2029 1st",
@@ -1950,7 +1950,7 @@
      "round": 1,
      "via": null,
      "value": 2018,
-     "trend30": 124
+     "trend30": 127
     },
     {
      "label": "2027 2nd (Late)",
@@ -1958,7 +1958,7 @@
      "round": 2,
      "via": null,
      "value": 1484,
-     "trend30": 87
+     "trend30": 107
     },
     {
      "label": "2028 2nd",
@@ -1966,7 +1966,7 @@
      "round": 2,
      "via": null,
      "value": 1396,
-     "trend30": 112
+     "trend30": 109
     },
     {
      "label": "2029 2nd",
@@ -1974,7 +1974,7 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 72
+     "trend30": 75
     },
     {
      "label": "2027 3rd (Mid)",
@@ -1982,7 +1982,7 @@
      "round": 3,
      "via": "StealingGas",
      "value": 1157,
-     "trend30": 86
+     "trend30": 90
     },
     {
      "label": "2027 3rd (Late)",
@@ -1990,7 +1990,7 @@
      "round": 3,
      "via": null,
      "value": 1051,
-     "trend30": 65
+     "trend30": 69
     },
     {
      "label": "2028 3rd",
@@ -1998,7 +1998,7 @@
      "round": 3,
      "via": null,
      "value": 1049,
-     "trend30": 91
+     "trend30": 99
     },
     {
      "label": "2029 3rd",
@@ -2006,7 +2006,7 @@
      "round": 3,
      "via": null,
      "value": 978,
-     "trend30": 58
+     "trend30": 64
     }
    ],
    "sidelined_players": [
@@ -2016,7 +2016,7 @@
      "team": "BUF",
      "value": 2214,
      "rank": 96,
-     "trend30": -335,
+     "trend30": -264,
      "sidelined": true,
      "status": "Out"
     },
@@ -2026,7 +2026,7 @@
      "team": "LAR",
      "value": 2118,
      "rank": 104,
-     "trend30": 144,
+     "trend30": 101,
      "sidelined": true,
      "status": "IR"
     }
@@ -2048,8 +2048,8 @@
     "RB": 12469,
     "PICK": 14097
    },
-   "move30": -292,
-   "move30_pct": -0.4,
+   "move30": -204,
+   "move30_pct": -0.3,
    "sidelined": 6616,
    "sidelined_pct": 10.1,
    "status": "stable",
@@ -2060,7 +2060,7 @@
      "team": "CIN",
      "value": 8384,
      "rank": 5,
-     "trend30": -801,
+     "trend30": -732,
      "sidelined": false,
      "status": ""
     },
@@ -2070,7 +2070,7 @@
      "team": "BAL",
      "value": 6663,
      "rank": 13,
-     "trend30": -1068,
+     "trend30": -1120,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -2080,7 +2080,7 @@
      "team": "LAR",
      "value": 4433,
      "rank": 34,
-     "trend30": 1087,
+     "trend30": 1111,
      "sidelined": false,
      "status": ""
     },
@@ -2090,7 +2090,7 @@
      "team": "IND",
      "value": 4049,
      "rank": 40,
-     "trend30": 52,
+     "trend30": 89,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -2100,7 +2100,7 @@
      "team": "PHI",
      "value": 3601,
      "rank": 52,
-     "trend30": -1910,
+     "trend30": -1979,
      "sidelined": true,
      "status": "IR"
     },
@@ -2110,7 +2110,7 @@
      "team": "NYG",
      "value": 3147,
      "rank": 64,
-     "trend30": 523,
+     "trend30": 476,
      "sidelined": false,
      "status": ""
     }
@@ -2122,7 +2122,7 @@
      "team": "CIN",
      "value": 8384,
      "rank": 5,
-     "trend30": -801,
+     "trend30": -732,
      "sidelined": false,
      "status": ""
     },
@@ -2132,7 +2132,7 @@
      "team": "BAL",
      "value": 6663,
      "rank": 13,
-     "trend30": -1068,
+     "trend30": -1120,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -2142,7 +2142,7 @@
      "team": "LAR",
      "value": 4433,
      "rank": 34,
-     "trend30": 1087,
+     "trend30": 1111,
      "sidelined": false,
      "status": ""
     },
@@ -2152,7 +2152,7 @@
      "team": "IND",
      "value": 4049,
      "rank": 40,
-     "trend30": 52,
+     "trend30": 89,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -2162,7 +2162,7 @@
      "team": "PHI",
      "value": 3601,
      "rank": 52,
-     "trend30": -1910,
+     "trend30": -1979,
      "sidelined": true,
      "status": "IR"
     },
@@ -2172,7 +2172,7 @@
      "team": "NYG",
      "value": 3147,
      "rank": 64,
-     "trend30": 523,
+     "trend30": 476,
      "sidelined": false,
      "status": ""
     },
@@ -2182,7 +2182,7 @@
      "team": "NE",
      "value": 3134,
      "rank": 65,
-     "trend30": -9,
+     "trend30": 6,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -2192,7 +2192,7 @@
      "team": "CAR",
      "value": 3076,
      "rank": 67,
-     "trend30": 784,
+     "trend30": 773,
      "sidelined": false,
      "status": ""
     },
@@ -2202,7 +2202,7 @@
      "team": "PIT",
      "value": 2886,
      "rank": 71,
-     "trend30": 1078,
+     "trend30": 1089,
      "sidelined": false,
      "status": ""
     },
@@ -2212,7 +2212,7 @@
      "team": "PIT",
      "value": 1923,
      "rank": 108,
-     "trend30": 21,
+     "trend30": -5,
      "sidelined": false,
      "status": ""
     },
@@ -2222,7 +2222,7 @@
      "team": "JAX",
      "value": 1794,
      "rank": 114,
-     "trend30": -554,
+     "trend30": -563,
      "sidelined": false,
      "status": ""
     },
@@ -2232,7 +2232,7 @@
      "team": "TB",
      "value": 1252,
      "rank": 176,
-     "trend30": 845,
+     "trend30": 821,
      "sidelined": false,
      "status": ""
     },
@@ -2242,7 +2242,7 @@
      "team": "MIA",
      "value": 1232,
      "rank": 181,
-     "trend30": 96,
+     "trend30": 95,
      "sidelined": false,
      "status": ""
     },
@@ -2252,7 +2252,7 @@
      "team": "LAC",
      "value": 1211,
      "rank": 186,
-     "trend30": -72,
+     "trend30": 9,
      "sidelined": true,
      "status": "Out"
     },
@@ -2262,7 +2262,7 @@
      "team": "ATL",
      "value": 1134,
      "rank": 194,
-     "trend30": 134,
+     "trend30": 95,
      "sidelined": false,
      "status": ""
     },
@@ -2272,7 +2272,7 @@
      "team": "NYJ",
      "value": 1111,
      "rank": 196,
-     "trend30": -141,
+     "trend30": -190,
      "sidelined": true,
      "status": "Doubtful"
     },
@@ -2282,7 +2282,7 @@
      "team": "TB",
      "value": 940,
      "rank": 209,
-     "trend30": -442,
+     "trend30": -358,
      "sidelined": false,
      "status": ""
     },
@@ -2292,7 +2292,7 @@
      "team": "HOU",
      "value": 898,
      "rank": 215,
-     "trend30": -530,
+     "trend30": -496,
      "sidelined": false,
      "status": ""
     },
@@ -2302,7 +2302,7 @@
      "team": "TB",
      "value": 693,
      "rank": 233,
-     "trend30": -230,
+     "trend30": -251,
      "sidelined": true,
      "status": "IR"
     }
@@ -2314,7 +2314,7 @@
      "round": 1,
      "via": null,
      "value": 2587,
-     "trend30": 148
+     "trend30": 178
     },
     {
      "label": "2028 1st",
@@ -2322,7 +2322,7 @@
      "round": 1,
      "via": null,
      "value": 2257,
-     "trend30": 88
+     "trend30": 98
     },
     {
      "label": "2029 1st",
@@ -2330,7 +2330,7 @@
      "round": 1,
      "via": null,
      "value": 2018,
-     "trend30": 124
+     "trend30": 127
     },
     {
      "label": "2027 2nd (Late)",
@@ -2338,7 +2338,7 @@
      "round": 2,
      "via": null,
      "value": 1484,
-     "trend30": 87
+     "trend30": 107
     },
     {
      "label": "2028 2nd",
@@ -2346,7 +2346,7 @@
      "round": 2,
      "via": null,
      "value": 1396,
-     "trend30": 112
+     "trend30": 109
     },
     {
      "label": "2029 2nd",
@@ -2354,7 +2354,7 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 72
+     "trend30": 75
     },
     {
      "label": "2027 3rd (Late)",
@@ -2362,7 +2362,7 @@
      "round": 3,
      "via": null,
      "value": 1051,
-     "trend30": 65
+     "trend30": 69
     },
     {
      "label": "2028 3rd",
@@ -2370,7 +2370,7 @@
      "round": 3,
      "via": null,
      "value": 1049,
-     "trend30": 91
+     "trend30": 99
     },
     {
      "label": "2029 3rd",
@@ -2378,7 +2378,7 @@
      "round": 3,
      "via": null,
      "value": 978,
-     "trend30": 58
+     "trend30": 64
     }
    ],
    "sidelined_players": [
@@ -2388,7 +2388,7 @@
      "team": "PHI",
      "value": 3601,
      "rank": 52,
-     "trend30": -1910,
+     "trend30": -1979,
      "sidelined": true,
      "status": "IR"
     },
@@ -2398,7 +2398,7 @@
      "team": "LAC",
      "value": 1211,
      "rank": 186,
-     "trend30": -72,
+     "trend30": 9,
      "sidelined": true,
      "status": "Out"
     },
@@ -2408,7 +2408,7 @@
      "team": "NYJ",
      "value": 1111,
      "rank": 196,
-     "trend30": -141,
+     "trend30": -190,
      "sidelined": true,
      "status": "Doubtful"
     },
@@ -2418,7 +2418,7 @@
      "team": "TB",
      "value": 693,
      "rank": 233,
-     "trend30": -230,
+     "trend30": -251,
      "sidelined": true,
      "status": "IR"
     }
@@ -2440,7 +2440,7 @@
     "QB": 4096,
     "PICK": 17452
    },
-   "move30": -3781,
+   "move30": -3767,
    "move30_pct": -6.4,
    "sidelined": 6265,
    "sidelined_pct": 11.4,
@@ -2452,7 +2452,7 @@
      "team": "ATL",
      "value": 9971,
      "rank": 3,
-     "trend30": 145,
+     "trend30": 37,
      "sidelined": false,
      "status": ""
     },
@@ -2462,7 +2462,7 @@
      "team": "CAR",
      "value": 4955,
      "rank": 28,
-     "trend30": 656,
+     "trend30": 652,
      "sidelined": false,
      "status": ""
     },
@@ -2472,7 +2472,7 @@
      "team": "SEA",
      "value": 2602,
      "rank": 83,
-     "trend30": -18,
+     "trend30": -17,
      "sidelined": false,
      "status": ""
     },
@@ -2482,7 +2482,7 @@
      "team": "BUF",
      "value": 2236,
      "rank": 95,
-     "trend30": -820,
+     "trend30": -819,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -2492,7 +2492,7 @@
      "team": "DEN",
      "value": 2119,
      "rank": 103,
-     "trend30": -1126,
+     "trend30": -1098,
      "sidelined": false,
      "status": ""
     },
@@ -2502,7 +2502,7 @@
      "team": "NO",
      "value": 1955,
      "rank": 107,
-     "trend30": -423,
+     "trend30": -403,
      "sidelined": true,
      "status": "IR"
     }
@@ -2514,7 +2514,7 @@
      "team": "ATL",
      "value": 9971,
      "rank": 3,
-     "trend30": 145,
+     "trend30": 37,
      "sidelined": false,
      "status": ""
     },
@@ -2524,7 +2524,7 @@
      "team": "CAR",
      "value": 4955,
      "rank": 28,
-     "trend30": 656,
+     "trend30": 652,
      "sidelined": false,
      "status": ""
     },
@@ -2534,7 +2534,7 @@
      "team": "SEA",
      "value": 2602,
      "rank": 83,
-     "trend30": -18,
+     "trend30": -17,
      "sidelined": false,
      "status": ""
     },
@@ -2544,7 +2544,7 @@
      "team": "BUF",
      "value": 2236,
      "rank": 95,
-     "trend30": -820,
+     "trend30": -819,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -2554,7 +2554,7 @@
      "team": "DEN",
      "value": 2119,
      "rank": 103,
-     "trend30": -1126,
+     "trend30": -1098,
      "sidelined": false,
      "status": ""
     },
@@ -2564,7 +2564,7 @@
      "team": "NO",
      "value": 1955,
      "rank": 107,
-     "trend30": -423,
+     "trend30": -403,
      "sidelined": true,
      "status": "IR"
     },
@@ -2574,7 +2574,7 @@
      "team": "JAX",
      "value": 1887,
      "rank": 109,
-     "trend30": 416,
+     "trend30": 431,
      "sidelined": false,
      "status": ""
     },
@@ -2584,7 +2584,7 @@
      "team": "WAS",
      "value": 1524,
      "rank": 139,
-     "trend30": -247,
+     "trend30": -251,
      "sidelined": true,
      "status": "Out"
     },
@@ -2614,7 +2614,7 @@
      "team": "NE",
      "value": 1384,
      "rank": 157,
-     "trend30": -22,
+     "trend30": -15,
      "sidelined": true,
      "status": "IR"
     },
@@ -2624,7 +2624,7 @@
      "team": "PIT",
      "value": 1366,
      "rank": 159,
-     "trend30": 97,
+     "trend30": 84,
      "sidelined": false,
      "status": ""
     },
@@ -2634,7 +2634,7 @@
      "team": "TB",
      "value": 1136,
      "rank": 193,
-     "trend30": -302,
+     "trend30": -303,
      "sidelined": false,
      "status": ""
     },
@@ -2644,7 +2644,7 @@
      "team": "TEN",
      "value": 961,
      "rank": 207,
-     "trend30": -201,
+     "trend30": -158,
      "sidelined": false,
      "status": ""
     },
@@ -2654,7 +2654,7 @@
      "team": "CLE",
      "value": 813,
      "rank": 226,
-     "trend30": 21,
+     "trend30": -14,
      "sidelined": false,
      "status": ""
     },
@@ -2664,7 +2664,7 @@
      "team": "PIT",
      "value": 759,
      "rank": 229,
-     "trend30": -706,
+     "trend30": -725,
      "sidelined": true,
      "status": "IR"
     },
@@ -2674,7 +2674,7 @@
      "team": "PHI",
      "value": 507,
      "rank": 248,
-     "trend30": -616,
+     "trend30": -641,
      "sidelined": true,
      "status": "IR"
     },
@@ -2684,7 +2684,7 @@
      "team": "GB",
      "value": 393,
      "rank": 263,
-     "trend30": -664,
+     "trend30": -661,
      "sidelined": false,
      "status": ""
     },
@@ -2694,7 +2694,7 @@
      "team": "SF",
      "value": 136,
      "rank": 322,
-     "trend30": -35,
+     "trend30": -45,
      "sidelined": true,
      "status": "IR"
     }
@@ -2706,7 +2706,7 @@
      "round": 1,
      "via": null,
      "value": 5099,
-     "trend30": 305
+     "trend30": 350
     },
     {
      "label": "2028 1st",
@@ -2714,7 +2714,7 @@
      "round": 1,
      "via": null,
      "value": 2257,
-     "trend30": 88
+     "trend30": 98
     },
     {
      "label": "2027 2nd (Early)",
@@ -2722,7 +2722,7 @@
      "round": 2,
      "via": null,
      "value": 2078,
-     "trend30": 112
+     "trend30": 144
     },
     {
      "label": "2029 1st",
@@ -2730,7 +2730,7 @@
      "round": 1,
      "via": null,
      "value": 2018,
-     "trend30": 124
+     "trend30": 127
     },
     {
      "label": "2028 2nd",
@@ -2738,7 +2738,7 @@
      "round": 2,
      "via": null,
      "value": 1396,
-     "trend30": 112
+     "trend30": 109
     },
     {
      "label": "2027 3rd (Early)",
@@ -2746,7 +2746,7 @@
      "round": 3,
      "via": null,
      "value": 1300,
-     "trend30": 86
+     "trend30": 97
     },
     {
      "label": "2029 2nd",
@@ -2754,7 +2754,7 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 72
+     "trend30": 75
     },
     {
      "label": "2028 3rd",
@@ -2762,7 +2762,7 @@
      "round": 3,
      "via": null,
      "value": 1049,
-     "trend30": 91
+     "trend30": 99
     },
     {
      "label": "2029 3rd",
@@ -2770,7 +2770,7 @@
      "round": 3,
      "via": null,
      "value": 978,
-     "trend30": 58
+     "trend30": 64
     }
    ],
    "sidelined_players": [
@@ -2780,7 +2780,7 @@
      "team": "NO",
      "value": 1955,
      "rank": 107,
-     "trend30": -423,
+     "trend30": -403,
      "sidelined": true,
      "status": "IR"
     },
@@ -2790,7 +2790,7 @@
      "team": "WAS",
      "value": 1524,
      "rank": 139,
-     "trend30": -247,
+     "trend30": -251,
      "sidelined": true,
      "status": "Out"
     },
@@ -2800,7 +2800,7 @@
      "team": "NE",
      "value": 1384,
      "rank": 157,
-     "trend30": -22,
+     "trend30": -15,
      "sidelined": true,
      "status": "IR"
     },
@@ -2810,7 +2810,7 @@
      "team": "PIT",
      "value": 759,
      "rank": 229,
-     "trend30": -706,
+     "trend30": -725,
      "sidelined": true,
      "status": "IR"
     },
@@ -2820,7 +2820,7 @@
      "team": "PHI",
      "value": 507,
      "rank": 248,
-     "trend30": -616,
+     "trend30": -641,
      "sidelined": true,
      "status": "IR"
     }
@@ -2842,8 +2842,8 @@
     "TE": 2755,
     "PICK": 15214
    },
-   "move30": 133,
-   "move30_pct": 0.2,
+   "move30": 545,
+   "move30_pct": 0.9,
    "sidelined": 5259,
    "sidelined_pct": 8.1,
    "status": "stable",
@@ -2854,7 +2854,7 @@
      "team": "BUF",
      "value": 10915,
      "rank": 1,
-     "trend30": -86,
+     "trend30": -33,
      "sidelined": false,
      "status": ""
     },
@@ -2864,7 +2864,7 @@
      "team": "NO",
      "value": 5141,
      "rank": 27,
-     "trend30": 407,
+     "trend30": 369,
      "sidelined": false,
      "status": ""
     },
@@ -2874,7 +2874,7 @@
      "team": "BAL",
      "value": 4687,
      "rank": 30,
-     "trend30": 458,
+     "trend30": 506,
      "sidelined": false,
      "status": ""
     },
@@ -2884,7 +2884,7 @@
      "team": "GB",
      "value": 4082,
      "rank": 38,
-     "trend30": 1029,
+     "trend30": 1088,
      "sidelined": false,
      "status": ""
     },
@@ -2894,7 +2894,7 @@
      "team": "LAC",
      "value": 3718,
      "rank": 47,
-     "trend30": -1336,
+     "trend30": -1268,
      "sidelined": false,
      "status": ""
     },
@@ -2904,7 +2904,7 @@
      "team": "TB",
      "value": 3710,
      "rank": 48,
-     "trend30": 386,
+     "trend30": 441,
      "sidelined": false,
      "status": ""
     }
@@ -2916,7 +2916,7 @@
      "team": "BUF",
      "value": 10915,
      "rank": 1,
-     "trend30": -86,
+     "trend30": -33,
      "sidelined": false,
      "status": ""
     },
@@ -2926,7 +2926,7 @@
      "team": "NO",
      "value": 5141,
      "rank": 27,
-     "trend30": 407,
+     "trend30": 369,
      "sidelined": false,
      "status": ""
     },
@@ -2936,7 +2936,7 @@
      "team": "BAL",
      "value": 4687,
      "rank": 30,
-     "trend30": 458,
+     "trend30": 506,
      "sidelined": false,
      "status": ""
     },
@@ -2946,7 +2946,7 @@
      "team": "GB",
      "value": 4082,
      "rank": 38,
-     "trend30": 1029,
+     "trend30": 1088,
      "sidelined": false,
      "status": ""
     },
@@ -2956,7 +2956,7 @@
      "team": "LAC",
      "value": 3718,
      "rank": 47,
-     "trend30": -1336,
+     "trend30": -1268,
      "sidelined": false,
      "status": ""
     },
@@ -2966,7 +2966,7 @@
      "team": "TB",
      "value": 3710,
      "rank": 48,
-     "trend30": 386,
+     "trend30": 441,
      "sidelined": false,
      "status": ""
     },
@@ -2976,7 +2976,7 @@
      "team": "LAC",
      "value": 2625,
      "rank": 80,
-     "trend30": -1214,
+     "trend30": -1186,
      "sidelined": true,
      "status": "Out"
     },
@@ -2986,7 +2986,7 @@
      "team": "IND",
      "value": 1580,
      "rank": 134,
-     "trend30": -192,
+     "trend30": -160,
      "sidelined": false,
      "status": ""
     },
@@ -2996,7 +2996,7 @@
      "team": "MIN",
      "value": 1532,
      "rank": 137,
-     "trend30": 103,
+     "trend30": 144,
      "sidelined": false,
      "status": ""
     },
@@ -3006,7 +3006,7 @@
      "team": "DEN",
      "value": 1421,
      "rank": 153,
-     "trend30": 0,
+     "trend30": -9,
      "sidelined": false,
      "status": ""
     },
@@ -3016,7 +3016,7 @@
      "team": "CAR",
      "value": 1318,
      "rank": 164,
-     "trend30": -197,
+     "trend30": -210,
      "sidelined": true,
      "status": "IR"
     },
@@ -3026,7 +3026,7 @@
      "team": "GB",
      "value": 1316,
      "rank": 166,
-     "trend30": -156,
+     "trend30": -165,
      "sidelined": true,
      "status": "IR"
     },
@@ -3046,7 +3046,7 @@
      "team": "BUF",
      "value": 1241,
      "rank": 178,
-     "trend30": -161,
+     "trend30": -163,
      "sidelined": false,
      "status": ""
     },
@@ -3056,7 +3056,7 @@
      "team": "BAL",
      "value": 1188,
      "rank": 190,
-     "trend30": -395,
+     "trend30": -408,
      "sidelined": false,
      "status": ""
     },
@@ -3066,7 +3066,7 @@
      "team": "SEA",
      "value": 983,
      "rank": 205,
-     "trend30": -321,
+     "trend30": -326,
      "sidelined": false,
      "status": ""
     },
@@ -3076,7 +3076,7 @@
      "team": "PHI",
      "value": 900,
      "rank": 214,
-     "trend30": 920,
+     "trend30": 900,
      "sidelined": false,
      "status": ""
     },
@@ -3086,7 +3086,7 @@
      "team": "DAL",
      "value": 825,
      "rank": 223,
-     "trend30": 613,
+     "trend30": 688,
      "sidelined": false,
      "status": ""
     },
@@ -3096,7 +3096,7 @@
      "team": "TEN",
      "value": 584,
      "rank": 241,
-     "trend30": -469,
+     "trend30": -509,
      "sidelined": false,
      "status": ""
     },
@@ -3106,7 +3106,7 @@
      "team": "BUF",
      "value": 314,
      "rank": 279,
-     "trend30": -168,
+     "trend30": -159,
      "sidelined": false,
      "status": ""
     }
@@ -3118,7 +3118,7 @@
      "round": 1,
      "via": null,
      "value": 3358,
-     "trend30": 201
+     "trend30": 231
     },
     {
      "label": "2028 1st",
@@ -3126,7 +3126,7 @@
      "round": 1,
      "via": null,
      "value": 2257,
-     "trend30": 88
+     "trend30": 98
     },
     {
      "label": "2029 1st",
@@ -3134,7 +3134,7 @@
      "round": 1,
      "via": null,
      "value": 2018,
-     "trend30": 124
+     "trend30": 127
     },
     {
      "label": "2027 2nd (Mid)",
@@ -3142,7 +3142,7 @@
      "round": 2,
      "via": null,
      "value": 1724,
-     "trend30": 87
+     "trend30": 119
     },
     {
      "label": "2028 2nd",
@@ -3150,7 +3150,7 @@
      "round": 2,
      "via": null,
      "value": 1396,
-     "trend30": 112
+     "trend30": 109
     },
     {
      "label": "2029 2nd",
@@ -3158,7 +3158,7 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 72
+     "trend30": 75
     },
     {
      "label": "2027 3rd (Mid)",
@@ -3166,7 +3166,7 @@
      "round": 3,
      "via": null,
      "value": 1157,
-     "trend30": 86
+     "trend30": 90
     },
     {
      "label": "2028 3rd",
@@ -3174,7 +3174,7 @@
      "round": 3,
      "via": null,
      "value": 1049,
-     "trend30": 91
+     "trend30": 99
     },
     {
      "label": "2029 3rd",
@@ -3182,7 +3182,7 @@
      "round": 3,
      "via": null,
      "value": 978,
-     "trend30": 58
+     "trend30": 64
     }
    ],
    "sidelined_players": [
@@ -3192,7 +3192,7 @@
      "team": "LAC",
      "value": 2625,
      "rank": 80,
-     "trend30": -1214,
+     "trend30": -1186,
      "sidelined": true,
      "status": "Out"
     },
@@ -3202,7 +3202,7 @@
      "team": "CAR",
      "value": 1318,
      "rank": 164,
-     "trend30": -197,
+     "trend30": -210,
      "sidelined": true,
      "status": "IR"
     },
@@ -3212,7 +3212,7 @@
      "team": "GB",
      "value": 1316,
      "rank": 166,
-     "trend30": -156,
+     "trend30": -165,
      "sidelined": true,
      "status": "IR"
     }
@@ -3234,8 +3234,8 @@
     "RB": 23072,
     "PICK": 14097
    },
-   "move30": 2253,
-   "move30_pct": 3.5,
+   "move30": 2595,
+   "move30_pct": 4.0,
    "sidelined": 0,
    "sidelined_pct": 0.0,
    "status": "stable",
@@ -3246,7 +3246,7 @@
      "team": "DET",
      "value": 10854,
      "rank": 2,
-     "trend30": 307,
+     "trend30": 257,
      "sidelined": false,
      "status": ""
     },
@@ -3256,7 +3256,7 @@
      "team": "CIN",
      "value": 6431,
      "rank": 15,
-     "trend30": 175,
+     "trend30": 266,
      "sidelined": false,
      "status": ""
     },
@@ -3266,7 +3266,7 @@
      "team": "SF",
      "value": 4389,
      "rank": 35,
-     "trend30": -172,
+     "trend30": -144,
      "sidelined": false,
      "status": ""
     },
@@ -3276,7 +3276,7 @@
      "team": "HOU",
      "value": 4273,
      "rank": 36,
-     "trend30": 783,
+     "trend30": 834,
      "sidelined": false,
      "status": ""
     },
@@ -3286,7 +3286,7 @@
      "team": "TEN",
      "value": 3497,
      "rank": 56,
-     "trend30": 278,
+     "trend30": 307,
      "sidelined": false,
      "status": ""
     },
@@ -3296,7 +3296,7 @@
      "team": "GB",
      "value": 2956,
      "rank": 69,
-     "trend30": -289,
+     "trend30": -291,
      "sidelined": false,
      "status": ""
     }
@@ -3308,7 +3308,7 @@
      "team": "DET",
      "value": 10854,
      "rank": 2,
-     "trend30": 307,
+     "trend30": 257,
      "sidelined": false,
      "status": ""
     },
@@ -3318,7 +3318,7 @@
      "team": "CIN",
      "value": 6431,
      "rank": 15,
-     "trend30": 175,
+     "trend30": 266,
      "sidelined": false,
      "status": ""
     },
@@ -3328,7 +3328,7 @@
      "team": "SF",
      "value": 4389,
      "rank": 35,
-     "trend30": -172,
+     "trend30": -144,
      "sidelined": false,
      "status": ""
     },
@@ -3338,7 +3338,7 @@
      "team": "HOU",
      "value": 4273,
      "rank": 36,
-     "trend30": 783,
+     "trend30": 834,
      "sidelined": false,
      "status": ""
     },
@@ -3348,7 +3348,7 @@
      "team": "TEN",
      "value": 3497,
      "rank": 56,
-     "trend30": 278,
+     "trend30": 307,
      "sidelined": false,
      "status": ""
     },
@@ -3358,7 +3358,7 @@
      "team": "GB",
      "value": 2956,
      "rank": 69,
-     "trend30": -289,
+     "trend30": -291,
      "sidelined": false,
      "status": ""
     },
@@ -3368,7 +3368,7 @@
      "team": "PHI",
      "value": 2810,
      "rank": 74,
-     "trend30": -874,
+     "trend30": -862,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -3378,7 +3378,7 @@
      "team": "CLE",
      "value": 2612,
      "rank": 81,
-     "trend30": 580,
+     "trend30": 587,
      "sidelined": false,
      "status": ""
     },
@@ -3388,7 +3388,7 @@
      "team": "GB",
      "value": 2347,
      "rank": 92,
-     "trend30": 176,
+     "trend30": 216,
      "sidelined": false,
      "status": ""
     },
@@ -3398,7 +3398,7 @@
      "team": "SF",
      "value": 2186,
      "rank": 97,
-     "trend30": 175,
+     "trend30": 179,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -3408,7 +3408,7 @@
      "team": "LV",
      "value": 1840,
      "rank": 112,
-     "trend30": 490,
+     "trend30": 489,
      "sidelined": false,
      "status": ""
     },
@@ -3418,7 +3418,7 @@
      "team": "MIN",
      "value": 1456,
      "rank": 150,
-     "trend30": 55,
+     "trend30": 60,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -3428,7 +3428,7 @@
      "team": "LAC",
      "value": 1339,
      "rank": 160,
-     "trend30": -161,
+     "trend30": -153,
      "sidelined": false,
      "status": ""
     },
@@ -3438,7 +3438,7 @@
      "team": "WAS",
      "value": 1337,
      "rank": 162,
-     "trend30": 177,
+     "trend30": 181,
      "sidelined": false,
      "status": ""
     },
@@ -3448,7 +3448,7 @@
      "team": "ARI",
      "value": 1335,
      "rank": 163,
-     "trend30": 89,
+     "trend30": 122,
      "sidelined": false,
      "status": ""
     },
@@ -3458,7 +3458,7 @@
      "team": "DEN",
      "value": 1193,
      "rank": 189,
-     "trend30": -279,
+     "trend30": -280,
      "sidelined": false,
      "status": ""
     },
@@ -3468,7 +3468,7 @@
      "team": "DET",
      "value": 908,
      "rank": 213,
-     "trend30": -29,
+     "trend30": -2,
      "sidelined": false,
      "status": ""
     },
@@ -3478,7 +3478,7 @@
      "team": "NYJ",
      "value": 472,
      "rank": 253,
-     "trend30": -62,
+     "trend30": -69,
      "sidelined": false,
      "status": ""
     },
@@ -3488,7 +3488,7 @@
      "team": "MIN",
      "value": 389,
      "rank": 266,
-     "trend30": -11,
+     "trend30": -28,
      "sidelined": false,
      "status": ""
     }
@@ -3500,7 +3500,7 @@
      "round": 1,
      "via": null,
      "value": 2587,
-     "trend30": 148
+     "trend30": 178
     },
     {
      "label": "2028 1st",
@@ -3508,7 +3508,7 @@
      "round": 1,
      "via": null,
      "value": 2257,
-     "trend30": 88
+     "trend30": 98
     },
     {
      "label": "2029 1st",
@@ -3516,7 +3516,7 @@
      "round": 1,
      "via": null,
      "value": 2018,
-     "trend30": 124
+     "trend30": 127
     },
     {
      "label": "2027 2nd (Late)",
@@ -3524,7 +3524,7 @@
      "round": 2,
      "via": null,
      "value": 1484,
-     "trend30": 87
+     "trend30": 107
     },
     {
      "label": "2028 2nd",
@@ -3532,7 +3532,7 @@
      "round": 2,
      "via": null,
      "value": 1396,
-     "trend30": 112
+     "trend30": 109
     },
     {
      "label": "2029 2nd",
@@ -3540,7 +3540,7 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 72
+     "trend30": 75
     },
     {
      "label": "2027 3rd (Late)",
@@ -3548,7 +3548,7 @@
      "round": 3,
      "via": null,
      "value": 1051,
-     "trend30": 65
+     "trend30": 69
     },
     {
      "label": "2028 3rd",
@@ -3556,7 +3556,7 @@
      "round": 3,
      "via": null,
      "value": 1049,
-     "trend30": 91
+     "trend30": 99
     },
     {
      "label": "2029 3rd",
@@ -3564,7 +3564,7 @@
      "round": 3,
      "via": null,
      "value": 978,
-     "trend30": 58
+     "trend30": 64
     }
    ],
    "sidelined_players": [],
@@ -3585,8 +3585,8 @@
     "RB": 13600,
     "PICK": 15214
    },
-   "move30": 762,
-   "move30_pct": 1.2,
+   "move30": 1142,
+   "move30_pct": 1.8,
    "sidelined": 4802,
    "sidelined_pct": 7.6,
    "status": "stable",
@@ -3597,7 +3597,7 @@
      "team": "DAL",
      "value": 6855,
      "rank": 12,
-     "trend30": 452,
+     "trend30": 494,
      "sidelined": false,
      "status": ""
     },
@@ -3607,7 +3607,7 @@
      "team": "BUF",
      "value": 5288,
      "rank": 25,
-     "trend30": -65,
+     "trend30": -35,
      "sidelined": false,
      "status": ""
     },
@@ -3617,7 +3617,7 @@
      "team": "CAR",
      "value": 4797,
      "rank": 29,
-     "trend30": 779,
+     "trend30": 823,
      "sidelined": false,
      "status": ""
     },
@@ -3627,7 +3627,7 @@
      "team": "GB",
      "value": 4516,
      "rank": 32,
-     "trend30": 561,
+     "trend30": 549,
      "sidelined": false,
      "status": ""
     },
@@ -3637,7 +3637,7 @@
      "team": "NYJ",
      "value": 3570,
      "rank": 54,
-     "trend30": -456,
+     "trend30": -427,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -3647,7 +3647,7 @@
      "team": "DET",
      "value": 3402,
      "rank": 58,
-     "trend30": 279,
+     "trend30": 217,
      "sidelined": false,
      "status": ""
     }
@@ -3659,7 +3659,7 @@
      "team": "DAL",
      "value": 6855,
      "rank": 12,
-     "trend30": 452,
+     "trend30": 494,
      "sidelined": false,
      "status": ""
     },
@@ -3669,7 +3669,7 @@
      "team": "BUF",
      "value": 5288,
      "rank": 25,
-     "trend30": -65,
+     "trend30": -35,
      "sidelined": false,
      "status": ""
     },
@@ -3679,7 +3679,7 @@
      "team": "CAR",
      "value": 4797,
      "rank": 29,
-     "trend30": 779,
+     "trend30": 823,
      "sidelined": false,
      "status": ""
     },
@@ -3689,7 +3689,7 @@
      "team": "GB",
      "value": 4516,
      "rank": 32,
-     "trend30": 561,
+     "trend30": 549,
      "sidelined": false,
      "status": ""
     },
@@ -3699,7 +3699,7 @@
      "team": "NYJ",
      "value": 3570,
      "rank": 54,
-     "trend30": -456,
+     "trend30": -427,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -3709,7 +3709,7 @@
      "team": "DET",
      "value": 3402,
      "rank": 58,
-     "trend30": 279,
+     "trend30": 217,
      "sidelined": false,
      "status": ""
     },
@@ -3719,7 +3719,7 @@
      "team": "DEN",
      "value": 3339,
      "rank": 59,
-     "trend30": -841,
+     "trend30": -833,
      "sidelined": false,
      "status": ""
     },
@@ -3729,7 +3729,7 @@
      "team": "HOU",
      "value": 2528,
      "rank": 86,
-     "trend30": 144,
+     "trend30": 191,
      "sidelined": false,
      "status": ""
     },
@@ -3739,7 +3739,7 @@
      "team": "NE",
      "value": 1792,
      "rank": 116,
-     "trend30": 133,
+     "trend30": 92,
      "sidelined": false,
      "status": ""
     },
@@ -3749,7 +3749,7 @@
      "team": "KC",
      "value": 1737,
      "rank": 120,
-     "trend30": 79,
+     "trend30": 80,
      "sidelined": false,
      "status": ""
     },
@@ -3759,7 +3759,7 @@
      "team": "IND",
      "value": 1720,
      "rank": 122,
-     "trend30": -234,
+     "trend30": -229,
      "sidelined": true,
      "status": "IR"
     },
@@ -3769,7 +3769,7 @@
      "team": "MIN",
      "value": 1468,
      "rank": 146,
-     "trend30": 29,
+     "trend30": 60,
      "sidelined": true,
      "status": "IR"
     },
@@ -3779,7 +3779,7 @@
      "team": "WAS",
      "value": 1297,
      "rank": 169,
-     "trend30": 368,
+     "trend30": 396,
      "sidelined": false,
      "status": ""
     },
@@ -3789,7 +3789,7 @@
      "team": "NYG",
      "value": 1292,
      "rank": 171,
-     "trend30": -326,
+     "trend30": -320,
      "sidelined": false,
      "status": ""
     },
@@ -3799,7 +3799,7 @@
      "team": "DEN",
      "value": 1224,
      "rank": 182,
-     "trend30": -209,
+     "trend30": -147,
      "sidelined": true,
      "status": "IR"
     },
@@ -3809,7 +3809,7 @@
      "team": "PHI",
      "value": 1053,
      "rank": 198,
-     "trend30": -278,
+     "trend30": -279,
      "sidelined": false,
      "status": ""
     },
@@ -3819,7 +3819,7 @@
      "team": "NO",
      "value": 1050,
      "rank": 199,
-     "trend30": -44,
+     "trend30": -33,
      "sidelined": false,
      "status": ""
     },
@@ -3829,7 +3829,7 @@
      "team": "MIA",
      "value": 432,
      "rank": 256,
-     "trend30": -54,
+     "trend30": -11,
      "sidelined": false,
      "status": ""
     },
@@ -3839,7 +3839,7 @@
      "team": "LV",
      "value": 390,
      "rank": 265,
-     "trend30": -474,
+     "trend30": -458,
      "sidelined": true,
      "status": "IR"
     }
@@ -3851,7 +3851,7 @@
      "round": 1,
      "via": null,
      "value": 3358,
-     "trend30": 201
+     "trend30": 231
     },
     {
      "label": "2028 1st",
@@ -3859,7 +3859,7 @@
      "round": 1,
      "via": null,
      "value": 2257,
-     "trend30": 88
+     "trend30": 98
     },
     {
      "label": "2029 1st",
@@ -3867,7 +3867,7 @@
      "round": 1,
      "via": null,
      "value": 2018,
-     "trend30": 124
+     "trend30": 127
     },
     {
      "label": "2027 2nd (Mid)",
@@ -3875,7 +3875,7 @@
      "round": 2,
      "via": null,
      "value": 1724,
-     "trend30": 87
+     "trend30": 119
     },
     {
      "label": "2028 2nd",
@@ -3883,7 +3883,7 @@
      "round": 2,
      "via": null,
      "value": 1396,
-     "trend30": 112
+     "trend30": 109
     },
     {
      "label": "2029 2nd",
@@ -3891,7 +3891,7 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 72
+     "trend30": 75
     },
     {
      "label": "2027 3rd (Mid)",
@@ -3899,7 +3899,7 @@
      "round": 3,
      "via": null,
      "value": 1157,
-     "trend30": 86
+     "trend30": 90
     },
     {
      "label": "2028 3rd",
@@ -3907,7 +3907,7 @@
      "round": 3,
      "via": null,
      "value": 1049,
-     "trend30": 91
+     "trend30": 99
     },
     {
      "label": "2029 3rd",
@@ -3915,7 +3915,7 @@
      "round": 3,
      "via": null,
      "value": 978,
-     "trend30": 58
+     "trend30": 64
     }
    ],
    "sidelined_players": [
@@ -3925,7 +3925,7 @@
      "team": "IND",
      "value": 1720,
      "rank": 122,
-     "trend30": -234,
+     "trend30": -229,
      "sidelined": true,
      "status": "IR"
     },
@@ -3935,7 +3935,7 @@
      "team": "MIN",
      "value": 1468,
      "rank": 146,
-     "trend30": 29,
+     "trend30": 60,
      "sidelined": true,
      "status": "IR"
     },
@@ -3945,7 +3945,7 @@
      "team": "DEN",
      "value": 1224,
      "rank": 182,
-     "trend30": -209,
+     "trend30": -147,
      "sidelined": true,
      "status": "IR"
     },
@@ -3955,7 +3955,7 @@
      "team": "LV",
      "value": 390,
      "rank": 265,
-     "trend30": -474,
+     "trend30": -458,
      "sidelined": true,
      "status": "IR"
     }
@@ -3977,8 +3977,8 @@
     "TE": 5530,
     "PICK": 17452
    },
-   "move30": 3122,
-   "move30_pct": 5.1,
+   "move30": 3418,
+   "move30_pct": 5.6,
    "sidelined": 3826,
    "sidelined_pct": 5.9,
    "status": "bull",
@@ -3989,7 +3989,7 @@
      "team": "CHI",
      "value": 7016,
      "rank": 10,
-     "trend30": -332,
+     "trend30": -317,
      "sidelined": false,
      "status": ""
     },
@@ -3999,7 +3999,7 @@
      "team": "ARI",
      "value": 5220,
      "rank": 26,
-     "trend30": -677,
+     "trend30": -632,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -4009,7 +4009,7 @@
      "team": "NO",
      "value": 4045,
      "rank": 41,
-     "trend30": 95,
+     "trend30": 123,
      "sidelined": false,
      "status": ""
     },
@@ -4019,7 +4019,7 @@
      "team": "GB",
      "value": 4026,
      "rank": 42,
-     "trend30": 1552,
+     "trend30": 1576,
      "sidelined": false,
      "status": ""
     },
@@ -4029,7 +4029,7 @@
      "team": "DAL",
      "value": 3925,
      "rank": 46,
-     "trend30": -408,
+     "trend30": -458,
      "sidelined": false,
      "status": ""
     },
@@ -4039,7 +4039,7 @@
      "team": "CHI",
      "value": 3173,
      "rank": 63,
-     "trend30": 149,
+     "trend30": 163,
      "sidelined": false,
      "status": ""
     }
@@ -4051,7 +4051,7 @@
      "team": "CHI",
      "value": 7016,
      "rank": 10,
-     "trend30": -332,
+     "trend30": -317,
      "sidelined": false,
      "status": ""
     },
@@ -4061,7 +4061,7 @@
      "team": "ARI",
      "value": 5220,
      "rank": 26,
-     "trend30": -677,
+     "trend30": -632,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -4071,7 +4071,7 @@
      "team": "NO",
      "value": 4045,
      "rank": 41,
-     "trend30": 95,
+     "trend30": 123,
      "sidelined": false,
      "status": ""
     },
@@ -4081,7 +4081,7 @@
      "team": "GB",
      "value": 4026,
      "rank": 42,
-     "trend30": 1552,
+     "trend30": 1576,
      "sidelined": false,
      "status": ""
     },
@@ -4091,7 +4091,7 @@
      "team": "DAL",
      "value": 3925,
      "rank": 46,
-     "trend30": -408,
+     "trend30": -458,
      "sidelined": false,
      "status": ""
     },
@@ -4101,7 +4101,7 @@
      "team": "CHI",
      "value": 3173,
      "rank": 63,
-     "trend30": 149,
+     "trend30": 163,
      "sidelined": false,
      "status": ""
     },
@@ -4111,7 +4111,7 @@
      "team": "SEA",
      "value": 2441,
      "rank": 89,
-     "trend30": -839,
+     "trend30": -822,
      "sidelined": true,
      "status": "IR"
     },
@@ -4121,7 +4121,7 @@
      "team": "NYJ",
      "value": 2248,
      "rank": 93,
-     "trend30": -84,
+     "trend30": -70,
      "sidelined": false,
      "status": ""
     },
@@ -4131,7 +4131,7 @@
      "team": "DEN",
      "value": 1767,
      "rank": 119,
-     "trend30": -73,
+     "trend30": -30,
      "sidelined": false,
      "status": ""
     },
@@ -4141,7 +4141,7 @@
      "team": "NYG",
      "value": 1735,
      "rank": 121,
-     "trend30": 1044,
+     "trend30": 1051,
      "sidelined": false,
      "status": ""
     },
@@ -4151,7 +4151,7 @@
      "team": "HOU",
      "value": 1605,
      "rank": 130,
-     "trend30": 347,
+     "trend30": 331,
      "sidelined": false,
      "status": ""
     },
@@ -4161,7 +4161,7 @@
      "team": "CLE",
      "value": 1597,
      "rank": 131,
-     "trend30": 240,
+     "trend30": 203,
      "sidelined": false,
      "status": ""
     },
@@ -4171,7 +4171,7 @@
      "team": "BUF",
      "value": 1542,
      "rank": 136,
-     "trend30": 252,
+     "trend30": 269,
      "sidelined": false,
      "status": ""
     },
@@ -4181,7 +4181,7 @@
      "team": "ARI",
      "value": 1392,
      "rank": 155,
-     "trend30": 192,
+     "trend30": 187,
      "sidelined": false,
      "status": ""
     },
@@ -4191,7 +4191,7 @@
      "team": "WAS",
      "value": 1385,
      "rank": 156,
-     "trend30": -339,
+     "trend30": -327,
      "sidelined": true,
      "status": "IR"
     },
@@ -4201,7 +4201,7 @@
      "team": "LV",
      "value": 1272,
      "rank": 174,
-     "trend30": 64,
+     "trend30": 48,
      "sidelined": false,
      "status": ""
     },
@@ -4211,7 +4211,7 @@
      "team": "LAR",
      "value": 1124,
      "rank": 195,
-     "trend30": 1131,
+     "trend30": 1124,
      "sidelined": false,
      "status": ""
     },
@@ -4221,7 +4221,7 @@
      "team": "CAR",
      "value": 886,
      "rank": 216,
-     "trend30": -145,
+     "trend30": -78,
      "sidelined": false,
      "status": ""
     },
@@ -4231,7 +4231,7 @@
      "team": "ATL",
      "value": 750,
      "rank": 230,
-     "trend30": -95,
+     "trend30": -86,
      "sidelined": false,
      "status": ""
     }
@@ -4243,7 +4243,7 @@
      "round": 1,
      "via": null,
      "value": 5099,
-     "trend30": 305
+     "trend30": 350
     },
     {
      "label": "2028 1st",
@@ -4251,7 +4251,7 @@
      "round": 1,
      "via": null,
      "value": 2257,
-     "trend30": 88
+     "trend30": 98
     },
     {
      "label": "2027 2nd (Early)",
@@ -4259,7 +4259,7 @@
      "round": 2,
      "via": null,
      "value": 2078,
-     "trend30": 112
+     "trend30": 144
     },
     {
      "label": "2029 1st",
@@ -4267,7 +4267,7 @@
      "round": 1,
      "via": null,
      "value": 2018,
-     "trend30": 124
+     "trend30": 127
     },
     {
      "label": "2028 2nd",
@@ -4275,7 +4275,7 @@
      "round": 2,
      "via": null,
      "value": 1396,
-     "trend30": 112
+     "trend30": 109
     },
     {
      "label": "2027 3rd (Early)",
@@ -4283,7 +4283,7 @@
      "round": 3,
      "via": null,
      "value": 1300,
-     "trend30": 86
+     "trend30": 97
     },
     {
      "label": "2029 2nd",
@@ -4291,7 +4291,7 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 72
+     "trend30": 75
     },
     {
      "label": "2028 3rd",
@@ -4299,7 +4299,7 @@
      "round": 3,
      "via": null,
      "value": 1049,
-     "trend30": 91
+     "trend30": 99
     },
     {
      "label": "2029 3rd",
@@ -4307,7 +4307,7 @@
      "round": 3,
      "via": null,
      "value": 978,
-     "trend30": 58
+     "trend30": 64
     }
    ],
    "sidelined_players": [
@@ -4317,7 +4317,7 @@
      "team": "SEA",
      "value": 2441,
      "rank": 89,
-     "trend30": -839,
+     "trend30": -822,
      "sidelined": true,
      "status": "IR"
     },
@@ -4327,7 +4327,7 @@
      "team": "WAS",
      "value": 1385,
      "rank": 156,
-     "trend30": -339,
+     "trend30": -327,
      "sidelined": true,
      "status": "IR"
     }
@@ -4349,8 +4349,8 @@
     "QB": 7001,
     "PICK": 15214
    },
-   "move30": -5,
-   "move30_pct": -0.0,
+   "move30": -174,
+   "move30_pct": -0.3,
    "sidelined": 288,
    "sidelined_pct": 0.5,
    "status": "stable",
@@ -4361,7 +4361,7 @@
      "team": "LV",
      "value": 7894,
      "rank": 7,
-     "trend30": 1305,
+     "trend30": 1295,
      "sidelined": false,
      "status": ""
     },
@@ -4371,7 +4371,7 @@
      "team": "LV",
      "value": 6033,
      "rank": 19,
-     "trend30": -823,
+     "trend30": -925,
      "sidelined": false,
      "status": ""
     },
@@ -4381,7 +4381,7 @@
      "team": "IND",
      "value": 5894,
      "rank": 20,
-     "trend30": 171,
+     "trend30": 158,
      "sidelined": false,
      "status": ""
     },
@@ -4391,7 +4391,7 @@
      "team": "DAL",
      "value": 4060,
      "rank": 39,
-     "trend30": 5,
+     "trend30": 1,
      "sidelined": false,
      "status": ""
     },
@@ -4401,7 +4401,7 @@
      "team": "PHI",
      "value": 3223,
      "rank": 61,
-     "trend30": -425,
+     "trend30": -421,
      "sidelined": false,
      "status": ""
     },
@@ -4411,7 +4411,7 @@
      "team": "KC",
      "value": 2874,
      "rank": 72,
-     "trend30": -242,
+     "trend30": -231,
      "sidelined": false,
      "status": "Questionable"
     }
@@ -4423,7 +4423,7 @@
      "team": "LV",
      "value": 7894,
      "rank": 7,
-     "trend30": 1305,
+     "trend30": 1295,
      "sidelined": false,
      "status": ""
     },
@@ -4433,7 +4433,7 @@
      "team": "LV",
      "value": 6033,
      "rank": 19,
-     "trend30": -823,
+     "trend30": -925,
      "sidelined": false,
      "status": ""
     },
@@ -4443,7 +4443,7 @@
      "team": "IND",
      "value": 5894,
      "rank": 20,
-     "trend30": 171,
+     "trend30": 158,
      "sidelined": false,
      "status": ""
     },
@@ -4453,7 +4453,7 @@
      "team": "DAL",
      "value": 4060,
      "rank": 39,
-     "trend30": 5,
+     "trend30": 1,
      "sidelined": false,
      "status": ""
     },
@@ -4463,7 +4463,7 @@
      "team": "PHI",
      "value": 3223,
      "rank": 61,
-     "trend30": -425,
+     "trend30": -421,
      "sidelined": false,
      "status": ""
     },
@@ -4473,7 +4473,7 @@
      "team": "KC",
      "value": 2874,
      "rank": 72,
-     "trend30": -242,
+     "trend30": -231,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -4483,7 +4483,7 @@
      "team": "ARI",
      "value": 2744,
      "rank": 75,
-     "trend30": 695,
+     "trend30": 673,
      "sidelined": false,
      "status": ""
     },
@@ -4493,7 +4493,7 @@
      "team": "MIN",
      "value": 2608,
      "rank": 82,
-     "trend30": 108,
+     "trend30": 56,
      "sidelined": false,
      "status": ""
     },
@@ -4503,7 +4503,7 @@
      "team": "PHI",
      "value": 2181,
      "rank": 98,
-     "trend30": -461,
+     "trend30": -508,
      "sidelined": false,
      "status": ""
     },
@@ -4513,7 +4513,7 @@
      "team": "CHI",
      "value": 1987,
      "rank": 106,
-     "trend30": 181,
+     "trend30": 192,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -4523,7 +4523,7 @@
      "team": "PHI",
      "value": 1592,
      "rank": 132,
-     "trend30": -107,
+     "trend30": -75,
      "sidelined": false,
      "status": ""
     },
@@ -4533,7 +4533,7 @@
      "team": "TEN",
      "value": 1460,
      "rank": 148,
-     "trend30": 117,
+     "trend30": 124,
      "sidelined": false,
      "status": ""
     },
@@ -4543,7 +4543,7 @@
      "team": "TEN",
      "value": 1458,
      "rank": 149,
-     "trend30": -50,
+     "trend30": -58,
      "sidelined": false,
      "status": ""
     },
@@ -4553,7 +4553,7 @@
      "team": "GB",
      "value": 1214,
      "rank": 185,
-     "trend30": -97,
+     "trend30": -92,
      "sidelined": false,
      "status": ""
     },
@@ -4563,7 +4563,7 @@
      "team": "SEA",
      "value": 924,
      "rank": 211,
-     "trend30": -124,
+     "trend30": -120,
      "sidelined": false,
      "status": ""
     },
@@ -4573,7 +4573,7 @@
      "team": "TB",
      "value": 719,
      "rank": 232,
-     "trend30": -158,
+     "trend30": -215,
      "sidelined": false,
      "status": ""
     },
@@ -4583,7 +4583,7 @@
      "team": "SEA",
      "value": 333,
      "rank": 273,
-     "trend30": -794,
+     "trend30": -793,
      "sidelined": false,
      "status": ""
     },
@@ -4593,7 +4593,7 @@
      "team": "SEA",
      "value": 288,
      "rank": 285,
-     "trend30": -225,
+     "trend30": -247,
      "sidelined": true,
      "status": "Out"
     }
@@ -4605,7 +4605,7 @@
      "round": 1,
      "via": null,
      "value": 3358,
-     "trend30": 201
+     "trend30": 231
     },
     {
      "label": "2028 1st",
@@ -4613,7 +4613,7 @@
      "round": 1,
      "via": null,
      "value": 2257,
-     "trend30": 88
+     "trend30": 98
     },
     {
      "label": "2029 1st",
@@ -4621,7 +4621,7 @@
      "round": 1,
      "via": null,
      "value": 2018,
-     "trend30": 124
+     "trend30": 127
     },
     {
      "label": "2027 2nd (Mid)",
@@ -4629,7 +4629,7 @@
      "round": 2,
      "via": null,
      "value": 1724,
-     "trend30": 87
+     "trend30": 119
     },
     {
      "label": "2028 2nd",
@@ -4637,7 +4637,7 @@
      "round": 2,
      "via": null,
      "value": 1396,
-     "trend30": 112
+     "trend30": 109
     },
     {
      "label": "2029 2nd",
@@ -4645,7 +4645,7 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 72
+     "trend30": 75
     },
     {
      "label": "2027 3rd (Mid)",
@@ -4653,7 +4653,7 @@
      "round": 3,
      "via": null,
      "value": 1157,
-     "trend30": 86
+     "trend30": 90
     },
     {
      "label": "2028 3rd",
@@ -4661,7 +4661,7 @@
      "round": 3,
      "via": null,
      "value": 1049,
-     "trend30": 91
+     "trend30": 99
     },
     {
      "label": "2029 3rd",
@@ -4669,7 +4669,7 @@
      "round": 3,
      "via": null,
      "value": 978,
-     "trend30": 58
+     "trend30": 64
     }
    ],
    "sidelined_players": [
@@ -4679,7 +4679,7 @@
      "team": "SEA",
      "value": 288,
      "rank": 285,
-     "trend30": -225,
+     "trend30": -247,
      "sidelined": true,
      "status": "Out"
     }

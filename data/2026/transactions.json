@@ -1039,6 +1039,22 @@
   },
   {
     "week": 6,
+    "type": "waiver",
+    "created": 1792505185234,
+    "id": "1418273178236592128",
+    "manager": "YesChef23",
+    "added": {
+      "name": "Michael Mayer",
+      "pos": "TE",
+      "team": "LV"
+    },
+    "dropped": [
+      "Roman Wilson"
+    ],
+    "bid": 35
+  },
+  {
+    "week": 6,
     "type": "free_agent",
     "created": 1792326791512,
     "id": "1417524940734791680",
