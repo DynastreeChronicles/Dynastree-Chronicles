@@ -1,5 +1,23 @@
 [
  {
+ "no": 7,
+ "year": 2026,
+ "title": "A 0.56-Point Heartbreak and a Second Perfect Week",
+ "weeks": "Week 6 post-game and Week 7 pre-game",
+ "web": true,
+ "month": "October 2026",
+ "dek": "StealingGas set a second straight perfect lineup, 180.64, and slid to the 1.05. YesChef23 beat Darkspaces by 0.56 points while Snipe58 took the 1.01.",
+ "banner": "StealingGas: perfect again, 180.64",
+ "ticker": [
+  "StealingGas posts a second straight perfect lineup, 180.64",
+  "YesChef23 beats Darkspaces by 0.56 points",
+  "Snipe58 takes the 1.01 at 751.78 MAXPF",
+  "Zygon is 5-1 and 0.02 MAXPF points behind Hades9mm"
+ ],
+ "wire_week": 6,
+ "standings_week": 6
+},
+{
  "no": 6,
  "year": 2026,
  "title": "The Unbeaten Falls, the Tank Goes Perfect",
