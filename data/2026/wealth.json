@@ -159,81 +159,81 @@
    }
   },
   "6": {
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "slots": {
-    "1": 5109,
-    "2": 5109,
-    "3": 5109,
-    "4": 5109,
-    "5": 3364,
-    "6": 3364,
-    "7": 3364,
-    "8": 3364,
-    "9": 2592,
-    "10": 2592,
-    "11": 2592,
-    "12": 2592
+    "1": 5012,
+    "2": 5012,
+    "3": 5012,
+    "4": 5012,
+    "5": 3300,
+    "6": 3300,
+    "7": 3300,
+    "8": 3300,
+    "9": 2552,
+    "10": 2552,
+    "11": 2552,
+    "12": 2552
    },
    "teams": {
     "Darkspaces": {
-     "roster": 54114,
-     "picks": 22186,
-     "total": 76300
+     "roster": 54131,
+     "picks": 22001,
+     "total": 76132
     },
     "Snipe58": {
-     "roster": 41651,
-     "picks": 12678,
-     "total": 54329
+     "roster": 41546,
+     "picks": 12593,
+     "total": 54139
     },
     "StealingGas": {
-     "roster": 59567,
-     "picks": 16625,
-     "total": 76192
+     "roster": 60463,
+     "picks": 16500,
+     "total": 76963
     },
     "Zygon": {
-     "roster": 59962,
-     "picks": 14069,
-     "total": 74031
+     "roster": 59061,
+     "picks": 14007,
+     "total": 73068
     },
     "Hades9mm": {
-     "roster": 45300,
-     "picks": 12631,
-     "total": 57931
+     "roster": 44523,
+     "picks": 12605,
+     "total": 57128
     },
     "Johnny4Skins": {
-     "roster": 51753,
-     "picks": 14069,
-     "total": 65822
+     "roster": 51903,
+     "picks": 14007,
+     "total": 65910
     },
     "Sarge71": {
-     "roster": 37905,
-     "picks": 17432,
-     "total": 55337
+     "roster": 37954,
+     "picks": 17297,
+     "total": 55251
     },
     "C33DeezNutzz": {
-     "roster": 49358,
-     "picks": 15187,
-     "total": 64545
+     "roster": 49131,
+     "picks": 15098,
+     "total": 64229
     },
     "Painty69": {
-     "roster": 52762,
-     "picks": 14069,
-     "total": 66831
+     "roster": 52793,
+     "picks": 14007,
+     "total": 66800
     },
     "CMac91": {
-     "roster": 48026,
-     "picks": 15187,
-     "total": 63213
+     "roster": 47994,
+     "picks": 15098,
+     "total": 63092
     },
     "YesChef23": {
-     "roster": 47214,
-     "picks": 17432,
-     "total": 64646
+     "roster": 47562,
+     "picks": 17297,
+     "total": 64859
     },
     "fumbduckdumbfuck": {
-     "roster": 47277,
-     "picks": 15187,
-     "total": 62464
+     "roster": 46227,
+     "picks": 15098,
+     "total": 61325
     }
    }
   }
