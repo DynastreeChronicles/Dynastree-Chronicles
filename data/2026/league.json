@@ -31,7 +31,8 @@
     3,
     4,
     5,
-    6
+    6,
+    7
   ],
   "phase": "regular",
   "carried_from": null,
@@ -39,5 +40,5 @@
   "maxpf_includes_reserve": false,
   "maxpf_definition": "optimal lineup points per week, summed (Sleeper Max PF)",
   "waiver_budget": 500,
-  "generated_at": "2026-10-21T21:36:44+00:00"
+  "generated_at": "2026-10-27T11:29:01+00:00"
 }

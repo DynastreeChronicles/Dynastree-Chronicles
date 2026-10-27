@@ -1098,5 +1098,133 @@
       "Travis Hunter"
     ],
     "bid": 0
+  },
+  {
+    "week": 7,
+    "type": "free_agent",
+    "created": 1792905732299,
+    "id": "1419953194393509888",
+    "manager": "StealingGas",
+    "added": {
+      "name": "Konata Mumpfield",
+      "pos": "WR",
+      "team": "LAR"
+    },
+    "dropped": [
+      "Keenan Allen"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 7,
+    "type": "free_agent",
+    "created": 1792905646294,
+    "id": "1419952833662382080",
+    "manager": "StealingGas",
+    "added": {
+      "name": "Keenan Allen",
+      "pos": "WR",
+      "team": "IND"
+    },
+    "dropped": [
+      "Dylan Sampson"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 7,
+    "type": "free_agent",
+    "created": 1792905516161,
+    "id": "1419952287844995072",
+    "manager": "StealingGas",
+    "added": {
+      "name": "Kendre Miller",
+      "pos": "RB",
+      "team": "NO"
+    },
+    "dropped": [
+      "Zonovan Knight"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 7,
+    "type": "free_agent",
+    "created": 1792719537560,
+    "id": "1419172237054853120",
+    "manager": "StealingGas",
+    "added": {
+      "name": "Zonovan Knight",
+      "pos": "RB",
+      "team": "ARI"
+    },
+    "dropped": [
+      "New England Patriots"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 7,
+    "type": "free_agent",
+    "created": 1792715880982,
+    "id": "1419156900255162368",
+    "manager": "C33DeezNutzz",
+    "added": {
+      "name": "Tanner McKee",
+      "pos": "QB",
+      "team": "PHI"
+    },
+    "dropped": [
+      "Ray Davis"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 7,
+    "type": "free_agent",
+    "created": 1792639312550,
+    "id": "1418835748970377216",
+    "manager": "Darkspaces",
+    "added": {
+      "name": "Tyrone Tracy Jr.",
+      "pos": "RB",
+      "team": "NYG"
+    },
+    "dropped": [
+      "Ricky Pearsall"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 7,
+    "type": "free_agent",
+    "created": 1792625863673,
+    "id": "1418779340291780608",
+    "manager": "Zygon",
+    "added": {
+      "name": "New York Jets",
+      "pos": "DEF",
+      "team": "NYJ"
+    },
+    "dropped": [
+      "Jacksonville Jaguars"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 7,
+    "type": "free_agent",
+    "created": 1792593605748,
+    "id": "1418644040752095232",
+    "manager": "Hades9mm",
+    "added": {
+      "name": "Jaylin Noel",
+      "pos": "WR",
+      "team": "HOU"
+    },
+    "dropped": [
+      "Quentin Johnston"
+    ],
+    "bid": 0
   }
 ]

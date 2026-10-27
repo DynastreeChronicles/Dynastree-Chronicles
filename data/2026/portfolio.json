@@ -7,7 +7,7 @@
   "numTeams": 12,
   "ppr": 1
  },
- "generated_at": "2026-10-27T10:11:01+00:00",
+ "generated_at": "2026-10-27T11:29:02+00:00",
  "thresholds": {
   "crash_move_pct": -5.0,
   "crash_sidelined_pct": 25.0,
@@ -2067,21 +2067,21 @@
    "since_change": 769
   },
   "Johnny4Skins": {
-   "total": 64907,
+   "total": 66025,
    "players": 50892,
-   "picks": 14015,
+   "picks": 15133,
    "pick_count": 9,
    "by_pos": {
     "WR": 19428,
     "TE": 7882,
     "QB": 11292,
     "RB": 12290,
-    "PICK": 14015
+    "PICK": 15133
    },
-   "move30": -807,
-   "move30_pct": -1.2,
+   "move30": -759,
+   "move30_pct": -1.1,
    "sidelined": 17017,
-   "sidelined_pct": 26.2,
+   "sidelined_pct": 25.8,
    "status": "crash",
    "top": [
     {
@@ -2339,12 +2339,12 @@
    ],
    "pick_list": [
     {
-     "label": "2027 1st (Late)",
+     "label": "2027 1st (Mid)",
      "season": 2027,
      "round": 1,
      "via": null,
-     "value": 2568,
-     "trend30": 94
+     "value": 3347,
+     "trend30": 122
     },
     {
      "label": "2028 1st",
@@ -2363,12 +2363,12 @@
      "trend30": 107
     },
     {
-     "label": "2027 2nd (Late)",
+     "label": "2027 2nd (Mid)",
      "season": 2027,
      "round": 2,
      "via": null,
-     "value": 1462,
-     "trend30": 56
+     "value": 1697,
+     "trend30": 64
     },
     {
      "label": "2028 2nd",
@@ -2387,12 +2387,12 @@
      "trend30": 65
     },
     {
-     "label": "2027 3rd (Late)",
+     "label": "2027 3rd (Mid)",
      "season": 2027,
      "round": 3,
      "via": null,
-     "value": 1039,
-     "trend30": 34
+     "value": 1143,
+     "trend30": 46
     },
     {
      "label": "2028 3rd",
@@ -2464,9 +2464,9 @@
     }
    ],
    "off_index": 0,
-   "rank": 7,
+   "rank": 4,
    "since": "2026-10-22",
-   "since_change": -1003
+   "since_change": 115
   },
   "Sarge71": {
    "total": 54565,
@@ -3258,7 +3258,7 @@
     }
    ],
    "off_index": 0,
-   "rank": 6,
+   "rank": 7,
    "since": "2026-10-22",
    "since_change": 799
   },
@@ -3620,7 +3620,7 @@
     }
    ],
    "off_index": 0,
-   "rank": 4,
+   "rank": 5,
    "since": "2026-10-22",
    "since_change": -881
   },
@@ -4414,26 +4414,26 @@
     }
    ],
    "off_index": 0,
-   "rank": 5,
+   "rank": 6,
    "since": "2026-10-22",
    "since_change": 735
   },
   "fumbduckdumbfuck": {
-   "total": 60106,
+   "total": 58988,
    "players": 44973,
-   "picks": 15133,
+   "picks": 14015,
    "pick_count": 9,
    "by_pos": {
     "WR": 12942,
     "RB": 15525,
     "TE": 10040,
     "QB": 6466,
-    "PICK": 15133
+    "PICK": 14015
    },
-   "move30": -1931,
-   "move30_pct": -3.1,
+   "move30": -1979,
+   "move30_pct": -3.2,
    "sidelined": 9405,
-   "sidelined_pct": 15.6,
+   "sidelined_pct": 15.9,
    "status": "correction",
    "top": [
     {
@@ -4681,12 +4681,12 @@
    ],
    "pick_list": [
     {
-     "label": "2027 1st (Mid)",
+     "label": "2027 1st (Late)",
      "season": 2027,
      "round": 1,
      "via": null,
-     "value": 3347,
-     "trend30": 122
+     "value": 2568,
+     "trend30": 94
     },
     {
      "label": "2028 1st",
@@ -4705,12 +4705,12 @@
      "trend30": 107
     },
     {
-     "label": "2027 2nd (Mid)",
+     "label": "2027 2nd (Late)",
      "season": 2027,
      "round": 2,
      "via": null,
-     "value": 1697,
-     "trend30": 64
+     "value": 1462,
+     "trend30": 56
     },
     {
      "label": "2028 2nd",
@@ -4729,12 +4729,12 @@
      "trend30": 65
     },
     {
-     "label": "2027 3rd (Mid)",
+     "label": "2027 3rd (Late)",
      "season": 2027,
      "round": 3,
      "via": null,
-     "value": 1143,
-     "trend30": 46
+     "value": 1039,
+     "trend30": 34
     },
     {
      "label": "2028 3rd",
@@ -4808,7 +4808,7 @@
    "off_index": 0,
    "rank": 9,
    "since": "2026-10-22",
-   "since_change": -1219
+   "since_change": -2337
   }
  },
  "history": [
@@ -5126,13 +5126,13 @@
     "StealingGas": 77768,
     "Zygon": 72661,
     "Hades9mm": 57897,
-    "Johnny4Skins": 64907,
+    "Johnny4Skins": 66025,
     "Sarge71": 54565,
     "C33DeezNutzz": 65028,
     "Painty69": 65919,
     "CMac91": 63394,
     "YesChef23": 65594,
-    "fumbduckdumbfuck": 60106
+    "fumbduckdumbfuck": 58988
    }
   }
  ]
