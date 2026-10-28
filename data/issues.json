@@ -1,5 +1,23 @@
 [
- {
+{
+  "no": 8,
+  "year": 2026,
+  "title": "The Perfect Streak Ends at 157.4 and Zygon Takes the Ceiling",
+  "weeks": "Week 7 post-game and Week 8 pre-game",
+  "web": true,
+  "month": "October 2026",
+  "dek": "StealingGas won the Match of the Week with the top score, 157.4, but left 18.8 on the bench and stopped at two perfect lineups. Zygon is 6-1 with the highest MAXPF, 1211.42, and Darkspaces beat Sarge71 by 78.46 in a week the chat spent asking for a lower pick.",
+  "banner": "StealingGas wins the week at 157.4",
+  "ticker": [
+    "StealingGas tops Week 7 at 157.4 and leaves 18.8 on the bench",
+    "Zygon is 6-1 and takes the highest MAXPF, 1211.42",
+    "Darkspaces beats Sarge71 by 78.46, the biggest margin of the week",
+    "Painty69 leaves 63.08 on the bench in a loss to fumbduckdumbfuck"
+  ],
+  "wire_week": 7,
+  "standings_week": 7
+}, 
+{
  "no": 7,
  "year": 2026,
  "title": "A 0.56-Point Heartbreak and a Second Perfect Week",
