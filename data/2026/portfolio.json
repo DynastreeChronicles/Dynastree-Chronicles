@@ -7,7 +7,7 @@
   "numTeams": 12,
   "ppr": 1
  },
- "generated_at": "2026-10-28T17:08:13+00:00",
+ "generated_at": "2026-10-28T17:28:21+00:00",
  "thresholds": {
   "crash_move_pct": -5.0,
   "crash_sidelined_pct": 25.0,
@@ -3208,7 +3208,7 @@
      "rank": 57,
      "trend30": 373,
      "sidelined": false,
-     "status": ""
+     "status": "Questionable"
     },
     {
      "name": "Tucker Kraft",
@@ -3270,7 +3270,7 @@
      "rank": 57,
      "trend30": 373,
      "sidelined": false,
-     "status": ""
+     "status": "Questionable"
     },
     {
      "name": "Tucker Kraft",

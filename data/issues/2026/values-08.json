@@ -1,0 +1,289 @@
+{
+ "wealth": {
+  "weeks": {
+   "7": {
+    "date": "2026-10-28",
+    "slots": {
+     "1": 5068,
+     "2": 5068,
+     "3": 5068,
+     "4": 5068,
+     "5": 3337,
+     "6": 3337,
+     "7": 3337,
+     "8": 3337,
+     "9": 2571,
+     "10": 2571,
+     "11": 2571,
+     "12": 2571
+    },
+    "teams": {
+     "Darkspaces": {
+      "roster": 55760,
+      "picks": 22078,
+      "total": 77838
+     },
+     "Snipe58": {
+      "roster": 42362,
+      "picks": 12606,
+      "total": 54968
+     },
+     "StealingGas": {
+      "roster": 61126,
+      "picks": 16546,
+      "total": 77672
+     },
+     "Zygon": {
+      "roster": 59783,
+      "picks": 13998,
+      "total": 73781
+     },
+     "Hades9mm": {
+      "roster": 45518,
+      "picks": 12566,
+      "total": 58084
+     },
+     "Johnny4Skins": {
+      "roster": 50688,
+      "picks": 15114,
+      "total": 65802
+     },
+     "Sarge71": {
+      "roster": 36642,
+      "picks": 17342,
+      "total": 53984
+     },
+     "C33DeezNutzz": {
+      "roster": 50167,
+      "picks": 15114,
+      "total": 65281
+     },
+     "Painty69": {
+      "roster": 52340,
+      "picks": 13998,
+      "total": 66338
+     },
+     "CMac91": {
+      "roster": 47709,
+      "picks": 15114,
+      "total": 62823
+     },
+     "YesChef23": {
+      "roster": 48228,
+      "picks": 17342,
+      "total": 65570
+     },
+     "fumbduckdumbfuck": {
+      "roster": 45099,
+      "picks": 13998,
+      "total": 59097
+     }
+    }
+   },
+   "6": {
+    "date": "2026-10-27",
+    "slots": {
+     "1": 5083,
+     "2": 5083,
+     "3": 5083,
+     "4": 5083,
+     "5": 3347,
+     "6": 3347,
+     "7": 3347,
+     "8": 3347,
+     "9": 2568,
+     "10": 2568,
+     "11": 2568,
+     "12": 2568
+    },
+    "teams": {
+     "Darkspaces": {
+      "roster": 55497,
+      "picks": 22098,
+      "total": 77595
+     },
+     "Snipe58": {
+      "roster": 42817,
+      "picks": 12634,
+      "total": 55451
+     },
+     "StealingGas": {
+      "roster": 61210,
+      "picks": 16558,
+      "total": 77768
+     },
+     "Zygon": {
+      "roster": 58646,
+      "picks": 14015,
+      "total": 72661
+     },
+     "Hades9mm": {
+      "roster": 45307,
+      "picks": 12590,
+      "total": 57897
+     },
+     "Johnny4Skins": {
+      "roster": 50892,
+      "picks": 14015,
+      "total": 64907
+     },
+     "Sarge71": {
+      "roster": 37199,
+      "picks": 17366,
+      "total": 54565
+     },
+     "C33DeezNutzz": {
+      "roster": 49895,
+      "picks": 15133,
+      "total": 65028
+     },
+     "Painty69": {
+      "roster": 51904,
+      "picks": 14015,
+      "total": 65919
+     },
+     "CMac91": {
+      "roster": 48261,
+      "picks": 15133,
+      "total": 63394
+     },
+     "YesChef23": {
+      "roster": 48228,
+      "picks": 17366,
+      "total": 65594
+     },
+     "fumbduckdumbfuck": {
+      "roster": 44973,
+      "picks": 15133,
+      "total": 60106
+     }
+    }
+   }
+  }
+ },
+ "as_of": "2026-10-28",
+ "first_snapshot": "2026-10-09",
+ "hyp": [
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "2027 1st-round pick",
+      "value": 3007
+     },
+     {
+      "label": "2027 1st-round pick (from Hades9mm)",
+      "value": 2571
+     }
+    ],
+    "total": 5578,
+    "n": 2,
+    "valued": 2
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Justin Jefferson",
+      "value": 5933
+     }
+    ],
+    "total": 5933,
+    "n": 1,
+    "valued": 1
+   }
+  },
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "2027 1st-round pick",
+      "value": 3007
+     },
+     {
+      "label": "2028 1st-round pick",
+      "value": 2327
+     }
+    ],
+    "total": 5334,
+    "n": 2,
+    "valued": 2
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Nico Collins",
+      "value": 4310
+     },
+     {
+      "label": "Tyreek Hill",
+      "value": 458
+     }
+    ],
+    "total": 4768,
+    "n": 2,
+    "valued": 2
+   }
+  },
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "Blake Corum",
+      "value": 2000
+     }
+    ],
+    "total": 2000,
+    "n": 1,
+    "valued": 1
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Chris Godwin",
+      "value": 1207
+     },
+     {
+      "label": "Jerry Jeudy",
+      "value": 881
+     }
+    ],
+    "total": 2088,
+    "n": 2,
+    "valued": 2
+   }
+  },
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "2027 1st-round pick",
+      "value": 3007
+     },
+     {
+      "label": "2028 1st-round pick",
+      "value": 2327
+     }
+    ],
+    "total": 5334,
+    "n": 2,
+    "valued": 2
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Tyler Shough",
+      "value": 3873
+     },
+     {
+      "label": "Deshaun Watson",
+      "value": 1791
+     }
+    ],
+    "total": 5664,
+    "n": 2,
+    "valued": 2
+   }
+  }
+ ],
+ "wire": []
+}
