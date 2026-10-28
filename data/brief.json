@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-28T13:55:10+00:00",
+ "generated_at": "2026-10-28T17:08:18+00:00",
  "season": "2026",
  "volume": 1,
  "season_status": "active",
- "data_pulled_at": "2026-10-28T13:55:06+00:00",
+ "data_pulled_at": "2026-10-28T17:08:12+00:00",
  "ready_for_new_issue": true,
  "warnings": [],
  "next_issue": {
@@ -631,7 +631,7 @@
  "market_portfolios": {
   "source": "FantasyCalc",
   "as_of": "2026-10-28",
-  "league_avg": 64990,
+  "league_avg": 65103,
   "how_to_read": "Values are FantasyCalc dynasty trade values (superflex, 12 teams, full PPR). move30 = 30-day market move of the players held now (trade-neutral). since_change = change since the snapshot dated `since` (includes trades). sidelined = value on IR/Out/PUP. Status flags: crash, correction, stable, bull.",
   "crash_watch": [
    "Sarge71"
@@ -640,267 +640,267 @@
    {
     "manager": "Darkspaces",
     "rank": 1,
-    "total": 77694,
+    "total": 77838,
     "status": "bull",
-    "move30": 4278,
-    "move30_pct": 5.8,
+    "move30": 4420,
+    "move30_pct": 6.0,
     "since": "2026-10-23",
-    "since_change": 851,
-    "sidelined": 5552,
+    "since_change": 995,
+    "sidelined": 5548,
     "sidelined_pct": 7.1,
-    "picks": 22055,
+    "picks": 22078,
     "top_assets": [
-     "Drake Maye (QB) 7431",
-     "Nico Collins (WR) 4313",
-     "Colston Loveland (TE) 4190"
+     "Drake Maye (QB) 7440",
+     "Nico Collins (WR) 4310",
+     "Colston Loveland (TE) 4188"
     ],
     "sidelined_players": [
-     "De'Von Achane (IR) 3885",
-     "Terrance Ferguson (IR) 1667"
+     "De'Von Achane (IR) 3869",
+     "Terrance Ferguson (IR) 1679"
     ]
    },
    {
     "manager": "StealingGas",
     "rank": 2,
-    "total": 77646,
+    "total": 77672,
     "status": "bull",
-    "move30": 6027,
-    "move30_pct": 8.4,
+    "move30": 6053,
+    "move30_pct": 8.5,
     "since": "2026-10-23",
-    "since_change": 193,
-    "sidelined": 10412,
+    "since_change": 219,
+    "sidelined": 10423,
     "sidelined_pct": 13.4,
-    "picks": 16526,
+    "picks": 16546,
     "top_assets": [
-     "Puka Nacua (WR) 8010",
-     "Malik Nabers (WR) 6777",
-     "Trevor Lawrence (QB) 5827"
+     "Puka Nacua (WR) 7995",
+     "Malik Nabers (WR) 6765",
+     "Trevor Lawrence (QB) 5802"
     ],
     "sidelined_players": [
      "Jaxson Dart (IR) 3988",
-     "Jordyn Tyson (IR) 3124",
-     "De'Zhaun Stribling (IR) 1852",
-     "Jayden Higgins (IR) 1448"
+     "Jordyn Tyson (IR) 3129",
+     "De'Zhaun Stribling (IR) 1857",
+     "Jayden Higgins (IR) 1449"
     ]
    },
    {
     "manager": "Zygon",
     "rank": 3,
-    "total": 73740,
+    "total": 73781,
     "status": "stable",
-    "move30": 223,
-    "move30_pct": 0.3,
+    "move30": 264,
+    "move30_pct": 0.4,
     "since": "2026-10-23",
-    "since_change": 374,
-    "sidelined": 694,
-    "sidelined_pct": 0.9,
-    "picks": 13988,
+    "since_change": 415,
+    "sidelined": 726,
+    "sidelined_pct": 1.0,
+    "picks": 13998,
     "top_assets": [
-     "Jaxon Smith-Njigba (WR) 10096",
-     "Kenneth Walker (RB) 7170",
-     "Trey McBride (TE) 6708"
+     "Jaxon Smith-Njigba (WR) 10064",
+     "Kenneth Walker (RB) 7178",
+     "Trey McBride (TE) 6734"
     ],
     "sidelined_players": [
-     "Chris Brazzell (IR) 694"
+     "Chris Brazzell (IR) 726"
     ]
    },
    {
     "manager": "Painty69",
     "rank": 4,
-    "total": 66199,
-    "status": "stable",
-    "move30": 3064,
-    "move30_pct": 4.9,
+    "total": 66338,
+    "status": "bull",
+    "move30": 3203,
+    "move30_pct": 5.1,
     "since": "2026-10-23",
-    "since_change": -293,
-    "sidelined": 2153,
-    "sidelined_pct": 3.3,
-    "picks": 13988,
+    "since_change": -154,
+    "sidelined": 2145,
+    "sidelined_pct": 3.2,
+    "picks": 13998,
     "top_assets": [
-     "Jahmyr Gibbs (RB) 10417",
-     "Joe Burrow (QB) 6671",
-     "Christian McCaffrey (RB) 4472"
+     "Jahmyr Gibbs (RB) 10416",
+     "Joe Burrow (QB) 6692",
+     "Christian McCaffrey (RB) 4468"
     ],
     "sidelined_players": [
-     "Mike Evans (Out) 2153"
+     "Mike Evans (Out) 2145"
     ]
    },
    {
     "manager": "Johnny4Skins",
     "rank": 5,
-    "total": 65810,
+    "total": 65802,
     "status": "stable",
-    "move30": -1012,
+    "move30": -1022,
     "move30_pct": -1.5,
     "since": "2026-10-23",
-    "since_change": 111,
-    "sidelined": 4172,
-    "sidelined_pct": 6.3,
-    "picks": 15103,
+    "since_change": 103,
+    "sidelined": 4200,
+    "sidelined_pct": 6.4,
+    "picks": 15114,
     "top_assets": [
-     "Ja'Marr Chase (WR) 8190",
-     "Lamar Jackson (QB) 6686",
-     "Kyren Williams (RB) 4424"
+     "Ja'Marr Chase (WR) 8179",
+     "Lamar Jackson (QB) 6662",
+     "Kyren Williams (RB) 4430"
     ],
     "sidelined_players": [
-     "Jalen Hurts (IR) 3465",
-     "Jalen McMillan (IR) 707"
+     "Jalen Hurts (IR) 3486",
+     "Jalen McMillan (IR) 714"
     ]
    },
    {
     "manager": "YesChef23",
     "rank": 6,
-    "total": 65411,
+    "total": 65570,
     "status": "bull",
-    "move30": 3228,
-    "move30_pct": 5.2,
+    "move30": 3387,
+    "move30_pct": 5.4,
     "since": "2026-10-23",
-    "since_change": 369,
-    "sidelined": 3918,
+    "since_change": 528,
+    "sidelined": 3940,
     "sidelined_pct": 6.0,
-    "picks": 17327,
+    "picks": 17342,
     "top_assets": [
-     "Caleb Williams (QB) 7290",
-     "Jeremiyah Love (RB) 5177",
-     "Matthew Golden (WR) 4038"
+     "Caleb Williams (QB) 7297",
+     "Jeremiyah Love (RB) 5193",
+     "Matthew Golden (WR) 4073"
     ],
     "sidelined_players": [
-     "Jadarian Price (IR) 2616",
-     "Jacory Croskey-Merritt (IR) 1302"
+     "Jadarian Price (IR) 2636",
+     "Jacory Croskey-Merritt (IR) 1304"
     ]
    },
    {
     "manager": "C33DeezNutzz",
     "rank": 7,
-    "total": 65162,
+    "total": 65281,
     "status": "stable",
-    "move30": 1121,
-    "move30_pct": 1.8,
+    "move30": 1240,
+    "move30_pct": 1.9,
     "since": "2026-10-23",
-    "since_change": -54,
-    "sidelined": 2529,
+    "since_change": 65,
+    "sidelined": 2539,
     "sidelined_pct": 3.9,
-    "picks": 15103,
+    "picks": 15114,
     "top_assets": [
-     "Josh Allen (QB) 10754",
-     "Zay Flowers (WR) 5246",
-     "Chris Olave (WR) 4915"
+     "Josh Allen (QB) 10763",
+     "Zay Flowers (WR) 5272",
+     "Chris Olave (WR) 4937"
     ],
     "sidelined_players": [
-     "Jonathon Brooks (IR) 1315",
-     "Jayden Reed (IR) 1214"
+     "Jonathon Brooks (IR) 1317",
+     "Jayden Reed (IR) 1222"
     ]
    },
    {
     "manager": "CMac91",
     "rank": 8,
-    "total": 62761,
+    "total": 62823,
     "status": "stable",
-    "move30": 2127,
-    "move30_pct": 3.5,
+    "move30": 2188,
+    "move30_pct": 3.6,
     "since": "2026-10-23",
-    "since_change": 99,
-    "sidelined": 4679,
-    "sidelined_pct": 7.5,
-    "picks": 15103,
+    "since_change": 161,
+    "sidelined": 4674,
+    "sidelined_pct": 7.4,
+    "picks": 15114,
     "top_assets": [
-     "CeeDee Lamb (WR) 6850",
-     "James Cook (RB) 5481",
-     "Jordan Love (QB) 4846"
+     "CeeDee Lamb (WR) 6857",
+     "James Cook (RB) 5500",
+     "Jordan Love (QB) 4801"
     ],
     "sidelined_players": [
-     "Alec Pierce (IR) 1593",
-     "Jordan Mason (IR) 1445",
-     "Pat Bryant (IR) 1116",
-     "Jack Bech (IR) 525"
+     "Alec Pierce (IR) 1611",
+     "Jordan Mason (IR) 1458",
+     "Pat Bryant (IR) 1091",
+     "Jack Bech (IR) 514"
     ]
    },
    {
     "manager": "fumbduckdumbfuck",
     "rank": 9,
-    "total": 58976,
+    "total": 59097,
     "status": "correction",
-    "move30": -1848,
-    "move30_pct": -3.0,
+    "move30": -1727,
+    "move30_pct": -2.8,
     "since": "2026-10-23",
-    "since_change": -2166,
-    "sidelined": 303,
-    "sidelined_pct": 0.5,
-    "picks": 13988,
+    "since_change": -2045,
+    "sidelined": 328,
+    "sidelined_pct": 0.6,
+    "picks": 13998,
     "top_assets": [
-     "Brock Bowers (TE) 7677",
-     "Jonathan Taylor (RB) 5656",
-     "Ashton Jeanty (RB) 5483"
+     "Brock Bowers (TE) 7690",
+     "Jonathan Taylor (RB) 5680",
+     "Ashton Jeanty (RB) 5504"
     ],
     "sidelined_players": [
-     "Elijah Arroyo (IR) 303"
+     "Elijah Arroyo (IR) 328"
     ]
    },
    {
     "manager": "Hades9mm",
     "rank": 10,
-    "total": 57893,
+    "total": 58084,
     "status": "stable",
-    "move30": 473,
-    "move30_pct": 0.8,
+    "move30": 663,
+    "move30_pct": 1.2,
     "since": "2026-10-23",
-    "since_change": 363,
-    "sidelined": 1869,
+    "since_change": 554,
+    "sidelined": 1871,
     "sidelined_pct": 3.2,
-    "picks": 12565,
+    "picks": 12566,
     "top_assets": [
-     "Amon-Ra St. Brown (WR) 7407",
-     "Jayden Daniels (QB) 5795",
-     "Jared Goff (QB) 4108"
+     "Amon-Ra St. Brown (WR) 7416",
+     "Jayden Daniels (QB) 5786",
+     "Jared Goff (QB) 4106"
     ],
     "sidelined_players": [
-     "Davante Adams (IR) 1869"
+     "Davante Adams (IR) 1871"
     ]
    },
    {
     "manager": "Snipe58",
     "rank": 11,
-    "total": 54833,
+    "total": 54968,
     "status": "stable",
-    "move30": -365,
-    "move30_pct": -0.7,
+    "move30": -230,
+    "move30_pct": -0.4,
     "since": "2026-10-23",
-    "since_change": 73,
-    "sidelined": 1375,
+    "since_change": 208,
+    "sidelined": 1376,
     "sidelined_pct": 2.5,
-    "picks": 12599,
+    "picks": 12606,
     "top_assets": [
-     "Brock Purdy (QB) 6245",
-     "Justin Jefferson (WR) 5867",
-     "Quinshon Judkins (RB) 2906"
+     "Brock Purdy (QB) 6252",
+     "Justin Jefferson (WR) 5933",
+     "Quinshon Judkins (RB) 2905"
     ],
     "sidelined_players": [
-     "Deebo Samuel (Out) 1375"
+     "Deebo Samuel (Out) 1376"
     ]
    },
    {
     "manager": "Sarge71",
     "rank": 12,
-    "total": 53749,
+    "total": 53984,
     "status": "crash",
-    "move30": -4614,
-    "move30_pct": -7.9,
+    "move30": -4380,
+    "move30_pct": -7.5,
     "since": "2026-10-23",
-    "since_change": -1328,
-    "sidelined": 7491,
-    "sidelined_pct": 13.9,
-    "picks": 17327,
+    "since_change": -1093,
+    "sidelined": 7475,
+    "sidelined_pct": 13.8,
+    "picks": 17342,
     "top_assets": [
-     "Bijan Robinson (RB) 10080",
-     "Tetairoa McMillan (WR) 4610",
-     "Sam Darnold (QB) 2528"
+     "Bijan Robinson (RB) 10093",
+     "Tetairoa McMillan (WR) 4633",
+     "Sam Darnold (QB) 2540"
     ],
     "sidelined_players": [
-     "Travis Etienne (IR) 1951",
-     "David Montgomery (Out) 1393",
-     "Terry McLaurin (Out) 1225",
-     "Michael Pittman (IR) 1118",
-     "Romeo Doubs (IR) 1077"
+     "Travis Etienne (IR) 1941",
+     "David Montgomery (Out) 1395",
+     "Terry McLaurin (IR) 1222",
+     "Michael Pittman (IR) 1122",
+     "Romeo Doubs (IR) 1085"
     ]
    }
   ]
@@ -918,30 +918,12 @@
     "bs": [
      "Justin Jefferson"
     ],
-    "a_sends_value": 5900,
-    "b_sends_value": 5867,
-    "gap_pct": 1,
-    "why": [
-     "Snipe58: the deal works on value and timing rather than a lineup hole.",
-     "StealingGas gains 3,374 in starting lineup value."
-    ]
-   },
-   {
-    "a": "StealingGas",
-    "b": "CMac91",
-    "as": [
-     "2027 1st-round pick",
-     "Eli Raridon"
-    ],
-    "bs": [
-     "Jordan Love"
-    ],
-    "a_sends_value": 4842,
-    "b_sends_value": 4846,
+    "a_sends_value": 5908,
+    "b_sends_value": 5933,
     "gap_pct": 0,
     "why": [
-     "CMac91: the deal works on value and timing rather than a lineup hole.",
-     "StealingGas gains 2,353 in starting lineup value."
+     "Snipe58: the deal works on value and timing rather than a lineup hole.",
+     "StealingGas gains 3,416 in starting lineup value."
     ]
    },
    {
@@ -956,30 +938,12 @@
      "Justin Jefferson",
      "Juwan Johnson"
     ],
-    "a_sends_value": 7340,
-    "b_sends_value": 7291,
-    "gap_pct": 1,
-    "why": [
-     "Snipe58: the deal works on value and timing rather than a lineup hole.",
-     "C33DeezNutzz gains 3,495 in starting lineup value."
-    ]
-   },
-   {
-    "a": "Zygon",
-    "b": "Sarge71",
-    "as": [
-     "Blake Corum"
-    ],
-    "bs": [
-     "Chris Godwin",
-     "Jerry Jeudy"
-    ],
-    "a_sends_value": 1989,
-    "b_sends_value": 1994,
+    "a_sends_value": 7330,
+    "b_sends_value": 7359,
     "gap_pct": 0,
     "why": [
-     "Sarge71 would start Blake Corum, a 1,269 upgrade to their starting lineup.",
-     "Zygon gives up 0 in starting lineup value."
+     "Snipe58: the deal works on value and timing rather than a lineup hole.",
+     "C33DeezNutzz gains 3,562 in starting lineup value."
     ]
    },
    {
@@ -994,29 +958,87 @@
      "Deshaun Watson"
     ],
     "a_sends_value": 5664,
-    "b_sends_value": 5687,
+    "b_sends_value": 5664,
     "gap_pct": 0,
     "why": [
      "YesChef23: the deal works on value and timing rather than a lineup hole.",
-     "Johnny4Skins gains 1,952 in starting lineup value."
+     "Johnny4Skins gains 1,947 in starting lineup value."
+    ]
+   },
+   {
+    "a": "StealingGas",
+    "b": "CMac91",
+    "as": [
+     "2027 1st-round pick",
+     "2027 1st-round pick (from Hades9mm)"
+    ],
+    "bs": [
+     "Jordan Love",
+     "Alvin Kamara"
+    ],
+    "a_sends_value": 5908,
+    "b_sends_value": 5948,
+    "gap_pct": 1,
+    "why": [
+     "CMac91: the deal works on value and timing rather than a lineup hole.",
+     "StealingGas gains 2,284 in starting lineup value."
+    ]
+   },
+   {
+    "a": "Johnny4Skins",
+    "b": "CMac91",
+    "as": [
+     "2027 1st-round pick",
+     "2028 1st-round pick",
+     "Brian Thomas"
+    ],
+    "bs": [
+     "James Cook",
+     "Rhamondre Stevenson"
+    ],
+    "a_sends_value": 7511,
+    "b_sends_value": 7458,
+    "gap_pct": 1,
+    "why": [
+     "CMac91 would start Brian Thomas, a -4,464 upgrade to their starting lineup.",
+     "Johnny4Skins gains 3,574 in starting lineup value."
     ]
    },
    {
     "a": "Zygon",
-    "b": "CMac91",
+    "b": "Sarge71",
+    "as": [
+     "Ollie Gordon"
+    ],
+    "bs": [
+     "Chris Godwin",
+     "Jerry Jeudy"
+    ],
+    "a_sends_value": 2037,
+    "b_sends_value": 2088,
+    "gap_pct": 2,
+    "why": [
+     "Sarge71 would start Ollie Gordon, a 1,237 upgrade to their starting lineup.",
+     "Zygon gives up 0 in starting lineup value."
+    ]
+   },
+   {
+    "a": "Zygon",
+    "b": "YesChef23",
     "as": [
      "2027 1st-round pick",
      "2028 1st-round pick"
     ],
     "bs": [
-     "Jordan Love"
+     "Tyler Shough",
+     "Tyler Higbee"
     ],
-    "a_sends_value": 4896,
-    "b_sends_value": 4846,
+    "a_sends_value": 4898,
+    "b_sends_value": 4925,
     "gap_pct": 1,
     "why": [
-     "CMac91: the deal works on value and timing rather than a lineup hole.",
-     "Zygon gains 2,128 in starting lineup value."
+     "YesChef23: the deal works on value and timing rather than a lineup hole.",
+     "Zygon gains 1,163 in starting lineup value."
     ]
    },
    {
@@ -1029,32 +1051,12 @@
     "bs": [
      "Nico Collins"
     ],
-    "a_sends_value": 4296,
-    "b_sends_value": 4313,
+    "a_sends_value": 4295,
+    "b_sends_value": 4310,
     "gap_pct": 0,
     "why": [
      "Darkspaces: the deal works on value and timing rather than a lineup hole.",
-     "Hades9mm gains 2,152 in starting lineup value."
-    ]
-   },
-   {
-    "a": "Johnny4Skins",
-    "b": "Darkspaces",
-    "as": [
-     "2027 1st-round pick",
-     "2028 1st-round pick",
-     "Brian Thomas"
-    ],
-    "bs": [
-     "Nico Collins",
-     "D'Andre Swift"
-    ],
-    "a_sends_value": 7519,
-    "b_sends_value": 7484,
-    "gap_pct": 0,
-    "why": [
-     "Darkspaces: the deal works on value and timing rather than a lineup hole.",
-     "Johnny4Skins gains 2,806 in starting lineup value."
+     "Hades9mm gains 2,138 in starting lineup value."
     ]
    }
   ]
