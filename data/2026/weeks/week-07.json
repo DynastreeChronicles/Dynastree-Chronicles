@@ -95,7 +95,7 @@
         "pts": 18.5
       },
       "opponent": "CMac91",
-      "opponent_points": 114.5,
+      "opponent_points": 114.4,
       "result": "W"
     },
     {
@@ -221,17 +221,17 @@
     {
       "roster_id": 10,
       "manager": "CMac91",
-      "points": 114.5,
-      "maxpf": 140.14,
-      "roster_points": 148.36,
+      "points": 114.4,
+      "maxpf": 140.04,
+      "roster_points": 148.26,
       "bench_points": 33.86,
-      "optimal": 140.14,
+      "optimal": 140.04,
       "left_on_bench": 25.64,
       "efficiency": 81.7,
       "mvp": {
         "name": "Bo Nix",
         "pos": "QB",
-        "pts": 26.28
+        "pts": 26.18
       },
       "best_bench": {
         "name": "Jordan Love",

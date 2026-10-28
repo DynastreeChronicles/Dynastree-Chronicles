@@ -1101,6 +1101,22 @@
   },
   {
     "week": 7,
+    "type": "waiver",
+    "created": 1793135408014,
+    "id": "1420916524159373312",
+    "manager": "Darkspaces",
+    "added": {
+      "name": "Quentin Johnston",
+      "pos": "WR",
+      "team": "LAC"
+    },
+    "dropped": [
+      "Tyrone Tracy Jr."
+    ],
+    "bid": 1
+  },
+  {
+    "week": 7,
     "type": "free_agent",
     "created": 1792905732299,
     "id": "1419953194393509888",
