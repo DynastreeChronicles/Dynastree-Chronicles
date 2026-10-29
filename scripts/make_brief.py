@@ -76,6 +76,31 @@ def trade_finder_block(season):
         print(f"  note: trade finder suggestions skipped ({ex})")
         return None
 
+KEEP_PREV = ("desk", "pull", "hero", "zero", "quote", "poll", "bold", "receipts", "hits", "closer")
+
+def slim_prev(prev):
+    """The previous issue, cut to what the next one needs: the voice samples and the open threads
+    (prev_motw and prev_poll come from `motw` and `poll`). The schema itself is `issue_template`."""
+    if not prev: return prev
+    out = {k: prev[k] for k in KEEP_PREV if k in prev}
+    mo = prev.get("motw") or {}
+    out["motw"] = {k: mo[k] for k in ("a", "b", "desk", "verdict") if k in mo}
+    if prev.get("drama"): out["drama_sample"] = prev["drama"][0]
+    out["trade_titles"] = [t.get("t") for t in (prev.get("trades") or {}).get("items", [])]
+    out["trimmed"] = "Cut to continuity fields. Use issue_template for the schema."
+    return out
+
+def slim_bios(season):
+    """Every manager's current bio (stable file + weekly file), active season only. Older seasons stay on disk."""
+    y = str(season); out = {}
+    for m in bs.managers():
+        b = bs.load_bio(m)
+        if not b: out[m] = {}; continue
+        sd = (b.get("seasons") or {}).get(y) or {}
+        out[m] = {"tagline": b.get("tagline"), "asof": b.get("asof"), "file": b.get("file"),
+                  "season": y, "headline": sd.get("headline"), "story": sd.get("story"), "takes": sd.get("takes")}
+    return out
+
 def main():
     reg = bs.ss.load()
     season = bs.ss.active(reg) or bs.display_season()
@@ -169,8 +194,9 @@ def main():
         "managers": {k: v.get("team_name") for k, v in bs.managers().items() if v.get("active", True)},
         "alumni": [k for k, v in bs.managers().items() if not v.get("active", True)],
         "league": {k: league.get(k) for k in ("league_id", "name", "season", "volume", "roster_positions", "waiver_budget")},
-        "bios": {m: bs.jload(f"data/bios/{m}.json", {}) for m in bs.managers()},
-        "previous_issue_json": prev_json,
+        "bios": slim_bios(season),
+        "bios_note": "Write data/bios/weekly/<handle>.json (see the issue guide, 6b-weekly). Paragraph 1 of each story is kept from the stable bio; the weekly file replaces everything after it.",
+        "previous_issue_json": slim_prev(prev_json),
         "issue_template": bs.jload("data/issues/issue-template.json"),
     }
     out = os.path.join(bs.ROOT, "data", "brief.json")

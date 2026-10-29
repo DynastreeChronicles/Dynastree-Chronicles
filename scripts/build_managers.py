@@ -340,7 +340,7 @@ def trophy_case(m, r):
 
 def manager_page(m, names, years, display, active):
     r = "../../"
-    info = (bs.managers().get(m) or {}); team = info.get("team_name"); bio = jload(f"data/bios/{m}.json", {}) or {}
+    info = (bs.managers().get(m) or {}); team = info.get("team_name"); bio = bs.load_bio(m)
     former = ('<p class="key">Formerly ' + esc(", ".join(info["former_names"])) + "</p>") if info.get("former_names") else ""
     mine_seasons = seasons_of(m); last = mine_seasons[-1] if mine_seasons else None; hd = sdata(m, last) if last else None
     qs = desk_quotes(m, years); mined = mine(m, years, display)
@@ -496,7 +496,7 @@ def hub(rows, quotes, moves, active, alumni):
         m, k = r["manager"], r["rank"]
         badge = badge or (f'<img src="../assets/trophy-{["gold", "silver", "bronze"][k - 1]}-sm.webp" alt="#{k}" width="24" height="44">' if k <= 3
                  else '<img src="../assets/trophy-trash-sm.webp" alt="#%d" width="26" height="44">' % k if k >= total - 1 else f'<b>#{k}</b>')
-        tl = (jload(f'data/bios/{m}.json', {}) or {}).get('tagline'); q = f'<q>{esc(tl)}</q>' if tl else f'<q>{esc(blurb(quotes[m]))}</q>' if quotes.get(m) else '<q class="none">The desk has nothing on file yet.</q>'
+        tl = bs.load_bio(m).get('tagline'); q = f'<q>{esc(tl)}</q>' if tl else f'<q>{esc(blurb(quotes[m]))}</q>' if quotes.get(m) else '<q class="none">The desk has nothing on file yet.</q>'
         stat = lambda a, b: f'<span><small>{a}</small><b>{b}</b></span>'
         tn = " &middot; ".join(p for p in (esc(teams(m)) if teams(m) else "", ("Alumni" + (f" ({year})" if year else "")) if not active.get(m, True) else "") if p)
         return (f'<a class="mc2" href="{slug(m)}/"><div class="mtop">{av(m, 72, "../")}<div class="mn"><h3>{esc(m)}</h3><p class="mt">{tn}</p></div><span class="rk">{badge}</span></div>'

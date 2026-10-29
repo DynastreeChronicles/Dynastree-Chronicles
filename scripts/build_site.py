@@ -92,6 +92,40 @@ def jload(rel, default=None):
     p = os.path.join(ROOT, rel)
     return canon(json.load(open(p, encoding="utf-8"))) if os.path.exists(p) else default
 
+def merge_bio(base, wk):
+    """A manager bio = the stable file (data/bios/<handle>.json) with the weekly file
+    (data/bios/weekly/<handle>.json) laid over it. The weekly file only carries what changes each issue:
+    tagline, asof, file (a {label: text} map of the blurbs that changed), season, headline,
+    story (replaces every paragraph after the first `story_keep`, default 1), takes, drama."""
+    if not wk: return base
+    out = json.loads(json.dumps(base or {}))
+    for k in ("tagline", "asof"):
+        if wk.get(k): out[k] = wk[k]
+    if wk.get("file"):
+        rows = [list(r) for r in (out.get("file") or [])]
+        items = wk["file"].items() if isinstance(wk["file"], dict) else [tuple(r) for r in wk["file"]]
+        for label, text in items:
+            for r in rows:
+                if r[0] == label:
+                    r[1] = text; break
+            else:
+                rows.append([label, text])
+        out["file"] = rows
+    y = str(wk.get("season") or "")
+    if y and any(k in wk for k in ("headline", "story", "takes", "drama")):
+        sd = out.setdefault("seasons", {}).setdefault(y, {})
+        if wk.get("asof"): sd["asof"] = wk["asof"]
+        for k in ("headline", "takes", "drama"):
+            if k in wk: sd[k] = wk[k]
+        if "story" in wk:
+            keep = int(wk.get("story_keep", 1))
+            sd["story"] = list(sd.get("story") or [])[:keep] + list(wk["story"])
+    return out
+
+def load_bio(m):
+    """The bio every consumer should read (manager pages, the brief)."""
+    return merge_bio(jload(f"data/bios/{m}.json", {}) or {}, jload(f"data/bios/weekly/{m}.json", None))
+
 def load_week(n):
     return jload(S(f"weeks/week-{n:02d}.json"))
 

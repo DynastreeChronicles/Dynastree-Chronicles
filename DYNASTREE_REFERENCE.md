@@ -1,48 +1,14 @@
-# DYNASTREE CHRONICLES: MASTER STATE (v6 seasons/volumes; v5, web only, one-file data brief, manager pages)
+# DYNASTREE CHRONICLES: REFERENCE (site, scripts, pages)
 
-**Last updated:** after Issue 8 (final). Built so far: the web-only site with the one-file `brief.json`, manager pages, the Hall of Fame & League History page, the Receipts archive, and the Draft & Trade Ledger; automation for prediction rulings, receipts, drafts, the champion and the season close; the **FantasyCalc market feature** (live value index, daily snapshots, manager portfolios with crash flags, The Market table with trend lines, the Wealth Index standings tab, wealth lines in the manager bios, value-based pick verdicts and trade values in the ledger, and locked FantasyCalc numbers in every issue from Issue 6 on); and the Oct 2026 site hardening (skip-to-content link, no-JavaScript note, one-run-at-a-time Action with push retry, full README rewrite; see 14b). **Next issue:** Volume 1, Issue 9 (Week 8 post-game + Week 9 pre-game).
+> Read this only when a script, page, style or convention is being changed. For making an issue, use `DYNASTREE_ISSUE_GUIDE.md` and `DYNASTREE_STATE.md`. Where a section here says "this file" or "the master", it means the three-file set; section numbers are shared.
 
-> This file is the whole memory of the project. If every chat is gone, this file + `brief.json` (the one data file) + the new chat log is enough to continue. PDFs are fully retired: no PDF links, buttons, or fields anywhere on the site, and there is no `build_pdf.py`. All issues are web pages (Issues 2 and 3 were retro-built from their old PDFs and chat logs).
+**Built so far:** the web-only site with the one-file `brief.json`, manager pages, the Hall of Fame & League History page, the Receipts archive, and the Draft & Trade Ledger; automation for prediction rulings, receipts, drafts, the champion and the season close; the **FantasyCalc market feature** (live value index, daily snapshots, manager portfolios with crash flags, The Market table with trend lines, the Wealth Index standings tab, wealth lines in the manager bios, value-based pick verdicts and trade values in the ledger, and locked FantasyCalc numbers in every issue from Issue 6 on); and the Oct 2026 site hardening (skip-to-content link, no-JavaScript note, one-run-at-a-time Action with push retry, full README rewrite; see 14b).
 
-**Fill in once (then never lose it):**
-
-* GitHub repo: `https://github.com/DynastreeChronicles/Dynastree-Chronicles` (public)
-* Live site (GitHub Pages): `https://dynastreechronicles.github.io/Dynastree-Chronicles/` (confirmed)
-* Brief file, always the latest: `<live site>/data/brief.json`
-* Zip backup: repo page > green **Code** button > **Download ZIP**.
-
----
-
-## 1. COLD START (what to share, what Claude does first)
-
-Share **three things** in a new chat. Nothing else is needed.
-
-1. **This file** (`DYNASTREE_MASTER_STATE.md`).
-2. **`brief.json`**: one file the Action writes every Tuesday and Wednesday. Get it by opening `<live site>/data/brief.json` and saving it, or on GitHub: `data` folder > `brief.json` > **Download raw file**. If the live-site address works for Claude's fetch tool, pasting that link instead of the file is enough.
-3. **The new chat log** (the narrative source).
-
-`brief.json` already contains: whether a new issue is ready, the issue number and weeks to cover, the week's games (scores, MVPs, bench points), perfect lineups, top and bottom score, standings with MAXPF and draft order, FAAB balances, next week's matchups with records, every trade and claim from the week on, handles with team names, the league settings, the full JSON of the previous issue (format and voice reference), the empty issue template, and `market_portfolios` (FantasyCalc portfolio value, 30-day market move, IR exposure and crash flag for every manager; see 6b).
-
-Claude must, in this order:
-
-1. Open `brief.json`. If `ready_for_new_issue` is `false`, stop and say why (read `warnings`). Do not draft from stale data.
-2. Check `data_pulled_at` is after the last Monday game. If not, ask for a fresh Action run (section 4, step 1).
-3. Show a short **data summary** (records, top and bottom score, MAXPF top and bottom, trades and FAAB moves, next week's matchups) and wait for a nod before writing copy.
-4. Write the deliverables in section 3's return table, then say which `note (issue NN): ...` lines a build would print (section 4).
-
-**Claude's limits:** Claude's sandbox has no internet, so it can never call Sleeper. The GitHub Action does that. `github.com` pages and `raw.githubusercontent.com` links are blocked or unreachable for Claude, so share the file or the live-site link, not the repo link. If Claude needs code (only for style or script changes), attach the zip. The zip may leave out the large `assets/` folder; that is fine, because Claude never needs images to change text, data, scripts or styles, but it cannot check how artwork looks. Claude hands back **only the files it edited**, each with its repo path, never the whole repo.
-
-### Prompt to paste
-
-```
-Prepare the next issue. Follow DYNASTREE_MASTER_STATE.md. Numbers come only from the attached brief.json
-(never type a record, score, FAAB, or pick). Check ready_for_new_issue, show me a short data summary
-first, then write issue-NN.json in the same schema as previous_issue_json, the new data/issues.json
-entry and the updated master. Chat log is the
-narrative source.  Please do not give a preview or extras to keep token allowance low.
-```
-
-Provide following files to Claude in addition to prompt above: Chat log, Master Sate and brief.jason in data file.
+|Section|Lives in|
+|-|-|
+|1, 4, 5, 6, 6b-weekly, 9, 10, 11, 14|`DYNASTREE_ISSUE_GUIDE.md` (stable; read every issue)|
+|7, 8, 12, 13|`DYNASTREE_STATE.md` (changes every issue; returned every issue)|
+|2, 3, 3b, 6b, 6c, 6d, 6e, 6f, 14b, 15, 16|`DYNASTREE_REFERENCE.md` (site, scripts, pages; read only when changing them)|
 
 ---
 
@@ -83,7 +49,7 @@ So: **upload the issue files, wait about a minute, and the site is rebuilt, incl
 ### What is automatic and what is not
 
 * **Fully automatic, every Action run:** standings, records, MAXPF, every manager page, the FantasyCalc value index and every manager's portfolio (with its crash flag), the Hall of Fame (records, careers, issue index, awards once a season is closed), the Ledger (every pick and trade, pick grades at 12/24/36 months), the Receipts archive, the champion and runner-up when Sleeper's bracket decides them, closing a season once the review issue is out, drafts (new draft dates and, for a new draft, its picks), and `brief.json`.
-* **Comes with each issue (the one Claude bundle):** `issue-NN.json` (with `rulings` and `receipts`), the `issues.json` entry, the 12 bios.
+* **Comes with each issue (the one Claude bundle):** `issue-NN.json` (with `rulings` and `receipts`), the `issues.json` entry, the 12 weekly bios.
 * **Once a year:** the volume `story` in `history.json`, and flagging the season-review issue `"season_final": true`.
 * **By hand, rarely:** `settings.json` (league rules changed), a hand `verdicts` override or trade obituary in `ledger.json`, a Toilet Bowl entry, a rename the pull could not match.
 
@@ -91,8 +57,11 @@ So: **upload the issue files, wait about a minute, and the site is rebuilt, incl
 
 |Path|What it is|Who writes it|
 |-|-|-|
-|`data/bios/<handle>.json`|desk bio per manager (see 6b); returned every issue|**Claude**|
-|`DYNASTREE_MASTER_STATE.md`|this file (keep it in the repo root so it is in every zip)|Claude returns it, you upload|
+|`data/bios/<handle>.json`|stable desk bio per manager (see 6b): story paragraph 1, The type, Signature move; changes only on a rewrite|**Claude**|
+|`data/bios/weekly/<handle>.json`|weekly bio laid over the stable one by `bs.load_bio()` (`merge_bio()` in `build_site.py`); returned every issue|**Claude**|
+|`DYNASTREE_STATE.md`|weekly memory: open threads, voice bits, poll memory (keep in the repo root so it is in every zip)|Claude returns it every issue, you upload|
+|`DYNASTREE_ISSUE_GUIDE.md`|stable rules for making an issue (repo root)|Claude returns it only when a rule changes, you upload|
+|`DYNASTREE_REFERENCE.md`|this file: how the site, scripts and pages work (repo root)|Claude returns it only when the build changes, you upload|
 |`README.md`|full human-readable guide to the repo, the Action and the conventions. Must agree with this file (see 14b)|Claude returns it when the build changes, you upload|
 |`index.html`|home page: banner, ticker, leaderboard, standings, transactions, archive|build_site.py (never by hand)|
 |`market/index.html`|The Market (top) and the trade calculator (`#calculator`; `js/calc.js`, `css/calc.css`)|build_managers.py (never by hand)|
@@ -144,16 +113,7 @@ So: **upload the issue files, wait about a minute, and the site is rebuilt, incl
 
 ### Where to put files Claude hands back
 
-For a normal issue Claude returns **three files plus the twelve manager bios** (a fourth only if a style or code change was requested). Upload each to the same path in GitHub (**Add file > Upload files**, or the pencil icon on an existing file; for a new folder, type the path in the filename box). Commit to `main`.
-
-|File Claude returns|Upload to|New or replace|
-|-|-|-|
-|`issue-NN.json`|`data/issues/<season>/issue-NN.json`|new|
-|`issues.json`|`data/issues.json`|replace|
-|`<handle>.json` (all 12)|`data/bios/<handle>.json`|replace|
-|`DYNASTREE_MASTER_STATE.md` (updated per section 11)|repo root|replace|
-
-Never upload `index.html`, `issues/.../index.html`, anything in `managers/`, `data/brief.json`, or anything else the Action writes; it is rebuilt on every push. If Claude changed `scripts/`, `css/`, `js/`, or `scripts/templates/`, it will say so and give the exact path for each file.
+See `DYNASTREE_ISSUE_GUIDE.md`, section 1.
 
 ---
 
@@ -177,64 +137,14 @@ data/2027/                         same files, created by the pull when 2027 ope
 * **Issue files:** `issues.json` entries need `"year": <season>`. New issue prose goes to `data/issues/<season>/issue-NN.json`. `fut_cap.json` now lives at `data/<season>/fut_cap.json`.
 * The old flat layout is migrated automatically on the first Action run after this update (`scripts/seasons.py`).
 
-## 4. MAKING AN ISSUE (step by step)
-
-1. **Wait for final data.** Monday night games done, then the Tuesday 11:00 UTC or Wednesday 13:00 UTC Action run. To force it earlier: GitHub > **Actions** > "Update league data" > **Run workflow**. Then open `brief.json` and check `ready_for_new_issue` is `true` and `data_pulled_at` is after the games. You never run any script yourself.
-2. **Start a chat** with the three items in section 1 and the prompt there.
-3. **Claude shows the data summary.** You confirm or add narrative notes.
-4. **Claude writes** `issue-NN.json` (including its `rulings` and `receipts`, section 9), the `issues.json` entry, the 12 bios, and the updated master. That is the whole bundle: prediction results, receipts, pick grades, the champion and the season close are all automatic.
-5. **You upload** the files to the paths in section 3 (one commit). The Action rebuilds the site and a new `brief.json` automatically.
-6. **Check the live site:** home page banner and ticker, the new issue page, standings order, one or two manager pages (new week in the game log, new quotes under "What the desk said"), and that no section says "failed to load". Open the Actions tab if anything is off.
-7. **Update this file** (section 14 checklist) so the next chat starts correct.
-
-### Build notes Claude must read (printed by `build_site.py`, which Claude can run on a copy only if the zip is attached; otherwise Claude checks these by hand against `brief.json`)
-
-* `trade X/Y: no matching trade in transactions.json` -> wrong handles or the trade is not in the feed yet; fix the JSON or wait for the pull.
-* `trade ...: Sleeper logs it in Week N, the issue covers Week M` -> informational. Fine when a deal cleared the week before.
-* `trade in Week N not covered by the issue` -> a real trade happened that the issue ignores; add a card or say why not.
-* `waiver note for X / Player has no matching claim` -> name mismatch with the feed (use the full name as Sleeper spells it; defenses match by team name).
-* `no desk aside for X in wire.desk` -> that manager's waiver list will show no aside; add one.
-* `post-game card A vs B: Sleeper says A played C` -> wrong matchup in `post`; fix it.
-* `pre-game card A vs B: not a Week N matchup in data/schedule.json` or `Week N game with no pre-game card` -> the cards must match the real Week N+1 schedule exactly (the Match of the Week is separate from `pre` and must not be listed twice).
-* `data/schedule.json has no Week N matchups` -> cards could not be checked; use the chat log and say so.
-* `issue-NN.json names 'X', who is not in the league data` -> handle typo.
-* `WARNING: issue JSON has no 'desk'` -> add `desk`.
-
-### MAXPF cross-check
-
-The pull prints `MAXPF check: ...` in the Action log (GitHub > Actions > the run > "Pull Sleeper data"). If it lists differences above 0.05 for any team, check the 1.01 order before publishing. `sleeper_maxpf` is `null` in `standings.json`; the comparison only exists in that log.
-
----
-
-## 5. SORT LAWS AND DERIVED FIELDS
-
-* **Standings order:** wins desc, then PF desc. **PF/PA:** roster `settings` (`fpts`, `fpts_decimal`).
-* **MAXPF = Max PF = the points your best possible lineup would have scored each week, added up** (Sleeper's `ppts` + `ppts_decimal`/100). It is NOT "starters + bench". Bench points only count if they would have made the best lineup, so how you set your lineup never changes it. Explain it where it first appears in an issue.
-* **Draft slot:** lowest MAXPF picks 1.01. Linear, not snake. The 2027 rookie draft uses this order; payouts still go to the playoff winner.
-* **FAAB remaining:** budget (500) minus bids, with trade FAAB moved between sides; rebuilt from the feed.
-* **MOV:** compared with the previous final week.
-* **Draft capital (FantasyCalc):** the old hand-kept FUT CAP score is retired. A team's draft capital is the combined FantasyCalc value of every pick it owns, computed automatically (`wealth.json`); the Draft order tab shows it next to **Pick value**, the market value of the team's own round-1 slot. Nothing about picks needs to be typed or returned with an issue.
-* **Computed by the builder (do not type):** records, scores, bench points, left-on-bench, MVPs, Match of the Week stats (record, PF rank, best week, average PF), trade assets, waiver claims, bankroll balances and weekly change, final-score banner (biggest margin), and the previous Match of the Week result card.
-
-## 6. LEAGUE IDENTITY
-
-* **League:** DYNASTREE. Newsletter: **Dynastree Chronicles**. Dynasty, 12 teams, 23-round startup. Sleeper league ID `1389008727859806208`, season 2026. Lineup: QB, 2 RB, 2 WR, TE, 2 FLEX, SUPER_FLEX, DEF, 10 bench. FAAB budget $500.
-* **Commissioner:** Darkspaces (team First Down Syndrome).
-* **Voice:** independent desk, not the commissioner. Clever, roast-heavy (about 70/30), dynasty-first. Inside jokes beat generic advice. Managers call the desk "AI" in chat; answer with an aside when it fits.
-* **Naming:** handles are bolded in prose (the builder does this automatically in `desk`; elsewhere just use the exact handle). Never bold NFL player names. Never swap a handle for "the manager" or "last place". Handle spelling is exact: `C33DeezNutzz`, `fumbduckdumbfuck`, `CMac91`. **Cassellrole is now `Johnny4Skins`** (renamed in Sleeper, Oct 2026). Renames are handled by `"former_names": ["Cassellrole"]` on the Johnny4Skins entry in `data/managers.json`: `build_site.py` swaps every old handle (dict keys and exact-match values) for the current one in the weeks, transactions, standings and issue JSON, so history stays attached to the person and the build does not break. New issues must still use the current handle. When anyone else renames: add their old handle to `former_names` in `data/managers.json`, and the old `managers/<old>/` address redirects to the new page. Free-text prose that mentions the old handle is left as written.
-* **Roster id to handle (fallback):** 1 Darkspaces, 2 Snipe58, 3 StealingGas, 4 Zygon, 5 Hades9mm, 6 Johnny4Skins, 7 Sarge71, 8 C33DeezNutzz, 9 Painty69, 10 CMac91, 11 YesChef23, 12 fumbduckdumbfuck.
-
 ## 6b. MANAGER PAGES
+
+*Six bullets that matter every week (bios, the writing rule, the Hypothetical Trade Machine, the market flag and how to write with it) now live in `DYNASTREE_ISSUE_GUIDE.md`, section 6b-weekly.*
 
 * One page per manager at `managers/<handle lowercased>/`, plus the hub at `managers/`. **Everyone in `data/managers.json` gets a page, and so does anyone who appears in any season's standings.** Linked from the home nav, the standings tables and the leaderboard.
 * **Active or alumni:** `active` in `managers.json` is set by the pull from the live Sleeper rosters. Someone who leaves the league keeps their page and links; the page says "Alumni. Last played in <season>", the hub lists them under **Alumni**, and they drop out of the prev/next ring and out of `brief.json`'s `managers` (they appear in its `alumni` list instead).
 * **Numbers come from each season's own folder.** The top of the page shows the manager's latest season; every season block below it (newest first) has its own record, rank, PF/PA, MAXPF, efficiency, draft slot, FAAB, game log and transactions from `data/<season>/`. A closed season reads "Final standing" and is written in the past tense. There are no typed final records or ranks anywhere any more.
-* **Words:** `data/bios/<handle>.json` exists for **every** manager (all 12 filled in after Issue 5; the wealth line on each manager page is automatic, do not write it). Fields: top-level `tagline`, `asof`, and `file` (four labeled blurbs under **The desk file**: The type, Signature move, Nemesis, The desk is watching); per season `headline`, `asof`, `story` (3 paragraphs, desk voice, based only on what the issues and data show), `takes`, `drama`.
-* **Weekly bio update (part of every issue):** Claude reads `bios` in `brief.json` (it carries all 12 current bios) and returns every `data/bios/<handle>.json` that changed, normally all 12 (new `asof`, story paragraphs revised or added, `file` refreshed). Facts must come from `brief.json` or the issue JSON, never from memory. The record, rank, points and transactions lines on each page rebuild automatically; the prose changes only when the bios are uploaded. Desk quotes, takes and drama are mined from `data/issues/<season>/issue-*.json` and filed under the season of the issue they came from.
-* **Writing rule for new issues:** use the exact handle in every `desk` line and keep `wire.desk` and `bank.notes` filled for all managers, because those lines become the manager pages' quotes.
 * **Portfolio value (FantasyCalc).** `pull_values.py` pulls FantasyCalc dynasty trade values for this league's format (superflex, 12 teams, full PPR) and runs every roster and every future pick (after trades) through them. Each manager page gets a **Portfolio value** section (status flag, total, league rank, 30-day market move, share of value on IR, draft capital, value history chart, position split, biggest holdings), and the **home page** gets a **The Market** section (between Transactions and Rules, with its own item in the top nav on every page) ranking all 12, with a collapsible legend. `build_managers.py` writes it into `index.html` between `<!--MARKET-->` markers. Source: `data/<season>/portfolio.json`; the pages skip the section if it is missing.
-* **Reading the flag.** Statuses: `crash`, `correction`, `stable`, `bull`. `move30` is the 30-day market move of the players held *now* (trade-neutral). `since_change` is the change since the last snapshot at least 5 days old (it includes trades; empty until the second weekly run). `sidelined` is value on IR or players Sleeper marks Out, IR, PUP, Doubtful or Sus. A manager is on crash watch when `move30_pct` is -5% or worse, or `sidelined_pct` is 25% or more. Thresholds are constants at the top of `pull_values.py`; the headline wording is the `STATUS` table in `build_managers.py`.
-* **Hypothetical Trade Machine from the Trade Finder.** `brief.json` > `trade_finder` > `suggestions` holds up to 8 realistic league-wide deals from the same logic as the site's Trade Finder (one side has a real lineup need or, for a rebuilder, a timeline fit; values within 10%; each team read as contender, retooling or rebuilder). **Build the issue's hypothetical trades from these**: use their `a`, `b`, `as`, `bs` exactly as written (the assets are in issue wording, the values and the calculator link depend on it) and write the desk commentary yourself. Do not invent assets. Each hypothetical card shows a **Load in trade calculator** tag that opens the calculator with that trade filled in.
 * **Trade calculator.** On `market/#calculator`: pick a team for each side, add players and picks, see each side's FantasyCalc total, a verdict (Even under 5%, Fair enough under 15%, Lopsided under 30%, Robbery beyond), the portfolio impact for each team (value, rank before and after), suggested assets to even it up, and a shareable link. Pure browser code (`js/calc.js`) over data embedded by `build_managers.py` (`calc_data()`); a plain sum of values with no roster-spot adjustment. The Research dropdown's Trade Calculator item links to `market/#calculator`.
 * **Trade finder.** On `market/#finder` (Research dropdown, menu-only). Pick your team, offer positions, picks (the Picks chip) or exact players, optionally say what positions you want back and your role (Let the finder decide, Win now, Balanced, Build for the future), press Find trades: up to five roughly even deals with a reason each and an Open-in-calculator button. The classification below is INTERNAL: it is never shown on the site (no labels, no table), and **never write that a manager is a contender, rebuilder or retooling in an issue or any published text**; managers may see themselves differently. Two ideas: NEED (how much your offered players raise a team's starting lineup, injured players do not start) and WINDOW (each team is a Contender, Retooling or Rebuilder from 50% lineup strength, 30% record, 20% starter age). Internally, a rebuilding-type team values picks and youth above market and older players below; a contender the reverse (`factor()` in `js/finder.js`), so a deal must be fair in market value AND make sense for the other team's window; offering only picks finds rebuilders who would sell veterans. Value-based, no point projections. `js/finder.js` over the same embedded data as the calculator, plus ages and standings.
 * **Daily snapshots.** A second workflow (`daily-values.yml`, 09:30 UTC every day) saves a FantasyCalc snapshot and rebuilds only the value pages, so charts, sparklines, the Wealth Index and trade "value at the time" have daily points. It queues with the main workflow. `prune_snapshots.py` (a daily-workflow step) keeps every snapshot for 60 days, then one per calendar week, and always keeps the first snapshot, the newest, and the one nearest each trade date and draft pick date, so ledger values never shift.
@@ -249,7 +159,6 @@ The pull prints `MAXPF check: ...` in the Action log (GitHub > Actions > the run
 * **Manager page tiles and tables:** the stat tiles are shaded by league rank for that category (green 1st, red last; `TILE_HIGHER` in `build_managers.py` sets which direction is better). Biggest holdings sorts by Pos, Value (default) or 30d. Draft picks owned shows at least 9. The Game of the Week Final verdict shows each team's avatar beside its name and score.
 * **Manager page season sections:** The season and Game log open; Transactions, The takes, The drama, What the desk said closed (each collapsible). **Manager names that link** are green with a glow on hover, site-wide.
 * **Honest limits.** FantasyCalc dynasty values react slowly to injuries, so an IR stash flags through `sidelined_pct`, not through a falling market value. Players outside the top 1,000 count as 0 (`off_index`). Picks are FantasyCalc `PICK` rows (names like "2027 1st (Mid)"); for the next draft the tier comes from the original owner's draft slot in `standings.json`, later drafts use the untiered or Mid value. A pick with no value counts as 0 and is printed as a warning in the Action log. Each manager's picks (with a "via" tag when acquired) appear on the manager page. Values are credited to FantasyCalc on the page.
-* **Writing with it.** Claude reads `brief.json` > `market_portfolios` for the market angle (it lists `crash_watch` first). Numbers come from there only. Say "market value", never "worth" in dollars, and never claim an injury moved a value unless `move30` shows it. A manager on crash watch is fair game for the desk.
 * Nothing to upload: the Action rebuilds the `managers/` folder on every run. A failed `build_managers.py` step shows as its own red step in the Actions log.
 * **Known limit:** if a manager is replaced on a roster in the middle of a season, Sleeper's weekly data is keyed by roster, so the open season's weeks are attributed to the current owner each pull. Departures between seasons are safe, because a closed season is frozen.
 
@@ -291,111 +200,9 @@ The pull prints `MAXPF check: ...` in the Action log (GitHub > Actions > the run
 * Fonts (Inter and Oswald) load from Google Fonts in those same six shells; changing a font means changing all six. All pages carry `noindex`.
 * Issue pages keep their own section nav (Desk, Standings, Wire...). Ledger opens on the Blockbuster Registry tab by default.
 
-## 7. POWER RANKINGS BASELINE (Issue 7 MOV "from")
-
-Desk order after Issue 4 (Issues 5 and 6 carried no separate power-rankings table, so this is still the latest on record; set a new order in Issue 7 if you rank them): 1 Zygon, 2 Hades9mm, 3 C33DeezNutzz, 4 Johnny4Skins, 5 YesChef23, 6 Darkspaces, 7 fumbduckdumbfuck, 8 CMac91, 9 Snipe58, 10 StealingGas, 11 Sarge71, 12 Painty69. Standings after Week 7 for reference: 1 Zygon, 2 StealingGas, 3 Hades9mm, 4 C33DeezNutzz, 5 Johnny4Skins, 6 fumbduckdumbfuck, 7 YesChef23, 8 Darkspaces, 9 CMac91, 10 Snipe58, 11 Painty69, 12 Sarge71. (Issue 8 carried no separate power-rankings table, so the Issue 4 desk order is still the latest on record.) Power rankings are desk judgment and should differ from the standings; say why where they do. (The web page does not yet render a power-rankings table; if used, put it in `bottom.paras`.)
-
-## 8. ACTIVE BITS (voice continuity)
-
-* **StealingGas:** open tank ("Future Therapy Bills"), laboratory energy.
-* **Zygon:** IR Predictor, algorithm-first, handcuffs on the block as a dare.
-* **Darkspaces:** Jerry Jones, block-and-negotiate, commissioner who also competes.
-* **Hades9mm:** "Sleeper puss", life after dealing London. **Johnny4Skins:** dual-QB identity.
-* **Painty69 and YesChef23:** the rivalry that may resurface. **Sarge71 and Painty69:** star RB, thin supporting cast. **Painty69:** the silence; first win in Week 5. **Darkspaces:** two perfect lineups in a row (Weeks 4 and 5), two losses; self-roast in the chat. **StealingGas:** the perfect 202.54 that cost him the 1.03 (now the 1.04). **Zygon:** lost the unbeaten label in Week 5 after asking for food poisoning on Josh Allen (C33DeezNutzz's QB); 5-1 and 0.02 MAXPF behind Hades9mm after Week 6. **StealingGas:** perfect lineups in Weeks 5 and 6 (and 3), now the 1.05. **Darkspaces:** lost Week 6 by 0.56 with Omar Cooper's 22.3 on the bench; the 1.01 went to Snipe58.
-* **Issue 8 bits:** **StealingGas:** perfect-lineup run ended at two (157.4 with 18.8 on the bench in the Match of the Week), now 2nd at 4-3 and the 1.08; four free moves, three in under four minutes; told the chat his plan is to pop off and then go dormant for the playoffs. **Zygon:** took the highest MAXPF (1211.42) and the 1.12; left 30.1 on the bench in a win. **Darkspaces:** 144.34 and the biggest margin of the week while asking the chat for a lower pick ("the tanking memo"); claimed Quentin Johnston for $1 after Hades9mm cut him; called the desk "the AI" in the chat. **Hades9mm:** 99% of a perfect lineup in a loss, offered to take Darkspaces' players if he needs to tank, promised to out score him in Week 8. **Painty69:** bench scored 128.9, more than his starters (101.3); silent in the chat again. **Snipe58:** 42.3 on the bench in a 13.22-point loss, still the 1.01. **Johnny4Skins:** told the chat all three quarterbacks are out; second loss in a row. Overused in Issue 8, rest them: "the invoice", "hobby", "the draft rule".
-* Retire or rotate overused lines (Jerry Jones, "the laboratory", "classic") so each appears at most once per issue.
-
-## 9. ISSUE JSON SCHEMA (`data/issues/issue-NN.json`)
-
-Copy the latest issue file; `data/issues/issue-template.json` is the empty skeleton. Every key below is read by `js/issue.js` or `build_site.py`.
-
-|Key|Shape|Notes|
-|-|-|-|
-|`desk`|list of strings|From the Desk paragraphs. Handles auto-bolded. Required.|
-|`pull`|string, optional|Hero pull quote. Default: first sentence of `desk[0]`.|
-|`hero`, `zero`|`{manager, text, desk}`|`text` = the take, `desk` = one-line aside. Score and "perfect lineup" label come from data. If omitted: hero = perfect lineup first, else top score; zero = lowest score. Always supply them.|
-|`prev_motw`|`{issue, a, b, note}`|The previous issue's Match of the Week; the builder adds scores and winner.|
-|`prev_poll`|`{issue, q, opts, result, note}`, from Issue 5 on|Last issue's poll results, shown as bars. `result` = vote counts per option, same order as `opts` (from the chat log, never guessed), or a short text line if only the winner is known. `note` = the desk's one-line reaction. Never rendered before Issue 5.|
-|`bank.notes`|`{handle: line}` for all 12|One line per manager under their FAAB balance.|
-|`wire.block`|optional list of `{mgr, players:["Name (POS, TEAM)"], desk}`|Trade-block listings for the week (used by Issues 2 and 3).|
-|`wire.trades`|list of `{a, b, ai, bi, ah, bh, ga, gb, desk}`|`ai/bi` immediate impact, `ah/bh` dynasty horizon, `ga/gb` letter grades (A+ to F). Assets (`ar/br`) are filled from the feed. Optional `match` (a player name) tells apart two trades between the same pair of managers.|
-|`wire.waivers`|list of `{mgr, player, flag, note}`|`flag` is `mvp` (exactly 1), `fav` (about 3), or `note`. Matched to the feed by manager + player.|
-|`wire.desk`|`{handle: line}`|One aside per manager who made a claim.|
-|`post`|list of `{a, b, tag, aged, means, key, ga, gb, desk}`|One per Week-N game, `aged/means/key` are 3-line lists. Scores, records, bench, MVPs are filled from data.|
-|`quote`|`{text, by, desk}`|Quote of the week.|
-|`drama`|list of `{h, heat, p, desk}`|About 4; `heat` 0 to 100+.|
-|`hits`|list of `[quote, who]`|Chat greatest hits.|
-|`trades`|`{note, items:[{t, a, as, b, bs, ay, by, desk}]}`|Hypothetical trade machine. `as/bs` are asset lists, `ay/by` the reasons. `note` is exactly "The Hypothetical Trade Machine stays open through Week 12." (no Trade Finder or 10% wording).|
-|`pre`|list of `{a, b, pa, pb, wa, wb, ma, mb, la, lb, edge, desk}`|One per Week N+1 game. `pa/pb` projections, `wa/wb` win % (sum 100), `ma/mb` must-get-right, `la/lb` landmines. Records are filled from data.|
-|`motw`|same as `pre` plus `stakes`, `sw`, `verdict`|`sw` = `[[handle, [strengths x3], [weak links x3]], [other handle, ...]]`. `stats` is computed.|
-|`bottom`|`{paras:[...]}`|Bottom line. The MAXPF explainer is appended automatically only for issues in `EXPLAIN` in `build_site.py` (Issue 4); other issues use `closer`.|
-|`closer`|`{label?, h, text}`, optional|Desk sign-off card shown in place of the MAXPF explainer in every issue except those listed in `EXPLAIN` in `build_site.py` (currently Issue 4 only).|
-|`bold`|list of `[headline, text]`|Bold predictions, each with a deadline so the ledger can score it next issue. **From Issue 6 on, exactly 2 bold predictions per issue** (earlier issues have 3 or 4; the build prints a warning if a later issue has any other number).|
-|`rulings`|list of `{issue, i, result, note, star?}`|Settles bold predictions from EARLIER issues. `issue` = that issue's number, `i` = its index in that issue's `bold` list (starts at 0), `result` = `hit`, `miss` or `pending`. Take them from `brief.json` > `predictions_to_rule`, check the evidence in the data, and cite it in `note`. `[]` if none resolved.|
-|`receipts`|list of `{who, text, context?, date?, tags?, status, note?}`|Hot takes from the chat log that did not make the issue. `text` verbatim, `who` an exact handle. `status`: `aged_well`, `aged_badly`, `pending`. Re-list an older one with a new `status` to update it. `[]` if none.|
-|`poll`|`{id, q, opts, desk}`|`id` like `issue-05`. Shown read-only with "Vote in the league's Sleeper chat"; the poll itself is created in the Sleeper chat. No `endpoint` any more. Optional: with neither `poll` nor `prev_poll`, the Poll nav link and section are left out. Polls began in Issue 4, so none appear on Issues 1 to 3.|
-
-### `data/issues.json` entry (newest first)
-
-```
-{"no": 5, "year": 2026, "title": "...", "weeks": "Week 4 post-game and Week 5 pre-game",
- "web": true, "month": "October 2026", "dek": "...", "banner": "...", "ticker": ["...", "...", "...", "..."],
- "wire_week": 4, "standings_week": 4}
-```
-
-* `wire_week` = the post-game week; the pre-game week is `wire_week + 1`. `web: true` for every new issue. There is no `pdf` field.
-* `season_final` (optional): `true` on the season-review issue only. With a decided champion, it makes the next pull close the season and open the next volume.
-* `title`, `dek`, `banner`, `ticker` feed the home page; `banner` is short, `ticker` is 4 headlines. Lead with the biggest story.
-* Every issue is `"web": true` with no `pdf`.
-* `tx_from` (optional, `{"waiver": ms, "free_agent": ms}`): for a retro issue whose week already had claims in an earlier issue. Only claims created after these timestamps are listed and counted in that issue's bankroll change. Issue 2 uses Issue 1's `tx_cutoff` values.
-
-## 10. LEAGUE RULES (live)
-
-* 2027 rookie draft: ordered by MAXPF as defined in section 5, linear. Payouts still go to the playoff winner.
-* Trade vetoes enabled. Tanking now means selling scoring assets.
-
-## 11. CONTENT REQUIREMENTS
-
-* Lead with the biggest story in the title and dek. Explain MAXPF where it first appears.
-* Say each fact once. From the Desk sets up, sections add detail, Bottom Line closes. Do not recap.
-* Every team scannable somewhere. Post-game and pre-game cards are specific to the game (no shared placeholders).
-* Waivers: 1 gold MVP, about 3 green Desk Favorites. Drama: about 4 segments, desk take under each.
-* Predictions get a deadline so the ledger can score them next issue.
-
-## 12. OPEN THREADS (update after every issue)
-
-* Darkspaces put Tre Tucker (WR, LV) on the block in Week 7 and said he would move him "for the right price" and has a WR1 and an RB1 on the market. Earlier listings (Achane on IR, Swift, Collins, Pickens) were not confirmed or updated in the Week 7 chat. No block player has moved and no trade cleared through Week 7 (none in the brief). StealingGas pitched Jaxson Dart (IR) to Johnny4Skins as an all-in play on injured QBs and offered the Mendoza and Tucker stack for '27.
-* Draft slots by MAXPF after Week 7: 1.01 Snipe58 (894.9), 1.02 Sarge71 (930.32, 35.42 behind), 1.03 Darkspaces (973.92, 79.02 behind), 1.04 YesChef23 (991.7), 1.05 C33DeezNutzz (1046.24), 1.06 Johnny4Skins, 1.07 CMac91, 1.08 StealingGas (1092.08; was the 1.05 after Week 6), 1.09 fumbduckdumbfuck, 1.10 Painty69, 1.11 Hades9mm (1179.72), 1.12 Zygon (1211.42, the highest MAXPF).
-* FAAB after Week 7: StealingGas $98, Darkspaces $103 ($1 on Johnston), Hades9mm $330, Snipe58 $400, YesChef23 $449, Zygon $493; the rest $500. Market feed: Sarge71 on crash watch (down 7.9% over 30 days, 13.9% sidelined); fumbduckdumbfuck on correction; Darkspaces and StealingGas lead the Wealth Index (77,740 and 77,414).
-* Capital moves (verify against `transactions.json`): London deal (StealingGas gets London, Green, a 2027 1st; Hades9mm gets Johnston, Ward, Henderson, a 2027 3rd; Sleeper logs it in Week 2). Stafford deal (Darkspaces gets 2028 2nd, 2029 2nd, $100 FAAB; Snipe58 gets Stafford). Week 7: Hades9mm cut Quentin Johnston for Jaylin Noel and Darkspaces claimed Johnston off waivers for $1.
-* Issue 4 through Issue 6 predictions are all ruled. Issue 7 predictions are ruled in Issue 8 (index 0 hit: Zygon took the highest MAXPF; index 1 miss: StealingGas left 18.8 on the bench).
-* Issue 8 bold predictions (rule in Issue 9, deadline Week 8 final): index 0 "Hades9mm outscores Darkspaces in the Match of the Week" and index 1 "Sarge71 takes the 1.01 from Snipe58".
-* Issue 8 receipts to update in Issue 9 (all pending): StealingGas "pop off for the next few weeks and then go dormant" (playoffs are Week 15), Hades9mm "I'm just gonna out score ya" (Week 8), Darkspaces "stop popping off so I can get a low pick", StealingGas on the Mendoza and Tucker stack, Johnny4Skins "3 QB, all of which are out".
-* Week 8 matchups: Darkspaces vs Hades9mm (Match of the Week), Snipe58 vs fumbduckdumbfuck, StealingGas vs C33DeezNutzz, Zygon vs Painty69, Johnny4Skins vs Sarge71, CMac91 vs YesChef23. Issue 8 projections are the desk's own estimate (average points per game) and win odds use a 0.7-per-point rule capped at 20 and 80.
-* Chat-log note: the Week 7 chat was lively again (trade offers, tank talk, the Match of the Week poll). Issue 8 carries five `hits` and five receipts. Darkspaces called the desk "the AI" in the chat; the desk may answer in kind but should not pose as a trade broker.
-* Hero and Zero of the Week are weekly and can be any team (Issue 8: StealingGas and Sarge71); Best Manager (season) is for teams at 44% or better once 5 games are played; the tank is recognized through Biggest Tank (lowest MAXPF).
-
-## 13. POLL MEMORY
-
-Polls are voted in the league's Sleeper chat; the page only shows the question. Each issue from 5 on carries last issue's results in `prev_poll` (counts from the chat log) plus a fresh `poll`. Issue 5: which block player moves first? Result: Swift 2, Collins 0, Pickens 1, Nobody 1. Issue 6: who holds the 1.01 after Week 6? Result: Darkspaces 2, Snipe58 2, YesChef23 0, Someone else 1 (carried in Issue 7's `prev_poll`; the 1.01 went to Snipe58). Issue 7: who takes the Week 7 high score? Result: StealingGas 2, Zygon 0, Hades9mm 1, Someone else 1 (carried in Issue 8's `prev_poll`; the high score went to StealingGas at 157.4). Issue 8: who wins the Week 8 Match of the Week? (Darkspaces by double digits / Darkspaces in a squeaker / Hades9mm in a squeaker / Hades9mm by double digits.) Its results go in Issue 9's `prev_poll` if the chat log shows the votes.
-
-## 14. AFTER PUBLISH (checklist, then return an updated master)
-
-* [ ] Change "Last updated" and "Next issue" at the top.
-* [ ] Display text owned by the build, not the issue file (as of Issue 6 feedback): remove "Grouped by manager. Gold marks the Waiver Wire MVP, green the Desk Favorite." under Transactions, and shorten the trade-values footer to "Values: FantasyCalc dynasty trade values (superflex, 12 teams, full PPR)" (linked, no lock date or pick/FAAB sentence). Both live in the build scripts, so they need a repo change, not an issue edit.
-* [ ] Issue values: after the Action builds the issue, `data/issues/<year>/values-NN.json` exists (it freezes every FantasyCalc number the issue shows).
-* [ ] Manager bios: all 12 `data/bios/*.json` updated (new `asof`, revised story, refreshed `file`). - [ ] Section 7 baseline order. [ ] Section 8 bits. [ ] Sections 12 and 13 threads, predictions, poll.
-* [ ] Upload the files from the table in section 3 together in one commit.
-* [ ] After the Action finishes, open one manager page and confirm the new week and a new desk quote appear (manager pages rebuild automatically; no extra upload).
-* [ ] Renames are now detected automatically (same Sleeper user id, new handle) and the old handle is added to `former_names`. Check the Actions log for a `rename detected:` line. Add `former_names` by hand only for an old handle the pull could not match.
-* [ ] Predictions and receipts: the issue file's `rulings` settle every entry in `brief.json` > `predictions_to_rule` that now has an answer, and `receipts` holds the new hot takes. If `brief.json` > `season_end.action` is present, write the season-review issue with `"season_final": true` and add the volume `story` to `history.json`.
-* [ ] Market: read `brief.json` > `market_portfolios` (crash watch, biggest movers, IR exposure) and use it where it adds to the issue.
-* [ ] If scripts, the workflow, a page, or a convention changed this session: update the README and the matching master sections (14b).
-* [ ] Re-download a fresh zip once a month and keep it somewhere outside GitHub as a backup.
-
 ## 14b. KEEPING THE README AND THIS FILE IN SYNC
 
-The README (human guide to how the repo and site are built) and this file (operating manual for making issues) overlap on purpose. Division of labour: **this file owns league content and the issue workflow** (rules, voice, schema, sort laws, threads); **the README owns repo structure, the Action, scripts and site conventions.** When something changes, update both in the same upload:
+The README (human guide to how the repo and site are built) and `DYNASTREE_ISSUE_GUIDE.md` plus this file (operating manual for making issues) overlap on purpose. Division of labour: **the issue guide owns league content and the issue workflow; this file owns how the pages are built** (rules, voice, schema, sort laws, threads); **the README owns repo structure, the Action, scripts and site conventions.** When something changes, update both in the same upload:
 
 |What changed|README section|This file|
 |-|-|-|

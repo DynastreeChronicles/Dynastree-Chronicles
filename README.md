@@ -8,7 +8,7 @@ The official newsletter of the DYNASTREE dynasty league: a 12-team, superflex dy
 
 ## Contents
 
-1. [How this README and the master state file fit together](#1-how-this-readme-and-the-master-state-file-fit-together)
+1. [How this README and the three Claude files fit together](#1-how-this-readme-and-the-three-claude-files-fit-together)
 2. [How the site works](#2-how-the-site-works) (see also "Automation at a glance" above it)
 3. [Repo map](#3-repo-map)
 4. [The GitHub Action](#4-the-github-action)
@@ -29,20 +29,22 @@ The official newsletter of the DYNASTREE dynasty league: a 12-team, superflex dy
 
 ---
 
-## 1. How this README and the master state file fit together
+## 1. How this README and the three Claude files fit together
 
 There are two documents, and they have different jobs.
 
 | File | Audience | Purpose |
 |---|---|---|
 | `README.md` (this file) | A person opening the repo | What the site is, how it is built, what each folder and script does, what to upload, how to fix problems. |
-| `DYNASTREE_MASTER_STATE.md` | A fresh Claude chat (and you) | The operating manual for making each issue: the league's rules and identity, the voice, the issue JSON schema, sort laws, open storylines, the per-issue checklist. |
+| `DYNASTREE_STATE.md` | A fresh Claude chat (and you) | The small weekly file: open storylines, voice bits, poll memory, the draft slots and predictions still open. Claude returns it after every issue. |
+| `DYNASTREE_ISSUE_GUIDE.md` | A fresh Claude chat (and you) | The stable rules for making an issue: the league's rules and identity, the voice, the issue JSON schema, sort laws, the per-issue checklist. Changes rarely. |
+| `DYNASTREE_REFERENCE.md` | A person or Claude changing the site | How the site, scripts and pages work, in the same section numbers as this README. Attached to a chat only when a script, page or style is being changed. |
 
 Rules for keeping them in step:
 
-* **The master state file is the authority for anything about league content and the issue workflow** (rules, voice, schema, steps for an issue). This README only summarises those and points to the matching master section.
-* **This README is the authority for how the repo and the site are put together** (folders, scripts, the Action, conventions). The master state file keeps a shorter copy of the same facts in its sections 2, 3 and 6.
-* **When code, the workflow, or a page changes, update both.** The master state file's section 14b lists exactly which sections to touch.
+* **The issue guide is the authority for anything about league content and the issue workflow** (rules, voice, schema, steps for an issue). This README only summarises those and points to the matching guide section.
+* **This README is the authority for how the repo and the site are put together** (folders, scripts, the Action, conventions). `DYNASTREE_REFERENCE.md` keeps a shorter copy of the same facts in its sections 2, 3 and 6.
+* **When code, the workflow, or a page changes, update both.** Section 14b of `DYNASTREE_REFERENCE.md` lists exactly which sections to touch.
 * If the two ever disagree, the code wins. Read the script, fix whichever document is wrong, and fix the other one in the same commit.
 
 ---
@@ -50,7 +52,7 @@ Rules for keeping them in step:
 ## Automation at a glance
 
 * **Automatic on every Action run:** standings, records, MAXPF, manager pages and their FantasyCalc portfolio values, the Hall of Fame, the Ledger and its pick grades, Receipts, drafts, the champion, closing a season, and `brief.json`.
-* **One bundle per issue (made in a Claude chat):** `issue-NN.json` (including `rulings` and `receipts`), the `data/issues.json` entry and the 12 bios.
+* **One bundle per issue (made in a Claude chat):** `issue-NN.json` (including `rulings` and `receipts`), the `data/issues.json` entry and the 12 weekly bios.
 * **Once a year:** the volume `story` in `data/history.json`, and `"season_final": true` on the season-review issue.
 * **By hand, rarely:** `data/settings.json` when league rules change, a hand verdict or trade obituary in `data/ledger.json`, a Toilet Bowl entry, and a rename the pull cannot match.
 
@@ -71,7 +73,7 @@ snapshots + trades + drafts + stats --scripts/ledger_values.py--> data/market/le
 ledger_values.json + data/ledger.json --scripts/build_ledger.py (+ pick_grades.py)--> ledger/index.html   trade values and value-based pick verdicts
 issue JSON (receipts, rulings)      --scripts/build_receipts.py, build_history.py (via auto_data.py)--> receipts/ and history/
 all of the above                     --scripts/make_brief.py--> data/brief.json   (the one file shared with Claude)
-chat log + master state + brief.json --Claude--> data/issues/<season>/issue-NN.json (incl. rulings + receipts) + data/issues.json + bios   all words
+chat log + state + guide + brief.json --Claude--> data/issues/<season>/issue-NN.json (incl. rulings + receipts) + data/issues.json + weekly bios   all words
 ```
 
 Two rules follow from this:
@@ -105,7 +107,8 @@ data/
   ledger.json                       pick verdicts, trade obituaries, grading rules
   receipts.json                     extra hot takes for the Receipts page
   brief.json                        the one file shared with Claude (written by the Action)
-  bios/<handle>.json                desk bio for each manager
+  bios/<handle>.json                stable desk bio for each manager (story paragraph 1, The type, Signature move)
+  bios/weekly/<handle>.json         weekly bio laid over the stable one (tagline, asof, changed blurbs, story tail, takes)
   issues/<season>/issue-NN.json     all prose for one issue
   issues/issue-template.json        empty issue schema
   <season>/                         one folder per season: league, standings, efficiency, transactions,
@@ -123,7 +126,9 @@ index.html                          home page (shell + generated sections)
 issues/<season>/issue-NN/           one generated page per issue
 managers/                           the hub and one generated page per manager
 history/  ledger/  receipts/        generated pages
-DYNASTREE_MASTER_STATE.md           the operating manual (section 1)
+DYNASTREE_STATE.md                  weekly memory, returned every issue
+DYNASTREE_ISSUE_GUIDE.md            stable rules for making an issue
+DYNASTREE_REFERENCE.md              how the site and scripts work
 ```
 
 The zip you share with Claude can leave out `assets/`; Claude never needs the images to change text, data, scripts, or styles. It just cannot check how art looks.
@@ -181,7 +186,7 @@ All scripts run from the repo root, in the order below, and read only from `data
 | `market.py` | (library) | none | FantasyCalc helpers: name keys, pick parsing and valuation, dated snapshots, the as-of-a-date lookup. |
 | `build_ledger.py` | draft, draft_meta, stats, `ledger_values.json`, `data/ledger.json`, issue JSON | `ledger/index.html` | Shows trade values and grades picks by FantasyCalc value through `pick_grades.py`. |
 | `build_receipts.py` | issue JSON (`receipts`, `rulings`), `data/history.json`, `data/receipts.json` | `receipts/index.html` | |
-| `make_brief.py` | everything above | `data/brief.json` | Adds no new facts; gathers and summarises, including `predictions_to_rule`, `season_end` and `market_portfolios`. |
+| `make_brief.py` | everything above | `data/brief.json` | Adds no new facts; gathers and summarises, including `predictions_to_rule`, `season_end` and `market_portfolios`. Keeps the brief small: `bios` carries only the active season's merged bio, and `previous_issue_json` is cut to its voice samples and open threads (`slim_bios()`, `slim_prev()`). |
 | `auto_data.py` | issue JSON | (library) | Merges each issue's `rulings` and `receipts` into History and Receipts. |
 | `season_events.py` | Sleeper JSON | (library) | Reads a finished draft and a decided championship; no network, testable offline. |
 | `pick_grades.py` | `ledger_values.json` rows | (library) | The value-based pick grading rules (`grade_pick_value`); the older production-based grader stays in the file for reference only. |
@@ -266,13 +271,14 @@ Every script has a docstring at the top that says what it does, what it reads, a
 |---|---|
 | `data/issues/<season>/issue-NN.json` | All prose for one issue. New each issue. |
 | `data/issues.json` | The issue index. Replaced each issue. |
-| `data/bios/<handle>.json` | A manager's tagline, desk file, and per-season story. Normally all 12 each issue. |
+| `data/bios/<handle>.json` | A manager's stable bio: tagline, desk file, per-season story. Changes only on a rewrite. |
+| `data/bios/weekly/<handle>.json` | The weekly bio laid over it by `build_site.merge_bio()`. All 12 each issue. |
 | `data/history.json` | Optional now: the volume `story`, `awards` and `toilet_bowl` entries, hand prediction overrides. The champion and prediction results come from `result.json` and the issue files. |
 | `data/ledger.json` | Grading thresholds, plus exceptions only: a hand verdict over an automatic grade, and trade obituaries. |
 | `data/receipts.json` | Optional: extra hot takes added by hand. Normal hot takes ride in each issue file. |
 | `data/settings.json`, `data/seasons.json`, `data/managers.json` | Edit only when a rule, season, or handle changes. |
 | `css/`, `js/`, `scripts/` | Style and code. Claude will name the exact path for every file it changes. |
-| `DYNASTREE_MASTER_STATE.md`, `README.md` | The two documents in section 1. |
+| `DYNASTREE_STATE.md`, `DYNASTREE_ISSUE_GUIDE.md`, `DYNASTREE_REFERENCE.md`, `README.md` | The four documents in section 1. |
 
 **Written by the Action (never upload or edit):** `index.html` between its markers, `issues/`, `managers/`, `history/`, `ledger/`, `receipts/`, `data/brief.json`, `data/stats/`, `data/market/`, `data/<season>/` (except `fut_cap.json`), and `assets/avatars/`.
 
@@ -282,20 +288,20 @@ When Claude changes site code, it hands back only the edited files and says wher
 
 ## 7. Making an issue
 
-The full procedure is in `DYNASTREE_MASTER_STATE.md` sections 1, 3 and 4. In short:
+The full procedure is in `DYNASTREE_ISSUE_GUIDE.md` sections 1 and 4. In short:
 
 1. Wait for the Tuesday or Wednesday Action run (or run it by hand) and check `data/brief.json` says `ready_for_new_issue: true`.
-2. Start a Claude chat with the master state file, `brief.json`, and the new chat log.
-3. Claude shows a data summary, you confirm, Claude returns the issue files and the updated master.
+2. Start a Claude chat with `DYNASTREE_STATE.md`, `DYNASTREE_ISSUE_GUIDE.md`, `brief.json`, and the new chat log.
+3. Claude shows a data summary, you confirm, Claude returns the issue files, the 12 weekly bios and the updated `DYNASTREE_STATE.md`.
 4. Upload the files to the paths Claude gives you, in one commit. The Action rebuilds the whole site, including every manager page.
-5. Check the live site, then update the master state file's checklist (section 14).
+5. Check the live site, then update the state file's checklist (guide section 14).
 
 ---
 
 ## 8. Issue data
 
 * `data/issues.json` lists the issues, newest first. `wire_week` is the post-game week; the pre-game week is `wire_week + 1`. Each entry needs `"year"`.
-* `data/issues/<season>/issue-NN.json` is **prose only**: `desk`, `hero`, `zero`, headlines, takes, grades, projections, bold predictions, `wire.desk`, `bank.notes`, and `prev_motw`. The full schema is `DYNASTREE_MASTER_STATE.md` section 9; copy `data/issues/issue-template.json` to start one.
+* `data/issues/<season>/issue-NN.json` is **prose only**: `desk`, `hero`, `zero`, headlines, takes, grades, projections, bold predictions, `wire.desk`, `bank.notes`, and `prev_motw`. The full schema is `DYNASTREE_ISSUE_GUIDE.md` section 9; copy `data/issues/issue-template.json` to start one.
 * Two bundled lists in the issue file replace separate uploads: **`rulings`** settles earlier issues' bold predictions (each `{issue, i, result, note}`; `brief.json` > `predictions_to_rule` lists what is open) and **`receipts`** carries hot takes from the chat log (each `{who, text, context, status, note}`). History and Receipts read them straight from every issue.
 * Everything else on an issue page (standings, FAAB, draft slots, scores, records, bench points, MVPs, match-of-the-week stats, trade assets, waiver claims, bankroll) is computed at build time from `data/<season>/` as of the issue's week. The home page always shows the latest finished week.
 * Waiver flags and one-liners live in `wire.waivers` as `{mgr, player, flag, note}`; the claims themselves come from Sleeper.
@@ -314,7 +320,7 @@ Volume N is season N. Volume 1 is 2026. Issue numbers restart at 1 each volume.
 * Sleeper makes a new league id each season. The pull finds it by name. Until it exists, the pull keeps reading the old league and files anything after `closed_at` as week 0 (offseason) of the new season.
 * The first issue of a new volume is the look-forward issue.
 
-Details: `DYNASTREE_MASTER_STATE.md` sections 3b and 6c.
+Details: `DYNASTREE_REFERENCE.md` sections 3b and 6c.
 
 ---
 
@@ -432,7 +438,7 @@ These apply to every page. Keep them when you change a shell.
 3. Add a step to the workflow, after the page it depends on, and add its output folder to the `git add -A` line in the commit step.
 4. Add a link to the `#vault` block in `index.html` and in every `build_*.py` shell.
 5. If it reads a new hand-edited data file, add that path to the workflow's push triggers.
-6. Add it to the tables in section 10 here, and to the repo map and the matching section of `DYNASTREE_MASTER_STATE.md`.
+6. Add it to the tables in section 10 here, and to the repo map and the matching section of `DYNASTREE_REFERENCE.md`.
 
 ---
 
