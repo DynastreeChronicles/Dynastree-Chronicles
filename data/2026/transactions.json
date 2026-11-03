@@ -1101,6 +1101,44 @@
   },
   {
     "week": 7,
+    "type": "trade",
+    "created": 1793141635922,
+    "id": "1420942645898850304",
+    "sides": [
+      {
+        "manager": "Snipe58",
+        "receives_players": [
+          {
+            "name": "Kendre Miller",
+            "pos": "RB",
+            "team": "NO"
+          }
+        ],
+        "receives_picks": [
+          {
+            "season": "2027",
+            "round": 2,
+            "original_owner": "StealingGas"
+          }
+        ],
+        "receives_faab": 0
+      },
+      {
+        "manager": "StealingGas",
+        "receives_players": [
+          {
+            "name": "Jonah Coleman",
+            "pos": "RB",
+            "team": "DEN"
+          }
+        ],
+        "receives_picks": [],
+        "receives_faab": 0
+      }
+    ]
+  },
+  {
+    "week": 7,
     "type": "waiver",
     "created": 1793135408014,
     "id": "1420916524159373312",
@@ -1240,6 +1278,144 @@
     },
     "dropped": [
       "Quentin Johnston"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 8,
+    "type": "free_agent",
+    "created": 1793660496211,
+    "id": "1423118903688577024",
+    "manager": "Darkspaces",
+    "added": {
+      "name": "Devin Singletary",
+      "pos": "RB",
+      "team": "NYG"
+    },
+    "dropped": [],
+    "bid": 0
+  },
+  {
+    "week": 8,
+    "type": "free_agent",
+    "created": 1793478231801,
+    "id": "1422354431344672768",
+    "manager": "YesChef23",
+    "added": {
+      "name": "Samaje Perine",
+      "pos": "RB",
+      "team": "CIN"
+    },
+    "dropped": [
+      "Zachariah Branch"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 8,
+    "type": "free_agent",
+    "created": 1793460429343,
+    "id": "1422279762423918592",
+    "manager": "Hades9mm",
+    "added": {
+      "name": "Tampa Bay Buccaneers",
+      "pos": "DEF",
+      "team": "TB"
+    },
+    "dropped": [],
+    "bid": 0
+  },
+  {
+    "week": 8,
+    "type": "free_agent",
+    "created": 1793460271988,
+    "id": "1422279102425010176",
+    "manager": "Hades9mm",
+    "added": {
+      "name": "Ryan Flournoy",
+      "pos": "WR",
+      "team": "DAL"
+    },
+    "dropped": [],
+    "bid": 0
+  },
+  {
+    "week": 8,
+    "type": "free_agent",
+    "created": 1793387712890,
+    "id": "1421974767514193920",
+    "manager": "Johnny4Skins",
+    "added": {
+      "name": "Washington Commanders",
+      "pos": "DEF",
+      "team": "WAS"
+    },
+    "dropped": [
+      "Houston Texans"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 8,
+    "type": "trade",
+    "created": 1793308978566,
+    "id": "1421644531824168960",
+    "sides": [
+      {
+        "manager": "Darkspaces",
+        "receives_players": [],
+        "receives_picks": [
+          {
+            "season": "2027",
+            "round": 1,
+            "original_owner": "StealingGas"
+          }
+        ],
+        "receives_faab": 0
+      },
+      {
+        "manager": "StealingGas",
+        "receives_players": [
+          {
+            "name": "D'Andre Swift",
+            "pos": "RB",
+            "team": "CHI"
+          }
+        ],
+        "receives_picks": [],
+        "receives_faab": 0
+      }
+    ]
+  },
+  {
+    "week": 8,
+    "type": "free_agent",
+    "created": 1793286066558,
+    "id": "1421548431897341952",
+    "manager": "StealingGas",
+    "added": {
+      "name": "Hunter Henry",
+      "pos": "TE",
+      "team": "NE"
+    },
+    "dropped": [
+      "Konata Mumpfield"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 8,
+    "type": "free_agent",
+    "created": 1793212164258,
+    "id": "1421238463184871424",
+    "manager": "Zygon",
+    "added": {
+      "name": "New England Patriots",
+      "pos": "DEF",
+      "team": "NE"
+    },
+    "dropped": [
+      "New York Jets"
     ],
     "bid": 0
   }

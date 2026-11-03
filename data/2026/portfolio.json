@@ -7,7 +7,7 @@
   "numTeams": 12,
   "ppr": 1
  },
- "generated_at": "2026-11-03T10:24:49+00:00",
+ "generated_at": "2026-11-03T11:43:23+00:00",
  "thresholds": {
   "crash_move_pct": -5.0,
   "crash_sidelined_pct": 25.0,
@@ -17,21 +17,21 @@
  "league_avg": 64470,
  "teams": {
   "Darkspaces": {
-   "total": 78310,
+   "total": 77553,
    "players": 53099,
-   "picks": 25211,
+   "picks": 24454,
    "pick_count": 13,
    "by_pos": {
     "WR": 26188,
     "QB": 13540,
     "TE": 5838,
     "RB": 7533,
-    "PICK": 25211
+    "PICK": 24454
    },
-   "move30": 6200,
-   "move30_pct": 8.6,
+   "move30": 6191,
+   "move30_pct": 8.7,
    "sidelined": 10861,
-   "sidelined_pct": 13.9,
+   "sidelined_pct": 14.0,
    "status": "bull",
    "top": [
     {
@@ -337,12 +337,12 @@
      "trend30": 203
     },
     {
-     "label": "2027 1st (Mid)",
+     "label": "2027 1st (Late)",
      "season": 2027,
      "round": 1,
      "via": "StealingGas",
-     "value": 3314,
-     "trend30": 133
+     "value": 2557,
+     "trend30": 124
     },
     {
      "label": "2028 1st",
@@ -478,22 +478,22 @@
    "off_index": 0,
    "rank": 1,
    "since": "2026-10-29",
-   "since_change": 1672
+   "since_change": 915
   },
   "Snipe58": {
-   "total": 55292,
+   "total": 55050,
    "players": 41144,
-   "picks": 14148,
+   "picks": 13906,
    "pick_count": 7,
    "by_pos": {
     "WR": 15601,
     "RB": 11541,
     "QB": 11388,
     "TE": 2614,
-    "PICK": 14148
+    "PICK": 13906
    },
-   "move30": 1175,
-   "move30_pct": 2.2,
+   "move30": 1148,
+   "move30_pct": 2.1,
    "sidelined": 3797,
    "sidelined_pct": 6.9,
    "status": "stable",
@@ -797,12 +797,12 @@
      "trend30": 59
     },
     {
-     "label": "2027 2nd (Mid)",
+     "label": "2027 2nd (Late)",
      "season": 2027,
      "round": 2,
      "via": "StealingGas",
-     "value": 1709,
-     "trend30": 114
+     "value": 1467,
+     "trend30": 87
     },
     {
      "label": "2027 3rd (Early)",
@@ -874,7 +874,7 @@
    "off_index": 1,
    "rank": 11,
    "since": "2026-10-29",
-   "since_change": 807
+   "since_change": 565
   },
   "StealingGas": {
    "total": 77227,
@@ -1685,21 +1685,21 @@
    "since_change": 221
   },
   "Hades9mm": {
-   "total": 56752,
+   "total": 56631,
    "players": 44335,
-   "picks": 12417,
+   "picks": 12296,
    "pick_count": 9,
    "by_pos": {
     "QB": 12259,
     "WR": 15491,
     "RB": 11315,
     "TE": 5270,
-    "PICK": 12417
+    "PICK": 12296
    },
-   "move30": -547,
+   "move30": -568,
    "move30_pct": -1.0,
    "sidelined": 4396,
-   "sidelined_pct": 7.7,
+   "sidelined_pct": 7.8,
    "status": "stable",
    "top": [
     {
@@ -1987,12 +1987,12 @@
      "trend30": 32
     },
     {
-     "label": "2027 3rd (Mid)",
+     "label": "2027 3rd (Late)",
      "season": 2027,
      "round": 3,
      "via": "StealingGas",
-     "value": 1137,
-     "trend30": 49
+     "value": 1016,
+     "trend30": 28
     },
     {
      "label": "2027 3rd (Late)",
@@ -2064,7 +2064,7 @@
    "off_index": 0,
    "rank": 10,
    "since": "2026-10-29",
-   "since_change": -574
+   "since_change": -695
   },
   "Johnny4Skins": {
    "total": 63408,
@@ -4429,21 +4429,21 @@
    "since_change": -697
   },
   "fumbduckdumbfuck": {
-   "total": 58751,
+   "total": 59871,
    "players": 44914,
-   "picks": 13837,
+   "picks": 14957,
    "pick_count": 9,
    "by_pos": {
     "WR": 12865,
     "RB": 15072,
     "TE": 10109,
     "QB": 6868,
-    "PICK": 13837
+    "PICK": 14957
    },
-   "move30": -1637,
-   "move30_pct": -2.7,
+   "move30": -1580,
+   "move30_pct": -2.6,
    "sidelined": 5875,
-   "sidelined_pct": 10.0,
+   "sidelined_pct": 9.8,
    "status": "correction",
    "top": [
     {
@@ -4691,12 +4691,12 @@
    ],
    "pick_list": [
     {
-     "label": "2027 1st (Late)",
+     "label": "2027 1st (Mid)",
      "season": 2027,
      "round": 1,
      "via": null,
-     "value": 2557,
-     "trend30": 124
+     "value": 3314,
+     "trend30": 133
     },
     {
      "label": "2028 1st",
@@ -4715,12 +4715,12 @@
      "trend30": 59
     },
     {
-     "label": "2027 2nd (Late)",
+     "label": "2027 2nd (Mid)",
      "season": 2027,
      "round": 2,
      "via": null,
-     "value": 1467,
-     "trend30": 87
+     "value": 1709,
+     "trend30": 114
     },
     {
      "label": "2028 2nd",
@@ -4739,12 +4739,12 @@
      "trend30": 32
     },
     {
-     "label": "2027 3rd (Late)",
+     "label": "2027 3rd (Mid)",
      "season": 2027,
      "round": 3,
      "via": null,
-     "value": 1016,
-     "trend30": 28
+     "value": 1137,
+     "trend30": 49
     },
     {
      "label": "2028 3rd",
@@ -4818,7 +4818,7 @@
    "off_index": 0,
    "rank": 9,
    "since": "2026-10-29",
-   "since_change": -582
+   "since_change": 538
   }
  },
  "history": [
@@ -5250,18 +5250,18 @@
   {
    "date": "2026-11-03",
    "totals": {
-    "Darkspaces": 78310,
-    "Snipe58": 55292,
+    "Darkspaces": 77553,
+    "Snipe58": 55050,
     "StealingGas": 77227,
     "Zygon": 73381,
-    "Hades9mm": 56752,
+    "Hades9mm": 56631,
     "Johnny4Skins": 63408,
     "Sarge71": 53085,
     "C33DeezNutzz": 64435,
     "Painty69": 67181,
     "CMac91": 61491,
     "YesChef23": 64330,
-    "fumbduckdumbfuck": 58751
+    "fumbduckdumbfuck": 59871
    }
   }
  ]

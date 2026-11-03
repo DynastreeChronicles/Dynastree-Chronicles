@@ -1,98 +1,98 @@
 [
   {
-    "manager": "Darkspaces",
-    "points": 883.14,
-    "optimal": 973.92,
-    "efficiency": 90.7,
-    "left_on_bench": 90.78,
-    "bench_points": 162.92
+    "manager": "StealingGas",
+    "points": 1160.6,
+    "optimal": 1284.28,
+    "efficiency": 90.4,
+    "left_on_bench": 123.68,
+    "bench_points": 347.1
   },
   {
-    "manager": "StealingGas",
-    "points": 987.0,
-    "optimal": 1092.08,
-    "efficiency": 90.4,
-    "left_on_bench": 105.08,
-    "bench_points": 298.5
+    "manager": "Darkspaces",
+    "points": 950.6,
+    "optimal": 1056.38,
+    "efficiency": 90.0,
+    "left_on_bench": 105.78,
+    "bench_points": 181.52
   },
   {
     "manager": "C33DeezNutzz",
-    "points": 946.14,
-    "optimal": 1046.24,
-    "efficiency": 90.4,
-    "left_on_bench": 100.1,
-    "bench_points": 314.8
+    "points": 1066.08,
+    "optimal": 1187.78,
+    "efficiency": 89.8,
+    "left_on_bench": 121.7,
+    "bench_points": 358.78
   },
   {
     "manager": "Zygon",
-    "points": 1058.0,
-    "optimal": 1211.42,
-    "efficiency": 87.3,
-    "left_on_bench": 153.42,
-    "bench_points": 394.98
+    "points": 1222.4,
+    "optimal": 1417.26,
+    "efficiency": 86.3,
+    "left_on_bench": 194.86,
+    "bench_points": 496.74
   },
   {
     "manager": "Johnny4Skins",
-    "points": 928.72,
-    "optimal": 1067.72,
-    "efficiency": 87.0,
-    "left_on_bench": 139.0,
-    "bench_points": 354.9
-  },
-  {
-    "manager": "Snipe58",
-    "points": 750.6,
-    "optimal": 894.9,
-    "efficiency": 83.9,
-    "left_on_bench": 144.3,
-    "bench_points": 305.18
-  },
-  {
-    "manager": "Hades9mm",
-    "points": 977.56,
-    "optimal": 1179.72,
-    "efficiency": 82.9,
-    "left_on_bench": 202.16,
-    "bench_points": 436.44
+    "points": 1055.12,
+    "optimal": 1233.92,
+    "efficiency": 85.5,
+    "left_on_bench": 178.8,
+    "bench_points": 410.4
   },
   {
     "manager": "CMac91",
-    "points": 881.62,
-    "optimal": 1070.9,
-    "efficiency": 82.3,
-    "left_on_bench": 189.28,
-    "bench_points": 369.02
+    "points": 992.16,
+    "optimal": 1195.3,
+    "efficiency": 83.0,
+    "left_on_bench": 203.14,
+    "bench_points": 398.84
   },
   {
-    "manager": "YesChef23",
-    "points": 803.22,
-    "optimal": 991.7,
-    "efficiency": 81.0,
-    "left_on_bench": 188.48,
-    "bench_points": 357.38
+    "manager": "Hades9mm",
+    "points": 1101.58,
+    "optimal": 1332.36,
+    "efficiency": 82.7,
+    "left_on_bench": 230.78,
+    "bench_points": 493.8
   },
   {
     "manager": "fumbduckdumbfuck",
-    "points": 891.26,
-    "optimal": 1101.28,
-    "efficiency": 80.9,
-    "left_on_bench": 210.02,
-    "bench_points": 397.68
+    "points": 1055.56,
+    "optimal": 1283.68,
+    "efficiency": 82.2,
+    "left_on_bench": 228.12,
+    "bench_points": 432.28
+  },
+  {
+    "manager": "Snipe58",
+    "points": 813.22,
+    "optimal": 993.12,
+    "efficiency": 81.9,
+    "left_on_bench": 179.9,
+    "bench_points": 361.48
+  },
+  {
+    "manager": "YesChef23",
+    "points": 884.36,
+    "optimal": 1082.84,
+    "efficiency": 81.7,
+    "left_on_bench": 198.48,
+    "bench_points": 373.28
   },
   {
     "manager": "Sarge71",
-    "points": 723.64,
-    "optimal": 930.32,
-    "efficiency": 77.8,
-    "left_on_bench": 206.68,
-    "bench_points": 351.0
+    "points": 805.02,
+    "optimal": 1037.72,
+    "efficiency": 77.6,
+    "left_on_bench": 232.7,
+    "bench_points": 377.02
   },
   {
     "manager": "Painty69",
-    "points": 863.06,
-    "optimal": 1130.94,
-    "efficiency": 76.3,
-    "left_on_bench": 267.88,
-    "bench_points": 565.62
+    "points": 978.04,
+    "optimal": 1339.8,
+    "efficiency": 73.0,
+    "left_on_bench": 361.76,
+    "bench_points": 704.1
   }
 ]

@@ -315,6 +315,85 @@
      "total": 58751
     }
    }
+  },
+  "8": {
+   "date": "2026-11-03",
+   "slots": {
+    "1": 5033,
+    "2": 5033,
+    "3": 5033,
+    "4": 5033,
+    "5": 3314,
+    "6": 3314,
+    "7": 3314,
+    "8": 3314,
+    "9": 2557,
+    "10": 2557,
+    "11": 2557,
+    "12": 2557
+   },
+   "teams": {
+    "Darkspaces": {
+     "roster": 53099,
+     "picks": 24454,
+     "total": 77553
+    },
+    "Snipe58": {
+     "roster": 41144,
+     "picks": 13906,
+     "total": 55050
+    },
+    "StealingGas": {
+     "roster": 65873,
+     "picks": 11354,
+     "total": 77227
+    },
+    "Zygon": {
+     "roster": 59544,
+     "picks": 13837,
+     "total": 73381
+    },
+    "Hades9mm": {
+     "roster": 44335,
+     "picks": 12296,
+     "total": 56631
+    },
+    "Johnny4Skins": {
+     "roster": 48451,
+     "picks": 14957,
+     "total": 63408
+    },
+    "Sarge71": {
+     "roster": 35917,
+     "picks": 17168,
+     "total": 53085
+    },
+    "C33DeezNutzz": {
+     "roster": 49478,
+     "picks": 14957,
+     "total": 64435
+    },
+    "Painty69": {
+     "roster": 53344,
+     "picks": 13837,
+     "total": 67181
+    },
+    "CMac91": {
+     "roster": 46534,
+     "picks": 14957,
+     "total": 61491
+    },
+    "YesChef23": {
+     "roster": 47162,
+     "picks": 17168,
+     "total": 64330
+    },
+    "fumbduckdumbfuck": {
+     "roster": 44914,
+     "picks": 14957,
+     "total": 59871
+    }
+   }
   }
  },
  "season": "2026",

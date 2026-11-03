@@ -1,0 +1,294 @@
+{
+  "week": 8,
+  "final": true,
+  "teams": [
+    {
+      "roster_id": 1,
+      "manager": "Darkspaces",
+      "points": 67.46,
+      "maxpf": 82.46,
+      "roster_points": 86.06,
+      "bench_points": 18.6,
+      "optimal": 82.46,
+      "left_on_bench": 15.0,
+      "efficiency": 81.8,
+      "mvp": {
+        "name": "Drake Maye",
+        "pos": "QB",
+        "pts": 22.46
+      },
+      "best_bench": {
+        "name": "Quentin Johnston",
+        "pos": "WR",
+        "pts": 7.7
+      },
+      "opponent": "Hades9mm",
+      "opponent_points": 124.02,
+      "result": "L"
+    },
+    {
+      "roster_id": 2,
+      "manager": "Snipe58",
+      "points": 62.62,
+      "maxpf": 98.22,
+      "roster_points": 118.92,
+      "bench_points": 56.3,
+      "optimal": 98.22,
+      "left_on_bench": 35.6,
+      "efficiency": 63.8,
+      "mvp": {
+        "name": "Malik Willis",
+        "pos": "QB",
+        "pts": 15.64
+      },
+      "best_bench": {
+        "name": "Jameson Williams",
+        "pos": "WR",
+        "pts": 17.0
+      },
+      "opponent": "fumbduckdumbfuck",
+      "opponent_points": 164.3,
+      "result": "L"
+    },
+    {
+      "roster_id": 3,
+      "manager": "StealingGas",
+      "points": 173.6,
+      "maxpf": 192.2,
+      "roster_points": 222.2,
+      "bench_points": 48.6,
+      "optimal": 192.2,
+      "left_on_bench": 18.6,
+      "efficiency": 90.3,
+      "mvp": {
+        "name": "Bhayshul Tuten",
+        "pos": "RB",
+        "pts": 29.9
+      },
+      "best_bench": {
+        "name": "Jonah Coleman",
+        "pos": "RB",
+        "pts": 20.4
+      },
+      "opponent": "C33DeezNutzz",
+      "opponent_points": 119.94,
+      "result": "W"
+    },
+    {
+      "roster_id": 4,
+      "manager": "Zygon",
+      "points": 164.4,
+      "maxpf": 205.84,
+      "roster_points": 266.16,
+      "bench_points": 101.76,
+      "optimal": 205.84,
+      "left_on_bench": 41.44,
+      "efficiency": 79.9,
+      "mvp": {
+        "name": "Tee Higgins",
+        "pos": "WR",
+        "pts": 37.5
+      },
+      "best_bench": {
+        "name": "Emmett Johnson",
+        "pos": "RB",
+        "pts": 25.3
+      },
+      "opponent": "Painty69",
+      "opponent_points": 114.98,
+      "result": "W"
+    },
+    {
+      "roster_id": 5,
+      "manager": "Hades9mm",
+      "points": 124.02,
+      "maxpf": 152.64,
+      "roster_points": 181.38,
+      "bench_points": 57.36,
+      "optimal": 152.64,
+      "left_on_bench": 28.62,
+      "efficiency": 81.2,
+      "mvp": {
+        "name": "Mike Gesicki",
+        "pos": "TE",
+        "pts": 17.6
+      },
+      "best_bench": {
+        "name": "Cam Ward",
+        "pos": "QB",
+        "pts": 26.26
+      },
+      "opponent": "Darkspaces",
+      "opponent_points": 67.46,
+      "result": "W"
+    },
+    {
+      "roster_id": 6,
+      "manager": "Johnny4Skins",
+      "points": 126.4,
+      "maxpf": 166.2,
+      "roster_points": 181.9,
+      "bench_points": 55.5,
+      "optimal": 166.2,
+      "left_on_bench": 39.8,
+      "efficiency": 76.1,
+      "mvp": {
+        "name": "Ja'Marr Chase",
+        "pos": "WR",
+        "pts": 31.1
+      },
+      "best_bench": {
+        "name": "Adonai Mitchell",
+        "pos": "WR",
+        "pts": 27.2
+      },
+      "opponent": "Sarge71",
+      "opponent_points": 81.38,
+      "result": "W"
+    },
+    {
+      "roster_id": 7,
+      "manager": "Sarge71",
+      "points": 81.38,
+      "maxpf": 107.4,
+      "roster_points": 107.4,
+      "bench_points": 26.02,
+      "optimal": 107.4,
+      "left_on_bench": 26.02,
+      "efficiency": 75.8,
+      "mvp": {
+        "name": "Dalton Kincaid",
+        "pos": "TE",
+        "pts": 18.6
+      },
+      "best_bench": {
+        "name": "Sam Darnold",
+        "pos": "QB",
+        "pts": 18.52
+      },
+      "opponent": "Johnny4Skins",
+      "opponent_points": 126.4,
+      "result": "L"
+    },
+    {
+      "roster_id": 8,
+      "manager": "C33DeezNutzz",
+      "points": 119.94,
+      "maxpf": 141.54,
+      "roster_points": 163.92,
+      "bench_points": 43.98,
+      "optimal": 141.54,
+      "left_on_bench": 21.6,
+      "efficiency": 84.7,
+      "mvp": {
+        "name": "Josh Allen",
+        "pos": "QB",
+        "pts": 27.56
+      },
+      "best_bench": {
+        "name": "Gunnar Helm",
+        "pos": "TE",
+        "pts": 14.6
+      },
+      "opponent": "StealingGas",
+      "opponent_points": 173.6,
+      "result": "L"
+    },
+    {
+      "roster_id": 9,
+      "manager": "Painty69",
+      "points": 114.98,
+      "maxpf": 208.86,
+      "roster_points": 253.46,
+      "bench_points": 138.48,
+      "optimal": 208.86,
+      "left_on_bench": 93.88,
+      "efficiency": 55.1,
+      "mvp": {
+        "name": "Tyler Allgeier",
+        "pos": "RB",
+        "pts": 36.1
+      },
+      "best_bench": {
+        "name": "Joe Burrow",
+        "pos": "QB",
+        "pts": 42.48
+      },
+      "opponent": "Zygon",
+      "opponent_points": 164.4,
+      "result": "L"
+    },
+    {
+      "roster_id": 10,
+      "manager": "CMac91",
+      "points": 110.54,
+      "maxpf": 121.7,
+      "roster_points": 133.56,
+      "bench_points": 23.02,
+      "optimal": 121.7,
+      "left_on_bench": 11.16,
+      "efficiency": 90.8,
+      "mvp": {
+        "name": "Pittsburgh Steelers",
+        "pos": "DEF",
+        "pts": 21.0
+      },
+      "best_bench": {
+        "name": "Jordan Love",
+        "pos": "QB",
+        "pts": 22.52
+      },
+      "opponent": "YesChef23",
+      "opponent_points": 81.14,
+      "result": "W"
+    },
+    {
+      "roster_id": 11,
+      "manager": "YesChef23",
+      "points": 81.14,
+      "maxpf": 91.14,
+      "roster_points": 97.04,
+      "bench_points": 15.9,
+      "optimal": 91.14,
+      "left_on_bench": 10.0,
+      "efficiency": 89.0,
+      "mvp": {
+        "name": "Matthew Golden",
+        "pos": "WR",
+        "pts": 20.9
+      },
+      "best_bench": {
+        "name": "Michael Mayer",
+        "pos": "TE",
+        "pts": 10.3
+      },
+      "opponent": "CMac91",
+      "opponent_points": 110.54,
+      "result": "L"
+    },
+    {
+      "roster_id": 12,
+      "manager": "fumbduckdumbfuck",
+      "points": 164.3,
+      "maxpf": 182.4,
+      "roster_points": 198.9,
+      "bench_points": 34.6,
+      "optimal": 182.4,
+      "left_on_bench": 18.1,
+      "efficiency": 90.1,
+      "mvp": {
+        "name": "Tony Pollard",
+        "pos": "RB",
+        "pts": 28.7
+      },
+      "best_bench": {
+        "name": "Wan'Dale Robinson",
+        "pos": "WR",
+        "pts": 15.7
+      },
+      "opponent": "Snipe58",
+      "opponent_points": 62.62,
+      "result": "W"
+    }
+  ]
+}
