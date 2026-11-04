@@ -102,21 +102,21 @@
       "roster_id": 5,
       "manager": "Hades9mm",
       "points": 169.62,
-      "maxpf": 234.22,
-      "roster_points": 290.82,
-      "bench_points": 121.2,
-      "optimal": 234.22,
-      "left_on_bench": 64.6,
-      "efficiency": 72.4,
+      "maxpf": 203.72,
+      "roster_points": 251.32,
+      "bench_points": 81.7,
+      "optimal": 203.72,
+      "left_on_bench": 34.1,
+      "efficiency": 83.3,
       "mvp": {
         "name": "Amon-Ra St. Brown",
         "pos": "WR",
         "pts": 35.2
       },
       "best_bench": {
-        "name": "Davante Adams",
-        "pos": "WR",
-        "pts": 39.5
+        "name": "New England Patriots",
+        "pos": "DEF",
+        "pts": 23.0
       },
       "opponent": "C33DeezNutzz",
       "opponent_points": 136.9,

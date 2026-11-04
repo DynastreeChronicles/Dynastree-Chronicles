@@ -1,0 +1,365 @@
+{
+ "wealth": {
+  "weeks": {
+   "8": {
+    "date": "2026-11-04",
+    "slots": {
+     "1": 4864,
+     "2": 4864,
+     "3": 4864,
+     "4": 4864,
+     "5": 3203,
+     "6": 3203,
+     "7": 3203,
+     "8": 3203,
+     "9": 2465,
+     "10": 2465,
+     "11": 2465,
+     "12": 2465
+    },
+    "teams": {
+     "Darkspaces": {
+      "roster": 51387,
+      "picks": 23811,
+      "total": 75198
+     },
+     "Snipe58": {
+      "roster": 39652,
+      "picks": 13544,
+      "total": 53196
+     },
+     "StealingGas": {
+      "roster": 65163,
+      "picks": 11127,
+      "total": 76290
+     },
+     "Zygon": {
+      "roster": 58181,
+      "picks": 13531,
+      "total": 71712
+     },
+     "Hades9mm": {
+      "roster": 43470,
+      "picks": 12060,
+      "total": 55530
+     },
+     "Johnny4Skins": {
+      "roster": 47530,
+      "picks": 14603,
+      "total": 62133
+     },
+     "Sarge71": {
+      "roster": 34593,
+      "picks": 16740,
+      "total": 51333
+     },
+     "C33DeezNutzz": {
+      "roster": 48221,
+      "picks": 14603,
+      "total": 62824
+     },
+     "Painty69": {
+      "roster": 52507,
+      "picks": 13531,
+      "total": 66038
+     },
+     "CMac91": {
+      "roster": 45355,
+      "picks": 14603,
+      "total": 59958
+     },
+     "YesChef23": {
+      "roster": 46245,
+      "picks": 16740,
+      "total": 62985
+     },
+     "fumbduckdumbfuck": {
+      "roster": 43728,
+      "picks": 14603,
+      "total": 58331
+     }
+    }
+   },
+   "7": {
+    "date": "2026-11-03",
+    "slots": {
+     "1": 5033,
+     "2": 5033,
+     "3": 5033,
+     "4": 5033,
+     "5": 3314,
+     "6": 3314,
+     "7": 3314,
+     "8": 3314,
+     "9": 2557,
+     "10": 2557,
+     "11": 2557,
+     "12": 2557
+    },
+    "teams": {
+     "Darkspaces": {
+      "roster": 53099,
+      "picks": 25211,
+      "total": 78310
+     },
+     "Snipe58": {
+      "roster": 41144,
+      "picks": 14148,
+      "total": 55292
+     },
+     "StealingGas": {
+      "roster": 65873,
+      "picks": 11354,
+      "total": 77227
+     },
+     "Zygon": {
+      "roster": 59544,
+      "picks": 13837,
+      "total": 73381
+     },
+     "Hades9mm": {
+      "roster": 44335,
+      "picks": 12417,
+      "total": 56752
+     },
+     "Johnny4Skins": {
+      "roster": 48451,
+      "picks": 14957,
+      "total": 63408
+     },
+     "Sarge71": {
+      "roster": 35917,
+      "picks": 17168,
+      "total": 53085
+     },
+     "C33DeezNutzz": {
+      "roster": 49478,
+      "picks": 14957,
+      "total": 64435
+     },
+     "Painty69": {
+      "roster": 53344,
+      "picks": 13837,
+      "total": 67181
+     },
+     "CMac91": {
+      "roster": 46534,
+      "picks": 14957,
+      "total": 61491
+     },
+     "YesChef23": {
+      "roster": 47162,
+      "picks": 17168,
+      "total": 64330
+     },
+     "fumbduckdumbfuck": {
+      "roster": 44914,
+      "picks": 13837,
+      "total": 58751
+     }
+    }
+   }
+  }
+ },
+ "as_of": "2026-11-04",
+ "first_snapshot": "2026-10-09",
+ "hyp": [
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "2027 1st-round pick",
+      "value": 2862
+     },
+     {
+      "label": "2028 1st-round pick",
+      "value": 2221
+     }
+    ],
+    "total": 5083,
+    "n": 2,
+    "valued": 2
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Nico Collins",
+      "value": 3796
+     },
+     {
+      "label": "Tre Tucker",
+      "value": 1474
+     }
+    ],
+    "total": 5270,
+    "n": 2,
+    "valued": 2
+   }
+  },
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "2027 1st-round pick",
+      "value": 2862
+     },
+     {
+      "label": "2028 1st-round pick",
+      "value": 2221
+     }
+    ],
+    "total": 5083,
+    "n": 2,
+    "valued": 2
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Quinshon Judkins",
+      "value": 2976
+     },
+     {
+      "label": "Matthew Stafford",
+      "value": 2349
+     }
+    ],
+    "total": 5325,
+    "n": 2,
+    "valued": 2
+   }
+  },
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "Ollie Gordon",
+      "value": 1833
+     },
+     {
+      "label": "Emmett Johnson",
+      "value": 1660
+     }
+    ],
+    "total": 3493,
+    "n": 2,
+    "valued": 2
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Sam Darnold",
+      "value": 2460
+     },
+     {
+      "label": "2029 3rd-round pick",
+      "value": 915
+     }
+    ],
+    "total": 3375,
+    "n": 2,
+    "valued": 2
+   }
+  },
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "2028 1st-round pick",
+      "value": 2221
+     },
+     {
+      "label": "Braelon Allen",
+      "value": 2065
+     }
+    ],
+    "total": 4286,
+    "n": 2,
+    "valued": 2
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Tyler Shough",
+      "value": 3730
+     },
+     {
+      "label": "Samaje Perine",
+      "value": 373
+     }
+    ],
+    "total": 4103,
+    "n": 2,
+    "valued": 2
+   }
+  }
+ ],
+ "wire": [
+  {
+   "date": "2026-10-27",
+   "how": "snapshot",
+   "a": {
+    "manager": "Snipe58",
+    "assets": [
+     {
+      "label": "Kendre Miller (RB)",
+      "then": 945,
+      "now": 787
+     },
+     {
+      "label": "2027 2nd (Late)",
+      "then": 1462,
+      "now": 1410,
+      "pick": true
+     }
+    ],
+    "then": 2407,
+    "now": 2197,
+    "faab": 0
+   },
+   "b": {
+    "manager": "StealingGas",
+    "assets": [
+     {
+      "label": "Jonah Coleman (RB)",
+      "then": 1944,
+      "now": 2616
+     }
+    ],
+    "then": 1944,
+    "now": 2616,
+    "faab": 0
+   }
+  },
+  {
+   "date": "2026-10-29",
+   "how": "snapshot",
+   "a": {
+    "manager": "Darkspaces",
+    "assets": [
+     {
+      "label": "2027 1st (Late)",
+      "then": 2527,
+      "now": 2465,
+      "pick": true
+     }
+    ],
+    "then": 2527,
+    "now": 2465,
+    "faab": 0
+   },
+   "b": {
+    "manager": "StealingGas",
+    "assets": [
+     {
+      "label": "D'Andre Swift (RB)",
+      "then": 3219,
+      "now": 3149
+     }
+    ],
+    "then": 3219,
+    "now": 3149,
+    "faab": 0
+   }
+  }
+ ]
+}

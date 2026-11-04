@@ -44,14 +44,14 @@
     "ties": 0,
     "pf": 1101.58,
     "pa": 1002.48,
-    "maxpf": 1332.36,
+    "maxpf": 1301.86,
     "faab_remaining": 330,
     "sleeper_maxpf": 1332.36,
     "rank": 3,
     "prev_rank": 3,
     "move": 0,
     "draft_pick": 10,
-    "maxpf_gap_to_1_01": 339.24
+    "maxpf_gap_to_1_01": 308.74
   },
   {
     "roster_id": 12,
@@ -134,14 +134,14 @@
     "ties": 0,
     "pf": 884.36,
     "pa": 1086.34,
-    "maxpf": 1082.84,
+    "maxpf": 1086.24,
     "faab_remaining": 449,
     "sleeper_maxpf": 1086.24,
     "rank": 8,
     "prev_rank": 7,
     "move": -1,
     "draft_pick": 4,
-    "maxpf_gap_to_1_01": 89.72
+    "maxpf_gap_to_1_01": 93.12
   },
   {
     "roster_id": 1,
