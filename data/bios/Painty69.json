@@ -1,10 +1,24 @@
 {
   "asof": "Issue 9, through Week 8",
   "tagline": "55% of a perfect lineup, and the second-best ceiling in the league.",
-  "file": {
-    "Nemesis": "The bench. 93.88 stayed on it in Week 8, and a perfect lineup would have scored 208.86 and beaten Zygon.",
-    "The desk is watching": "CMac91 in Week 9, and whether he says a word in the chat."
-  },
+  "file": [
+    [
+      "The type",
+      "A star at running back and almost nothing else. Made his last real pick in round 6 and let the CPU draft the remaining seventeen rounds."
+    ],
+    [
+      "Signature move",
+      "The silence. He promised to be positive and kind through the whole draft and has been quiet since Week 2."
+    ],
+    [
+      "Nemesis",
+      "The bench. 93.88 stayed on it in Week 8, and a perfect lineup would have scored 208.86 and beaten Zygon."
+    ],
+    [
+      "The desk is watching",
+      "CMac91 in Week 9, and whether he says a word in the chat."
+    ]
+  ],
   "season": "2026",
   "headline": "2-6, 11th, and a bench that scored 138.48",
   "story_keep": 1,

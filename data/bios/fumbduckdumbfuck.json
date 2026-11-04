@@ -1,10 +1,24 @@
 {
   "asof": "Issue 9, through Week 8",
   "tagline": "164.3, up two spots, and the 1.08.",
-  "file": {
-    "Nemesis": "StealingGas, who is 0.6 MAXPF points from the 1.08 and next on the schedule.",
-    "The desk is watching": "StealingGas in Week 9, the 18.1 left on the bench, and the quarterback room."
-  },
+  "file": [
+    [
+      "The type",
+      "The desk's preseason favorite, and a roster that is better than the record. Seventh in the standings and eighth in points."
+    ],
+    [
+      "Signature move",
+      "Quietly good at running back. Jeanty, Taylor and Bowers form a core that scores every week."
+    ],
+    [
+      "Nemesis",
+      "StealingGas, who is 0.6 MAXPF points from the 1.08 and next on the schedule."
+    ],
+    [
+      "The desk is watching",
+      "StealingGas in Week 9, the 18.1 left on the bench, and the quarterback room."
+    ]
+  ],
   "season": "2026",
   "headline": "5-3, 4th, and a 101.68-point blowout",
   "story_keep": 1,

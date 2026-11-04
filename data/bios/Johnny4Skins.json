@@ -1,10 +1,24 @@
 {
   "asof": "Issue 9, through Week 8",
   "tagline": "Three quarterbacks out, and 126.4 on the board.",
-  "file": {
-    "Nemesis": "The quarterback room. The market feed lists Lamar Jackson Out and Jalen Hurts on IR.",
-    "The desk is watching": "Hades9mm in Week 9, the Jackson injury, and $500 of FAAB."
-  },
+  "file": [
+    [
+      "The type",
+      "The league's most hands-off roster. Johnny4Skins drafted a few good players, then left the room and let the system finish the job."
+    ],
+    [
+      "Signature move",
+      "Not spending. $500 of FAAB intact, and the only moves are free ones. In Week 7 he told the chat all three of his quarterbacks are out."
+    ],
+    [
+      "Nemesis",
+      "The quarterback room. The market feed lists Lamar Jackson Out and Jalen Hurts on IR."
+    ],
+    [
+      "The desk is watching",
+      "Hades9mm in Week 9, the Jackson injury, and $500 of FAAB."
+    ]
+  ],
   "season": "2026",
   "headline": "5-3, 5th, and a losing streak that ended at two",
   "story_keep": 1,

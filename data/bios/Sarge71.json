@@ -1,10 +1,24 @@
 {
   "asof": "Issue 9, through Week 8",
   "tagline": "1-7, the 1.02, and a bench with nothing to give.",
-  "file": {
-    "Nemesis": "The depth chart. His entire 26.02-point bench would have started in Week 8.",
-    "The desk is watching": "YesChef23 in Week 9, the 1.02 at 1037.72, and a depth trade he has not made."
-  },
+  "file": [
+    [
+      "The type",
+      "A top-end roster with nothing underneath. Star power at running back, and a bench that cannot cover a bye week."
+    ],
+    [
+      "Signature move",
+      "The quiet transaction. One move this season, cutting Jaxson Dart, watching StealingGas pay $298 for him, and taking Aaron Rodgers instead."
+    ],
+    [
+      "Nemesis",
+      "The depth chart. His entire 26.02-point bench would have started in Week 8."
+    ],
+    [
+      "The desk is watching",
+      "YesChef23 in Week 9, the 1.02 at 1037.72, and a depth trade he has not made."
+    ]
+  ],
   "season": "2026",
   "headline": "1-7, last place, and a 45.02-point loss",
   "story_keep": 1,
