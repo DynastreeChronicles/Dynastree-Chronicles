@@ -1,38 +1,19 @@
 {
- "tagline": "Dual-QB, dual-autopilot, and a second straight loss.",
- "asof": "Issue 8, through Week 7",
- "file": [
-  [
-   "The type",
-   "The league's most hands-off roster. Johnny4Skins drafted a few good players, then left the room and let the system finish the job."
+  "asof": "Issue 9, through Week 8",
+  "tagline": "Three quarterbacks out, and 126.4 on the board.",
+  "file": {
+    "Nemesis": "The quarterback room. The market feed lists Lamar Jackson Out and Jalen Hurts on IR.",
+    "The desk is watching": "Hades9mm in Week 9, the Jackson injury, and $500 of FAAB."
+  },
+  "season": "2026",
+  "headline": "5-3, 5th, and a losing streak that ended at two",
+  "story_keep": 1,
+  "story": [
+    "Week 8 was a 126.4 to 81.38 win over Sarge71, with Ja'Marr Chase at 31.1 and 39.8 left on a 55.5-point bench, including Adonai Mitchell's 27.2, the best WR benchwarmer of the week. He swapped the Texans defense for Washington, free, and ended the two-game losing streak.",
+    "He is 5-3, still 5th, with 1055.12 points, 6th in the league. His MAXPF of 1233.92 holds the 1.07 and FAAB is a full $500. The market feed has the roster on correction, down 3.2% over 30 days, with 20.9% of its value sidelined. Hades9mm is next."
   ],
-  [
-   "Signature move",
-   "Not spending. $500 of FAAB intact, and the only moves are free ones. In Week 7 he told the chat all three of his quarterbacks are out."
-  ],
-  [
-   "Nemesis",
-   "The quarterback room. All three are out, he told the chat, and the market feed has Jalen Hurts on IR."
-  ],
-  [
-   "The desk is watching",
-   "Whether the autopilot finds a quarterback against Sarge71 in Week 8, and the $500 of FAAB."
+  "takes": [
+    "Told the chat all three quarterbacks are out and scored 126.4.",
+    "The autopilot found a win."
   ]
- ],
- "seasons": {
-  "2026": {
-   "headline": "4-3, 5th, and a second loss in a row",
-   "asof": "Issue 8, through Week 7",
-   "story": [
-    "Johnny4Skins took Ja'Marr Chase and Lamar Jackson in the first two rounds, then went to dinner. The autopick drafted eighteen of his players, including Jalen Hurts, A.J. Brown, Tyler Warren, Kyren Williams, Brian Thomas and DK Metcalf. Not a single human opinion went into any of them.",
-    "It worked for four straight weeks after the Week 1 loss to Zygon, including a 163.56 to 140.36 win over Darkspaces in Week 5. Week 6 was a 127.72 to 106.06 loss to CMac91, and Week 7 was a 117.34 to 90.1 loss to YesChef23 with Kyren Williams at 18.1 and 8.6 left on the bench.",
-    "He is 4-3, down three spots to 5th, with 928.72 points, 5th in the league. His 1067.72 MAXPF holds the 1.06 and his $500 of FAAB is untouched. In the chat he said all three quarterbacks are out, and StealingGas offered him Jaxson Dart. Next is Sarge71."
-   ],
-   "takes": [
-    "The robot has lost two in a row and the quarterback room is on the injury report.",
-    "A good autopick is not a plan when all three quarterbacks are out."
-   ],
-   "drama": []
-  }
- }
 }

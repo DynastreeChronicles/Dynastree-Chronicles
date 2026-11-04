@@ -1,38 +1,19 @@
 {
- "tagline": "The engine without the cast, 1-6, and on crash watch.",
- "asof": "Issue 8, through Week 7",
- "file": [
-  [
-   "The type",
-   "A top-end roster with nothing underneath. Star power at running back, and a bench that cannot cover a bye week."
+  "asof": "Issue 9, through Week 8",
+  "tagline": "1-7, the 1.02, and a bench with nothing to give.",
+  "file": {
+    "Nemesis": "The depth chart. His entire 26.02-point bench would have started in Week 8.",
+    "The desk is watching": "YesChef23 in Week 9, the 1.02 at 1037.72, and a depth trade he has not made."
+  },
+  "season": "2026",
+  "headline": "1-7, last place, and a 45.02-point loss",
+  "story_keep": 1,
+  "story": [
+    "Week 8 was a 126.4 to 81.38 loss to Johnny4Skins, with Dalton Kincaid leading at 18.6. Everything on his 26.02-point bench would have started, which is what a thin supporting cast looks like. He stayed 12th at 1-7 with 805.02 points, last in the league.",
+    "His 1037.72 MAXPF holds the 1.02, 44.6 above Snipe58. The market feed has him on correction, down 4.5% over 30 days, with 17.3% of his roster's value sidelined, Travis Etienne, Terry McLaurin, Romeo Doubs and Michael Pittman among them. FAAB is an untouched $500, and the move that would help is still a trade."
   ],
-  [
-   "Signature move",
-   "The quiet transaction. One move this season, cutting Jaxson Dart, watching StealingGas pay $298 for him, and taking Aaron Rodgers instead."
-  ],
-  [
-   "Nemesis",
-   "The injury report and the schedule. The market feed lists five players on IR or Out, 13.9% of his market value, and his 1074.94 points against are the most in the league."
-  ],
-  [
-   "The desk is watching",
-   "Whether the roster adds a real depth piece, Johnny4Skins in Week 8, and the 1.02."
+  "takes": [
+    "Every bench point would have started and it still was not enough.",
+    "A full wallet and a 1.02 that moves only on a trade."
   ]
- ],
- "seasons": {
-  "2026": {
-   "headline": "1-6, last place, and the lowest score of the week",
-   "asof": "Issue 8, through Week 7",
-   "story": [
-    "Sarge71 started 0-3, beat Painty69 by 1.34 in Week 4, then lost to Snipe58 in Week 5 and StealingGas in Week 6. Week 7 was a 144.34 to 65.88 loss to Darkspaces, the lowest score in the league and a margin of 78.46, with Bijan Robinson leading at 17.2 and 14.98 left on the bench.",
-    "The roster is Bijan Robinson and a supporting cast that scores on its own schedule. Tetairoa McMillan went for 45.2 in Week 4 and Robinson has two MVP weeks. He cut Jaxson Dart, watched StealingGas bid $298 on him, and replaced him with Aaron Rodgers. The market feed has him on crash watch, down 7.9% over 30 days.",
-    "At 1-6 he is 12th. His 930.32 MAXPF holds the 1.02, 35.42 points above Snipe58 for the 1.01. FAAB is untouched at $500, and the more useful move is still a trade, which Sarge71 has not made."
-   ],
-   "takes": [
-    "Bijan is the engine and the engine is running alone.",
-    "The market feed and the scoreboard agree."
-   ],
-   "drama": []
-  }
- }
 }

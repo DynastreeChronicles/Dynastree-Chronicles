@@ -1,38 +1,19 @@
 {
- "tagline": "The IR Predictor. 6-1, and the highest MAXPF in the league.",
- "asof": "Issue 8, through Week 7",
- "file": [
-  [
-   "The type",
-   "The algorithm manager. Builds the roster around production, then lets the numbers run."
+  "asof": "Issue 9, through Week 8",
+  "tagline": "7-1, the highest ceiling, and 1417.26.",
+  "file": {
+    "Nemesis": "The bench. 41.44 stayed on it in Week 8, with Emmett Johnson's 25.3 among it.",
+    "The desk is watching": "Snipe58 in Week 9, and whether the 1.12 and the highest ceiling hold."
+  },
+  "season": "2026",
+  "headline": "7-1, first place, and the top MAXPF, 1417.26",
+  "story_keep": 1,
+  "story": [
+    "Week 8 was a 164.4 to 114.98 win over Painty69, with Tee Higgins at 37.5 as the WR of the week. 41.44 stayed on a 101.76-point bench, including Emmett Johnson at 25.3 and Harold Fannin Jr. at 23.4, the best RB and TE benchwarmers of the week. The Patriots defense replaced the Jets for free.",
+    "He is 7-1 and 1st, with 1222.4 points, also 1st in the league. His MAXPF of 1417.26 is the highest and holds the 1.12. FAAB is $493. Snipe58, the lowest ceiling in the league, is next, and the desk projects 153 to 102."
   ],
-  [
-   "Signature move",
-   "Listing handcuffs on the block as a dare. Emmett Johnson and Blake Corum are posted with the line make me regret it when Walker tears his ACL."
-  ],
-  [
-   "Nemesis",
-   "The bench. 30.1 stayed on the bench in Week 7, and Hades9mm held the top MAXPF until this week."
-  ],
-  [
-   "The desk is watching",
-   "Painty69 in Week 8, and whether the 1.12 and the highest ceiling hold."
+  "takes": [
+    "The ceiling grows and the bench keeps the receipts.",
+    "Handcuffs on the block, handcuffs on the bench."
   ]
- ],
- "seasons": {
-  "2026": {
-   "headline": "6-1, first place, and the top MAXPF, 1211.42",
-   "asof": "Issue 8, through Week 7",
-   "story": [
-    "Zygon is the league leader at 6-1 and the only team that barely touches the waiver wire. His FAAB spend is $7: $2 on Ollie Gordon and $5 on Jacoby Brissett. The team is built on Jaxon Smith-Njigba, Kenneth Walker and Patrick Mahomes and has the league's highest points total at 1058.",
-    "Week 7 was a 148.38 to 114.4 win over CMac91 with Jaxon Smith-Njigba at 31.3 as the WR of the week and Trey McBride the TE of the week. 30.1 stayed on the bench out of 78.78. The Jets defense replaced Jacksonville for free. The only loss was Week 5 to C33DeezNutzz, after he asked the chat for food poisoning on Josh Allen.",
-    "He took the MAXPF lead, 1211.42 to Hades9mm's 1179.72, and with it the 1.12. FAAB is $493. The desk's view changed by one prediction: the formula has the ceiling now."
-   ],
-   "takes": [
-    "Took the top MAXPF and still left 30.1 on the bench.",
-    "The formula does not bid, does not stop, and now has the ceiling."
-   ],
-   "drama": []
-  }
- }
 }

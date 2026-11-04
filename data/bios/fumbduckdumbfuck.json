@@ -1,38 +1,19 @@
 {
- "tagline": "The Issue 1 No. 1, back at 4-3 and 6th.",
- "asof": "Issue 8, through Week 7",
- "file": [
-  [
-   "The type",
-   "The desk's preseason favorite, and a roster that is better than the record. Seventh in the standings and eighth in points."
+  "asof": "Issue 9, through Week 8",
+  "tagline": "164.3, up two spots, and the 1.08.",
+  "file": {
+    "Nemesis": "StealingGas, who is 0.6 MAXPF points from the 1.08 and next on the schedule.",
+    "The desk is watching": "StealingGas in Week 9, the 18.1 left on the bench, and the quarterback room."
+  },
+  "season": "2026",
+  "headline": "5-3, 4th, and a 101.68-point blowout",
+  "story_keep": 1,
+  "story": [
+    "Week 8 was a 164.3 to 62.62 win over Snipe58, the biggest margin of the week at 101.68. Tony Pollard led at 28.7, Brock Bowers was the TE of the week at 28.2, and 18.1 stayed on the bench. He rose two spots to 4th at 5-3, with 1055.56 points, 5th in the league.",
+    "His MAXPF of 1283.68 holds the 1.08, 0.6 below StealingGas, and FAAB is a full $500. The market feed still has the roster on correction, down 2.6% over 30 days, with DeVonta Smith and Kyle Monangai on the Out list. StealingGas is next, and the 1.08 and 1.09 are the stakes."
   ],
-  [
-   "Signature move",
-   "Quietly good at running back. Jeanty, Taylor and Bowers form a core that scores every week."
-  ],
-  [
-   "Nemesis",
-   "YesChef23, who ended the Issue 1 No. 1 label in Week 1, and Zygon, who beat him by 32.08 in Week 6."
-  ],
-  [
-   "The desk is watching",
-   "Snipe58 in Week 8, and the 24 left on the bench."
+  "takes": [
+    "A correction flag and a 164.3 in the same week.",
+    "The blowout of the week and the 1.08."
   ]
- ],
- "seasons": {
-  "2026": {
-   "headline": "4-3, 6th, and a 46.38-point bounce-back",
-   "asof": "Issue 8, through Week 7",
-   "story": [
-    "fumbduckdumbfuck was the desk's number one in Issue 1, and the roster still supports it: Brock Bowers at 1.12, Ashton Jeanty at 2.01, Jonathan Taylor at 3.01, with Rashee Rice, DeVonta Smith and Dak Prescott behind them.",
-    "Week 6 was a 122.8 to 90.72 loss to Zygon with 43.4 left on the bench. Week 7 fixed it: 147.68 to 101.3 over Painty69, with Tony Pollard at 36.5 as the RB of the week and 24 still left on the bench. The earlier losses were close: 113.10 to 127.06 against YesChef23 in Week 1 and 127.74 to 139.80 against Hades9mm in Week 3.",
-    "He rose one spot to 6th at 4-3, with 891.26 points, 6th in the league. His 1101.28 MAXPF holds the 1.09, FAAB is a full $500, and the market feed has the roster on correction, down 3.2% over 30 days. The quarterback room is still the open question, and Kyler Murray arrived free in Week 4."
-   ],
-   "takes": [
-    "The roster was always better than the record, and the record is catching up.",
-    "The bench problem got smaller and the score got bigger."
-   ],
-   "drama": []
-  }
- }
 }

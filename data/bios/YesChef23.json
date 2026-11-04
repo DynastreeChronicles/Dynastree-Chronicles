@@ -1,38 +1,19 @@
 {
- "tagline": "The restaurant arc. Two wins in a row and still the 1.04.",
- "asof": "Issue 8, through Week 7",
- "file": [
-  [
-   "The type",
-   "A chef who wins while complaining. Chatty in the draft room, aggressive on waivers, and 3-3 with a bull market."
+  "asof": "Issue 9, through Week 8",
+  "tagline": "4-4, 81.14, and a two-game winning streak that ended.",
+  "file": {
+    "Nemesis": "CMac91's 91% lineup, and an 81.14 that never got going.",
+    "The desk is watching": "Sarge71 in Week 9, and the 1.04 at 1082.84 MAXPF."
+  },
+  "season": "2026",
+  "headline": "4-4, 8th, and a streak that ended at two",
+  "story_keep": 1,
+  "story": [
+    "Week 8 was a 110.54 to 81.14 loss to CMac91, the closest game of the week. Matthew Golden led at 20.9 and 10.0 stayed on a 15.9-point bench. He added Samaje Perine for free, dropping Zachariah Branch, and fell one spot to 8th at 4-4.",
+    "His 884.36 points are 10th in the league. FAAB is $449 and his MAXPF of 1082.84 holds the 1.04. The market feed lists Jeremiyah Love Out, with 18.2% of his roster's value sidelined. Sarge71 is next."
   ],
-  [
-   "Signature move",
-   "Cheap waiver insurance. $1 on Deshaun Watson when Caleb Williams went down, $1 on J.J. McCarthy the week after, and in Week 6 $35 on Michael Mayer."
-  ],
-  [
-   "Nemesis",
-   "StealingGas, who beat him by 114.4 in Week 5, and Painty69, who he has needled since the draft room."
-  ],
-  [
-   "The desk is watching",
-   "CMac91 in Week 8, the Tyler Shough offers in the trade machine, and the 1.04."
+  "takes": [
+    "The streak ended at two.",
+    "A quiet kitchen with Jeremiyah Love on the injury list."
   ]
- ],
- "seasons": {
-  "2026": {
-   "headline": "4-3, 7th, and two wins in a row",
-   "asof": "Issue 8, through Week 7",
-   "story": [
-    "YesChef23 opened the draft fighting an Uber Eats driver who stole a customer's order, took shots at the turtle ass drafters, and threatened to take defenses the rest of the way before settling for two. He beat fumbduckdumbfuck in Week 1, lost to Zygon by 92.86 in Week 2, beat Painty69 in Week 3 by 4.68, and lost to StealingGas in Week 5.",
-    "Week 6 was a 141.56 to 141.0 win over Darkspaces with Tyler Shough at 26.96 and the Chiefs defense the DEF of the week. He also added Michael Mayer for $35, dropping Roman Wilson, and Tyler Higbee for free, dropping Joe Mixon. Week 7 was a 117.34 to 90.1 win over Johnny4Skins with Luther Burden III at 23.7 and 17.6 left on the bench.",
-    "He is 4-3, up one spot to 7th. FAAB is $449 and his 991.7 MAXPF holds the 1.04. His 803.22 points are the third-lowest in the league."
-   ],
-   "takes": [
-    "Two wins in a row and the points total is still third-lowest.",
-    "The restaurant is open, and the kitchen is quiet."
-   ],
-   "drama": []
-  }
- }
 }

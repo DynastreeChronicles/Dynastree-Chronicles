@@ -1,38 +1,19 @@
 {
- "tagline": "Elite top end, a bench that outscored the starters, and 63.08 left behind.",
- "asof": "Issue 8, through Week 7",
- "file": [
-  [
-   "The type",
-   "A star at running back and almost nothing else. Made his last real pick in round 6 and let the CPU draft the remaining seventeen rounds."
+  "asof": "Issue 9, through Week 8",
+  "tagline": "55% of a perfect lineup, and the second-best ceiling in the league.",
+  "file": {
+    "Nemesis": "The bench. 93.88 stayed on it in Week 8, and a perfect lineup would have scored 208.86 and beaten Zygon.",
+    "The desk is watching": "CMac91 in Week 9, and whether he says a word in the chat."
+  },
+  "season": "2026",
+  "headline": "2-6, 11th, and a bench that scored 138.48",
+  "story_keep": 1,
+  "story": [
+    "Week 8 was a 164.4 to 114.98 loss to Zygon. Kirk Cousins was the QB of the week at 28.18 and Tyler Allgeier the RB of the week at 36.1, but Joe Burrow's 42.48 was the best QB benchwarmer of the week. The bench scored 138.48, with 93.88 good enough to start, and the lineup was 55% of perfect, the worst of the week.",
+    "He is 2-6, 11th, with 978.04 points, 8th in the league. His MAXPF of 1339.8 is the second-highest and moves him ahead of Hades9mm for the 1.11. He did not say a word in the Week 8 chat."
   ],
-  [
-   "Signature move",
-   "The silence. He promised to be positive and kind through the whole draft and has been quiet since Week 2."
-  ],
-  [
-   "Nemesis",
-   "The bench. 63.08 points stayed on it in Week 7, more than the 46.38 he lost by."
-  ],
-  [
-   "The desk is watching",
-   "Zygon in Week 8, and the 128.9 points on his bench."
+  "takes": [
+    "The bench scored more than the starters again.",
+    "The second-best ceiling in the league and the worst lineup of the week."
   ]
- ],
- "seasons": {
-  "2026": {
-   "headline": "2-5, 11th, and a bench that scored 128.9",
-   "asof": "Issue 8, through Week 7",
-   "story": [
-    "Painty69 took Jahmyr Gibbs at 1.01, then McCaffrey and Barkley back to back, and then stopped. The last real pick was in round 6, and the CPU made the remaining seventeen, tying him with Johnny4Skins at eighteen autopicks.",
-    "Weeks 5 and 6 were his first two wins, over Hades9mm 153.1 to 126.24 and C33DeezNutzz 111.52 to 95.46. Week 7 broke the streak: 147.68 to 101.3 against fumbduckdumbfuck, with Christian McCaffrey leading at 22.0. His bench scored 128.9, more than his starters, and 63.08 of it would have made the best lineup. Sleeper put him at 62% of perfect, the worst of the week, with Joe Burrow, Josh Jacobs and Mason Taylor the best benchwarmers at QB, RB and TE.",
-    "He is 2-5, down one spot to 11th, with 863.06 points. His 1130.94 MAXPF is third in the league and the 1.10 is his. He did not say a word in the Week 7 chat either, which fits."
-   ],
-   "takes": [
-    "The bench scored more than the starters.",
-    "Third-best ceiling in the league and the worst lineup of the week."
-   ],
-   "drama": []
-  }
- }
 }
