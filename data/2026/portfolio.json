@@ -7,40 +7,40 @@
   "numTeams": 12,
   "ppr": 1
  },
- "generated_at": "2026-11-05T17:35:06+00:00",
+ "generated_at": "2026-11-06T16:53:30+00:00",
  "thresholds": {
   "crash_move_pct": -5.0,
   "crash_sidelined_pct": 25.0,
   "correction_move_pct": -2.5,
   "bull_move_pct": 5.0
  },
- "league_avg": 62892,
+ "league_avg": 62646,
  "teams": {
   "Darkspaces": {
-   "total": 74993,
-   "players": 50939,
-   "picks": 24054,
+   "total": 74086,
+   "players": 50229,
+   "picks": 23857,
    "pick_count": 13,
    "by_pos": {
-    "WR": 24673,
-    "QB": 13521,
-    "TE": 5661,
-    "RB": 7084,
-    "PICK": 24054
+    "WR": 24240,
+    "QB": 13615,
+    "TE": 5460,
+    "RB": 6914,
+    "PICK": 23857
    },
-   "move30": 1126,
-   "move30_pct": 1.5,
-   "sidelined": 5238,
-   "sidelined_pct": 7.0,
+   "move30": -80,
+   "move30_pct": -0.1,
+   "sidelined": 5020,
+   "sidelined_pct": 6.8,
    "status": "stable",
    "top": [
     {
      "name": "Drake Maye",
      "pos": "QB",
      "team": "NE",
-     "value": 7544,
+     "value": 7600,
      "rank": 9,
-     "trend30": 1832,
+     "trend30": 1930,
      "sidelined": false,
      "status": ""
     },
@@ -48,19 +48,9 @@
      "name": "Colston Loveland",
      "pos": "TE",
      "team": "CHI",
-     "value": 4128,
-     "rank": 33,
-     "trend30": 392,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "Fernando Mendoza",
-     "pos": "QB",
-     "team": "LV",
-     "value": 3926,
-     "rank": 40,
-     "trend30": 189,
+     "value": 4019,
+     "rank": 36,
+     "trend30": 125,
      "sidelined": false,
      "status": ""
     },
@@ -68,9 +58,19 @@
      "name": "Nico Collins",
      "pos": "WR",
      "team": "HOU",
-     "value": 3742,
-     "rank": 45,
-     "trend30": -998,
+     "value": 3919,
+     "rank": 41,
+     "trend30": -786,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Fernando Mendoza",
+     "pos": "QB",
+     "team": "LV",
+     "value": 3869,
+     "rank": 42,
+     "trend30": 188,
      "sidelined": false,
      "status": ""
     },
@@ -78,9 +78,9 @@
      "name": "Parker Washington",
      "pos": "WR",
      "team": "JAX",
-     "value": 3721,
-     "rank": 48,
-     "trend30": 171,
+     "value": 3755,
+     "rank": 46,
+     "trend30": 181,
      "sidelined": false,
      "status": ""
     },
@@ -88,9 +88,9 @@
      "name": "De'Von Achane",
      "pos": "RB",
      "team": "MIA",
-     "value": 3705,
-     "rank": 49,
-     "trend30": -382,
+     "value": 3579,
+     "rank": 50,
+     "trend30": -455,
      "sidelined": true,
      "status": "IR"
     }
@@ -100,9 +100,9 @@
      "name": "Drake Maye",
      "pos": "QB",
      "team": "NE",
-     "value": 7544,
+     "value": 7600,
      "rank": 9,
-     "trend30": 1832,
+     "trend30": 1930,
      "sidelined": false,
      "status": ""
     },
@@ -110,19 +110,9 @@
      "name": "Colston Loveland",
      "pos": "TE",
      "team": "CHI",
-     "value": 4128,
-     "rank": 33,
-     "trend30": 392,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "Fernando Mendoza",
-     "pos": "QB",
-     "team": "LV",
-     "value": 3926,
-     "rank": 40,
-     "trend30": 189,
+     "value": 4019,
+     "rank": 36,
+     "trend30": 125,
      "sidelined": false,
      "status": ""
     },
@@ -130,9 +120,19 @@
      "name": "Nico Collins",
      "pos": "WR",
      "team": "HOU",
-     "value": 3742,
-     "rank": 45,
-     "trend30": -998,
+     "value": 3919,
+     "rank": 41,
+     "trend30": -786,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Fernando Mendoza",
+     "pos": "QB",
+     "team": "LV",
+     "value": 3869,
+     "rank": 42,
+     "trend30": 188,
      "sidelined": false,
      "status": ""
     },
@@ -140,9 +140,9 @@
      "name": "Parker Washington",
      "pos": "WR",
      "team": "JAX",
-     "value": 3721,
-     "rank": 48,
-     "trend30": 171,
+     "value": 3755,
+     "rank": 46,
+     "trend30": 181,
      "sidelined": false,
      "status": ""
     },
@@ -150,9 +150,9 @@
      "name": "De'Von Achane",
      "pos": "RB",
      "team": "MIA",
-     "value": 3705,
-     "rank": 49,
-     "trend30": -382,
+     "value": 3579,
+     "rank": 50,
+     "trend30": -455,
      "sidelined": true,
      "status": "IR"
     },
@@ -160,19 +160,19 @@
      "name": "Emeka Egbuka",
      "pos": "WR",
      "team": "TB",
-     "value": 3195,
-     "rank": 60,
-     "trend30": 84,
+     "value": 3079,
+     "rank": 64,
+     "trend30": -151,
      "sidelined": false,
-     "status": "Questionable"
+     "status": ""
     },
     {
      "name": "Omar Cooper",
      "pos": "WR",
      "team": "NYJ",
-     "value": 2368,
-     "rank": 86,
-     "trend30": 734,
+     "value": 2316,
+     "rank": 89,
+     "trend30": 656,
      "sidelined": false,
      "status": ""
     },
@@ -180,9 +180,9 @@
      "name": "Rome Odunze",
      "pos": "WR",
      "team": "CHI",
-     "value": 2296,
-     "rank": 88,
-     "trend30": -127,
+     "value": 2272,
+     "rank": 92,
+     "trend30": -62,
      "sidelined": false,
      "status": ""
     },
@@ -190,9 +190,9 @@
      "name": "Ty Simpson",
      "pos": "QB",
      "team": "LAR",
-     "value": 2051,
-     "rank": 99,
-     "trend30": -249,
+     "value": 2146,
+     "rank": 95,
+     "trend30": -14,
      "sidelined": false,
      "status": ""
     },
@@ -200,9 +200,9 @@
      "name": "Zach Charbonnet",
      "pos": "RB",
      "team": "SEA",
-     "value": 1699,
-     "rank": 118,
-     "trend30": -30,
+     "value": 1604,
+     "rank": 124,
+     "trend30": -235,
      "sidelined": false,
      "status": ""
     },
@@ -210,9 +210,9 @@
      "name": "Terrance Ferguson",
      "pos": "TE",
      "team": "LAR",
-     "value": 1533,
-     "rank": 132,
-     "trend30": -13,
+     "value": 1441,
+     "rank": 140,
+     "trend30": -147,
      "sidelined": true,
      "status": "IR"
     },
@@ -220,19 +220,9 @@
      "name": "Caleb Douglas",
      "pos": "WR",
      "team": "MIA",
-     "value": 1430,
+     "value": 1432,
      "rank": 141,
-     "trend30": 158,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "Tre Tucker",
-     "pos": "WR",
-     "team": "LV",
-     "value": 1377,
-     "rank": 147,
-     "trend30": 265,
+     "trend30": 78,
      "sidelined": false,
      "status": ""
     },
@@ -240,19 +230,19 @@
      "name": "Chris Bell",
      "pos": "WR",
      "team": "MIA",
-     "value": 1330,
-     "rank": 154,
-     "trend30": -104,
+     "value": 1319,
+     "rank": 157,
+     "trend30": -153,
      "sidelined": false,
      "status": ""
     },
     {
-     "name": "Ted Hurst",
+     "name": "Tre Tucker",
      "pos": "WR",
-     "team": "TB",
-     "value": 1275,
-     "rank": 163,
-     "trend30": -93,
+     "team": "LV",
+     "value": 1301,
+     "rank": 160,
+     "trend30": 137,
      "sidelined": false,
      "status": ""
     },
@@ -260,9 +250,19 @@
      "name": "Quentin Johnston",
      "pos": "WR",
      "team": "LAC",
-     "value": 1138,
-     "rank": 187,
-     "trend30": -210,
+     "value": 1168,
+     "rank": 180,
+     "trend30": -119,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Ted Hurst",
+     "pos": "WR",
+     "team": "TB",
+     "value": 1165,
+     "rank": 182,
+     "trend30": -176,
      "sidelined": false,
      "status": ""
     },
@@ -270,19 +270,9 @@
      "name": "Tank Dell",
      "pos": "WR",
      "team": "HOU",
-     "value": 1122,
-     "rank": 188,
-     "trend30": 71,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "Cyrus Allen",
-     "pos": "WR",
-     "team": "KC",
-     "value": 927,
-     "rank": 213,
-     "trend30": -98,
+     "value": 1096,
+     "rank": 191,
+     "trend30": -45,
      "sidelined": false,
      "status": ""
     },
@@ -290,9 +280,9 @@
      "name": "Nicholas Singleton",
      "pos": "RB",
      "team": "TEN",
-     "value": 861,
-     "rank": 217,
-     "trend30": -189,
+     "value": 876,
+     "rank": 215,
+     "trend30": -203,
      "sidelined": false,
      "status": ""
     },
@@ -300,9 +290,19 @@
      "name": "Devin Singletary",
      "pos": "RB",
      "team": "NYG",
-     "value": 819,
+     "value": 855,
+     "rank": 216,
+     "trend30": 775,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Cyrus Allen",
+     "pos": "WR",
+     "team": "KC",
+     "value": 768,
      "rank": 223,
-     "trend30": 689,
+     "trend30": -284,
      "sidelined": false,
      "status": ""
     },
@@ -310,9 +310,9 @@
      "name": "Tyreek Hill",
      "pos": "WR",
      "team": null,
-     "value": 386,
-     "rank": 264,
-     "trend30": -948,
+     "value": 379,
+     "rank": 263,
+     "trend30": -946,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -320,9 +320,9 @@
      "name": "Kevin Coleman",
      "pos": "WR",
      "team": "MIA",
-     "value": 366,
-     "rank": 268,
-     "trend30": 168,
+     "value": 271,
+     "rank": 288,
+     "trend30": 28,
      "sidelined": false,
      "status": ""
     }
@@ -333,104 +333,104 @@
      "season": 2027,
      "round": 1,
      "via": null,
-     "value": 4917,
-     "trend30": -158
+     "value": 4815,
+     "trend30": -204
     },
     {
      "label": "2027 1st (Late)",
      "season": 2027,
      "round": 1,
      "via": "StealingGas",
-     "value": 2503,
-     "trend30": -34
+     "value": 2465,
+     "trend30": -75
     },
     {
      "label": "2028 1st",
      "season": 2028,
      "round": 1,
      "via": null,
-     "value": 2216,
-     "trend30": -15
+     "value": 2212,
+     "trend30": -22
     },
     {
      "label": "2027 2nd (Early)",
      "season": 2027,
      "round": 2,
      "via": null,
-     "value": 2017,
-     "trend30": 13
+     "value": 1998,
+     "trend30": -36
     },
     {
      "label": "2027 2nd (Early)",
      "season": 2027,
      "round": 2,
      "via": "Snipe58",
-     "value": 2017,
-     "trend30": 13
+     "value": 1998,
+     "trend30": -36
     },
     {
      "label": "2029 1st",
      "season": 2029,
      "round": 1,
      "via": null,
-     "value": 1910,
+     "value": 1906,
+     "trend30": 19
+    },
+    {
+     "label": "2028 2nd",
+     "season": 2028,
+     "round": 2,
+     "via": null,
+     "value": 1362,
+     "trend30": -16
+    },
+    {
+     "label": "2028 2nd",
+     "season": 2028,
+     "round": 2,
+     "via": "Snipe58",
+     "value": 1362,
+     "trend30": -16
+    },
+    {
+     "label": "2029 2nd",
+     "season": 2029,
+     "round": 2,
+     "via": null,
+     "value": 1277,
      "trend30": 24
     },
     {
-     "label": "2028 2nd",
-     "season": 2028,
-     "round": 2,
-     "via": null,
-     "value": 1366,
-     "trend30": -18
-    },
-    {
-     "label": "2028 2nd",
-     "season": 2028,
-     "round": 2,
-     "via": "Snipe58",
-     "value": 1366,
-     "trend30": -18
-    },
-    {
-     "label": "2029 2nd",
-     "season": 2029,
-     "round": 2,
-     "via": null,
-     "value": 1277,
-     "trend30": 23
-    },
-    {
      "label": "2029 2nd",
      "season": 2029,
      "round": 2,
      "via": "Snipe58",
      "value": 1277,
-     "trend30": 23
+     "trend30": 24
     },
     {
      "label": "2027 3rd (Early)",
      "season": 2027,
      "round": 3,
      "via": null,
-     "value": 1260,
-     "trend30": -11
+     "value": 1246,
+     "trend30": -32
     },
     {
      "label": "2028 3rd",
      "season": 2028,
      "round": 3,
      "via": null,
-     "value": 1005,
-     "trend30": -5
+     "value": 1007,
+     "trend30": -21
     },
     {
      "label": "2029 3rd",
      "season": 2029,
      "round": 3,
      "via": null,
-     "value": 923,
-     "trend30": -23
+     "value": 932,
+     "trend30": -11
     }
    ],
    "sidelined_players": [
@@ -438,9 +438,9 @@
      "name": "De'Von Achane",
      "pos": "RB",
      "team": "MIA",
-     "value": 3705,
-     "rank": 49,
-     "trend30": -382,
+     "value": 3579,
+     "rank": 50,
+     "trend30": -455,
      "sidelined": true,
      "status": "IR"
     },
@@ -448,43 +448,43 @@
      "name": "Terrance Ferguson",
      "pos": "TE",
      "team": "LAR",
-     "value": 1533,
-     "rank": 132,
-     "trend30": -13,
+     "value": 1441,
+     "rank": 140,
+     "trend30": -147,
      "sidelined": true,
      "status": "IR"
     }
    ],
    "off_index": 0,
    "rank": 2,
-   "since": "2026-10-31",
-   "since_change": -2233
+   "since": "2026-11-01",
+   "since_change": -2501
   },
   "Snipe58": {
-   "total": 53270,
-   "players": 39597,
-   "picks": 13673,
+   "total": 53032,
+   "players": 39483,
+   "picks": 13549,
    "pick_count": 7,
    "by_pos": {
-    "WR": 14749,
-    "RB": 11438,
-    "QB": 10929,
-    "TE": 2481,
-    "PICK": 13673
+    "WR": 14551,
+    "RB": 11210,
+    "QB": 11301,
+    "TE": 2421,
+    "PICK": 13549
    },
-   "move30": -1166,
-   "move30_pct": -2.1,
-   "sidelined": 892,
-   "sidelined_pct": 1.7,
+   "move30": -739,
+   "move30_pct": -1.4,
+   "sidelined": 965,
+   "sidelined_pct": 1.8,
    "status": "stable",
    "top": [
     {
      "name": "Brock Purdy",
      "pos": "QB",
      "team": "SF",
-     "value": 5880,
-     "rank": 17,
-     "trend30": 202,
+     "value": 6025,
+     "rank": 16,
+     "trend30": 149,
      "sidelined": false,
      "status": ""
     },
@@ -492,9 +492,9 @@
      "name": "Justin Jefferson",
      "pos": "WR",
      "team": "MIN",
-     "value": 5369,
-     "rank": 22,
-     "trend30": -790,
+     "value": 5248,
+     "rank": 21,
+     "trend30": -543,
      "sidelined": false,
      "status": ""
     },
@@ -502,9 +502,9 @@
      "name": "Jameson Williams",
      "pos": "WR",
      "team": "DET",
-     "value": 3042,
+     "value": 3065,
      "rank": 65,
-     "trend30": 796,
+     "trend30": 791,
      "sidelined": false,
      "status": ""
     },
@@ -512,9 +512,9 @@
      "name": "Quinshon Judkins",
      "pos": "RB",
      "team": "CLE",
-     "value": 2832,
-     "rank": 70,
-     "trend30": -379,
+     "value": 2766,
+     "rank": 71,
+     "trend30": -481,
      "sidelined": false,
      "status": ""
     },
@@ -522,19 +522,19 @@
      "name": "Omarion Hampton",
      "pos": "RB",
      "team": "LAC",
-     "value": 2824,
-     "rank": 71,
-     "trend30": -917,
+     "value": 2762,
+     "rank": 72,
+     "trend30": -800,
      "sidelined": false,
      "status": ""
     },
     {
-     "name": "KC Concepcion",
-     "pos": "WR",
-     "team": "CLE",
-     "value": 2468,
-     "rank": 82,
-     "trend30": 167,
+     "name": "Matthew Stafford",
+     "pos": "QB",
+     "team": "LAR",
+     "value": 2341,
+     "rank": 85,
+     "trend30": -226,
      "sidelined": false,
      "status": ""
     }
@@ -544,9 +544,9 @@
      "name": "Brock Purdy",
      "pos": "QB",
      "team": "SF",
-     "value": 5880,
-     "rank": 17,
-     "trend30": 202,
+     "value": 6025,
+     "rank": 16,
+     "trend30": 149,
      "sidelined": false,
      "status": ""
     },
@@ -554,9 +554,9 @@
      "name": "Justin Jefferson",
      "pos": "WR",
      "team": "MIN",
-     "value": 5369,
-     "rank": 22,
-     "trend30": -790,
+     "value": 5248,
+     "rank": 21,
+     "trend30": -543,
      "sidelined": false,
      "status": ""
     },
@@ -564,9 +564,9 @@
      "name": "Jameson Williams",
      "pos": "WR",
      "team": "DET",
-     "value": 3042,
+     "value": 3065,
      "rank": 65,
-     "trend30": 796,
+     "trend30": 791,
      "sidelined": false,
      "status": ""
     },
@@ -574,9 +574,9 @@
      "name": "Quinshon Judkins",
      "pos": "RB",
      "team": "CLE",
-     "value": 2832,
-     "rank": 70,
-     "trend30": -379,
+     "value": 2766,
+     "rank": 71,
+     "trend30": -481,
      "sidelined": false,
      "status": ""
     },
@@ -584,19 +584,9 @@
      "name": "Omarion Hampton",
      "pos": "RB",
      "team": "LAC",
-     "value": 2824,
-     "rank": 71,
-     "trend30": -917,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "KC Concepcion",
-     "pos": "WR",
-     "team": "CLE",
-     "value": 2468,
-     "rank": 82,
-     "trend30": 167,
+     "value": 2762,
+     "rank": 72,
+     "trend30": -800,
      "sidelined": false,
      "status": ""
     },
@@ -604,9 +594,19 @@
      "name": "Matthew Stafford",
      "pos": "QB",
      "team": "LAR",
-     "value": 2236,
-     "rank": 91,
-     "trend30": -256,
+     "value": 2341,
+     "rank": 85,
+     "trend30": -226,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "KC Concepcion",
+     "pos": "WR",
+     "team": "CLE",
+     "value": 2329,
+     "rank": 87,
+     "trend30": 7,
      "sidelined": false,
      "status": ""
     },
@@ -614,9 +614,9 @@
      "name": "Malik Willis",
      "pos": "QB",
      "team": "MIA",
-     "value": 2034,
-     "rank": 103,
-     "trend30": 207,
+     "value": 2104,
+     "rank": 97,
+     "trend30": 308,
      "sidelined": false,
      "status": ""
     },
@@ -624,19 +624,9 @@
      "name": "Germie Bernard",
      "pos": "WR",
      "team": "PIT",
-     "value": 1822,
-     "rank": 114,
-     "trend30": 661,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "Kaelon Black",
-     "pos": "RB",
-     "team": "SF",
-     "value": 1568,
-     "rank": 129,
-     "trend30": 262,
+     "value": 1809,
+     "rank": 112,
+     "trend30": 599,
      "sidelined": false,
      "status": ""
     },
@@ -644,9 +634,19 @@
      "name": "Mike Washington",
      "pos": "RB",
      "team": "LV",
-     "value": 1552,
-     "rank": 131,
-     "trend30": 90,
+     "value": 1581,
+     "rank": 126,
+     "trend30": 128,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Kaelon Black",
+     "pos": "RB",
+     "team": "SF",
+     "value": 1482,
+     "rank": 133,
+     "trend30": 162,
      "sidelined": false,
      "status": ""
     },
@@ -654,9 +654,19 @@
      "name": "Jake Ferguson",
      "pos": "TE",
      "team": "DAL",
-     "value": 1275,
-     "rank": 164,
-     "trend30": -249,
+     "value": 1255,
+     "rank": 165,
+     "trend30": -239,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "Deebo Samuel",
+     "pos": "WR",
+     "team": "SF",
+     "value": 1248,
+     "rank": 167,
+     "trend30": -251,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -664,29 +674,19 @@
      "name": "Seth McGowan",
      "pos": "RB",
      "team": "IND",
-     "value": 1272,
-     "rank": 165,
-     "trend30": 680,
+     "value": 1210,
+     "rank": 172,
+     "trend30": 524,
      "sidelined": false,
      "status": ""
-    },
-    {
-     "name": "Deebo Samuel",
-     "pos": "WR",
-     "team": "SF",
-     "value": 1261,
-     "rank": 167,
-     "trend30": -334,
-     "sidelined": false,
-     "status": "Questionable"
     },
     {
      "name": "Juwan Johnson",
      "pos": "TE",
      "team": "NO",
-     "value": 1206,
-     "rank": 174,
-     "trend30": -620,
+     "value": 1166,
+     "rank": 181,
+     "trend30": -609,
      "sidelined": false,
      "status": ""
     },
@@ -694,9 +694,9 @@
      "name": "Kendre Miller",
      "pos": "RB",
      "team": "NO",
-     "value": 835,
-     "rank": 220,
-     "trend30": -11,
+     "value": 896,
+     "rank": 214,
+     "trend30": 52,
      "sidelined": false,
      "status": ""
     },
@@ -704,9 +704,9 @@
      "name": "Drew Allar",
      "pos": "QB",
      "team": "PIT",
-     "value": 779,
-     "rank": 225,
-     "trend30": -150,
+     "value": 831,
+     "rank": 218,
+     "trend30": 81,
      "sidelined": true,
      "status": "Out"
     },
@@ -714,9 +714,9 @@
      "name": "Elic Ayomanor",
      "pos": "WR",
      "team": "TEN",
-     "value": 457,
-     "rank": 253,
-     "trend30": -4,
+     "value": 451,
+     "rank": 247,
+     "trend30": 23,
      "sidelined": false,
      "status": ""
     },
@@ -724,19 +724,19 @@
      "name": "Demond Claiborne",
      "pos": "RB",
      "team": "MIN",
-     "value": 442,
-     "rank": 255,
-     "trend30": -250,
+     "value": 379,
+     "rank": 262,
+     "trend30": -188,
      "sidelined": false,
-     "status": ""
+     "status": "Questionable"
     },
     {
      "name": "Jalen Nailor",
      "pos": "WR",
      "team": "LV",
-     "value": 232,
-     "rank": 300,
-     "trend30": -73,
+     "value": 277,
+     "rank": 286,
+     "trend30": -4,
      "sidelined": false,
      "status": ""
     },
@@ -744,9 +744,9 @@
      "name": "Eli Heidenreich",
      "pos": "RB",
      "team": "PIT",
-     "value": 113,
-     "rank": 343,
-     "trend30": -55,
+     "value": 134,
+     "rank": 325,
+     "trend30": 15,
      "sidelined": true,
      "status": "Out"
     },
@@ -754,9 +754,9 @@
      "name": "CJ Daniels",
      "pos": "WR",
      "team": "LAR",
-     "value": 98,
-     "rank": 352,
-     "trend30": 32,
+     "value": 124,
+     "rank": 330,
+     "trend30": 57,
      "sidelined": false,
      "status": ""
     }
@@ -767,56 +767,56 @@
      "season": 2027,
      "round": 1,
      "via": null,
-     "value": 4917,
-     "trend30": -158
+     "value": 4815,
+     "trend30": -204
     },
     {
      "label": "2028 1st",
      "season": 2028,
      "round": 1,
      "via": null,
-     "value": 2216,
-     "trend30": -15
+     "value": 2212,
+     "trend30": -22
     },
     {
      "label": "2029 1st",
      "season": 2029,
      "round": 1,
      "via": null,
-     "value": 1910,
-     "trend30": 24
+     "value": 1906,
+     "trend30": 19
     },
     {
      "label": "2027 2nd (Late)",
      "season": 2027,
      "round": 2,
      "via": "StealingGas",
-     "value": 1442,
-     "trend30": 13
+     "value": 1431,
+     "trend30": -23
     },
     {
      "label": "2027 3rd (Early)",
      "season": 2027,
      "round": 3,
      "via": null,
-     "value": 1260,
-     "trend30": -11
+     "value": 1246,
+     "trend30": -32
     },
     {
      "label": "2028 3rd",
      "season": 2028,
      "round": 3,
      "via": null,
-     "value": 1005,
-     "trend30": -5
+     "value": 1007,
+     "trend30": -21
     },
     {
      "label": "2029 3rd",
      "season": 2029,
      "round": 3,
      "via": null,
-     "value": 923,
-     "trend30": -23
+     "value": 932,
+     "trend30": -11
     }
    ],
    "sidelined_players": [
@@ -824,9 +824,9 @@
      "name": "Drew Allar",
      "pos": "QB",
      "team": "PIT",
-     "value": 779,
-     "rank": 225,
-     "trend30": -150,
+     "value": 831,
+     "rank": 218,
+     "trend30": 81,
      "sidelined": true,
      "status": "Out"
     },
@@ -834,43 +834,43 @@
      "name": "Eli Heidenreich",
      "pos": "RB",
      "team": "PIT",
-     "value": 113,
-     "rank": 343,
-     "trend30": -55,
+     "value": 134,
+     "rank": 325,
+     "trend30": 15,
      "sidelined": true,
      "status": "Out"
     }
    ],
    "off_index": 0,
    "rank": 11,
-   "since": "2026-10-31",
-   "since_change": -1118
+   "since": "2026-11-01",
+   "since_change": -1954
   },
   "StealingGas": {
-   "total": 75778,
-   "players": 64578,
-   "picks": 11200,
+   "total": 75442,
+   "players": 64281,
+   "picks": 11161,
    "pick_count": 7,
    "by_pos": {
-    "QB": 13822,
-    "RB": 12879,
-    "WR": 31339,
-    "TE": 6538,
-    "PICK": 11200
+    "QB": 13674,
+    "RB": 12880,
+    "WR": 31266,
+    "TE": 6461,
+    "PICK": 11161
    },
-   "move30": 3831,
-   "move30_pct": 5.3,
-   "sidelined": 10101,
-   "sidelined_pct": 13.3,
-   "status": "bull",
+   "move30": 3494,
+   "move30_pct": 4.9,
+   "sidelined": 14116,
+   "sidelined_pct": 18.7,
+   "status": "stable",
    "top": [
     {
      "name": "Puka Nacua",
      "pos": "WR",
      "team": "LAR",
-     "value": 7887,
+     "value": 7841,
      "rank": 6,
-     "trend30": 292,
+     "trend30": 102,
      "sidelined": false,
      "status": ""
     },
@@ -878,19 +878,19 @@
      "name": "Malik Nabers",
      "pos": "WR",
      "team": "NYG",
-     "value": 6800,
+     "value": 6751,
      "rank": 13,
-     "trend30": 1431,
+     "trend30": 1204,
      "sidelined": false,
-     "status": ""
+     "status": "Questionable"
     },
     {
      "name": "Trevor Lawrence",
      "pos": "QB",
      "team": "JAX",
-     "value": 5989,
-     "rank": 16,
-     "trend30": 523,
+     "value": 5880,
+     "rank": 17,
+     "trend30": 434,
      "sidelined": false,
      "status": ""
     },
@@ -898,9 +898,9 @@
      "name": "Drake London",
      "pos": "WR",
      "team": "ATL",
-     "value": 5000,
-     "rank": 24,
-     "trend30": -713,
+     "value": 4972,
+     "rank": 25,
+     "trend30": -548,
      "sidelined": false,
      "status": ""
     },
@@ -908,9 +908,9 @@
      "name": "Jaxson Dart",
      "pos": "QB",
      "team": "NYG",
-     "value": 3909,
-     "rank": 41,
-     "trend30": -463,
+     "value": 4070,
+     "rank": 34,
+     "trend30": -163,
      "sidelined": true,
      "status": "IR"
     },
@@ -918,11 +918,11 @@
      "name": "Garrett Wilson",
      "pos": "WR",
      "team": "NYJ",
-     "value": 3770,
-     "rank": 44,
-     "trend30": -669,
-     "sidelined": false,
-     "status": "Questionable"
+     "value": 3761,
+     "rank": 45,
+     "trend30": -732,
+     "sidelined": true,
+     "status": "Out"
     }
    ],
    "assets": [
@@ -930,9 +930,9 @@
      "name": "Puka Nacua",
      "pos": "WR",
      "team": "LAR",
-     "value": 7887,
+     "value": 7841,
      "rank": 6,
-     "trend30": 292,
+     "trend30": 102,
      "sidelined": false,
      "status": ""
     },
@@ -940,19 +940,19 @@
      "name": "Malik Nabers",
      "pos": "WR",
      "team": "NYG",
-     "value": 6800,
+     "value": 6751,
      "rank": 13,
-     "trend30": 1431,
+     "trend30": 1204,
      "sidelined": false,
-     "status": ""
+     "status": "Questionable"
     },
     {
      "name": "Trevor Lawrence",
      "pos": "QB",
      "team": "JAX",
-     "value": 5989,
-     "rank": 16,
-     "trend30": 523,
+     "value": 5880,
+     "rank": 17,
+     "trend30": 434,
      "sidelined": false,
      "status": ""
     },
@@ -960,9 +960,9 @@
      "name": "Drake London",
      "pos": "WR",
      "team": "ATL",
-     "value": 5000,
-     "rank": 24,
-     "trend30": -713,
+     "value": 4972,
+     "rank": 25,
+     "trend30": -548,
      "sidelined": false,
      "status": ""
     },
@@ -970,9 +970,9 @@
      "name": "Jaxson Dart",
      "pos": "QB",
      "team": "NYG",
-     "value": 3909,
-     "rank": 41,
-     "trend30": -463,
+     "value": 4070,
+     "rank": 34,
+     "trend30": -163,
      "sidelined": true,
      "status": "IR"
     },
@@ -980,29 +980,29 @@
      "name": "Garrett Wilson",
      "pos": "WR",
      "team": "NYJ",
-     "value": 3770,
-     "rank": 44,
-     "trend30": -669,
-     "sidelined": false,
-     "status": "Questionable"
+     "value": 3761,
+     "rank": 45,
+     "trend30": -732,
+     "sidelined": true,
+     "status": "Out"
     },
     {
      "name": "Bhayshul Tuten",
      "pos": "RB",
      "team": "JAX",
-     "value": 3728,
-     "rank": 47,
-     "trend30": 626,
+     "value": 3555,
+     "rank": 51,
+     "trend30": 561,
      "sidelined": false,
-     "status": "Questionable"
+     "status": ""
     },
     {
      "name": "D'Andre Swift",
      "pos": "RB",
      "team": "CHI",
-     "value": 3244,
+     "value": 3354,
      "rank": 57,
-     "trend30": 527,
+     "trend30": 622,
      "sidelined": false,
      "status": ""
     },
@@ -1010,9 +1010,9 @@
      "name": "Jordyn Tyson",
      "pos": "WR",
      "team": "NO",
-     "value": 3113,
-     "rank": 63,
-     "trend30": -50,
+     "value": 3139,
+     "rank": 62,
+     "trend30": 84,
      "sidelined": true,
      "status": "IR"
     },
@@ -1020,9 +1020,9 @@
      "name": "Jonah Coleman",
      "pos": "RB",
      "team": "DEN",
-     "value": 2525,
-     "rank": 79,
-     "trend30": 795,
+     "value": 2644,
+     "rank": 76,
+     "trend30": 871,
      "sidelined": false,
      "status": ""
     },
@@ -1030,9 +1030,9 @@
      "name": "Michael Penix",
      "pos": "QB",
      "team": "ATL",
-     "value": 2346,
-     "rank": 87,
-     "trend30": 339,
+     "value": 2204,
+     "rank": 94,
+     "trend30": 58,
      "sidelined": false,
      "status": ""
     },
@@ -1040,9 +1040,9 @@
      "name": "Kyle Pitts",
      "pos": "TE",
      "team": "ATL",
-     "value": 2116,
-     "rank": 97,
-     "trend30": 250,
+     "value": 2009,
+     "rank": 102,
+     "trend30": 49,
      "sidelined": false,
      "status": ""
     },
@@ -1050,19 +1050,9 @@
      "name": "Braelon Allen",
      "pos": "RB",
      "team": "NYJ",
-     "value": 2039,
-     "rank": 101,
-     "trend30": 683,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "Antonio Williams",
-     "pos": "WR",
-     "team": "WAS",
-     "value": 1690,
-     "rank": 120,
-     "trend30": 87,
+     "value": 1997,
+     "rank": 105,
+     "trend30": 596,
      "sidelined": false,
      "status": ""
     },
@@ -1070,19 +1060,29 @@
      "name": "De'Zhaun Stribling",
      "pos": "WR",
      "team": "SF",
-     "value": 1684,
-     "rank": 122,
-     "trend30": -69,
+     "value": 1768,
+     "rank": 115,
+     "trend30": 89,
      "sidelined": true,
      "status": "IR"
+    },
+    {
+     "name": "Antonio Williams",
+     "pos": "WR",
+     "team": "WAS",
+     "value": 1656,
+     "rank": 122,
+     "trend30": -44,
+     "sidelined": false,
+     "status": ""
     },
     {
      "name": "Geno Smith",
      "pos": "QB",
      "team": "NYJ",
-     "value": 1578,
-     "rank": 127,
-     "trend30": 29,
+     "value": 1520,
+     "rank": 132,
+     "trend30": -6,
      "sidelined": false,
      "status": ""
     },
@@ -1090,19 +1090,9 @@
      "name": "Eli Stowers",
      "pos": "TE",
      "team": "PHI",
-     "value": 1499,
-     "rank": 135,
-     "trend30": -4,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "Eli Raridon",
-     "pos": "TE",
-     "team": "NE",
-     "value": 1414,
-     "rank": 144,
-     "trend30": 201,
+     "value": 1471,
+     "rank": 138,
+     "trend30": -90,
      "sidelined": false,
      "status": ""
     },
@@ -1110,19 +1100,29 @@
      "name": "Jayden Higgins",
      "pos": "WR",
      "team": "HOU",
-     "value": 1395,
-     "rank": 145,
-     "trend30": -92,
+     "value": 1378,
+     "rank": 146,
+     "trend30": -121,
      "sidelined": true,
      "status": "IR"
+    },
+    {
+     "name": "Eli Raridon",
+     "pos": "TE",
+     "team": "NE",
+     "value": 1349,
+     "rank": 150,
+     "trend30": 309,
+     "sidelined": false,
+     "status": ""
     },
     {
      "name": "Rico Dowdle",
      "pos": "RB",
      "team": "PIT",
-     "value": 1343,
-     "rank": 153,
-     "trend30": 88,
+     "value": 1330,
+     "rank": 156,
+     "trend30": 100,
      "sidelined": false,
      "status": ""
     },
@@ -1130,9 +1130,9 @@
      "name": "Hunter Henry",
      "pos": "TE",
      "team": "NE",
-     "value": 1079,
-     "rank": 195,
-     "trend30": 103,
+     "value": 1202,
+     "rank": 173,
+     "trend30": 253,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -1141,8 +1141,8 @@
      "pos": "TE",
      "team": "NO",
      "value": 430,
-     "rank": 260,
-     "trend30": -35,
+     "rank": 253,
+     "trend30": -32,
      "sidelined": false,
      "status": ""
     }
@@ -1153,32 +1153,32 @@
      "season": 2027,
      "round": 1,
      "via": "Hades9mm",
-     "value": 2503,
-     "trend30": -34
+     "value": 2465,
+     "trend30": -75
     },
     {
      "label": "2028 1st",
      "season": 2028,
      "round": 1,
      "via": null,
-     "value": 2216,
-     "trend30": -15
+     "value": 2212,
+     "trend30": -22
     },
     {
      "label": "2029 1st",
      "season": 2029,
      "round": 1,
      "via": null,
-     "value": 1910,
-     "trend30": 24
+     "value": 1906,
+     "trend30": 19
     },
     {
      "label": "2028 2nd",
      "season": 2028,
      "round": 2,
      "via": null,
-     "value": 1366,
-     "trend30": -18
+     "value": 1362,
+     "trend30": -16
     },
     {
      "label": "2029 2nd",
@@ -1186,23 +1186,23 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 23
+     "trend30": 24
     },
     {
      "label": "2028 3rd",
      "season": 2028,
      "round": 3,
      "via": null,
-     "value": 1005,
-     "trend30": -5
+     "value": 1007,
+     "trend30": -21
     },
     {
      "label": "2029 3rd",
      "season": 2029,
      "round": 3,
      "via": null,
-     "value": 923,
-     "trend30": -23
+     "value": 932,
+     "trend30": -11
     }
    ],
    "sidelined_players": [
@@ -1210,19 +1210,29 @@
      "name": "Jaxson Dart",
      "pos": "QB",
      "team": "NYG",
-     "value": 3909,
-     "rank": 41,
-     "trend30": -463,
+     "value": 4070,
+     "rank": 34,
+     "trend30": -163,
      "sidelined": true,
      "status": "IR"
+    },
+    {
+     "name": "Garrett Wilson",
+     "pos": "WR",
+     "team": "NYJ",
+     "value": 3761,
+     "rank": 45,
+     "trend30": -732,
+     "sidelined": true,
+     "status": "Out"
     },
     {
      "name": "Jordyn Tyson",
      "pos": "WR",
      "team": "NO",
-     "value": 3113,
-     "rank": 63,
-     "trend30": -50,
+     "value": 3139,
+     "rank": 62,
+     "trend30": 84,
      "sidelined": true,
      "status": "IR"
     },
@@ -1230,9 +1240,9 @@
      "name": "De'Zhaun Stribling",
      "pos": "WR",
      "team": "SF",
-     "value": 1684,
-     "rank": 122,
-     "trend30": -69,
+     "value": 1768,
+     "rank": 115,
+     "trend30": 89,
      "sidelined": true,
      "status": "IR"
     },
@@ -1240,43 +1250,43 @@
      "name": "Jayden Higgins",
      "pos": "WR",
      "team": "HOU",
-     "value": 1395,
-     "rank": 145,
-     "trend30": -92,
+     "value": 1378,
+     "rank": 146,
+     "trend30": -121,
      "sidelined": true,
      "status": "IR"
     }
    ],
    "off_index": 0,
    "rank": 1,
-   "since": "2026-10-31",
-   "since_change": -355
+   "since": "2026-11-01",
+   "since_change": -842
   },
   "Zygon": {
-   "total": 71883,
-   "players": 58225,
-   "picks": 13658,
+   "total": 71688,
+   "players": 58078,
+   "picks": 13610,
    "pick_count": 9,
    "by_pos": {
-    "RB": 17090,
-    "WR": 20601,
-    "TE": 9957,
-    "QB": 10577,
-    "PICK": 13658
+    "RB": 16957,
+    "WR": 20596,
+    "TE": 9905,
+    "QB": 10620,
+    "PICK": 13610
    },
-   "move30": -2282,
-   "move30_pct": -3.1,
-   "sidelined": 652,
-   "sidelined_pct": 0.9,
+   "move30": -3137,
+   "move30_pct": -4.2,
+   "sidelined": 594,
+   "sidelined_pct": 0.8,
    "status": "correction",
    "top": [
     {
      "name": "Jaxon Smith-Njigba",
      "pos": "WR",
      "team": "SEA",
-     "value": 10239,
+     "value": 10386,
      "rank": 2,
-     "trend30": 61,
+     "trend30": 353,
      "sidelined": false,
      "status": ""
     },
@@ -1284,9 +1294,9 @@
      "name": "Trey McBride",
      "pos": "TE",
      "team": "ARI",
-     "value": 6992,
+     "value": 6908,
      "rank": 12,
-     "trend30": 117,
+     "trend30": 50,
      "sidelined": false,
      "status": ""
     },
@@ -1294,9 +1304,9 @@
      "name": "Kenneth Walker",
      "pos": "RB",
      "team": "KC",
-     "value": 6547,
-     "rank": 14,
-     "trend30": 281,
+     "value": 6438,
+     "rank": 15,
+     "trend30": -387,
      "sidelined": false,
      "status": ""
     },
@@ -1304,9 +1314,9 @@
      "name": "Patrick Mahomes",
      "pos": "QB",
      "team": "KC",
-     "value": 5391,
-     "rank": 21,
-     "trend30": -551,
+     "value": 5418,
+     "rank": 20,
+     "trend30": -744,
      "sidelined": false,
      "status": ""
     },
@@ -1314,9 +1324,9 @@
      "name": "Tee Higgins",
      "pos": "WR",
      "team": "CIN",
-     "value": 4007,
-     "rank": 37,
-     "trend30": 590,
+     "value": 3983,
+     "rank": 40,
+     "trend30": 531,
      "sidelined": false,
      "status": ""
     },
@@ -1324,9 +1334,9 @@
      "name": "Chase Brown",
      "pos": "RB",
      "team": "CIN",
-     "value": 3019,
-     "rank": 66,
-     "trend30": -1188,
+     "value": 3145,
+     "rank": 61,
+     "trend30": -764,
      "sidelined": false,
      "status": ""
     }
@@ -1336,9 +1346,9 @@
      "name": "Jaxon Smith-Njigba",
      "pos": "WR",
      "team": "SEA",
-     "value": 10239,
+     "value": 10386,
      "rank": 2,
-     "trend30": 61,
+     "trend30": 353,
      "sidelined": false,
      "status": ""
     },
@@ -1346,9 +1356,9 @@
      "name": "Trey McBride",
      "pos": "TE",
      "team": "ARI",
-     "value": 6992,
+     "value": 6908,
      "rank": 12,
-     "trend30": 117,
+     "trend30": 50,
      "sidelined": false,
      "status": ""
     },
@@ -1356,9 +1366,9 @@
      "name": "Kenneth Walker",
      "pos": "RB",
      "team": "KC",
-     "value": 6547,
-     "rank": 14,
-     "trend30": 281,
+     "value": 6438,
+     "rank": 15,
+     "trend30": -387,
      "sidelined": false,
      "status": ""
     },
@@ -1366,9 +1376,9 @@
      "name": "Patrick Mahomes",
      "pos": "QB",
      "team": "KC",
-     "value": 5391,
-     "rank": 21,
-     "trend30": -551,
+     "value": 5418,
+     "rank": 20,
+     "trend30": -744,
      "sidelined": false,
      "status": ""
     },
@@ -1376,9 +1386,9 @@
      "name": "Tee Higgins",
      "pos": "WR",
      "team": "CIN",
-     "value": 4007,
-     "rank": 37,
-     "trend30": 590,
+     "value": 3983,
+     "rank": 40,
+     "trend30": 531,
      "sidelined": false,
      "status": ""
     },
@@ -1386,9 +1396,9 @@
      "name": "Chase Brown",
      "pos": "RB",
      "team": "CIN",
-     "value": 3019,
-     "rank": 66,
-     "trend30": -1188,
+     "value": 3145,
+     "rank": 61,
+     "trend30": -764,
      "sidelined": false,
      "status": ""
     },
@@ -1396,19 +1406,19 @@
      "name": "Harold Fannin",
      "pos": "TE",
      "team": "CLE",
-     "value": 2965,
+     "value": 2997,
      "rank": 67,
-     "trend30": -212,
+     "trend30": -218,
      "sidelined": false,
-     "status": ""
+     "status": "Questionable"
     },
     {
      "name": "Baker Mayfield",
      "pos": "QB",
      "team": "TB",
-     "value": 2231,
-     "rank": 92,
-     "trend30": -254,
+     "value": 2273,
+     "rank": 91,
+     "trend30": -293,
      "sidelined": false,
      "status": ""
     },
@@ -1416,9 +1426,9 @@
      "name": "Jalen Coker",
      "pos": "WR",
      "team": "CAR",
-     "value": 2156,
-     "rank": 94,
-     "trend30": -19,
+     "value": 2236,
+     "rank": 93,
+     "trend30": 55,
      "sidelined": false,
      "status": ""
     },
@@ -1426,9 +1436,9 @@
      "name": "Blake Corum",
      "pos": "RB",
      "team": "LAR",
-     "value": 1864,
-     "rank": 110,
-     "trend30": 249,
+     "value": 1919,
+     "rank": 108,
+     "trend30": 244,
      "sidelined": false,
      "status": ""
     },
@@ -1436,9 +1446,9 @@
      "name": "Ollie Gordon",
      "pos": "RB",
      "team": "MIA",
-     "value": 1813,
-     "rank": 115,
-     "trend30": 196,
+     "value": 1819,
+     "rank": 111,
+     "trend30": 249,
      "sidelined": false,
      "status": ""
     },
@@ -1446,29 +1456,9 @@
      "name": "Emmett Johnson",
      "pos": "RB",
      "team": "KC",
-     "value": 1663,
+     "value": 1646,
      "rank": 123,
-     "trend30": 154,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "Jordan Addison",
-     "pos": "WR",
-     "team": "MIN",
-     "value": 1563,
-     "rank": 130,
-     "trend30": -337,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "Jacoby Brissett",
-     "pos": "QB",
-     "team": "ARI",
-     "value": 1523,
-     "rank": 133,
-     "trend30": -78,
+     "trend30": -46,
      "sidelined": false,
      "status": ""
     },
@@ -1476,9 +1466,19 @@
      "name": "Daniel Jones",
      "pos": "QB",
      "team": "IND",
-     "value": 1432,
-     "rank": 140,
-     "trend30": -582,
+     "value": 1544,
+     "rank": 130,
+     "trend30": -529,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Jordan Addison",
+     "pos": "WR",
+     "team": "MIN",
+     "value": 1474,
+     "rank": 136,
+     "trend30": -426,
      "sidelined": false,
      "status": ""
     },
@@ -1486,9 +1486,19 @@
      "name": "Ja'Kobi Lane",
      "pos": "WR",
      "team": "BAL",
-     "value": 1382,
-     "rank": 146,
-     "trend30": -4,
+     "value": 1394,
+     "rank": 143,
+     "trend30": -1,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Jacoby Brissett",
+     "pos": "QB",
+     "team": "ARI",
+     "value": 1385,
+     "rank": 145,
+     "trend30": -226,
      "sidelined": false,
      "status": ""
     },
@@ -1496,9 +1506,9 @@
      "name": "Chris Rodriguez",
      "pos": "RB",
      "team": "JAX",
-     "value": 1148,
-     "rank": 186,
-     "trend30": 126,
+     "value": 1150,
+     "rank": 184,
+     "trend30": 128,
      "sidelined": false,
      "status": ""
     },
@@ -1506,9 +1516,9 @@
      "name": "Emanuel Wilson",
      "pos": "RB",
      "team": "SEA",
-     "value": 756,
-     "rank": 226,
-     "trend30": -370,
+     "value": 617,
+     "rank": 232,
+     "trend30": -605,
      "sidelined": false,
      "status": ""
     },
@@ -1516,9 +1526,9 @@
      "name": "Chris Brazzell",
      "pos": "WR",
      "team": "CAR",
-     "value": 652,
-     "rank": 231,
-     "trend30": 107,
+     "value": 594,
+     "rank": 233,
+     "trend30": 131,
      "sidelined": true,
      "status": "IR"
     },
@@ -1526,9 +1536,9 @@
      "name": "Rashod Bateman",
      "pos": "WR",
      "team": "BAL",
-     "value": 473,
-     "rank": 250,
-     "trend30": -314,
+     "value": 336,
+     "rank": 272,
+     "trend30": -344,
      "sidelined": false,
      "status": ""
     },
@@ -1536,9 +1546,9 @@
      "name": "Kaytron Allen",
      "pos": "RB",
      "team": "MIA",
-     "value": 280,
-     "rank": 289,
-     "trend30": -186,
+     "value": 223,
+     "rank": 301,
+     "trend30": -195,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -1546,9 +1556,9 @@
      "name": "Barion Brown",
      "pos": "WR",
      "team": "NO",
-     "value": 129,
-     "rank": 326,
-     "trend30": -20,
+     "value": 193,
+     "rank": 308,
+     "trend30": 41,
      "sidelined": false,
      "status": ""
     }
@@ -1559,40 +1569,40 @@
      "season": 2027,
      "round": 1,
      "via": null,
-     "value": 2503,
-     "trend30": -34
+     "value": 2465,
+     "trend30": -75
     },
     {
      "label": "2028 1st",
      "season": 2028,
      "round": 1,
      "via": null,
-     "value": 2216,
-     "trend30": -15
+     "value": 2212,
+     "trend30": -22
     },
     {
      "label": "2029 1st",
      "season": 2029,
      "round": 1,
      "via": null,
-     "value": 1910,
-     "trend30": 24
+     "value": 1906,
+     "trend30": 19
     },
     {
      "label": "2027 2nd (Late)",
      "season": 2027,
      "round": 2,
      "via": null,
-     "value": 1442,
-     "trend30": 13
+     "value": 1431,
+     "trend30": -23
     },
     {
      "label": "2028 2nd",
      "season": 2028,
      "round": 2,
      "via": null,
-     "value": 1366,
-     "trend30": -18
+     "value": 1362,
+     "trend30": -16
     },
     {
      "label": "2029 2nd",
@@ -1600,31 +1610,31 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 23
+     "trend30": 24
     },
     {
      "label": "2027 3rd (Late)",
      "season": 2027,
      "round": 3,
      "via": null,
-     "value": 1016,
-     "trend30": -13
+     "value": 1018,
+     "trend30": -16
     },
     {
      "label": "2028 3rd",
      "season": 2028,
      "round": 3,
      "via": null,
-     "value": 1005,
-     "trend30": -5
+     "value": 1007,
+     "trend30": -21
     },
     {
      "label": "2029 3rd",
      "season": 2029,
      "round": 3,
      "via": null,
-     "value": 923,
-     "trend30": -23
+     "value": 932,
+     "trend30": -11
     }
    ],
    "sidelined_players": [
@@ -1632,43 +1642,43 @@
      "name": "Chris Brazzell",
      "pos": "WR",
      "team": "CAR",
-     "value": 652,
-     "rank": 231,
-     "trend30": 107,
+     "value": 594,
+     "rank": 233,
+     "trend30": 131,
      "sidelined": true,
      "status": "IR"
     }
    ],
    "off_index": 0,
    "rank": 3,
-   "since": "2026-10-31",
-   "since_change": -965
+   "since": "2026-11-01",
+   "since_change": -1221
   },
   "Hades9mm": {
-   "total": 55405,
-   "players": 43234,
-   "picks": 12171,
+   "total": 55839,
+   "players": 43676,
+   "picks": 12163,
    "pick_count": 9,
    "by_pos": {
-    "QB": 12172,
-    "WR": 15519,
-    "RB": 10415,
-    "TE": 5128,
-    "PICK": 12171
+    "QB": 12283,
+    "WR": 15513,
+    "RB": 10612,
+    "TE": 5268,
+    "PICK": 12163
    },
-   "move30": -2428,
-   "move30_pct": -4.2,
-   "sidelined": 1722,
-   "sidelined_pct": 3.1,
-   "status": "correction",
+   "move30": -2976,
+   "move30_pct": -5.1,
+   "sidelined": 1692,
+   "sidelined_pct": 3.0,
+   "status": "crash",
    "top": [
     {
      "name": "Amon-Ra St. Brown",
      "pos": "WR",
      "team": "DET",
-     "value": 7033,
+     "value": 7249,
      "rank": 11,
-     "trend30": -537,
+     "trend30": -633,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -1676,9 +1686,9 @@
      "name": "Jayden Daniels",
      "pos": "QB",
      "team": "WAS",
-     "value": 5640,
+     "value": 5641,
      "rank": 18,
-     "trend30": 639,
+     "trend30": 573,
      "sidelined": false,
      "status": ""
     },
@@ -1686,9 +1696,9 @@
      "name": "Jared Goff",
      "pos": "QB",
      "team": "DET",
-     "value": 4001,
-     "rank": 38,
-     "trend30": 409,
+     "value": 4032,
+     "rank": 35,
+     "trend30": 455,
      "sidelined": false,
      "status": ""
     },
@@ -1696,9 +1706,9 @@
      "name": "Javonte Williams",
      "pos": "RB",
      "team": "DAL",
-     "value": 3370,
-     "rank": 55,
-     "trend30": -258,
+     "value": 3639,
+     "rank": 49,
+     "trend30": -259,
      "sidelined": false,
      "status": ""
     },
@@ -1706,9 +1716,9 @@
      "name": "Derrick Henry",
      "pos": "RB",
      "team": "BAL",
-     "value": 2842,
-     "rank": 69,
-     "trend30": -719,
+     "value": 2789,
+     "rank": 70,
+     "trend30": -1117,
      "sidelined": false,
      "status": ""
     },
@@ -1716,9 +1726,9 @@
      "name": "George Kittle",
      "pos": "TE",
      "team": "SF",
-     "value": 2576,
-     "rank": 77,
-     "trend30": -91,
+     "value": 2654,
+     "rank": 75,
+     "trend30": 52,
      "sidelined": false,
      "status": ""
     }
@@ -1728,9 +1738,9 @@
      "name": "Amon-Ra St. Brown",
      "pos": "WR",
      "team": "DET",
-     "value": 7033,
+     "value": 7249,
      "rank": 11,
-     "trend30": -537,
+     "trend30": -633,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -1738,9 +1748,9 @@
      "name": "Jayden Daniels",
      "pos": "QB",
      "team": "WAS",
-     "value": 5640,
+     "value": 5641,
      "rank": 18,
-     "trend30": 639,
+     "trend30": 573,
      "sidelined": false,
      "status": ""
     },
@@ -1748,9 +1758,9 @@
      "name": "Jared Goff",
      "pos": "QB",
      "team": "DET",
-     "value": 4001,
-     "rank": 38,
-     "trend30": 409,
+     "value": 4032,
+     "rank": 35,
+     "trend30": 455,
      "sidelined": false,
      "status": ""
     },
@@ -1758,9 +1768,9 @@
      "name": "Javonte Williams",
      "pos": "RB",
      "team": "DAL",
-     "value": 3370,
-     "rank": 55,
-     "trend30": -258,
+     "value": 3639,
+     "rank": 49,
+     "trend30": -259,
      "sidelined": false,
      "status": ""
     },
@@ -1768,9 +1778,9 @@
      "name": "Derrick Henry",
      "pos": "RB",
      "team": "BAL",
-     "value": 2842,
-     "rank": 69,
-     "trend30": -719,
+     "value": 2789,
+     "rank": 70,
+     "trend30": -1117,
      "sidelined": false,
      "status": ""
     },
@@ -1778,9 +1788,9 @@
      "name": "George Kittle",
      "pos": "TE",
      "team": "SF",
-     "value": 2576,
-     "rank": 77,
-     "trend30": -91,
+     "value": 2654,
+     "rank": 75,
+     "trend30": 52,
      "sidelined": false,
      "status": ""
     },
@@ -1788,9 +1798,9 @@
      "name": "Cam Ward",
      "pos": "QB",
      "team": "TEN",
-     "value": 2403,
-     "rank": 84,
-     "trend30": -209,
+     "value": 2530,
+     "rank": 81,
+     "trend30": -83,
      "sidelined": false,
      "status": ""
     },
@@ -1798,9 +1808,9 @@
      "name": "Cam Skattebo",
      "pos": "RB",
      "team": "NYG",
-     "value": 2210,
-     "rank": 93,
-     "trend30": -609,
+     "value": 2284,
+     "rank": 90,
+     "trend30": -548,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -1808,9 +1818,9 @@
      "name": "DJ Moore",
      "pos": "WR",
      "team": "BUF",
-     "value": 2089,
-     "rank": 98,
-     "trend30": -95,
+     "value": 2041,
+     "rank": 101,
+     "trend30": -25,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -1818,9 +1828,9 @@
      "name": "TreVeyon Henderson",
      "pos": "RB",
      "team": "NE",
-     "value": 1993,
-     "rank": 105,
-     "trend30": -719,
+     "value": 1900,
+     "rank": 109,
+     "trend30": -909,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -1828,9 +1838,9 @@
      "name": "Davante Adams",
      "pos": "WR",
      "team": "LAR",
-     "value": 1722,
-     "rank": 117,
-     "trend30": -769,
+     "value": 1692,
+     "rank": 119,
+     "trend30": -651,
      "sidelined": true,
      "status": "IR"
     },
@@ -1838,19 +1848,19 @@
      "name": "Travis Kelce",
      "pos": "TE",
      "team": "KC",
-     "value": 1501,
-     "rank": 134,
-     "trend30": -229,
+     "value": 1568,
+     "rank": 127,
+     "trend30": -145,
      "sidelined": false,
-     "status": "Questionable"
+     "status": ""
     },
     {
      "name": "Stefon Diggs",
      "pos": "WR",
      "team": "WAS",
-     "value": 1490,
-     "rank": 136,
-     "trend30": 91,
+     "value": 1540,
+     "rank": 131,
+     "trend30": 162,
      "sidelined": false,
      "status": ""
     },
@@ -1858,19 +1868,9 @@
      "name": "Ryan Flournoy",
      "pos": "WR",
      "team": "DAL",
-     "value": 1109,
-     "rank": 190,
-     "trend30": 703,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "Devaughn Vele",
-     "pos": "WR",
-     "team": "NO",
-     "value": 1067,
-     "rank": 196,
-     "trend30": -286,
+     "value": 1188,
+     "rank": 177,
+     "trend30": 748,
      "sidelined": false,
      "status": ""
     },
@@ -1878,9 +1878,19 @@
      "name": "Mike Gesicki",
      "pos": "TE",
      "team": "CIN",
-     "value": 1051,
+     "value": 1046,
+     "rank": 198,
+     "trend30": -37,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Devaughn Vele",
+     "pos": "WR",
+     "team": "NO",
+     "value": 1040,
      "rank": 200,
-     "trend30": 8,
+     "trend30": -301,
      "sidelined": false,
      "status": ""
     },
@@ -1888,9 +1898,9 @@
      "name": "Josh Cameron",
      "pos": "WR",
      "team": "JAX",
-     "value": 609,
-     "rank": 237,
-     "trend30": 184,
+     "value": 476,
+     "rank": 244,
+     "trend30": 88,
      "sidelined": false,
      "status": ""
     },
@@ -1898,9 +1908,9 @@
      "name": "Skyler Bell",
      "pos": "WR",
      "team": "BUF",
-     "value": 400,
-     "rank": 263,
-     "trend30": 7,
+     "value": 287,
+     "rank": 281,
+     "trend30": -234,
      "sidelined": false,
      "status": ""
     },
@@ -1908,9 +1918,9 @@
      "name": "Taylen Green",
      "pos": "QB",
      "team": "CLE",
-     "value": 128,
-     "rank": 328,
-     "trend30": 79,
+     "value": 80,
+     "rank": 353,
+     "trend30": -30,
      "sidelined": false,
      "status": ""
     }
@@ -1921,32 +1931,32 @@
      "season": 2028,
      "round": 1,
      "via": null,
-     "value": 2216,
-     "trend30": -15
+     "value": 2212,
+     "trend30": -22
     },
     {
      "label": "2029 1st",
      "season": 2029,
      "round": 1,
      "via": null,
-     "value": 1910,
-     "trend30": 24
+     "value": 1906,
+     "trend30": 19
     },
     {
      "label": "2027 2nd (Late)",
      "season": 2027,
      "round": 2,
      "via": null,
-     "value": 1442,
-     "trend30": 13
+     "value": 1431,
+     "trend30": -23
     },
     {
      "label": "2028 2nd",
      "season": 2028,
      "round": 2,
      "via": null,
-     "value": 1366,
-     "trend30": -18
+     "value": 1362,
+     "trend30": -16
     },
     {
      "label": "2029 2nd",
@@ -1954,39 +1964,39 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 23
+     "trend30": 24
     },
     {
      "label": "2027 3rd (Late)",
      "season": 2027,
      "round": 3,
      "via": "StealingGas",
-     "value": 1016,
-     "trend30": -13
+     "value": 1018,
+     "trend30": -16
     },
     {
      "label": "2027 3rd (Late)",
      "season": 2027,
      "round": 3,
      "via": null,
-     "value": 1016,
-     "trend30": -13
+     "value": 1018,
+     "trend30": -16
     },
     {
      "label": "2028 3rd",
      "season": 2028,
      "round": 3,
      "via": null,
-     "value": 1005,
-     "trend30": -5
+     "value": 1007,
+     "trend30": -21
     },
     {
      "label": "2029 3rd",
      "season": 2029,
      "round": 3,
      "via": null,
-     "value": 923,
-     "trend30": -23
+     "value": 932,
+     "trend30": -11
     }
    ],
    "sidelined_players": [
@@ -1994,33 +2004,33 @@
      "name": "Davante Adams",
      "pos": "WR",
      "team": "LAR",
-     "value": 1722,
-     "rank": 117,
-     "trend30": -769,
+     "value": 1692,
+     "rank": 119,
+     "trend30": -651,
      "sidelined": true,
      "status": "IR"
     }
    ],
    "off_index": 0,
    "rank": 10,
-   "since": "2026-10-31",
-   "since_change": -864
+   "since": "2026-11-01",
+   "since_change": -460
   },
   "Johnny4Skins": {
-   "total": 61940,
-   "players": 47208,
-   "picks": 14732,
+   "total": 61614,
+   "players": 46972,
+   "picks": 14642,
    "pick_count": 9,
    "by_pos": {
-    "WR": 18540,
-    "TE": 7627,
-    "QB": 9386,
-    "RB": 11655,
-    "PICK": 14732
+    "WR": 17827,
+    "TE": 7761,
+    "QB": 9893,
+    "RB": 11491,
+    "PICK": 14642
    },
-   "move30": -4460,
-   "move30_pct": -6.7,
-   "sidelined": 9269,
+   "move30": -4783,
+   "move30_pct": -7.2,
+   "sidelined": 9268,
    "sidelined_pct": 15.0,
    "status": "crash",
    "top": [
@@ -2028,9 +2038,9 @@
      "name": "Ja'Marr Chase",
      "pos": "WR",
      "team": "CIN",
-     "value": 8352,
+     "value": 8361,
      "rank": 5,
-     "trend30": -328,
+     "trend30": 18,
      "sidelined": false,
      "status": ""
     },
@@ -2038,29 +2048,29 @@
      "name": "Lamar Jackson",
      "pos": "QB",
      "team": "BAL",
-     "value": 5427,
-     "rank": 20,
-     "trend30": -1645,
+     "value": 5176,
+     "rank": 22,
+     "trend30": -1738,
      "sidelined": true,
-     "status": "Out"
-    },
-    {
-     "name": "Kyren Williams",
-     "pos": "RB",
-     "team": "LAR",
-     "value": 3788,
-     "rank": 43,
-     "trend30": -268,
-     "sidelined": false,
-     "status": ""
+     "status": "IR"
     },
     {
      "name": "Tyler Warren",
      "pos": "TE",
      "team": "IND",
-     "value": 3739,
-     "rank": 46,
-     "trend30": -305,
+     "value": 3795,
+     "rank": 43,
+     "trend30": -227,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Kyren Williams",
+     "pos": "RB",
+     "team": "LAR",
+     "value": 3693,
+     "rank": 48,
+     "trend30": -729,
      "sidelined": false,
      "status": ""
     },
@@ -2068,9 +2078,9 @@
      "name": "Jalen Hurts",
      "pos": "QB",
      "team": "PHI",
-     "value": 3220,
-     "rank": 58,
-     "trend30": -1277,
+     "value": 3120,
+     "rank": 63,
+     "trend30": -1594,
      "sidelined": true,
      "status": "IR"
     },
@@ -2078,9 +2088,9 @@
      "name": "Chuba Hubbard",
      "pos": "RB",
      "team": "CAR",
-     "value": 3071,
-     "rank": 64,
-     "trend30": 298,
+     "value": 3029,
+     "rank": 66,
+     "trend30": 236,
      "sidelined": false,
      "status": ""
     }
@@ -2090,9 +2100,9 @@
      "name": "Ja'Marr Chase",
      "pos": "WR",
      "team": "CIN",
-     "value": 8352,
+     "value": 8361,
      "rank": 5,
-     "trend30": -328,
+     "trend30": 18,
      "sidelined": false,
      "status": ""
     },
@@ -2100,29 +2110,29 @@
      "name": "Lamar Jackson",
      "pos": "QB",
      "team": "BAL",
-     "value": 5427,
-     "rank": 20,
-     "trend30": -1645,
+     "value": 5176,
+     "rank": 22,
+     "trend30": -1738,
      "sidelined": true,
-     "status": "Out"
-    },
-    {
-     "name": "Kyren Williams",
-     "pos": "RB",
-     "team": "LAR",
-     "value": 3788,
-     "rank": 43,
-     "trend30": -268,
-     "sidelined": false,
-     "status": ""
+     "status": "IR"
     },
     {
      "name": "Tyler Warren",
      "pos": "TE",
      "team": "IND",
-     "value": 3739,
-     "rank": 46,
-     "trend30": -305,
+     "value": 3795,
+     "rank": 43,
+     "trend30": -227,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Kyren Williams",
+     "pos": "RB",
+     "team": "LAR",
+     "value": 3693,
+     "rank": 48,
+     "trend30": -729,
      "sidelined": false,
      "status": ""
     },
@@ -2130,9 +2140,9 @@
      "name": "Jalen Hurts",
      "pos": "QB",
      "team": "PHI",
-     "value": 3220,
-     "rank": 58,
-     "trend30": -1277,
+     "value": 3120,
+     "rank": 63,
+     "trend30": -1594,
      "sidelined": true,
      "status": "IR"
     },
@@ -2140,9 +2150,9 @@
      "name": "Chuba Hubbard",
      "pos": "RB",
      "team": "CAR",
-     "value": 3071,
-     "rank": 64,
-     "trend30": 298,
+     "value": 3029,
+     "rank": 66,
+     "trend30": 236,
      "sidelined": false,
      "status": ""
     },
@@ -2150,9 +2160,9 @@
      "name": "Isaiah Likely",
      "pos": "TE",
      "team": "NYG",
-     "value": 2956,
+     "value": 2902,
      "rank": 68,
-     "trend30": 883,
+     "trend30": 649,
      "sidelined": false,
      "status": ""
     },
@@ -2160,9 +2170,9 @@
      "name": "Jaylen Warren",
      "pos": "RB",
      "team": "PIT",
-     "value": 2757,
-     "rank": 73,
-     "trend30": 410,
+     "value": 2715,
+     "rank": 74,
+     "trend30": 433,
      "sidelined": false,
      "status": ""
     },
@@ -2170,9 +2180,9 @@
      "name": "A.J. Brown",
      "pos": "WR",
      "team": "NE",
-     "value": 2507,
-     "rank": 80,
-     "trend30": -471,
+     "value": 2561,
+     "rank": 79,
+     "trend30": -497,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -2180,9 +2190,9 @@
      "name": "Brian Thomas",
      "pos": "WR",
      "team": "JAX",
-     "value": 1857,
-     "rank": 111,
-     "trend30": -313,
+     "value": 1766,
+     "rank": 116,
+     "trend30": -273,
      "sidelined": false,
      "status": ""
     },
@@ -2190,9 +2200,9 @@
      "name": "DK Metcalf",
      "pos": "WR",
      "team": "PIT",
-     "value": 1574,
-     "rank": 128,
-     "trend30": -282,
+     "value": 1478,
+     "rank": 135,
+     "trend30": -404,
      "sidelined": false,
      "status": ""
     },
@@ -2200,9 +2210,9 @@
      "name": "Adonai Mitchell",
      "pos": "WR",
      "team": "NYJ",
-     "value": 1300,
-     "rank": 160,
-     "trend30": 33,
+     "value": 1358,
+     "rank": 148,
+     "trend30": 137,
      "sidelined": false,
      "status": ""
     },
@@ -2210,9 +2220,9 @@
      "name": "Malik Washington",
      "pos": "WR",
      "team": "MIA",
-     "value": 1285,
-     "rank": 161,
-     "trend30": 152,
+     "value": 1282,
+     "rank": 162,
+     "trend30": 146,
      "sidelined": false,
      "status": ""
     },
@@ -2220,19 +2230,39 @@
      "name": "Kenny Gainwell",
      "pos": "RB",
      "team": "TB",
-     "value": 1058,
-     "rank": 198,
-     "trend30": -137,
+     "value": 1082,
+     "rank": 192,
+     "trend30": -98,
      "sidelined": false,
-     "status": "Questionable"
+     "status": ""
+    },
+    {
+     "name": "Dalton Schultz",
+     "pos": "TE",
+     "team": "HOU",
+     "value": 1064,
+     "rank": 195,
+     "trend30": 3,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Carson Wentz",
+     "pos": "QB",
+     "team": "MIN",
+     "value": 1027,
+     "rank": 201,
+     "trend30": 682,
+     "sidelined": false,
+     "status": ""
     },
     {
      "name": "Tre' Harris",
      "pos": "WR",
      "team": "LAC",
-     "value": 1043,
-     "rank": 201,
-     "trend30": -276,
+     "value": 1021,
+     "rank": 204,
+     "trend30": -322,
      "sidelined": false,
      "status": ""
     },
@@ -2240,41 +2270,21 @@
      "name": "Brian Robinson",
      "pos": "RB",
      "team": "ATL",
-     "value": 981,
-     "rank": 206,
-     "trend30": -348,
-     "sidelined": false,
-     "status": "Questionable"
-    },
-    {
-     "name": "Dalton Schultz",
-     "pos": "TE",
-     "team": "HOU",
-     "value": 932,
-     "rank": 212,
-     "trend30": -153,
-     "sidelined": false,
-     "status": ""
+     "value": 972,
+     "rank": 208,
+     "trend30": -425,
+     "sidelined": true,
+     "status": "Out"
     },
     {
      "name": "Jalon Daniels",
      "pos": "QB",
      "team": "TB",
-     "value": 739,
-     "rank": 227,
-     "trend30": -366,
+     "value": 570,
+     "rank": 237,
+     "trend30": -570,
      "sidelined": false,
      "status": ""
-    },
-    {
-     "name": "Jalen McMillan",
-     "pos": "WR",
-     "team": "TB",
-     "value": 622,
-     "rank": 235,
-     "trend30": 37,
-     "sidelined": true,
-     "status": "IR"
     }
    ],
    "pick_list": [
@@ -2283,40 +2293,40 @@
      "season": 2027,
      "round": 1,
      "via": null,
-     "value": 3237,
-     "trend30": -105
+     "value": 3171,
+     "trend30": -134
     },
     {
      "label": "2028 1st",
      "season": 2028,
      "round": 1,
      "via": null,
-     "value": 2216,
-     "trend30": -15
+     "value": 2212,
+     "trend30": -22
     },
     {
      "label": "2029 1st",
      "season": 2029,
      "round": 1,
      "via": null,
-     "value": 1910,
-     "trend30": 24
+     "value": 1906,
+     "trend30": 19
     },
     {
      "label": "2027 2nd (Mid)",
      "season": 2027,
      "round": 2,
      "via": null,
-     "value": 1680,
-     "trend30": 45
+     "value": 1675,
+     "trend30": -8
     },
     {
      "label": "2028 2nd",
      "season": 2028,
      "round": 2,
      "via": null,
-     "value": 1366,
-     "trend30": -18
+     "value": 1362,
+     "trend30": -16
     },
     {
      "label": "2029 2nd",
@@ -2324,31 +2334,31 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 23
+     "trend30": 24
     },
     {
      "label": "2027 3rd (Mid)",
      "season": 2027,
      "round": 3,
      "via": null,
-     "value": 1118,
-     "trend30": -30
+     "value": 1100,
+     "trend30": -41
     },
     {
      "label": "2028 3rd",
      "season": 2028,
      "round": 3,
      "via": null,
-     "value": 1005,
-     "trend30": -5
+     "value": 1007,
+     "trend30": -21
     },
     {
      "label": "2029 3rd",
      "season": 2029,
      "round": 3,
      "via": null,
-     "value": 923,
-     "trend30": -23
+     "value": 932,
+     "trend30": -11
     }
    ],
    "sidelined_players": [
@@ -2356,63 +2366,63 @@
      "name": "Lamar Jackson",
      "pos": "QB",
      "team": "BAL",
-     "value": 5427,
-     "rank": 20,
-     "trend30": -1645,
+     "value": 5176,
+     "rank": 22,
+     "trend30": -1738,
      "sidelined": true,
-     "status": "Out"
+     "status": "IR"
     },
     {
      "name": "Jalen Hurts",
      "pos": "QB",
      "team": "PHI",
-     "value": 3220,
-     "rank": 58,
-     "trend30": -1277,
+     "value": 3120,
+     "rank": 63,
+     "trend30": -1594,
      "sidelined": true,
      "status": "IR"
     },
     {
-     "name": "Jalen McMillan",
-     "pos": "WR",
-     "team": "TB",
-     "value": 622,
-     "rank": 235,
-     "trend30": 37,
+     "name": "Brian Robinson",
+     "pos": "RB",
+     "team": "ATL",
+     "value": 972,
+     "rank": 208,
+     "trend30": -425,
      "sidelined": true,
-     "status": "IR"
+     "status": "Out"
     }
    ],
    "off_index": 0,
    "rank": 7,
-   "since": "2026-10-31",
-   "since_change": -2135
+   "since": "2026-11-01",
+   "since_change": -2570
   },
   "Sarge71": {
-   "total": 51134,
-   "players": 34243,
-   "picks": 16891,
+   "total": 50986,
+   "players": 34231,
+   "picks": 16755,
    "pick_count": 9,
    "by_pos": {
-    "TE": 4955,
-    "RB": 14504,
-    "WR": 10960,
-    "QB": 3824,
-    "PICK": 16891
+    "TE": 4796,
+    "RB": 14444,
+    "WR": 11179,
+    "QB": 3812,
+    "PICK": 16755
    },
-   "move30": -6368,
-   "move30_pct": -11.1,
-   "sidelined": 10427,
-   "sidelined_pct": 20.4,
+   "move30": -6276,
+   "move30_pct": -11.0,
+   "sidelined": 10447,
+   "sidelined_pct": 20.5,
    "status": "crash",
    "top": [
     {
      "name": "Bijan Robinson",
      "pos": "RB",
      "team": "ATL",
-     "value": 9247,
+     "value": 9303,
      "rank": 4,
-     "trend30": -958,
+     "trend30": -850,
      "sidelined": false,
      "status": ""
     },
@@ -2420,9 +2430,9 @@
      "name": "Tetairoa McMillan",
      "pos": "WR",
      "team": "CAR",
-     "value": 4276,
-     "rank": 30,
-     "trend30": -670,
+     "value": 4165,
+     "rank": 32,
+     "trend30": -1047,
      "sidelined": false,
      "status": ""
     },
@@ -2430,41 +2440,41 @@
      "name": "Sam Darnold",
      "pos": "QB",
      "team": "SEA",
-     "value": 2397,
-     "rank": 85,
-     "trend30": -558,
+     "value": 2382,
+     "rank": 83,
+     "trend30": -549,
      "sidelined": true,
      "status": "Out"
-    },
-    {
-     "name": "Dalton Kincaid",
-     "pos": "TE",
-     "team": "BUF",
-     "value": 2037,
-     "rank": 102,
-     "trend30": -647,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "Travis Etienne",
-     "pos": "RB",
-     "team": "NO",
-     "value": 1932,
-     "rank": 107,
-     "trend30": -153,
-     "sidelined": true,
-     "status": "IR"
     },
     {
      "name": "Jaylen Waddle",
      "pos": "WR",
      "team": "DEN",
-     "value": 1925,
-     "rank": 108,
-     "trend30": -661,
+     "value": 2091,
+     "rank": 98,
+     "trend30": -573,
      "sidelined": false,
      "status": ""
+    },
+    {
+     "name": "Dalton Kincaid",
+     "pos": "TE",
+     "team": "BUF",
+     "value": 2060,
+     "rank": 99,
+     "trend30": -527,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "Travis Etienne",
+     "pos": "RB",
+     "team": "NO",
+     "value": 2008,
+     "rank": 103,
+     "trend30": -58,
+     "sidelined": true,
+     "status": "IR"
     }
    ],
    "assets": [
@@ -2472,9 +2482,9 @@
      "name": "Bijan Robinson",
      "pos": "RB",
      "team": "ATL",
-     "value": 9247,
+     "value": 9303,
      "rank": 4,
-     "trend30": -958,
+     "trend30": -850,
      "sidelined": false,
      "status": ""
     },
@@ -2482,9 +2492,9 @@
      "name": "Tetairoa McMillan",
      "pos": "WR",
      "team": "CAR",
-     "value": 4276,
-     "rank": 30,
-     "trend30": -670,
+     "value": 4165,
+     "rank": 32,
+     "trend30": -1047,
      "sidelined": false,
      "status": ""
     },
@@ -2492,49 +2502,49 @@
      "name": "Sam Darnold",
      "pos": "QB",
      "team": "SEA",
-     "value": 2397,
-     "rank": 85,
-     "trend30": -558,
+     "value": 2382,
+     "rank": 83,
+     "trend30": -549,
      "sidelined": true,
      "status": "Out"
-    },
-    {
-     "name": "Dalton Kincaid",
-     "pos": "TE",
-     "team": "BUF",
-     "value": 2037,
-     "rank": 102,
-     "trend30": -647,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "Travis Etienne",
-     "pos": "RB",
-     "team": "NO",
-     "value": 1932,
-     "rank": 107,
-     "trend30": -153,
-     "sidelined": true,
-     "status": "IR"
     },
     {
      "name": "Jaylen Waddle",
      "pos": "WR",
      "team": "DEN",
-     "value": 1925,
-     "rank": 108,
-     "trend30": -661,
+     "value": 2091,
+     "rank": 98,
+     "trend30": -573,
      "sidelined": false,
      "status": ""
+    },
+    {
+     "name": "Dalton Kincaid",
+     "pos": "TE",
+     "team": "BUF",
+     "value": 2060,
+     "rank": 99,
+     "trend30": -527,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "Travis Etienne",
+     "pos": "RB",
+     "team": "NO",
+     "value": 2008,
+     "rank": 103,
+     "trend30": -58,
+     "sidelined": true,
+     "status": "IR"
     },
     {
      "name": "Brenton Strange",
      "pos": "TE",
      "team": "JAX",
-     "value": 1692,
-     "rank": 119,
-     "trend30": 213,
+     "value": 1710,
+     "rank": 118,
+     "trend30": 197,
      "sidelined": false,
      "status": ""
     },
@@ -2542,9 +2552,9 @@
      "name": "Aaron Rodgers",
      "pos": "QB",
      "team": "PIT",
-     "value": 1427,
+     "value": 1430,
      "rank": 142,
-     "trend30": 47,
+     "trend30": 21,
      "sidelined": false,
      "status": ""
     },
@@ -2552,39 +2562,39 @@
      "name": "David Montgomery",
      "pos": "RB",
      "team": "HOU",
-     "value": 1364,
-     "rank": 151,
-     "trend30": -463,
+     "value": 1375,
+     "rank": 147,
+     "trend30": -367,
      "sidelined": true,
      "status": "Out"
-    },
-    {
-     "name": "Pat Freiermuth",
-     "pos": "TE",
-     "team": "PIT",
-     "value": 1149,
-     "rank": 184,
-     "trend30": 85,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "Chris Godwin",
-     "pos": "WR",
-     "team": "TB",
-     "value": 1114,
-     "rank": 189,
-     "trend30": -66,
-     "sidelined": false,
-     "status": ""
     },
     {
      "name": "Terry McLaurin",
      "pos": "WR",
      "team": "WAS",
-     "value": 1097,
-     "rank": 192,
-     "trend30": -654,
+     "value": 1129,
+     "rank": 185,
+     "trend30": -536,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Chris Godwin",
+     "pos": "WR",
+     "team": "TB",
+     "value": 1108,
+     "rank": 188,
+     "trend30": -129,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Romeo Doubs",
+     "pos": "WR",
+     "team": "NE",
+     "value": 1071,
+     "rank": 194,
+     "trend30": -447,
      "sidelined": true,
      "status": "IR"
     },
@@ -2592,9 +2602,29 @@
      "name": "Michael Pittman",
      "pos": "WR",
      "team": "PIT",
-     "value": 979,
-     "rank": 207,
-     "trend30": -177,
+     "value": 1027,
+     "rank": 202,
+     "trend30": -78,
+     "sidelined": true,
+     "status": "IR"
+    },
+    {
+     "name": "Pat Freiermuth",
+     "pos": "TE",
+     "team": "PIT",
+     "value": 1026,
+     "rank": 203,
+     "trend30": -2,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Tank Bigsby",
+     "pos": "RB",
+     "team": "PHI",
+     "value": 745,
+     "rank": 224,
+     "trend30": -41,
      "sidelined": true,
      "status": "IR"
     },
@@ -2602,39 +2632,19 @@
      "name": "Tyjae Spears",
      "pos": "RB",
      "team": "TEN",
-     "value": 948,
-     "rank": 209,
-     "trend30": 37,
+     "value": 710,
+     "rank": 228,
+     "trend30": -275,
      "sidelined": true,
      "status": "Out"
-    },
-    {
-     "name": "Romeo Doubs",
-     "pos": "WR",
-     "team": "NE",
-     "value": 944,
-     "rank": 210,
-     "trend30": -523,
-     "sidelined": true,
-     "status": "IR"
-    },
-    {
-     "name": "Tank Bigsby",
-     "pos": "RB",
-     "team": "PHI",
-     "value": 689,
-     "rank": 229,
-     "trend30": -335,
-     "sidelined": true,
-     "status": "IR"
     },
     {
      "name": "Jerry Jeudy",
      "pos": "WR",
      "team": "CLE",
-     "value": 625,
-     "rank": 234,
-     "trend30": -120,
+     "value": 588,
+     "rank": 235,
+     "trend30": -84,
      "sidelined": false,
      "status": ""
     },
@@ -2642,21 +2652,11 @@
      "name": "Kaleb Johnson",
      "pos": "RB",
      "team": "GB",
-     "value": 324,
-     "rank": 276,
-     "trend30": -494,
+     "value": 303,
+     "rank": 275,
+     "trend30": -632,
      "sidelined": false,
      "status": ""
-    },
-    {
-     "name": "Jake Tonges",
-     "pos": "TE",
-     "team": "SF",
-     "value": 77,
-     "rank": 363,
-     "trend30": -101,
-     "sidelined": true,
-     "status": "IR"
     }
    ],
    "pick_list": [
@@ -2665,40 +2665,40 @@
      "season": 2027,
      "round": 1,
      "via": null,
-     "value": 4917,
-     "trend30": -158
+     "value": 4815,
+     "trend30": -204
     },
     {
      "label": "2028 1st",
      "season": 2028,
      "round": 1,
      "via": null,
-     "value": 2216,
-     "trend30": -15
+     "value": 2212,
+     "trend30": -22
     },
     {
      "label": "2027 2nd (Early)",
      "season": 2027,
      "round": 2,
      "via": null,
-     "value": 2017,
-     "trend30": 13
+     "value": 1998,
+     "trend30": -36
     },
     {
      "label": "2029 1st",
      "season": 2029,
      "round": 1,
      "via": null,
-     "value": 1910,
-     "trend30": 24
+     "value": 1906,
+     "trend30": 19
     },
     {
      "label": "2028 2nd",
      "season": 2028,
      "round": 2,
      "via": null,
-     "value": 1366,
-     "trend30": -18
+     "value": 1362,
+     "trend30": -16
     },
     {
      "label": "2029 2nd",
@@ -2706,31 +2706,31 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 23
+     "trend30": 24
     },
     {
      "label": "2027 3rd (Early)",
      "season": 2027,
      "round": 3,
      "via": null,
-     "value": 1260,
-     "trend30": -11
+     "value": 1246,
+     "trend30": -32
     },
     {
      "label": "2028 3rd",
      "season": 2028,
      "round": 3,
      "via": null,
-     "value": 1005,
-     "trend30": -5
+     "value": 1007,
+     "trend30": -21
     },
     {
      "label": "2029 3rd",
      "season": 2029,
      "round": 3,
      "via": null,
-     "value": 923,
-     "trend30": -23
+     "value": 932,
+     "trend30": -11
     }
    ],
    "sidelined_players": [
@@ -2738,9 +2738,9 @@
      "name": "Sam Darnold",
      "pos": "QB",
      "team": "SEA",
-     "value": 2397,
-     "rank": 85,
-     "trend30": -558,
+     "value": 2382,
+     "rank": 83,
+     "trend30": -549,
      "sidelined": true,
      "status": "Out"
     },
@@ -2748,9 +2748,9 @@
      "name": "Travis Etienne",
      "pos": "RB",
      "team": "NO",
-     "value": 1932,
-     "rank": 107,
-     "trend30": -153,
+     "value": 2008,
+     "rank": 103,
+     "trend30": -58,
      "sidelined": true,
      "status": "IR"
     },
@@ -2758,9 +2758,9 @@
      "name": "David Montgomery",
      "pos": "RB",
      "team": "HOU",
-     "value": 1364,
-     "rank": 151,
-     "trend30": -463,
+     "value": 1375,
+     "rank": 147,
+     "trend30": -367,
      "sidelined": true,
      "status": "Out"
     },
@@ -2768,43 +2768,43 @@
      "name": "Terry McLaurin",
      "pos": "WR",
      "team": "WAS",
-     "value": 1097,
-     "rank": 192,
-     "trend30": -654,
+     "value": 1129,
+     "rank": 185,
+     "trend30": -536,
      "sidelined": true,
      "status": "IR"
     },
     {
-     "name": "Michael Pittman",
+     "name": "Romeo Doubs",
      "pos": "WR",
-     "team": "PIT",
-     "value": 979,
-     "rank": 207,
-     "trend30": -177,
+     "team": "NE",
+     "value": 1071,
+     "rank": 194,
+     "trend30": -447,
      "sidelined": true,
      "status": "IR"
     }
    ],
-   "off_index": 0,
+   "off_index": 1,
    "rank": 12,
-   "since": "2026-10-31",
-   "since_change": -2714
+   "since": "2026-11-01",
+   "since_change": -2775
   },
   "C33DeezNutzz": {
-   "total": 63124,
-   "players": 48392,
-   "picks": 14732,
+   "total": 62807,
+   "players": 48165,
+   "picks": 14642,
    "pick_count": 9,
    "by_pos": {
-    "WR": 20714,
-    "QB": 16625,
+    "WR": 20693,
+    "QB": 16416,
     "RB": 7751,
-    "TE": 3302,
-    "PICK": 14732
+    "TE": 3305,
+    "PICK": 14642
    },
-   "move30": 678,
-   "move30_pct": 1.1,
-   "sidelined": 2696,
+   "move30": 476,
+   "move30_pct": 0.8,
+   "sidelined": 2688,
    "sidelined_pct": 4.3,
    "status": "stable",
    "top": [
@@ -2812,9 +2812,9 @@
      "name": "Josh Allen",
      "pos": "QB",
      "team": "BUF",
-     "value": 10892,
+     "value": 10870,
      "rank": 1,
-     "trend30": -42,
+     "trend30": -47,
      "sidelined": false,
      "status": ""
     },
@@ -2822,9 +2822,9 @@
      "name": "Chris Olave",
      "pos": "WR",
      "team": "NO",
-     "value": 4578,
-     "rank": 28,
-     "trend30": -700,
+     "value": 4511,
+     "rank": 27,
+     "trend30": -833,
      "sidelined": false,
      "status": ""
     },
@@ -2832,9 +2832,9 @@
      "name": "Zay Flowers",
      "pos": "WR",
      "team": "BAL",
-     "value": 4275,
-     "rank": 31,
-     "trend30": -413,
+     "value": 4422,
+     "rank": 29,
+     "trend30": -491,
      "sidelined": false,
      "status": ""
     },
@@ -2842,9 +2842,9 @@
      "name": "Bucky Irving",
      "pos": "RB",
      "team": "TB",
-     "value": 3931,
-     "rank": 39,
-     "trend30": 1052,
+     "value": 4006,
+     "rank": 38,
+     "trend30": 1051,
      "sidelined": false,
      "status": ""
     },
@@ -2852,9 +2852,9 @@
      "name": "Christian Watson",
      "pos": "WR",
      "team": "GB",
-     "value": 3889,
-     "rank": 42,
-     "trend30": 781,
+     "value": 3727,
+     "rank": 47,
+     "trend30": 573,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -2862,9 +2862,9 @@
      "name": "Justin Herbert",
      "pos": "QB",
      "team": "LAC",
-     "value": 3484,
-     "rank": 53,
-     "trend30": -586,
+     "value": 3388,
+     "rank": 56,
+     "trend30": -438,
      "sidelined": false,
      "status": ""
     }
@@ -2874,9 +2874,9 @@
      "name": "Josh Allen",
      "pos": "QB",
      "team": "BUF",
-     "value": 10892,
+     "value": 10870,
      "rank": 1,
-     "trend30": -42,
+     "trend30": -47,
      "sidelined": false,
      "status": ""
     },
@@ -2884,9 +2884,9 @@
      "name": "Chris Olave",
      "pos": "WR",
      "team": "NO",
-     "value": 4578,
-     "rank": 28,
-     "trend30": -700,
+     "value": 4511,
+     "rank": 27,
+     "trend30": -833,
      "sidelined": false,
      "status": ""
     },
@@ -2894,9 +2894,9 @@
      "name": "Zay Flowers",
      "pos": "WR",
      "team": "BAL",
-     "value": 4275,
-     "rank": 31,
-     "trend30": -413,
+     "value": 4422,
+     "rank": 29,
+     "trend30": -491,
      "sidelined": false,
      "status": ""
     },
@@ -2904,9 +2904,9 @@
      "name": "Bucky Irving",
      "pos": "RB",
      "team": "TB",
-     "value": 3931,
-     "rank": 39,
-     "trend30": 1052,
+     "value": 4006,
+     "rank": 38,
+     "trend30": 1051,
      "sidelined": false,
      "status": ""
     },
@@ -2914,9 +2914,9 @@
      "name": "Christian Watson",
      "pos": "WR",
      "team": "GB",
-     "value": 3889,
-     "rank": 42,
-     "trend30": 781,
+     "value": 3727,
+     "rank": 47,
+     "trend30": 573,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -2924,9 +2924,9 @@
      "name": "Justin Herbert",
      "pos": "QB",
      "team": "LAC",
-     "value": 3484,
-     "rank": 53,
-     "trend30": -586,
+     "value": 3388,
+     "rank": 56,
+     "trend30": -438,
      "sidelined": false,
      "status": ""
     },
@@ -2934,9 +2934,9 @@
      "name": "Ladd McConkey",
      "pos": "WR",
      "team": "LAC",
-     "value": 2485,
-     "rank": 81,
-     "trend30": -532,
+     "value": 2518,
+     "rank": 82,
+     "trend30": -374,
      "sidelined": false,
      "status": ""
     },
@@ -2944,9 +2944,9 @@
      "name": "Josh Downs",
      "pos": "WR",
      "team": "IND",
-     "value": 1686,
+     "value": 1665,
      "rank": 121,
-     "trend30": -172,
+     "trend30": -91,
      "sidelined": false,
      "status": ""
     },
@@ -2954,19 +2954,39 @@
      "name": "Khalil Shakir",
      "pos": "WR",
      "team": "BUF",
-     "value": 1329,
-     "rank": 155,
-     "trend30": 91,
+     "value": 1358,
+     "rank": 149,
+     "trend30": 120,
      "sidelined": false,
      "status": ""
+    },
+    {
+     "name": "Joe Milton",
+     "pos": "QB",
+     "team": "DAL",
+     "value": 1257,
+     "rank": 163,
+     "trend30": 1093,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Jayden Reed",
+     "pos": "WR",
+     "team": "GB",
+     "value": 1247,
+     "rank": 168,
+     "trend30": -103,
+     "sidelined": true,
+     "status": "IR"
     },
     {
      "name": "Jakobi Meyers",
      "pos": "WR",
      "team": "JAX",
-     "value": 1239,
-     "rank": 170,
-     "trend30": -216,
+     "value": 1245,
+     "rank": 169,
+     "trend30": -191,
      "sidelined": false,
      "status": ""
     },
@@ -2974,29 +2994,19 @@
      "name": "Jonathon Brooks",
      "pos": "RB",
      "team": "CAR",
-     "value": 1237,
-     "rank": 171,
-     "trend30": -125,
+     "value": 1200,
+     "rank": 174,
+     "trend30": -116,
      "sidelined": true,
      "status": "IR"
     },
     {
-     "name": "Jayden Reed",
-     "pos": "WR",
-     "team": "GB",
-     "value": 1233,
-     "rank": 172,
-     "trend30": 34,
-     "sidelined": true,
-     "status": "IR"
-    },
-    {
-     "name": "Joe Milton",
-     "pos": "QB",
-     "team": "DAL",
-     "value": 1212,
-     "rank": 173,
-     "trend30": 1069,
+     "name": "Aaron Jones",
+     "pos": "RB",
+     "team": "MIN",
+     "value": 1195,
+     "rank": 175,
+     "trend30": -416,
      "sidelined": false,
      "status": ""
     },
@@ -3004,19 +3014,9 @@
      "name": "AJ Barner",
      "pos": "TE",
      "team": "SEA",
-     "value": 1193,
-     "rank": 177,
-     "trend30": -64,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "J.K. Dobbins",
-     "pos": "RB",
-     "team": "DEN",
-     "value": 1193,
+     "value": 1190,
      "rank": 176,
-     "trend30": 36,
+     "trend30": 5,
      "sidelined": false,
      "status": ""
     },
@@ -3024,29 +3024,19 @@
      "name": "Mark Andrews",
      "pos": "TE",
      "team": "BAL",
-     "value": 1174,
-     "rank": 181,
-     "trend30": -218,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "Aaron Jones",
-     "pos": "RB",
-     "team": "MIN",
      "value": 1164,
-     "rank": 182,
-     "trend30": -394,
+     "rank": 183,
+     "trend30": -291,
      "sidelined": false,
      "status": ""
     },
     {
-     "name": "Tanner McKee",
-     "pos": "QB",
-     "team": "PHI",
-     "value": 1037,
-     "rank": 202,
-     "trend30": 945,
+     "name": "J.K. Dobbins",
+     "pos": "RB",
+     "team": "DEN",
+     "value": 1109,
+     "rank": 187,
+     "trend30": -7,
      "sidelined": false,
      "status": ""
     },
@@ -3054,19 +3044,29 @@
      "name": "Gunnar Helm",
      "pos": "TE",
      "team": "TEN",
-     "value": 935,
-     "rank": 211,
-     "trend30": 10,
+     "value": 951,
+     "rank": 210,
+     "trend30": 120,
      "sidelined": false,
      "status": ""
+    },
+    {
+     "name": "Tanner McKee",
+     "pos": "QB",
+     "team": "PHI",
+     "value": 901,
+     "rank": 213,
+     "trend30": 881,
+     "sidelined": false,
+     "status": "Questionable"
     },
     {
      "name": "Dameon Pierce",
      "pos": "RB",
      "team": "PHI",
-     "value": 226,
-     "rank": 301,
-     "trend30": 226,
+     "value": 241,
+     "rank": 292,
+     "trend30": 241,
      "sidelined": true,
      "status": "IR"
     }
@@ -3077,40 +3077,40 @@
      "season": 2027,
      "round": 1,
      "via": null,
-     "value": 3237,
-     "trend30": -105
+     "value": 3171,
+     "trend30": -134
     },
     {
      "label": "2028 1st",
      "season": 2028,
      "round": 1,
      "via": null,
-     "value": 2216,
-     "trend30": -15
+     "value": 2212,
+     "trend30": -22
     },
     {
      "label": "2029 1st",
      "season": 2029,
      "round": 1,
      "via": null,
-     "value": 1910,
-     "trend30": 24
+     "value": 1906,
+     "trend30": 19
     },
     {
      "label": "2027 2nd (Mid)",
      "season": 2027,
      "round": 2,
      "via": null,
-     "value": 1680,
-     "trend30": 45
+     "value": 1675,
+     "trend30": -8
     },
     {
      "label": "2028 2nd",
      "season": 2028,
      "round": 2,
      "via": null,
-     "value": 1366,
-     "trend30": -18
+     "value": 1362,
+     "trend30": -16
     },
     {
      "label": "2029 2nd",
@@ -3118,51 +3118,51 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 23
+     "trend30": 24
     },
     {
      "label": "2027 3rd (Mid)",
      "season": 2027,
      "round": 3,
      "via": null,
-     "value": 1118,
-     "trend30": -30
+     "value": 1100,
+     "trend30": -41
     },
     {
      "label": "2028 3rd",
      "season": 2028,
      "round": 3,
      "via": null,
-     "value": 1005,
-     "trend30": -5
+     "value": 1007,
+     "trend30": -21
     },
     {
      "label": "2029 3rd",
      "season": 2029,
      "round": 3,
      "via": null,
-     "value": 923,
-     "trend30": -23
+     "value": 932,
+     "trend30": -11
     }
    ],
    "sidelined_players": [
     {
-     "name": "Jonathon Brooks",
-     "pos": "RB",
-     "team": "CAR",
-     "value": 1237,
-     "rank": 171,
-     "trend30": -125,
+     "name": "Jayden Reed",
+     "pos": "WR",
+     "team": "GB",
+     "value": 1247,
+     "rank": 168,
+     "trend30": -103,
      "sidelined": true,
      "status": "IR"
     },
     {
-     "name": "Jayden Reed",
-     "pos": "WR",
-     "team": "GB",
-     "value": 1233,
-     "rank": 172,
-     "trend30": 34,
+     "name": "Jonathon Brooks",
+     "pos": "RB",
+     "team": "CAR",
+     "value": 1200,
+     "rank": 174,
+     "trend30": -116,
      "sidelined": true,
      "status": "IR"
     },
@@ -3170,33 +3170,33 @@
      "name": "Dameon Pierce",
      "pos": "RB",
      "team": "PHI",
-     "value": 226,
-     "rank": 301,
-     "trend30": 226,
+     "value": 241,
+     "rank": 292,
+     "trend30": 241,
      "sidelined": true,
      "status": "IR"
     }
    ],
    "off_index": 0,
    "rank": 5,
-   "since": "2026-10-31",
-   "since_change": -411
+   "since": "2026-11-01",
+   "since_change": -726
   },
   "Painty69": {
-   "total": 65804,
-   "players": 52146,
-   "picks": 13658,
+   "total": 66136,
+   "players": 52526,
+   "picks": 13610,
    "pick_count": 9,
    "by_pos": {
-    "QB": 13120,
-    "TE": 6948,
-    "WR": 9680,
-    "RB": 22398,
-    "PICK": 13658
+    "QB": 13132,
+    "TE": 6987,
+    "WR": 9867,
+    "RB": 22540,
+    "PICK": 13610
    },
-   "move30": 2066,
-   "move30_pct": 3.2,
-   "sidelined": 3360,
+   "move30": 2130,
+   "move30_pct": 3.3,
+   "sidelined": 3402,
    "sidelined_pct": 5.1,
    "status": "stable",
    "top": [
@@ -3204,9 +3204,9 @@
      "name": "Jahmyr Gibbs",
      "pos": "RB",
      "team": "DET",
-     "value": 10225,
+     "value": 10147,
      "rank": 3,
-     "trend30": -196,
+     "trend30": -161,
      "sidelined": false,
      "status": ""
     },
@@ -3214,9 +3214,9 @@
      "name": "Joe Burrow",
      "pos": "QB",
      "team": "CIN",
-     "value": 7345,
+     "value": 7335,
      "rank": 10,
-     "trend30": 1092,
+     "trend30": 1058,
      "sidelined": false,
      "status": ""
     },
@@ -3224,9 +3224,9 @@
      "name": "Christian McCaffrey",
      "pos": "RB",
      "team": "SF",
-     "value": 4331,
-     "rank": 29,
-     "trend30": -25,
+     "value": 4312,
+     "rank": 31,
+     "trend30": -85,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -3234,9 +3234,9 @@
      "name": "C.J. Stroud",
      "pos": "QB",
      "team": "HOU",
-     "value": 4007,
-     "rank": 36,
-     "trend30": 565,
+     "value": 3998,
+     "rank": 39,
+     "trend30": 328,
      "sidelined": false,
      "status": ""
     },
@@ -3244,9 +3244,9 @@
      "name": "Carnell Tate",
      "pos": "WR",
      "team": "TEN",
-     "value": 3360,
-     "rank": 56,
-     "trend30": -99,
+     "value": 3402,
+     "rank": 55,
+     "trend30": -224,
      "sidelined": true,
      "status": "Out"
     },
@@ -3254,9 +3254,9 @@
      "name": "Tucker Kraft",
      "pos": "TE",
      "team": "GB",
-     "value": 3134,
-     "rank": 62,
-     "trend30": 365,
+     "value": 3279,
+     "rank": 58,
+     "trend30": 348,
      "sidelined": false,
      "status": ""
     }
@@ -3266,9 +3266,9 @@
      "name": "Jahmyr Gibbs",
      "pos": "RB",
      "team": "DET",
-     "value": 10225,
+     "value": 10147,
      "rank": 3,
-     "trend30": -196,
+     "trend30": -161,
      "sidelined": false,
      "status": ""
     },
@@ -3276,9 +3276,9 @@
      "name": "Joe Burrow",
      "pos": "QB",
      "team": "CIN",
-     "value": 7345,
+     "value": 7335,
      "rank": 10,
-     "trend30": 1092,
+     "trend30": 1058,
      "sidelined": false,
      "status": ""
     },
@@ -3286,9 +3286,9 @@
      "name": "Christian McCaffrey",
      "pos": "RB",
      "team": "SF",
-     "value": 4331,
-     "rank": 29,
-     "trend30": -25,
+     "value": 4312,
+     "rank": 31,
+     "trend30": -85,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -3296,9 +3296,9 @@
      "name": "C.J. Stroud",
      "pos": "QB",
      "team": "HOU",
-     "value": 4007,
-     "rank": 36,
-     "trend30": 565,
+     "value": 3998,
+     "rank": 39,
+     "trend30": 328,
      "sidelined": false,
      "status": ""
     },
@@ -3306,9 +3306,9 @@
      "name": "Carnell Tate",
      "pos": "WR",
      "team": "TEN",
-     "value": 3360,
-     "rank": 56,
-     "trend30": -99,
+     "value": 3402,
+     "rank": 55,
+     "trend30": -224,
      "sidelined": true,
      "status": "Out"
     },
@@ -3316,9 +3316,9 @@
      "name": "Tucker Kraft",
      "pos": "TE",
      "team": "GB",
-     "value": 3134,
-     "rank": 62,
-     "trend30": 365,
+     "value": 3279,
+     "rank": 58,
+     "trend30": 348,
      "sidelined": false,
      "status": ""
     },
@@ -3326,9 +3326,9 @@
      "name": "Saquon Barkley",
      "pos": "RB",
      "team": "PHI",
-     "value": 2628,
-     "rank": 76,
-     "trend30": -383,
+     "value": 2596,
+     "rank": 78,
+     "trend30": -388,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -3336,8 +3336,8 @@
      "name": "Josh Jacobs",
      "pos": "RB",
      "team": "GB",
-     "value": 2536,
-     "rank": 78,
+     "value": 2552,
+     "rank": 80,
      "trend30": 604,
      "sidelined": false,
      "status": ""
@@ -3346,9 +3346,9 @@
      "name": "Denzel Boston",
      "pos": "WR",
      "team": "CLE",
-     "value": 2278,
-     "rank": 90,
-     "trend30": -421,
+     "value": 2325,
+     "rank": 88,
+     "trend30": -292,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -3356,9 +3356,9 @@
      "name": "Mike Evans",
      "pos": "WR",
      "team": "SF",
-     "value": 2043,
+     "value": 2054,
      "rank": 100,
-     "trend30": 220,
+     "trend30": 261,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -3366,19 +3366,9 @@
      "name": "Kirk Cousins",
      "pos": "QB",
      "team": "LV",
-     "value": 1768,
-     "rank": 116,
-     "trend30": 46,
-     "sidelined": false,
-     "status": ""
-    },
-    {
-     "name": "T.J. Hockenson",
-     "pos": "TE",
-     "team": "MIN",
-     "value": 1582,
-     "rank": 126,
-     "trend30": 208,
+     "value": 1799,
+     "rank": 113,
+     "trend30": 191,
      "sidelined": false,
      "status": ""
     },
@@ -3386,19 +3376,19 @@
      "name": "Tyler Allgeier",
      "pos": "RB",
      "team": "ARI",
-     "value": 1476,
-     "rank": 137,
-     "trend30": 263,
+     "value": 1603,
+     "rank": 125,
+     "trend30": 393,
      "sidelined": false,
      "status": ""
     },
     {
-     "name": "Oronde Gadsden",
+     "name": "T.J. Hockenson",
      "pos": "TE",
-     "team": "LAC",
-     "value": 1239,
-     "rank": 168,
-     "trend30": -124,
+     "team": "MIN",
+     "value": 1557,
+     "rank": 128,
+     "trend30": 183,
      "sidelined": false,
      "status": ""
     },
@@ -3406,9 +3396,19 @@
      "name": "Rachaad White",
      "pos": "RB",
      "team": "WAS",
-     "value": 1202,
-     "rank": 175,
-     "trend30": 30,
+     "value": 1330,
+     "rank": 155,
+     "trend30": 116,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Oronde Gadsden",
+     "pos": "TE",
+     "team": "LAC",
+     "value": 1240,
+     "rank": 171,
+     "trend30": -168,
      "sidelined": false,
      "status": ""
     },
@@ -3416,9 +3416,9 @@
      "name": "Courtland Sutton",
      "pos": "WR",
      "team": "DEN",
-     "value": 1082,
-     "rank": 194,
-     "trend30": -106,
+     "value": 1102,
+     "rank": 189,
+     "trend30": -45,
      "sidelined": false,
      "status": ""
     },
@@ -3426,19 +3426,19 @@
      "name": "Mason Taylor",
      "pos": "TE",
      "team": "NYJ",
-     "value": 993,
-     "rank": 205,
-     "trend30": 683,
+     "value": 911,
+     "rank": 212,
+     "trend30": 592,
      "sidelined": false,
-     "status": "Questionable"
+     "status": ""
     },
     {
      "name": "Isaac TeSlaa",
      "pos": "WR",
      "team": "DET",
-     "value": 737,
-     "rank": 228,
-     "trend30": -291,
+     "value": 821,
+     "rank": 219,
+     "trend30": -265,
      "sidelined": false,
      "status": ""
     },
@@ -3446,11 +3446,11 @@
      "name": "Jauan Jennings",
      "pos": "WR",
      "team": "MIN",
-     "value": 180,
-     "rank": 309,
-     "trend30": -317,
+     "value": 163,
+     "rank": 317,
+     "trend30": -175,
      "sidelined": false,
-     "status": ""
+     "status": "Questionable"
     }
    ],
    "pick_list": [
@@ -3459,40 +3459,40 @@
      "season": 2027,
      "round": 1,
      "via": null,
-     "value": 2503,
-     "trend30": -34
+     "value": 2465,
+     "trend30": -75
     },
     {
      "label": "2028 1st",
      "season": 2028,
      "round": 1,
      "via": null,
-     "value": 2216,
-     "trend30": -15
+     "value": 2212,
+     "trend30": -22
     },
     {
      "label": "2029 1st",
      "season": 2029,
      "round": 1,
      "via": null,
-     "value": 1910,
-     "trend30": 24
+     "value": 1906,
+     "trend30": 19
     },
     {
      "label": "2027 2nd (Late)",
      "season": 2027,
      "round": 2,
      "via": null,
-     "value": 1442,
-     "trend30": 13
+     "value": 1431,
+     "trend30": -23
     },
     {
      "label": "2028 2nd",
      "season": 2028,
      "round": 2,
      "via": null,
-     "value": 1366,
-     "trend30": -18
+     "value": 1362,
+     "trend30": -16
     },
     {
      "label": "2029 2nd",
@@ -3500,31 +3500,31 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 23
+     "trend30": 24
     },
     {
      "label": "2027 3rd (Late)",
      "season": 2027,
      "round": 3,
      "via": null,
-     "value": 1016,
-     "trend30": -13
+     "value": 1018,
+     "trend30": -16
     },
     {
      "label": "2028 3rd",
      "season": 2028,
      "round": 3,
      "via": null,
-     "value": 1005,
-     "trend30": -5
+     "value": 1007,
+     "trend30": -21
     },
     {
      "label": "2029 3rd",
      "season": 2029,
      "round": 3,
      "via": null,
-     "value": 923,
-     "trend30": -23
+     "value": 932,
+     "trend30": -11
     }
    ],
    "sidelined_players": [
@@ -3532,43 +3532,43 @@
      "name": "Carnell Tate",
      "pos": "WR",
      "team": "TEN",
-     "value": 3360,
-     "rank": 56,
-     "trend30": -99,
+     "value": 3402,
+     "rank": 55,
+     "trend30": -224,
      "sidelined": true,
      "status": "Out"
     }
    ],
    "off_index": 0,
    "rank": 4,
-   "since": "2026-10-31",
-   "since_change": 142
+   "since": "2026-11-01",
+   "since_change": 510
   },
   "CMac91": {
-   "total": 59275,
-   "players": 44543,
-   "picks": 14732,
+   "total": 59220,
+   "players": 44578,
+   "picks": 14642,
    "pick_count": 9,
    "by_pos": {
-    "TE": 4507,
-    "QB": 11893,
-    "WR": 15318,
-    "RB": 12825,
-    "PICK": 14732
+    "TE": 4498,
+    "QB": 11763,
+    "WR": 15525,
+    "RB": 12792,
+    "PICK": 14642
    },
-   "move30": -1802,
-   "move30_pct": -3.0,
-   "sidelined": 2808,
-   "sidelined_pct": 4.7,
+   "move30": -2585,
+   "move30_pct": -4.2,
+   "sidelined": 2852,
+   "sidelined_pct": 4.8,
    "status": "correction",
    "top": [
     {
      "name": "CeeDee Lamb",
      "pos": "WR",
      "team": "DAL",
-     "value": 6349,
-     "rank": 15,
-     "trend30": -535,
+     "value": 6689,
+     "rank": 14,
+     "trend30": -478,
      "sidelined": false,
      "status": ""
     },
@@ -3576,9 +3576,9 @@
      "name": "James Cook",
      "pos": "RB",
      "team": "BUF",
-     "value": 5019,
-     "rank": 23,
-     "trend30": -163,
+     "value": 5023,
+     "rank": 24,
+     "trend30": -334,
      "sidelined": false,
      "status": ""
     },
@@ -3586,9 +3586,9 @@
      "name": "Jordan Love",
      "pos": "QB",
      "team": "GB",
-     "value": 4937,
-     "rank": 25,
-     "trend30": 1125,
+     "value": 4890,
+     "rank": 26,
+     "trend30": 1131,
      "sidelined": false,
      "status": ""
     },
@@ -3596,9 +3596,9 @@
      "name": "Bryce Young",
      "pos": "QB",
      "team": "CAR",
-     "value": 3560,
-     "rank": 52,
-     "trend30": -290,
+     "value": 3466,
+     "rank": 53,
+     "trend30": -622,
      "sidelined": false,
      "status": ""
     },
@@ -3606,9 +3606,9 @@
      "name": "Bo Nix",
      "pos": "QB",
      "team": "DEN",
-     "value": 3396,
+     "value": 3407,
      "rank": 54,
-     "trend30": -664,
+     "trend30": -602,
      "sidelined": false,
      "status": ""
     },
@@ -3616,11 +3616,11 @@
      "name": "Breece Hall",
      "pos": "RB",
      "team": "NYJ",
-     "value": 3204,
+     "value": 3177,
      "rank": 59,
-     "trend30": -282,
+     "trend30": -388,
      "sidelined": false,
-     "status": "Questionable"
+     "status": ""
     }
    ],
    "assets": [
@@ -3628,9 +3628,9 @@
      "name": "CeeDee Lamb",
      "pos": "WR",
      "team": "DAL",
-     "value": 6349,
-     "rank": 15,
-     "trend30": -535,
+     "value": 6689,
+     "rank": 14,
+     "trend30": -478,
      "sidelined": false,
      "status": ""
     },
@@ -3638,9 +3638,9 @@
      "name": "James Cook",
      "pos": "RB",
      "team": "BUF",
-     "value": 5019,
-     "rank": 23,
-     "trend30": -163,
+     "value": 5023,
+     "rank": 24,
+     "trend30": -334,
      "sidelined": false,
      "status": ""
     },
@@ -3648,9 +3648,9 @@
      "name": "Jordan Love",
      "pos": "QB",
      "team": "GB",
-     "value": 4937,
-     "rank": 25,
-     "trend30": 1125,
+     "value": 4890,
+     "rank": 26,
+     "trend30": 1131,
      "sidelined": false,
      "status": ""
     },
@@ -3658,9 +3658,9 @@
      "name": "Bryce Young",
      "pos": "QB",
      "team": "CAR",
-     "value": 3560,
-     "rank": 52,
-     "trend30": -290,
+     "value": 3466,
+     "rank": 53,
+     "trend30": -622,
      "sidelined": false,
      "status": ""
     },
@@ -3668,9 +3668,9 @@
      "name": "Bo Nix",
      "pos": "QB",
      "team": "DEN",
-     "value": 3396,
+     "value": 3407,
      "rank": 54,
-     "trend30": -664,
+     "trend30": -602,
      "sidelined": false,
      "status": ""
     },
@@ -3678,19 +3678,19 @@
      "name": "Breece Hall",
      "pos": "RB",
      "team": "NYJ",
-     "value": 3204,
+     "value": 3177,
      "rank": 59,
-     "trend30": -282,
+     "trend30": -388,
      "sidelined": false,
-     "status": "Questionable"
+     "status": ""
     },
     {
      "name": "Sam LaPorta",
      "pos": "TE",
      "team": "DET",
-     "value": 3143,
-     "rank": 61,
-     "trend30": 235,
+     "value": 3158,
+     "rank": 60,
+     "trend30": 139,
      "sidelined": false,
      "status": ""
     },
@@ -3698,9 +3698,9 @@
      "name": "Marvin Harrison Jr",
      "pos": "WR",
      "team": "HOU",
-     "value": 2024,
-     "rank": 104,
-     "trend30": -219,
+     "value": 1987,
+     "rank": 106,
+     "trend30": -196,
      "sidelined": false,
      "status": ""
     },
@@ -3708,9 +3708,9 @@
      "name": "Rhamondre Stevenson",
      "pos": "RB",
      "team": "NE",
-     "value": 1913,
-     "rank": 109,
-     "trend30": 285,
+     "value": 1861,
+     "rank": 110,
+     "trend30": 198,
      "sidelined": false,
      "status": ""
     },
@@ -3718,9 +3718,9 @@
      "name": "Alec Pierce",
      "pos": "WR",
      "team": "IND",
-     "value": 1660,
-     "rank": 124,
-     "trend30": -122,
+     "value": 1684,
+     "rank": 120,
+     "trend30": -100,
      "sidelined": true,
      "status": "IR"
     },
@@ -3728,9 +3728,9 @@
      "name": "Chig Okonkwo",
      "pos": "TE",
      "team": "WAS",
-     "value": 1364,
-     "rank": 150,
-     "trend30": 537,
+     "value": 1340,
+     "rank": 152,
+     "trend30": 599,
      "sidelined": false,
      "status": ""
     },
@@ -3738,9 +3738,9 @@
      "name": "Malachi Fields",
      "pos": "WR",
      "team": "NYG",
-     "value": 1304,
-     "rank": 157,
-     "trend30": -46,
+     "value": 1302,
+     "rank": 159,
+     "trend30": -56,
      "sidelined": false,
      "status": ""
     },
@@ -3748,9 +3748,9 @@
      "name": "Xavier Worthy",
      "pos": "WR",
      "team": "KC",
-     "value": 1301,
-     "rank": 159,
-     "trend30": -221,
+     "value": 1288,
+     "rank": 161,
+     "trend30": -241,
      "sidelined": false,
      "status": ""
     },
@@ -3758,9 +3758,9 @@
      "name": "Jordan Mason",
      "pos": "RB",
      "team": "MIN",
-     "value": 1239,
-     "rank": 169,
-     "trend30": -111,
+     "value": 1249,
+     "rank": 166,
+     "trend30": -79,
      "sidelined": false,
      "status": ""
     },
@@ -3768,9 +3768,9 @@
      "name": "Pat Bryant",
      "pos": "WR",
      "team": "DEN",
-     "value": 1148,
-     "rank": 185,
-     "trend30": -280,
+     "value": 1168,
+     "rank": 179,
+     "trend30": -235,
      "sidelined": true,
      "status": "IR"
     },
@@ -3778,9 +3778,9 @@
      "name": "Alvin Kamara",
      "pos": "RB",
      "team": "NO",
-     "value": 1100,
-     "rank": 191,
-     "trend30": -79,
+     "value": 1120,
+     "rank": 186,
+     "trend30": -112,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -3788,9 +3788,9 @@
      "name": "Dontayvion Wicks",
      "pos": "WR",
      "team": "PHI",
-     "value": 1017,
-     "rank": 203,
-     "trend30": -261,
+     "value": 954,
+     "rank": 209,
+     "trend30": -338,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -3798,9 +3798,9 @@
      "name": "Jack Bech",
      "pos": "WR",
      "team": "LV",
-     "value": 515,
-     "rank": 244,
-     "trend30": 45,
+     "value": 453,
+     "rank": 246,
+     "trend30": -54,
      "sidelined": false,
      "status": ""
     },
@@ -3808,9 +3808,9 @@
      "name": "Jaylen Wright",
      "pos": "RB",
      "team": "MIA",
-     "value": 350,
-     "rank": 271,
-     "trend30": -652,
+     "value": 362,
+     "rank": 267,
+     "trend30": -607,
      "sidelined": false,
      "status": "Questionable"
     }
@@ -3821,40 +3821,40 @@
      "season": 2027,
      "round": 1,
      "via": null,
-     "value": 3237,
-     "trend30": -105
+     "value": 3171,
+     "trend30": -134
     },
     {
      "label": "2028 1st",
      "season": 2028,
      "round": 1,
      "via": null,
-     "value": 2216,
-     "trend30": -15
+     "value": 2212,
+     "trend30": -22
     },
     {
      "label": "2029 1st",
      "season": 2029,
      "round": 1,
      "via": null,
-     "value": 1910,
-     "trend30": 24
+     "value": 1906,
+     "trend30": 19
     },
     {
      "label": "2027 2nd (Mid)",
      "season": 2027,
      "round": 2,
      "via": null,
-     "value": 1680,
-     "trend30": 45
+     "value": 1675,
+     "trend30": -8
     },
     {
      "label": "2028 2nd",
      "season": 2028,
      "round": 2,
      "via": null,
-     "value": 1366,
-     "trend30": -18
+     "value": 1362,
+     "trend30": -16
     },
     {
      "label": "2029 2nd",
@@ -3862,31 +3862,31 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 23
+     "trend30": 24
     },
     {
      "label": "2027 3rd (Mid)",
      "season": 2027,
      "round": 3,
      "via": null,
-     "value": 1118,
-     "trend30": -30
+     "value": 1100,
+     "trend30": -41
     },
     {
      "label": "2028 3rd",
      "season": 2028,
      "round": 3,
      "via": null,
-     "value": 1005,
-     "trend30": -5
+     "value": 1007,
+     "trend30": -21
     },
     {
      "label": "2029 3rd",
      "season": 2029,
      "round": 3,
      "via": null,
-     "value": 923,
-     "trend30": -23
+     "value": 932,
+     "trend30": -11
     }
    ],
    "sidelined_players": [
@@ -3894,9 +3894,9 @@
      "name": "Alec Pierce",
      "pos": "WR",
      "team": "IND",
-     "value": 1660,
-     "rank": 124,
-     "trend30": -122,
+     "value": 1684,
+     "rank": 120,
+     "trend30": -100,
      "sidelined": true,
      "status": "IR"
     },
@@ -3904,43 +3904,43 @@
      "name": "Pat Bryant",
      "pos": "WR",
      "team": "DEN",
-     "value": 1148,
-     "rank": 185,
-     "trend30": -280,
+     "value": 1168,
+     "rank": 179,
+     "trend30": -235,
      "sidelined": true,
      "status": "IR"
     }
    ],
    "off_index": 0,
    "rank": 8,
-   "since": "2026-10-31",
-   "since_change": -1349
+   "since": "2026-11-01",
+   "since_change": -1154
   },
   "YesChef23": {
-   "total": 62853,
-   "players": 45962,
-   "picks": 16891,
+   "total": 62549,
+   "players": 45794,
+   "picks": 16755,
    "pick_count": 9,
    "by_pos": {
-    "QB": 16345,
-    "WR": 13173,
-    "RB": 11871,
-    "TE": 4573,
-    "PICK": 16891
+    "QB": 16334,
+    "WR": 13139,
+    "RB": 12040,
+    "TE": 4281,
+    "PICK": 16755
    },
-   "move30": -340,
-   "move30_pct": -0.5,
-   "sidelined": 7602,
-   "sidelined_pct": 12.1,
+   "move30": -715,
+   "move30_pct": -1.1,
+   "sidelined": 7869,
+   "sidelined_pct": 12.6,
    "status": "stable",
    "top": [
     {
      "name": "Caleb Williams",
      "pos": "QB",
      "team": "CHI",
-     "value": 7727,
+     "value": 7644,
      "rank": 8,
-     "trend30": 1001,
+     "trend30": 838,
      "sidelined": false,
      "status": ""
     },
@@ -3948,9 +3948,9 @@
      "name": "Jeremiyah Love",
      "pos": "RB",
      "team": "ARI",
-     "value": 4864,
-     "rank": 26,
-     "trend30": -1336,
+     "value": 5147,
+     "rank": 23,
+     "trend30": -807,
      "sidelined": true,
      "status": "IR"
     },
@@ -3958,9 +3958,9 @@
      "name": "Luther Burden",
      "pos": "WR",
      "team": "CHI",
-     "value": 4213,
-     "rank": 32,
-     "trend30": 1194,
+     "value": 4327,
+     "rank": 30,
+     "trend30": 1095,
      "sidelined": false,
      "status": ""
     },
@@ -3968,9 +3968,9 @@
      "name": "Matthew Golden",
      "pos": "WR",
      "team": "GB",
-     "value": 4066,
-     "rank": 34,
-     "trend30": 1262,
+     "value": 4089,
+     "rank": 33,
+     "trend30": 1134,
      "sidelined": false,
      "status": ""
     },
@@ -3978,9 +3978,9 @@
      "name": "Tyler Shough",
      "pos": "QB",
      "team": "NO",
-     "value": 3632,
-     "rank": 50,
-     "trend30": -1056,
+     "value": 3762,
+     "rank": 44,
+     "trend30": -788,
      "sidelined": false,
      "status": ""
     },
@@ -3988,9 +3988,9 @@
      "name": "George Pickens",
      "pos": "WR",
      "team": "DAL",
-     "value": 3593,
-     "rank": 51,
-     "trend30": -417,
+     "value": 3467,
+     "rank": 52,
+     "trend30": -677,
      "sidelined": false,
      "status": "Questionable"
     }
@@ -4000,9 +4000,9 @@
      "name": "Caleb Williams",
      "pos": "QB",
      "team": "CHI",
-     "value": 7727,
+     "value": 7644,
      "rank": 8,
-     "trend30": 1001,
+     "trend30": 838,
      "sidelined": false,
      "status": ""
     },
@@ -4010,9 +4010,9 @@
      "name": "Jeremiyah Love",
      "pos": "RB",
      "team": "ARI",
-     "value": 4864,
-     "rank": 26,
-     "trend30": -1336,
+     "value": 5147,
+     "rank": 23,
+     "trend30": -807,
      "sidelined": true,
      "status": "IR"
     },
@@ -4020,9 +4020,9 @@
      "name": "Luther Burden",
      "pos": "WR",
      "team": "CHI",
-     "value": 4213,
-     "rank": 32,
-     "trend30": 1194,
+     "value": 4327,
+     "rank": 30,
+     "trend30": 1095,
      "sidelined": false,
      "status": ""
     },
@@ -4030,9 +4030,9 @@
      "name": "Matthew Golden",
      "pos": "WR",
      "team": "GB",
-     "value": 4066,
-     "rank": 34,
-     "trend30": 1262,
+     "value": 4089,
+     "rank": 33,
+     "trend30": 1134,
      "sidelined": false,
      "status": ""
     },
@@ -4040,9 +4040,9 @@
      "name": "Tyler Shough",
      "pos": "QB",
      "team": "NO",
-     "value": 3632,
-     "rank": 50,
-     "trend30": -1056,
+     "value": 3762,
+     "rank": 44,
+     "trend30": -788,
      "sidelined": false,
      "status": ""
     },
@@ -4050,9 +4050,9 @@
      "name": "George Pickens",
      "pos": "WR",
      "team": "DAL",
-     "value": 3593,
-     "rank": 51,
-     "trend30": -417,
+     "value": 3467,
+     "rank": 52,
+     "trend30": -677,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -4060,9 +4060,9 @@
      "name": "Jadarian Price",
      "pos": "RB",
      "team": "SEA",
-     "value": 2431,
-     "rank": 83,
-     "trend30": -36,
+     "value": 2371,
+     "rank": 84,
+     "trend30": -237,
      "sidelined": false,
      "status": ""
     },
@@ -4070,9 +4070,9 @@
      "name": "Kenyon Sadiq",
      "pos": "TE",
      "team": "NYJ",
-     "value": 2144,
+     "value": 2110,
      "rank": 96,
-     "trend30": -622,
+     "trend30": -586,
      "sidelined": false,
      "status": ""
     },
@@ -4080,9 +4080,9 @@
      "name": "J.J. McCarthy",
      "pos": "QB",
      "team": "NYG",
-     "value": 1965,
-     "rank": 106,
-     "trend30": 511,
+     "value": 1940,
+     "rank": 107,
+     "trend30": 841,
      "sidelined": false,
      "status": ""
     },
@@ -4090,9 +4090,9 @@
      "name": "Deshaun Watson",
      "pos": "QB",
      "team": "CLE",
-     "value": 1598,
-     "rank": 125,
-     "trend30": -96,
+     "value": 1544,
+     "rank": 129,
+     "trend30": -145,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -4100,9 +4100,9 @@
      "name": "RJ Harvey",
      "pos": "RB",
      "team": "DEN",
-     "value": 1474,
-     "rank": 138,
-     "trend30": -270,
+     "value": 1479,
+     "rank": 134,
+     "trend30": -243,
      "sidelined": true,
      "status": "IR"
     },
@@ -4110,9 +4110,9 @@
      "name": "Carson Beck",
      "pos": "QB",
      "team": "ARI",
-     "value": 1423,
-     "rank": 143,
-     "trend30": 241,
+     "value": 1444,
+     "rank": 139,
+     "trend30": 93,
      "sidelined": false,
      "status": ""
     },
@@ -4120,9 +4120,9 @@
      "name": "Woody Marks",
      "pos": "RB",
      "team": "HOU",
-     "value": 1359,
-     "rank": 152,
-     "trend30": -4,
+     "value": 1391,
+     "rank": 144,
+     "trend30": 48,
      "sidelined": false,
      "status": ""
     },
@@ -4130,9 +4130,9 @@
      "name": "Michael Mayer",
      "pos": "TE",
      "team": "LV",
-     "value": 1310,
-     "rank": 156,
-     "trend30": 25,
+     "value": 1331,
+     "rank": 154,
+     "trend30": -12,
      "sidelined": false,
      "status": ""
     },
@@ -4140,39 +4140,29 @@
      "name": "Keon Coleman",
      "pos": "WR",
      "team": "BUF",
-     "value": 1301,
-     "rank": 158,
-     "trend30": -113,
+     "value": 1256,
+     "rank": 164,
+     "trend30": -197,
      "sidelined": false,
-     "status": ""
+     "status": "Questionable"
     },
     {
      "name": "Jacory Croskey-Merritt",
      "pos": "RB",
      "team": "WAS",
-     "value": 1264,
-     "rank": 166,
-     "trend30": -309,
+     "value": 1243,
+     "rank": 170,
+     "trend30": -200,
      "sidelined": true,
      "status": "IR"
-    },
-    {
-     "name": "Tyler Higbee",
-     "pos": "TE",
-     "team": "LAR",
-     "value": 566,
-     "rank": 240,
-     "trend30": -41,
-     "sidelined": false,
-     "status": ""
     },
     {
      "name": "Darren Waller",
      "pos": "TE",
      "team": "CAR",
-     "value": 553,
-     "rank": 241,
-     "trend30": -420,
+     "value": 450,
+     "rank": 248,
+     "trend30": -477,
      "sidelined": false,
      "status": ""
     },
@@ -4180,9 +4170,19 @@
      "name": "Samaje Perine",
      "pos": "RB",
      "team": "CIN",
-     "value": 479,
-     "rank": 249,
-     "trend30": 316,
+     "value": 409,
+     "rank": 257,
+     "trend30": 298,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Tyler Higbee",
+     "pos": "TE",
+     "team": "LAR",
+     "value": 390,
+     "rank": 260,
+     "trend30": -394,
      "sidelined": false,
      "status": ""
     }
@@ -4193,40 +4193,40 @@
      "season": 2027,
      "round": 1,
      "via": null,
-     "value": 4917,
-     "trend30": -158
+     "value": 4815,
+     "trend30": -204
     },
     {
      "label": "2028 1st",
      "season": 2028,
      "round": 1,
      "via": null,
-     "value": 2216,
-     "trend30": -15
+     "value": 2212,
+     "trend30": -22
     },
     {
      "label": "2027 2nd (Early)",
      "season": 2027,
      "round": 2,
      "via": null,
-     "value": 2017,
-     "trend30": 13
+     "value": 1998,
+     "trend30": -36
     },
     {
      "label": "2029 1st",
      "season": 2029,
      "round": 1,
      "via": null,
-     "value": 1910,
-     "trend30": 24
+     "value": 1906,
+     "trend30": 19
     },
     {
      "label": "2028 2nd",
      "season": 2028,
      "round": 2,
      "via": null,
-     "value": 1366,
-     "trend30": -18
+     "value": 1362,
+     "trend30": -16
     },
     {
      "label": "2029 2nd",
@@ -4234,31 +4234,31 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 23
+     "trend30": 24
     },
     {
      "label": "2027 3rd (Early)",
      "season": 2027,
      "round": 3,
      "via": null,
-     "value": 1260,
-     "trend30": -11
+     "value": 1246,
+     "trend30": -32
     },
     {
      "label": "2028 3rd",
      "season": 2028,
      "round": 3,
      "via": null,
-     "value": 1005,
-     "trend30": -5
+     "value": 1007,
+     "trend30": -21
     },
     {
      "label": "2029 3rd",
      "season": 2029,
      "round": 3,
      "via": null,
-     "value": 923,
-     "trend30": -23
+     "value": 932,
+     "trend30": -11
     }
    ],
    "sidelined_players": [
@@ -4266,9 +4266,9 @@
      "name": "Jeremiyah Love",
      "pos": "RB",
      "team": "ARI",
-     "value": 4864,
-     "rank": 26,
-     "trend30": -1336,
+     "value": 5147,
+     "rank": 23,
+     "trend30": -807,
      "sidelined": true,
      "status": "IR"
     },
@@ -4276,9 +4276,9 @@
      "name": "RJ Harvey",
      "pos": "RB",
      "team": "DEN",
-     "value": 1474,
-     "rank": 138,
-     "trend30": -270,
+     "value": 1479,
+     "rank": 134,
+     "trend30": -243,
      "sidelined": true,
      "status": "IR"
     },
@@ -4286,33 +4286,33 @@
      "name": "Jacory Croskey-Merritt",
      "pos": "RB",
      "team": "WAS",
-     "value": 1264,
-     "rank": 166,
-     "trend30": -309,
+     "value": 1243,
+     "rank": 170,
+     "trend30": -200,
      "sidelined": true,
      "status": "IR"
     }
    ],
    "off_index": 0,
    "rank": 6,
-   "since": "2026-10-31",
-   "since_change": -1321
+   "since": "2026-11-01",
+   "since_change": -1627
   },
   "fumbduckdumbfuck": {
-   "total": 59244,
-   "players": 44512,
-   "picks": 14732,
+   "total": 58358,
+   "players": 43716,
+   "picks": 14642,
    "pick_count": 9,
    "by_pos": {
-    "WR": 12572,
-    "RB": 14676,
-    "TE": 10027,
-    "QB": 7237,
-    "PICK": 14732
+    "WR": 12472,
+    "RB": 14185,
+    "TE": 10008,
+    "QB": 7051,
+    "PICK": 14642
    },
-   "move30": -3173,
-   "move30_pct": -5.1,
-   "sidelined": 291,
+   "move30": -4547,
+   "move30_pct": -7.2,
+   "sidelined": 275,
    "sidelined_pct": 0.5,
    "status": "crash",
    "top": [
@@ -4320,9 +4320,9 @@
      "name": "Brock Bowers",
      "pos": "TE",
      "team": "LV",
-     "value": 7816,
+     "value": 7771,
      "rank": 7,
-     "trend30": 82,
+     "trend30": -31,
      "sidelined": false,
      "status": ""
     },
@@ -4330,9 +4330,9 @@
      "name": "Jonathan Taylor",
      "pos": "RB",
      "team": "IND",
-     "value": 5562,
+     "value": 5447,
      "rank": 19,
-     "trend30": -341,
+     "trend30": -348,
      "sidelined": false,
      "status": ""
     },
@@ -4340,9 +4340,9 @@
      "name": "Ashton Jeanty",
      "pos": "RB",
      "team": "LV",
-     "value": 4750,
-     "rank": 27,
-     "trend30": -1538,
+     "value": 4477,
+     "rank": 28,
+     "trend30": -1876,
      "sidelined": false,
      "status": ""
     },
@@ -4350,9 +4350,19 @@
      "name": "Dak Prescott",
      "pos": "QB",
      "team": "DAL",
-     "value": 4031,
-     "rank": 35,
-     "trend30": -131,
+     "value": 4010,
+     "rank": 37,
+     "trend30": -283,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Rashee Rice",
+     "pos": "WR",
+     "team": "KC",
+     "value": 2796,
+     "rank": 69,
+     "trend30": -212,
      "sidelined": false,
      "status": ""
     },
@@ -4360,19 +4370,9 @@
      "name": "DeVonta Smith",
      "pos": "WR",
      "team": "PHI",
-     "value": 2813,
-     "rank": 72,
-     "trend30": -542,
-     "sidelined": false,
-     "status": "Questionable"
-    },
-    {
-     "name": "Michael Wilson",
-     "pos": "WR",
-     "team": "ARI",
-     "value": 2750,
-     "rank": 74,
-     "trend30": -54,
+     "value": 2735,
+     "rank": 73,
+     "trend30": -417,
      "sidelined": false,
      "status": "Questionable"
     }
@@ -4382,9 +4382,9 @@
      "name": "Brock Bowers",
      "pos": "TE",
      "team": "LV",
-     "value": 7816,
+     "value": 7771,
      "rank": 7,
-     "trend30": 82,
+     "trend30": -31,
      "sidelined": false,
      "status": ""
     },
@@ -4392,9 +4392,9 @@
      "name": "Jonathan Taylor",
      "pos": "RB",
      "team": "IND",
-     "value": 5562,
+     "value": 5447,
      "rank": 19,
-     "trend30": -341,
+     "trend30": -348,
      "sidelined": false,
      "status": ""
     },
@@ -4402,9 +4402,9 @@
      "name": "Ashton Jeanty",
      "pos": "RB",
      "team": "LV",
-     "value": 4750,
-     "rank": 27,
-     "trend30": -1538,
+     "value": 4477,
+     "rank": 28,
+     "trend30": -1876,
      "sidelined": false,
      "status": ""
     },
@@ -4412,9 +4412,19 @@
      "name": "Dak Prescott",
      "pos": "QB",
      "team": "DAL",
-     "value": 4031,
-     "rank": 35,
-     "trend30": -131,
+     "value": 4010,
+     "rank": 37,
+     "trend30": -283,
+     "sidelined": false,
+     "status": ""
+    },
+    {
+     "name": "Rashee Rice",
+     "pos": "WR",
+     "team": "KC",
+     "value": 2796,
+     "rank": 69,
+     "trend30": -212,
      "sidelined": false,
      "status": ""
     },
@@ -4422,9 +4432,9 @@
      "name": "DeVonta Smith",
      "pos": "WR",
      "team": "PHI",
-     "value": 2813,
-     "rank": 72,
-     "trend30": -542,
+     "value": 2735,
+     "rank": 73,
+     "trend30": -417,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -4432,19 +4442,9 @@
      "name": "Michael Wilson",
      "pos": "WR",
      "team": "ARI",
-     "value": 2750,
-     "rank": 74,
-     "trend30": -54,
-     "sidelined": false,
-     "status": "Questionable"
-    },
-    {
-     "name": "Rashee Rice",
-     "pos": "WR",
-     "team": "KC",
-     "value": 2716,
-     "rank": 75,
-     "trend30": -250,
+     "value": 2611,
+     "rank": 77,
+     "trend30": -273,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -4452,9 +4452,9 @@
      "name": "Makai Lemon",
      "pos": "WR",
      "team": "PHI",
-     "value": 2278,
-     "rank": 89,
-     "trend30": -128,
+     "value": 2329,
+     "rank": 86,
+     "trend30": 39,
      "sidelined": false,
      "status": ""
     },
@@ -4462,9 +4462,19 @@
      "name": "Kyler Murray",
      "pos": "QB",
      "team": "MIN",
-     "value": 2146,
-     "rank": 95,
-     "trend30": -47,
+     "value": 1998,
+     "rank": 104,
+     "trend30": -164,
+     "sidelined": false,
+     "status": "Questionable"
+    },
+    {
+     "name": "Kyle Monangai",
+     "pos": "RB",
+     "team": "CHI",
+     "value": 1785,
+     "rank": 114,
+     "trend30": -334,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -4472,29 +4482,19 @@
      "name": "Tony Pollard",
      "pos": "RB",
      "team": "TEN",
-     "value": 1842,
-     "rank": 112,
-     "trend30": 379,
+     "value": 1749,
+     "rank": 117,
+     "trend30": 229,
      "sidelined": false,
      "status": ""
-    },
-    {
-     "name": "Kyle Monangai",
-     "pos": "RB",
-     "team": "CHI",
-     "value": 1837,
-     "rank": 113,
-     "trend30": -215,
-     "sidelined": false,
-     "status": "Questionable"
     },
     {
      "name": "Dallas Goedert",
      "pos": "TE",
      "team": "PHI",
-     "value": 1459,
-     "rank": 139,
-     "trend30": 13,
+     "value": 1474,
+     "rank": 137,
+     "trend30": 81,
      "sidelined": false,
      "status": ""
     },
@@ -4502,9 +4502,9 @@
      "name": "Wan'Dale Robinson",
      "pos": "WR",
      "team": "TEN",
-     "value": 1372,
-     "rank": 148,
-     "trend30": -5,
+     "value": 1340,
+     "rank": 153,
+     "trend30": -93,
      "sidelined": false,
      "status": ""
     },
@@ -4512,9 +4512,9 @@
      "name": "Drew Lock",
      "pos": "QB",
      "team": "SEA",
-     "value": 1060,
-     "rank": 197,
-     "trend30": 616,
+     "value": 1043,
+     "rank": 199,
+     "trend30": 593,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -4522,19 +4522,19 @@
      "name": "MarShawn Lloyd",
      "pos": "RB",
      "team": "GB",
-     "value": 685,
-     "rank": 230,
-     "trend30": -320,
+     "value": 727,
+     "rank": 226,
+     "trend30": -327,
      "sidelined": false,
-     "status": ""
+     "status": "Questionable"
     },
     {
      "name": "Rashid Shaheed",
      "pos": "WR",
      "team": "SEA",
-     "value": 643,
-     "rank": 233,
-     "trend30": -291,
+     "value": 661,
+     "rank": 231,
+     "trend30": -343,
      "sidelined": false,
      "status": "Questionable"
     },
@@ -4542,9 +4542,9 @@
      "name": "Cade Otton",
      "pos": "TE",
      "team": "TB",
-     "value": 461,
-     "rank": 252,
-     "trend30": -339,
+     "value": 488,
+     "rank": 242,
+     "trend30": -468,
      "sidelined": false,
      "status": ""
     },
@@ -4552,9 +4552,9 @@
      "name": "Elijah Arroyo",
      "pos": "TE",
      "team": "SEA",
-     "value": 291,
-     "rank": 285,
-     "trend30": 42,
+     "value": 275,
+     "rank": 287,
+     "trend30": -110,
      "sidelined": true,
      "status": "IR"
     }
@@ -4565,40 +4565,40 @@
      "season": 2027,
      "round": 1,
      "via": null,
-     "value": 3237,
-     "trend30": -105
+     "value": 3171,
+     "trend30": -134
     },
     {
      "label": "2028 1st",
      "season": 2028,
      "round": 1,
      "via": null,
-     "value": 2216,
-     "trend30": -15
+     "value": 2212,
+     "trend30": -22
     },
     {
      "label": "2029 1st",
      "season": 2029,
      "round": 1,
      "via": null,
-     "value": 1910,
-     "trend30": 24
+     "value": 1906,
+     "trend30": 19
     },
     {
      "label": "2027 2nd (Mid)",
      "season": 2027,
      "round": 2,
      "via": null,
-     "value": 1680,
-     "trend30": 45
+     "value": 1675,
+     "trend30": -8
     },
     {
      "label": "2028 2nd",
      "season": 2028,
      "round": 2,
      "via": null,
-     "value": 1366,
-     "trend30": -18
+     "value": 1362,
+     "trend30": -16
     },
     {
      "label": "2029 2nd",
@@ -4606,31 +4606,31 @@
      "round": 2,
      "via": null,
      "value": 1277,
-     "trend30": 23
+     "trend30": 24
     },
     {
      "label": "2027 3rd (Mid)",
      "season": 2027,
      "round": 3,
      "via": null,
-     "value": 1118,
-     "trend30": -30
+     "value": 1100,
+     "trend30": -41
     },
     {
      "label": "2028 3rd",
      "season": 2028,
      "round": 3,
      "via": null,
-     "value": 1005,
-     "trend30": -5
+     "value": 1007,
+     "trend30": -21
     },
     {
      "label": "2029 3rd",
      "season": 2029,
      "round": 3,
      "via": null,
-     "value": 923,
-     "trend30": -23
+     "value": 932,
+     "trend30": -11
     }
    ],
    "sidelined_players": [
@@ -4638,17 +4638,17 @@
      "name": "Elijah Arroyo",
      "pos": "TE",
      "team": "SEA",
-     "value": 291,
-     "rank": 285,
-     "trend30": 42,
+     "value": 275,
+     "rank": 287,
+     "trend30": -110,
      "sidelined": true,
      "status": "IR"
     }
    ],
    "off_index": 0,
    "rank": 9,
-   "since": "2026-10-31",
-   "since_change": 194
+   "since": "2026-11-01",
+   "since_change": -698
   }
  },
  "history": [
@@ -5126,6 +5126,23 @@
     "CMac91": 59275,
     "YesChef23": 62853,
     "fumbduckdumbfuck": 59244
+   }
+  },
+  {
+   "date": "2026-11-06",
+   "totals": {
+    "Darkspaces": 74086,
+    "Snipe58": 53032,
+    "StealingGas": 75442,
+    "Zygon": 71688,
+    "Hades9mm": 55839,
+    "Johnny4Skins": 61614,
+    "Sarge71": 50986,
+    "C33DeezNutzz": 62807,
+    "Painty69": 66136,
+    "CMac91": 59220,
+    "YesChef23": 62549,
+    "fumbduckdumbfuck": 58358
    }
   }
  ]
