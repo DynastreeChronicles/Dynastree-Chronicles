@@ -830,7 +830,7 @@
     "added": {
       "name": "Jacoby Brissett",
       "pos": "QB",
-      "team": "ARI"
+      "team": "BAL"
     },
     "dropped": [
       "Tory Horton"
@@ -904,7 +904,7 @@
     "added": {
       "name": "Kendre Miller",
       "pos": "RB",
-      "team": "NO"
+      "team": null
     },
     "dropped": [
       "Jaylin Noel"
@@ -1062,7 +1062,7 @@
     "added": {
       "name": "Dameon Pierce",
       "pos": "RB",
-      "team": "PHI"
+      "team": null
     },
     "dropped": [],
     "bid": 0
@@ -1111,7 +1111,7 @@
           {
             "name": "Kendre Miller",
             "pos": "RB",
-            "team": "NO"
+            "team": null
           }
         ],
         "receives_picks": [
@@ -1194,7 +1194,7 @@
     "added": {
       "name": "Kendre Miller",
       "pos": "RB",
-      "team": "NO"
+      "team": null
     },
     "dropped": [
       "Zonovan Knight"
@@ -1417,6 +1417,68 @@
     "dropped": [
       "New York Jets"
     ],
+    "bid": 0
+  },
+  {
+    "week": 9,
+    "type": "free_agent",
+    "created": 1794072189385,
+    "id": "1424845670015115264",
+    "manager": "StealingGas",
+    "added": {
+      "name": "Shedeur Sanders",
+      "pos": "QB",
+      "team": "CLE"
+    },
+    "dropped": [
+      "Hunter Henry"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 9,
+    "type": "waiver",
+    "created": 1793917763279,
+    "id": "1424197959980974080",
+    "manager": "Darkspaces",
+    "added": {
+      "name": "Jalen McMillan",
+      "pos": "WR",
+      "team": "TB"
+    },
+    "dropped": [
+      "Tyreek Hill"
+    ],
+    "bid": 51
+  },
+  {
+    "week": 9,
+    "type": "free_agent",
+    "created": 1793917353007,
+    "id": "1424196239175471104",
+    "manager": "Johnny4Skins",
+    "added": {
+      "name": "Carson Wentz",
+      "pos": "QB",
+      "team": "MIN"
+    },
+    "dropped": [
+      "Jalen McMillan"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 9,
+    "type": "free_agent",
+    "created": 1793828678221,
+    "id": "1423824310161747968",
+    "manager": "Hades9mm",
+    "added": {
+      "name": "Josh Cameron",
+      "pos": "WR",
+      "team": "JAX"
+    },
+    "dropped": [],
     "bid": 0
   }
 ]

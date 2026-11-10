@@ -1,0 +1,294 @@
+{
+  "week": 9,
+  "final": true,
+  "teams": [
+    {
+      "roster_id": 1,
+      "manager": "Darkspaces",
+      "points": 127.06,
+      "maxpf": 138.06,
+      "roster_points": 180.76,
+      "bench_points": 53.7,
+      "optimal": 138.06,
+      "left_on_bench": 11.0,
+      "efficiency": 92.0,
+      "mvp": {
+        "name": "Drake Maye",
+        "pos": "QB",
+        "pts": 21.26
+      },
+      "best_bench": {
+        "name": "Tank Dell",
+        "pos": "WR",
+        "pts": 20.5
+      },
+      "opponent": "C33DeezNutzz",
+      "opponent_points": 108.58,
+      "result": "W"
+    },
+    {
+      "roster_id": 2,
+      "manager": "Snipe58",
+      "points": 96.4,
+      "maxpf": 121.8,
+      "roster_points": 139.72,
+      "bench_points": 43.32,
+      "optimal": 121.8,
+      "left_on_bench": 25.4,
+      "efficiency": 79.1,
+      "mvp": {
+        "name": "Brock Purdy",
+        "pos": "QB",
+        "pts": 26.28
+      },
+      "best_bench": {
+        "name": "Juwan Johnson",
+        "pos": "TE",
+        "pts": 11.4
+      },
+      "opponent": "Zygon",
+      "opponent_points": 131.7,
+      "result": "L"
+    },
+    {
+      "roster_id": 3,
+      "manager": "StealingGas",
+      "points": 126.26,
+      "maxpf": 140.66,
+      "roster_points": 180.44,
+      "bench_points": 54.18,
+      "optimal": 140.66,
+      "left_on_bench": 14.4,
+      "efficiency": 89.8,
+      "mvp": {
+        "name": "Puka Nacua",
+        "pos": "WR",
+        "pts": 35.0
+      },
+      "best_bench": {
+        "name": "Shedeur Sanders",
+        "pos": "QB",
+        "pts": 22.68
+      },
+      "opponent": "fumbduckdumbfuck",
+      "opponent_points": 89.1,
+      "result": "W"
+    },
+    {
+      "roster_id": 4,
+      "manager": "Zygon",
+      "points": 131.7,
+      "maxpf": 143.98,
+      "roster_points": 194.0,
+      "bench_points": 62.3,
+      "optimal": 143.98,
+      "left_on_bench": 12.28,
+      "efficiency": 91.5,
+      "mvp": {
+        "name": "Kenneth Walker III",
+        "pos": "RB",
+        "pts": 36.3
+      },
+      "best_bench": {
+        "name": "Harold Fannin Jr.",
+        "pos": "TE",
+        "pts": 12.2
+      },
+      "opponent": "Snipe58",
+      "opponent_points": 96.4,
+      "result": "W"
+    },
+    {
+      "roster_id": 5,
+      "manager": "Hades9mm",
+      "points": 109.24,
+      "maxpf": 120.24,
+      "roster_points": 138.94,
+      "bench_points": 29.7,
+      "optimal": 120.24,
+      "left_on_bench": 11.0,
+      "efficiency": 90.9,
+      "mvp": {
+        "name": "Javonte Williams",
+        "pos": "RB",
+        "pts": 22.4
+      },
+      "best_bench": {
+        "name": "Travis Kelce",
+        "pos": "TE",
+        "pts": 17.3
+      },
+      "opponent": "Johnny4Skins",
+      "opponent_points": 83.54,
+      "result": "W"
+    },
+    {
+      "roster_id": 6,
+      "manager": "Johnny4Skins",
+      "points": 83.54,
+      "maxpf": 106.8,
+      "roster_points": 109.64,
+      "bench_points": 26.1,
+      "optimal": 106.8,
+      "left_on_bench": 23.26,
+      "efficiency": 78.2,
+      "mvp": {
+        "name": "Ja'Marr Chase",
+        "pos": "WR",
+        "pts": 31.5
+      },
+      "best_bench": {
+        "name": "Isaiah Likely",
+        "pos": "TE",
+        "pts": 16.3
+      },
+      "opponent": "Hades9mm",
+      "opponent_points": 109.24,
+      "result": "L"
+    },
+    {
+      "roster_id": 7,
+      "manager": "Sarge71",
+      "points": 94.8,
+      "maxpf": 94.8,
+      "roster_points": 94.8,
+      "bench_points": 0.0,
+      "optimal": 94.8,
+      "left_on_bench": 0.0,
+      "efficiency": 100.0,
+      "mvp": {
+        "name": "Bijan Robinson",
+        "pos": "RB",
+        "pts": 26.7
+      },
+      "best_bench": {
+        "name": "Sam Darnold",
+        "pos": "QB",
+        "pts": 0.0
+      },
+      "opponent": "YesChef23",
+      "opponent_points": 141.34,
+      "result": "L"
+    },
+    {
+      "roster_id": 8,
+      "manager": "C33DeezNutzz",
+      "points": 108.58,
+      "maxpf": 147.92,
+      "roster_points": 177.04,
+      "bench_points": 68.46,
+      "optimal": 147.92,
+      "left_on_bench": 39.34,
+      "efficiency": 73.4,
+      "mvp": {
+        "name": "Christian Watson",
+        "pos": "WR",
+        "pts": 30.1
+      },
+      "best_bench": {
+        "name": "Chris Olave",
+        "pos": "WR",
+        "pts": 16.8
+      },
+      "opponent": "Darkspaces",
+      "opponent_points": 127.06,
+      "result": "L"
+    },
+    {
+      "roster_id": 9,
+      "manager": "Painty69",
+      "points": 88.34,
+      "maxpf": 157.7,
+      "roster_points": 190.04,
+      "bench_points": 101.7,
+      "optimal": 157.7,
+      "left_on_bench": 69.36,
+      "efficiency": 56.0,
+      "mvp": {
+        "name": "Christian McCaffrey",
+        "pos": "RB",
+        "pts": 22.7
+      },
+      "best_bench": {
+        "name": "C.J. Stroud",
+        "pos": "QB",
+        "pts": 36.36
+      },
+      "opponent": "CMac91",
+      "opponent_points": 138.92,
+      "result": "L"
+    },
+    {
+      "roster_id": 10,
+      "manager": "CMac91",
+      "points": 138.92,
+      "maxpf": 172.32,
+      "roster_points": 223.2,
+      "bench_points": 84.28,
+      "optimal": 172.32,
+      "left_on_bench": 33.4,
+      "efficiency": 80.6,
+      "mvp": {
+        "name": "CeeDee Lamb",
+        "pos": "WR",
+        "pts": 33.5
+      },
+      "best_bench": {
+        "name": "Jordan Love",
+        "pos": "QB",
+        "pts": 36.18
+      },
+      "opponent": "Painty69",
+      "opponent_points": 88.34,
+      "result": "W"
+    },
+    {
+      "roster_id": 11,
+      "manager": "YesChef23",
+      "points": 141.34,
+      "maxpf": 160.36,
+      "roster_points": 190.94,
+      "bench_points": 49.6,
+      "optimal": 160.36,
+      "left_on_bench": 19.02,
+      "efficiency": 88.1,
+      "mvp": {
+        "name": "Matthew Golden",
+        "pos": "WR",
+        "pts": 32.4
+      },
+      "best_bench": {
+        "name": "Tyler Shough",
+        "pos": "QB",
+        "pts": 19.7
+      },
+      "opponent": "Sarge71",
+      "opponent_points": 94.8,
+      "result": "W"
+    },
+    {
+      "roster_id": 12,
+      "manager": "fumbduckdumbfuck",
+      "points": 89.1,
+      "maxpf": 123.8,
+      "roster_points": 130.3,
+      "bench_points": 41.2,
+      "optimal": 123.8,
+      "left_on_bench": 34.7,
+      "efficiency": 72.0,
+      "mvp": {
+        "name": "Brock Bowers",
+        "pos": "TE",
+        "pts": 22.3
+      },
+      "best_bench": {
+        "name": "Drew Lock",
+        "pos": "QB",
+        "pts": 12.6
+      },
+      "opponent": "StealingGas",
+      "opponent_points": 126.26,
+      "result": "L"
+    }
+  ]
+}
