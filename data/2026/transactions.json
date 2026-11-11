@@ -431,7 +431,7 @@
     "added": {
       "name": "Keenan Allen",
       "pos": "WR",
-      "team": "IND"
+      "team": "SF"
     },
     "dropped": [
       "Devaughn Vele"
@@ -904,7 +904,7 @@
     "added": {
       "name": "Kendre Miller",
       "pos": "RB",
-      "team": null
+      "team": "DAL"
     },
     "dropped": [
       "Jaylin Noel"
@@ -1111,7 +1111,7 @@
           {
             "name": "Kendre Miller",
             "pos": "RB",
-            "team": null
+            "team": "DAL"
           }
         ],
         "receives_picks": [
@@ -1178,7 +1178,7 @@
     "added": {
       "name": "Keenan Allen",
       "pos": "WR",
-      "team": "IND"
+      "team": "SF"
     },
     "dropped": [
       "Dylan Sampson"
@@ -1194,7 +1194,7 @@
     "added": {
       "name": "Kendre Miller",
       "pos": "RB",
-      "team": null
+      "team": "DAL"
     },
     "dropped": [
       "Zonovan Knight"
@@ -1418,6 +1418,54 @@
       "New York Jets"
     ],
     "bid": 0
+  },
+  {
+    "week": 9,
+    "type": "waiver",
+    "created": 1794334232051,
+    "id": "1425944756613050368",
+    "manager": "Hades9mm",
+    "added": {
+      "name": "Justice Hill",
+      "pos": "RB",
+      "team": "BAL"
+    },
+    "dropped": [
+      "Devaughn Vele"
+    ],
+    "bid": 50
+  },
+  {
+    "week": 9,
+    "type": "waiver",
+    "created": 1794328065987,
+    "id": "1425918894266146816",
+    "manager": "Darkspaces",
+    "added": {
+      "name": "Corey Kiner",
+      "pos": "RB",
+      "team": "NE"
+    },
+    "dropped": [
+      "Devin Singletary"
+    ],
+    "bid": 21
+  },
+  {
+    "week": 9,
+    "type": "waiver",
+    "created": 1794325572881,
+    "id": "1425908437425864704",
+    "manager": "StealingGas",
+    "added": {
+      "name": "Audric Estime",
+      "pos": "RB",
+      "team": "NO"
+    },
+    "dropped": [
+      "Shedeur Sanders"
+    ],
+    "bid": 2
   },
   {
     "week": 9,
