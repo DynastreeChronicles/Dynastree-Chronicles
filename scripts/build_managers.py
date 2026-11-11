@@ -382,7 +382,12 @@ def manager_page(m, names, years, display, active):
         hero_stats = '<p class="key">No finished games on file for this manager yet.</p>'
     nav = (f'<p class="mnav"><a class="btn o" href="{r}managers/{slug(names[ring - 1])}/">&larr; {esc(names[ring - 1])}</a><a class="btn o" href="{r}managers/{slug(names[(ring + 1) % len(names)])}/">{esc(names[(ring + 1) % len(names)])} &rarr;</a></p>'
            if ring is not None else "")
-    df = list(bio.get("file") or [])
+    # "file" may be a dict {label: text} (current bios) or a list of [label, text] pairs (older form).
+    raw = bio.get("file") or {}
+    if isinstance(raw, dict):
+        df = list(raw.items())
+    else:
+        df = list(raw)
     wl = wealth_line(m)
     if wl:
         df.append(("The balance sheet", wl))
