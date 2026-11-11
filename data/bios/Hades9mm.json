@@ -1,33 +1,8 @@
 {
-  "asof": "Issue 9, through Week 8",
-  "tagline": "He said it and did it: 124.02 to 67.46.",
-  "file": [
-    [
-      "The type",
-      "A balanced, hand-built roster and a buyer's budget. Every one of his 23 picks was his own, which is the rarest thing in this league."
-    ],
-    [
-      "Signature move",
-      "Selling a star for depth. The London deal moved Drake London for Quentin Johnston, Cam Ward, TreVeyon Henderson and a 2027 3rd. In Week 7 he cut Johnston for Jaylin Noel, and the commissioner claimed Johnston for $1."
-    ],
-    [
-      "Nemesis",
-      "The bench. 28.62 stayed on it in the win, and StealingGas, who beat him in Week 7."
-    ],
-    [
-      "The desk is watching",
-      "Johnny4Skins in Week 9, and the 1.10 at 1332.36 MAXPF."
-    ]
-  ],
-  "season": "2026",
-  "headline": "5-3, 3rd, and a promise kept",
-  "story_keep": 1,
-  "story": [
-    "Week 8 was the Match of the Week and a 124.02 to 67.46 win over Darkspaces, a margin of 56.56. Mike Gesicki led at 17.6 and 28.62 stayed on a 57.36-point bench, including the Buccaneers defense at 18. He is 5-3, still 3rd, with 1101.58 points, 3rd in the league.",
-    "The feud with Darkspaces paid out in the chat and on the scoreboard. He added Ryan Flournoy and the Buccaneers defense for free and holds $330 of FAAB. His 1332.36 MAXPF is the third-highest and moves him from the 1.11 to the 1.10, with Painty69's 1339.8 now at the 1.11."
-  ],
-  "takes": [
-    "Promised to out score the commissioner, and did by 56.56.",
-    "A win with 28.62 on the bench is still a win."
-  ]
+ "asof": "Issue 10, through Week 9",
+ "tagline": "109.24, a 26% miss on his projection, and the 1.09.",
+ "file": {
+  "Nemesis": "The projection. Sleeper had him at 147.95 and he scored 109.24.",
+  "The desk is watching": "YesChef23 in Week 10, $280 of FAAB after the $50 Justice Hill claim, and the 1.09, 2.84 MAXPF points below StealingGas."
+ }
 }

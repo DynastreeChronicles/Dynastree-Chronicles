@@ -1,33 +1,8 @@
 {
-  "asof": "Issue 9, through Week 8",
-  "tagline": "4-4, 81.14, and a two-game winning streak that ended.",
-  "file": [
-    [
-      "The type",
-      "A chef who wins while complaining. Chatty in the draft room, aggressive on waivers, and 3-3 with a bull market."
-    ],
-    [
-      "Signature move",
-      "Cheap waiver insurance. $1 on Deshaun Watson when Caleb Williams went down, $1 on J.J. McCarthy the week after, and in Week 6 $35 on Michael Mayer."
-    ],
-    [
-      "Nemesis",
-      "CMac91's 91% lineup, and an 81.14 that never got going."
-    ],
-    [
-      "The desk is watching",
-      "Sarge71 in Week 9, and the 1.04 at 1082.84 MAXPF."
-    ]
-  ],
-  "season": "2026",
-  "headline": "4-4, 8th, and a streak that ended at two",
-  "story_keep": 1,
-  "story": [
-    "Week 8 was a 110.54 to 81.14 loss to CMac91, the closest game of the week. Matthew Golden led at 20.9 and 10.0 stayed on a 15.9-point bench. He added Samaje Perine for free, dropping Zachariah Branch, and fell one spot to 8th at 4-4.",
-    "His 884.36 points are 10th in the league. FAAB is $449 and his MAXPF of 1082.84 holds the 1.04. The market feed lists Jeremiyah Love Out, with 18.2% of his roster's value sidelined. Sarge71 is next."
-  ],
-  "takes": [
-    "The streak ended at two.",
-    "A quiet kitchen with Jeremiyah Love on the injury list."
-  ]
+ "asof": "Issue 10, through Week 9",
+ "tagline": "The top score, 141.34, and 7th at 5-4.",
+ "file": {
+  "Nemesis": "The injured list. Jeremiyah Love, RJ Harvey and Jacory Croskey-Merritt are all on IR.",
+  "The desk is watching": "Hades9mm in Week 10, and the 1.04 at 1246.6 MAXPF."
+ }
 }

@@ -1,33 +1,8 @@
 {
-  "asof": "Issue 9, through Week 8",
-  "tagline": "4-4, 6th, and a 119.94 that lost to the top score.",
-  "file": [
-    [
-      "The type",
-      "A quiet, efficient manager. Cleanest lineup management on the board, until Week 6."
-    ],
-    [
-      "Signature move",
-      "The workmanlike win. Josh Allen as the engine and a steady lineup behind him."
-    ],
-    [
-      "Nemesis",
-      "StealingGas, who beat him 173.6 to 119.94."
-    ],
-    [
-      "The desk is watching",
-      "Darkspaces in Week 9, the commissioner's open WR line, and the Josh Allen engine."
-    ]
-  ],
-  "season": "2026",
-  "headline": "4-4, 6th, and a 119.94 loss",
-  "story_keep": 1,
-  "story": [
-    "Week 8 was a 173.6 to 119.94 loss to StealingGas, the top score of the week. Josh Allen led at 27.56 and 21.6 stayed on a 43.98-point bench. He fell two spots to 6th at 4-4, with 1066.08 points, 4th in the league.",
-    "His MAXPF of 1187.78 holds the 1.05 and FAAB is a full $500. The market feed has the roster stable, up 4.0% over 30 days with 4.3% sidelined. The commissioner is next, and the desk projects 133 to 119."
-  ],
-  "takes": [
-    "Scored 119.94 and lost to the top score.",
-    "The engine is Josh Allen and the wallet is untouched."
-  ]
+ "asof": "Issue 10, through Week 9",
+ "tagline": "4-5, 8th, and 39.34 left on the bench.",
+ "file": {
+  "Nemesis": "The bench. 39.34 stayed on it in the 18.48-point loss to Darkspaces.",
+  "The desk is watching": "Johnny4Skins in Week 10, and the Josh Allen engine."
+ }
 }

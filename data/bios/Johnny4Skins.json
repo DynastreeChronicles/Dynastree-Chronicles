@@ -1,33 +1,8 @@
 {
-  "asof": "Issue 9, through Week 8",
-  "tagline": "Three quarterbacks out, and 126.4 on the board.",
-  "file": [
-    [
-      "The type",
-      "The league's most hands-off roster. Johnny4Skins drafted a few good players, then left the room and let the system finish the job."
-    ],
-    [
-      "Signature move",
-      "Not spending. $500 of FAAB intact, and the only moves are free ones. In Week 7 he told the chat all three of his quarterbacks are out."
-    ],
-    [
-      "Nemesis",
-      "The quarterback room. The market feed lists Lamar Jackson Out and Jalen Hurts on IR."
-    ],
-    [
-      "The desk is watching",
-      "Hades9mm in Week 9, the Jackson injury, and $500 of FAAB."
-    ]
-  ],
-  "season": "2026",
-  "headline": "5-3, 5th, and a losing streak that ended at two",
-  "story_keep": 1,
-  "story": [
-    "Week 8 was a 126.4 to 81.38 win over Sarge71, with Ja'Marr Chase at 31.1 and 39.8 left on a 55.5-point bench, including Adonai Mitchell's 27.2, the best WR benchwarmer of the week. He swapped the Texans defense for Washington, free, and ended the two-game losing streak.",
-    "He is 5-3, still 5th, with 1055.12 points, 6th in the league. His MAXPF of 1233.92 holds the 1.07 and FAAB is a full $500. The market feed has the roster on correction, down 3.2% over 30 days, with 20.9% of its value sidelined. Hades9mm is next."
-  ],
-  "takes": [
-    "Told the chat all three quarterbacks are out and scored 126.4.",
-    "The autopilot found a win."
-  ]
+ "asof": "Issue 10, through Week 9",
+ "tagline": "83.54, the lowest score, and Wentz at quarterback.",
+ "file": {
+  "Nemesis": "The quarterback room. Lamar Jackson and Jalen Hurts are on IR in the market feed, which has him on crash watch.",
+  "The desk is watching": "C33DeezNutzz in Week 10, and $500 of FAAB, still untouched."
+ }
 }

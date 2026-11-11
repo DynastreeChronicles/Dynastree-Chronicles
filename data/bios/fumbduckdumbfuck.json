@@ -1,33 +1,8 @@
 {
-  "asof": "Issue 9, through Week 8",
-  "tagline": "164.3, up two spots, and the 1.08.",
-  "file": [
-    [
-      "The type",
-      "The desk's preseason favorite, and a roster that is better than the record. Seventh in the standings and eighth in points."
-    ],
-    [
-      "Signature move",
-      "Quietly good at running back. Jeanty, Taylor and Bowers form a core that scores every week."
-    ],
-    [
-      "Nemesis",
-      "StealingGas, who is 0.6 MAXPF points from the 1.08 and next on the schedule."
-    ],
-    [
-      "The desk is watching",
-      "StealingGas in Week 9, the 18.1 left on the bench, and the quarterback room."
-    ]
-  ],
-  "season": "2026",
-  "headline": "5-3, 4th, and a 101.68-point blowout",
-  "story_keep": 1,
-  "story": [
-    "Week 8 was a 164.3 to 62.62 win over Snipe58, the biggest margin of the week at 101.68. Tony Pollard led at 28.7, Brock Bowers was the TE of the week at 28.2, and 18.1 stayed on the bench. He rose two spots to 4th at 5-3, with 1055.56 points, 5th in the league.",
-    "His MAXPF of 1283.68 holds the 1.08, 0.6 below StealingGas, and FAAB is a full $500. The market feed still has the roster on correction, down 2.6% over 30 days, with DeVonta Smith and Kyle Monangai on the Out list. StealingGas is next, and the 1.08 and 1.09 are the stakes."
-  ],
-  "takes": [
-    "A correction flag and a 164.3 in the same week.",
-    "The blowout of the week and the 1.08."
-  ]
+ "asof": "Issue 10, through Week 9",
+ "tagline": "89.1, a 37.16-point loss, and a crash flag.",
+ "file": {
+  "Nemesis": "The bench and the injury list. 34.7 stayed on it, and DeVonta Smith and Kyle Monangai are Out.",
+  "The desk is watching": "Darkspaces in Week 10, and the 1.08 at 1407.48 MAXPF."
+ }
 }
