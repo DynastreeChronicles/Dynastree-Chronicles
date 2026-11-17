@@ -1528,5 +1528,149 @@
     },
     "dropped": [],
     "bid": 0
+  },
+  {
+    "week": 10,
+    "type": "free_agent",
+    "created": 1794726865163,
+    "id": "1427591579249426432",
+    "manager": "fumbduckdumbfuck",
+    "added": {
+      "name": "Chimere Dike",
+      "pos": "WR",
+      "team": "TEN"
+    },
+    "dropped": [
+      "Elijah Arroyo"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 10,
+    "type": "free_agent",
+    "created": 1794726708534,
+    "id": "1427590922299793408",
+    "manager": "fumbduckdumbfuck",
+    "added": {
+      "name": "Buffalo Bills",
+      "pos": "DEF",
+      "team": "BUF"
+    },
+    "dropped": [
+      "Denver Broncos"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 10,
+    "type": "free_agent",
+    "created": 1794528192929,
+    "id": "1426758287503654912",
+    "manager": "C33DeezNutzz",
+    "added": {
+      "name": "Green Bay Packers",
+      "pos": "DEF",
+      "team": "GB"
+    },
+    "dropped": [
+      "Dameon Pierce"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 10,
+    "type": "free_agent",
+    "created": 1794527940600,
+    "id": "1426757229154955264",
+    "manager": "C33DeezNutzz",
+    "added": {
+      "name": "Zonovan Knight",
+      "pos": "RB",
+      "team": "ARI"
+    },
+    "dropped": [
+      "Dallas Cowboys"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 10,
+    "type": "free_agent",
+    "created": 1794527237054,
+    "id": "1426754278273318912",
+    "manager": "Johnny4Skins",
+    "added": {
+      "name": "Kyle McCord",
+      "pos": "QB",
+      "team": "MIA"
+    },
+    "dropped": [
+      "Brian Robinson Jr."
+    ],
+    "bid": 0
+  },
+  {
+    "week": 10,
+    "type": "free_agent",
+    "created": 1794521341488,
+    "id": "1426729550477266944",
+    "manager": "StealingGas",
+    "added": {
+      "name": "Houston Texans",
+      "pos": "DEF",
+      "team": "HOU"
+    },
+    "dropped": [
+      "Audric Estime"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 10,
+    "type": "free_agent",
+    "created": 1794492710310,
+    "id": "1426609462608662528",
+    "manager": "Snipe58",
+    "added": {
+      "name": "Indianapolis Colts",
+      "pos": "DEF",
+      "team": "IND"
+    },
+    "dropped": [
+      "Philadelphia Eagles"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 10,
+    "type": "free_agent",
+    "created": 1794466993865,
+    "id": "1426501600024731648",
+    "manager": "Zygon",
+    "added": {
+      "name": "Jacksonville Jaguars",
+      "pos": "DEF",
+      "team": "JAX"
+    },
+    "dropped": [
+      "New England Patriots"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 10,
+    "type": "waiver",
+    "created": 1794384860775,
+    "id": "1426157108872630272",
+    "manager": "Hades9mm",
+    "added": {
+      "name": "Shedeur Sanders",
+      "pos": "QB",
+      "team": "CLE"
+    },
+    "dropped": [
+      "Taylen Green"
+    ],
+    "bid": 120
   }
 ]
