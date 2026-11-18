@@ -1,0 +1,612 @@
+{
+ "desk": [
+  "Painty69 scored 73.58, the lowest total in the league, and stranded 103.12: Jahmyr Gibbs (44.2) and Joe Burrow (33.16) sat on his bench while Christian McCaffrey scored 46.3, the RB of the week, in the lineup. He started 42% of his best possible lineup, 176.7, and lost to Snipe58 by 79.44. The chat called it, three votes of four. He is 2-8 and 11th, and his MAXPF, the points a best possible lineup would have scored each week, added up (the lowest total picks first in the 2027 rookie draft), is 1674.2, the second-highest in the league.",
+  "Sarge71 lost to CMac91, 98.7 to 98.62, a margin of 0.08, and took the first pick anyway: his 1237.54 is now the lowest MAXPF, 51.8 below Snipe58. Snipe58 won by 79.44 and the win is what cost him, because his best lineup added 174.42 to Sarge71's 105.02. Zygon beat StealingGas 176.24 to 132.3, is 9-1 and holds the highest MAXPF, 1771.06, which is why he picks last. Johnny4Skins and fumbduckdumbfuck, both 6-4, meet in Week 11 in the game the desk is calling the playoff race."
+ ],
+ "pull": "Sarge71 loses by 0.08 and takes the first pick, and Painty69 strands 103.12.",
+ "hero": {
+  "manager": "Zygon",
+  "text": "176.24, the top score of the week and a 43.94-point win over StealingGas. Patrick Mahomes threw 5 touchdowns for 35.42, the QB of the week, and the desk's 150 projection was beaten by 26.24 even with 33.58 sitting on his bench. He is 9-1 and first.",
+  "desk": "His MAXPF is 1771.06, the highest total in the league, and Kenneth Walker III and Jordan Addison are Out in the market feed. Darkspaces is next."
+ },
+ "zero": {
+  "manager": "Painty69",
+  "text": "73.58, the lowest score in the league and a 79.44-point loss to Snipe58. McCaffrey scored 46.3 in the lineup, and Gibbs (44.2) and Burrow (33.16) were on the bench among the 103.12 that stayed there.",
+  "desk": "He is 2-8 and 11th with $500 of FAAB untouched and no lines in this week's chat. A best possible lineup would have scored 176.7."
+ },
+ "prev_motw": {
+  "issue": 10,
+  "a": "StealingGas",
+  "b": "Zygon",
+  "note": "The desk leaned Zygon, 150 to 143, and the bold prediction went the other way. Zygon beat his projection by 26.24, and Puka Nacua is on IR now, not Doubtful."
+ },
+ "prev_poll": {
+  "issue": 10,
+  "q": "Who leaves the most points on the bench in Week 10?",
+  "opts": [
+   "Painty69",
+   "C33DeezNutzz",
+   "CMac91",
+   "Someone else"
+  ],
+  "result": [
+   3,
+   0,
+   0,
+   1
+  ],
+  "note": "Painty69 took three of four votes and 103.12 points. Next was Zygon at 33.58."
+ },
+ "bank": {
+  "notes": {
+   "StealingGas": "$96 in the brief, before a $1 claim for Darnell Washington cleared Wednesday morning. Houston's defense replaced Audric Estime, the $2 claim from Week 9.",
+   "Darkspaces": "$31. No move this week, and the Week 13 deadline is the last chance for the receivers.",
+   "Hades9mm": "$160 after $120 on Shedeur Sanders, the only paid claim of the week.",
+   "Snipe58": "$400. Indianapolis's defense came in for Philadelphia's.",
+   "Zygon": "$493. Jacksonville's defense for New England's, and nothing else.",
+   "YesChef23": "$449. No move after the 135.9.",
+   "C33DeezNutzz": "$500. Two free-agent moves, Zonovan Knight and Green Bay's defense, cost nothing.",
+   "fumbduckdumbfuck": "$500. Chimere Dike and Buffalo's defense came in as free agents.",
+   "CMac91": "$500, untouched.",
+   "Johnny4Skins": "$500, untouched. Kyle McCord arrived as a free agent.",
+   "Sarge71": "$500, untouched.",
+   "Painty69": "$500, untouched."
+  }
+ },
+ "wire": {
+  "trades": [],
+  "waivers": [
+   {
+    "mgr": "Hades9mm",
+    "player": "Shedeur Sanders",
+    "flag": "mvp",
+    "note": "$120, the only paid claim of the week, with Taylen Green dropped. Hades9mm is 7-3 and has $160 left."
+   },
+   {
+    "mgr": "Johnny4Skins",
+    "player": "Kyle McCord",
+    "flag": "fav",
+    "note": "A free-agent quarterback while Lamar Jackson and Jalen Hurts are on IR. Brian Robinson Jr. was dropped."
+   },
+   {
+    "mgr": "fumbduckdumbfuck",
+    "player": "Chimere Dike",
+    "flag": "fav",
+    "note": "A receiver for Elijah Arroyo, with Brock Bowers and DeVonta Smith both Out."
+   },
+   {
+    "mgr": "Zygon",
+    "player": "Jacksonville Jaguars",
+    "flag": "fav",
+    "note": "Defense for New England's. The only move Zygon made this week."
+   },
+   {
+    "mgr": "StealingGas",
+    "player": "Houston Texans",
+    "flag": "note",
+    "note": "A defense in place of Audric Estime, the player he claimed for $2 a week earlier."
+   },
+   {
+    "mgr": "StealingGas",
+    "player": "Darnell Washington",
+    "flag": "note",
+    "note": "A $1 waiver claim cleared Wednesday morning, with running back Rico Dowdle dropped. A tight end in, a running back out."
+   },
+   {
+    "mgr": "Snipe58",
+    "player": "Indianapolis Colts",
+    "flag": "note",
+    "note": "Philadelphia's defense out."
+   },
+   {
+    "mgr": "C33DeezNutzz",
+    "player": "Zonovan Knight",
+    "flag": "note",
+    "note": "A running back for Dallas's defense, and Green Bay's defense for Dameon Pierce in a second move."
+   },
+   {
+    "mgr": "fumbduckdumbfuck",
+    "player": "Buffalo Bills",
+    "flag": "note",
+    "note": "Defense for Denver's."
+   }
+  ],
+  "desk": {
+   "Hades9mm": "$120 on a quarterback from a team with Jayden Daniels and Jared Goff. After a 26% miss and a 22% beat in consecutive weeks, he is spending like the projection is a suggestion.",
+   "Zygon": "One defense swap from the team that scored 176.24. The insurance request is not in the transactions.",
+   "Snipe58": "A defense swap in the week his best lineup cost him the first pick.",
+   "StealingGas": "Dropped Audric Estime, claimed for $2 in Week 9, for Houston's defense. Wednesday's waivers added tight end Darnell Washington for $1 and dropped running back Rico Dowdle, and the shopping list says running back.",
+   "Johnny4Skins": "A quarterback was needed and Kyle McCord was free. FAAB is still $500.",
+   "C33DeezNutzz": "Two moves, no bids, and a defense that came in for a defense.",
+   "fumbduckdumbfuck": "Two free-agent moves, Chimere Dike and Buffalo's defense, before the Week 11 game against Johnny4Skins."
+  }
+ },
+ "post": [
+  {
+   "a": "StealingGas",
+   "b": "Zygon",
+   "tag": "Match of the Week",
+   "ga": "C",
+   "gb": "A",
+   "aged": [
+    "The desk leaned Zygon, 150 to 143.",
+    "Zygon beat his number by 26.24, and StealingGas missed his by 10.7.",
+    "Puka Nacua, Doubtful a week ago, is on IR."
+   ],
+   "means": [
+    "Zygon is 9-1 and first. StealingGas is 6-4 and 3rd.",
+    "Zygon's 1771.06 MAXPF is the highest, so the win does nothing for his pick.",
+    "StealingGas's 1583.66 puts him ninth, ahead of Hades9mm in pick order."
+   ],
+   "key": [
+    "Mahomes threw for 348 yards and 5 touchdowns, 35.42.",
+    "Trevor Lawrence led StealingGas at 27.78.",
+    "33.58 sat on Zygon's bench and 26.42 on StealingGas's."
+   ],
+   "desk": "The bold prediction missed by 43.94, and Nacua's injury was the part of the bet the desk could see."
+  },
+  {
+   "a": "Darkspaces",
+   "b": "fumbduckdumbfuck",
+   "tag": "Best Manager",
+   "ga": "C-",
+   "gb": "A-",
+   "aged": [
+    "fumbduckdumbfuck set 98% of his best possible lineup, 138.62.",
+    "Dak Prescott scored 35.42.",
+    "Parker Washington led Darkspaces at 28.2."
+   ],
+   "means": [
+    "fumbduckdumbfuck is 6-4 and 5th. Darkspaces is 4-6 and 9th.",
+    "Darkspaces sits third in pick order at 1310.46, 72.92 above the first pick.",
+    "The Week 13 deadline is three weeks away for the four receivers still listed."
+   ],
+   "key": [
+    "12.58 stayed on Darkspaces's bench against 2.9 on fumbduckdumbfuck's.",
+    "Drake Maye is Out in the market feed.",
+    "The margin was 32.28."
+   ],
+   "desk": "The Best Manager of the week beat a team that has been trying to trade its way out of the season."
+  },
+  {
+   "a": "Snipe58",
+   "b": "Painty69",
+   "tag": "Biggest Blowout",
+   "ga": "B+",
+   "gb": "F",
+   "aged": [
+    "Painty69 started 42% of his best possible lineup.",
+    "Brock Purdy scored 31.66 for Snipe58.",
+    "The poll picked Painty69 three votes to one."
+   ],
+   "means": [
+    "Snipe58 is 4-6 and 10th. Painty69 is 2-8 and 11th.",
+    "Snipe58's best lineup added 174.42 to MAXPF, which moved him from first pick to second.",
+    "Painty69's 1674.2 MAXPF is the second-highest in the league."
+   ],
+   "key": [
+    "McCaffrey scored 46.3, the RB of the week.",
+    "Gibbs scored 44.2 and Burrow 33.16 on Painty69's bench.",
+    "103.12 stayed on Painty69's bench against 21.4 on Snipe58's."
+   ],
+   "desk": "A 79.44-point win that moved Snipe58 the wrong way in the pick order, and a loss that cost Painty69 nothing there."
+  },
+  {
+   "a": "Hades9mm",
+   "b": "YesChef23",
+   "tag": "Overachiever",
+   "ga": "A",
+   "gb": "B",
+   "aged": [
+    "Hades9mm was projected at 142.87 and scored 174.88, 22% over.",
+    "He missed by 26% the week before.",
+    "George Pickens scored 43.5 for YesChef23, the WR of the week."
+   ],
+   "means": [
+    "Hades9mm is 7-3 and 2nd. YesChef23 is 5-5 and 7th.",
+    "Hades9mm's 1616.48 MAXPF is the tenth pick, 32.82 above StealingGas.",
+    "YesChef23's 1402.5 is the fourth pick."
+   ],
+   "key": [
+    "Amon-Ra St. Brown led Hades9mm at 25.8.",
+    "Pickens had 145 yards and 3 touchdowns.",
+    "19.5 stayed on Hades9mm's bench and 20.0 on YesChef23's."
+   ],
+   "desk": "A 38.98-point win, and Pickens's 43.5 was the week's best receiver score in a losing lineup."
+  },
+  {
+   "a": "Johnny4Skins",
+   "b": "C33DeezNutzz",
+   "tag": "Rebound",
+   "ga": "B+",
+   "gb": "D+",
+   "aged": [
+    "Johnny4Skins scored 83.54 a week ago and 153.56 this week.",
+    "Chuba Hubbard scored 34.2 and Isaiah Likely was the TE of the week at 27.7.",
+    "Josh Allen scored 23.34 for C33DeezNutzz."
+   ],
+   "means": [
+    "Johnny4Skins is 6-4 and 4th. C33DeezNutzz is 4-6 and 8th.",
+    "Johnny4Skins is on the market feed's crash watch, with Lamar Jackson and Jalen Hurts on IR.",
+    "C33DeezNutzz holds the fifth pick at 1450.8."
+   ],
+   "key": [
+    "The margin was 55.26.",
+    "23.56 stayed on Johnny4Skins's bench and 16.8 on C33DeezNutzz's.",
+    "Kyle McCord arrived as a free agent."
+   ],
+   "desk": "The lowest score of Week 9 turned into the third-highest of Week 10."
+  },
+  {
+   "a": "Sarge71",
+   "b": "CMac91",
+   "tag": "Narrow Victory",
+   "ga": "C+",
+   "gb": "C",
+   "aged": [
+    "Sarge71 was perfect in Week 9, 94.8 with nothing on the bench.",
+    "This week he scored 98.62 with 6.4 on the bench.",
+    "CMac91 missed his 129.14 projection by 24%."
+   ],
+   "means": [
+    "CMac91 is 6-4 and 6th. Sarge71 is 1-9 and 12th.",
+    "Sarge71's best lineup added 105.02, and his 1237.54 is the lowest MAXPF.",
+    "The first pick is his by 51.8."
+   ],
+   "key": [
+    "James Cook III led CMac91 at 21.7.",
+    "Bijan Robinson led Sarge71 at 17.7.",
+    "The margin was 0.08."
+   ],
+   "desk": "The closest game of the season so far went to the team that missed its projection by 24%."
+  }
+ ],
+ "quote": {
+  "text": "Time to see what Emmett Johnson is really made of",
+  "by": "Zygon",
+  "desk": "The quote came from the 9-1 team with Kenneth Walker III listed Out in the market feed. StealingGas answered about receiving."
+ },
+ "drama": [
+  {
+   "h": "The Gibbs and Burrow Problem",
+   "heat": 92,
+   "p": "Painty69 started McCaffrey, who scored 46.3 as the RB of the week, and sat Jahmyr Gibbs (44.2) and Joe Burrow (33.16). The weekly report named him Worst Manager at 42% of his best possible lineup, and the poll had picked him three votes to one.",
+   "desk": "He has no lines in this week's chat log, and $500 of FAAB untouched."
+  },
+  {
+   "h": "The 0.08 That Decided the Draft Order",
+   "heat": 88,
+   "p": "CMac91 beat Sarge71 98.7 to 98.62, the narrowest result of the week, and CMac91 missed his own 129.14 projection by 24%. Sarge71 scored 98.62 and moved to the lowest MAXPF, 1237.54.",
+   "desk": "A game won by 0.08 and a draft order that went to the loser. Sarge71 is 1-9 and holds the first pick."
+  },
+  {
+   "h": "The Win That Cost the First Pick",
+   "heat": 76,
+   "p": "Snipe58 scored 153.02 and beat Painty69 by 79.44. His best lineup added 174.42 to MAXPF while Sarge71's added 105.02, so a pick lead of 17.6 became a gap of 51.8 the other way.",
+   "desk": "A 69.4-point swing from one blowout. He is 4-6 and 10th."
+  },
+  {
+   "h": "The Emmett Johnson Watch",
+   "heat": 54,
+   "p": "The only conversation in this week's chat was Zygon saying it was time to see what Emmett Johnson is made of and StealingGas arguing the receiving work was enough. Everything else was the poll and the transaction feed.",
+   "desk": "No trade talk, no block listings, and a Week 13 deadline that did not come up."
+  }
+ ],
+ "hits": [
+  [
+   "Even if they completely abandon the run like the chiefs love to do, I still think he’s a strong play on receiving alone.",
+   "StealingGas"
+  ],
+  [
+   "Time to see what Emmett Johnson is really made of",
+   "Zygon"
+  ]
+ ],
+ "trades": {
+  "note": "The Hypothetical Trade Machine stays open through Week 12.",
+  "items": [
+   {
+    "t": "The Collins Deal, Round Six",
+    "a": "Hades9mm",
+    "as": [
+     "2028 1st-round pick",
+     "2029 1st-round pick"
+    ],
+    "b": "Darkspaces",
+    "bs": [
+     "Nico Collins",
+     "Kevin Coleman Jr."
+    ],
+    "ay": "Hades9mm gains 2,301 in starting lineup value and sends 4,162 of market value for 4,182.",
+    "by": "Darkspaces gets two firsts and moves on timing rather than a lineup hole.",
+    "desk": "The same Collins listing, with the picks Darkspaces would want and a Week 13 deadline to use them."
+   },
+   {
+    "t": "The Playoff Insurance",
+    "a": "Zygon",
+    "as": [
+     "2027 1st-round pick",
+     "2028 1st-round pick"
+    ],
+    "b": "fumbduckdumbfuck",
+    "bs": [
+     "Dak Prescott",
+     "MarShawn Lloyd"
+    ],
+    "ay": "Zygon gains 1,837 in starting lineup value for 4,762 of market value against 4,795.",
+    "by": "fumbduckdumbfuck gets two firsts and moves on timing rather than a lineup hole.",
+    "desk": "Dak Prescott scored 35.42 for fumbduckdumbfuck this week, and Zygon asked for insurance last week."
+   },
+   {
+    "t": "The Cam Ward Depth Chart",
+    "a": "Hades9mm",
+    "as": [
+     "Cam Ward"
+    ],
+    "b": "Sarge71",
+    "bs": [
+     "Aaron Rodgers",
+     "Pat Freiermuth"
+    ],
+    "ay": "Hades9mm gives up 0 in starting lineup value, 2,709 against 2,700.",
+    "by": "Sarge71 would start Cam Ward, a 925 upgrade to his lineup.",
+    "desk": "The one deal on the list where the 1-9 team gets a starter."
+   },
+   {
+    "t": "The Braelon Allen Offer",
+    "a": "StealingGas",
+    "as": [
+     "Braelon Allen"
+    ],
+    "b": "YesChef23",
+    "bs": [
+     "Deshaun Watson"
+    ],
+    "ay": "StealingGas gives up 0 in starting lineup value, 1,865 against 1,920.",
+    "by": "YesChef23 would start Braelon Allen, a 1,289 upgrade to his lineup.",
+    "desk": "A running back for a quarterback, with StealingGas giving up nothing in lineup value."
+   }
+  ]
+ },
+ "pre": [
+  {
+   "a": "Darkspaces",
+   "b": "Zygon",
+   "pa": 118,
+   "pb": 153,
+   "wa": 25,
+   "wb": 75,
+   "ma": "Drake Maye is Out in the market feed, so the quarterback slot decides the lineup.",
+   "mb": "Kenneth Walker III is Out, so the running back slots decide his.",
+   "la": "De'Von Achane and Terrance Ferguson are on IR, and Omar Cooper Jr. and Ty Simpson are Out.",
+   "lb": "Jordan Addison is Out, and 33.58 sat on his bench last week.",
+   "edge": "Zygon",
+   "desk": "The 4-6 team that wants to sell receivers plays the 9-1 team that asked for insurance. The desk gives Zygon 75%, and Darkspaces needs more than the 103.44 he scored."
+  },
+  {
+   "a": "Snipe58",
+   "b": "CMac91",
+   "pa": 106,
+   "pb": 123,
+   "wa": 38,
+   "wb": 62,
+   "ma": "Brock Purdy scored 31.66 and is the engine of the lineup.",
+   "mb": "CeeDee Lamb and James Cook III, who scored 21.7, have to beat the 129.14 projection he missed by 24%.",
+   "la": "Jake Ferguson is Out and Malik Willis is on IR.",
+   "lb": "Alec Pierce is on IR and Marvin Harrison Jr. is Out.",
+   "edge": "CMac91",
+   "desk": "Snipe58 added 174.42 to his MAXPF with last week's win and is 4-6. CMac91 won the 0.08 game and missed his projection by 24%."
+  },
+  {
+   "a": "StealingGas",
+   "b": "Painty69",
+   "pa": 142,
+   "pb": 114,
+   "wa": 70,
+   "wb": 30,
+   "ma": "Trevor Lawrence, 27.78 last week, carries a lineup without Puka Nacua.",
+   "mb": "Gibbs and Burrow have to be in the lineup this time.",
+   "la": "Nacua and Jaxson Dart are on IR and Geno Smith is Out.",
+   "lb": "Carnell Tate, Josh Jacobs, Mike Evans and T.J. Hockenson are all Out.",
+   "edge": "StealingGas",
+   "desk": "A 70% game for the team that lost to Zygon against the team with the second-highest MAXPF and a 2-8 record. The desk is independent, and the numbers still favor StealingGas."
+  },
+  {
+   "a": "Hades9mm",
+   "b": "Sarge71",
+   "pa": 139,
+   "pb": 100,
+   "wa": 77,
+   "wb": 23,
+   "ma": "Jayden Daniels and the new $120 quarterback, Shedeur Sanders, have to be sorted at quarterback.",
+   "mb": "Bijan Robinson was his top scorer at 17.7 and is the whole offense.",
+   "la": "TreVeyon Henderson and Davante Adams are on IR.",
+   "lb": "Sam Darnold, Jaylen Waddle and David Montgomery are Out.",
+   "edge": "Hades9mm",
+   "desk": "7-3 against 1-9 and the desk gives Hades9mm 77%. Sarge71's Week 9 lineup was perfect and still lost by 46.54."
+  },
+  {
+   "a": "C33DeezNutzz",
+   "b": "YesChef23",
+   "pa": 127,
+   "pb": 116,
+   "wa": 58,
+   "wb": 42,
+   "ma": "Josh Allen, his top market asset at 10,636, scored 23.34 last week.",
+   "mb": "George Pickens scored 43.5 and has to do something close to it.",
+   "la": "Ladd McConkey is Out and Jayden Reed and Jonathon Brooks are on IR.",
+   "lb": "Jeremiyah Love, RJ Harvey and Jacory Croskey-Merritt are on IR and Woody Marks is Out.",
+   "edge": "C33DeezNutzz",
+   "desk": "4-6 against 5-5. A win puts C33DeezNutzz at 5-6 or YesChef23 at 6-5, with the playoffs starting in Week 15."
+  }
+ ],
+ "motw": {
+  "a": "Johnny4Skins",
+  "b": "fumbduckdumbfuck",
+  "pa": 129,
+  "pb": 128,
+  "wa": 51,
+  "wb": 49,
+  "ma": "Quarterback. Lamar Jackson and Jalen Hurts are on IR, so Kyle McCord, a free-agent arrival this week, is the plan.",
+  "mb": "Running back. Jonathan Taylor and Ashton Jeanty carry the lineup with Brock Bowers Out.",
+  "la": "A.J. Brown is Out, and the market feed has him on crash watch, down 5.3% over 30 days.",
+  "lb": "Bowers, DeVonta Smith, Kyle Monangai and Kyler Murray are all Out, 27.9% of his value.",
+  "edge": "Even",
+  "desk": "Two 6-4 teams, both on the market feed's crash watch, play each other for a seat in the playoff race. Johnny4Skins scored 153.56 last week and fumbduckdumbfuck was the Best Manager at 98%. Projections are the desk's own estimate (average points per game, rounded).",
+  "stakes": "The winner is 7-4 and the loser 6-5, with YesChef23 at 5-5 right behind. Four teams sit at 6-4 going in: StealingGas, Johnny4Skins, fumbduckdumbfuck and CMac91, one game behind Hades9mm.",
+  "sw": [
+   [
+    "Johnny4Skins",
+    [
+     "Ja'Marr Chase, his top market asset at 8,921",
+     "Chuba Hubbard, 34.2 last week",
+     "Isaiah Likely, the TE of the week at 27.7"
+    ],
+    [
+     "Lamar Jackson is on IR",
+     "Jalen Hurts is on IR",
+     "A.J. Brown is Out"
+    ]
+   ],
+   [
+    "fumbduckdumbfuck",
+    [
+     "Dak Prescott, 35.42 last week",
+     "Jonathan Taylor, 4,636 in market value",
+     "A lineup set to 98% of its best"
+    ],
+    [
+     "Brock Bowers is Out",
+     "DeVonta Smith is Out",
+     "Kyle Monangai and Kyler Murray are Out"
+    ]
+   ]
+  ],
+  "verdict": "The desk leans Johnny4Skins by a point, 129 to 128, and 51 to 49 is as close as the rule gets. Whoever gets the healthier lineup wins."
+ },
+ "poll": {
+  "id": "issue-11",
+  "q": "Who wins Johnny4Skins vs fumbduckdumbfuck in Week 11?",
+  "opts": [
+   "Johnny4Skins by double digits",
+   "Johnny4Skins in a squeaker",
+   "fumbduckdumbfuck in a squeaker",
+   "fumbduckdumbfuck by double digits"
+  ],
+  "desk": "The desk projects 129 to 128. Johnny4Skins scored 153.56 last week and fumbduckdumbfuck 135.72."
+ },
+ "bottom": {
+  "paras": [
+   "The wire was two waiver claims, $120 for Shedeur Sanders and a $1 claim by StealingGas for Darnell Washington, plus eight free-agent moves, with no trades, and the chat had two lines about one running back. The Week 13 deadline is the next real date. Market value (FantasyCalc) has four managers on crash watch: fumbduckdumbfuck (-9.4% over 30 days, 27.9% of value sidelined), Sarge71 (-6.8%), Johnny4Skins (-5.3%) and Darkspaces (25.1% sidelined with Drake Maye Out). Darkspaces still leads the Wealth Index at 75,561, then StealingGas at 73,749.",
+   "Week 11 has three results the desk is watching: Darkspaces vs Zygon, Johnny4Skins vs fumbduckdumbfuck, and Painty69's lineup against StealingGas."
+  ]
+ },
+ "closer": {
+  "label": "The desk's last word",
+  "h": "The Pick Race Moved on a 0.08 Loss",
+  "text": "Sarge71 lost by 0.08 and holds the first pick at 1237.54. Snipe58 won by 79.44 and gave it away. Painty69 stranded 103.12 and holds the second-highest MAXPF in the league. Weeks in this league are won on the lineup and the draft order is decided by the roster."
+ },
+ "bold": [
+  [
+   "Darkspaces beats Zygon in Week 11",
+   "The desk gives Zygon 75% on 153 to 118. Darkspaces scored 103.44 last week, and the market feed lists Drake Maye and Kenneth Walker III, Zygon's running back, as Out. A win would put 9-1 Zygon down for the second time. Deadline: Week 11 final."
+  ],
+  [
+   "Painty69 scores 120 or more against StealingGas",
+   "He scored 73.58 with 103.12 stranded, and his average is 114 a game. Gibbs and Burrow scored 77.36 between them on his bench. Deadline: Week 11 final."
+  ]
+ ],
+ "rulings": [
+  {
+   "issue": 10,
+   "i": 0,
+   "result": "miss",
+   "note": "Zygon beat StealingGas 176.24 to 132.3, a 43.94-point margin, and Puka Nacua is on IR."
+  },
+  {
+   "issue": 10,
+   "i": 1,
+   "result": "hit",
+   "note": "Sarge71 lost to CMac91 by 0.08 and still moved to the first pick at 1237.54, 51.8 below Snipe58's 1289.34."
+  }
+ ],
+ "receipts": [
+  {
+   "who": "Zygon",
+   "text": "8-1 isn’t going mean anything though once playoffs start other than seed and that I get last pick next year. Anything can happen",
+   "context": "On his record, after asking for playoff insurance",
+   "tags": [
+    "playoffs",
+    "draft"
+   ],
+   "status": "pending",
+   "note": "He is 9-1 with the highest MAXPF, 1771.06, and the twelfth pick. He plays Darkspaces in Week 11."
+  },
+  {
+   "who": "Hades9mm",
+   "text": "i got nothing but hopes and dreams for next year draft so I gotta put it all on the line now",
+   "context": "On going all in this season",
+   "tags": [
+    "draft",
+    "all in"
+   ],
+   "status": "pending",
+   "note": "He is 7-3 and 2nd, and spent $120 on Shedeur Sanders in Week 10."
+  },
+  {
+   "who": "Darkspaces",
+   "text": "I'll probably all in next year or the year after.",
+   "context": "On when he competes",
+   "tags": [
+    "all in",
+    "rebuild"
+   ],
+   "status": "pending",
+   "note": "He is 4-6 and 9th, with the third pick and Drake Maye Out in the market feed."
+  },
+  {
+   "who": "Darkspaces",
+   "text": "it's Mendoza season boys. time to see if I'm cooked for the foreseeable future or not lol",
+   "context": "On Fernando Mendoza",
+   "tags": [
+    "Mendoza"
+   ],
+   "status": "pending",
+   "note": "Mendoza's market value is 4,157, and Maye is the largest asset on his sidelined list."
+  },
+  {
+   "who": "StealingGas",
+   "text": "I think my teams plan is to pop off for the next few weeks and then go dormant as we enter the playoffs.",
+   "context": "On why his team keeps scoring",
+   "tags": [
+    "tank",
+    "playoffs"
+   ],
+   "status": "pending",
+   "note": "He scored 132.3 in a loss to Zygon and is 6-4 in 3rd. Playoffs start in Week 15."
+  },
+  {
+   "who": "StealingGas",
+   "text": "I have a first round pick left.  Looking for runningback, QB. I don’t think TEs are worth a first unless someone wants to jump off an elite one for a pick+player.",
+   "context": "On what he is shopping for",
+   "tags": [
+    "trade",
+    "quarterback",
+    "picks"
+   ],
+   "status": "pending",
+   "note": "No trade cleared in Weeks 9 or 10. On Wednesday he claimed tight end Darnell Washington for $1 and dropped running back Rico Dowdle."
+  },
+  {
+   "who": "Darkspaces",
+   "text": "still trying to get rid of Collins if anyone needs a WR",
+   "context": "On the block",
+   "tags": [
+    "Collins",
+    "block"
+   ],
+   "status": "pending",
+   "note": "Collins did not come up in the Week 10 chat and no trade cleared. The deadline is Week 13."
+  }
+ ]
+}
