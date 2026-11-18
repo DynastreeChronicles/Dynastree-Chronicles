@@ -1,15 +1,18 @@
 {
- "generated_at": "2026-11-17T19:38:37+00:00",
+ "generated_at": "2026-11-18T14:24:00+00:00",
  "season": "2026",
  "volume": 1,
  "season_status": "active",
- "data_pulled_at": "2026-11-17T19:38:31+00:00",
- "ready_for_new_issue": true,
- "warnings": [],
+ "data_pulled_at": "2026-11-18T14:23:53+00:00",
+ "ready_for_new_issue": false,
+ "warnings": [
+  "Week 10 is already covered by Issue 11. Wait for Week 11 to go final (Tuesday after its Monday game) before drafting a new issue."
+ ],
  "next_issue": {
-  "no": 11,
-  "wire_week": 10,
-  "pre_week": 11
+  "no": 12,
+  "wire_week": 11,
+  "pre_week": 12,
+  "blocked_until": "Week 11 is final"
  },
  "season_end": {
   "decided": false
@@ -17,17 +20,17 @@
  "predictions_to_rule": [
   {
    "year": 2026,
-   "issue": 10,
+   "issue": 11,
    "i": 0,
-   "prediction": "StealingGas beats Zygon in the Match of the Week",
-   "context": "The desk projects Zygon, 150 to 143, and Puka Nacua is listed Doubtful, which is what makes this bold. A win would put 8-1 Zygon down for the second time. Deadline: Week 10 final."
+   "prediction": "Darkspaces beats Zygon in Week 11",
+   "context": "The desk gives Zygon 75% on 153 to 118. Darkspaces scored 103.44 last week, and the market feed lists Drake Maye and Kenneth Walker III, Zygon's running back, as Out. A win would put 9-1 Zygon down for the second time. Deadline: Week 11 final."
   },
   {
    "year": 2026,
-   "issue": 10,
+   "issue": 11,
    "i": 1,
-   "prediction": "Sarge71 takes the 1.01 from Snipe58 after Week 10",
-   "context": "Sarge71 sits 17.6 MAXPF points above Snipe58, and last week Snipe58 added 121.8 to Sarge71's 94.8. Sarge71's lineup is already at its best, so only Snipe58's lineup mistakes can move it. A win does not touch MAXPF. Deadline: Week 10 final."
+   "prediction": "Painty69 scores 120 or more against StealingGas",
+   "context": "He scored 73.58 with 103.12 stranded, and his average is 114 a game. Gibbs and Burrow scored 77.36 between them on his bench. Deadline: Week 11 final."
   }
  ],
  "final_weeks": [
@@ -44,22 +47,22 @@
  ],
  "in_progress_weeks": [],
  "latest_published_issue": {
-  "no": 10,
+  "no": 11,
   "year": 2026,
-  "title": "Sarge71 Sets a Perfect Lineup and Loses by 46.54",
-  "weeks": "Week 9 post-game and Week 10 pre-game",
+  "title": "Sarge71 Loses by 0.08 and Takes the First Pick as Painty69 Strands 103.12",
+  "weeks": "Week 10 post-game and Week 11 pre-game",
   "web": true,
   "month": "November 2026",
-  "dek": "Sarge71 scored the maximum 94.8 and lost to YesChef23's league-high 141.34, StealingGas beat fumbduckdumbfuck 126.26 to 89.1 in the Match of the Week and saw his run of top scores end at two, and Zygon is 8-1 with the highest MAXPF, 1561.24. Snipe58 holds the 1.01 at 1114.92, 17.6 below Sarge71.",
-  "banner": "Sarge71's perfect lineup loses by 46.54",
+  "dek": "Painty69 scored 73.58 and stranded 103.12, 42% of a 176.7 best lineup, in a 79.44-point loss to Snipe58. Sarge71 lost to CMac91 by 0.08 and moved to the lowest MAXPF, 1237.54, 51.8 below Snipe58. Zygon beat StealingGas 176.24 to 132.3, is 9-1 and holds the highest MAXPF, 1771.06. Johnny4Skins and fumbduckdumbfuck, both 6-4, meet in Week 11.",
+  "banner": "Painty69 strands 103.12 in a 79.44-point loss",
   "ticker": [
-   "Sarge71 sets the perfect lineup, 94.8, and loses to YesChef23's 141.34",
-   "StealingGas beats fumbduckdumbfuck 126.26 to 89.1 in the Match of the Week",
-   "Zygon is 8-1 and holds the highest MAXPF, 1561.24",
-   "Painty69 leaves 69.36 on the bench in a 50.58-point loss to CMac91"
+   "Painty69 strands 103.12 and loses to Snipe58 by 79.44",
+   "Sarge71 loses by 0.08 and takes the first pick at 1237.54",
+   "Zygon beats StealingGas 176.24 to 132.3 and is 9-1 with MAXPF 1771.06",
+   "Johnny4Skins and fumbduckdumbfuck, both 6-4, meet in the Week 11 playoff race"
   ],
-  "wire_week": 9,
-  "standings_week": 9
+  "wire_week": 10,
+  "standings_week": 10
  },
  "week_summary": {
   "week": 10,
@@ -226,7 +229,7 @@
    "pf": 1419.16,
    "pa": 1171.48,
    "maxpf": 1583.66,
-   "faab_remaining": 96,
+   "faab_remaining": 95,
    "sleeper_maxpf": null,
    "rank": 3,
    "prev_rank": 2,
@@ -407,8 +410,8 @@
    "change_this_week": -120
   },
   "StealingGas": {
-   "faab": 96,
-   "change_this_week": 0
+   "faab": 95,
+   "change_this_week": -1
   },
   "Johnny4Skins": {
    "faab": 500,
@@ -486,6 +489,22 @@
   }
  ],
  "transactions_this_week_and_later": [
+  {
+   "week": 10,
+   "type": "waiver",
+   "created": 1794955326220,
+   "id": "1428549814370447383",
+   "manager": "StealingGas",
+   "added": {
+    "name": "Darnell Washington",
+    "pos": "TE",
+    "team": "PIT"
+   },
+   "dropped": [
+    "Rico Dowdle"
+   ],
+   "bid": 1
+  },
   {
    "week": 10,
    "type": "free_agent",
@@ -633,12 +652,10 @@
  ],
  "market_portfolios": {
   "source": "FantasyCalc",
-  "as_of": "2026-11-17",
-  "league_avg": 63447,
+  "as_of": "2026-11-18",
+  "league_avg": 63595,
   "how_to_read": "Values are FantasyCalc dynasty trade values (superflex, 12 teams, full PPR). move30 = 30-day market move of the players held now (trade-neutral). since_change = change since the snapshot dated `since` (includes trades). sidelined = value on IR/Out/PUP. Status flags: crash, correction, stable, bull.",
   "crash_watch": [
-   "Darkspaces",
-   "Johnny4Skins",
    "fumbduckdumbfuck",
    "Sarge71"
   ],
@@ -646,290 +663,277 @@
    {
     "manager": "Darkspaces",
     "rank": 1,
-    "total": 75561,
-    "status": "crash",
-    "move30": -28,
-    "move30_pct": -0.0,
-    "since": "2026-11-12",
-    "since_change": -1669,
-    "sidelined": 18992,
-    "sidelined_pct": 25.1,
-    "picks": 24323,
+    "total": 76059,
+    "status": "stable",
+    "move30": 673,
+    "move30_pct": 0.9,
+    "since": "2026-11-13",
+    "since_change": -855,
+    "sidelined": 14475,
+    "sidelined_pct": 19.0,
+    "picks": 24424,
     "top_assets": [
-     "Drake Maye (QB) 6428",
-     "Fernando Mendoza (QB) 4157",
-     "Colston Loveland (TE) 4041"
+     "Drake Maye (QB) 6478",
+     "Fernando Mendoza (QB) 4247",
+     "Nico Collins (WR) 4197"
     ],
     "sidelined_players": [
-     "Drake Maye (Out) 6428",
-     "De'Von Achane (IR) 3777",
-     "Omar Cooper Jr. (Out) 2245",
-     "Ty Simpson (Out) 2189",
-     "Terrance Ferguson (IR) 1561"
+     "Drake Maye (Out) 6478",
+     "De'Von Achane (IR) 3698",
+     "Ty Simpson (Out) 2215",
+     "Terrance Ferguson (IR) 1503",
+     "Jalen McMillan (IR) 581"
     ]
    },
    {
     "manager": "StealingGas",
     "rank": 2,
-    "total": 73749,
+    "total": 72724,
     "status": "stable",
-    "move30": -44,
-    "move30_pct": -0.1,
-    "since": "2026-11-12",
-    "since_change": -756,
-    "sidelined": 15796,
-    "sidelined_pct": 21.4,
-    "picks": 11349,
+    "move30": 70,
+    "move30_pct": 0.1,
+    "since": "2026-11-13",
+    "since_change": -685,
+    "sidelined": 13946,
+    "sidelined_pct": 19.2,
+    "picks": 11359,
     "top_assets": [
-     "Puka Nacua (WR) 7424",
-     "Malik Nabers (WR) 6449",
-     "Trevor Lawrence (QB) 6207"
+     "Puka Nacua (WR) 7170",
+     "Malik Nabers (WR) 6380",
+     "Trevor Lawrence (QB) 6230"
     ],
     "sidelined_players": [
-     "Puka Nacua (IR) 7424",
-     "Jaxson Dart (IR) 3894",
-     "De'Zhaun Stribling (IR) 1647",
-     "Geno Smith (Out) 1520",
-     "Jayden Higgins (IR) 1311"
+     "Puka Nacua (IR) 7170",
+     "Jaxson Dart (IR) 3839",
+     "De'Zhaun Stribling (IR) 1639",
+     "Jayden Higgins (IR) 1298"
     ]
    },
    {
     "manager": "Zygon",
     "rank": 3,
-    "total": 73088,
+    "total": 72550,
     "status": "stable",
-    "move30": -518,
-    "move30_pct": -0.7,
-    "since": "2026-11-12",
-    "since_change": 18,
-    "sidelined": 9424,
-    "sidelined_pct": 12.9,
-    "picks": 13825,
+    "move30": -946,
+    "move30_pct": -1.3,
+    "since": "2026-11-13",
+    "since_change": 128,
+    "sidelined": 2386,
+    "sidelined_pct": 3.3,
+    "picks": 13863,
     "top_assets": [
-     "Jaxon Smith-Njigba (WR) 10323",
-     "Kenneth Walker III (RB) 6757",
-     "Trey McBride (TE) 6672"
+     "Jaxon Smith-Njigba (WR) 10293",
+     "Kenneth Walker III (RB) 6528",
+     "Trey McBride (TE) 6504"
     ],
     "sidelined_players": [
-     "Kenneth Walker III (Out) 6757",
-     "Jordan Addison (Out) 1733",
-     "Chris Brazzell II (IR) 678",
-     "Emanuel Wilson (Out) 256"
+     "Jordan Addison (Out) 1686",
+     "Chris Brazzell II (IR) 595",
+     "Emanuel Wilson (Out) 105"
     ]
    },
    {
     "manager": "Painty69",
     "rank": 4,
-    "total": 66654,
+    "total": 67173,
     "status": "stable",
-    "move30": 141,
-    "move30_pct": 0.2,
-    "since": "2026-11-12",
-    "since_change": -549,
-    "sidelined": 9070,
-    "sidelined_pct": 13.6,
-    "picks": 13825,
+    "move30": 758,
+    "move30_pct": 1.1,
+    "since": "2026-11-13",
+    "since_change": 547,
+    "sidelined": 2217,
+    "sidelined_pct": 3.3,
+    "picks": 13863,
     "top_assets": [
-     "Jahmyr Gibbs (RB) 10409",
-     "Joe Burrow (QB) 7643",
-     "C.J. Stroud (QB) 4898"
+     "Jahmyr Gibbs (RB) 10493",
+     "Joe Burrow (QB) 7876",
+     "C.J. Stroud (QB) 4929"
     ],
     "sidelined_players": [
-     "Carnell Tate (Out) 3432",
-     "Josh Jacobs (Out) 2071",
-     "Mike Evans (Out) 1801",
-     "T.J. Hockenson (Out) 1622",
-     "Jauan Jennings (Out) 144"
+     "Josh Jacobs (Out) 2217"
     ]
    },
    {
     "manager": "YesChef23",
     "rank": 5,
-    "total": 65963,
+    "total": 65868,
     "status": "stable",
-    "move30": 2783,
-    "move30_pct": 4.4,
-    "since": "2026-11-12",
-    "since_change": 1690,
-    "sidelined": 8949,
-    "sidelined_pct": 13.6,
-    "picks": 17057,
+    "move30": 2483,
+    "move30_pct": 3.9,
+    "since": "2026-11-13",
+    "since_change": 751,
+    "sidelined": 8779,
+    "sidelined_pct": 13.3,
+    "picks": 17106,
     "top_assets": [
-     "Caleb Williams (QB) 7606",
-     "Matthew Golden (WR) 5139",
-     "Jeremiyah Love (RB) 4962"
+     "Caleb Williams (QB) 7528",
+     "Matthew Golden (WR) 5183",
+     "Luther Burden III (WR) 4864"
     ],
     "sidelined_players": [
-     "Jeremiyah Love (IR) 4962",
-     "RJ Harvey (IR) 1539",
-     "Woody Marks (Out) 1272",
-     "Jacory Croskey-Merritt (IR) 1176"
+     "Jeremiyah Love (IR) 4744",
+     "RJ Harvey (IR) 1527",
+     "Woody Marks (Doubtful) 1292",
+     "Jacory Croskey-Merritt (IR) 1216"
     ]
    },
    {
     "manager": "C33DeezNutzz",
     "rank": 6,
-    "total": 63450,
+    "total": 63917,
     "status": "stable",
-    "move30": -1470,
-    "move30_pct": -2.3,
-    "since": "2026-11-12",
-    "since_change": 377,
-    "sidelined": 5105,
-    "sidelined_pct": 8.0,
-    "picks": 14902,
+    "move30": -776,
+    "move30_pct": -1.2,
+    "since": "2026-11-13",
+    "since_change": 116,
+    "sidelined": 2545,
+    "sidelined_pct": 4.0,
+    "picks": 14943,
     "top_assets": [
-     "Josh Allen (QB) 10636",
-     "Chris Olave (WR) 4515",
-     "Christian Watson (WR) 4451"
+     "Josh Allen (QB) 10756",
+     "Christian Watson (WR) 4521",
+     "Chris Olave (WR) 4399"
     ],
     "sidelined_players": [
-     "Ladd McConkey (Out) 2446",
-     "Jonathon Brooks (IR) 1393",
-     "Jayden Reed (IR) 1266"
+     "Jonathon Brooks (IR) 1332",
+     "Jayden Reed (IR) 1213"
     ]
    },
    {
     "manager": "Johnny4Skins",
     "rank": 7,
-    "total": 62046,
-    "status": "crash",
-    "move30": -3476,
-    "move30_pct": -5.3,
-    "since": "2026-11-12",
-    "since_change": -227,
-    "sidelined": 10585,
-    "sidelined_pct": 17.1,
-    "picks": 14902,
+    "total": 62464,
+    "status": "correction",
+    "move30": -2690,
+    "move30_pct": -4.1,
+    "since": "2026-11-13",
+    "since_change": -420,
+    "sidelined": 10428,
+    "sidelined_pct": 16.7,
+    "picks": 14943,
     "top_assets": [
-     "Ja'Marr Chase (WR) 8921",
-     "Lamar Jackson (QB) 5446",
-     "Isaiah Likely (TE) 3492"
+     "Ja'Marr Chase (WR) 9095",
+     "Lamar Jackson (QB) 5247",
+     "Chuba Hubbard (RB) 3615"
     ],
     "sidelined_players": [
-     "Lamar Jackson (IR) 5446",
-     "Jalen Hurts (IR) 3049",
-     "A.J. Brown (Out) 2090"
+     "Lamar Jackson (IR) 5247",
+     "Jalen Hurts (IR) 3162",
+     "A.J. Brown (Out) 2019"
     ]
    },
    {
     "manager": "CMac91",
     "rank": 8,
-    "total": 60242,
+    "total": 59896,
     "status": "correction",
-    "move30": -1551,
-    "move30_pct": -2.5,
-    "since": "2026-11-12",
-    "since_change": -212,
-    "sidelined": 4164,
-    "sidelined_pct": 6.9,
-    "picks": 14902,
+    "move30": -1861,
+    "move30_pct": -3.0,
+    "since": "2026-11-13",
+    "since_change": -738,
+    "sidelined": 1706,
+    "sidelined_pct": 2.8,
+    "picks": 14943,
     "top_assets": [
-     "CeeDee Lamb (WR) 6757",
-     "Jordan Love (QB) 5565",
-     "James Cook III (RB) 5246"
+     "CeeDee Lamb (WR) 6703",
+     "James Cook III (RB) 5292",
+     "Jordan Love (QB) 5250"
     ],
     "sidelined_players": [
-     "Alec Pierce (IR) 1751",
-     "Marvin Harrison Jr. (Out) 1712",
-     "Dontayvion Wicks (Out) 701"
+     "Alec Pierce (IR) 1706"
     ]
    },
    {
     "manager": "Hades9mm",
     "rank": 9,
-    "total": 58508,
+    "total": 58711,
     "status": "stable",
-    "move30": 255,
-    "move30_pct": 0.4,
-    "since": "2026-11-12",
-    "since_change": 2718,
-    "sidelined": 3925,
-    "sidelined_pct": 6.7,
-    "picks": 12339,
+    "move30": 1123,
+    "move30_pct": 2.0,
+    "since": "2026-11-13",
+    "since_change": 2045,
+    "sidelined": 3844,
+    "sidelined_pct": 6.5,
+    "picks": 12360,
     "top_assets": [
-     "Amon-Ra St. Brown (WR) 7222",
-     "Jayden Daniels (QB) 5868",
-     "Jared Goff (QB) 3885"
+     "Amon-Ra St. Brown (WR) 7171",
+     "Jayden Daniels (QB) 6220",
+     "Jared Goff (QB) 3973"
     ],
     "sidelined_players": [
-     "TreVeyon Henderson (IR) 1990",
-     "Davante Adams (IR) 1935"
+     "Davante Adams (IR) 1955",
+     "TreVeyon Henderson (IR) 1889"
     ]
    },
    {
     "manager": "fumbduckdumbfuck",
     "rank": 10,
-    "total": 56972,
+    "total": 57178,
     "status": "crash",
-    "move30": -5937,
-    "move30_pct": -9.4,
-    "since": "2026-11-12",
-    "since_change": -1567,
-    "sidelined": 15884,
-    "sidelined_pct": 27.9,
-    "picks": 14902,
+    "move30": -5379,
+    "move30_pct": -8.6,
+    "since": "2026-11-13",
+    "since_change": -915,
+    "sidelined": 5087,
+    "sidelined_pct": 8.9,
+    "picks": 14943,
     "top_assets": [
-     "Brock Bowers (TE) 7576",
-     "Jonathan Taylor (RB) 4636",
-     "Ashton Jeanty (RB) 4382"
+     "Brock Bowers (TE) 7511",
+     "Jonathan Taylor (RB) 4590",
+     "Dak Prescott (QB) 4354"
     ],
     "sidelined_players": [
-     "Brock Bowers (Out) 7576",
-     "DeVonta Smith (Out) 2771",
-     "Michael Wilson (IR) 2181",
-     "Kyle Monangai (Out) 1741",
-     "Kyler Murray (Out) 1615"
+     "Michael Wilson (IR) 2211",
+     "Kyler Murray (Out) 1531",
+     "Wan'Dale Robinson (IR) 1345"
     ]
    },
    {
     "manager": "Snipe58",
     "rank": 11,
-    "total": 53255,
-    "status": "correction",
-    "move30": -1676,
-    "move30_pct": -3.1,
-    "since": "2026-11-12",
-    "since_change": 102,
-    "sidelined": 4035,
-    "sidelined_pct": 7.6,
-    "picks": 13753,
+    "total": 54322,
+    "status": "stable",
+    "move30": -329,
+    "move30_pct": -0.6,
+    "since": "2026-11-13",
+    "since_change": 979,
+    "sidelined": 3248,
+    "sidelined_pct": 6.0,
+    "picks": 13795,
     "top_assets": [
-     "Brock Purdy (QB) 6406",
-     "Justin Jefferson (WR) 6077",
-     "Jameson Williams (WR) 2656"
+     "Brock Purdy (QB) 6736",
+     "Justin Jefferson (WR) 5985",
+     "Omarion Hampton (RB) 2897"
     ],
     "sidelined_players": [
-     "Malik Willis (IR) 1673",
-     "Jake Ferguson (Out) 1077",
-     "Drew Allar (Out) 886",
-     "Demond Claiborne (IR) 353",
-     "Eli Heidenreich (Out) 46"
+     "Malik Willis (IR) 1625",
+     "Jake Ferguson (Out) 1186",
+     "Demond Claiborne (IR) 437"
     ]
    },
    {
     "manager": "Sarge71",
     "rank": 12,
-    "total": 51874,
+    "total": 52273,
     "status": "crash",
-    "move30": -3793,
-    "move30_pct": -6.8,
-    "since": "2026-11-12",
-    "since_change": -802,
-    "sidelined": 9383,
-    "sidelined_pct": 18.1,
-    "picks": 17057,
+    "move30": -2934,
+    "move30_pct": -5.3,
+    "since": "2026-11-13",
+    "since_change": -81,
+    "sidelined": 6760,
+    "sidelined_pct": 12.9,
+    "picks": 17106,
     "top_assets": [
-     "Bijan Robinson (RB) 9412",
-     "Tetairoa McMillan (WR) 4398",
-     "Sam Darnold (QB) 2207"
+     "Bijan Robinson (RB) 9263",
+     "Tetairoa McMillan (WR) 4229",
+     "Sam Darnold (QB) 2253"
     ],
     "sidelined_players": [
-     "Sam Darnold (Out) 2207",
-     "Jaylen Waddle (Out) 1929",
-     "David Montgomery (Out) 1383",
-     "Romeo Doubs (IR) 1216",
-     "Terry McLaurin (IR) 1066"
+     "Sam Darnold (Out) 2253",
+     "Terry McLaurin (IR) 1298",
+     "Romeo Doubs (IR) 1283",
+     "Michael Pittman Jr. (IR) 1123",
+     "Tank Bigsby (IR) 747"
     ]
    }
   ]
@@ -937,138 +941,6 @@
  "trade_finder": {
   "how": "Each suggestion comes from the Trade Finder logic: one side has a real need (the offered players would raise its starting lineup) or, for a rebuilder, the deal fits its timeline; the two sides are within 10% in FantasyCalc market value; each team is read as a contender, retooling or rebuilder. Build the issue's hypothetical trades from these (a and b are the two managers; as/bs are already in issue wording, keep them as written so the values and the Load in trade calculator link work). Write the desk commentary yourself; do not invent assets or values.",
   "suggestions": [
-   {
-    "a": "Hades9mm",
-    "b": "Darkspaces",
-    "as": [
-     "2028 1st-round pick",
-     "2029 1st-round pick"
-    ],
-    "bs": [
-     "Nico Collins",
-     "Kevin Coleman Jr."
-    ],
-    "a_sends_value": 4162,
-    "b_sends_value": 4182,
-    "gap_pct": 0,
-    "why": [
-     "Darkspaces: the deal works on value and timing rather than a lineup hole.",
-     "Hades9mm gains 2,301 in starting lineup value."
-    ]
-   },
-   {
-    "a": "Zygon",
-    "b": "fumbduckdumbfuck",
-    "as": [
-     "2027 1st-round pick",
-     "2028 1st-round pick"
-    ],
-    "bs": [
-     "Dak Prescott",
-     "MarShawn Lloyd"
-    ],
-    "a_sends_value": 4762,
-    "b_sends_value": 4795,
-    "gap_pct": 1,
-    "why": [
-     "fumbduckdumbfuck: the deal works on value and timing rather than a lineup hole.",
-     "Zygon gains 1,837 in starting lineup value."
-    ]
-   },
-   {
-    "a": "Zygon",
-    "b": "Snipe58",
-    "as": [
-     "2027 1st-round pick",
-     "2028 1st-round pick",
-     "Ollie Gordon II",
-     "Jalen Coker"
-    ],
-    "bs": [
-     "Justin Jefferson",
-     "Matthew Stafford"
-    ],
-    "a_sends_value": 8471,
-    "b_sends_value": 8371,
-    "gap_pct": 1,
-    "why": [
-     "Snipe58 would start Ollie Gordon II, Jalen Coker, a -4,662 upgrade to their starting lineup.",
-     "Zygon gains 3,984 in starting lineup value."
-    ]
-   },
-   {
-    "a": "Snipe58",
-    "b": "YesChef23",
-    "as": [
-     "Kaelon Black"
-    ],
-    "bs": [
-     "Darren Waller",
-     "Tyler Higbee"
-    ],
-    "a_sends_value": 1617,
-    "b_sends_value": 1613,
-    "gap_pct": 0,
-    "why": [
-     "YesChef23 would start Kaelon Black, a 1,041 upgrade to their starting lineup.",
-     "Snipe58 gives up 0 in starting lineup value."
-    ]
-   },
-   {
-    "a": "StealingGas",
-    "b": "fumbduckdumbfuck",
-    "as": [
-     "Antonio Williams"
-    ],
-    "bs": [
-     "Drew Lock",
-     "Cade Otton"
-    ],
-    "a_sends_value": 1637,
-    "b_sends_value": 1636,
-    "gap_pct": 0,
-    "why": [
-     "fumbduckdumbfuck would start Antonio Williams, a 464 upgrade to their starting lineup.",
-     "StealingGas gives up 0 in starting lineup value."
-    ]
-   },
-   {
-    "a": "CMac91",
-    "b": "Darkspaces",
-    "as": [
-     "2027 1st-round pick",
-     "2028 1st-round pick"
-    ],
-    "bs": [
-     "Nico Collins",
-     "Tank Dell"
-    ],
-    "a_sends_value": 5491,
-    "b_sends_value": 5504,
-    "gap_pct": 0,
-    "why": [
-     "Darkspaces: the deal works on value and timing rather than a lineup hole.",
-     "CMac91 gains 2,735 in starting lineup value."
-    ]
-   },
-   {
-    "a": "Hades9mm",
-    "b": "Sarge71",
-    "as": [
-     "Cam Ward"
-    ],
-    "bs": [
-     "Aaron Rodgers",
-     "Pat Freiermuth"
-    ],
-    "a_sends_value": 2709,
-    "b_sends_value": 2700,
-    "gap_pct": 0,
-    "why": [
-     "Sarge71 would start Cam Ward, a 925 upgrade to their starting lineup.",
-     "Hades9mm gives up 0 in starting lineup value."
-    ]
-   },
    {
     "a": "StealingGas",
     "b": "YesChef23",
@@ -1078,12 +950,139 @@
     "bs": [
      "Deshaun Watson"
     ],
-    "a_sends_value": 1865,
-    "b_sends_value": 1920,
-    "gap_pct": 3,
+    "a_sends_value": 1744,
+    "b_sends_value": 1774,
+    "gap_pct": 2,
     "why": [
-     "YesChef23 would start Braelon Allen, a 1,289 upgrade to their starting lineup.",
+     "YesChef23 would start Braelon Allen, a 1,105 upgrade to their starting lineup.",
      "StealingGas gives up 0 in starting lineup value."
+    ]
+   },
+   {
+    "a": "Zygon",
+    "b": "YesChef23",
+    "as": [
+     "Ollie Gordon II"
+    ],
+    "bs": [
+     "Deshaun Watson"
+    ],
+    "a_sends_value": 1806,
+    "b_sends_value": 1774,
+    "gap_pct": 2,
+    "why": [
+     "YesChef23 would start Ollie Gordon II, a 1,167 upgrade to their starting lineup.",
+     "Zygon gives up 0 in starting lineup value."
+    ]
+   },
+   {
+    "a": "Hades9mm",
+    "b": "Darkspaces",
+    "as": [
+     "2028 1st-round pick",
+     "2029 1st-round pick"
+    ],
+    "bs": [
+     "Nico Collins"
+    ],
+    "a_sends_value": 4135,
+    "b_sends_value": 4197,
+    "gap_pct": 1,
+    "why": [
+     "Darkspaces: the deal works on value and timing rather than a lineup hole.",
+     "Hades9mm gains 2,628 in starting lineup value."
+    ]
+   },
+   {
+    "a": "C33DeezNutzz",
+    "b": "Sarge71",
+    "as": [
+     "2027 1st-round pick"
+    ],
+    "bs": [
+     "Travis Etienne Jr.",
+     "David Montgomery"
+    ],
+    "a_sends_value": 3249,
+    "b_sends_value": 3261,
+    "gap_pct": 0,
+    "why": [
+     "Sarge71: the deal works on value and timing rather than a lineup hole.",
+     "C33DeezNutzz gains 643 in starting lineup value."
+    ]
+   },
+   {
+    "a": "Zygon",
+    "b": "Sarge71",
+    "as": [
+     "Emmett Johnson"
+    ],
+    "bs": [
+     "Pat Freiermuth",
+     "Chris Godwin Jr."
+    ],
+    "a_sends_value": 2088,
+    "b_sends_value": 2121,
+    "gap_pct": 2,
+    "why": [
+     "Sarge71 would start Emmett Johnson, a 871 upgrade to their starting lineup.",
+     "Zygon gives up 0 in starting lineup value."
+    ]
+   },
+   {
+    "a": "C33DeezNutzz",
+    "b": "Darkspaces",
+    "as": [
+     "2027 1st-round pick",
+     "2028 1st-round pick"
+    ],
+    "bs": [
+     "Nico Collins",
+     "Tre Tucker"
+    ],
+    "a_sends_value": 5482,
+    "b_sends_value": 5486,
+    "gap_pct": 0,
+    "why": [
+     "Darkspaces: the deal works on value and timing rather than a lineup hole.",
+     "C33DeezNutzz gains 1,758 in starting lineup value."
+    ]
+   },
+   {
+    "a": "Hades9mm",
+    "b": "Snipe58",
+    "as": [
+     "2028 1st-round pick",
+     "2029 1st-round pick"
+    ],
+    "bs": [
+     "Matthew Stafford",
+     "Kaelon Black"
+    ],
+    "a_sends_value": 4135,
+    "b_sends_value": 4125,
+    "gap_pct": 0,
+    "why": [
+     "Snipe58: the deal works on value and timing rather than a lineup hole.",
+     "Hades9mm gains 83 in starting lineup value."
+    ]
+   },
+   {
+    "a": "Johnny4Skins",
+    "b": "Snipe58",
+    "as": [
+     "2027 1st-round pick"
+    ],
+    "bs": [
+     "Matthew Stafford",
+     "Drew Allar"
+    ],
+    "a_sends_value": 3249,
+    "b_sends_value": 3308,
+    "gap_pct": 2,
+    "why": [
+     "Snipe58: the deal works on value and timing rather than a lineup hole.",
+     "Johnny4Skins gains 1,389 in starting lineup value."
     ]
    }
   ]
@@ -1134,12 +1133,12 @@
  },
  "bios": {
   "Darkspaces": {
-   "tagline": "A 127.06 after 67.46, $72 of FAAB, and four receivers on the block.",
-   "asof": "Issue 10, through Week 9",
+   "tagline": "103.44, a 32.28-point loss, and Drake Maye on the Out list.",
+   "asof": "Issue 11, through Week 10",
    "file": {
     "Signature move": "Listing four wide receivers at once. Collins, Odunze, Tucker and Dell are posted ahead of the Week 13 deadline, and in Week 9 he claimed Jalen McMillan for $51 and Corey Kiner for $21.",
-    "Nemesis": "The IR slot and the bench. McMillan, claimed for $51, is on IR in the market feed, and Tank Dell scored 20.5 on his bench.",
-    "The desk is watching": "fumbduckdumbfuck in Week 10, the Week 13 deadline for Collins, and the 1.03, 79.52 MAXPF points above the 1.01."
+    "Nemesis": "The injury list. Drake Maye is Out in the market feed, De'Von Achane and Terrance Ferguson are on IR, and 25.1% of his value is sidelined.",
+    "The desk is watching": "Zygon in Week 11, the Week 13 deadline, $31 of FAAB, and the third pick, 72.92 MAXPF points above the first."
    },
    "season": "2026",
    "headline": null,
@@ -1147,11 +1146,11 @@
    "takes": null
   },
   "Snipe58": {
-   "tagline": "The 1.01 at 1114.92, Purdy's 26.28, and a 25.4 bench.",
-   "asof": "Issue 10, through Week 9",
+   "tagline": "153.02, a 79.44-point win, and the first pick given away.",
+   "asof": "Issue 11, through Week 10",
    "file": {
-    "Nemesis": "The bench again. 25.4 stayed on it in the 35.3-point loss to Zygon.",
-    "The desk is watching": "Painty69 in Week 10, and the 17.6 MAXPF points between his 1.01 and Sarge71."
+    "Nemesis": "His own scoring. A best lineup that added 174.42 to MAXPF against Sarge71's 105.02 moved him to the second pick.",
+    "The desk is watching": "CMac91 in Week 11, and the 51.8 MAXPF points between him and the first pick."
    },
    "season": "2026",
    "headline": null,
@@ -1159,11 +1158,11 @@
    "takes": null
   },
   "StealingGas": {
-   "tagline": "The Match of the Week win, Puka's 35.0, and the 1.10.",
-   "asof": "Issue 10, through Week 9",
+   "tagline": "132.3, a 43.94-point loss, and Nacua on IR.",
+   "asof": "Issue 11, through Week 10",
    "file": {
-    "Nemesis": "YesChef23, whose 141.34 ended the top-score run at two, and Zygon, who is next.",
-    "The desk is watching": "Zygon in Week 10, Puka Nacua, who is Doubtful and on the block, and $96 of FAAB."
+    "Nemesis": "Zygon, who beat him 176.24 to 132.3, and the IR slot, where Puka Nacua and Jaxson Dart sit.",
+    "The desk is watching": "Painty69 in Week 11, $96 of FAAB, and the ninth pick, 32.82 MAXPF points below Hades9mm's tenth."
    },
    "season": "2026",
    "headline": null,
@@ -1171,11 +1170,11 @@
    "takes": null
   },
   "Zygon": {
-   "tagline": "8-1, 1561.24, and the 1.12.",
-   "asof": "Issue 10, through Week 9",
+   "tagline": "176.24, 9-1, and MAXPF 1771.06.",
+   "asof": "Issue 11, through Week 10",
    "file": {
-    "Nemesis": "The bench, again. 12.28 stayed on it in the win over Snipe58.",
-    "The desk is watching": "StealingGas in Week 10, and whether the request for playoff insurance turns into a trade."
+    "Nemesis": "The injury list. Kenneth Walker III and Jordan Addison are Out in the market feed, and 33.58 sat on his bench.",
+    "The desk is watching": "Darkspaces in Week 11, and whether the request for playoff insurance turns into a trade."
    },
    "season": "2026",
    "headline": null,
@@ -1183,11 +1182,11 @@
    "takes": null
   },
   "Hades9mm": {
-   "tagline": "109.24, a 26% miss on his projection, and the 1.09.",
-   "asof": "Issue 10, through Week 9",
+   "tagline": "174.88, a 22% beat on his projection, and $120 on Shedeur Sanders.",
+   "asof": "Issue 11, through Week 10",
    "file": {
-    "Nemesis": "The projection. Sleeper had him at 147.95 and he scored 109.24.",
-    "The desk is watching": "YesChef23 in Week 10, $280 of FAAB after the $50 Justice Hill claim, and the 1.09, 2.84 MAXPF points below StealingGas."
+    "Nemesis": "The IR slot. TreVeyon Henderson and Davante Adams are both on it.",
+    "The desk is watching": "Sarge71 in Week 11, $160 of FAAB, and the tenth pick, 32.82 MAXPF points above StealingGas."
    },
    "season": "2026",
    "headline": null,
@@ -1195,11 +1194,11 @@
    "takes": null
   },
   "Johnny4Skins": {
-   "tagline": "83.54, the lowest score, and Wentz at quarterback.",
-   "asof": "Issue 10, through Week 9",
+   "tagline": "153.56, Hubbard's 34.2, and a playoff-race game.",
+   "asof": "Issue 11, through Week 10",
    "file": {
-    "Nemesis": "The quarterback room. Lamar Jackson and Jalen Hurts are on IR in the market feed, which has him on crash watch.",
-    "The desk is watching": "C33DeezNutzz in Week 10, and $500 of FAAB, still untouched."
+    "Nemesis": "The quarterback room. Lamar Jackson and Jalen Hurts are on IR, and the market feed has him on crash watch, down 5.3% over 30 days.",
+    "The desk is watching": "fumbduckdumbfuck in Week 11, and $500 of FAAB, still untouched."
    },
    "season": "2026",
    "headline": null,
@@ -1207,11 +1206,11 @@
    "takes": null
   },
   "Sarge71": {
-   "tagline": "A perfect 94.8, a 46.54-point loss, and the 1.02.",
-   "asof": "Issue 10, through Week 9",
+   "tagline": "A 0.08-point loss and the first pick at 1237.54.",
+   "asof": "Issue 11, through Week 10",
    "file": {
-    "Nemesis": "Everything outside the starters. A perfect lineup scored 94.8 and lost, and his bench scored 0.0.",
-    "The desk is watching": "CMac91 in Week 10, and the 1.02, 17.6 MAXPF points above the 1.01."
+    "Nemesis": "The margin. 98.62 lost to 98.7 with 6.4 on the bench, and the market feed has him on crash watch.",
+    "The desk is watching": "Hades9mm in Week 11, and the 51.8 MAXPF points that hold the first pick."
    },
    "season": "2026",
    "headline": null,
@@ -1219,11 +1218,11 @@
    "takes": null
   },
   "C33DeezNutzz": {
-   "tagline": "4-5, 8th, and 39.34 left on the bench.",
-   "asof": "Issue 10, through Week 9",
+   "tagline": "98.3, a 55.26-point loss, and 4-6.",
+   "asof": "Issue 11, through Week 10",
    "file": {
-    "Nemesis": "The bench. 39.34 stayed on it in the 18.48-point loss to Darkspaces.",
-    "The desk is watching": "Johnny4Skins in Week 10, and the Josh Allen engine."
+    "Nemesis": "Johnny4Skins, who scored 153.56, and the 16.8 on his own bench.",
+    "The desk is watching": "YesChef23 in Week 11, and the fifth pick at 1450.8 MAXPF."
    },
    "season": "2026",
    "headline": null,
@@ -1231,11 +1230,11 @@
    "takes": null
   },
   "Painty69": {
-   "tagline": "56% of a perfect lineup, 69.36 on the bench, and the 1.11.",
-   "asof": "Issue 10, through Week 9",
+   "tagline": "103.12 on the bench, 42% of his best lineup, and the second-highest MAXPF.",
+   "asof": "Issue 11, through Week 10",
    "file": {
-    "Nemesis": "The bench. C.J. Stroud's 36.36 sat on it, and a perfect lineup would have scored 157.7.",
-    "The desk is watching": "Snipe58 in Week 10, and whether he says a word in the chat."
+    "Nemesis": "The bench. Gibbs (44.2) and Burrow (33.16) sat on it while McCaffrey scored 46.3 in the lineup.",
+    "The desk is watching": "StealingGas in Week 11, and whether he says a word in the chat."
    },
    "season": "2026",
    "headline": null,
@@ -1243,11 +1242,11 @@
    "takes": null
   },
   "CMac91": {
-   "tagline": "138.92, a 50.58-point win, and 5-4 in 6th.",
-   "asof": "Issue 10, through Week 9",
+   "tagline": "A 0.08-point win, a 24% miss on his projection, and 6-4.",
+   "asof": "Issue 11, through Week 10",
    "file": {
-    "Nemesis": "33.4 left on the bench, even in a blowout.",
-    "The desk is watching": "Sarge71 in Week 10, and whether the CeeDee Lamb engine keeps going."
+    "Nemesis": "The projection. Sleeper had him at 129.14 and he scored 98.7.",
+    "The desk is watching": "Snipe58 in Week 11, and four teams at 6-4."
    },
    "season": "2026",
    "headline": null,
@@ -1255,11 +1254,11 @@
    "takes": null
   },
   "YesChef23": {
-   "tagline": "The top score, 141.34, and 7th at 5-4.",
-   "asof": "Issue 10, through Week 9",
+   "tagline": "135.9, Pickens's 43.5, and 5-5.",
+   "asof": "Issue 11, through Week 10",
    "file": {
     "Nemesis": "The injured list. Jeremiyah Love, RJ Harvey and Jacory Croskey-Merritt are all on IR.",
-    "The desk is watching": "Hades9mm in Week 10, and the 1.04 at 1246.6 MAXPF."
+    "The desk is watching": "C33DeezNutzz in Week 11, and the fourth pick at 1402.5 MAXPF."
    },
    "season": "2026",
    "headline": null,
@@ -1267,11 +1266,11 @@
    "takes": null
   },
   "fumbduckdumbfuck": {
-   "tagline": "89.1, a 37.16-point loss, and a crash flag.",
-   "asof": "Issue 10, through Week 9",
+   "tagline": "135.72, 98% of his best lineup, and a playoff-race game.",
+   "asof": "Issue 11, through Week 10",
    "file": {
-    "Nemesis": "The bench and the injury list. 34.7 stayed on it, and DeVonta Smith and Kyle Monangai are Out.",
-    "The desk is watching": "Darkspaces in Week 10, and the 1.08 at 1407.48 MAXPF."
+    "Nemesis": "The injury list. Brock Bowers, DeVonta Smith, Kyle Monangai and Kyler Murray are Out, 27.9% of his value, and the market feed has him on crash watch.",
+    "The desk is watching": "Johnny4Skins in Week 11, and the eighth pick at 1546.1 MAXPF."
    },
    "season": "2026",
    "headline": null,
@@ -1282,44 +1281,44 @@
  "bios_note": "Write data/bios/weekly/<handle>.json (see the issue guide, 6b-weekly). Paragraph 1 of each story is kept from the stable bio; the weekly file replaces everything after it.",
  "previous_issue_json": {
   "desk": [
-   "Sarge71 set the best lineup his roster could field, 94.8, left nothing on the bench, and lost to YesChef23 by 46.54. YesChef23's 141.34 was the top score of the week, with Matthew Golden at 32.4 and Darren Waller the TE of the week at 23. Sarge71 is 1-8 and 12th. A perfect lineup adds its full score to MAXPF (the points a perfect lineup would have scored each week, added up; the lowest total picks 1.01), so the 94.8 put him at 1132.52, 17.6 above Snipe58 at the 1.01 and still holding the 1.02.",
-   "StealingGas beat fumbduckdumbfuck 126.26 to 89.1 in the Match of the Week, with Puka Nacua at 35.0, and his run of top scores ended at two when three teams finished ahead of him. He is 6-3 and 2nd, and his 1.10 now sits 2.84 MAXPF points above Hades9mm's 1.09. Zygon is 8-1 with the highest MAXPF, 1561.24, and the 1.12, and plays StealingGas in Week 10. Painty69 left 69.36 on the bench in a 50.58-point loss to CMac91, the biggest margin of the week."
+   "Painty69 scored 73.58, the lowest total in the league, and stranded 103.12: Jahmyr Gibbs (44.2) and Joe Burrow (33.16) sat on his bench while Christian McCaffrey scored 46.3, the RB of the week, in the lineup. He started 42% of his best possible lineup, 176.7, and lost to Snipe58 by 79.44. The chat called it, three votes of four. He is 2-8 and 11th, and his MAXPF, the points a best possible lineup would have scored each week, added up (the lowest total picks first in the 2027 rookie draft), is 1674.2, the second-highest in the league.",
+   "Sarge71 lost to CMac91, 98.7 to 98.62, a margin of 0.08, and took the first pick anyway: his 1237.54 is now the lowest MAXPF, 51.8 below Snipe58. Snipe58 won by 79.44 and the win is what cost him, because his best lineup added 174.42 to Sarge71's 105.02. Zygon beat StealingGas 176.24 to 132.3, is 9-1 and holds the highest MAXPF, 1771.06, which is why he picks last. Johnny4Skins and fumbduckdumbfuck, both 6-4, meet in Week 11 in the game the desk is calling the playoff race."
   ],
-  "pull": "Sarge71's perfect 94.8 lost by 46.54, and Zygon is 8-1.",
+  "pull": "Sarge71 loses by 0.08 and takes the first pick, and Painty69 strands 103.12.",
   "hero": {
-   "manager": "YesChef23",
-   "text": "141.34, the top score of the week, and a 46.54-point win over Sarge71. Matthew Golden led at 32.4, Darren Waller was the TE of the week at 23, and 19.02 stayed on the bench. He beat Sleeper's 116.33 projection by 21% and moved up a spot to 7th at 5-4.",
-   "desk": "The 1.04 is unmoved at 1246.6 MAXPF, 131.68 above the 1.01. Hades9mm is next on the schedule."
+   "manager": "Zygon",
+   "text": "176.24, the top score of the week and a 43.94-point win over StealingGas. Patrick Mahomes threw 5 touchdowns for 35.42, the QB of the week, and the desk's 150 projection was beaten by 26.24 even with 33.58 sitting on his bench. He is 9-1 and first.",
+   "desk": "His MAXPF is 1771.06, the highest total in the league, and Kenneth Walker III and Jordan Addison are Out in the market feed. Darkspaces is next."
   },
   "zero": {
-   "manager": "Johnny4Skins",
-   "text": "83.54, the lowest score in the league, a 25.7-point loss to Hades9mm with 23.26 left on the bench. Ja'Marr Chase scored 31.5, so everyone else in the lineup combined for 52.04.",
-   "desk": "The market feed has him on crash watch, down 6.6% over 30 days with 15.1% of his value sidelined, and Lamar Jackson and Jalen Hurts are both on IR. Carson Wentz arrived as a free agent. He is 5-4 and 5th with $500 of FAAB untouched."
+   "manager": "Painty69",
+   "text": "73.58, the lowest score in the league and a 79.44-point loss to Snipe58. McCaffrey scored 46.3 in the lineup, and Gibbs (44.2) and Burrow (33.16) were on the bench among the 103.12 that stayed there.",
+   "desk": "He is 2-8 and 11th with $500 of FAAB untouched and no lines in this week's chat. A best possible lineup would have scored 176.7."
   },
   "quote": {
-   "text": "I’m sorry I didn’t mean it, don’t hate me, I need insurance for playoffs",
-   "by": "Zygon, to Darkspaces",
-   "desk": "An 8-1 team with the highest MAXPF, 1561.24, apologized for a joke and asked for insurance in the same message. The deadline is Week 13."
+   "text": "Time to see what Emmett Johnson is really made of",
+   "by": "Zygon",
+   "desk": "The quote came from the 9-1 team with Kenneth Walker III listed Out in the market feed. StealingGas answered about receiving."
   },
   "poll": {
-   "id": "issue-10",
-   "q": "Who leaves the most points on the bench in Week 10?",
+   "id": "issue-11",
+   "q": "Who wins Johnny4Skins vs fumbduckdumbfuck in Week 11?",
    "opts": [
-    "Painty69",
-    "C33DeezNutzz",
-    "CMac91",
-    "Someone else"
+    "Johnny4Skins by double digits",
+    "Johnny4Skins in a squeaker",
+    "fumbduckdumbfuck in a squeaker",
+    "fumbduckdumbfuck by double digits"
    ],
-   "desk": "Painty69 left 69.36 in Week 9, C33DeezNutzz 39.34 and CMac91 33.4. The chat decides."
+   "desk": "The desk projects 129 to 128. Johnny4Skins scored 153.56 last week and fumbduckdumbfuck 135.72."
   },
   "bold": [
    [
-    "StealingGas beats Zygon in the Match of the Week",
-    "The desk projects Zygon, 150 to 143, and Puka Nacua is listed Doubtful, which is what makes this bold. A win would put 8-1 Zygon down for the second time. Deadline: Week 10 final."
+    "Darkspaces beats Zygon in Week 11",
+    "The desk gives Zygon 75% on 153 to 118. Darkspaces scored 103.44 last week, and the market feed lists Drake Maye and Kenneth Walker III, Zygon's running back, as Out. A win would put 9-1 Zygon down for the second time. Deadline: Week 11 final."
    ],
    [
-    "Sarge71 takes the 1.01 from Snipe58 after Week 10",
-    "Sarge71 sits 17.6 MAXPF points above Snipe58, and last week Snipe58 added 121.8 to Sarge71's 94.8. Sarge71's lineup is already at its best, so only Snipe58's lineup mistakes can move it. A win does not touch MAXPF. Deadline: Week 10 final."
+    "Painty69 scores 120 or more against StealingGas",
+    "He scored 73.58 with 103.12 stranded, and his average is 114 a game. Gibbs and Burrow scored 77.36 between them on his bench. Deadline: Week 11 final."
    ]
   ],
   "receipts": [
@@ -1332,7 +1331,7 @@
      "draft"
     ],
     "status": "pending",
-    "note": "He is 8-1 with the highest MAXPF, 1561.24, and the 1.12. He plays StealingGas in Week 10."
+    "note": "He is 9-1 with the highest MAXPF, 1771.06, and the twelfth pick. He plays Darkspaces in Week 11."
    },
    {
     "who": "Hades9mm",
@@ -1343,7 +1342,7 @@
      "all in"
     ],
     "status": "pending",
-    "note": "He is 6-3 and 3rd, and spent $50 on Justice Hill this week."
+    "note": "He is 7-3 and 2nd, and spent $120 on Shedeur Sanders in Week 10."
    },
    {
     "who": "Darkspaces",
@@ -1354,7 +1353,7 @@
      "rebuild"
     ],
     "status": "pending",
-    "note": "He holds the 1.03 and listed four receivers on the block."
+    "note": "He is 4-6 and 9th, with the third pick and Drake Maye Out in the market feed."
    },
    {
     "who": "Darkspaces",
@@ -1364,7 +1363,7 @@
      "Mendoza"
     ],
     "status": "pending",
-    "note": "Mendoza is his second-biggest market asset, 4275, behind Drake Maye."
+    "note": "Mendoza's market value is 4,157, and Maye is the largest asset on his sidelined list."
    },
    {
     "who": "StealingGas",
@@ -1375,18 +1374,7 @@
      "playoffs"
     ],
     "status": "pending",
-    "note": "He scored 126.26 in Week 9, 4th in the league, and is 6-3 in 2nd. Playoffs start in Week 15."
-   },
-   {
-    "who": "StealingGas",
-    "text": "Don't want the Mendoza Tucker stack? Could very well go bonkers in '27",
-    "context": "Pitching Tre Tucker, who Darkspaces put on the block",
-    "tags": [
-     "Tucker",
-     "block"
-    ],
-    "status": "pending",
-    "note": "Tucker is still listed and did not move."
+    "note": "He scored 132.3 in a loss to Zygon and is 6-4 in 3rd. Playoffs start in Week 15."
    },
    {
     "who": "StealingGas",
@@ -1398,7 +1386,7 @@
      "picks"
     ],
     "status": "pending",
-    "note": "No pick or quarterback deal cleared in Week 9. He claimed Audric Estime for $2."
+    "note": "No trade cleared in Weeks 9 or 10. On Wednesday he claimed tight end Darnell Washington for $1 and dropped running back Rico Dowdle."
    },
    {
     "who": "Darkspaces",
@@ -1409,57 +1397,41 @@
      "block"
     ],
     "status": "pending",
-    "note": "Collins is still listed, with Odunze, Tucker and Dell. The deadline is Week 13."
+    "note": "Collins did not come up in the Week 10 chat and no trade cleared. The deadline is Week 13."
    }
   ],
   "hits": [
    [
-    "You can calculate deez nuts",
-    "Zygon"
-   ],
-   [
-    "that's some heavy calculations for a 8-1 team",
-    "Hades9mm"
-   ],
-   [
-    "want your 1st back? xD",
-    "Darkspaces"
-   ],
-   [
-    "Any rebuilders want a Puka for next year?",
+    "Even if they completely abandon the run like the chiefs love to do, I still think he’s a strong play on receiving alone.",
     "StealingGas"
    ],
    [
-    "it's Mendoza season boys. time to see if I'm cooked for the foreseeable future or not lol",
-    "Darkspaces"
-   ],
-   [
-    "who needs some WR help before the trade deadline?",
-    "Darkspaces"
+    "Time to see what Emmett Johnson is really made of",
+    "Zygon"
    ]
   ],
   "closer": {
    "label": "The desk's last word",
-   "h": "A Perfect Score for a 1-8 Team",
-   "text": "Sarge71 played the best lineup his roster could field and lost by 46.54. Painty69 played 56% of his and lost by 50.58, and holds the second-highest MAXPF in the league. A perfect lineup shows what a roster is, and the 94.8 says what Sarge71 has."
+   "h": "The Pick Race Moved on a 0.08 Loss",
+   "text": "Sarge71 lost by 0.08 and holds the first pick at 1237.54. Snipe58 won by 79.44 and gave it away. Painty69 stranded 103.12 and holds the second-highest MAXPF in the league. Weeks in this league are won on the lineup and the draft order is decided by the roster."
   },
   "motw": {
-   "a": "StealingGas",
-   "b": "Zygon",
-   "desk": "The two top seeds meet. Zygon is 8-1 with the highest MAXPF, 1561.24, and StealingGas is 6-3 with a Doubtful star he is trying to sell. Projections are the desk's own estimate (average points per game, rounded).",
-   "verdict": "The desk leans Zygon, 150 to 143, and Nacua's status is the one number that can change it."
+   "a": "Johnny4Skins",
+   "b": "fumbduckdumbfuck",
+   "desk": "Two 6-4 teams, both on the market feed's crash watch, play each other for a seat in the playoff race. Johnny4Skins scored 153.56 last week and fumbduckdumbfuck was the Best Manager at 98%. Projections are the desk's own estimate (average points per game, rounded).",
+   "verdict": "The desk leans Johnny4Skins by a point, 129 to 128, and 51 to 49 is as close as the rule gets. Whoever gets the healthier lineup wins."
   },
   "drama_sample": {
-   "h": "The Insurance Request",
-   "heat": 88,
-   "p": "Darkspaces told Zygon he was running options through the trade calculator. Zygon answered 'You can calculate deez nuts', then apologized and said he needs insurance for the playoffs. Hades9mm pointed out those were heavy calculations for an 8-1 team.",
-   "desk": "The league's best team is the one asking for help, and Darkspaces has four receivers listed. Zygon also said 8-1 only means a seed and the last pick."
+   "h": "The Gibbs and Burrow Problem",
+   "heat": 92,
+   "p": "Painty69 started McCaffrey, who scored 46.3 as the RB of the week, and sat Jahmyr Gibbs (44.2) and Joe Burrow (33.16). The weekly report named him Worst Manager at 42% of his best possible lineup, and the poll had picked him three votes to one.",
+   "desk": "He has no lines in this week's chat log, and $500 of FAAB untouched."
   },
   "trade_titles": [
-   "The Collins Deal, Round Five",
-   "The Quarterback Rescue, Round Three",
-   "The Depth Trade Sarge71 Has Not Made",
-   "The Shough Offer, Round Two"
+   "The Collins Deal, Round Six",
+   "The Playoff Insurance",
+   "The Cam Ward Depth Chart",
+   "The Braelon Allen Offer"
   ],
   "trimmed": "Cut to continuity fields. Use issue_template for the schema."
  },

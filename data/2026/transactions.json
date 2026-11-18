@@ -1531,6 +1531,22 @@
   },
   {
     "week": 10,
+    "type": "waiver",
+    "created": 1794955326220,
+    "id": "1428549814370447383",
+    "manager": "StealingGas",
+    "added": {
+      "name": "Darnell Washington",
+      "pos": "TE",
+      "team": "PIT"
+    },
+    "dropped": [
+      "Rico Dowdle"
+    ],
+    "bid": 1
+  },
+  {
+    "week": 10,
     "type": "free_agent",
     "created": 1794726865163,
     "id": "1427591579249426432",

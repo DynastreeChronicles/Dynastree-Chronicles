@@ -1,0 +1,285 @@
+{
+ "wealth": {
+  "weeks": {
+   "10": {
+    "date": "2026-11-18",
+    "slots": {
+     "1": 4934,
+     "2": 4934,
+     "3": 4934,
+     "4": 4934,
+     "5": 3249,
+     "6": 3249,
+     "7": 3249,
+     "8": 3249,
+     "9": 2530,
+     "10": 2530,
+     "11": 2530,
+     "12": 2530
+    },
+    "teams": {
+     "Darkspaces": {
+      "roster": 51635,
+      "picks": 24424,
+      "total": 76059
+     },
+     "Snipe58": {
+      "roster": 40527,
+      "picks": 13795,
+      "total": 54322
+     },
+     "StealingGas": {
+      "roster": 61365,
+      "picks": 11359,
+      "total": 72724
+     },
+     "Zygon": {
+      "roster": 58687,
+      "picks": 13863,
+      "total": 72550
+     },
+     "Hades9mm": {
+      "roster": 46351,
+      "picks": 12360,
+      "total": 58711
+     },
+     "Johnny4Skins": {
+      "roster": 47521,
+      "picks": 14943,
+      "total": 62464
+     },
+     "Sarge71": {
+      "roster": 35167,
+      "picks": 17106,
+      "total": 52273
+     },
+     "C33DeezNutzz": {
+      "roster": 48974,
+      "picks": 14943,
+      "total": 63917
+     },
+     "Painty69": {
+      "roster": 53310,
+      "picks": 13863,
+      "total": 67173
+     },
+     "CMac91": {
+      "roster": 44953,
+      "picks": 14943,
+      "total": 59896
+     },
+     "YesChef23": {
+      "roster": 48762,
+      "picks": 17106,
+      "total": 65868
+     },
+     "fumbduckdumbfuck": {
+      "roster": 42235,
+      "picks": 14943,
+      "total": 57178
+     }
+    }
+   },
+   "9": {
+    "date": "2026-11-17",
+    "slots": {
+     "1": 4915,
+     "2": 4915,
+     "3": 4915,
+     "4": 4915,
+     "5": 3236,
+     "6": 3236,
+     "7": 3236,
+     "8": 3236,
+     "9": 2510,
+     "10": 2510,
+     "11": 2510,
+     "12": 2510
+    },
+    "teams": {
+     "Darkspaces": {
+      "roster": 51210,
+      "picks": 24295,
+      "total": 75505
+     },
+     "Snipe58": {
+      "roster": 39301,
+      "picks": 13740,
+      "total": 53041
+     },
+     "StealingGas": {
+      "roster": 62307,
+      "picks": 11325,
+      "total": 73632
+     },
+     "Zygon": {
+      "roster": 59202,
+      "picks": 13800,
+      "total": 73002
+     },
+     "Hades9mm": {
+      "roster": 45951,
+      "picks": 12308,
+      "total": 58259
+     },
+     "Johnny4Skins": {
+      "roster": 47104,
+      "picks": 14878,
+      "total": 61982
+     },
+     "Sarge71": {
+      "roster": 35129,
+      "picks": 17034,
+      "total": 52163
+     },
+     "C33DeezNutzz": {
+      "roster": 48060,
+      "picks": 14878,
+      "total": 62938
+     },
+     "Painty69": {
+      "roster": 52802,
+      "picks": 13800,
+      "total": 66602
+     },
+     "CMac91": {
+      "roster": 45238,
+      "picks": 14878,
+      "total": 60116
+     },
+     "YesChef23": {
+      "roster": 48685,
+      "picks": 17034,
+      "total": 65719
+     },
+     "fumbduckdumbfuck": {
+      "roster": 42074,
+      "picks": 14878,
+      "total": 56952
+     }
+    }
+   }
+  }
+ },
+ "as_of": "2026-11-18",
+ "first_snapshot": "2026-10-09",
+ "hyp": [
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "2028 1st-round pick",
+      "value": 2233
+     },
+     {
+      "label": "2029 1st-round pick",
+      "value": 1902
+     }
+    ],
+    "total": 4135,
+    "n": 2,
+    "valued": 2
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Nico Collins",
+      "value": 4197
+     },
+     {
+      "label": "Kevin Coleman Jr.",
+      "value": 293
+     }
+    ],
+    "total": 4490,
+    "n": 2,
+    "valued": 2
+   }
+  },
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "2027 1st-round pick",
+      "value": 2857
+     },
+     {
+      "label": "2028 1st-round pick",
+      "value": 2233
+     }
+    ],
+    "total": 5090,
+    "n": 2,
+    "valued": 2
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Dak Prescott",
+      "value": 4354
+     },
+     {
+      "label": "MarShawn Lloyd",
+      "value": 759
+     }
+    ],
+    "total": 5113,
+    "n": 2,
+    "valued": 2
+   }
+  },
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "Cam Ward",
+      "value": 2688
+     }
+    ],
+    "total": 2688,
+    "n": 1,
+    "valued": 1
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Aaron Rodgers",
+      "value": 1424
+     },
+     {
+      "label": "Pat Freiermuth",
+      "value": 1217
+     }
+    ],
+    "total": 2641,
+    "n": 2,
+    "valued": 2
+   }
+  },
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "Braelon Allen",
+      "value": 1744
+     }
+    ],
+    "total": 1744,
+    "n": 1,
+    "valued": 1
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Deshaun Watson",
+      "value": 1774
+     }
+    ],
+    "total": 1774,
+    "n": 1,
+    "valued": 1
+   }
+  }
+ ],
+ "wire": []
+}
