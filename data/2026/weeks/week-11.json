@@ -1,0 +1,294 @@
+{
+  "week": 11,
+  "final": true,
+  "teams": [
+    {
+      "roster_id": 1,
+      "manager": "Darkspaces",
+      "points": 86.18,
+      "maxpf": 90.48,
+      "roster_points": 108.78,
+      "bench_points": 22.6,
+      "optimal": 90.48,
+      "left_on_bench": 4.3,
+      "efficiency": 95.2,
+      "mvp": {
+        "name": "Fernando Mendoza",
+        "pos": "QB",
+        "pts": 23.88
+      },
+      "best_bench": {
+        "name": "Tre Tucker",
+        "pos": "WR",
+        "pts": 7.0
+      },
+      "opponent": "Zygon",
+      "opponent_points": 99.12,
+      "result": "L"
+    },
+    {
+      "roster_id": 2,
+      "manager": "Snipe58",
+      "points": 96.1,
+      "maxpf": 96.1,
+      "roster_points": 103.0,
+      "bench_points": 6.9,
+      "optimal": 96.1,
+      "left_on_bench": 0.0,
+      "efficiency": 100.0,
+      "mvp": {
+        "name": "Brock Purdy",
+        "pos": "QB",
+        "pts": 22.2
+      },
+      "best_bench": {
+        "name": "Jalen Nailor",
+        "pos": "WR",
+        "pts": 2.6
+      },
+      "opponent": "CMac91",
+      "opponent_points": 133.56,
+      "result": "L"
+    },
+    {
+      "roster_id": 3,
+      "manager": "StealingGas",
+      "points": 140.18,
+      "maxpf": 161.88,
+      "roster_points": 170.78,
+      "bench_points": 30.6,
+      "optimal": 161.88,
+      "left_on_bench": 21.7,
+      "efficiency": 86.6,
+      "mvp": {
+        "name": "Jonah Coleman",
+        "pos": "RB",
+        "pts": 34.9
+      },
+      "best_bench": {
+        "name": "Antonio Williams",
+        "pos": "WR",
+        "pts": 21.2
+      },
+      "opponent": "Painty69",
+      "opponent_points": 84.1,
+      "result": "W"
+    },
+    {
+      "roster_id": 4,
+      "manager": "Zygon",
+      "points": 99.12,
+      "maxpf": 167.74,
+      "roster_points": 201.24,
+      "bench_points": 102.12,
+      "optimal": 167.74,
+      "left_on_bench": 68.62,
+      "efficiency": 59.1,
+      "mvp": {
+        "name": "Patrick Mahomes",
+        "pos": "QB",
+        "pts": 24.96
+      },
+      "best_bench": {
+        "name": "Travis Kelce",
+        "pos": "TE",
+        "pts": 25.4
+      },
+      "opponent": "Darkspaces",
+      "opponent_points": 86.18,
+      "result": "W"
+    },
+    {
+      "roster_id": 5,
+      "manager": "Hades9mm",
+      "points": 140.32,
+      "maxpf": 164.48,
+      "roster_points": 205.34,
+      "bench_points": 65.02,
+      "optimal": 164.48,
+      "left_on_bench": 24.16,
+      "efficiency": 85.3,
+      "mvp": {
+        "name": "Javonte Williams",
+        "pos": "RB",
+        "pts": 24.1
+      },
+      "best_bench": {
+        "name": "Cam Ward",
+        "pos": "QB",
+        "pts": 22.22
+      },
+      "opponent": "Sarge71",
+      "opponent_points": 85.08,
+      "result": "W"
+    },
+    {
+      "roster_id": 6,
+      "manager": "Johnny4Skins",
+      "points": 67.98,
+      "maxpf": 82.28,
+      "roster_points": 94.74,
+      "bench_points": 26.76,
+      "optimal": 82.28,
+      "left_on_bench": 14.3,
+      "efficiency": 82.6,
+      "mvp": {
+        "name": "Chuba Hubbard",
+        "pos": "RB",
+        "pts": 26.0
+      },
+      "best_bench": {
+        "name": "Kenny Gainwell",
+        "pos": "RB",
+        "pts": 9.9
+      },
+      "opponent": "fumbduckdumbfuck",
+      "opponent_points": 125.0,
+      "result": "L"
+    },
+    {
+      "roster_id": 7,
+      "manager": "Sarge71",
+      "points": 85.08,
+      "maxpf": 85.08,
+      "roster_points": 85.08,
+      "bench_points": 0.0,
+      "optimal": 85.08,
+      "left_on_bench": 0.0,
+      "efficiency": 100.0,
+      "mvp": {
+        "name": "Tetairoa McMillan",
+        "pos": "WR",
+        "pts": 19.1
+      },
+      "best_bench": {
+        "name": "Kaleb Johnson",
+        "pos": "RB",
+        "pts": 0.0
+      },
+      "opponent": "Hades9mm",
+      "opponent_points": 140.32,
+      "result": "L"
+    },
+    {
+      "roster_id": 8,
+      "manager": "C33DeezNutzz",
+      "points": 155.9,
+      "maxpf": 155.9,
+      "roster_points": 193.54,
+      "bench_points": 37.64,
+      "optimal": 155.9,
+      "left_on_bench": 0.0,
+      "efficiency": 100.0,
+      "mvp": {
+        "name": "Justin Herbert",
+        "pos": "QB",
+        "pts": 22.44
+      },
+      "best_bench": {
+        "name": "Jakobi Meyers",
+        "pos": "WR",
+        "pts": 12.5
+      },
+      "opponent": "YesChef23",
+      "opponent_points": 106.36,
+      "result": "W"
+    },
+    {
+      "roster_id": 9,
+      "manager": "Painty69",
+      "points": 84.1,
+      "maxpf": 159.06,
+      "roster_points": 174.26,
+      "bench_points": 90.16,
+      "optimal": 159.06,
+      "left_on_bench": 74.96,
+      "efficiency": 52.9,
+      "mvp": {
+        "name": "Mike Evans",
+        "pos": "WR",
+        "pts": 22.9
+      },
+      "best_bench": {
+        "name": "Jahmyr Gibbs",
+        "pos": "RB",
+        "pts": 27.8
+      },
+      "opponent": "StealingGas",
+      "opponent_points": 140.18,
+      "result": "L"
+    },
+    {
+      "roster_id": 10,
+      "manager": "CMac91",
+      "points": 133.56,
+      "maxpf": 157.26,
+      "roster_points": 180.86,
+      "bench_points": 47.3,
+      "optimal": 157.26,
+      "left_on_bench": 23.7,
+      "efficiency": 84.9,
+      "mvp": {
+        "name": "CeeDee Lamb",
+        "pos": "WR",
+        "pts": 30.2
+      },
+      "best_bench": {
+        "name": "Jack Bech",
+        "pos": "WR",
+        "pts": 22.8
+      },
+      "opponent": "Snipe58",
+      "opponent_points": 96.1,
+      "result": "W"
+    },
+    {
+      "roster_id": 11,
+      "manager": "YesChef23",
+      "points": 106.36,
+      "maxpf": 112.02,
+      "roster_points": 135.64,
+      "bench_points": 29.28,
+      "optimal": 112.02,
+      "left_on_bench": 5.66,
+      "efficiency": 94.9,
+      "mvp": {
+        "name": "George Pickens",
+        "pos": "WR",
+        "pts": 23.8
+      },
+      "best_bench": {
+        "name": "Tyler Shough",
+        "pos": "QB",
+        "pts": 15.28
+      },
+      "opponent": "C33DeezNutzz",
+      "opponent_points": 155.9,
+      "result": "L"
+    },
+    {
+      "roster_id": 12,
+      "manager": "fumbduckdumbfuck",
+      "points": 125.0,
+      "maxpf": 129.8,
+      "roster_points": 132.9,
+      "bench_points": 7.9,
+      "optimal": 129.8,
+      "left_on_bench": 4.8,
+      "efficiency": 96.3,
+      "mvp": {
+        "name": "Dak Prescott",
+        "pos": "QB",
+        "pts": 35.9
+      },
+      "best_bench": {
+        "name": "Dallas Goedert",
+        "pos": "TE",
+        "pts": 4.8
+      },
+      "opponent": "Johnny4Skins",
+      "opponent_points": 67.98,
+      "result": "W"
+    }
+  ]
+}

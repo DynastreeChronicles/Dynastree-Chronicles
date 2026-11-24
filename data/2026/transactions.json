@@ -1688,5 +1688,125 @@
       "Taylen Green"
     ],
     "bid": 120
+  },
+  {
+    "week": 11,
+    "type": "trade",
+    "created": 1795241404814,
+    "id": "1429749714965794816",
+    "sides": [
+      {
+        "manager": "Zygon",
+        "receives_players": [
+          {
+            "name": "Travis Kelce",
+            "pos": "TE",
+            "team": "KC"
+          },
+          {
+            "name": "DJ Moore",
+            "pos": "WR",
+            "team": "BUF"
+          }
+        ],
+        "receives_picks": [
+          {
+            "season": "2027",
+            "round": 3,
+            "original_owner": "StealingGas"
+          },
+          {
+            "season": "2027",
+            "round": 2,
+            "original_owner": "Hades9mm"
+          },
+          {
+            "season": "2027",
+            "round": 3,
+            "original_owner": "Hades9mm"
+          },
+          {
+            "season": "2028",
+            "round": 1,
+            "original_owner": "Hades9mm"
+          },
+          {
+            "season": "2028",
+            "round": 2,
+            "original_owner": "Hades9mm"
+          },
+          {
+            "season": "2028",
+            "round": 3,
+            "original_owner": "Hades9mm"
+          },
+          {
+            "season": "2029",
+            "round": 1,
+            "original_owner": "Hades9mm"
+          },
+          {
+            "season": "2029",
+            "round": 2,
+            "original_owner": "Hades9mm"
+          },
+          {
+            "season": "2029",
+            "round": 3,
+            "original_owner": "Hades9mm"
+          }
+        ],
+        "receives_faab": 0
+      },
+      {
+        "manager": "Hades9mm",
+        "receives_players": [
+          {
+            "name": "Harold Fannin Jr.",
+            "pos": "TE",
+            "team": "CLE"
+          },
+          {
+            "name": "Tee Higgins",
+            "pos": "WR",
+            "team": "CIN"
+          }
+        ],
+        "receives_picks": [],
+        "receives_faab": 0
+      }
+    ]
+  },
+  {
+    "week": 11,
+    "type": "free_agent",
+    "created": 1795226692098,
+    "id": "1429688005362212864",
+    "manager": "StealingGas",
+    "added": {
+      "name": "Brevyn Spann-Ford",
+      "pos": "TE",
+      "team": "DAL"
+    },
+    "dropped": [
+      "Darnell Washington"
+    ],
+    "bid": 0
+  },
+  {
+    "week": 11,
+    "type": "free_agent",
+    "created": 1795133354784,
+    "id": "1429296520292757504",
+    "manager": "C33DeezNutzz",
+    "added": {
+      "name": "Denver Broncos",
+      "pos": "DEF",
+      "team": "DEN"
+    },
+    "dropped": [
+      "Tanner McKee"
+    ],
+    "bid": 0
   }
 ]
