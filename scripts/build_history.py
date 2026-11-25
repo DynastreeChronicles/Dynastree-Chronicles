@@ -14,6 +14,10 @@ import shell as sh
 import auto_data as ad
 import seasons as ss
 import trophies as tr
+try:
+    import pull_player_stats as pps   # only for norm(), the same name key the stats files use
+except Exception:
+    pps = None
 from build_site import esc, av, jload, ROOT
 
 R = "../"
@@ -25,6 +29,10 @@ AWARDS = [("lombardi", "", "League Champion", "Won the league championship game.
           ("toilet_bowl", "", "Toilet Bowl Champion", "Won the Toilet Bowl, the losers' bracket."),
           ("biggest_tank", "", "Biggest Tank", "Lowest MAXPF. The best possible lineup was the weakest, so the 1.01 is theirs."),
           ("waiver_mvp", "", "Waiver Wire MVP", "Most weekly Waiver Wire MVP nods from the desk."),
+          ("best_draft_pick", "", "Best Draft Pick", "The highest-scoring player from the most recent draft, credited to the manager who picked him."),
+          ("the_shark", "", "The Shark", "Trade of the year: the largest FantasyCalc value gain for one side of a trade."),
+          ("punching_bag", "", "The Punching Bag", "Highest regular-season points against (PA)."),
+          ("quote_of_year", "", "Quote of the Year", "The desk's pick from the weekly Quotes of the Week: the one that drew the biggest reaction."),
           ("bold_hit", '<img class="aw-b" src="{R}assets/badge-bold-prediction.webp" alt="" loading="lazy">'.replace("{R}", R), "Bold Prediction Hit", "The desk's boldest call that came true.")]
 
 def ml(m):
@@ -203,9 +211,63 @@ def predictions(H):
             out.append({"key": k, "year": str(y), "no": n, "head": b[0], "result": r.get("result", "pending"), "note": r.get("note", ""), "star": bool(r.get("star"))})
     return out
 
+def draft_star(y):
+    """Best Draft Pick: the highest-scoring player (the league's own scoring, season y) from the most recent draft held in year y or earlier.
+    Needs data/stats/<y>.json (pull_player_stats.py). Returns (drafting manager, text) or None."""
+    if pps is None:
+        return None
+    yrs = sorted(os.path.basename(os.path.dirname(f)) for f in glob.glob(os.path.join(ROOT, "data", "*", "draft.json")))
+    yrs = [d for d in yrs if d.isdigit() and d <= str(y)]
+    st = jload(f"data/stats/{y}.json", None)
+    if not yrs or not st:
+        return None
+    best = None
+    for p in jload(f"data/{yrs[-1]}/draft.json", []) or []:
+        rec = (st.get("players") or {}).get(f'{pps.norm(p["name"])}|{p["pos"]}')
+        if rec and rec.get("pts", 0) > 0 and (best is None or rec["pts"] > best[0]["pts"]):
+            best = (rec, p)
+    if not best:
+        return None
+    rec, p = best
+    tail = "" if st.get("final") else f' through Week {st.get("through_week")}'
+    return (p["m"], f'{p["name"]} ({p["pos"]}, {p["team"]}): {rec["pts"]:.1f} pts{tail}, taken in round {p["r"]}, pick {p["s"]} of the {yrs[-1]} draft')
+
+def shark(y):
+    """The Shark: the trade of the season with the biggest FantasyCalc value gain for one side, measured on the day of the deal
+    (data/market/ledger_values.json, the same numbers as the Ledger's "At the trade" card). Returns (winning manager, text) or None."""
+    lv = (jload("data/market/ledger_values.json", {}) or {}).get("trades") or {}
+    best = None
+    for tx in jload(f"data/{y}/transactions.json", []) or []:
+        if tx.get("type") != "trade" or len(tx.get("sides", [])) != 2:
+            continue
+        tv = lv.get(str(tx.get("id")))
+        if not tv:
+            continue
+        vs = {x["manager"]: x for x in tv.get("sides", [])}
+        a, b = bs.canon(tx)["sides"]
+        if a["manager"] not in vs or b["manager"] not in vs:
+            continue
+        d = vs[a["manager"]]["then"] - vs[b["manager"]]["then"]
+        if abs(d) < 1:
+            continue
+        w_, l_ = (a, b) if d > 0 else (b, a)
+        if best is None or abs(d) > best[0]:
+            best = (abs(d), w_, l_, vs, tx)
+    if not best:
+        return None
+    gap, w_, l_, vs, tx = best
+    parts = [p["name"] for p in w_.get("receives_players", [])]
+    n = len(w_.get("receives_picks", []))
+    if n:
+        parts.append(f'{n} pick{"" if n == 1 else "s"}')
+    got = parts[0] if len(parts) == 1 else ", ".join(parts[:-1]) + " and " + parts[-1] if parts else "the better end of the deal"
+    now = vs[w_["manager"]]["now"] - vs[l_["manager"]]["now"]
+    return (w_["manager"], f'Took {got} from {l_["manager"]} in Week {tx.get("week", "?")}: +{gap:,} in FantasyCalc value on the day, {now:+,} in the latest pull')
+
 def award_values(S, H, preds):
+    IS = all_issue_data()
     mvp = defaultdict(lambda: defaultdict(list))
-    for y, n, d in all_issue_data():
+    for y, n, d in IS:
         for x in (d.get("wire") or {}).get("waivers", []):
             if isinstance(x, dict) and x.get("flag") == "mvp":
                 mvp[str(y)][x["mgr"]].append(x["player"])
@@ -234,11 +296,25 @@ def award_values(S, H, preds):
         if mv:
             top = max(len(v) for v in mv.values()); lead = [m for m, v in mv.items() if len(v) == top]
             a["waiver_mvp"] = (lead[0], f'{top} MVP nod{"s" if top > 1 else ""}: ' + ", ".join(mv[lead[0]]) + (" (tied with " + ", ".join(lead[1:]) + ")" if len(lead) > 1 else ""))
+        pb = max(s["table"], key=lambda m: s["table"][m]["pa"]); a["punching_bag"] = (pb, f'{fmt(s["table"][pb]["pa"])} PA')
+        ds = draft_star(y)
+        if ds:
+            a["best_draft_pick"] = ds
+        sk = shark(y)
+        if sk:
+            a["the_shark"] = sk
         hits = [p for p in preds if p["year"] == y and p["result"] == "hit"]
         pick = next((p for p in hits if p["star"]), hits[-1] if hits else None)
         if pick:
             a["bold_hit"] = (None, pick["head"] + f' (Issue {pick["no"]})')
-        for k, v in (hist_season(H, y).get("awards") or {}).items():
+        aw = dict(hist_season(H, y).get("awards") or {})
+        qo = aw.get("quote_of_year") or {}
+        if qo.get("issue"):   # shorthand: {"issue": 12} names that issue's Quote of the Week the winner
+            qd = next((d for yy, n, d in IS if str(yy) == str(y) and n == qo["issue"]), None)
+            q = (qd or {}).get("quote") or {}
+            if q.get("by"):
+                aw["quote_of_year"] = {"winner": q["by"], "note": qo.get("note") or f'\u201c{q.get("text", "")}\u201d (Issue {qo["issue"]})'}
+        for k, v in aw.items():
             a[k] = (v.get("winner"), v.get("note") or (a.get(k) or ("", ""))[1])
         out[y] = a
     return out

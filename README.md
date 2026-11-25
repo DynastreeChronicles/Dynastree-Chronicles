@@ -349,7 +349,7 @@ MAXPF is **Max PF: the points of each week's best possible lineup, added up over
 
 ## 12. Trophies (reserved art)
 
-Five trophies are reserved for one job each. They live in `assets/trophies/` and are mapped in `scripts/trophies.py`, the single place that says which trophy means what. Each has a full version and a `-sm` version for tight spots.
+Eleven trophies are reserved for one job each (the last four have placeholder art until their files are added). They live in `assets/trophies/` and are mapped in `scripts/trophies.py`, the single place that says which trophy means what. Each has a full version and a `-sm` version for tight spots.
 
 | Trophy | File | Used for |
 |---|---|---|
@@ -358,6 +358,12 @@ Five trophies are reserved for one job each. They live in `assets/trophies/` and
 | Best Manager (football with the rising arrow) | `best-manager` | Hall of Fame award shelf |
 | Biggest Tank (deflated football, 1.01) | `biggest-tank` | Hall of Fame award shelf |
 | Waiver Wire MVP (diamond) | `waiver-mvp` | Hall of Fame award shelf |
+| Best Draft Pick | `best-draft-pick` | Hall of Fame award shelf (art pending) |
+| The Shark | `the-shark` | Hall of Fame award shelf (art pending) |
+| The Punching Bag | `punching-bag` | Hall of Fame award shelf (art pending) |
+| Quote of the Year | `quote-of-the-year` | Hall of Fame award shelf (art pending) |
+
+Until `assets/trophies/<file>.webp` and `<file>-sm.webp` both exist, `trophies.img()` draws a dashed "Art coming soon" placeholder. Add the two files (and fix the sizes in `TROPHIES` if they are not 480x640 and 180x240) and the real art takes over with no other change.
 
 They are separate from the in-season rank trophies (`trophy-gold`, `-silver`, `-bronze`, `-trash`), which belong to the live standings and leaderboard. Do not use the five above for rank.
 
@@ -367,7 +373,7 @@ Where they appear:
 * **History page, Award shelf:** Best Manager, Biggest Tank and Waiver Wire MVP each show their own trophy.
 * **Manager pages, Trophy case:** appears only once a manager has actually won something. Champion and Toilet Bowl come from `data/history.json`. The three awards count once their season is closed, or earlier if `history.json` names the winner by hand. A live season's current leader does not get the trophy early.
 
-To show one anywhere new, call `trophies.img("lombardi", root)` (keys: `lombardi`, `toilet_bowl`, `best_manager`, `biggest_tank`, `waiver_mvp`) instead of writing the `<img>` by hand.
+To show one anywhere new, call `trophies.img("lombardi", root)` (keys: `lombardi`, `silver_cup`, `apex_predator`, `toilet_bowl`, `best_manager`, `biggest_tank`, `waiver_mvp`, `best_draft_pick`, `the_shark`, `punching_bag`, `quote_of_year`) instead of writing the `<img>` by hand.
 
 Recording a Toilet Bowl in `data/history.json`, next to the champion for that season:
 
