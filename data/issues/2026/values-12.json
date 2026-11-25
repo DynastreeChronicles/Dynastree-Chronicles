@@ -1,0 +1,384 @@
+{
+ "wealth": {
+  "weeks": {
+   "11": {
+    "date": "2026-11-25",
+    "slots": {
+     "1": 4919,
+     "2": 4919,
+     "3": 4919,
+     "4": 4919,
+     "5": 3239,
+     "6": 3239,
+     "7": 3239,
+     "8": 3239,
+     "9": 2522,
+     "10": 2522,
+     "11": 2522,
+     "12": 2522
+    },
+    "teams": {
+     "Darkspaces": {
+      "roster": 51675,
+      "picks": 24341,
+      "total": 76016
+     },
+     "Snipe58": {
+      "roster": 40375,
+      "picks": 13798,
+      "total": 54173
+     },
+     "StealingGas": {
+      "roster": 62037,
+      "picks": 11351,
+      "total": 73388
+     },
+     "Zygon": {
+      "roster": 56061,
+      "picks": 26172,
+      "total": 82233
+     },
+     "Hades9mm": {
+      "roster": 49311,
+      "picks": 0,
+      "total": 49311
+     },
+     "Johnny4Skins": {
+      "roster": 45963,
+      "picks": 14916,
+      "total": 60879
+     },
+     "Sarge71": {
+      "roster": 33773,
+      "picks": 17074,
+      "total": 50847
+     },
+     "C33DeezNutzz": {
+      "roster": 47964,
+      "picks": 14916,
+      "total": 62880
+     },
+     "Painty69": {
+      "roster": 53655,
+      "picks": 13838,
+      "total": 67493
+     },
+     "CMac91": {
+      "roster": 45523,
+      "picks": 14916,
+      "total": 60439
+     },
+     "YesChef23": {
+      "roster": 48120,
+      "picks": 17074,
+      "total": 65194
+     },
+     "fumbduckdumbfuck": {
+      "roster": 41877,
+      "picks": 14916,
+      "total": 56793
+     }
+    }
+   },
+   "10": {
+    "date": "2026-11-24",
+    "slots": {
+     "1": 4903,
+     "2": 4903,
+     "3": 4903,
+     "4": 4903,
+     "5": 3228,
+     "6": 3228,
+     "7": 3228,
+     "8": 3228,
+     "9": 2513,
+     "10": 2513,
+     "11": 2513,
+     "12": 2513
+    },
+    "teams": {
+     "Darkspaces": {
+      "roster": 50995,
+      "picks": 24207,
+      "total": 75202
+     },
+     "Snipe58": {
+      "roster": 39775,
+      "picks": 13701,
+      "total": 53476
+     },
+     "StealingGas": {
+      "roster": 59675,
+      "picks": 11277,
+      "total": 70952
+     },
+     "Zygon": {
+      "roster": 55512,
+      "picks": 25961,
+      "total": 81473
+     },
+     "Hades9mm": {
+      "roster": 49548,
+      "picks": 0,
+      "total": 49548
+     },
+     "Johnny4Skins": {
+      "roster": 46178,
+      "picks": 14814,
+      "total": 60992
+     },
+     "Sarge71": {
+      "roster": 33805,
+      "picks": 16969,
+      "total": 50774
+     },
+     "C33DeezNutzz": {
+      "roster": 46980,
+      "picks": 14814,
+      "total": 61794
+     },
+     "Painty69": {
+      "roster": 54304,
+      "picks": 13736,
+      "total": 68040
+     },
+     "CMac91": {
+      "roster": 45268,
+      "picks": 14814,
+      "total": 60082
+     },
+     "YesChef23": {
+      "roster": 47243,
+      "picks": 16969,
+      "total": 64212
+     },
+     "fumbduckdumbfuck": {
+      "roster": 41535,
+      "picks": 14814,
+      "total": 56349
+     }
+    }
+   }
+  }
+ },
+ "as_of": "2026-11-25",
+ "first_snapshot": "2026-10-09",
+ "hyp": [
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "Braelon Allen",
+      "value": 1772
+     }
+    ],
+    "total": 1772,
+    "n": 1,
+    "valued": 1
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Aaron Rodgers",
+      "value": 1262
+     },
+     {
+      "label": "Jerry Jeudy",
+      "value": 468
+     }
+    ],
+    "total": 1730,
+    "n": 2,
+    "valued": 2
+   }
+  },
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "2027 1st-round pick",
+      "value": 2826
+     },
+     {
+      "label": "2028 1st-round pick",
+      "value": 2235
+     },
+     {
+      "label": "Josh Downs",
+      "value": 2149
+     }
+    ],
+    "total": 7210,
+    "n": 3,
+    "valued": 3
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Justin Jefferson",
+      "value": 6159
+     },
+     {
+      "label": "Deebo Samuel Sr.",
+      "value": 1348
+     }
+    ],
+    "total": 7507,
+    "n": 2,
+    "valued": 2
+   }
+  },
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "2028 1st-round pick",
+      "value": 2235
+     },
+     {
+      "label": "Ollie Gordon II",
+      "value": 1930
+     }
+    ],
+    "total": 4165,
+    "n": 2,
+    "valued": 2
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Chuba Hubbard",
+      "value": 3503
+     },
+     {
+      "label": "Dalton Schultz",
+      "value": 720
+     }
+    ],
+    "total": 4223,
+    "n": 2,
+    "valued": 2
+   }
+  },
+  {
+   "a": {
+    "assets": [
+     {
+      "label": "2027 1st-round pick",
+      "value": 2826
+     }
+    ],
+    "total": 2826,
+    "n": 1,
+    "valued": 1
+   },
+   "b": {
+    "assets": [
+     {
+      "label": "Tyler Shough",
+      "value": 3194
+     }
+    ],
+    "total": 3194,
+    "n": 1,
+    "valued": 1
+   }
+  }
+ ],
+ "wire": [
+  {
+   "date": "2026-11-21",
+   "how": "snapshot",
+   "a": {
+    "manager": "Zygon",
+    "assets": [
+     {
+      "label": "Travis Kelce (TE)",
+      "then": 1535,
+      "now": 1750
+     },
+     {
+      "label": "DJ Moore (WR)",
+      "then": 2216,
+      "now": 2269
+     },
+     {
+      "label": "2027 3rd (Late)",
+      "then": 1016,
+      "now": 1018,
+      "pick": true
+     },
+     {
+      "label": "2027 2nd (Late)",
+      "then": 1457,
+      "now": 1469,
+      "pick": true
+     },
+     {
+      "label": "2027 3rd (Late)",
+      "then": 1016,
+      "now": 1018,
+      "pick": true
+     },
+     {
+      "label": "2028 1st",
+      "then": 2193,
+      "now": 2235,
+      "pick": true
+     },
+     {
+      "label": "2028 2nd",
+      "then": 1381,
+      "now": 1409,
+      "pick": true
+     },
+     {
+      "label": "2028 3rd",
+      "then": 998,
+      "now": 1014,
+      "pick": true
+     },
+     {
+      "label": "2029 1st",
+      "then": 1880,
+      "now": 1945,
+      "pick": true
+     },
+     {
+      "label": "2029 2nd",
+      "then": 1310,
+      "now": 1289,
+      "pick": true
+     },
+     {
+      "label": "2029 3rd",
+      "then": 932,
+      "now": 937,
+      "pick": true
+     }
+    ],
+    "then": 15934,
+    "now": 16353,
+    "faab": 0
+   },
+   "b": {
+    "manager": "Hades9mm",
+    "assets": [
+     {
+      "label": "Harold Fannin Jr. (TE)",
+      "then": 3481,
+      "now": 3318
+     },
+     {
+      "label": "Tee Higgins (WR)",
+      "then": 4231,
+      "now": 4275
+     }
+    ],
+    "then": 7712,
+    "now": 7593,
+    "faab": 0
+   }
+  }
+ ]
+}
