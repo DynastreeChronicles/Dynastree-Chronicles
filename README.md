@@ -236,7 +236,7 @@ The Hypothetical Trade Machine in each issue is built from the Trade Finder logi
 
 ### Trade finder
 
-`market/#finder` (Research dropdown > Trade Finder; it is a menu-only item, so the home page keeps its 4 + 4 tiles: add or remove menu-only links in `RESEARCH_MENU_ONLY` in `scripts/shell.py`). `js/finder.js`, using the same embedded data as the calculator plus player ages and each team's standing.
+`market/#finder` (Research dropdown > Trade Finder; it is also the bottom-right Research tile on the home page; the dropdown has its own list, `RESEARCH_MENU` in `scripts/shell.py`). `js/finder.js`, using the same embedded data as the calculator plus player ages and each team's standing.
 
 * **Use.** Pick your team. Offer by position (any QB, RB, WR or TE you have), **offer your draft picks** (the Picks chip), and/or tick exact players and picks. Optionally say which positions you want back, set "Your role" (Let the finder decide, Win now, Balanced, Build for the future), choose how close in value the sides must be (5%, 10% or 20%), and whether picks may come back. Press **Find trades**: up to five options, at most two per team, each with a plain-English reason and an **Open in calculator** button. **Reset** clears everything.
 * **Need.** Each team's starting lineup is filled by FantasyCalc value from the league's slots (QB, 2 RB, 2 WR, TE, 2 FLEX, SUPER_FLEX; counts from `league.json`): fixed slots first, then FLEX, then SUPER_FLEX. Players on IR or out do not start. A team has a need when adding your offered players raises that lineup total.
@@ -332,13 +332,12 @@ Details: `DYNASTREE_REFERENCE.md` sections 3b and 6c.
 | Issue | `/issues/<season>/issue-NN/` | `build_site.py` + `js/issue.js` | One frozen issue: desk, hero and zero, standings, bankroll, transaction wire, post-game cards, drama, trade machine, pre-game cards, match of the week, bottom line, poll. |
 | Managers | `/managers/` and `/managers/<handle>/` | `build_managers.py` | One page per manager: record, stat tiles, game log, transactions, desk quotes, bio, trophy case, portfolio value. Alumni keep their pages. The home page gets the ranked portfolio table, "The Market". |
 | Market | `/market/` | `build_managers.py` | The Market table at the top (`#market`), the trade calculator below it (`#calculator`). |
-| Rules | `/rules/` | `build_site.py` | Rules and settings (from `data/settings.json` and the league data). |
-| Scoring | `/scoring/` | `build_site.py` | The scoring system. |
+| Rules & Scoring | `/rules/` (sections `#rules` and `#scoring`) | `build_site.py` | Rules and settings (from `data/settings.json` and the league data), then the scoring system, on one page with a Rules and a Scoring jump button. `/scoring/` is a redirect stub to `/rules/#scoring` so old links still work. |
 | History | `/history/` | `build_history.py` | Hall of Fame, in order: award shelf (with a live regular-season progress bar on the active season), prediction ledger, manager careers, all-time records, season-by-season timeline. There is no Champions wall; the champion and the Toilet Bowl winner are on the award shelf. |
 | Ledger | `/ledger/` | `build_ledger.py` | Every draft pick and trade, with grades and blockbuster scores. |
 | Receipts | `/receipts/` | `build_receipts.py` | Every quote, hit, bold prediction and hot take, with filters and a random-receipt button. |
 
-Navigation: the sticky top bar has **The Vault** (a dropdown with Managers, History, Ledger, Receipts), **Research** (a dropdown with The Market, Trade Calculator, Rules, Scoring), **Standings**, **Transactions** and **Issues**. The bar and the two groups of tiles on the home page come from one place, `scripts/shell.py` (the `VAULT` and `RESEARCH` lists); add a link there and it shows up in both dropdowns and on the home page after the next build. Issue pages use their own section nav instead (Desk, Standings, Wire and so on). To add a page to The Vault, add a link to the `#vault` block in `index.html` and in every `build_*.py` shell (see section 15).
+Navigation: the sticky top bar has **The Vault** (a dropdown with Managers, History, Ledger, Receipts), **Research** (a dropdown with The Market, Trade Calculator, Trade Finder, Rules, Scoring; Rules and Scoring are separate links into `/rules/#rules` and `/rules/#scoring`), **Standings**, **Transactions** and **Issues**. The bar and the two groups of tiles on the home page come from one place, `scripts/shell.py` (the `VAULT` and `RESEARCH` lists for the home tiles, and `RESEARCH_MENU` for the Research dropdown); add a link there and it shows up in both dropdowns and on the home page after the next build. Issue pages use their own section nav instead (Desk, Standings, Wire and so on). To add a page to The Vault, add a link to the `#vault` block in `index.html` and in every `build_*.py` shell (see section 15).
 
 ---
 

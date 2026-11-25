@@ -890,14 +890,17 @@ if __name__ == "__main__":
     inject("index.html", "STANDINGS", standings())
     inject("index.html", "NAV", shell.nav(""))
     inject("index.html", "VAULT", shell.vault_block(""))
-    write_page("rules/index.html", shell.page("../", "Rules &amp; Settings", "Rules &amp; Settings",
-               f'<section id="rules"><h2 class="sec">Rules &amp; settings</h2>{rules()}</section>',
-               og_block("Rules & Settings | Dynastree Chronicles", "League rules, settings and starting lineup for the Dynastree dynasty league.", "rules/"),
-               "League rules, settings and starting lineup for the Dynastree dynasty league."))
-    write_page("scoring/index.html", shell.page("../", "Scoring System", "Scoring System",
+    desc = "League rules, settings, starting lineup and the full scoring system for the Dynastree dynasty league."
+    jump = '<p class="jump"><a class="btn o" href="#rules">Rules</a> <a class="btn o" href="#scoring">Scoring</a></p>'
+    write_page("rules/index.html", shell.page("../", "Rules &amp; Scoring", "Rules &amp; Scoring",
+               jump + f'<section id="rules"><h2 class="sec">Rules &amp; settings</h2>{rules()}</section>'
                f'<section id="scoring"><h2 class="sec">Scoring system</h2>{scoring()}</section>',
-               og_block("Scoring System | Dynastree Chronicles", "Every scoring category in the Dynastree dynasty league.", "scoring/"),
-               "Every scoring category in the Dynastree dynasty league."))
+               og_block("Rules & Scoring | Dynastree Chronicles", desc, "rules/"), desc))
+    # /scoring/ used to be its own page; keep the address working and send it to the Scoring section of /rules/
+    write_page("scoring/index.html", '''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scoring | Dynastree Chronicles</title><meta name="robots" content="noindex"><link rel="canonical" href="../rules/#scoring">
+<meta http-equiv="refresh" content="0;url=../rules/#scoring"></head><body><p>Scoring now lives on the <a href="../rules/#scoring">Rules &amp; Scoring page</a>.</p>
+<script>location.replace("../rules/#scoring")</script></body></html>''')
     inject("index.html", "TX", transactions(m))   # highlights come from the newest issue's own season
     home_blocks(m)
     [issue(f'{x["no"]:02d}', x["year"]) for x in m]
