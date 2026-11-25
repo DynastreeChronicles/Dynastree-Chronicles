@@ -7,7 +7,7 @@
   "numTeams": 12,
   "ppr": 1
  },
- "generated_at": "2026-11-25T21:56:59+00:00",
+ "generated_at": "2026-11-25T22:21:20+00:00",
  "thresholds": {
   "crash_move_pct": -5.0,
   "crash_sidelined_pct": 25.0,
@@ -3096,7 +3096,7 @@
      "rank": 201,
      "trend30": -219,
      "sidelined": true,
-     "status": "Out"
+     "status": "Sus"
     },
     {
      "name": "Gunnar Helm",
@@ -3222,7 +3222,7 @@
      "rank": 201,
      "trend30": -219,
      "sidelined": true,
-     "status": "Out"
+     "status": "Sus"
     }
    ],
    "off_index": 0,

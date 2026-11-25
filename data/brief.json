@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-11-25T21:57:02+00:00",
+ "generated_at": "2026-11-25T22:21:24+00:00",
  "season": "2026",
  "volume": 1,
  "season_status": "active",
- "data_pulled_at": "2026-11-25T21:56:58+00:00",
+ "data_pulled_at": "2026-11-25T22:21:20+00:00",
  "ready_for_new_issue": false,
  "warnings": [
   "Week 11 is already covered by Issue 12. Wait for Week 12 to go final (Tuesday after its Monday game) before drafting a new issue."
@@ -774,7 +774,7 @@
     "sidelined_players": [
      "Jonathon Brooks (IR) 1251",
      "Jayden Reed (IR) 1143",
-     "J.K. Dobbins (Out) 1005"
+     "J.K. Dobbins (Sus) 1005"
     ]
    },
    {
