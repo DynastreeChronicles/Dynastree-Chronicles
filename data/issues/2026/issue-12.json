@@ -1,0 +1,544 @@
+{
+ "desk": [
+  "Zygon has clinched a spot in the six-team winners bracket at 10-1, and Painty69 (2-9) and Sarge71 (1-10) are out of it. Seeds are still open: Hades9mm is 8-3, StealingGas, fumbduckdumbfuck and CMac91 are 7-4, Johnny4Skins holds the sixth seat at 6-5, and C33DeezNutzz and YesChef23 sit one game back at 5-6. The draft side moved just as fast. MAXPF, the points a best possible lineup would have scored each week, added up (the lowest total picks first in the 2027 rookie draft), puts Sarge71 at 1322.62, Snipe58 at 1385.44 (62.82 behind) and Darkspaces at 1400.94 (78.32 behind). Painty69 is out of the bracket with the second-highest MAXPF in the league, 1833.26.",
+  "Hades9mm sent Travis Kelce, DJ Moore and nine picks to Zygon for Tee Higgins and Harold Fannin Jr., and the market now values his picks at 0. The same week Zygon beat Darkspaces 99.12 to 86.18 with 68.62 on his own bench, C33DeezNutzz posted the top score, 155.9, and fumbduckdumbfuck beat Johnny4Skins by 57.02 in the Match of the Week."
+ ],
+ "pull": "Zygon clinches, Painty69 and Sarge71 are out, and Hades9mm sends nine picks away.",
+ "hero": {
+  "manager": "C33DeezNutzz",
+  "text": "155.9, the top score of the week and a 49.54-point win over YesChef23, one week after a 55.26-point loss. Justin Herbert scored 22.44 and the lineup was the best possible one, 155.9 to 155.9. Sleeper's projection was 138.17 and he beat it by 13%.",
+  "desk": "He is 5-6, seventh, and one game behind the sixth seat. Sarge71 is next, and the schedule has finally been kind to him."
+ },
+ "zero": {
+  "manager": "Johnny4Skins",
+  "text": "67.98, the lowest score in the league and a 57.02-point loss to fumbduckdumbfuck in the Match of the Week. Chuba Hubbard scored 26.0 and Sleeper's 123.14 projection was missed by 45%.",
+  "desk": "Lamar Jackson and Jalen Hurts are on IR, A.J. Brown is Doubtful, and he holds the sixth seat at 6-5 with Zygon next."
+ },
+ "prev_motw": {
+  "issue": 11,
+  "a": "Johnny4Skins",
+  "b": "fumbduckdumbfuck",
+  "note": "The desk leaned Johnny4Skins 129 to 128. fumbduckdumbfuck won it 125.0 to 67.98."
+ },
+ "prev_poll": {
+  "issue": 11,
+  "q": "Who wins Johnny4Skins vs fumbduckdumbfuck in Week 11?",
+  "opts": [
+   "Johnny4Skins by double digits",
+   "Johnny4Skins in a squeaker",
+   "fumbduckdumbfuck in a squeaker",
+   "fumbduckdumbfuck by double digits"
+  ],
+  "result": [
+   1,
+   2,
+   1,
+   0
+  ],
+  "note": "Three of four votes had Johnny4Skins. fumbduckdumbfuck won by 57.02, and the option that described it got no votes."
+ },
+ "bank": {
+  "notes": {
+   "StealingGas": "$94 left after a $1 claim on Anthony Richardson Sr. (dropped Brevyn Spann-Ford).",
+   "Darkspaces": "$31 left, no claims this week.",
+   "Hades9mm": "$160 left, no claims, and the trade left him with no picks.",
+   "Snipe58": "$400 left, no claims this week.",
+   "Zygon": "$493 left, no claims this week.",
+   "YesChef23": "$449 left, no claims this week.",
+   "C33DeezNutzz": "$500 untouched; the Denver defense came free.",
+   "fumbduckdumbfuck": "$500 untouched.",
+   "CMac91": "$500 untouched.",
+   "Johnny4Skins": "$500 untouched.",
+   "Sarge71": "$500 untouched.",
+   "Painty69": "$500 untouched."
+  }
+ },
+ "wire": {
+  "trades": [
+   {
+    "a": "Zygon",
+    "b": "Hades9mm",
+    "ai": "Kelce and DJ Moore scored 48.5 between them on his bench in Week 11, and he clinched without them.",
+    "bi": "Higgins is a 4,327 market asset in a lineup that scored 140.32.",
+    "ah": "Eight picks from Hades9mm plus StealingGas's 2027 third; his picks hold 26,168 in market value.",
+    "bh": "His picks are valued at 0 and his portfolio is down 8,393 since Nov 20.",
+    "ga": "A",
+    "gb": "D",
+    "desk": "Darkspaces shared the Dynastree calculator and it said Robbery, +7402 to Zygon. StealingGas said Zygon got scammed. Zygon's portfolio is up 9,571 since Nov 20 and Hades9mm's is down 8,393, so the numbers voted against StealingGas."
+   }
+  ],
+  "waivers": [
+   {
+    "mgr": "StealingGas",
+    "player": "Anthony Richardson Sr.",
+    "flag": "mvp",
+    "note": "A $1 waiver claim for a quarterback in a Superflex league, dropping Brevyn Spann-Ford."
+   },
+   {
+    "mgr": "C33DeezNutzz",
+    "player": "Denver Broncos",
+    "flag": "fav",
+    "note": "A free defense for Tanner McKee, and he scored 155.9 the same week."
+   },
+   {
+    "mgr": "StealingGas",
+    "player": "Brevyn Spann-Ford",
+    "flag": "note",
+    "note": "Added for Darnell Washington, then dropped for Richardson a few days later."
+   }
+  ],
+  "desk": {
+   "StealingGas": "Washington ($1) lasted until the Spann-Ford move, and Spann-Ford lasted until Richardson ($1). Three tight end and quarterback decisions, $94 left, and Puka Nacua is still on IR.",
+   "C33DeezNutzz": "The Denver defense for Tanner McKee, free, and the top score of the week. $500 untouched."
+  }
+ },
+ "post": [
+  {
+   "a": "Zygon",
+   "b": "Darkspaces",
+   "tag": "Clinched",
+   "aged": [
+    "The desk gave Zygon 75% on 153 to 118. He won, but with 99.12.",
+    "Darkspaces's bold prediction missed by 12.94.",
+    "Drake Maye was Out and Fernando Mendoza led the lineup at 23.88."
+   ],
+   "means": [
+    "Zygon is 10-1 and in the winners bracket.",
+    "Darkspaces is 4-7 and ninth.",
+    "His MAXPF is 1400.94, 78.32 above the top of the rookie draft order."
+   ],
+   "key": [
+    "Zygon's best lineup was 167.74 and he scored 99.12.",
+    "Kelce (25.4) and DJ Moore (23.1) were both on his bench.",
+    "Patrick Mahomes led him with 24.96."
+   ],
+   "ga": "B",
+   "gb": "C+",
+   "desk": "Zygon clinched with 68.62 unused, which is the IR Predictor's way of winning by accident. Darkspaces got within 4.3 of his own best lineup and still lost."
+  },
+  {
+   "a": "CMac91",
+   "b": "Snipe58",
+   "tag": "Pick race",
+   "aged": [
+    "Snipe58 set the best possible lineup, 96.1, and lost anyway.",
+    "CMac91 scored 133.56 after missing his projection by 24% last week.",
+    "CeeDee Lamb's 30.2 was the WR of the week."
+   ],
+   "means": [
+    "CMac91 is 7-4 and fifth.",
+    "Snipe58 is 4-7 and 10th with a MAXPF of 1385.44.",
+    "The 96.1 pushed him 62.82 behind Sarge71 in the rookie draft order."
+   ],
+   "key": [
+    "Snipe58 was Best Manager with the maximum possible score.",
+    "CMac91's bench held 47.3, and 23.7 of it would have started.",
+    "Brock Purdy's 22.2 led Snipe58."
+   ],
+   "ga": "B+",
+   "gb": "B",
+   "desk": "Snipe58 did everything right and it cost him ground, because a best lineup of 96.1 added more to MAXPF than Sarge71's 85.08."
+  },
+  {
+   "a": "StealingGas",
+   "b": "Painty69",
+   "tag": "Bench problem",
+   "aged": [
+    "Painty69's bold prediction of 120 missed by 35.9.",
+    "His bench held 90.16 and Jahmyr Gibbs (27.8) was the RB benchwarmer of the week.",
+    "Mike Evans's 22.9 led his lineup."
+   ],
+   "means": [
+    "StealingGas is 7-4 and third.",
+    "Painty69 is 2-9 and out of the winners bracket.",
+    "He scored 53% of a 159.06 best lineup, the weekly report's Worst Manager for the second week running."
+   ],
+   "key": [
+    "Jonah Coleman scored 34.9, the RB of the week, and Houston's 15 was the DEF of the week; both are StealingGas's.",
+    "Painty69's best lineup was 159.06 against the 84.1 he scored.",
+    "StealingGas had 21.7 of his own bench that would have started."
+   ],
+   "ga": "B+",
+   "gb": "D",
+   "desk": "Another Worst Manager and the bench is the story again. The winner had two position-of-the-week scorers and 21.7 of his own sitting out, so nobody in this game set a clean lineup."
+  },
+  {
+   "a": "Hades9mm",
+   "b": "Sarge71",
+   "tag": "All in",
+   "aged": [
+    "Hades9mm scored 140.32 the week of the trade, with Javonte Williams (24.1) on top.",
+    "George Kittle's 18.4 was the TE of the week and Cam Ward's 22.22 was his best QB benchwarmer.",
+    "Sarge71's best lineup matched his score, 85.08."
+   ],
+   "means": [
+    "Hades9mm is 8-3 and second.",
+    "Sarge71 is 1-10 and out of the winners bracket.",
+    "His 85.08 kept his MAXPF the lowest, 1322.62."
+   ],
+   "key": [
+    "Higgins and Fannin are Hades9mm's; Kelce and Moore went to Zygon.",
+    "His picks are valued at 0.",
+    "Tetairoa McMillan's 19.1 led Sarge71."
+   ],
+   "ga": "B+",
+   "gb": "C+",
+   "desk": "Sarge71 set the best lineup he could and lost by 55.24, which says more about the roster than the manager, and the rookie draft order is fine with it."
+  },
+  {
+   "a": "fumbduckdumbfuck",
+   "b": "Johnny4Skins",
+   "tag": "Match of the Week",
+   "aged": [
+    "The desk leaned Johnny4Skins 129 to 128. fumbduckdumbfuck won 125.0 to 67.98.",
+    "The poll had three of four votes on Johnny4Skins.",
+    "Dak Prescott's 35.9 was the QB of the week."
+   ],
+   "means": [
+    "fumbduckdumbfuck is 7-4 and fourth.",
+    "Johnny4Skins is 6-5 and holds the sixth seat.",
+    "The 57.02 margin was the biggest of the week."
+   ],
+   "key": [
+    "Johnny4Skins missed Sleeper's 123.14 projection by 45%.",
+    "Chuba Hubbard's 26.0 led him while Lamar Jackson and Jalen Hurts are on IR.",
+    "fumbduckdumbfuck's bench held 7.9, with 4.8 that would have started."
+   ],
+   "ga": "A-",
+   "gb": "F",
+   "desk": "The game the desk called a playoff race was not close. Prescott alone scored 35.9 for fumbduckdumbfuck, more than half of what Johnny4Skins's whole team managed."
+  },
+  {
+   "a": "C33DeezNutzz",
+   "b": "YesChef23",
+   "tag": "Top score",
+   "aged": [
+    "After a 55.26-point loss last week, C33DeezNutzz scored 155.9.",
+    "George Pickens's 23.8 led YesChef23.",
+    "YesChef23 sits at 5-6 for a second week."
+   ],
+   "means": [
+    "C33DeezNutzz is 5-6 and seventh, one game behind the sixth seat.",
+    "YesChef23 is 5-6 and eighth.",
+    "Their MAXPF totals are 1606.7 and 1514.52."
+   ],
+   "key": [
+    "Justin Herbert's 22.44 led C33DeezNutzz.",
+    "C33DeezNutzz set the best possible lineup, 155.9.",
+    "YesChef23's best DEF benchwarmer was the Giants, 8."
+   ],
+   "ga": "A",
+   "gb": "C",
+   "desk": "C33DeezNutzz scored the top total of the week with no waste at all, and YesChef23 lost by 49.54 with only 5.66 that would have started."
+  }
+ ],
+ "quote": {
+  "text": "I believed in you. I’ve cried about you for two days.",
+  "by": "StealingGas",
+  "desk": "The story he shared says Puka Nacua will have MCL surgery and could miss the rest of the season. Nacua is his top market asset at 6,542 and is on IR, and StealingGas still scored 140.18."
+ },
+ "drama": [
+  {
+   "h": "Nine Picks for Two Receivers",
+   "heat": 98,
+   "p": "Hades9mm sent Kelce, DJ Moore and nine picks (the 2027 second and third, all three rounds of 2028 and 2029, and StealingGas's 2027 third) to Zygon for Higgins and Fannin. His picks are now valued at 0, Darkspaces shared a calculator reading of Robbery, +7402 to Zygon, and Hades9mm answered that Higgins is still a top-10 receiver and that he is all in.",
+   "desk": "He is 8-3 and second, and the market shows no picks in his portfolio."
+  },
+  {
+   "h": "Kelce and Moore on the Bench",
+   "heat": 84,
+   "p": "Zygon scored 99.12 with Kelce (25.4) and Moore (23.1) on his bench, both from the Hades9mm trade. His best lineup was 167.74, and he still beat Darkspaces by 12.94.",
+   "desk": "A clinched team with a 68.62 gap between the lineup he set and the one he could have set. The algorithm will want a word with itself."
+  },
+  {
+   "h": "Two Teams Out of the Bracket",
+   "heat": 76,
+   "p": "Painty69 (2-9) and Sarge71 (1-10) are out of the six-team winners bracket. Painty69 has the second-highest MAXPF, 1833.26, and scored 53% of his best possible 159.06. Sarge71 set his best possible lineup, 85.08, and lost by 55.24.",
+   "desk": "One team was eliminated by its bench and the other by its roster."
+  },
+  {
+   "h": "Puka Goes Down",
+   "heat": 62,
+   "p": "StealingGas shared the report that Puka Nacua will have MCL surgery. Nacua and Jaxson Dart are both on IR, and 18.7% of his portfolio is sidelined.",
+   "desk": "He still scored 140.18 on Jonah Coleman's 34.9 and Houston's 15, and the trade deadline is Week 13."
+  }
+ ],
+ "hits": [
+  [
+   "I believed in you. I’ve cried about you for two days.",
+   "StealingGas"
+  ],
+  [
+   "I think Zygon got scammed.",
+   "StealingGas"
+  ],
+  [
+   "I'd say I am surprised but it is the browns",
+   "Darkspaces"
+  ]
+ ],
+ "trades": {
+  "note": "The Hypothetical Trade Machine stays open through Week 12.",
+  "items": [
+   {
+    "t": "The Rodgers and Jeudy Return",
+    "a": "StealingGas",
+    "as": [
+     "Braelon Allen"
+    ],
+    "b": "Sarge71",
+    "bs": [
+     "Aaron Rodgers",
+     "Jerry Jeudy"
+    ],
+    "ay": "Gives up 0 in starting lineup value and turns one running back into a quarterback and a receiver.",
+    "by": "Sarge71 would start Braelon Allen, a 479 upgrade.",
+    "desk": "The sides are 1,742 and 1,736 in market value. StealingGas said he wanted a running back, so this deal sends one out the door, and Sarge71 would get a 479 upgrade in a season that is already over."
+   },
+   {
+    "t": "The Jefferson Package",
+    "a": "C33DeezNutzz",
+    "as": [
+     "2027 1st-round pick",
+     "2028 1st-round pick",
+     "Josh Downs"
+    ],
+    "b": "Snipe58",
+    "bs": [
+     "Justin Jefferson",
+     "Deebo Samuel Sr."
+    ],
+    "ay": "Gains 3,668 in starting lineup value.",
+    "by": "Gives up 4,098 in starting lineup value for two firsts.",
+    "desk": "7,682 to 7,663, nearly dead even. C33DeezNutzz is one game behind the sixth seat and is the buyer, and Snipe58 is second in the rookie draft order and the seller."
+   },
+   {
+    "t": "The Hubbard Return",
+    "a": "Zygon",
+    "as": [
+     "2028 1st-round pick",
+     "Ollie Gordon II"
+    ],
+    "b": "Johnny4Skins",
+    "bs": [
+     "Chuba Hubbard",
+     "Dalton Schultz"
+    ],
+    "ay": "Gains 1,191 in starting lineup value.",
+    "by": "Starting lineup value drops 1,505 with Gordon in it.",
+    "desk": "4,182 to 4,173. Hubbard scored 26.0 in the 67.98 loss, and the two meet in Week 12, so this one would be played against each other."
+   },
+   {
+    "t": "The Shough Offer",
+    "a": "fumbduckdumbfuck",
+    "as": [
+     "2027 1st-round pick"
+    ],
+    "b": "YesChef23",
+    "bs": [
+     "Tyler Shough"
+    ],
+    "ay": "Gains 1,461 in starting lineup value.",
+    "by": "The deal works on value and timing rather than a lineup hole.",
+    "desk": "3,242 to 3,254, and the two teams play each other in Week 12."
+   }
+  ]
+ },
+ "pre": [
+  {
+   "a": "Darkspaces",
+   "b": "Painty69",
+   "pa": 115,
+   "pb": 111,
+   "wa": 53,
+   "wb": 47,
+   "ma": "Fernando Mendoza (23.88 last week) at quarterback.",
+   "mb": "Jahmyr Gibbs (10,497) and Joe Burrow (8,250) in the lineup.",
+   "la": "Drake Maye is Out and De'Von Achane is on IR.",
+   "lb": "A bench that held 90.16 last week.",
+   "edge": "The desk gives Darkspaces 53% on 115 to 111.",
+   "desk": "Painty69 is out of the bracket and Darkspaces is 4-7, so this game moves the rookie draft order more than the standings. Darkspaces's 1400.94 is 78.32 above the top."
+  },
+  {
+   "a": "Snipe58",
+   "b": "StealingGas",
+   "pa": 105,
+   "pb": 142,
+   "wa": 24,
+   "wb": 76,
+   "ma": "Brock Purdy and Justin Jefferson, his two top market assets.",
+   "mb": "Jonah Coleman (34.9) and the Houston defense (15).",
+   "la": "Seth McGowan is Out and Jake Ferguson is Doubtful.",
+   "lb": "Puka Nacua and Jaxson Dart are on IR.",
+   "edge": "The desk gives StealingGas 76% on 142 to 105.",
+   "desk": "Snipe58 is 4-7 and two games behind the sixth seat. StealingGas is 7-4 and has the seat to protect, and Snipe58's best lineup would add to a MAXPF he does not want."
+  },
+  {
+   "a": "Zygon",
+   "b": "Johnny4Skins",
+   "pa": 148,
+   "pb": 124,
+   "wa": 67,
+   "wb": 33,
+   "ma": "Kelce and DJ Moore in the lineup instead of on the bench.",
+   "mb": "Ja'Marr Chase (9,271) and Chuba Hubbard (26.0 last week).",
+   "la": "Jordan Addison is Doubtful.",
+   "lb": "Lamar Jackson and Jalen Hurts are on IR and A.J. Brown is Doubtful.",
+   "edge": "The desk gives Zygon 67% on 148 to 124.",
+   "desk": "Zygon is in the bracket and Johnny4Skins needs a win to hold the sixth seat. The market flag has Johnny4Skins on crash, down 5.7% over 30 days."
+  },
+  {
+   "a": "Sarge71",
+   "b": "C33DeezNutzz",
+   "pa": 99,
+   "pb": 130,
+   "wa": 28,
+   "wb": 72,
+   "ma": "Bijan Robinson (9,009) and Tetairoa McMillan (19.1).",
+   "mb": "Josh Allen (10,357) and Bucky Irving.",
+   "la": "Five players are on IR: Pittman, McLaurin, Doubs, Spears and Bigsby.",
+   "lb": "Jonathon Brooks and Jayden Reed are on IR and J.K. Dobbins is Out.",
+   "edge": "The desk gives C33DeezNutzz 72% on 130 to 99.",
+   "desk": "C33DeezNutzz is one game behind the sixth seat and Sarge71 is eliminated. A best lineup on Sarge71's side would add to the MAXPF that holds the top of the rookie draft order."
+  },
+  {
+   "a": "YesChef23",
+   "b": "fumbduckdumbfuck",
+   "pa": 115,
+   "pb": 128,
+   "wa": 41,
+   "wb": 59,
+   "ma": "Caleb Williams (7,385) and Matthew Golden (5,075).",
+   "mb": "Dak Prescott (35.9) and Brock Bowers (7,315).",
+   "la": "Jeremiyah Love and RJ Harvey are on IR.",
+   "lb": "Michael Wilson and Wan'Dale Robinson are on IR.",
+   "edge": "The desk gives fumbduckdumbfuck 59% on 128 to 115.",
+   "desk": "fumbduckdumbfuck is 7-4 and flagged crash, down 5.1%. YesChef23 is 5-6 and one game behind the sixth seat, so a win here is worth more to him."
+  }
+ ],
+ "motw": {
+  "a": "Hades9mm",
+  "b": "CMac91",
+  "pa": 139,
+  "pb": 124,
+  "wa": 61,
+  "wb": 39,
+  "ma": "Tee Higgins and Javonte Williams (24.1 last week).",
+  "mb": "CeeDee Lamb (30.2) and Jordan Love.",
+  "la": "Davante Adams and TreVeyon Henderson are on IR, and his picks are valued at 0.",
+  "lb": "Alec Pierce and Dontayvion Wicks are on IR, and the market flag is correction, down 4.0%.",
+  "edge": "The desk gives Hades9mm 61% on 139 to 124.",
+  "desk": "The second seat plays the fifth. Hades9mm is all in after the Zygon trade and CMac91 scored 133.56 last week. Projections are the desk's own estimate (average points per game, rounded).",
+  "stakes": "A Hades9mm win makes him 9-3 and keeps him second. A CMac91 win ties them at 8-4.",
+  "sw": [
+   [
+    "Hades9mm",
+    [
+     "Amon-Ra St. Brown (7,285)",
+     "Jayden Daniels (5,688)",
+     "Tee Higgins (4,327)"
+    ],
+    [
+     "Davante Adams is on IR",
+     "TreVeyon Henderson is on IR",
+     "His picks are valued at 0"
+    ]
+   ],
+   [
+    "CMac91",
+    [
+     "CeeDee Lamb (7,017)",
+     "Jordan Love (5,423)",
+     "James Cook III (5,385)"
+    ],
+    [
+     "Alec Pierce is on IR",
+     "Dontayvion Wicks is on IR",
+     "The market flag is correction, down 4.0%"
+    ]
+   ]
+  ],
+  "verdict": "The desk leans Hades9mm 139 to 124, 61 to 39 on the 0.7-per-point rule. If Higgins is going to matter, this is the week."
+ },
+ "bottom": {
+  "paras": [
+   "Week 12 sorts a field that is already half-sorted. One team has clinched, two are out, and the other nine are chasing five seats: Hades9mm and CMac91 play for the second seat while Johnny4Skins faces Zygon needing the win to hold the sixth. The trade deadline is Week 13, according to Darkspaces in the chat.",
+   "The rookie draft order is moving on the same weekly lineups. Sarge71 holds the top at 1322.62, Snipe58 is 62.82 behind and Darkspaces 78.32 behind, and a good lineup week adds to MAXPF and moves a team away from the top. Snipe58 found that out on Sunday."
+  ]
+ },
+ "closer": {
+  "label": "The desk's last word",
+  "h": "Nine Picks, One Clinch, Two Eliminations",
+  "text": "Zygon is in, Painty69 and Sarge71 are out, and the seeds are open. Hades9mm sent nine picks away for Higgins and Fannin and says he is all in. The deadline is Week 13."
+ },
+ "bold": [
+  [
+   "Johnny4Skins beats Zygon in Week 12",
+   "The desk gives Zygon 67% on 148 to 124. Johnny4Skins scored 67.98 last week with Lamar Jackson and Jalen Hurts on IR, but he needs the win to hold the sixth seat and Zygon has already clinched. Deadline: Week 12 final."
+  ],
+  [
+   "Hades9mm scores 150 or more against CMac91",
+   "He scored 140.32 last week and 174.88 the week before, and Tee Higgins joins a lineup with Amon-Ra St. Brown and Jayden Daniels. The desk projects 139. Deadline: Week 12 final."
+  ]
+ ],
+ "rulings": [
+  {
+   "issue": 11,
+   "i": 0,
+   "result": "miss",
+   "note": "Darkspaces lost to Zygon 99.12 to 86.18, a 12.94-point margin."
+  },
+  {
+   "issue": 11,
+   "i": 1,
+   "result": "miss",
+   "note": "Painty69 scored 84.1 against StealingGas, 35.9 short of 120."
+  }
+ ],
+ "receipts": [
+  {
+   "who": "Hades9mm",
+   "text": "i got nothing but hopes and dreams for next year draft so I gotta put it all on the line now",
+   "context": "On going all in this season",
+   "tags": [
+    "draft",
+    "all in"
+   ],
+   "status": "aged_well",
+   "note": "He sent nine picks and two players to Zygon for Higgins and Fannin, and his picks are now valued at 0."
+  },
+  {
+   "who": "StealingGas",
+   "text": "2 proven assets over 9 Marvin Harrisons’. I think Zygon got scammed.",
+   "context": "On the Zygon and Hades9mm trade",
+   "tags": [
+    "trade",
+    "picks"
+   ],
+   "status": "aged_badly",
+   "note": "The Dynastree calculator read Robbery, +7402 to Zygon, and Zygon's portfolio is up 9,571 since Nov 20 against Hades9mm's 8,393 drop."
+  },
+  {
+   "who": "Hades9mm",
+   "text": "Higgins is still top 10 in fantasy some could argue too 10 in the league",
+   "context": "On the player he received",
+   "tags": [
+    "trade",
+    "Higgins"
+   ],
+   "status": "pending",
+   "note": "Higgins is his third-largest market asset at 4,327."
+  }
+ ],
+ "poll": {
+  "id": "issue-12",
+  "q": "Who wins Hades9mm vs CMac91 in Week 12?",
+  "opts": [
+   "Hades9mm by double digits",
+   "Hades9mm in a squeaker",
+   "CMac91 in a squeaker",
+   "CMac91 by double digits"
+  ],
+  "desk": "The desk projects 139 to 124. Hades9mm scored 140.32 last week and CMac91 133.56."
+ }
+}
