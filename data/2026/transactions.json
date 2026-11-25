@@ -1691,6 +1691,22 @@
   },
   {
     "week": 11,
+    "type": "waiver",
+    "created": 1795583779374,
+    "id": "1431185737948073984",
+    "manager": "StealingGas",
+    "added": {
+      "name": "Anthony Richardson Sr.",
+      "pos": "QB",
+      "team": "IND"
+    },
+    "dropped": [
+      "Brevyn Spann-Ford"
+    ],
+    "bid": 1
+  },
+  {
+    "week": 11,
     "type": "trade",
     "created": 1795241404814,
     "id": "1429749714965794816",
