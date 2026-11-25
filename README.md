@@ -97,7 +97,7 @@ css/
 js/
   issue.js                          draws the dynamic sections of an issue page
   site.js                           home page icons and the standings sort toggle
-  nav.js                            The Vault dropdown
+  nav.js                            dropdowns, plus the manager-name links (see Navigation)
 data/
   seasons.json                      season registry: volume, league id, active or closed
   settings.json                     league settings shown on the home page
@@ -337,7 +337,7 @@ Details: `DYNASTREE_REFERENCE.md` sections 3b and 6c.
 | Ledger | `/ledger/` | `build_ledger.py` | Every draft pick and trade, with grades and blockbuster scores. |
 | Receipts | `/receipts/` | `build_receipts.py` | Every quote, hit, bold prediction and hot take, with filters and a random-receipt button. |
 
-Navigation: the sticky top bar has **The Vault** (a dropdown with Managers, History, Ledger, Receipts), **Research** (a dropdown with The Market, Trade Calculator, Trade Finder, Rules, Scoring; Rules and Scoring are separate links into `/rules/#rules` and `/rules/#scoring`), **Standings**, **Transactions** and **Issues**. The bar and the two groups of tiles on the home page come from one place, `scripts/shell.py` (the `VAULT` and `RESEARCH` lists for the home tiles, and `RESEARCH_MENU` for the Research dropdown); add a link there and it shows up in both dropdowns and on the home page after the next build. Issue pages use their own section nav instead (Desk, Standings, Wire and so on). To add a page to The Vault, add a link to the `#vault` block in `index.html` and in every `build_*.py` shell (see section 15).
+Navigation: the sticky top bar has **The Vault** (a dropdown with Managers, History, Ledger, Receipts), **Research** (a dropdown with The Market, Trade Calculator, Trade Finder, Rules, Scoring; Rules and Scoring are separate links into `/rules/#rules` and `/rules/#scoring`), **Standings**, **Transactions** and **Issues**. The bar and the two groups of tiles on the home page come from one place, `scripts/shell.py` (the `VAULT` and `RESEARCH` lists for the home tiles, and `RESEARCH_MENU` for the Research dropdown); add a link there and it shows up in both dropdowns and on the home page after the next build. Issue pages use their own section nav instead (Desk, Standings, Wire and so on). **Manager-name links:** the last block of `js/nav.js` turns every manager handle in the page text into a link to `managers/<handle>/` (class `ml`, same look as the standings), including content drawn later by other scripts. It skips names already inside a link, button, form control, h1, nav, header, footer, ticker or summary, and a manager's own name on their own page. Handles come from `data/managers.json` (former handles link to the current page), with the 12 current handles built in as a fallback. New pages get it for free as long as they load `js/nav.js`. To add a page to The Vault, add a link to the `#vault` block in `index.html` and in every `build_*.py` shell (see section 15).
 
 ---
 
